@@ -1,18 +1,36 @@
+/*
+	This automates the creation of the Virtualization GUI window.
+
+	*** IMPORTANT ***
+	Be aware that this task is configured for development in Windows.
+	Adjust the options.shell.executable field below should you launch
+	this task from a *NIX environment.
+
+*/
+{
+	"version": "2.0.0",
+	"tasks": [
 		{
-			"version": "2.0.0",
-			"tasks": [
-				{
-					"label": "Start Virtualization",
-					"type": "shell",
-					"command": "python3 debug/virtualization.py",
-					"group": {
-						"kind": "build",
-						"isDefault": false
-					},
-					"problemMatcher": [],
-					"presentation": {
-						"reveal": "never",
-					}
+			"label": "Start Virtualization",
+			"type": "shell",
+			"options": {
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/d",
+						"/c"
+					]
 				}
-			]
+			},
+			"command": "${workspaceFolder}\\tools\\start_virtualization.bat",
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "never",
+			}
 		}
+	]
+}

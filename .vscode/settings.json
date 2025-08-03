@@ -1,0 +1,85 @@
+{
+  "platformio-ide.toolbar": [
+    {
+      "text": "$(home)",
+      "tooltip": "PlatformIO: Home",
+      "commands": "platformio-ide.showHome"
+    },
+    {
+      "text": "$(check)",
+      "tooltip": "PlatformIO: Build",
+      "commands": "platformio-ide.build"
+    },
+    {
+      "text": "$(debug-alt)",
+      "tooltip": "PlatformIO: Upload (Debug)",
+      "commands": [
+        {
+          "id": "workbench.action.tasks.runTask",
+          "args": [
+            "Start Virtualization"
+          ],
+        },
+        {
+          "id": "workbench.action.tasks.runTask",
+          "args": [
+            "PlatformIO: Upload"
+          ]
+        }
+      ]
+    },
+    {
+      "text": "$(arrow-right)",
+      "tooltip": "PlatformIO: Upload (Release)",
+      "commands": [
+        {
+          "id": "workbench.action.tasks.runTask",
+          "args": [
+            "PlatformIO: Upload (release)"
+          ]
+        }
+      ]
+    },
+    {
+      "text": "$(trashcan)",
+      "tooltip": "PlatformIO: Clean",
+      "commands": [
+        {
+          "id": "workbench.action.tasks.runTask",
+          "args": [
+            "PlatformIO: Clean",
+          ],
+        },
+        {
+          "id": "workbench.action.tasks.runTask",
+          "args": [
+            "PlatformIO: Clean (release)"
+          ],
+        },
+        {
+          "id": "workbench.action.tasks.runTask",
+          "args": [
+            "PlatformIO: Clean (native)"
+          ]
+        }
+      ]
+    },
+    {
+      "text": "$(beaker)",
+      "tooltip": "PlatformIO: Run Tests",
+      "commands": [
+        {
+          "id": "workbench.action.tasks.runTask",
+          "args": [
+            "PlatformIO: Test (native)"
+          ]
+        }
+      ]
+    },
+    {
+      "text": "$(plug)",
+      "tooltip": "PlatformIO: Serial Monitor",
+      "commands": "platformio-ide.serialMonitor"
+    }
+  ],
+}

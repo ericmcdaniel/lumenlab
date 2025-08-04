@@ -24,7 +24,7 @@ jobs:
       - name: Install platformio core libraries
         run: pip install --upgrade platformio
 
-      - name: Build Luminook
+      - name: Build LumenLab
         run: pio run --environment release
 
       - name: Run tests

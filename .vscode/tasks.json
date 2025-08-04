@@ -31,6 +31,52 @@
 			"presentation": {
 				"reveal": "never",
 			}
+		},
+		{
+			"label": "LumenLab - Upload (release)",
+			"type": "shell",
+			"command": "platformio",
+			"args": [
+				"run",
+				"-e",
+				"release",
+				"--target",
+				"upload"
+			],
+			"problemMatcher": [
+				"$platformio"
+			],
+			"options": {
+				"statusbar": {
+					"hide": true
+				}
+			}
+		},
+		{
+			"label": "LumenLab - Clean",
+			"type": "shell",
+			"command": "platformio run --target clean -e debug -e release -e native",
+			"problemMatcher": [
+				"$platformio"
+			],
+			"options": {
+				"statusbar": {
+					"hide": true
+				}
+			}
+		},
+		{
+			"label": "LumenLab - Run Tests",
+			"type": "shell",
+			"command": "platformio test --environment native -v",
+			"problemMatcher": [
+				"$platformio"
+			],
+			"options": {
+				"statusbar": {
+					"hide": true
+				}
+			}
 		}
 	]
 }

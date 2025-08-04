@@ -31,11 +31,12 @@
     {
       "text": "$(arrow-right)",
       "tooltip": "PlatformIO: Upload (Release)",
+      "type": "shell",
       "commands": [
         {
           "id": "workbench.action.tasks.runTask",
           "args": [
-            "PlatformIO: Upload (release)"
+            "LumenLab - Upload (release)"
           ]
         }
       ]
@@ -47,21 +48,9 @@
         {
           "id": "workbench.action.tasks.runTask",
           "args": [
-            "PlatformIO: Clean",
+            "LumenLab - Clean",
           ],
         },
-        {
-          "id": "workbench.action.tasks.runTask",
-          "args": [
-            "PlatformIO: Clean (release)"
-          ],
-        },
-        {
-          "id": "workbench.action.tasks.runTask",
-          "args": [
-            "PlatformIO: Clean (native)"
-          ]
-        }
       ]
     },
     {
@@ -71,7 +60,7 @@
         {
           "id": "workbench.action.tasks.runTask",
           "args": [
-            "PlatformIO: Test (native)"
+            "LumenLab - Run Tests"
           ]
         }
       ]
@@ -82,4 +71,7 @@
       "commands": "platformio-ide.serialMonitor"
     }
   ],
+  "files.associations": {
+    "type_traits": "cpp"
+  },
 }

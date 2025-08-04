@@ -1,5 +1,3 @@
-# Luminook
+# LumenLab
 
-### Lumen + Nook
-
-### An LED strip light visualiztion for a child with an active imagination.
+### Turning pixels into a playground — because lighting should be more than just bright

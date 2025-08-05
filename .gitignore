@@ -6,3 +6,4 @@
 tools/.venv
 secrets.h
 platformio-override.ini
+activate-virtual-env.*

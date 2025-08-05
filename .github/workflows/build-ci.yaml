@@ -18,14 +18,12 @@ jobs:
             ~/.cache/pip
             ~/.platformio/.cache
           key: ${{ runner.os }}-pio
-      - name: Inject credentials
-        run: |
-          chmod 755 ${{ github.workspace }}/tools/setup_project.sh
-          ${{ github.workspace }}/tools/setup_project.sh
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Inject credentials
+        run: python3 ${{ github.workspace }}/tools/setup_dev_env.py
+
       - name: Install platformio core libraries
         run: pip install --upgrade platformio
 

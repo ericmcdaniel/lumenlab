@@ -1,89 +1,102 @@
 import pygame
 import socket
-import threading
-import queue
-
-# Config
-WIDTH, HEIGHT = 1800, 900
-MARGIN = 50
-NUM_CIRCLES = 300
-UDP_PORT = 5555
-CIRCLE_RADIUS = 5
-
-# Thread-safe queue for colors
-color_queue = queue.Queue()
-
-# Compute perimeter circle positions as a list of (x,y) tuples
-def compute_perimeter_positions():
-    w, h = WIDTH - 2 * MARGIN, HEIGHT - 2 * MARGIN
-    perimeter = 2 * (w + h)
-    step = perimeter / NUM_CIRCLES
-    positions = []
-    d = 0
-    while len(positions) < NUM_CIRCLES:
-        x = d % perimeter
-        if x < w:
-            px, py = MARGIN + x, MARGIN
-        elif x < w + h:
-            px, py = WIDTH - MARGIN, MARGIN + (x - w)
-        elif x < 2 * w + h:
-            px, py = WIDTH - MARGIN - (x - w - h), HEIGHT - MARGIN
-        else:
-            px, py = MARGIN, HEIGHT - MARGIN - (x - 2 * w - h)
-        positions.append((int(px), int(py)))
-        d += step
-    return positions
-
-# UDP listener thread
-def udp_listener():
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind(('0.0.0.0', UDP_PORT))
-    print(f"[UDP] Listening on port {UDP_PORT}")
-    while True:
-        data, _ = sock.recvfrom(1024)
-        color_str = data.decode('utf-8').strip().lower()
-        if color_str in ("red", "white", "blue"):
-            print(f"Received color: {color_str}")
-            color_queue.put(color_str)
+import sys
+import logging
 
 def main():
-    pygame.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("LED Circle Display")
+  NUM_LEDS = 300
+  WINDOW_WIDTH = 1660
+  WINDOW_HEIGHT = 906
+  LED_RADIUS = 9
+  LED_MARGIN = 4
+  BG_COLOR = (32, 32, 32)
 
-    positions = compute_perimeter_positions()
+  PORT = 5555
 
-    # Initial color: white
-    current_color = pygame.Color('white')
+  logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    # Start UDP listener thread
-    threading.Thread(target=udp_listener, daemon=True).start()
+  logger = logging.getLogger(__name__)
 
-    running = True
-    clock = pygame.time.Clock()
+  def compute_led_positions():
+    positions = []
+    x = 50
+    y = 10
 
-    while running:
-        # Event handling (just quit)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
+    for index, _ in enumerate([0] * NUM_LEDS):
+      if index > 278:
+        y -= LED_MARGIN + LED_RADIUS
+      elif index == 278:
+        x -= (LED_MARGIN + LED_RADIUS) * 4
+        y -= (LED_MARGIN + LED_RADIUS) * 4
+      elif index > 166:
+        x -= LED_MARGIN + LED_RADIUS
+      elif index == 166:
+        x -= (LED_MARGIN + LED_RADIUS) * 4
+        y += (LED_MARGIN + LED_RADIUS) * 4
+      elif index > 112:
+        y += LED_MARGIN + LED_RADIUS
+      elif index == 112:
+        x += (LED_MARGIN + LED_RADIUS) * 4
+        y += (LED_MARGIN + LED_RADIUS) * 4
+      elif index > 0:
+        x += LED_MARGIN + LED_RADIUS
+      elif index == 0:
+        x += (LED_MARGIN + LED_RADIUS) * 4
+        y += (LED_MARGIN + LED_RADIUS) * 4
+      positions.append((int(x), int(y), LED_RADIUS, LED_RADIUS))
 
-        # Check for color update from UDP thread
-        while not color_queue.empty():
-            color_name = color_queue.get()
-            current_color = pygame.Color(color_name)
+    return positions
 
-        # Clear screen
-        screen.fill((0, 0, 0))
+  logger.info("Initializing LED strip visualizer")
+  pygame.init()
+  screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+  screen.fill(BG_COLOR)
+  pygame.display.set_caption("ESP32 LED Strip Visualizer")
+  clock = pygame.time.Clock()
 
-        # Draw circles
-        for pos in positions:
-            pygame.draw.circle(screen, current_color, pos, CIRCLE_RADIUS)
+  # Print the title to the center
+  font = pygame.font.SysFont("Arial", 48)
+  text_surface = font.render("LumenLab LED Debug Visualizer", True, (200, 200, 200))
+  text_rect = text_surface.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 3))
+  screen.blit(text_surface, text_rect)
 
-        pygame.display.flip()
-        clock.tick(60)  # Limit to 60 FPS
+  led_positions = compute_led_positions()
+  led_colors = [(255, 255, 255)] * NUM_LEDS
 
-    pygame.quit()
+  sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+  sock.bind(("0.0.0.0", PORT))
+  sock.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 4096)
+
+  logger.info(f"Listening for UDP packets send from ESP32 on port {PORT}...")
+
+
+  running = True
+  while running:
+    for event in pygame.event.get():
+      if event.type == pygame.QUIT:
+        running = False
+        break
+
+    sock.settimeout(0.01)
+    try:
+      data, _ = sock.recvfrom(4096)
+      if len(data) >= NUM_LEDS * 3:
+        led_colors = [ (data[i], data[i + 1], data[i + 2]) for i in range(0, NUM_LEDS * 3, 3) ]
+    except socket.timeout:
+      pass
+    except Exception as e:
+      logging.error("UDP receive error:", e)
+      continue
+
+    for pos, color in zip(led_positions, led_colors):
+      pygame.draw.rect(screen, color, pos, LED_RADIUS)
+    pygame.display.flip()
+
+    clock.tick(60)
+
+  pygame.quit()
+  sys.exit()
+
 
 if __name__ == "__main__":
-    main()
+  main()

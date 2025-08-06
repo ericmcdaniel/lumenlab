@@ -22,7 +22,10 @@
 					]
 				}
 			},
-			"command": "${workspaceFolder}\\tools\\start_virtualization.bat",
+			"command": "${workspaceFolder}\\tools\\.venv\\Scripts\\python",
+			"args": [
+				"${workspaceFolder}\\tools\\start_virtualization.py"
+			],
 			"group": {
 				"kind": "build",
 				"isDefault": false

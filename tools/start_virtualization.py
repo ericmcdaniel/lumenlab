@@ -34,7 +34,7 @@ def main():
 
   env = os.environ.copy()
   cwd = base_dir
-  return subprocess.run(cmd, capture_output=True, text=True, env=env, cwd=cwd)
+  return subprocess.run(cmd, text=True, env=env, cwd=cwd, check=True)
 
 if __name__ == "__main__":
   main()

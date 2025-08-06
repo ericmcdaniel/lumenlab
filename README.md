@@ -1,6 +1,11 @@
-# LumenLab
+<p align="center"><img src="assets/lumenlab-logo.png" alt="LumenLab Logo" /></p>
+<p align="center">Transforming pixels into a playground — <i>because lighting should be more than just bright</i></p>
 
-### Transforming pixels into a playground — because lighting should be more than just bright
+---
+
+__LumenLab__ is a creative LED platform designed to transform your space into an interactive playground of light. Built around an ESP32 and the WS2815 addressable LED strip, LumenLab enables programmable animations, simple games, and dynamic lighting effects that make any room more engaging—especially for children. Whether you're adding ambiance under a lofted bed or building custom visual experiences, LumenLab provides a flexible, open foundation for experimenting with light and interactivity.
+
+
 
 # Dependencies
 * python3

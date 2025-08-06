@@ -2,6 +2,7 @@ import pygame
 import socket
 import sys
 import logging
+from pathlib import Path
 
 def main():
   NUM_LEDS = 300
@@ -52,10 +53,12 @@ def main():
   screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
   screen.fill(BG_COLOR)
   pygame.display.set_caption("ESP32 LED Strip Visualizer")
+  base_dir = Path(__file__).parent.parent.parent.resolve()
+  icon_path = (base_dir / "assets" / "lumenlab-icon.png").resolve()
+  pygame.display.set_icon(pygame.image.load(icon_path))
   clock = pygame.time.Clock()
 
-  # Print the title to the center
-  font = pygame.font.SysFont("Arial", 48)
+  font = pygame.font.SysFont("Arial, Sans Serif", 48)
   text_surface = font.render("LumenLab LED Debug Visualizer", True, (200, 200, 200))
   text_rect = text_surface.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 3))
   screen.blit(text_surface, text_rect)

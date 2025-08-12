@@ -16,8 +16,8 @@ def create_secrets_header():
     file.write("#define WIFI_PASSWORD \"<YOUR_NETWORK_PASSWORD>\"\n\n")
 
     file.write("#define CLIENT_IP_ADDRESS \"<YOUR.DESKTOP.IP.ADDR>\"\n")
-    file.write("#define CLIENT_PORT 12345\n\n")
-    file.write("#define SERIAL_BAUD 115200\n")
+    file.write("#define CLIENT_PORT 5555\n\n")
+    file.write("#define SERIAL_BAUD 921600\n")
 
 def setup_python_virtual_environment():
   tools_dir = Path("tools")

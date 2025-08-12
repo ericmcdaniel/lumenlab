@@ -1,29 +1,105 @@
-import pygame
-import socket
-import sys
-import logging
-from pathlib import Path
+import moderngl_window as mglw
+import numpy as np
+import serial
+import pyglet
+import threading
+import time
 
-def main():
-  NUM_LEDS = 300
-  WINDOW_WIDTH = 1660
-  WINDOW_HEIGHT = 906
-  LED_RADIUS = 9
-  LED_MARGIN = 4
-  BG_COLOR = (32, 32, 32)
+class LEDVisualizer(mglw.WindowConfig):
+  window_size = (1660, 906)
+  title = "LumenLab LED Visualizer"
 
-  PORT = 5555
+  def __init__(self, **kwargs):
+    super().__init__(**kwargs)
 
-  logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    self.NUM_LEDS = 300
+    self.FRAME_SIZE = self.NUM_LEDS * 3
+    self.SYNC_BYTES = b'\xAA\x55'
 
-  logger = logging.getLogger(__name__)
+    raw_positions = self.compute_led_positions()
+    self.positions = self.normalize_positions(raw_positions)
 
-  def compute_led_positions():
+    self.led_colors = np.ones((self.NUM_LEDS, 3), dtype='f4')
+
+    quad_vertices = np.array([
+      -0.5, -0.5, 0.5, -0.5,
+      -0.5,  0.5, 0.5,  0.5
+    ], dtype='f4')
+
+    # Indices for two triangles
+    indices = np.array([0, 1, 2, 1, 3, 2], dtype='i4')
+
+    self.prog = self.ctx.program(
+      vertex_shader='''
+        #version 330
+        in vec2 in_quad;      // quad vertex offset (-0.5 to 0.5)
+        in vec2 in_pos;       // LED center position
+        in vec3 in_color;     // LED color
+
+        uniform vec2 pixel_size;  // size of 1 pixel in normalized coords
+
+        out vec3 v_color;
+
+        void main() {
+          // Scale quad to 10x10 pixels
+          vec2 offset = in_quad * pixel_size * 10.0;
+
+          gl_Position = vec4(in_pos + offset, 0.0, 1.0);
+          v_color = in_color;
+        }
+      ''',
+      fragment_shader='''
+        #version 330
+        in vec3 v_color;
+        out vec4 f_color;
+        void main() {
+          f_color = vec4(v_color, 1.0);
+        }
+      ''',
+    )
+
+    self.vbo_quad = self.ctx.buffer(quad_vertices.tobytes())
+    self.ibo = self.ctx.buffer(indices.tobytes())
+    self.vbo_positions = self.ctx.buffer(reserve=self.NUM_LEDS * 2 * 4)
+    self.vbo_colors = self.ctx.buffer(reserve=self.NUM_LEDS * 3 * 4)
+
+    self.vao = self.ctx.vertex_array(
+      self.prog,
+      [
+        (self.vbo_quad, '2f', 'in_quad'),
+        (self.vbo_positions, '2f/i', 'in_pos'),
+        (self.vbo_colors, '3f/i', 'in_color'),
+      ],
+      self.ibo
+    )
+
+
+    self.pixel_size = (
+      2.0 / self.window_size[0],
+      2.0 / self.window_size[1],
+    )
+    self.led_lock = threading.Lock()
+    self.serial_thread = threading.Thread(target=self.read_serial, daemon=True)
+    self.serial_thread.start()
+
+    self.label = pyglet.text.Label(
+      "LumenLab LED Debug Visualizer",
+      font_name='Arial',
+      font_size=36,
+      x=self.window_size[0] // 2,
+      y=self.window_size[1] // 2,
+      anchor_x='center',
+      anchor_y='center',
+      color=(160, 160, 160, 160)
+    )
+
+  def compute_led_positions(self):
     positions = []
     x = 50
     y = 10
-
-    for index, _ in enumerate([0] * NUM_LEDS):
+    LED_RADIUS = 9
+    LED_MARGIN = 4
+    for index in range(self.NUM_LEDS):
       if index > 278:
         y -= LED_MARGIN + LED_RADIUS
       elif index == 278:
@@ -44,62 +120,61 @@ def main():
       elif index == 0:
         x += (LED_MARGIN + LED_RADIUS) * 4
         y += (LED_MARGIN + LED_RADIUS) * 4
-      positions.append((int(x), int(y), LED_RADIUS, LED_RADIUS))
-
+      positions.append((x, y))
     return positions
 
-  logger.info("Initializing LED strip visualizer")
-  pygame.init()
-  screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-  screen.fill(BG_COLOR)
-  pygame.display.set_caption("ESP32 LED Strip Visualizer")
-  base_dir = Path(__file__).parent.parent.parent.resolve()
-  icon_path = (base_dir / "assets" / "lumenlab-icon.png").resolve()
-  pygame.display.set_icon(pygame.image.load(icon_path))
-  clock = pygame.time.Clock()
+  def normalize_positions(self, raw_positions):
+    norm_positions = []
+    width, height = self.window_size
+    for x, y in raw_positions:
+      norm_x = (x / width) * 2.0 - 1.0
+      norm_y = 1.0 - (y / height) * 2.0
+      norm_positions.append((norm_x, norm_y))
+    return np.array(norm_positions, dtype='f4')
 
-  font = pygame.font.SysFont("Arial, Sans Serif", 48)
-  text_surface = font.render("LumenLab LED Debug Visualizer", True, (200, 200, 200))
-  text_rect = text_surface.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 3))
-  screen.blit(text_surface, text_rect)
+  def read_serial(self):
+    def process_buffer():
+      """Extract complete frames from buffer and update LED colors."""
+      nonlocal buffer
+      while True:
+        idx = buffer.find(self.SYNC_BYTES)
+        if idx == -1:
+          break  # no sync bytes found yet
+        if len(buffer) < idx + 2 + self.FRAME_SIZE:
+          break  # incomplete frame
+        start = idx + 2
+        frame = buffer[start:start + self.FRAME_SIZE]
+        buffer = buffer[start + self.FRAME_SIZE:]
+        with self.led_lock:
+          colors = np.frombuffer(frame, dtype=np.uint8).reshape(-1, 3) / 255.0
+          self.led_colors[:] = colors
 
-  led_positions = compute_led_positions()
-  led_colors = [(255, 255, 255)] * NUM_LEDS
-
-  sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-  sock.bind(("0.0.0.0", PORT))
-  sock.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 4096)
-
-  logger.info(f"Listening for UDP packets send from ESP32 on port {PORT}...")
-
-
-  running = True
-  while running:
-    for event in pygame.event.get():
-      if event.type == pygame.QUIT:
-        running = False
-        break
-
-    sock.settimeout(0.01)
-    try:
-      data, _ = sock.recvfrom(4096)
-      if len(data) >= NUM_LEDS * 3:
-        led_colors = [ (data[i], data[i + 1], data[i + 2]) for i in range(0, NUM_LEDS * 3, 3) ]
-    except socket.timeout:
-      pass
-    except Exception as e:
-      logging.error("UDP receive error:", e)
-      continue
-
-    for pos, color in zip(led_positions, led_colors):
-      pygame.draw.rect(screen, color, pos, LED_RADIUS)
-    pygame.display.flip()
-
-    clock.tick(60)
-
-  pygame.quit()
-  sys.exit()
+    buffer = bytearray()
+    while True:
+      try:
+        with serial.Serial('COM7', 115200, timeout=0.01) as ser:
+          print("Serial connected on COM7.")
+          while True:
+            chunk = ser.read(1024)
+            if chunk:
+              buffer.extend(chunk)
+              process_buffer()
+      except serial.SerialException as e:
+        print(f"Serial error: {e}")
+        time.sleep(1)  # wait before retry
+      except Exception as e:
+        print(f"Unexpected error: {e}")
+        time.sleep(1)
 
 
-if __name__ == "__main__":
-  main()
+  def on_render(self, time, frametime):
+    self.ctx.clear(0.1, 0.1, 0.1)
+    with self.led_lock:
+      self.vbo_positions.write(self.positions.tobytes())
+      self.vbo_colors.write(self.led_colors.tobytes())
+    self.prog['pixel_size'].value = self.pixel_size
+    self.vao.render(instances=self.NUM_LEDS)
+    self.label.draw()
+
+if __name__ == '__main__':
+  mglw.run_window_config(LEDVisualizer)

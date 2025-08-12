@@ -17,13 +17,7 @@
         {
           "id": "workbench.action.tasks.runTask",
           "args": [
-            "Start Virtualization"
-          ],
-        },
-        {
-          "id": "workbench.action.tasks.runTask",
-          "args": [
-            "PlatformIO: Upload"
+            "Upload and Start Virtualization"
           ]
         }
       ]

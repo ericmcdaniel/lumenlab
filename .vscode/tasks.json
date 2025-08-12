@@ -36,6 +36,29 @@
 			}
 		},
 		{
+			"label": "PlatformIO: Upload",
+			"type": "shell",
+			"command": "platformio run --target upload",
+			"options": {
+				"statusbar": {
+					"hide": true
+				}
+			}
+		},
+		{
+			"label": "Upload and Start Virtualization",
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"PlatformIO: Upload",
+				"Start Virtualization"
+			],
+			"options": {
+				"statusbar": {
+					"hide": true
+				}
+			}
+		},
+		{
 			"label": "LumenLab - Upload (release)",
 			"type": "shell",
 			"command": "platformio",

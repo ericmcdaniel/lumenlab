@@ -264,12 +264,31 @@ void loop()
   for (int i = 0; i < 300; i++)
   {
     int base = i * 3 + 2;
-    if (i == count && controller.cross())
+    if (i <= count && controller.circle())
     {
       ledBuffer[base + 0] = 255; // R
       ledBuffer[base + 1] = 0;   // G
       ledBuffer[base + 2] = 0;   // B
     }
+    else if (i <= count && controller.triangle())
+    {
+      ledBuffer[base + 0] = 0;   // R
+      ledBuffer[base + 1] = 255; // G
+      ledBuffer[base + 2] = 0;   // B
+    }
+    else if (i <= count && controller.square())
+    {
+      ledBuffer[base + 0] = 255; // R
+      ledBuffer[base + 1] = 255; // G
+      ledBuffer[base + 2] = 0;   // B
+    }
+    else if (i <= count && controller.cross())
+    {
+      ledBuffer[base + 0] = 0;   // R
+      ledBuffer[base + 1] = 0;   // G
+      ledBuffer[base + 2] = 255; // B
+    }
+
     else
     {
       ledBuffer[base + 0] = 0;

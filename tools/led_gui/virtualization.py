@@ -152,8 +152,8 @@ class LEDVisualizer(mglw.WindowConfig):
     buffer = bytearray()
     while True:
       try:
-        with serial.Serial('COM7', 115200, timeout=0.01) as ser:
-          print("Serial connected on COM7.")
+        with serial.Serial('COM3', 921600, timeout=0.01) as ser:
+          print("Serial connected on COM3.")
           while True:
             chunk = ser.read(1024)
             if chunk:

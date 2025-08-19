@@ -23,7 +23,6 @@ def in_venv():
 def main():
   if not in_venv():
     setup_venv_and_close()
-  from led_gui.virtualization import start_led_virtualization
 
   parser = argparse.ArgumentParser(
     prog="LumenLab LED Visualizer",
@@ -44,8 +43,9 @@ Usage Example:
   window_dimensions = parser.add_argument_group("Window Dimensions", "Configure the visualization's height and width")
   window_dimensions.add_argument("-W", "--width", type=int, default=1680, help="The width of the window in pixels. Defaults to 1680")
   window_dimensions.add_argument("-H", "--height", type=int, default=945, help="The height of the window in pixels. Defaults to 945")
-  args = parser.parse_args()
+  args, _ = parser.parse_known_args()
 
+  from led_gui.virtualization import start_led_virtualization
   start_led_virtualization(
     window_size=(args.width, args.height),
     num_leds=args.num_leds,

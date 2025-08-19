@@ -82,15 +82,27 @@ class LEDVisualizer(mglw.WindowConfig):
     self.serial_thread = threading.Thread(target=self.read_serial, daemon=True)
     self.serial_thread.start()
 
-    self.label = pyglet.text.Label(
-      "LumenLab LED Debug Visualizer",
+    self.title = pyglet.text.Label(
+      "LumenLab",
       font_name='Arial',
       font_size=36,
       x=self.window_size[0] // 2,
-      y=self.window_size[1] // 2,
+      y=self.window_size[1] // 2 + 20,
       anchor_x='center',
       anchor_y='center',
-      color=(160, 160, 160, 160)
+      color=(190, 190, 190, 190),
+      width=300
+    )
+    self.description = pyglet.text.Label(
+      "LED Debug Visualizer",
+      font_name='Arial',
+      font_size=24,
+      x=self.window_size[0] // 2,
+      y=self.window_size[1] // 2 - 20,
+      anchor_x='center',
+      anchor_y='center',
+      color=(160, 160, 160, 160),
+      width=300
     )
 
   def compute_led_positions(self):
@@ -174,7 +186,8 @@ class LEDVisualizer(mglw.WindowConfig):
       self.vbo_colors.write(self.led_colors.tobytes())
     self.prog['pixel_size'].value = self.pixel_size
     self.vao.render(instances=self.num_leds)
-    self.label.draw()
+    self.title.draw()
+    self.description.draw()
 
 def start_led_virtualization(window_size, num_leds, port, baud_rate):
   LEDVisualizer.window_size = window_size
@@ -184,4 +197,5 @@ def start_led_virtualization(window_size, num_leds, port, baud_rate):
   mglw.run_window_config(LEDVisualizer)
 
 if __name__ == '__main__':
+  logging.info("Starting the LumenLab Virtualizer at 1680x945 with 300 LEDs. Connected through COM3 with a baud rate of 921600.")
   start_led_virtualization(window_size=(1680, 945), num_leds=300, port="COM3", baud_rate=921600)

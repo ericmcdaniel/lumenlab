@@ -4,22 +4,22 @@ import serial
 import pyglet
 import threading
 import time
+import logging
 
 class LEDVisualizer(mglw.WindowConfig):
-  window_size = (1660, 906)
   title = "LumenLab LED Visualizer"
+  logging.basicConfig(format='%(asctime)s - %(filename)s:%(lineno)d - %(levelname)s - %(message)s', level=logging.INFO)
 
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
 
-    self.NUM_LEDS = 300
-    self.FRAME_SIZE = self.NUM_LEDS * 3
+    self.FRAME_SIZE = self.num_leds * 3
     self.SYNC_BYTES = b'\xAA\x55'
 
     raw_positions = self.compute_led_positions()
     self.positions = self.normalize_positions(raw_positions)
 
-    self.led_colors = np.ones((self.NUM_LEDS, 3), dtype='f4')
+    self.led_colors = np.ones((self.num_leds, 3), dtype='f4')
 
     quad_vertices = np.array([
       -0.5, -0.5, 0.5, -0.5,
@@ -60,8 +60,8 @@ class LEDVisualizer(mglw.WindowConfig):
 
     self.vbo_quad = self.ctx.buffer(quad_vertices.tobytes())
     self.ibo = self.ctx.buffer(indices.tobytes())
-    self.vbo_positions = self.ctx.buffer(reserve=self.NUM_LEDS * 2 * 4)
-    self.vbo_colors = self.ctx.buffer(reserve=self.NUM_LEDS * 3 * 4)
+    self.vbo_positions = self.ctx.buffer(reserve=self.num_leds * 2 * 4)
+    self.vbo_colors = self.ctx.buffer(reserve=self.num_leds * 3 * 4)
 
     self.vao = self.ctx.vertex_array(
       self.prog,
@@ -99,7 +99,7 @@ class LEDVisualizer(mglw.WindowConfig):
     y = 10
     LED_RADIUS = 9
     LED_MARGIN = 4
-    for index in range(self.NUM_LEDS):
+    for index in range(self.num_leds):
       if index > 278:
         y -= LED_MARGIN + LED_RADIUS
       elif index == 278:
@@ -152,18 +152,18 @@ class LEDVisualizer(mglw.WindowConfig):
     buffer = bytearray()
     while True:
       try:
-        with serial.Serial('COM3', 921600, timeout=0.01) as ser:
-          print("Serial connected on COM3.")
+        with serial.Serial(self.port, self.baud_rate, timeout=0.01) as ser:
+          logging.info("Serial connected on COM3.")
           while True:
             chunk = ser.read(1024)
             if chunk:
               buffer.extend(chunk)
               process_buffer()
       except serial.SerialException as e:
-        print(f"Serial error: {e}")
-        time.sleep(1)  # wait before retry
+        logging.warning(f"Serial error: {e}")
+        time.sleep(1)
       except Exception as e:
-        print(f"Unexpected error: {e}")
+        logging.warning(f"Unexpected error: {e}")
         time.sleep(1)
 
 
@@ -173,8 +173,15 @@ class LEDVisualizer(mglw.WindowConfig):
       self.vbo_positions.write(self.positions.tobytes())
       self.vbo_colors.write(self.led_colors.tobytes())
     self.prog['pixel_size'].value = self.pixel_size
-    self.vao.render(instances=self.NUM_LEDS)
+    self.vao.render(instances=self.num_leds)
     self.label.draw()
 
-if __name__ == '__main__':
+def start_led_virtualization(window_size, num_leds, port, baud_rate):
+  LEDVisualizer.window_size = window_size
+  LEDVisualizer.num_leds = num_leds
+  LEDVisualizer.port = port
+  LEDVisualizer.baud_rate = baud_rate
   mglw.run_window_config(LEDVisualizer)
+
+if __name__ == '__main__':
+  start_led_virtualization(window_size=(1680, 945), num_leds=300, port="COM3", baud_rate=921600)

@@ -3,7 +3,7 @@
 #include <Ps3Controller.h>
 
 #include "Controller.h"
-#include "LedStrip.h"
+#include "lights/LedStrip.h"
 
 int player = 0;
 int battery = 0;

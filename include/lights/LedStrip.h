@@ -10,7 +10,7 @@ namespace Lights
   {
   private:
     unsigned int _size;
-    CRGB leds[300];
+    CRGB *leds;
 
   public:
     LedStrip(unsigned int size);

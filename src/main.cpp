@@ -3,6 +3,7 @@
 #include <Ps3Controller.h>
 
 #include "Controller.h"
+#include "LedStrip.h"
 
 int player = 0;
 int battery = 0;
@@ -252,6 +253,7 @@ void setup()
   Ps3.begin("00:1b:fb:8e:87:ac");
 
   Serial.println("Ready.");
+  Lights::LedStrip strip{300};
 }
 
 void loop()
@@ -264,25 +266,26 @@ void loop()
   for (int i = 0; i < 300; i++)
   {
     int base = i * 3 + 2;
-    if (i <= count && controller.circle())
+    if (abs(i - count) <= 2 || controller.circle())
     {
       ledBuffer[base + 0] = 255; // R
       ledBuffer[base + 1] = 0;   // G
       ledBuffer[base + 2] = 0;   // B
+      // Serial.printf("Count is: %d.\tPrinting Red.\n", count);
     }
-    else if (i <= count && controller.triangle())
+    else if (abs(i - count) <= 2 || controller.triangle())
     {
       ledBuffer[base + 0] = 0;   // R
       ledBuffer[base + 1] = 255; // G
       ledBuffer[base + 2] = 0;   // B
     }
-    else if (i <= count && controller.square())
+    else if (abs(i - count) <= 2 || controller.square())
     {
       ledBuffer[base + 0] = 255; // R
       ledBuffer[base + 1] = 255; // G
       ledBuffer[base + 2] = 0;   // B
     }
-    else if (i <= count && controller.cross())
+    else if (abs(i - count) <= 2)
     {
       ledBuffer[base + 0] = 0;   // R
       ledBuffer[base + 1] = 0;   // G
@@ -294,10 +297,11 @@ void loop()
       ledBuffer[base + 0] = 0;
       ledBuffer[base + 1] = 0;
       ledBuffer[base + 2] = 0;
+      // Serial.printf("Count is: %d.\tPrinting Black.\n", count);
     }
   }
 
-  count = (count + 2) % 300;
+  count = (count + 1) % 300;
 
   // Send LED buffer over USB Serial
   Serial.write(ledBuffer, sizeof(ledBuffer));

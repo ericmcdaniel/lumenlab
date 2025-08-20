@@ -4,8 +4,8 @@
 
 namespace Time
 {
-  inline const bool Timeable::isReady() const
+  const bool Timeable::isReady() const
   {
-    return millis() <= this->next;
+    return micros() <= this->next;
   }
 }

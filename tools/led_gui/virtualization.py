@@ -109,8 +109,8 @@ class LEDVisualizer(mglw.WindowConfig):
     positions = []
     x = 50
     y = 10
-    LED_RADIUS = 9
-    LED_MARGIN = 4
+    LED_RADIUS = 11
+    LED_MARGIN = 2
     for index in range(self.num_leds):
       if index > 278:
         y -= LED_MARGIN + LED_RADIUS

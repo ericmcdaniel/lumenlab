@@ -1,5 +1,6 @@
 #pragma once
 
+#include <FastLED.h>
 #include "Timeable.h"
 
 namespace Lights
@@ -7,8 +8,12 @@ namespace Lights
 
   class LedStrip : protected Time::Timeable
   {
+  private:
+    unsigned int _size;
+    CRGB *leds;
+
   public:
-    LedStrip();
+    LedStrip(unsigned int size);
     void getColors();
   };
 }

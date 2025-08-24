@@ -66,6 +66,14 @@
     }
   ],
   "files.associations": {
-    "type_traits": "cpp"
+    "type_traits": "cpp",
+    "bitset": "cpp",
+    "chrono": "cpp",
+    "algorithm": "cpp"
   },
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.typeCheckingMode": "off",
+  "autopep8.args": [
+    "--max-line-length=160"
+  ],
 }

@@ -1,13 +1,11 @@
 #include <Arduino.h>
-// #include <Ps3Controller.h>
-
 #include "lights/LedStrip.h"
 #include "engine/Engine.h"
 #include "player/Player.h"
-#include "Exception.h"
 
-// Engine::Engine engine;
-// Player::Player player;
+Engine::Engine *engine = nullptr;
+Player::Player *player = nullptr;
+Lights::LedStrip *strip = nullptr;
 
 uint8_t ledBuffer[300 * 3 + 2];
 
@@ -18,18 +16,14 @@ void setup()
 {
   delay(1000);
 
-  // if (engine.currentAction == Engine::State::GAME)
-  // {
-  //   throw InvalidStateException("Test exception handling.");
-  // }
-
   Serial.begin(921600);
-  Serial.print("Connecting.");
+  Serial.print("\n\nConnecting to computer for debugging");
   while (!Serial)
   {
     Serial.print(".");
     delay(100);
   }
+  Serial.println("\n");
 
   ledBuffer[0] = 0xAA;
   ledBuffer[1] = 0x55;
@@ -43,28 +37,46 @@ void setup()
 
   Serial.write(ledBuffer, sizeof(ledBuffer));
   Serial.flush();
-  delay(1000);
 
-  pinMode(BUILTIN_LED, OUTPUT);
-  Serial.println("\nUSB LED data sender ready.");
+  engine = new Engine::Engine();
+  player = new Player::Player();
+  strip = new Lights::LedStrip(300);
 
-  // Engine::Engine engine;
-  Player::Player player{};
+  Serial.print("\n\nConnecting to controller");
+  for (int reattempt = 0; reattempt < 10; ++reattempt)
+  {
+    if (player->controller.isConnected())
+      break;
+    Serial.print(".");
+    delay(500);
+  }
+  if (!player->controller.isConnected())
+  {
+    engine->currentAction = Engine::State::INVALID;
+  }
 
-  Serial.println("Ready.");
-  Lights::LedStrip strip{300};
+  Serial.println("\n\nApplication fully initialized.\n");
 
-  while (true)
+  while (engine->currentAction != Engine::State::INVALID)
   {
     // player.controller.getUpdate();
-    if (player.controller.cross())
-      Serial.println("\n\nX is pressed.");
-    if (player.controller.square())
-      Serial.println("\n\n[] is pressed.");
-    if (player.controller.triangle())
-      Serial.println("\n\nA is pressed.");
-    if (player.controller.circle())
-      Serial.println("\n\nO is pressed.");
+    if (player->controller.cross())
+    {
+      Serial.printf("\n\nX is pressed: %u\n", player->controller.cross());
+    }
+    if (player->controller.square())
+    {
+      Serial.printf("\n\n[] is pressed: %u\n", player->controller.square());
+    }
+    if (player->controller.triangle())
+    {
+      Serial.printf("\n\nA is pressed: %u\n", player->controller.triangle());
+    }
+    if (player->controller.circle())
+    {
+      Serial.printf("\n\nO is pressed: %u\n", player->controller.circle());
+      engine->currentAction = Engine::State::INVALID;
+    }
 
     ledBuffer[0] = 0xAA;
     ledBuffer[1] = 0x55;

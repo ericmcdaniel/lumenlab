@@ -11,14 +11,14 @@ namespace Player
   public:
     Controller()
     {
-      controllerInstance = this;
+      instance = this;
     }
 
     void begin()
     {
       // Ps3.attach(&Controller::staticCallback);
-      controllerInstance->controller.begin("00:1b:fb:8e:87:ac");
-      controllerInstance->controller.attachOnConnect(&Controller::onConnect);
+      instance->controller.begin("00:1b:fb:8e:87:ac");
+      instance->controller.attachOnConnect(&Controller::onConnect);
     }
 
     // void getUpdate()
@@ -26,31 +26,34 @@ namespace Player
     //   Serial.println("\n\n");
     // }
 
-    uint8_t cross() { return controllerInstance->controller.data.analog.button.cross; }
-    uint8_t circle() { return controllerInstance->controller.data.analog.button.circle; }
-    uint8_t triangle() { return controllerInstance->controller.data.analog.button.triangle; }
-    uint8_t square() { return controllerInstance->controller.data.analog.button.square; }
+    uint8_t cross() { return instance->controller.data.analog.button.cross; }
+    uint8_t circle() { return instance->controller.data.analog.button.circle; }
+    uint8_t triangle() { return instance->controller.data.analog.button.triangle; }
+    uint8_t square() { return instance->controller.data.analog.button.square; }
+
+    const bool isConnected() { return instance->connection; }
 
   private:
     Ps3Controller controller;
 
     static void onConnect()
     {
-      if (controllerInstance)
+      if (instance)
       {
-        controllerInstance->handleOnConnect();
+        instance->handleOnConnect();
       }
     }
     void handleOnConnect()
     {
       Serial.println("\n\nConnected.\n");
+      instance->connection = true;
     }
 
     // static void staticCallback()
     // {
-    //   if (controllerInstance)
+    //   if (instance)
     //   {
-    //     controllerInstance->onEvent();
+    //     instance->onEvent();
     //   }
     // }
 
@@ -62,16 +65,9 @@ namespace Player
     //   }
     // }
 
-    static Controller *controllerInstance;
+    static Controller *instance;
+    bool connection = false;
   };
 
-  Controller *Controller::controllerInstance = nullptr;
-
-  //   Controller()
-  //   {
-  //     // Ps3.attach(notify);
-
-  //     Ps3.begin("00:1b:fb:8e:87:ac");
-  //   }
-
+  Controller *Controller::instance = nullptr;
 }

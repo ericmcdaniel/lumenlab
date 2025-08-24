@@ -69,7 +69,8 @@
     "type_traits": "cpp",
     "bitset": "cpp",
     "chrono": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "new": "cpp"
   },
   "python.analysis.autoImportCompletions": true,
   "python.analysis.typeCheckingMode": "off",

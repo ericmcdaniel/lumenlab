@@ -2,6 +2,7 @@ namespace Engine
 {
   enum class State
   {
+    STARTUP,
     GAME,
     INVALID
   };
@@ -11,6 +12,6 @@ namespace Engine
   public:
     State currentAction;
 
-    Engine(State state = State::INVALID) : currentAction(state) {}
+    Engine() : currentAction(State::STARTUP) {}
   };
 }

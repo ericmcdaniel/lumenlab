@@ -229,7 +229,7 @@ void onConnect()
 
 uint8_t ledBuffer[300 * 3 + 2]; // 2 sync bytes + 900 bytes RGB
 
-int count = 0;
+int frame_count = 0;
 int revolution = 0;
 
 void setup()
@@ -266,31 +266,31 @@ void loop()
   for (int i = 0; i < 300; i++)
   {
     int base = i * 3 + 2;
-    if (abs(i - count) <= 2 || controller.circle())
+    if (abs(i - frame_count) <= 2)
     {
       ledBuffer[base + 0] = 255; // R
       ledBuffer[base + 1] = 0;   // G
       ledBuffer[base + 2] = 0;   // B
-      // Serial.printf("Count is: %d.\tPrinting Red.\n", count);
+      // Serial.printf("frame_count is: %d.\n", frame_count);
     }
-    else if (abs(i - count) <= 2 || controller.triangle())
-    {
-      ledBuffer[base + 0] = 0;   // R
-      ledBuffer[base + 1] = 255; // G
-      ledBuffer[base + 2] = 0;   // B
-    }
-    else if (abs(i - count) <= 2 || controller.square())
-    {
-      ledBuffer[base + 0] = 255; // R
-      ledBuffer[base + 1] = 255; // G
-      ledBuffer[base + 2] = 0;   // B
-    }
-    else if (abs(i - count) <= 2)
-    {
-      ledBuffer[base + 0] = 0;   // R
-      ledBuffer[base + 1] = 0;   // G
-      ledBuffer[base + 2] = 255; // B
-    }
+    // else if (frame_count % 100 == 0 || controller.triangle())
+    // {
+    //   ledBuffer[base + 0] = 0;   // R
+    //   ledBuffer[base + 1] = 255; // G
+    //   ledBuffer[base + 2] = 0;   // B
+    // }
+    // else if (frame_count % 100 == 0 || controller.square())
+    // {
+    //   ledBuffer[base + 0] = 255; // R
+    //   ledBuffer[base + 1] = 255; // G
+    //   ledBuffer[base + 2] = 0;   // B
+    // }
+    // else if (frame_count % 100 == 0)
+    // {
+    //   ledBuffer[base + 0] = 0;   // R
+    //   ledBuffer[base + 1] = 0;   // G
+    //   ledBuffer[base + 2] = 255; // B
+    // }
 
     else
     {
@@ -300,10 +300,21 @@ void loop()
       // Serial.printf("Count is: %d.\tPrinting Black.\n", count);
     }
   }
-
-  count = (count + 1) % 300;
+  if (controller.cross())
+    frame_count = (frame_count + 8) % 300;
+  else if (controller.square())
+    frame_count = (frame_count + 1) % 300;
+  else if (controller.triangle())
+    frame_count = (frame_count + 4) % 300;
+  else if (controller.circle())
+  {
+    // pass;
+  }
+  else
+    frame_count = (frame_count + 2) % 300;
 
   // Send LED buffer over USB Serial
   Serial.write(ledBuffer, sizeof(ledBuffer));
   Serial.flush(); // Ensure data is pushed out
+  delay(10);
 }

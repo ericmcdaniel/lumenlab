@@ -1,20 +1,18 @@
 #pragma once
 
-#include <Ps3Controller.h>
-#include "player/Controller.h"
-#include "Exception.h"
+#include "player/controller.h"
+#include "system-config.h"
 
 namespace Player
 {
   class Player
   {
-    // private:
 
   public:
     Controller controller;
-    Player() : controller()
+    Player(const SystemConfig &config)
     {
-      controller.begin();
+      controller.begin(config.macAddress);
     };
   };
 }

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Ps3Controller.h>
-#include "Exception.h"
 
 namespace Player
 {
@@ -14,12 +13,7 @@ namespace Player
       instance = this;
     }
 
-    void begin()
-    {
-      // Ps3.attach(&Controller::staticCallback);
-      instance->controller.begin("00:1b:fb:8e:87:ac");
-      instance->controller.attachOnConnect(&Controller::onConnect);
-    }
+    void begin(const char *macAddress);
 
     // void getUpdate()
     // {
@@ -68,6 +62,4 @@ namespace Player
     static Controller *instance;
     bool connection = false;
   };
-
-  Controller *Controller::instance = nullptr;
 }

@@ -1,7 +1,8 @@
 #pragma once
 
 #include <FastLED.h>
-#include "Timeable.h"
+#include "timeable.h"
+#include "system-config.h"
 
 namespace Lights
 {
@@ -13,7 +14,7 @@ namespace Lights
     CRGB *leds;
 
   public:
-    LedStrip(unsigned int size);
+    LedStrip(const SystemConfig &config);
     void getColors();
   };
 }

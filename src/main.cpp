@@ -1,8 +1,10 @@
 #include <Arduino.h>
-#include "lights/LedStrip.h"
-#include "engine/Engine.h"
-#include "player/Player.h"
+#include "lights/led-strip.h"
+#include "engine/engine.h"
+#include "player/player.h"
+#include "system-config.h"
 
+const SystemConfig &config{};
 Engine::Engine *engine = nullptr;
 Player::Player *player = nullptr;
 Lights::LedStrip *strip = nullptr;
@@ -38,9 +40,11 @@ void setup()
   Serial.write(ledBuffer, sizeof(ledBuffer));
   Serial.flush();
 
+  delay(2000);
+
   engine = new Engine::Engine();
-  player = new Player::Player();
-  strip = new Lights::LedStrip(300);
+  strip = new Lights::LedStrip(config);
+  player = new Player::Player(config);
 
   Serial.print("\n\nConnecting to controller");
   for (int reattempt = 0; reattempt < 10; ++reattempt)

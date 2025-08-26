@@ -2,7 +2,7 @@
 
 #include <FastLED.h>
 #include "timeable.h"
-#include "system-config.h"
+#include "engine/system-config.h"
 
 namespace Lights
 {
@@ -14,7 +14,7 @@ namespace Lights
     CRGB *leds;
 
   public:
-    LedStrip(const SystemConfig &config);
+    LedStrip(const Engine::SystemConfig &config);
     void getColors();
   };
 }

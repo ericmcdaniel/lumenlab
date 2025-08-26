@@ -2,18 +2,18 @@
 
 namespace Engine
 {
-  enum class State
+  enum class RunState
   {
     STARTUP,
     GAME,
     INVALID
   };
 
-  class Engine
+  class GameEngine
   {
   public:
-    State currentAction;
+    RunState currentAction;
 
-    Engine() : currentAction(State::STARTUP) {}
+    GameEngine() : currentAction(RunState::STARTUP) {}
   };
 }

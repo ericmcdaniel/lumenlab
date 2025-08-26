@@ -1,11 +1,11 @@
 #include <Arduino.h>
 #include "lights/led-strip.h"
 #include "engine/engine.h"
+#include "engine/system-config.h"
 #include "player/player.h"
-#include "system-config.h"
 
-const SystemConfig &config{};
-Engine::Engine *engine = nullptr;
+const Engine::SystemConfig *config;
+Engine::GameEngine *engine = nullptr;
 Player::Player *player = nullptr;
 Lights::LedStrip *strip = nullptr;
 
@@ -42,9 +42,9 @@ void setup()
 
   delay(2000);
 
-  engine = new Engine::Engine();
-  strip = new Lights::LedStrip(config);
-  player = new Player::Player(config);
+  engine = new Engine::GameEngine();
+  strip = new Lights::LedStrip(*config);
+  player = new Player::Player(*config);
 
   Serial.print("\n\nConnecting to controller");
   for (int reattempt = 0; reattempt < 10; ++reattempt)
@@ -56,12 +56,12 @@ void setup()
   }
   if (!player->controller.isConnected())
   {
-    engine->currentAction = Engine::State::INVALID;
+    engine->currentAction = Engine::RunState::INVALID;
   }
 
   Serial.println("\n\nApplication fully initialized.\n");
 
-  while (engine->currentAction != Engine::State::INVALID)
+  while (engine->currentAction != Engine::RunState::INVALID)
   {
     // player.controller.getUpdate();
     if (player->controller.cross())
@@ -79,7 +79,7 @@ void setup()
     if (player->controller.circle())
     {
       Serial.printf("\n\nO is pressed: %u\n", player->controller.circle());
-      engine->currentAction = Engine::State::INVALID;
+      engine->currentAction = Engine::RunState::INVALID;
     }
 
     ledBuffer[0] = 0xAA;

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "player/controller.h"
-#include "system-config.h"
+#include "engine/system-config.h"
 
 namespace Player
 {
@@ -10,7 +10,7 @@ namespace Player
 
   public:
     Controller controller;
-    Player(const SystemConfig &config)
+    Player(const Engine::SystemConfig &config)
     {
       controller.begin(config.macAddress);
     };

@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "1_Custom_MP2338")(type "KiCad")(uri "${KIPRJMOD}/symbol-libraries/third-party/MP2338GTL-Z/footprints.pretty")(options "")(descr ""))
+)

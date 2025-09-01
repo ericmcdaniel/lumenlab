@@ -53,4 +53,6 @@ _autosave-*
 fp-info-cache
 ~*.lck
 \#auto_saved_files#
-ImportGuide.html
+board/**/*.htm
+board/**/*.html
+board/**/*.txt

@@ -165,24 +165,6 @@
 					)
 				)
 			)
-			(pin output line
-				(at 0 -5.08 0)
-				(length 7.62)
-				(name "SW"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
 			(pin power_in line
 				(at 0 -7.62 0)
 				(length 7.62)
@@ -239,6 +221,24 @@
 			)
 		)
 		(symbol "MP2338GTL-Z_1_1"
+			(pin power_out line
+				(at 0 -5.08 0)
+				(length 7.62)
+				(name "SW"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
 			(pin input line
 				(at 40.64 0 180)
 				(length 7.62)

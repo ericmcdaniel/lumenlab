@@ -19,7 +19,6 @@ __pycache__
 *.cmp
 *.drd
 *.dxf
-*.pdf
 *.net
 *.xml
 *.csv

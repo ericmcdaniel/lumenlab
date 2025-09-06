@@ -2309,7 +2309,10 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Regulator_Linear:AMS1117-3.3"
+		(symbol "Regulator_Linear:AP7361C-33E"
+			(pin_names
+				(offset 0.254)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2321,7 +2324,7 @@
 					)
 				)
 			)
-			(property "Value" "AMS1117-3.3"
+			(property "Value" "AP7361C-33E"
 				(at 0 3.175 0)
 				(effects
 					(font
@@ -2331,16 +2334,17 @@
 				)
 			)
 			(property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
-				(at 0 5.08 0)
+				(at 0 5.715 0)
 				(effects
 					(font
 						(size 1.27 1.27)
+						(italic yes)
 					)
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "http://www.advanced-monolithic.com/pdf/ds1117.pdf"
-				(at 2.54 -6.35 0)
+			(property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP7361C.pdf"
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2366,7 +2370,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "SOT?223*TabPin2*"
+			(property "ki_fp_filters" "SOT?223*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2375,7 +2379,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "AMS1117-3.3_0_1"
+			(symbol "AP7361C-33E_0_1"
 				(rectangle
 					(start -5.08 -5.08)
 					(end 5.08 1.905)
@@ -2388,7 +2392,7 @@
 					)
 				)
 			)
-			(symbol "AMS1117-3.3_1_1"
+			(symbol "AP7361C-33E_1_1"
 				(pin power_in line
 					(at -7.62 0 0)
 					(length 2.54)
@@ -2399,7 +2403,7 @@
 							)
 						)
 					)
-					(number "3"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2417,7 +2421,7 @@
 							)
 						)
 					)
-					(number "1"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2435,7 +2439,7 @@
 							)
 						)
 					)
-					(number "2"
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4491,7 +4495,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "4.7uF"
 			(at 28.702 73.66 0)
 			(effects
 				(font
@@ -4825,6 +4829,78 @@
 			(project "lumenlab-pcb"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "L1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Regulator_Linear:AP7361C-33E")
+		(at 41.91 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "37258176-4c70-45f5-8493-49b5a776c2fd")
+		(property "Reference" "U2"
+			(at 41.91 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AP7361C-33E"
+			(at 41.91 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
+			(at 41.91 61.595 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP7361C.pdf"
+			(at 41.91 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223"
+			(at 41.91 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "22b464da-5b0f-48e8-b316-e394ddfa5f00")
+		)
+		(pin "2"
+			(uuid "36baac79-78e7-44ec-aa83-cf848139e516")
+		)
+		(pin "3"
+			(uuid "1444ba03-2240-42ba-8540-383f6369856b")
+		)
+		(instances
+			(project ""
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "U2")
 					(unit 1)
 				)
 			)
@@ -6347,7 +6423,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22uF"
+		(property "Value" "4.7uF"
 			(at 59.182 73.66 0)
 			(effects
 				(font
@@ -6863,77 +6939,6 @@
 			(project "lumenlab-pcb"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "#PWR016")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Regulator_Linear:AMS1117-3.3")
-		(at 41.91 67.31 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a6d2e2bc-294c-4667-9498-5aaf1efaad8d")
-		(property "Reference" "U2"
-			(at 41.91 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "AMS1117"
-			(at 41.91 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
-			(at 41.91 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.advanced-monolithic.com/pdf/ds1117.pdf"
-			(at 44.45 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223"
-			(at 41.91 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "83e63832-3bab-4202-908f-ec16a69e5c89")
-		)
-		(pin "3"
-			(uuid "123d42bb-8cb5-4b9b-ba81-8c6181396e11")
-		)
-		(pin "1"
-			(uuid "a58c5445-0d3f-4feb-ac7a-fde8b2beb8b8")
-		)
-		(instances
-			(project ""
-				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "U2")
 					(unit 1)
 				)
 			)

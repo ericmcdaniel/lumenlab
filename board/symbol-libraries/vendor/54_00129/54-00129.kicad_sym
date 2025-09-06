@@ -1,0 +1,107 @@
+
+(kicad_symbol_lib (version 20211014) (generator kicad_symbol_editor)
+  (symbol "54-00129" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (property "Reference" "J" (id 0) (at -7.62 5.08 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Value" "54-00129" (id 1) (at -7.62 -5.08 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Footprint" "54-00129:TENSILITY_54-00129" (id 2) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "PARTREV" "A" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "STANDARD" "IPC-7351B" (id 5) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "SNAPEDA_PN" "54-00129" (id 6) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MAXIMUM_PACKAGE_HEIGHT" "10.8mm" (id 7) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MANUFACTURER" "TENSILITY" (id 8) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (symbol "54-00129_0_0"
+      (arc (start -8.255 3.81) (mid -9.525 2.54) (end -8.255 1.27)
+        (stroke (width 0.1524) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (polyline
+        (pts (xy -8.255 3.81) (xy -1.27 3.81)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -1.27 3.81) (xy -1.27 1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -1.27 1.27) (xy -8.255 1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -1.27 1.27) (xy -1.27 0.635)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -1.27 0.635) (xy 0.0 0.635)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 0.0 0.635) (xy 0.0 4.445)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 0.0 4.445) (xy -1.27 4.445)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -1.27 4.445) (xy -1.27 3.81)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -5.715 -2.54) (xy -6.35 -1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -6.35 -1.27) (xy -6.985 -2.54)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -3.81 0.0) (xy -3.81 -2.54)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts
+          (xy -3.81 -2.54)
+          (xy -4.318 -1.27)
+          (xy -3.302 -1.27)
+          (xy -3.81 -2.54)
+        )
+        (stroke (width 0.1524)) (fill (type outline))
+      )
+      (polyline
+        (pts (xy 0.0 0.0) (xy -3.81 0.0)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 0.0 -2.54) (xy -5.715 -2.54)) (stroke (width 0.1524))
+      )
+      (pin passive line (at 5.08 2.54 180.0) (length 5.08)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "A"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at 5.08 0.0 180.0) (length 5.08)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "C"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at 5.08 -2.54 180.0) (length 5.08)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "B"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+  )
+)

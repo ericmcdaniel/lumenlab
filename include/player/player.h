@@ -7,10 +7,12 @@ namespace Player
 {
   class Player
   {
+  private:
+    const Engine::SystemConfig &config;
 
   public:
     Controller controller;
-    Player(const Engine::SystemConfig &config)
+    Player(Engine::SystemConfig &configuration) : config{configuration}
     {
       controller.begin(config.macAddress);
     };

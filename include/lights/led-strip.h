@@ -10,11 +10,12 @@ namespace Lights
   class LedStrip : protected Time::Timeable
   {
   private:
-    unsigned int _size;
+    const Engine::SystemConfig &config;
+    unsigned int size;
     CRGB *leds;
 
   public:
-    LedStrip(const Engine::SystemConfig &config);
+    LedStrip(Engine::SystemConfig &configuration);
     void getColors();
   };
 }

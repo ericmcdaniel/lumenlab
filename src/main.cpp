@@ -4,10 +4,10 @@
 #include "engine/system-config.h"
 #include "player/player.h"
 
-const Engine::SystemConfig *config;
-Engine::GameEngine *engine = nullptr;
-Player::Player *player = nullptr;
-Lights::LedStrip *strip = nullptr;
+// const Engine::SystemConfig *config;
+// Engine::GameEngine *engine = nullptr;
+// Player::Player *player = nullptr;
+// Lights::LedStrip *strip = nullptr;
 
 uint8_t ledBuffer[300 * 3 + 2];
 
@@ -42,72 +42,72 @@ void setup()
 
   delay(2000);
 
-  engine = new Engine::GameEngine();
-  strip = new Lights::LedStrip(*config);
-  player = new Player::Player(*config);
+  // engine = new Engine::GameEngine();
+  // strip = new Lights::LedStrip(*config);
+  // player = new Player::Player(*config);
 
-  Serial.print("\n\nConnecting to controller");
-  for (int reattempt = 0; reattempt < 10; ++reattempt)
-  {
-    if (player->controller.isConnected())
-      break;
-    Serial.print(".");
-    delay(500);
-  }
-  if (!player->controller.isConnected())
-  {
-    engine->currentAction = Engine::RunState::INVALID;
-  }
+  // Serial.print("\n\nConnecting to controller");
+  // for (int reattempt = 0; reattempt < 10; ++reattempt)
+  // {
+  //   if (player->controller.isConnected())
+  //     break;
+  //   Serial.print(".");
+  //   delay(500);
+  // }
+  // if (!player->controller.isConnected())
+  // {
+  //   engine->currentAction = Engine::RunState::INVALID;
+  // }
 
-  Serial.println("\n\nApplication fully initialized.\n");
+  // Serial.println("\n\nApplication fully initialized.\n");
 
-  while (engine->currentAction != Engine::RunState::INVALID)
-  {
-    // player.controller.getUpdate();
-    if (player->controller.cross())
-    {
-      Serial.printf("\n\nX is pressed: %u\n", player->controller.cross());
-    }
-    if (player->controller.square())
-    {
-      Serial.printf("\n\n[] is pressed: %u\n", player->controller.square());
-    }
-    if (player->controller.triangle())
-    {
-      Serial.printf("\n\nA is pressed: %u\n", player->controller.triangle());
-    }
-    if (player->controller.circle())
-    {
-      Serial.printf("\n\nO is pressed: %u\n", player->controller.circle());
-      engine->currentAction = Engine::RunState::INVALID;
-    }
+  // while (engine->currentAction != Engine::RunState::INVALID)
+  // {
+  //   // player.controller.getUpdate();
+  //   if (player->controller.cross())
+  //   {
+  //     Serial.printf("\n\nX is pressed: %u\n", player->controller.cross());
+  //   }
+  //   if (player->controller.square())
+  //   {
+  //     Serial.printf("\n\n[] is pressed: %u\n", player->controller.square());
+  //   }
+  //   if (player->controller.triangle())
+  //   {
+  //     Serial.printf("\n\nA is pressed: %u\n", player->controller.triangle());
+  //   }
+  //   if (player->controller.circle())
+  //   {
+  //     Serial.printf("\n\nO is pressed: %u\n", player->controller.circle());
+  //     engine->currentAction = Engine::RunState::INVALID;
+  //   }
 
-    ledBuffer[0] = 0xAA;
-    ledBuffer[1] = 0x55;
-    for (int i = 0; i < 300; i++)
-    {
-      int base = i * 3 + 2;
-      ledBuffer[base + 0] = 36;
-      ledBuffer[base + 1] = 200;
-      ledBuffer[base + 2] = 36;
-    }
+  //   ledBuffer[0] = 0xAA;
+  //   ledBuffer[1] = 0x55;
+  //   for (int i = 0; i < 300; i++)
+  //   {
+  //     int base = i * 3 + 2;
+  //     ledBuffer[base + 0] = 36;
+  //     ledBuffer[base + 1] = 200;
+  //     ledBuffer[base + 2] = 36;
+  //   }
 
-    Serial.write(ledBuffer, sizeof(ledBuffer));
-    Serial.flush();
-    delay(1000);
+  //   Serial.write(ledBuffer, sizeof(ledBuffer));
+  //   Serial.flush();
+  //   delay(1000);
 
-    for (int i = 0; i < 300; i++)
-    {
-      int base = i * 3 + 2;
-      ledBuffer[base + 0] = 0;
-      ledBuffer[base + 1] = 0;
-      ledBuffer[base + 2] = 0;
-    }
+  //   for (int i = 0; i < 300; i++)
+  //   {
+  //     int base = i * 3 + 2;
+  //     ledBuffer[base + 0] = 0;
+  //     ledBuffer[base + 1] = 0;
+  //     ledBuffer[base + 2] = 0;
+  //   }
 
-    Serial.write(ledBuffer, sizeof(ledBuffer));
-    Serial.flush();
-    delay(1000);
-  }
+  //   Serial.write(ledBuffer, sizeof(ledBuffer));
+  //   Serial.flush();
+  //   delay(1000);
+  // }
 }
 
 /**
@@ -128,7 +128,6 @@ void loop()
   }
 
   Serial.write(ledBuffer, sizeof(ledBuffer));
-  Serial.flush();
   delay(500);
 
   for (int i = 0; i < 300; i++)
@@ -140,7 +139,6 @@ void loop()
   }
 
   Serial.write(ledBuffer, sizeof(ledBuffer));
-  Serial.flush();
   delay(500);
 
   // // First two bytes are sync markers
@@ -200,6 +198,6 @@ void loop()
 
   // // Send LED buffer over USB Serial
   // Serial.write(ledBuffer, sizeof(ledBuffer));
-  // Serial.flush(); // Ensure data is pushed out
+  // Ensure data is pushed out
   // delay(10);
 }

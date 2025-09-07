@@ -4,10 +4,11 @@
 
 namespace Lights
 {
-  LedStrip::LedStrip(const Engine::SystemConfig &config) : _size(config.numLeds)
+  LedStrip::LedStrip(Engine::SystemConfig &configuration) : config{configuration},
+                                                            size{configuration.numLeds}
   {
-    leds = new CRGB[_size];
-    FastLED.addLeds<WS2815, 4>(leds, _size);
+    leds = new CRGB[size];
+    FastLED.addLeds<WS2815, 4>(leds, size);
   }
   void LedStrip::getColors() {}
 }

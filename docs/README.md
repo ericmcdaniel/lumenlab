@@ -7,6 +7,8 @@ The following details the ICs and components selected, general information, and 
 
 The only ESP32 variant that support the Bluetooth classic protocol (BR/EDR) are the WROOM variants, eliminating selections such as the more powerful S3. Bluetooth classic is required as the PS3 controller does not support BLE (Bluetooth Low Energy).
 
+**For those using a DevKit for protyping:** You can examine [the GPIO pinout for the ESP32 DevKit here](./vendor/esp32-pinout.avif). This is the pinout for my particular DevKit. Your mileage may vary.
+
 ### MP2338 step down buck converter
 * *[Datasheet](./vendor/mp2338-datasheet.pdf)*
 * *[Distributor](https://www.digikey.com/en/products/detail/monolithic-power-systems-inc/MP2338GTL-Z/15966227)*

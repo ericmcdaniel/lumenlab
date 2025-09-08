@@ -4,7 +4,7 @@ namespace Engine
 {
   void GameEngine::runApplication()
   {
-    while (this->currentAction != RunState::INVALID)
+    while (this->currentAction != RunState::ERROR)
     {
       switch (this->currentAction)
       {

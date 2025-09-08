@@ -1,22 +1,22 @@
 #include <Ps3Controller.h>
-#include "player/controller.h"
+#include "player/game-controller.h"
 
 // For referecnce
-// // void Player::Controller::update_state()
+// // void Player::GameController::update_state()
 // // {
-// //   // Player::Controller::instance->_data = Ps3.data;
+// //   // Player::GameController::instance->_data = Ps3.data;
 // //   // this->_data = Ps3.data;
 // }
 
 namespace Player
 {
   // Following Singleton pattern. Only one instance of the game controller can exist
-  Controller *Controller::instance = nullptr;
+  GameController *GameController::instance = nullptr;
 
-  void Controller::begin(const char *macAddress)
+  void GameController::begin(const char *macAddress)
   {
-    // Ps3.attach(&Controller::staticCallback);
+    // Ps3.attach(&GameController::staticCallback);
     instance->controller.begin(macAddress);
-    instance->controller.attachOnConnect(&Controller::onConnect);
+    instance->controller.attachOnConnect(&GameController::onConnect);
   }
 }

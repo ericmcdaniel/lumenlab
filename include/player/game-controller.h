@@ -5,10 +5,10 @@
 namespace Player
 {
 
-  class Controller
+  class GameController
   {
   public:
-    Controller()
+    GameController()
     {
       instance = this;
     }
@@ -59,7 +59,7 @@ namespace Player
     //   }
     // }
 
-    static Controller *instance;
+    static GameController *instance;
     bool connection = false;
   };
 }

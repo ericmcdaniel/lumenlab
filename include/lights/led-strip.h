@@ -1,13 +1,12 @@
 #pragma once
 
 #include <FastLED.h>
-#include "timeable.h"
 #include "engine/system-config.h"
+#include "engine/timeable.h"
 
 namespace Lights
 {
-
-  class LedStrip : protected Time::Timeable
+  class LedStrip : public Time::Timeable
   {
   private:
     const Engine::SystemConfig &config;
@@ -15,7 +14,7 @@ namespace Lights
     CRGB *leds;
 
   public:
-    LedStrip(Engine::SystemConfig &configuration);
+    LedStrip(Engine::SystemConfig &configuration, Engine::RunState &state);
     void getColors();
   };
 }

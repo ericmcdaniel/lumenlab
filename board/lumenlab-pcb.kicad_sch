@@ -8161,6 +8161,7 @@
 	(symbol
 		(lib_id "Diode:1.5SMCxxA")
 		(at 92.71 35.56 90)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8177,7 +8178,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 95.25 36.8299 90)
+			(at 95.25 34.2901 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8195,7 +8196,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 92.71 36.83 0)
+			(at 92.71 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)

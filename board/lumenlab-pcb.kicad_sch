@@ -642,6 +642,164 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "1_Custom_SN74AHC1G125DCKR:SN74AHC1G125DCKR"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -12.7 11.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "SN74AHC1G125DCKR"
+				(at -12.7 -14.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "SN74AHC1G125DCKR:SOT65P210X110-5N"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SN74AHC1G125DCKR_0_0"
+				(rectangle
+					(start -12.7 -10.16)
+					(end 12.7 10.16)
+					(stroke
+						(width 0.41)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -17.78 2.54 0)
+					(length 5.08)
+					(name "~{OE}"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.78 0 0)
+					(length 5.08)
+					(name "A"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 17.78 7.62 180)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 17.78 2.54 180)
+					(length 5.08)
+					(name "Y"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 17.78 -7.62 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:C_Small"
 			(pin_numbers
 				(hide yes)
@@ -2986,9 +3144,21 @@
 		)
 		(uuid "925b5f67-6a45-4509-a4dd-0165df5a569d")
 	)
+	(text "5V Logic level shifter"
+		(exclude_from_sim no)
+		(at 111.252 50.546 0)
+		(effects
+			(font
+				(size 2.286 2.286)
+				(thickness 0.4572)
+				(bold yes)
+			)
+		)
+		(uuid "a7303b79-253e-4020-b3e4-0f6bfb7648ff")
+	)
 	(text "3.3V power regulation"
 		(exclude_from_sim no)
-		(at 42.672 50.8 0)
+		(at 43.688 50.546 0)
 		(effects
 			(font
 				(size 2.286 2.286)
@@ -3196,6 +3366,16 @@
 	)
 	(wire
 		(pts
+			(xy 66.04 148.59) (xy 74.93 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15a784b8-fa47-4982-b5b3-eff3e4714f6b")
+	)
+	(wire
+		(pts
 			(xy 260.35 49.53) (xy 270.51 49.53)
 		)
 		(stroke
@@ -3213,6 +3393,16 @@
 			(type default)
 		)
 		(uuid "1af570f4-a622-435f-84f5-d5f35d8c9086")
+	)
+	(wire
+		(pts
+			(xy 85.09 69.85) (xy 95.25 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b37eea1-ab1a-4914-b819-a76fffbfc0fc")
 	)
 	(wire
 		(pts
@@ -3263,6 +3453,16 @@
 			(type default)
 		)
 		(uuid "2229a874-998d-4307-b0b7-01cc16777a98")
+	)
+	(wire
+		(pts
+			(xy 130.81 64.77) (xy 132.08 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e9c598b-1ddd-4495-afa8-a0d33a396dea")
 	)
 	(wire
 		(pts
@@ -3496,6 +3696,16 @@
 	)
 	(wire
 		(pts
+			(xy 95.25 80.01) (xy 95.25 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6198515f-1851-4c21-8909-48754b8b1ce8")
+	)
+	(wire
+		(pts
 			(xy 177.8 63.5) (xy 177.8 68.58)
 		)
 		(stroke
@@ -3706,6 +3916,26 @@
 	)
 	(wire
 		(pts
+			(xy 139.7 69.85) (xy 142.24 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f98c07b-a73b-4c50-979b-6b368fe89ef9")
+	)
+	(wire
+		(pts
+			(xy 130.81 80.01) (xy 134.62 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90139daf-d5b2-4a38-b09a-7fed5cd2b97a")
+	)
+	(wire
+		(pts
 			(xy 240.03 77.47) (xy 261.62 77.47)
 		)
 		(stroke
@@ -3733,6 +3963,16 @@
 			(type default)
 		)
 		(uuid "9ac03d99-fd8e-445d-80eb-c26d2bae9aaf")
+	)
+	(wire
+		(pts
+			(xy 130.81 69.85) (xy 134.62 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9d20d49e-ed47-4f5b-820a-c294ad7bc33e")
 	)
 	(polyline
 		(pts
@@ -3776,6 +4016,16 @@
 	)
 	(wire
 		(pts
+			(xy 142.24 69.85) (xy 142.24 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aad4cb13-c350-47b4-bd01-fd420740a182")
+	)
+	(wire
+		(pts
 			(xy 165.1 80.01) (xy 165.1 81.28)
 		)
 		(stroke
@@ -3796,6 +4046,16 @@
 	)
 	(wire
 		(pts
+			(xy 134.62 80.01) (xy 134.62 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b605e3a6-8c6b-481a-a3d5-c9719c903154")
+	)
+	(wire
+		(pts
 			(xy 261.62 78.74) (xy 261.62 77.47)
 		)
 		(stroke
@@ -3813,6 +4073,16 @@
 			(type default)
 		)
 		(uuid "b9f050a6-f7fc-46e4-91f7-87a4d11a8377")
+	)
+	(wire
+		(pts
+			(xy 90.17 83.82) (xy 95.25 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ba1909d0-f851-4348-975f-77f230147547")
 	)
 	(polyline
 		(pts
@@ -3933,6 +4203,26 @@
 			(type default)
 		)
 		(uuid "d1a6aa0c-b5bf-45ea-8c23-9889369f9433")
+	)
+	(wire
+		(pts
+			(xy 95.25 72.39) (xy 95.25 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d58b7fb1-def2-4c13-b1f5-da312a238763")
+	)
+	(wire
+		(pts
+			(xy 85.09 72.39) (xy 85.09 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d75df129-5747-4d0c-ac21-81b9865875b1")
 	)
 	(wire
 		(pts
@@ -4114,6 +4404,16 @@
 		)
 		(uuid "5bc7a98d-a6ac-4cef-9c7a-515696cd60fc")
 	)
+	(label "ESP32_GPIO18"
+		(at 74.93 148.59 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7d49d281-da8d-4c6f-b638-027eca46de37")
+	)
 	(label "BUCK_PG"
 		(at 179.07 29.21 180)
 		(effects
@@ -4164,6 +4464,16 @@
 		)
 		(uuid "9abc61fa-7ba4-422b-a939-0482a5b2668b")
 	)
+	(label "ESP32_GPIO18"
+		(at 90.17 83.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a6b75fd3-674b-4236-9be4-1d8bb7509de2")
+	)
 	(label "BUCK_BST"
 		(at 219.71 36.83 0)
 		(effects
@@ -4183,6 +4493,16 @@
 			(justify left bottom)
 		)
 		(uuid "c952de8b-2497-4843-9ac9-7d5554999a94")
+	)
+	(label "LVL_SHIFT"
+		(at 142.24 76.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e622646a-f5f0-4408-8b98-38732a6541e7")
 	)
 	(label "BUCK_SS"
 		(at 219.71 31.75 0)
@@ -5100,6 +5420,75 @@
 			(project "lumenlab-pcb"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 132.08 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "46ac2693-95f5-4a99-8c03-b0758f3ba5be")
+		(property "Reference" "C10"
+			(at 134.62 59.436 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 134.366 61.976 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
+			(at 132.08 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 132.08 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 132.08 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f07ea354-d43b-4707-b225-dee103571e64")
+		)
+		(pin "1"
+			(uuid "c3e4e439-b540-43e4-a378-5bc79189a877")
+		)
+		(instances
+			(project "lumenlab-pcb"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "C10")
 					(unit 1)
 				)
 			)
@@ -6274,6 +6663,83 @@
 		)
 	)
 	(symbol
+		(lib_id "1_Custom_SN74AHC1G125DCKR:SN74AHC1G125DCKR")
+		(at 113.03 72.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7d20d949-eb8d-4088-8a9a-ba999ed070bd")
+		(property "Reference" "U4"
+			(at 113.03 70.866 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SN74AHC1G125DCKR"
+			(at 113.03 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "SN74AHC1G125DCKR:SOT65P210X110-5N"
+			(at 113.03 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 113.03 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 113.03 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "8a35a9c4-3eb6-4ee2-8f05-8dbed22b2101")
+		)
+		(pin "5"
+			(uuid "bc5cf04f-d9be-46b4-b206-c724475ea69e")
+		)
+		(pin "4"
+			(uuid "1836b62a-a751-43f1-9c9a-65afc98e8991")
+		)
+		(pin "1"
+			(uuid "720446fb-71f6-4662-8413-33be749d6e71")
+		)
+		(pin "3"
+			(uuid "32a83246-d5a1-4a1a-aaaa-cd1b6eb60a0b")
+		)
+		(instances
+			(project ""
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+12V")
 		(at 132.08 27.94 0)
 		(unit 1)
@@ -6333,6 +6799,73 @@
 			(project "lumenlab-pcb"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "#PWR06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:Earth")
+		(at 134.62 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "81af8470-d815-4c62-99e7-0624804777eb")
+		(property "Reference" "#GND09"
+			(at 134.62 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 134.62 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 134.62 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 134.62 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
+			(at 134.62 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "86bdfca7-ec02-4912-8f24-9d24610e82b6")
+		)
+		(instances
+			(project "lumenlab-pcb"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#GND09")
 					(unit 1)
 				)
 			)
@@ -6804,6 +7337,76 @@
 			(project ""
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small_US")
+		(at 95.25 77.47 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9d23490f-813a-4008-af07-7741516f8569")
+		(property "Reference" "R7"
+			(at 93.472 76.454 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100"
+			(at 93.472 78.994 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 95.25 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 95.25 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small US symbol"
+			(at 95.25 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6f81b934-e0ad-4d1b-ba21-54856cff91f6")
+		)
+		(pin "1"
+			(uuid "69c9d641-d64e-43e7-be1b-5160bb3647d1")
+		)
+		(instances
+			(project "lumenlab-pcb"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -7412,6 +8015,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+12V")
+		(at 132.08 59.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c85213be-7398-4932-bc66-39e85732a09c")
+		(property "Reference" "#PWR020"
+			(at 132.08 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 132.588 55.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 132.08 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 132.08 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 132.08 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a4176cac-ed15-4f3f-9fce-ba45ac528dc3")
+		)
+		(instances
+			(project "lumenlab-pcb"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#PWR020")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:Earth")
 		(at 240.03 83.82 0)
 		(unit 1)
@@ -7819,6 +8487,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Small_US")
+		(at 137.16 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e17db24c-c222-4d54-a878-af2a3a5ca6c8")
+		(property "Reference" "R8"
+			(at 135.89 66.04 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "330"
+			(at 135.382 67.818 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 137.16 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 137.16 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small US symbol"
+			(at 137.16 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b12fcd64-cc51-41dd-94af-cbd37881b559")
+		)
+		(pin "1"
+			(uuid "e691c35f-a58e-4405-af61-51ee2d62933e")
+		)
+		(instances
+			(project "lumenlab-pcb"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Switch:SW_SPST")
 		(at 49.53 31.75 0)
 		(unit 1)
@@ -8153,6 +8890,73 @@
 			(project "lumenlab-pcb"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:Earth")
+		(at 85.09 72.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f5fd4329-eefa-4f3e-94bd-2bfcd658d570")
+		(property "Reference" "#GND010"
+			(at 85.09 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 85.09 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 85.09 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 85.09 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
+			(at 85.09 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "79299877-21d9-4161-b1df-7e3a64662f41")
+		)
+		(instances
+			(project "lumenlab-pcb"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#GND010")
 					(unit 1)
 				)
 			)

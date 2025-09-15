@@ -1,6 +1,9 @@
 #pragma once
 
+#define FASTLED_INTERNAL
 #include <FastLED.h>
+#undef min
+#undef max
 #include "engine/system-config.h"
 #include "engine/timeable.h"
 

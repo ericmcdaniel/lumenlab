@@ -20,5 +20,6 @@ namespace Engine
 
   void GameEngine::handleStartup()
   {
+    display.initialize();
   }
 }

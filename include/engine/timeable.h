@@ -10,13 +10,14 @@ namespace Time
   {
   private:
     Engine::RunState &currentState;
-    unsigned long next{micros()};
+    unsigned long next{millis()};
 
   public:
     Timeable(Engine::RunState &state) : currentState(state) {};
     virtual ~Timeable() = default;
 
     void setTime(unsigned long futureTime);
-    const bool isReady() const;
+    const bool isReady();
+    unsigned long getNext() { return next; }
   };
 }

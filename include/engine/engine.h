@@ -16,11 +16,13 @@ namespace Engine
     Lights::LedStrip leds;
     Display::OledDisplay display;
 
+    void handleStartup();
+    void render();
+
   public:
     RunState currentAction;
 
-    GameEngine() : currentAction(RunState::INITIALIZE), player{config, currentAction}, leds(config, currentAction) {}
+    GameEngine();
     void runApplication();
-    void handleStartup();
   };
 }

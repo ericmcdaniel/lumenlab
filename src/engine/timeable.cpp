@@ -6,13 +6,15 @@ namespace Time
 {
   void Timeable::setTime(unsigned long futureTime)
   {
-    if (futureTime <= 0)
-    {
-    }
+    // if (futureTime <= 0)
+    // {
+    // }
+    next = futureTime;
   }
 
-  const bool Timeable::isReady() const
+  const bool Timeable::isReady()
   {
-    return micros() <= this->next;
+    return millis() >= this->next;
+    // next = millis() + 10000000;
   }
 }

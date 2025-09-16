@@ -4,16 +4,6 @@
 #include "engine/system-config.h"
 #include "player/player.h"
 
-// const Engine::SystemConfig *config;
-// Engine::GameEngine *engine = nullptr;
-// Player::Player *player = nullptr;
-// Lights::LedStrip *strip = nullptr;
-
-uint8_t ledBuffer[300 * 3 + 2];
-
-int frame_count = 0;
-int revolution = 0;
-
 void setup()
 {
   delay(1000);
@@ -27,39 +17,9 @@ void setup()
   }
   Serial.println("\n");
 
-  ledBuffer[0] = 0xAA;
-  ledBuffer[1] = 0x55;
-  for (int i = 0; i < 300; i++)
-  {
-    int base = i * 3 + 2;
-    ledBuffer[base + 0] = 36;
-    ledBuffer[base + 1] = 0;
-    ledBuffer[base + 2] = 255;
-  }
-
-  Serial.write(ledBuffer, sizeof(ledBuffer));
-  Serial.flush();
-
   delay(2000);
-
-  // engine = new Engine::GameEngine();
-  // strip = new Lights::LedStrip(*config);
-  // player = new Player::Player(*config);
-
-  // Serial.print("\n\nConnecting to controller");
-  // for (int reattempt = 0; reattempt < 10; ++reattempt)
-  // {
-  //   if (player->controller.isConnected())
-  //     break;
-  //   Serial.print(".");
-  //   delay(500);
-  // }
-  // if (!player->controller.isConnected())
-  // {
-  //   engine->currentAction = Engine::RunState::INVALID;
-  // }
-
-  // Serial.println("\n\nApplication fully initialized.\n");
+  Engine::GameEngine engine;
+  engine.runApplication();
 
   // while (engine->currentAction != Engine::RunState::INVALID)
   // {
@@ -117,29 +77,29 @@ void setup()
  */
 void loop()
 {
-  ledBuffer[0] = 0xAA;
-  ledBuffer[1] = 0x55;
-  for (int i = 0; i < 300; i++)
-  {
-    int base = i * 3 + 2;
-    ledBuffer[base + 0] = 255;
-    ledBuffer[base + 1] = 0;
-    ledBuffer[base + 2] = 0;
-  }
+  // ledBuffer[0] = 0xAA;
+  // ledBuffer[1] = 0x55;
+  // for (int i = 0; i < 300; i++)
+  // {
+  //   int base = i * 3 + 2;
+  //   ledBuffer[base + 0] = 255;
+  //   ledBuffer[base + 1] = 0;
+  //   ledBuffer[base + 2] = 0;
+  // }
 
-  Serial.write(ledBuffer, sizeof(ledBuffer));
-  delay(500);
+  // Serial.write(ledBuffer, sizeof(ledBuffer));
+  // delay(500);
 
-  for (int i = 0; i < 300; i++)
-  {
-    int base = i * 3 + 2;
-    ledBuffer[base + 0] = 0;
-    ledBuffer[base + 1] = 0;
-    ledBuffer[base + 2] = 0;
-  }
+  // for (int i = 0; i < 300; i++)
+  // {
+  //   int base = i * 3 + 2;
+  //   ledBuffer[base + 0] = 0;
+  //   ledBuffer[base + 1] = 0;
+  //   ledBuffer[base + 2] = 0;
+  // }
 
-  Serial.write(ledBuffer, sizeof(ledBuffer));
-  delay(500);
+  // Serial.write(ledBuffer, sizeof(ledBuffer));
+  // delay(500);
 
   // // First two bytes are sync markers
   // ledBuffer[0] = 0xAA;

@@ -13,11 +13,13 @@ namespace Lights
   {
   private:
     const Engine::SystemConfig &config;
-    unsigned int size;
+    size_t size;
     CRGB *leds;
 
   public:
     LedStrip(Engine::SystemConfig &configuration, Engine::RunState &state);
-    void getColors();
+    CRGB *getRawColors();
+    size_t getSize() const { return size * sizeof(CRGB); }
+    void updateColor();
   };
 }

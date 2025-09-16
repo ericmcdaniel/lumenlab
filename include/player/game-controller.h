@@ -5,6 +5,19 @@
 namespace Player
 {
 
+  enum class AnalogStickSide
+  {
+    Left,
+    Right
+  };
+
+  template <AnalogStickSide side>
+  struct AnalogStick
+  {
+    uint8_t x = 0;
+    uint8_t y = 0;
+  };
+
   class GameController
   {
   public:
@@ -15,15 +28,26 @@ namespace Player
 
     void begin(const char *macAddress);
 
-    // void getUpdate()
-    // {
-    //   Serial.println("\n\n");
-    // }
-
     uint8_t cross() { return instance->controller.data.analog.button.cross; }
     uint8_t circle() { return instance->controller.data.analog.button.circle; }
     uint8_t triangle() { return instance->controller.data.analog.button.triangle; }
     uint8_t square() { return instance->controller.data.analog.button.square; }
+
+    AnalogStick<AnalogStickSide::Left> leftAnalog()
+    {
+      AnalogStick<AnalogStickSide::Left> stick;
+      stick.x = instance->controller.data.analog.stick.lx;
+      stick.y = instance->controller.data.analog.stick.ly;
+      return stick;
+    }
+
+    AnalogStick<AnalogStickSide::Right> rightAnalog()
+    {
+      AnalogStick<AnalogStickSide::Right> stick;
+      stick.x = instance->controller.data.analog.stick.rx;
+      stick.y = instance->controller.data.analog.stick.ry;
+      return stick;
+    }
 
     const bool isConnected() { return instance->connection; }
 

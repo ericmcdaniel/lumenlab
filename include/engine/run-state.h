@@ -4,7 +4,7 @@ namespace Engine
 {
   enum class RunState
   {
-    INITIALIZE,
+    MENU,
     GAME,
     ERROR
   };

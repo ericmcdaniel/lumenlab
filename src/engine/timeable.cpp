@@ -1,5 +1,3 @@
-#include "Arduino.h"
-
 #include "engine/timeable.h"
 
 namespace Time

@@ -3,6 +3,7 @@
 #include "player/game-controller.h"
 #include "engine/timeable.h"
 #include "engine/system-config.h"
+#include "lights/led-buffer.h"
 
 namespace Player
 {
@@ -10,13 +11,11 @@ namespace Player
   {
   private:
     const Engine::SystemConfig &config;
+    Lights::LedBuffer &ledBuffer;
 
   public:
     GameController controller;
-    Player(Engine::SystemConfig &configuration, Engine::RunState &state) : Time::Timeable(state),
-                                                                           config{configuration}
-    {
-      controller.begin(config.macAddress);
-    };
+    Player(Engine::SystemConfig &configuration, Engine::RunState &state, Lights::LedBuffer &ledBuffer);
+    void processGameController();
   };
 }

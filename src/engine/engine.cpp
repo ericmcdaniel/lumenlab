@@ -3,7 +3,7 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : currentAction(RunState::INITIALIZE), player{config, currentAction}, leds(config, currentAction)
+  GameEngine::GameEngine() : currentAction(RunState::MENU), leds{config, currentAction}, player{config, currentAction, leds.buffer}
   {
     this->handleStartup();
   }
@@ -14,14 +14,15 @@ namespace Engine
     {
       switch (this->currentAction)
       {
-      case RunState::INITIALIZE:
-        // GameEngine::handleStartup();
+      case RunState::MENU:
+      case RunState::GAME:
         break;
 
       default:
         break;
       }
 
+      player.processGameController();
       leds.updateColor();
       render();
       delay(100);

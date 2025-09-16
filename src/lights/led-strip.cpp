@@ -1,29 +1,19 @@
-#include <FastLED.h>
 #include "lights/led-strip.h"
-#include "engine/engine.h"
-#include "engine/timeable.h"
-#include "engine/system-config.h"
 
 namespace Lights
 {
   LedStrip::LedStrip(Engine::SystemConfig &configuration, Engine::RunState &state) : Time::Timeable{state},
                                                                                      config{configuration},
-                                                                                     size{configuration.numLeds}
+                                                                                     size{configuration.numLeds},
+                                                                                     buffer{configuration.numLeds}
   {
-    leds = new CRGB[size];
-    for (int i = 0; i < 300; i++)
-    {
-      leds[i].r = 255;
-      leds[i].g = 255;
-      leds[i].b = 255;
-    }
-    FastLED.addLeds<WS2815, 4>(leds, size);
+    FastLED.addLeds<WS2815, 4>(buffer.leds, size);
     Time::Timeable::setTime(25000);
   }
 
   CRGB *LedStrip::getRawColors()
   {
-    return leds;
+    return buffer.leds;
   }
 
   void LedStrip::updateColor()
@@ -42,9 +32,9 @@ namespace Lights
     {
       for (int i = 0; i < 300; i++)
       {
-        leds[i].r = 255;
-        leds[i].g = 0;
-        leds[i].b = 36;
+        buffer.leds[i].r = 255;
+        buffer.leds[i].g = 0;
+        buffer.leds[i].b = 36;
       }
     }
   }

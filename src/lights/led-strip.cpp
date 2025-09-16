@@ -7,34 +7,24 @@ namespace Lights
                                                                                      size{configuration.numLeds},
                                                                                      buffer{configuration.numLeds}
   {
-    FastLED.addLeds<WS2815, 4>(buffer.leds, size);
+    FastLED.addLeds<WS2815, 4>(static_cast<CRGB *>(buffer), size);
     Time::Timeable::setTime(25000);
   }
 
   CRGB *LedStrip::getRawColors()
   {
-    return buffer.leds;
+    return static_cast<CRGB *>(buffer);
   }
 
   void LedStrip::updateColor()
   {
-    Serial.print("\n\nCurrent time: ");
-    Serial.print(millis());
-    Serial.print(", Next time: ");
-    Serial.print(Time::Timeable::getNext());
-    Serial.print("\nIs ready? ");
-    if (Time::Timeable::isReady())
-      Serial.print("Yes.\n");
-    else
-      Serial.print("No.\n");
-    Serial.print("\n\n");
     if (Time::Timeable::isReady())
     {
-      for (int i = 0; i < 300; i++)
+      for (int i = 0; i < size; i++)
       {
-        buffer.leds[i].r = 255;
-        buffer.leds[i].g = 0;
-        buffer.leds[i].b = 36;
+        buffer[i].r = 255;
+        buffer[i].g = 0;
+        buffer[i].b = 36;
       }
     }
   }

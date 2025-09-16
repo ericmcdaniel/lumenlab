@@ -2,10 +2,10 @@
 
 namespace Lights
 {
-  LedBuffer::LedBuffer(unsigned int numLeds) : size{numLeds}
+  LedBuffer::LedBuffer(unsigned int numLeds) : _size{numLeds}
   {
-    leds = new CRGB[size];
-    for (int i = 0; i < this->size; i++)
+    leds = new CRGB[_size];
+    for (int i = 0; i < _size; i++)
     {
       leds[i].r = 128;
       leds[i].g = 128;

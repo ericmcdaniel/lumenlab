@@ -5,7 +5,7 @@
 // // void Player::GameController::update_state()
 // // {
 // //   // Player::GameController::instance->_data = Ps3.data;
-// //   // this->_data = Ps3.data;
+// //   // _data = Ps3.data;
 // }
 
 namespace Player

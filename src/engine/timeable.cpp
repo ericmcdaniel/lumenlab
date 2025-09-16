@@ -12,7 +12,6 @@ namespace Time
 
   const bool Timeable::isReady()
   {
-    return millis() >= this->next;
-    // next = millis() + 10000000;
+    return millis() >= next;
   }
 }

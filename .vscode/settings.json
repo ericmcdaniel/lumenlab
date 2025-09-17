@@ -1,8 +1,3 @@
-{
-  "search.exclude": {
-    "**/lib": true
-  }
-}
 /////////////////////////////////////////////////////////////////////////////////
 //    These settings are provided as a template for development environment    //
 //    customization. They are optional, but highly recommended.                //

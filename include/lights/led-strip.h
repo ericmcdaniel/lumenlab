@@ -23,5 +23,6 @@ namespace Lights
     CRGB *getRawColors();
     unsigned int getSize() const { return size * sizeof(CRGB); }
     void updateColor();
+    void setDefault();
   };
 }

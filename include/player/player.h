@@ -3,7 +3,7 @@
 #include "player/game-controller.h"
 #include "engine/timeable.h"
 #include "engine/system-config.h"
-#include "lights/led-buffer.h"
+#include "lights/led-strip.h"
 
 namespace Player
 {
@@ -11,11 +11,11 @@ namespace Player
   {
   private:
     const Engine::SystemConfig &config;
-    Lights::LedBuffer &ledBuffer;
+    Lights::LedStrip &leds;
 
   public:
     GameController controller;
-    Player(Engine::SystemConfig &configuration, Engine::RunState &state, Lights::LedBuffer &ledBuffer);
+    Player(Engine::SystemConfig &configuration, Engine::RunState &state, Lights::LedStrip &leds);
     void processGameController();
   };
 }

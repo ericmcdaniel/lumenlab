@@ -9,11 +9,22 @@ namespace Lights
   {
     FastLED.addLeds<WS2815, 4>(static_cast<CRGB *>(buffer), size);
     Time::Timeable::setTime(25000);
+    setDefault();
   }
 
   CRGB *LedStrip::getRawColors()
   {
     return static_cast<CRGB *>(buffer);
+  }
+
+  void LedStrip::setDefault()
+  {
+    for (int i = 0; i < size; i++)
+    {
+      buffer[i].r = 128;
+      buffer[i].g = 128;
+      buffer[i].b = 128;
+    }
   }
 
   void LedStrip::updateColor()

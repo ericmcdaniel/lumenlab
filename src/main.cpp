@@ -77,6 +77,9 @@ void setup()
  */
 void loop()
 {
+
+  Serial.print("LumenLab has encountered an error state.");
+  delay(1000);
   // ledBuffer[0] = 0xAA;
   // ledBuffer[1] = 0x55;
   // for (int i = 0; i < 300; i++)

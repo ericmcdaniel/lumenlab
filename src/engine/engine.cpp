@@ -3,7 +3,7 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : currentAction(RunState::MENU), leds{config, currentAction}, player{config, currentAction, leds.buffer}
+  GameEngine::GameEngine() : currentAction(RunState::MENU), leds{config, currentAction}, player{config, currentAction, leds}
   {
     handleStartup();
   }
@@ -23,7 +23,7 @@ namespace Engine
       }
 
       player.processGameController();
-      leds.updateColor();
+      // leds.updateColor();
       render();
       delay(25);
     }
@@ -35,7 +35,7 @@ namespace Engine
 
     // ten second attempt to connect to PS3 controller
     int reattempt = 0;
-    while (!player.controller.isConnected() || reattempt < 20)
+    while (!player.controller.isConnected() && reattempt < 20)
     {
       Serial.print(".");
       ++reattempt;
@@ -64,17 +64,5 @@ namespace Engine
     Serial.write(0xAA);
     Serial.write(0x55);
     Serial.write(reinterpret_cast<uint8_t *>(leds.getRawColors()), leds.getSize());
-
-    // size_t remaining = leds.getSize() * 3 + 2;
-    // const uint8_t *ptr = reinterpret_cast<const uint8_t *>(leds.getRawColors());
-    // Serial.write(0xAA);
-    // Serial.write(0x55);
-    // while (remaining > 0)
-    // {
-    //    size_t n = (remaining > 64) ? 64 : remaining;
-    //    Serial.write(ptr, n);
-    //    ptr += n;
-    //    remaining -= n;
-    // }
   }
 }

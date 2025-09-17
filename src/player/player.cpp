@@ -5,22 +5,23 @@ namespace Player
 
   Player::Player(Engine::SystemConfig &configuration,
                  Engine::RunState &state,
-                 Lights::LedBuffer &ledBuffer) : Time::Timeable(state),
-                                                 config{configuration},
-                                                 ledBuffer{ledBuffer}
+                 Lights::LedStrip &leds) : Time::Timeable(state),
+                                           config{configuration},
+                                           leds{leds}
   {
     controller.begin(config.macAddress);
   };
 
   void Player::processGameController()
   {
+    leds.setDefault();
     if (controller.cross())
     {
-      for (int i = 0; i < ledBuffer.size(); i++)
+      for (int i = 0; i < leds.buffer.size(); i++)
       {
-        ledBuffer[i].r = 255;
-        ledBuffer[i].g = 255;
-        ledBuffer[i].b = 0;
+        leds.buffer[i].r = 255;
+        leds.buffer[i].g = 255;
+        leds.buffer[i].b = 0;
       }
     }
   }

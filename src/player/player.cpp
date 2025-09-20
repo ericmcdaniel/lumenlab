@@ -1,4 +1,5 @@
 #include "player/player.h"
+#include "logger.h"
 
 namespace Player
 {
@@ -17,7 +18,7 @@ namespace Player
     if (controller.cross())
     {
 #ifdef DEBUG
-      Serial.println("User pressed X");
+      log("User pressed X");
 #endif
       for (int i = 0; i < leds.buffer.size(); i++)
       {

@@ -7,7 +7,7 @@ namespace Time
     // if (futureTime <= 0)
     // {
     // }
-    next = millis() + futureTime;
+    next = next + futureTime;
   }
 
   const bool Timeable::isReady()

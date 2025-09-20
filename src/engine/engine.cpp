@@ -3,7 +3,7 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : currentAction(RunState::MENU), leds{config, currentAction}, player{config, currentAction, leds}
+  GameEngine::GameEngine() : Time::Timeable{}, currentAction(RunState::MENU), leds{config, currentAction}, player{config, currentAction, leds}
   {
     handleStartup();
   }
@@ -12,70 +12,76 @@ namespace Engine
   {
     while (currentAction != RunState::ERROR)
     {
-      leds.setDefault();
-
-      switch (currentAction)
+      if (isReady())
       {
-      case RunState::MENU:
-      case RunState::GAME:
-        break;
 
-      default:
-        break;
+        leds.setDefault();
+
+        switch (currentAction)
+        {
+        case RunState::MENU:
+        case RunState::GAME:
+          break;
+
+        default:
+          break;
+        }
+
+        player.processGameController();
+        leds.adjustLuminance();
+        // leds.updateColor();
+        render();
+
+        // Shooting for 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
+        wait(9);
       }
-
-      player.processGameController();
-      leds.adjustLuminance();
-      // leds.updateColor();
-      render();
-      delay(15);
     }
   }
 
   void GameEngine::handleStartup()
   {
-    delay(500);
 
-    // Ensure engine is stable before setting up components
+    // If debugging, ensure serial connection is stable before setting up components
+#if defined(VIRTUALIZATION) || defined(DEBUG)
     Serial.begin(921600);
-    Serial.print("\n\nConnecting to computer for debugging");
+    log("Connecting to computer using a serial connection for debugging.");
     while (!Serial)
     {
-      Serial.print(".");
+      log("    No Serial connection...");
       delay(100);
     }
-    Serial.println("\n");
+    log("Serial connection established.");
+#endif
 
-    delay(1000);
-    Serial.print("\n\nConnecting to controller");
+    log("Attempting to connect to PS3 controller");
 
     // ten second attempt to connect to PS3 controller
     int reattempt = 0;
-    while (!player.controller.isConnected() && reattempt < 20)
+    while (!player.controller.isConnected() && reattempt < 80)
     {
-      Serial.print(".");
+      log("    Searching for PS3 controller...");
       ++reattempt;
-      delay(500);
+      delay(250);
     }
 
     if (!player.controller.isConnected())
     {
       currentAction = Engine::RunState::ERROR;
-      Serial.println("Failed to connect to controller.");
+      log("Failed to connect to controller.");
     }
     else
     {
       currentAction = RunState::GAME;
-      Serial.println("Startup process completed.");
+      log("Startup process completed.");
     }
 
-    delay(1000);
     // display.initialize();
   }
 
   void GameEngine::render()
   {
 #ifdef VIRTUALIZATION
+    Serial.println("Working?");
     Serial.write(0xAA);
     Serial.write(0x55);
     Serial.write(reinterpret_cast<uint8_t *>(leds.getRawColors()), leds.size() * sizeof(CRGB));

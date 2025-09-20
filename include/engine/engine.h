@@ -2,13 +2,14 @@
 
 #include "engine/system-config.h"
 #include "engine/run-state.h"
+#include "engine/timeable.h"
 #include "player/player.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
 
 namespace Engine
 {
-  class GameEngine
+  class GameEngine : private Time::Timeable
   {
   private:
     Engine::SystemConfig config;

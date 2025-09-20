@@ -16,7 +16,7 @@ namespace Lights
   {
   private:
     const Engine::SystemConfig &config;
-    unsigned int size;
+    unsigned int _size;
     LedLuminance luminance;
 
   public:
@@ -24,7 +24,7 @@ namespace Lights
     LedStrip(Engine::SystemConfig &configuration, Engine::RunState &state);
     CRGB *getRawColors();
 
-    unsigned int getSize() const { return size * sizeof(CRGB); }
+    unsigned int size() const { return _size; }
     void updateColor();
     void setDefault();
     void adjustLuminance();

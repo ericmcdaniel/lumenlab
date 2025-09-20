@@ -16,7 +16,7 @@ namespace Lights
     CRGB *leds;
 
   public:
-    LedBuffer(unsigned int numLeds) : _size{numLeds}, leds{new CRGB[_size]} {}
+    LedBuffer(unsigned int numLeds) : _size{numLeds}, leds{new CRGB[numLeds]} {}
     LedBuffer() { delete leds; }
 
     LedBuffer(const LedBuffer &other) : _size(other._size), leds(new CRGB[other._size])

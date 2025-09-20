@@ -14,9 +14,11 @@ namespace Player
 
   void Player::processGameController()
   {
-    leds.setDefault();
     if (controller.cross())
     {
+#ifdef DEBUG
+      Serial.println("User pressed X");
+#endif
       for (int i = 0; i < leds.buffer.size(); i++)
       {
         leds.buffer[i].r = 255;

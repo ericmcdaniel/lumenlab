@@ -12,6 +12,8 @@ namespace Engine
   {
     while (currentAction != RunState::ERROR)
     {
+      leds.setDefault();
+
       switch (currentAction)
       {
       case RunState::MENU:
@@ -73,10 +75,14 @@ namespace Engine
 
   void GameEngine::render()
   {
-    // TODO: Add actual logic to send signal to LEDs. Below is a simulation only
-
+#ifdef VIRTUALIZATION
     Serial.write(0xAA);
     Serial.write(0x55);
-    Serial.write(reinterpret_cast<uint8_t *>(leds.getRawColors()), leds.getSize());
+    Serial.write(reinterpret_cast<uint8_t *>(leds.getRawColors()), leds.size() * sizeof(CRGB));
+#endif
+#ifdef RELEASE
+    // TODO: Add actual logic to send signal to LEDs. Below is a simulation only
+    Serial.println("LED strip updated.");
+#endif
   }
 }

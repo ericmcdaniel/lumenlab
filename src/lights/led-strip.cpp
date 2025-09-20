@@ -2,13 +2,14 @@
 
 namespace Lights
 {
-  LedStrip::LedStrip(Engine::SystemConfig &configuration, Engine::RunState &state) : Time::Timeable{state},
+  LedStrip::LedStrip(Engine::SystemConfig &configuration, Engine::RunState &state) : Time::Timeable{},
                                                                                      config{configuration},
                                                                                      size{configuration.numLeds},
-                                                                                     buffer{configuration.numLeds}
+                                                                                     buffer{configuration.numLeds},
+                                                                                     luminance{configuration}
   {
     FastLED.addLeds<WS2815, 4>(static_cast<CRGB *>(buffer), size);
-    Time::Timeable::setTime(25000);
+    Time::Timeable::wait(25000);
     setDefault();
   }
 
@@ -27,9 +28,21 @@ namespace Lights
     }
   }
 
+  void LedStrip::adjustLuminance()
+  {
+    luminance.adjustLuminance();
+    for (int i = 0; i < size; ++i)
+    {
+      float scale = static_cast<float>(luminance.getLuminance()) / luminance.MAX_LED_BRIGHTNESS;
+      buffer[i].r = static_cast<fl::u8>(buffer[i].r * scale);
+      buffer[i].g = static_cast<fl::u8>(buffer[i].g * scale);
+      buffer[i].b = static_cast<fl::u8>(buffer[i].b * scale);
+    }
+  }
+
   void LedStrip::updateColor()
   {
-    if (Time::Timeable::isReady())
+    if (isReady())
     {
       for (int i = 0; i < size; i++)
       {

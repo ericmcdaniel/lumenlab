@@ -8,6 +8,7 @@
 #include "engine/system-config.h"
 #include "engine/timeable.h"
 #include "lights/led-buffer.h"
+#include "lights/led-luminance.h"
 
 namespace Lights
 {
@@ -16,13 +17,16 @@ namespace Lights
   private:
     const Engine::SystemConfig &config;
     unsigned int size;
+    LedLuminance luminance;
 
   public:
     LedBuffer buffer;
     LedStrip(Engine::SystemConfig &configuration, Engine::RunState &state);
     CRGB *getRawColors();
+
     unsigned int getSize() const { return size * sizeof(CRGB); }
     void updateColor();
     void setDefault();
+    void adjustLuminance();
   };
 }

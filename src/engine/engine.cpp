@@ -23,14 +23,28 @@ namespace Engine
       }
 
       player.processGameController();
+      leds.adjustLuminance();
       // leds.updateColor();
       render();
-      delay(25);
+      delay(15);
     }
   }
 
   void GameEngine::handleStartup()
   {
+    delay(500);
+
+    // Ensure engine is stable before setting up components
+    Serial.begin(921600);
+    Serial.print("\n\nConnecting to computer for debugging");
+    while (!Serial)
+    {
+      Serial.print(".");
+      delay(100);
+    }
+    Serial.println("\n");
+
+    delay(1000);
     Serial.print("\n\nConnecting to controller");
 
     // ten second attempt to connect to PS3 controller

@@ -5,19 +5,17 @@
 
 namespace Time
 {
-
   class Timeable
   {
   private:
-    Engine::RunState &currentState;
     unsigned long next{millis()};
 
   public:
-    Timeable(Engine::RunState &state) : currentState(state) {};
+    Timeable() = default;
     virtual ~Timeable() = default;
 
-    void setTime(unsigned long futureTime);
+    void wait(unsigned long futureTime);
     const bool isReady();
-    unsigned long getNext() { return next; }
+    unsigned long nextOccurrence() { return next; }
   };
 }

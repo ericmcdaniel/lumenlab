@@ -12,7 +12,10 @@ namespace Display
     Adafruit_SSD1306 display;
 
   public:
-    OledDisplay() : display(OLED_RESET) {}
+    OledDisplay() : display(OLED_RESET)
+    {
+      initialize();
+    }
     void initialize();
   };
 }

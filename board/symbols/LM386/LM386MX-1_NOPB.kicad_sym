@@ -242,9 +242,9 @@
 				)
 			)
 			(pin power_in line
-				(at -3.81 12.7 270)
-				(length 8.255)
-				(name "SIGNAL"
+				(at -3.81 8.89 270)
+				(length 4.445)
+				(name "VSS"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -295,7 +295,7 @@
 					)
 				)
 			)
-			(pin output line
+			(pin passive line
 				(at 2.54 -10.16 90)
 				(length 8.89)
 				(name "BYPASS"

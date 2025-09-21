@@ -1,0 +1,163 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"type_traits": "cpp",
+			"cstddef": "cpp",
+			"limits": "cpp",
+			"new": "cpp",
+			"array": "cpp",
+			"deque": "cpp",
+			"string": "cpp",
+			"unordered_map": "cpp",
+			"unordered_set": "cpp",
+			"vector": "cpp",
+			"string_view": "cpp",
+			"initializer_list": "cpp",
+			"utility": "cpp",
+			"random": "cpp",
+			"list": "cpp",
+			"condition_variable": "cpp"
+		},
+		"terminal.integrated.profiles.windows": {
+			"PowerShell": {
+				"source": "PowerShell",
+				"icon": "terminal-powershell"
+			},
+			"Command Prompt": {
+				"path": [
+					"${env:windir}\\Sysnative\\cmd.exe",
+					"${env:windir}\\System32\\cmd.exe"
+				],
+				"args": [
+					"/k",
+					"C:\\Espressif\\idf_cmd_init.bat",
+					"esp-idf-1dcc643656a1439837fdf6ab63363005"
+				],
+				"icon": "terminal-cmd"
+			},
+			"Git Bash": {
+				"source": "Git Bash"
+			}
+		},
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true
+		},
+		"python.analysis.autoImportCompletions": true,
+		"python.analysis.typeCheckingMode": "off",
+		"autopep8.args": [
+			"--max-line-length=160"
+		],
+		"platformio-ide.toolbar": [
+			{
+				"text": "$(home)",
+				"tooltip": "PlatformIO: Home",
+				"commands": [
+					{
+						"id": "platformio-ide.showHome"
+					},
+				]
+			},
+			{
+				"text": "$(remote-explorer)",
+				"tooltip": "Start Virtualization",
+				"commands": [
+					{
+						"id": "workbench.action.tasks.runTask",
+						"args": [
+							"Start Virtualization"
+						]
+					},
+				]
+			},
+			{
+				"text": "$(check)",
+				"tooltip": "PlatformIO: Build",
+				"commands": [
+					{
+						"id": "platformio-ide.build"
+					},
+				]
+			},
+			{
+				"text": "$(debug-alt)",
+				"tooltip": "PlatformIO: Upload (Virtualization)",
+				"commands": [
+					{
+						"id": "workbench.action.tasks.runTask",
+						"args": [
+							"Upload and Start Virtualization"
+						]
+					},
+				]
+			},
+			{
+				"text": "$(terminal)",
+				"tooltip": "PlatformIO: Upload (Debug)",
+				"type": "shell",
+				"commands": [
+					{
+						"id": "workbench.action.tasks.runTask",
+						"args": [
+							"Upload and Start Debug"
+						]
+					}
+				]
+			},
+			{
+				"text": "$(arrow-right)",
+				"tooltip": "PlatformIO: Upload (Release)",
+				"type": "shell",
+				"commands": [
+					{
+						"id": "workbench.action.tasks.runTask",
+						"args": [
+							"LumenLab - Upload (release)"
+						]
+					},
+				]
+			},
+			{
+				"text": "$(trashcan)",
+				"tooltip": "PlatformIO: Clean",
+				"commands": [
+					{
+						"id": "workbench.action.tasks.runTask",
+						"args": [
+							"LumenLab - Clean",
+						],
+					},
+				]
+			},
+			{
+				"text": "$(beaker)",
+				"tooltip": "PlatformIO: Run Tests",
+				"commands": [
+					{
+						"id": "workbench.action.tasks.runTask",
+						"args": [
+							"LumenLab - Run Tests"
+						]
+					},
+				]
+			},
+			{
+				"text": "$(plug)",
+				"tooltip": "PlatformIO: Serial Monitor",
+				"commands": [
+					{
+						"id": "platformio-ide.serialMonitor"
+					},
+				]
+			}
+		],
+	}
+}

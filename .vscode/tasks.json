@@ -56,6 +56,11 @@
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		},
 		{
@@ -66,6 +71,11 @@
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		},
 		{
@@ -79,10 +89,15 @@
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		},
 		{
-			"label": "LumenLab - Upload (Debug)",
+			"label": "Upload and Start Debug",
 			"type": "shell",
 			"command": "platformio",
 			"args": [
@@ -90,17 +105,50 @@
 				"-e",
 				"debug",
 				"--target",
-				"upload"
+				"upload",
+				"&&",
+				"platformio",
+				"device",
+				"monitor"
 			],
-			"problemMatcher": [
-				"$platformio"
-			],
+			"problemMatcher": [],
 			"options": {
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"panel": "shared",
+				"clear": true,
+				"reveal": "always",
+				"focus": true
 			}
 		},
+		// {
+		// 	"label": "LumenLab - Upload (Debug)",
+		// 	"type": "shell",
+		// 	"command": "platformio",
+		// 	"args": [
+		// 		"run",
+		// 		"-e",
+		// 		"debug",
+		// 		"--target",
+		// 		"upload"
+		// 	],
+		// 	"problemMatcher": [
+		// 		"$platformio"
+		// 	],
+		// 	"options": {
+		// 		"statusbar": {
+		// 			"hide": true
+		// 		}
+		// 	},
+		// 	"presentation": {
+		// 		"panel": "shared",
+		// 		"clear": false,
+		// 		"reveal": "always"
+		// 	}
+		// },
 		{
 			"label": "LumenLab - Upload (release)",
 			"type": "shell",
@@ -119,6 +167,11 @@
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		},
 		{
@@ -132,6 +185,11 @@
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		},
 		{
@@ -145,6 +203,11 @@
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		}
 	]

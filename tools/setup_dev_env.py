@@ -16,6 +16,7 @@ def create_secrets_header():
         file.write("#define NUM_LEDS 300\n")
         file.write("#define SERIAL_BAUD 921600\n")
         file.write("#define MAC_ADDRESS \"00:00:00:00:00:00\"\n")
+        file.write("#define LED_DIMMER_POT_GPIO 34\n")
 
 
 def setup_python_virtual_environment():

@@ -40,7 +40,6 @@ namespace Engine
 
   void GameEngine::handleStartup()
   {
-    display.initialize();
 
     // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)

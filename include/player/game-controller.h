@@ -2,6 +2,8 @@
 
 #include <Ps3Controller.h>
 
+#include "logger.h"
+
 namespace Player
 {
 
@@ -63,7 +65,7 @@ namespace Player
     }
     void handleOnConnect()
     {
-      Serial.println("\n\nConnected.\n");
+      log("Game controller connected successfully.");
       instance->connection = true;
     }
 
@@ -79,7 +81,7 @@ namespace Player
     // {
     //   if (Ps3.event.button_down.cross)
     //   {
-    //     Serial.println("Cross pressed!");
+    //     log("Cross button pressed!");
     //   }
     // }
 

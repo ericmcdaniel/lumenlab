@@ -3,6 +3,7 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
+.csode/settings.json
 tools/.venv
 secrets.h
 platformio-override.ini

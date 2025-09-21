@@ -14,6 +14,9 @@
 			"label": "Start Virtualization",
 			"type": "shell",
 			"options": {
+				"statusbar": {
+					"hide": true
+				},
 				"shell": {
 					"executable": "cmd.exe",
 					"args": [
@@ -36,6 +39,31 @@
 			}
 		},
 		{
+			"label": "LumenLab - Upload (Virtualization)",
+			"type": "shell",
+			"command": "platformio",
+			"args": [
+				"run",
+				"-e",
+				"virtualization",
+				"--target",
+				"upload"
+			],
+			"problemMatcher": [
+				"$platformio"
+			],
+			"options": {
+				"statusbar": {
+					"hide": true
+				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
+			}
+		},
+		{
 			"label": "PlatformIO: Upload",
 			"type": "shell",
 			"command": "platformio run --target upload",
@@ -43,21 +71,84 @@
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		},
 		{
 			"label": "Upload and Start Virtualization",
 			"dependsOrder": "sequence",
 			"dependsOn": [
-				"PlatformIO: Upload",
+				"LumenLab - Upload (Virtualization)",
 				"Start Virtualization"
 			],
 			"options": {
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		},
+		{
+			"label": "Upload and Start Debug",
+			"type": "shell",
+			"command": "platformio",
+			"args": [
+				"run",
+				"-e",
+				"debug",
+				"--target",
+				"upload",
+				"&&",
+				"platformio",
+				"device",
+				"monitor"
+			],
+			"problemMatcher": [],
+			"options": {
+				"statusbar": {
+					"hide": true
+				}
+			},
+			"presentation": {
+				"panel": "shared",
+				"clear": true,
+				"reveal": "always",
+				"focus": true
+			}
+		},
+		// {
+		// 	"label": "LumenLab - Upload (Debug)",
+		// 	"type": "shell",
+		// 	"command": "platformio",
+		// 	"args": [
+		// 		"run",
+		// 		"-e",
+		// 		"debug",
+		// 		"--target",
+		// 		"upload"
+		// 	],
+		// 	"problemMatcher": [
+		// 		"$platformio"
+		// 	],
+		// 	"options": {
+		// 		"statusbar": {
+		// 			"hide": true
+		// 		}
+		// 	},
+		// 	"presentation": {
+		// 		"panel": "shared",
+		// 		"clear": false,
+		// 		"reveal": "always"
+		// 	}
+		// },
 		{
 			"label": "LumenLab - Upload (release)",
 			"type": "shell",
@@ -76,12 +167,17 @@
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		},
 		{
 			"label": "LumenLab - Clean",
 			"type": "shell",
-			"command": "platformio run --target clean -e debug -e release -e native",
+			"command": "platformio run --target clean -e virtualization -e debug -e release -e native",
 			"problemMatcher": [
 				"$platformio"
 			],
@@ -89,6 +185,11 @@
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		},
 		{
@@ -102,6 +203,11 @@
 				"statusbar": {
 					"hide": true
 				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
 			}
 		}
 	]

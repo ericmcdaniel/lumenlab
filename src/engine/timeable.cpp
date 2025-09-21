@@ -2,12 +2,12 @@
 
 namespace Time
 {
-  void Timeable::setTime(unsigned long futureTime)
+  void Timeable::wait(unsigned long futureTime)
   {
     // if (futureTime <= 0)
     // {
     // }
-    next = futureTime;
+    next = next + futureTime;
   }
 
   const bool Timeable::isReady()

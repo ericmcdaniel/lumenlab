@@ -10,7 +10,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "U"
-			(at -8.89 6.35 0)
+			(at -2.794 0 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -18,7 +18,7 @@
 			)
 		)
 		(property "Value" "1_Custom_LM386MX-1_NOPB"
-			(at 2.54 -5.08 0)
+			(at 4.826 -2.794 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -242,9 +242,9 @@
 				)
 			)
 			(pin power_in line
-				(at -3.81 8.89 270)
-				(length 4.445)
-				(name "VSS"
+				(at -3.81 7.62 270)
+				(length 3.175)
+				(name ""
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -260,9 +260,9 @@
 				)
 			)
 			(pin power_in line
-				(at -2.54 -8.89 90)
-				(length 5.08)
-				(name "GND"
+				(at -2.54 -7.62 90)
+				(length 3.81)
+				(name ""
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -278,9 +278,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 8.89 270)
-				(length 6.35)
-				(name "GAIN"
+				(at 0 6.35 270)
+				(length 3.81)
+				(name ""
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -296,27 +296,9 @@
 				)
 			)
 			(pin passive line
-				(at 2.54 -10.16 90)
-				(length 8.89)
-				(name "BYPASS"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "7"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 3.81 7.62 270)
-				(length 6.985)
-				(name "GAIN"
+				(at 2.54 5.08 270)
+				(length 3.81)
+				(name ""
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -331,10 +313,28 @@
 					)
 				)
 			)
+			(pin passive line
+				(at 2.54 -5.08 90)
+				(length 3.81)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
 			(pin output line
-				(at 10.16 0 180)
-				(length 5.08)
-				(name "OUTPUT"
+				(at 7.62 0 180)
+				(length 2.54)
+				(name ""
 					(effects
 						(font
 							(size 1.27 1.27)

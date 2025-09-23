@@ -10,7 +10,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "U"
-			(at -1.524 18.542 0)
+			(at -14.732 14.478 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19,7 +19,7 @@
 			)
 		)
 		(property "Value" "SN74HC14DR"
-			(at -6.604 16.51 0)
+			(at -19.812 12.192 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -176,7 +176,7 @@
 				)
 			)
 			(pin power_in line
-				(at 10.16 11.43 180)
+				(at 0 20.32 270)
 				(length 5.08)
 				(name "VCC"
 					(effects

@@ -6,6 +6,7 @@
 #include "player/player.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
+#include "games/testing-sandbox/test-player.h"
 
 namespace Engine
 {
@@ -13,15 +14,16 @@ namespace Engine
   {
   private:
     Engine::SystemConfig config;
-    Player::Player player;
+    Player::Player *player = nullptr;
     Lights::LedStrip leds;
     Display::OledDisplay display;
 
     void handleStartup();
+    void initSandbox();
     void render();
 
   public:
-    RunState currentAction;
+    RunState currentState;
 
     GameEngine();
     void runApplication();

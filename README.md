@@ -3,10 +3,7 @@
 
 ---
 
-__LumenLab__ is an LED entertainment platform designed to transform your space into an interactive playground of games and lights. Built on an ESP32-WROOM and the WS2815 addressable LED strip, LumenLab delivers simple and retro games, programmable animations, and dynamic lighting effects that make any room more engaging.
-
-<p align="center"><i>Lighting should be more than just bright.</i></p>
-
+__LumenLab__ is an LED entertainment platform designed to transform your personal space into an interactive playground of games and lights. Built on an ESP32-WROOM, the WS2815 addressable LED strip, and controlled by a PS3 controller, LumenLab delivers simple and retro games, programmable animations, and dynamic lighting effects that make any room more engaging.
 
 # Development Setup
 ## Requirements

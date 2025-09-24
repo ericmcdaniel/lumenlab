@@ -1,8 +1,5 @@
 #include <Arduino.h>
-#include "lights/led-strip.h"
 #include "engine/engine.h"
-#include "engine/system-config.h"
-#include "player/player.h"
 
 void setup()
 {

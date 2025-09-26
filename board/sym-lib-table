@@ -5,4 +5,5 @@
   (lib (name "1_Vendor_SN74AHC1G125DBVR")(type "KiCad")(uri "${KIPRJMOD}/symbols/SN74AHC1G125DBVR/SN74AHC1G125DBVR.kicad_sym")(options "")(descr ""))
   (lib (name "1_Vendor_LM386")(type "KiCad")(uri "${KIPRJMOD}/symbols/LM386/LM386MX-1_NOPB.kicad_sym")(options "")(descr ""))
   (lib (name "sn74hc14dr")(type "KiCad")(uri "${KIPRJMOD}/symbols/SN74HC14DR/sn74hc14dr.kicad_sym")(options "")(descr ""))
+  (lib (name "1_Custom_SSD1306")(type "KiCad")(uri "${KIPRJMOD}/symbols/SSD1306/1_Custom_SSD1306.kicad_sym")(options "")(descr ""))
 )

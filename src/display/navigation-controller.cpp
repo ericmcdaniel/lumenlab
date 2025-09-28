@@ -9,7 +9,7 @@ namespace Display
     instance = this;
     pinMode(32, INPUT);
     pinMode(33, INPUT);
-    pinMode(34, INPUT);
+    pinMode(21, INPUT);
     pinMode(35, INPUT);
     pinMode(27, INPUT);
 

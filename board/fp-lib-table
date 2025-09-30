@@ -10,4 +10,5 @@
   (lib (name "2_Vendor_1264EY")(type "KiCad")(uri "${KIPRJMOD}/footprints/1264EY_6R8M-inductor")(options "")(descr ""))
   (lib (name "2_Vendor_10TZV220M6")(type "KiCad")(uri "${KIPRJMOD}/footprints/10TZV220M6-speaker-cap")(options "")(descr ""))
   (lib (name "2_Vendor_NavSwitch")(type "KiCad")(uri "${KIPRJMOD}/footprints/NavigationSwitch")(options "")(descr ""))
+  (lib (name "2_Custom_SSD1306")(type "KiCad")(uri "${KIPRJMOD}/footprints/SSD1306/SSD1306-module.pretty")(options "")(descr ""))
 )

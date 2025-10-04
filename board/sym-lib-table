@@ -7,4 +7,7 @@
   (lib (name "sn74hc14dr")(type "KiCad")(uri "${KIPRJMOD}/symbols/SN74HC14DR/sn74hc14dr.kicad_sym")(options "")(descr ""))
   (lib (name "1_Custom_SSD1306")(type "KiCad")(uri "${KIPRJMOD}/symbols/SSD1306/1_Custom_SSD1306.kicad_sym")(options "")(descr ""))
   (lib (name "1_Vendor_SMAJ12CA-tvs-diode")(type "KiCad")(uri "${KIPRJMOD}/symbols/SMAJ12CA-tvs-diode/SMAJ12CA-tvs-diode.kicad_sym")(options "")(descr ""))
+  (lib (name "1_Custom_CP2102N")(type "KiCad")(uri "${KIPRJMOD}/symbols/CP2102N/CP2102N-USB-to-UART.kicad_sym")(options "")(descr ""))
+  (lib (name "1_Custom_USB_C")(type "KiCad")(uri "${KIPRJMOD}/symbols/USB-C/1_Custom_USB_C.kicad_sym")(options "")(descr ""))
+  (lib (name "1_Custom_ESDProtection")(type "KiCad")(uri "${KIPRJMOD}/symbols/USB-C/ESD122DMYR.kicad_sym")(options "")(descr ""))
 )

@@ -102,7 +102,7 @@
 		)
 	)
 	(fp_text user "Safety cover"
-		(at 0 -23.5 0)
+		(at 0 -16 0)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "c64c7ba3-ccdf-424a-a02f-0c18fc8a4b17")
@@ -134,7 +134,7 @@
 		(uuid "e72ebaad-070e-48a4-a006-36d0edd1cbea")
 	)
 	(pad "1" thru_hole rect
-		(at 0 -19)
+		(at -3 17)
 		(size 3 3)
 		(drill 1.25)
 		(layers "*.Cu" "*.Mask")
@@ -142,7 +142,7 @@
 		(uuid "f46afffc-e65b-4311-badc-2725479481cc")
 	)
 	(pad "2" thru_hole circle
-		(at 0 19)
+		(at 3 17)
 		(size 3 3)
 		(drill 1.25)
 		(layers "*.Cu" "*.Mask")

@@ -1,9 +1,12 @@
 # Custom PCB Fabrication
-The LumenLab PCB was designed using KiCad 9.0.2 with the capabilities of PCBWay in mind. You can adjust to have this manufactured anywhere you want, but be aware that you would need to account for the capabilities of that board house as well.
+
+The LumenLab was built in two phases. The first phase (labeled as "Version 1") was a prototype that used through-hole components hand-soldered on to several perf boards. This worked especially for making progress in the early stages of the software development, however the components did not work exactly as desired, making its maintanance more of a hassle than it was a benefit. Designing a PCB to be professionally manufactured became a clear and obvious choice, allowing the LumenLab to be scaled into a clean, stable device.
+
+The LumenLab PCB was designed using KiCad 9.0.2
 
 # Schematic
 ![LumenLab schematic](./images/lumenlab-pcb.svg)
-<p style="text-align: center; font-style: italic;">Figure 1. LumenLab schematic and electronic layout</p>
+<p align="center">Figure 1. LumenLab schematic and electronic layout</p>
 
 # Bill of Materials
 Still to be finalized, however you can [view the tentative list of components here](./bom/ibom.html).

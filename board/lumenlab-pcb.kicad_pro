@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.75,
-          "height": 1.25,
-          "width": 1.25
+          "drill": 0.0,
+          "height": 0.3302,
+          "width": 0.7112
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -58,7 +58,40 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "silk_edge_clearance|100000000|105090000|bfad61c8-1f21-4d9d-b0ec-669e35976e8d|a808dd9e-122d-47ec-95f5-99ab03275cf5",
+          "PCBWay should clip at edge cut"
+        ],
+        [
+          "silk_edge_clearance|100000000|126910000|bfad61c8-1f21-4d9d-b0ec-669e35976e8d|cd91a88c-2a23-40a2-8033-777a3a0cf6a1",
+          "PCBWay should clip at edge cut"
+        ],
+        [
+          "silk_edge_clearance|200000000|100585000|68c55e81-78f0-470b-af9c-cac08af5b953|08ad9bfc-4535-48c5-b3ca-faa12e04b38e",
+          "PCBWay should clip at edge cut"
+        ],
+        [
+          "silk_edge_clearance|200000000|114485000|68c55e81-78f0-470b-af9c-cac08af5b953|50107b29-b1e5-495b-91a9-8922a26b36f7",
+          "PCBWay should clip at edge cut"
+        ],
+        [
+          "silk_edge_clearance|200000000|77915000|68c55e81-78f0-470b-af9c-cac08af5b953|a8a322ec-245b-439a-aa69-8d017ecc98e6",
+          "PCBWay should clip at edge cut"
+        ],
+        [
+          "silk_edge_clearance|200000000|87075000|68c55e81-78f0-470b-af9c-cac08af5b953|0e0d1db4-c153-47bd-9472-85a9d2bc4790",
+          "PCBWay should clip at edge cut"
+        ],
+        [
+          "silk_edge_clearance|200000000|89675000|68c55e81-78f0-470b-af9c-cac08af5b953|1a3b4407-c52d-4bf7-b2e7-2d88a180c047",
+          "PCBWay should clip at edge cut"
+        ],
+        [
+          "silk_edge_clearance|200000000|98675000|68c55e81-78f0-470b-af9c-cac08af5b953|1ef22cb0-339d-4de0-b83e-0d41c4e073d6",
+          "PCBWay should clip at edge cut"
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -123,7 +156,7 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.125,
+        "min_clearance": 0.2,
         "min_connection": 0.125,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
@@ -136,7 +169,7 @@
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.2,
-        "min_track_width": 0.125,
+        "min_track_width": 0.2,
         "min_via_annular_width": 0.1,
         "min_via_diameter": 0.5,
         "solder_mask_to_copper_clearance": 0.0,
@@ -511,10 +544,10 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "images/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "images/lumenlab-pcb.stl",
       "svg": "",
       "vrml": ""
     },

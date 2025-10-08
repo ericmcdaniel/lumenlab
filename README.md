@@ -11,14 +11,14 @@ __LumenLab__ is an LED strip gaming and entertainment platform designed to trans
 LumenLab is composed of multiple realms. The premier realm is its suite of games, but the platform also supports entertaining animations (called scenes) and general lighting utilities. After all it's still an LED strip!
 
 ## Games
-Using an LED strip as a gaming platform is unique due to the constraint of only having one dimension to interact with. Since *only* the landscape x-axis is available, this constraint compels players to apply creative interpretation to appreciate the gameplay. This is not a modern AAA blockbuster with 4K graphics immersing you in the vision of a world crafted by another person. Instead, LumenLab's restriction subtly encourages players to philosophically revisit what it really means to play a game at it core. In its purest form, players follow rules and explore boundaries in pursuit of a goal. Game players encounter conflict and must experiment and adapt to overcome these obstacles. LumenLab forces players to experience gaming at its rawest, most atomic form: structured uncertainty and strategy until mastery is achieved. This has become the manifesto of the LumenLab. *Every individual playing its games has a unique mental concept of what they're experiencing.*
+Using an LED strip as a gaming platform is unique due to the constraint of only having one dimension to interact with. Since *only* the landscape x-axis is available, this constraint compels players to apply creative interpretation during gameplay. This is not a modern AAA blockbuster with 4K graphics immersing you in the vision of a world crafted by another person. Instead, LumenLab's restriction subtly encourages players to philosophically revisit what it really means to play a game at it's core. In its purest form, a game player follows rules and explores boundaries in pursuit of a goal. Game players encounter conflict and must experiment and adapt to their environment to overcome obstacles. LumenLab forces players to experience gaming at its rawest, most atomic form: structured uncertainty and strategy until mastery is achieved. This has become the manifesto of the LumenLab. *Every individual playing its games has a unique mental concept of what they're experiencing.*
 
-Because LumenLab works on a single dimension using an array of LEDs, it's aesthetically reminiscent of retro arcade games. However, LumenLab takes advantage of capabilities unavailable on old eight-bit game consoles. These capabilities include its ability to generate any arbitrary RGB color instead of being limited to 256 colors. Additionally, its UI takes advantage of the broad range of states and controls offered by the PS3 controller such as the number of available buttons and precise analog joy stick/trigger positions, contrasting from a cabinet arcade with only four discrete buttons. There are six games available or in development, each detailed below.
+Because LumenLab works on a single dimension using an array of LEDs, it's aesthetically reminiscent of retro arcade games. However, LumenLab takes advantage of capabilities unavailable on old eight-bit game consoles. These capabilities include its ability to generate any arbitrary RGB color instead of being limited to 256 colors. Additionally, its UI takes advantage of the broad range of states and buttons offered by the PS3 controller such as the number of buttons available and precise analog joy stick/trigger positions, contrasting from a cabinet arcade with only four discrete buttons. There are six games available or in development, each detailed below.
 
-| **Title**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
+| **Title** | **Description** |
 | --- | --- |
 | **Recall** |*Recall* is the low-hanging fruit of the games available. It is an adaptation of Hasbro's fifty-year-old game [*Simon*](https://shop.hasbro.com/en-us/product/simon-game-handheld-games-for-kids-electronic-games-for-1-player-ages-8-plus/E9383). Because of the ubiquity of the game and the general public's familiarity with it and its rules, it's logical for this to be the first game offered, allowing players to adapt to the restrictions of LumenLab within a familiar format. The rules and gameplay are the identical to the original game. The LED strip momentarily displays a color, and you must press the button with the corresponding color on the PS3 controller. As additional colors are sequenced, players must recall the full sequence in correct order on every iteration. The goal is to exceed your previous high score.<br><br>*In development.*|
-| **Phase Evasion** | *Phase Evasion* is a game similar in spirit to Google Chrome's Easter egg game [*T-Rex Runner*](chrome://dino/). In *T-Rex Runner*, you are a dinosaur running in the desert. You must avoid obstacles like cacti and birds by jumping over them or ducking under them respectively. In *Phase Evasion*, you are a solid color figure, and you must evade various colors approaching you. Limited to the single dimension constraint, you cannot jump up and down, but instead must phase shift and match their color to evade capture. The obstacles progressively move faster, and your goal is to exceed your previous high score.<br><br>*In development.* |
+| **Phase Evasion** | *Phase Evasion* is a game similar in spirit to Google Chrome's Easter egg game [*T-Rex Runner*](chrome://dino/). In *T-Rex Runner*, you are a dinosaur running in the desert. You must avoid obstacles like cacti and birds by jumping over them or ducking under them respectively. In *Phase Evasion*, you are a solid color entity, and you must evade the various color obstacles approaching you. Limited to the single dimension constraint, you cannot jump up or down, but instead must phase shift and blend into the obstacle's color to evade capture. The obstacles progressively move faster, and your goal is to exceed your previous high score.<br><br>*In development.* |
 | **Light Strike** | *In development.* Details to be provided soon. |
 | **Reflex** | *In development.* Details to be provided soon. |
 | **Pursuit** | *In development.* Details to be provided soon. |
@@ -30,14 +30,14 @@ An LED strip entertainment platform would not be complete if users did not have 
 
 ---
 
-# Experience The Lights In Your Home
-Being a hardware-forward project, it is not possible to experience LumenLab without physically having the device. Your options include either having the PCB professionally manufactured and assembled, or soldering your own prototype using off the shelf components and a breadboard or perf board.
+# Experience the Lights In Your Home
+Being a hardware-forward project, it is not possible to experience LumenLab without physically having the device. Your options include either having a PCB professionally manufactured and assembled, or soldering your own prototype on a breadboard or perf board using off-the-shelf components.
 
 This guide will walk through both options and their practicality.
 
 ## Method A: Professionally Manufactured and Assembled
 
-A custom PCB was designed using KiCad to be manufactured offsite and give LumenLab a clean look. All of the schematic files, PCB layout files, a BOM, and custom symbol libraries, footprints, 3D models, and Gerber files are all detailed in the `/board` directory, and can be sent to be manufactured. The PCB layout follows the manufacturing capabilities given by [PCBWay](https://www.pcbway.com/), so although you potentially can use any board house of your choosing, the ECAD model was designed with PCBWay's limitations in mind. Costs were minimized as much as possible, so the PCB was designed using only two layers and kept under 100mm. This brought manufacturing fees from $100 down to $5! Beware that this is still in progress and is not immediately available for manufacture.
+A custom PCB was designed using KiCad and give LumenLab a clean aesthetic. All of the schematic files, PCB layout files, BOM, custom symbol libraries, footprints, 3D models, and Gerber files are all found in the `/board` directory. The PCB layout uses the manufacturing capabilities given by [PCBWay](https://www.pcbway.com/). Although you can potentially use any board house of your choosing, the ECAD model was designed with PCBWay's capabilities in mind. Production costs were minimized as much as possible, so the PCB was designed using only two layers and kept under 100 mm. This lowered manufacturing fees from $100 down to $5! Beware that the final PCB design is still in progress and is not immediately available for manufacture.
 
 ![PCB Design, front](./board/images/lumenlab-pcb-3d-view-front.png)
 <p style="text-align: center; font-style: italic;">Figure 1: PCB layout (front)</p>
@@ -47,9 +47,9 @@ A custom PCB was designed using KiCad to be manufactured offsite and give LumenL
 
 ## Method B: Hand-Soldering a Prototype
 
-This is the most accessible route, however can be the more tricky route depending on your background with electronics. Below is the BOM if you'd like to build LumenLab yourself. If you're an advanced electronics enthusiast, you may even be able to skip some of the suggestions (e.g. skipping the buck converter, directly powering the LED strip, and sharing the 5V power from to level shift the LED strip). These "barebones" alterations are not discussed in this document.
+This is the more accessible and classic route, however this can be tricky depending on your background with electronics. Below is the prototype BOM if you'd like to build LumenLab yourself using pre-built modules and THT components. If you're an advanced electronics enthusiast, you may even be able to omit some of the suggestions, such as skipping the buck converter, directly powering the LED strip, and using the 5V power directly from the Vin pin to level shift the LED strip's data signal). These "barebones" alterations are not discussed in this document.
 
-Assembly is remarkably similar to the guidance from the WLED project. Using their [wiring diagram here](https://kno.wled.ge/basics/wiring-guides/) would be an excellent starting point.
+Assembly is remarkably similar to the guidance given on the WLED project. Using their [wiring diagram here](https://kno.wled.ge/basics/wiring-guides/) would be an excellent starting point.
 
 #### <center>Bill of Materials</center>
 |  Device | Description |
@@ -74,7 +74,7 @@ Regardless of whether your build of LumenLab was professionally manufactured and
 
 To streamline the software development cycle, a virtualizer was created so that you can visually see what the LEDs are doing on a computer screen. This enables new features to be developed without needing to physically connect to the LED strip. Using the ESP32 is still required regardless during development, however when compiling in debug mode, the MCU does not emit signals to the LED strip and instead sends its color data via USB serial for rendering. An accompanying Python script was created using [ModernGL](https://moderngl.readthedocs.io/en/5.8.2/), an OpenGL binding for Python.
 
-## Building the repo
-In order to simplify the build process for this repo, a script to initialize global configuration settings and credentials has been provided for both Windows and *nix OS. These scripts auto-generate the relevant files needed for a clean build.
+### Building the Repository
+In order to simplify the build process for this repo, a script to initialize global configuration settings and credentials has been provided for both Windows and *nix. These scripts auto-generate the configuration file needed for a clean build.
 
 _secrets.h_ - A header file that #define variables at compile-time, such as your WLAN credentials, and host/port ip address

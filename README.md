@@ -3,7 +3,8 @@
 
 ---
 
-__LumenLab__ is an LED strip gaming and entertainment platform designed to transform your space into an interactive playground of games, animations, and lights. Built using a ESP32 microcontroller and the NeoPixel addressable LED strip, LumenLab delivers simple, one-dimension retro arcade-like games, entertaining animations, and general lighting effects that can make any room more engaging.
+__LumenLab__ is an LED strip gaming and entertainment platform designed to transform your space into an interactive playground of games, animations, and lights. Built using a ESP32 microcontroller, viewed with the NeoPixel addressable LED strip, and controlled by a PlayStation 3 game controller, LumenLab delivers simple, one-dimension retro arcade-style games, entertaining animations, and general lighting effects that can make any room more inviting.
+<br>
 
 # Features
 
@@ -12,16 +13,16 @@ LumenLab is composed of multiple realms. The premier realm is its suite of games
 ## Games
 Using an LED strip as a gaming platform is unique due to the constraint of only having one dimension to interact with. Since *only* the landscape x-axis is available, this constraint compels players to apply creative interpretation to appreciate the gameplay. This is not a modern AAA blockbuster with 4K graphics immersing you in the vision of a world crafted by another person. Instead, LumenLab's restriction subtly encourages players to philosophically revisit what it really means to play a game at it core. In its purest form, players follow rules and explore boundaries in pursuit of a goal. Game players encounter conflict and must experiment and adapt to overcome these obstacles. LumenLab forces players to experience gaming at its rawest, most atomic form: structured uncertainty and strategy until mastery is achieved. This has become the manifesto of the LumenLab. *Every individual playing its games has a unique mental concept of what they're experiencing.*
 
-Because LumenLab works on a single dimension using an array of LEDs, it's aesthetically reminiscent of retro arcade games. However, LumenLab takes advantage of capabilities unavailable on old eight-bit game consoles. These capabilities include its ability to generate any arbitrary RGB color instead of being limited to 256 colors. Additionally, its UI takes advantage of the broad range of states and controls offered by the PS3 controller such as the number of available buttons and precise analog joy stick/trigger positions, contrasting from a cabinet arcade with only four discrete buttons. There are five games available, detailed below.
+Because LumenLab works on a single dimension using an array of LEDs, it's aesthetically reminiscent of retro arcade games. However, LumenLab takes advantage of capabilities unavailable on old eight-bit game consoles. These capabilities include its ability to generate any arbitrary RGB color instead of being limited to 256 colors. Additionally, its UI takes advantage of the broad range of states and controls offered by the PS3 controller such as the number of available buttons and precise analog joy stick/trigger positions, contrasting from a cabinet arcade with only four discrete buttons. There are six games available or in development, each detailed below.
 
-| Title | Description |
-| :--- | --- |
-| **Recall** |*In development.*<br><br>*Recall* is the low-hanging fruit of the games available. It is an adaptation of Hasbro's fifty-year-old [*Simon* game](https://shop.hasbro.com/en-us/product/simon-game-handheld-games-for-kids-electronic-games-for-1-player-ages-8-plus/E9383). Because of the ubitiquity of the game and the general public's familiarity with it and its rules, it's logical for this to be the first game offered, allowing players to adapt to the restrictions of LumenLab within a familiar format. The rules and gameplay are the identical to the original game. The LED strip momentarily displays a color, and you must press the button with the corresponding color on the PS3 controller. As additional colors are sequenced, players must recall the full sequence in correct order on every iteration. The goal is to exceed your previous high score.|
-| **Phase Evasion** | *In development.* Details to be provided soon. |
+| **Title**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
+| --- | --- |
+| **Recall** |*Recall* is the low-hanging fruit of the games available. It is an adaptation of Hasbro's fifty-year-old game [*Simon*](https://shop.hasbro.com/en-us/product/simon-game-handheld-games-for-kids-electronic-games-for-1-player-ages-8-plus/E9383). Because of the ubiquity of the game and the general public's familiarity with it and its rules, it's logical for this to be the first game offered, allowing players to adapt to the restrictions of LumenLab within a familiar format. The rules and gameplay are the identical to the original game. The LED strip momentarily displays a color, and you must press the button with the corresponding color on the PS3 controller. As additional colors are sequenced, players must recall the full sequence in correct order on every iteration. The goal is to exceed your previous high score.<br><br>*In development.*|
+| **Phase Evasion** | *Phase Evasion* is a game similar in spirit to Google Chrome's Easter egg game [*T-Rex Runner*](chrome://dino/). In *T-Rex Runner*, you are a dinosaur running in the desert. You must avoid obstacles like cacti and birds by jumping over them or ducking under them respectively. In *Phase Evasion*, you are a solid color figure, and you must evade various colors approaching you. Limited to the single dimension constraint, you cannot jump up and down, but instead must phase shift and match their color to evade capture. The obstacles progressively move faster, and your goal is to exceed your previous high score.<br><br>*In development.* |
 | **Light Strike** | *In development.* Details to be provided soon. |
 | **Reflex** | *In development.* Details to be provided soon. |
 | **Pursuit** | *In development.* Details to be provided soon. |
-
+| **Spectrum** | *In development.* Details to be provided soon. |
 
 ## Scenes
 
@@ -29,32 +30,49 @@ An LED strip entertainment platform would not be complete if users did not have 
 
 ---
 
-# Development Setup
-## Requirements
-Being an LED strip platform controlled by a microcontroller, a combination of hardware and software is required to replicate the platform shown below. Some of the physical components can be substituted for appropriate alternatives, however be cautioned that this may change other parts of the overall design.
+# Experience The Lights In Your Home
+Being a hardware-forward project, it is not possible to experience LumenLab without physically having the device. Your options include either having the PCB professionally manufactured and assembled, or soldering your own prototype using off the shelf components and a breadboard or perf board.
 
-### Hardware
-The easier method to get a base setup would be to follow [the wiring diagram from the WLED Project](https://kno.wled.ge/basics/wiring-guides/).
+This guide will walk through both options and their practicality.
+
+## Method A: Professionally Manufactured and Assembled
+
+A custom PCB was designed using KiCad to be manufactured offsite and give LumenLab a clean look. All of the schematic files, PCB layout files, a BOM, and custom symbol libraries, footprints, 3D models, and Gerber files are all detailed in the `/board` directory, and can be sent to be manufactured. The PCB layout follows the manufacturing capabilities given by [PCBWay](https://www.pcbway.com/), so although you potentially can use any board house of your choosing, the ECAD model was designed with PCBWay's limitations in mind. Costs were minimized as much as possible, so the PCB was designed using only two layers and kept under 100mm. This brought manufacturing fees from $100 down to $5! Beware that this is still in progress and is not immediately available for manufacture.
+
+![PCB Design, front](./board/images/lumenlab-pcb-3d-view-front.png)
+<p style="text-align: center; font-style: italic;">Figure 1: PCB layout (front)</p>
+
+![PCB Design, back](./board/images/lumenlab-pcb-3d-view-back.png)
+<p style="text-align: center; font-style: italic;">Figure 1: PCB layout (back)</p>
+
+## Method B: Hand-Soldering a Prototype
+
+This is the most accessible route, however can be the more tricky route depending on your background with electronics. Below is the BOM if you'd like to build LumenLab yourself. If you're an advanced electronics enthusiast, you may even be able to skip some of the suggestions (e.g. skipping the buck converter, directly powering the LED strip, and sharing the 5V power from to level shift the LED strip). These "barebones" alterations are not discussed in this document.
+
+Assembly is remarkably similar to the guidance from the WLED project. Using their [wiring diagram here](https://kno.wled.ge/basics/wiring-guides/) would be an excellent starting point.
+
+#### <center>Bill of Materials</center>
 |  Device | Description |
 | --- | --- |
-| ESP32 WROOM microcontroller | Only the WROOM variants are supported because those are the only variants that support the Bluetooth classic protocol (BR/EDR). |
-| WS2815 LED light strip | The 12V variant of the NeoPixel addressable RGB WS2812B. This project uses the 5 meter, 300 LED strip in black. |
-| 12V 10A DC power supply | The 10A supply is needed to illuminate the full strip white at full brightness. |
-| MP2338 buck converter | Any step down regulator will suffice as long as it outputs 5V and 2 to 3 amps. |
-| SN74AHCT125N logic level shifter | To convert the 3.3V signal for the LED strip up to 5V. |
-| PlayStation 3 game controller | The primary input device to interact with LumenLab. |
-| SSD1306 OLED display module | To render menu options. This project uses the 0.96" variant. |
-| Five-way tactile switch | To control the menu displayed on the OLED display. |
-| Passive components | As specified in your MCU's datasheet for high pass filtering and power stability. |
+| ESP32 WROOM microcontroller | Only the [WROOM variants](https://www.digikey.com/en/products/detail/espressif-systems/ESP32-DEVKITC-32UE/12091813) are supported because those are the only variants that support the Bluetooth classic protocol (BR/EDR). |
+| WS2815 LED light strip | The 12V variant of the NeoPixel addressable RGB WS2812B. This project uses the 5m (16.4ft), 300 LED strip in black. |
+| 12V 10A DC power supply | The 10A supply is required due to the high current demands of displaying white at full brightness. |
+| MP2338 buck converter | Any step down regulator will suffice as long as it outputs 5V and at least 1A. The MP2338 can deliver 2-3A, enough to reliable power the ESP32 during intense gameplay and Bluetooth connectivity. |
+| SN74AHCT125N logic level shifter | The ESP32's GPIO lines work using 3.3V signals. Level shifting to 5V ensures that the LED strip's data lines are not lost or corrupted. |
+| PlayStation 3 game controller | The input device to navigate the main menu and play games. |
+| SSD1306 OLED display module | Using the 0.96" variant, this displays the main menu for mode selection and in game mode is a HUD showing basic statistic like the user's high score. |
+| Passive components | Resistors, capacitors, diodes, and fuses as needed for power protection, power stability and smoothing, low-pass filtering, and signal damping to minimize ringing. Refer to your MCU and buck converter's datasheet for guidance on what passives are needed. |
 
+## Software
 
-### Software
-| Dependency | Description |
-| --- | --- |
-| [PlatformIO](https://platformio.org/) | A feature-rich ecosystem for embedded development. You could use the toolchain CLI, but the Visual Studio Code extension is very approachable. This includes the C/C++ compiler (avr-gcc) needed for MCU development. |
-| Python3 (&GreaterEqual;3.6)| Required by PlatformIO to compile and flash the device. Also used in the virtualizer for local development. |
+Regardless of whether your build of LumenLab was professionally manufactured and assembled, or hand-soldered to a perf board, the software is identical between the two approaches. To build this project from scratch, you at minimum need the following frameworks and dependencies:
 
-There is a Dockerfile provided. It does *not* work for me on Windows/WSL due to issues mapping the COM ports to POSIX serial devices. I have not tested this on a native Linux machine, so I will keep the file for now.
+* **PlatformIO**: A feature-rich ecosystem for embedded development. This framework includes the C/C++ compiler (avr-gcc) needed for MCU development. You can use the toolchain CLI directly, but installing the Visual Studio Code extension is significantly more approachable. [Download PlatformIO here](https://platformio.org/).
+* **Python3** (&GreaterEqual;3.6): A dependency of PlatformIO to compile and flash the device. Also used in the virtualizer for local development.
+
+### LED Strip Virtualization
+
+To streamline the software development cycle, a virtualizer was created so that you can visually see what the LEDs are doing on a computer screen. This enables new features to be developed without needing to physically connect to the LED strip. Using the ESP32 is still required regardless during development, however when compiling in debug mode, the MCU does not emit signals to the LED strip and instead sends its color data via USB serial for rendering. An accompanying Python script was created using [ModernGL](https://moderngl.readthedocs.io/en/5.8.2/), an OpenGL binding for Python.
 
 ## Building the repo
 In order to simplify the build process for this repo, a script to initialize global configuration settings and credentials has been provided for both Windows and *nix OS. These scripts auto-generate the relevant files needed for a clean build.

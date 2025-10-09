@@ -4,8 +4,9 @@ namespace Engine
 {
   enum class RunState
   {
-    MENU,
-    GAME,
+    MAIN_MENU,
+    TRANSITION_SANDBOX,
+    GAME_SANDBOX,
     ERROR
   };
 }

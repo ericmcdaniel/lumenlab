@@ -1,33 +1,35 @@
 #include "engine/engine.h"
+#include "games/testing-sandbox/test-player.h"
 
 namespace Engine
 {
 
-  GameEngine::GameEngine() : Time::Timeable{}, currentAction(RunState::MENU), leds{config, currentAction}, player{config, currentAction, leds}
+  GameEngine::GameEngine() : Time::Timeable{}, currentState(RunState::MAIN_MENU), leds{config}, navigation{currentState, controller}
   {
     handleStartup();
   }
 
   void GameEngine::runApplication()
   {
-    while (currentAction != RunState::ERROR)
+    while (currentState != RunState::ERROR)
     {
       if (isReady())
       {
-
         leds.setDefault();
 
-        switch (currentAction)
+        switch (currentState)
         {
-        case RunState::MENU:
-        case RunState::GAME:
+        case RunState::MAIN_MENU:
+          navigation.handleNavigationChange();
+          break;
+        case RunState::TRANSITION_SANDBOX:
+          initSandbox();
+        case RunState::GAME_SANDBOX:
           break;
 
         default:
           break;
         }
-
-        player.processGameController();
         leds.adjustLuminance();
         // leds.updateColor();
         render();
@@ -40,6 +42,7 @@ namespace Engine
 
   void GameEngine::handleStartup()
   {
+    controller.begin(config.macAddress);
 
     // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
@@ -54,28 +57,40 @@ namespace Engine
 #endif
 
     log("Attempting to connect to PS3 controller");
+    player = new TestingSandbox::TestPlayer{config, leds};
 
     // ten second attempt to connect to PS3 controller
     int reattempt = 0;
-    while (!player.controller.isConnected() && reattempt < 80)
+    while (!controller.isConnected() && reattempt < 80)
     {
       log("    Searching for PS3 controller...");
       ++reattempt;
       delay(250);
     }
 
-    if (!player.controller.isConnected())
+    if (!controller.isConnected())
     {
-      currentAction = Engine::RunState::ERROR;
+      currentState = Engine::RunState::ERROR;
       log("Failed to connect to controller.");
     }
     else
     {
-      currentAction = RunState::GAME;
+      currentState = RunState::MAIN_MENU;
       log("Startup process completed.");
     }
+  }
 
-    // display.initialize();
+  void GameEngine::initSandbox()
+  {
+    log("Transitioning to Sandbox game. Deleting the player pointer.");
+    if (player)
+    {
+      delete player;
+      player = nullptr;
+      log("Successfully deleted the player from previous game.");
+    }
+    player = new TestingSandbox::TestPlayer{config, leds};
+    currentState = RunState::GAME_SANDBOX;
   }
 
   void GameEngine::render()
@@ -88,7 +103,10 @@ namespace Engine
 #endif
 #ifdef RELEASE
     // TODO: Add actual logic to send signal to LEDs. Below is a simulation only
+
+    ////// do NOT include this in the final game, this is for testing purposes only /////
     Serial.println("LED strip updated.");
+    /////////////////////////////////////////////////////////////////////////////////////
 #endif
   }
 }

@@ -21,7 +21,7 @@ namespace Lights
 
   public:
     LedBuffer buffer;
-    LedStrip(Engine::SystemConfig &configuration, Engine::RunState &state);
+    LedStrip(Engine::SystemConfig &configuration);
     CRGB *getRawColors();
 
     unsigned int size() const { return _size; }

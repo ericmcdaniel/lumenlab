@@ -2,11 +2,11 @@
 
 namespace Lights
 {
-  LedStrip::LedStrip(Engine::SystemConfig &configuration, Engine::RunState &state) : Time::Timeable{},
-                                                                                     config{configuration},
-                                                                                     _size{Engine::SystemConfig::numLeds},
-                                                                                     buffer{Engine::SystemConfig::numLeds},
-                                                                                     luminance{configuration}
+  LedStrip::LedStrip(Engine::SystemConfig &configuration) : Time::Timeable{},
+                                                            config{configuration},
+                                                            _size{Engine::SystemConfig::numLeds},
+                                                            buffer{Engine::SystemConfig::numLeds},
+                                                            luminance{configuration}
   {
     FastLED.addLeds<WS2815, 4>(static_cast<CRGB *>(buffer), _size);
     Time::Timeable::wait(25000);

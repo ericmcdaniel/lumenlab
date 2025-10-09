@@ -14,8 +14,10 @@ namespace Player
     Lights::LedStrip &leds;
 
   public:
-    GameController controller;
-    Player(Engine::SystemConfig &configuration, Engine::RunState &state, Lights::LedStrip &leds);
-    void processGameController();
+    Player(Engine::SystemConfig &configuration,
+           Engine::RunState &state,
+           Lights::LedStrip &leds) : Time::Timeable{},
+                                     config{configuration},
+                                     leds{leds} {};
   };
 }

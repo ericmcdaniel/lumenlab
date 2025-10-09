@@ -115,7 +115,8 @@
 					(type default)
 				)
 				(fill
-					(type none)
+					(type color)
+					(color 255 255 194 1)
 				)
 			)
 			(arc
@@ -340,6 +341,45 @@
 							(size 1.016 1.016)
 						)
 					)
+				)
+			)
+		)
+		(symbol "1_Custom_BarrelJack_1_1"
+			(rectangle
+				(start -8.255 3.81)
+				(end -1.27 1.27)
+				(stroke
+					(width -0.0001)
+					(type solid)
+					(color 255 255 255 1)
+				)
+				(fill
+					(type color)
+					(color 255 255 194 1)
+				)
+			)
+			(circle
+				(center -8.255 2.54)
+				(radius 1.4199)
+				(stroke
+					(width -0.0001)
+					(type solid)
+				)
+				(fill
+					(type color)
+					(color 255 255 194 1)
+				)
+			)
+			(rectangle
+				(start -1.27 4.445)
+				(end 0 0.635)
+				(stroke
+					(width -0.0001)
+					(type solid)
+				)
+				(fill
+					(type color)
+					(color 255 255 194 1)
 				)
 			)
 		)

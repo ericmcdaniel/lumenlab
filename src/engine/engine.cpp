@@ -4,7 +4,7 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : Time::Timeable{}, currentState(RunState::MAIN_MENU), leds{config, currentState}
+  GameEngine::GameEngine() : Time::Timeable{}, currentState(RunState::MAIN_MENU), leds{config, currentState}, display{controller}
   {
     handleStartup();
   }
@@ -13,10 +13,9 @@ namespace Engine
   {
     while (currentState != RunState::ERROR)
     {
-      // checkNavigationRequest();
-
       if (isReady())
       {
+        display.checkNavMenuChangeRequest();
         leds.setDefault();
 
         switch (currentState)
@@ -31,8 +30,6 @@ namespace Engine
         default:
           break;
         }
-
-        player->processGameController();
         leds.adjustLuminance();
         // leds.updateColor();
         render();
@@ -45,6 +42,7 @@ namespace Engine
 
   void GameEngine::handleStartup()
   {
+    controller.begin(config.macAddress);
 
     // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
@@ -59,17 +57,18 @@ namespace Engine
 #endif
 
     log("Attempting to connect to PS3 controller");
+    player = new TestingSandbox::TestPlayer{config, leds};
 
     // ten second attempt to connect to PS3 controller
     int reattempt = 0;
-    while (!player->controller.isConnected() && reattempt < 80)
+    while (!controller.isConnected() && reattempt < 80)
     {
       log("    Searching for PS3 controller...");
       ++reattempt;
       delay(250);
     }
 
-    if (!player->controller.isConnected())
+    if (!controller.isConnected())
     {
       currentState = Engine::RunState::ERROR;
       log("Failed to connect to controller.");

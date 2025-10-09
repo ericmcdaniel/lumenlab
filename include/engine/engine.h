@@ -15,6 +15,7 @@ namespace Engine
   private:
     Engine::SystemConfig config;
     Player::Player *player = nullptr;
+    Player::GameController controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;
 

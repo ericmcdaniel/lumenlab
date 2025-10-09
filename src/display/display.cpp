@@ -31,33 +31,33 @@ namespace Display
     // display.
   }
 
-  void OledDisplay::processMainMenuControls()
+  void OledDisplay::checkNavMenuChangeRequest()
   {
-    if (navigationController.navButtonState != NAV_UNPRESSED)
-    {
-      NavControllerDirection direction = navigationController.navButtonState;
-      navigationController.navButtonState = NAV_UNPRESSED;
+    // if (navigationController.navButtonState != NAV_UNPRESSED)
+    // {
+    //   NavControllerDirection direction = navigationController.navButtonState;
+    //   navigationController.navButtonState = NAV_UNPRESSED;
 
-      switch (direction)
-      {
-      case NAV_UP:
-        log("Up pressed");
-        break;
-      case NAV_DOWN:
-        log("Down pressed");
-        break;
-      case NAV_LEFT:
-        log("Left pressed");
-        break;
-      case NAV_RIGHT:
-        log("Right pressed");
-        break;
-      case NAV_PUSH:
-        log("Center pressed");
-        break;
-      default:
-        break;
-      }
-    }
+    //   switch (direction)
+    //   {
+    //   case NAV_UP:
+    //     log("Up pressed");
+    //     break;
+    //   case NAV_DOWN:
+    //     log("Down pressed");
+    //     break;
+    //   case NAV_LEFT:
+    //     log("Left pressed");
+    //     break;
+    //   case NAV_RIGHT:
+    //     log("Right pressed");
+    //     break;
+    //   case NAV_PUSH:
+    //     log("Center pressed");
+    //     break;
+    //   default:
+    //     break;
+    //   }
+    // }
   }
 }

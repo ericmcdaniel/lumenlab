@@ -3,6 +3,7 @@
 #include "engine/system-config.h"
 #include "engine/run-state.h"
 #include "engine/timeable.h"
+#include "engine/navigation.h"
 #include "player/player.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
@@ -14,6 +15,7 @@ namespace Engine
   {
   private:
     Engine::SystemConfig config;
+    Engine::Navigation navigation;
     Player::Player *player = nullptr;
     Player::GameController controller;
     Lights::LedStrip leds;

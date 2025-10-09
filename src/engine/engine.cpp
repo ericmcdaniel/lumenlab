@@ -4,7 +4,7 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : Time::Timeable{}, currentState(RunState::MAIN_MENU), leds{config, currentState}, display{controller}
+  GameEngine::GameEngine() : Time::Timeable{}, currentState(RunState::MAIN_MENU), leds{config}, navigation{currentState, controller}
   {
     handleStartup();
   }
@@ -15,12 +15,12 @@ namespace Engine
     {
       if (isReady())
       {
-        display.checkNavMenuChangeRequest();
         leds.setDefault();
 
         switch (currentState)
         {
         case RunState::MAIN_MENU:
+          navigation.handleNavigationChange();
           break;
         case RunState::TRANSITION_SANDBOX:
           initSandbox();

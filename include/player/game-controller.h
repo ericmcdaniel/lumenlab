@@ -35,6 +35,9 @@ namespace Player
     uint8_t triangle() { return instance->controller.data.analog.button.triangle; }
     uint8_t square() { return instance->controller.data.analog.button.square; }
 
+    uint8_t start() { return instance->controller.data.button.start; }
+    uint8_t ps() { return instance->controller.data.button.ps; }
+
     AnalogStick<AnalogStickSide::Left> leftAnalog()
     {
       AnalogStick<AnalogStickSide::Left> stick;

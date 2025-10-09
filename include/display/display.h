@@ -2,7 +2,6 @@
 
 #include <Adafruit_SSD1306.h>
 
-#include "player/game-controller.h"
 #include "display/display-images.h"
 
 namespace Display
@@ -18,7 +17,7 @@ namespace Display
     void printLogo();
 
   public:
-    OledDisplay(const Player::GameController &controller) : display(OLED_RESET)
+    OledDisplay() : display(OLED_RESET)
     {
       initialize();
     }

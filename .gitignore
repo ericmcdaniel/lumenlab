@@ -54,4 +54,5 @@ fp-info-cache
 \#auto_saved_files#
 board/**/*.htm
 board/**/*.html
+!board/bom/*.html
 board/**/*.txt

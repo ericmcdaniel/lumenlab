@@ -75,7 +75,7 @@ Regardless of whether your build of LumenLab was professionally manufactured and
 
 ## LED Strip Virtualization
 
-To streamline the software development cycle, a virtualizer was created so that you can simulate what the LEDs would be dislaying, but on a computer screen. This enables new features to be developed in comfort without needing to physically connect to the LED strip. Using the ESP32 is still required for development regardless since it's just an emulator for what the ESP32 is actually doing in real time.
+To streamline the software development cycle, a virtualizer was created so that you can simulate what the LEDs would be displaying, but on a computer screen. This enables new features to be developed in comfort without needing to physically connect to the LED strip. Using the ESP32 is still required for development regardless since it's just an emulator for what the ESP32 is actually doing in real time.
 
 When compiling in debug mode, the ESP32 does not transmit color signals to the LED strip and instead sends its color data via USB serial for virtual rendering. When compiling in release mode, the virtualizer and logs are removed. This virtualizer was created using Python, and uses the [ModernGL](https://moderngl.readthedocs.io/en/5.8.2/) library, an OpenGL binding for Python.
 

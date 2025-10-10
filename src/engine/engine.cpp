@@ -15,24 +15,28 @@ namespace Engine
     {
       if (isReady())
       {
-        leds.setDefault();
+        leds.reset();
 
         switch (currentState)
         {
         case RunState::MAIN_MENU:
-          navigation.handleNavigationChange();
+          // moving directly to the TestingSandbox game for testing
+          currentState = RunState::TRANSITION_SANDBOX;
           break;
         case RunState::TRANSITION_SANDBOX:
           initSandbox();
+          break;
         case RunState::GAME_SANDBOX:
+          game->nextEvent();
           break;
 
         default:
+          // ideally shouldn't encounter this
+          currentState = RunState::ERROR;
           break;
         }
         leds.adjustLuminance();
-        // leds.updateColor();
-        render();
+        renderLedStrip();
 
         // Shooting for 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
         wait(9);
@@ -57,7 +61,7 @@ namespace Engine
 #endif
 
     log("Attempting to connect to PS3 controller");
-    player = new TestingSandbox::TestPlayer{config, leds};
+    game = new Games::TestCore{config, leds, controller};
 
     // ten second attempt to connect to PS3 controller
     int reattempt = 0;
@@ -82,31 +86,29 @@ namespace Engine
 
   void GameEngine::initSandbox()
   {
-    log("Transitioning to Sandbox game. Deleting the player pointer.");
-    if (player)
+    log("Transitioning to Sandbox game.");
+    if (game)
     {
-      delete player;
-      player = nullptr;
-      log("Successfully deleted the player from previous game.");
+      delete game;
+      game = nullptr;
     }
-    player = new TestingSandbox::TestPlayer{config, leds};
+    game = new Games::TestCore{config, leds, controller};
     currentState = RunState::GAME_SANDBOX;
   }
 
-  void GameEngine::render()
+  void GameEngine::renderLedStrip()
   {
 #ifdef VIRTUALIZATION
-    Serial.println("Working?");
-    Serial.write(0xAA);
+    Serial.write(0xAA); // sync bytes
     Serial.write(0x55);
     Serial.write(reinterpret_cast<uint8_t *>(leds.getRawColors()), leds.size() * sizeof(CRGB));
 #endif
 #ifdef RELEASE
     // TODO: Add actual logic to send signal to LEDs. Below is a simulation only
 
-    ////// do NOT include this in the final game, this is for testing purposes only /////
+    ////// do NOT include this in the final build obviously, this is for testing purposes only /////
     Serial.println("LED strip updated.");
-    /////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 #endif
   }
 }

@@ -1,0 +1,38 @@
+#include <stdlib.h>
+
+#include "games/testing-sandbox/test-player.h"
+
+namespace Games
+{
+
+  void TestPlayer::move(const int distance)
+  {
+    int delta = distance / 20;
+
+    pos = (pos + delta) % static_cast<int>(leds.size());
+    if (pos < 0)
+      pos += static_cast<int>(leds.size()) - abs(delta);
+  }
+
+  void TestPlayer::updateLedBuffer()
+  {
+    for (int i = 0; i <= width; ++i)
+    {
+      size_t index = (pos + i) % leds.size();
+      leds.buffer[index].r = static_cast<int>(245.0 * (1.0 - abs(i - 4) / 4.0));
+      leds.buffer[index].g = static_cast<int>(215.0 * (1.0 - abs(i - 4) / 4.0));
+      leds.buffer[index].b = static_cast<int>(128.0 * (1.0 - abs(i - 4) / 4.0));
+    }
+  }
+
+  void TestPlayer::updateLedBuffer2()
+  {
+    for (int i = 0; i <= width; ++i)
+    {
+      size_t index = (pos + i) % leds.size();
+      leds.buffer[index].r = static_cast<int>(103.0 * (1.0 - abs(i - 4) / 4.0));
+      leds.buffer[index].g = static_cast<int>(162.0 * (1.0 - abs(i - 4) / 4.0));
+      leds.buffer[index].b = static_cast<int>(235.0 * (1.0 - abs(i - 4) / 4.0));
+    }
+  }
+}

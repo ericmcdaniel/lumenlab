@@ -2,7 +2,7 @@
 
 #include "engine/timeable.h"
 #include "engine/run-state.h"
-#include "player/game-controller.h"
+#include "player/controller.h"
 
 namespace Engine
 {
@@ -11,10 +11,10 @@ namespace Engine
   {
   private:
     Engine::RunState state;
-    Player::GameController controller;
+    Player::Controller controller;
 
   public:
-    Navigation(Engine::RunState &_state, const Player::GameController &_controller) : state(_state), controller(_controller) {};
+    Navigation(Engine::RunState &_state, const Player::Controller &_controller) : state(_state), controller(_controller) {};
     void handleNavigationChange();
   };
 }

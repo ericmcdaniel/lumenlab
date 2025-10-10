@@ -94,7 +94,7 @@ class LEDVisualizer(mglw.WindowConfig):
             width=300
         )
         self.description = pyglet.text.Label(
-            "LED Debug Visualizer",
+            "LED Debug Virtualizer",
             font_name='Arial',
             font_size=24,
             x=self.window_size[0] // 2,

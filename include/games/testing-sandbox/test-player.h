@@ -1,17 +1,23 @@
 #pragma once
 
 #include "player/player.h"
+#include "logger.h"
 
-namespace TestingSandbox
+namespace Games
 {
   class TestPlayer : public Player::Player
   {
   private:
-    unsigned int position;
+    int pos;
+    int width = 7;
+    Lights::LedStrip &leds;
     // unsigned int color;
-    Engine::RunState runType = Engine::RunState::GAME_SANDBOX;
 
   public:
-    TestPlayer(Engine::SystemConfig &configuration, Lights::LedStrip &leds) : Player::Player{configuration, runType, leds}, position{0} {};
+    TestPlayer(Engine::SystemConfig &configuration, Lights::LedStrip &l) : Player::Player{configuration, leds}, pos{0}, leds{l} {};
+    unsigned long position() { return pos; }
+    void move(const int distance);
+    void updateLedBuffer();
+    void updateLedBuffer2();
   };
 }

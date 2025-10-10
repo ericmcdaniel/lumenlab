@@ -21,7 +21,21 @@
 			"utility": "cpp",
 			"random": "cpp",
 			"list": "cpp",
-			"condition_variable": "cpp"
+			"condition_variable": "cpp",
+			"functional": "cpp",
+			"iterator": "cpp",
+			"memory_resource": "cpp",
+			"optional": "cpp",
+			"fstream": "cpp",
+			"istream": "cpp",
+			"ostream": "cpp",
+			"sstream": "cpp",
+			"streambuf": "cpp",
+			"thread": "cpp",
+			"tuple": "cpp",
+			"ratio": "cpp",
+			"system_error": "cpp",
+			"cmath": "cpp"
 		},
 		"terminal.integrated.profiles.windows": {
 			"PowerShell": {

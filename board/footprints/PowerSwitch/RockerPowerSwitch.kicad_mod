@@ -3,12 +3,11 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(property "Reference" "REF**"
-		(at 0 -23 0)
+	(property "Reference" "SW1"
+		(at 0 15 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(hide yes)
-		(uuid "55695acd-b96a-4e02-a2be-e561eb7b532d")
+		(uuid "bc30cb9c-1833-4784-ae9f-6207622ac40a")
 		(effects
 			(font
 				(size 1 1)
@@ -16,12 +15,11 @@
 			)
 		)
 	)
-	(property "Value" "PowerSwitch"
+	(property "Value" "SW_SPST"
 		(at 0 11.5 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(hide yes)
-		(uuid "0025fe8d-68cb-4ae2-9c68-e1523b661e03")
+		(uuid "deb2cca4-0906-4ebb-a877-98f7dd1d1faa")
 		(effects
 			(font
 				(size 1 1)
@@ -34,7 +32,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "064f0d12-10c4-47aa-968c-eeeda4537118")
+		(uuid "f488ff5f-8edb-4b6f-83fa-c0c0d2dd0d39")
 		(effects
 			(font
 				(size 1 1)
@@ -47,7 +45,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "a10b7bc6-f77b-493c-a114-4a0bc6bb8557")
+		(uuid "66174cba-7ede-44de-8eaf-691c8a280711")
 		(effects
 			(font
 				(size 1 1)
@@ -65,13 +63,13 @@
 		)
 		(fill no)
 		(layer "Edge.Cuts")
-		(uuid "d3377dbb-1c75-4fa9-b319-8b943bc9d7fe")
+		(uuid "582ca93c-edde-409e-a542-62f6576bfce1")
 	)
 	(fp_text user "Switch module"
 		(at 0 -12 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "d52e7dda-c04b-49ab-9c88-e1d629b84649")
+		(uuid "3ae7f51e-11ad-4256-a62b-c640ab3a5739")
 		(effects
 			(font
 				(size 1 1)
@@ -85,7 +83,7 @@
 		(at 0 13 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "b9b99e44-4398-4974-8306-a1d01d3a0aa3")
+		(uuid "f9ab14ec-286c-4c11-be4a-82b1445f4d75")
 		(effects
 			(font
 				(size 1 1)
@@ -99,7 +97,7 @@
 		(drill 1.5)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "e9dfdf0d-89b2-40a5-8d06-22fc93787e8a")
+		(uuid "70ae6ab1-d92e-4b9c-83fb-51f8fb03e865")
 	)
 	(pad "2" thru_hole circle
 		(at 3.5 18.5)
@@ -107,13 +105,13 @@
 		(drill 1.5)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "a2a128ba-b0ba-4966-b906-6a81f502f7e2")
+		(uuid "a5248004-e3c6-4e8d-a32b-1369cc672583")
 	)
 	(zone
 		(net 0)
 		(net_name "")
 		(layer "F.SilkS")
-		(uuid "f338cd58-1fb0-4ea5-b846-dbff19722103")
+		(uuid "4dfdd2bd-fff3-476b-ab21-67d53acaed6c")
 		(hatch edge 0.5)
 		(connect_pads
 			(clearance 0)
@@ -142,4 +140,15 @@
 		)
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/3d-models/RockerPowerSwitch.step"
+		(offset
+			(xyz 0 0 -21)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -90)
+		)
+	)
 )

@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 1.0,
-          "width": 0.52
+          "drill": 0.7112,
+          "height": 1.1684,
+          "width": 1.1684
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -465,6 +465,7 @@
       "single_global_label": "ignore",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
+      "undefined_netclass": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
       "wire_dangling": "error"
@@ -504,7 +505,7 @@
         "diff_pair_width": 0.1524,
         "microvia_diameter": 0.6858,
         "microvia_drill": 0.3302,
-        "name": "JTAG_Clearance",
+        "name": "jtag_clearance_exempt",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",

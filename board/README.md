@@ -13,6 +13,7 @@ Still to be finalized, however you can [view the tentative list of components he
 
 # PCB Layout
 Still to be finalized. Components were placed but still need to be routed and/or have copper pour areas defined.
+![LumenLab PCB layout](./images/lumenlab-pcb-layout-front.png)
 
 # 3D Preview
 ![PCB Design, front](./images/lumenlab-pcb-3d-view-front.png)

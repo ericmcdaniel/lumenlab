@@ -61,7 +61,7 @@
 		(uuid "d3b13e20-61e8-4cdc-9bf1-8dfe000036c5")
 	)
 	(fp_line
-		(start -4.5 7.7)
+		(start -4.5 4)
 		(end -4.5 -6.7)
 		(stroke
 			(width 0.127)
@@ -91,17 +91,7 @@
 		(uuid "f03b524c-efa3-4928-923b-2d97c794ec95")
 	)
 	(fp_line
-		(start 4.5 7.7)
-		(end -4.5 7.7)
-		(stroke
-			(width 0.127)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "cb7a5e57-3c43-4126-9706-fbb8ee4a9835")
-	)
-	(fp_line
-		(start 4.5 7.7)
+		(start 4.5 4)
 		(end 4.5 -1.23)
 		(stroke
 			(width 0.127)

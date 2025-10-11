@@ -1,0 +1,21 @@
+(version 1)
+(rule "Ignore clearance inside JTAG area"
+  (condition "A.insideArea('jtag_clearance_exempt') && B.insideArea('jtag_clearance_exempt')")
+  (constraint clearance (min 0mm))
+)
+(rule "Ignore clearance inside JTAG area"
+  (condition "A.insideArea('usb_c_s_clearance_exempt') && B.insideArea('usb_c_s_clearance_exempt')")
+  (constraint clearance (min 0mm))
+)
+(rule "Ignore clearance inside JTAG area"
+  (condition "A.insideArea('usb_c_n_clearance_exempt') && B.insideArea('usb_c_n_clearance_exempt')")
+  (constraint clearance (min 0mm))
+)
+(rule "Ignore clearance inside USB-C NC area"
+  (condition "A.insideArea('usb_c_n_clearance_exempt') && B.insideArea('usb_c_n_clearance_exempt')")
+  (constraint clearance (min 0mm))
+)
+(rule "Ignore clearance inside USB-C NC area"
+  (condition "A.insideArea('usb_c_s_clearance_exempt') && B.insideArea('usb_c_s_clearance_exempt')")
+  (constraint clearance (min 0mm))
+)

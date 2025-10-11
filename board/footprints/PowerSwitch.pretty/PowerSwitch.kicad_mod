@@ -65,18 +65,6 @@
 		(layer "F.SilkS")
 		(uuid "374f155d-27dc-424c-ab1e-4e891ef9b66e")
 	)
-	(fp_poly
-		(pts
-			(xy -9 -26.5) (xy 9 -26.5) (xy 9 14.5) (xy -9 14.5)
-		)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(fill no)
-		(layer "F.SilkS")
-		(uuid "c81892ca-bd25-4533-826a-548a902fcf81")
-	)
 	(fp_text user "Switch module"
 		(at 0 -12 0)
 		(unlocked yes)

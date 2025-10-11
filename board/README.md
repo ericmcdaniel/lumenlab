@@ -14,12 +14,13 @@ Still to be finalized, however you can [view the tentative list of components he
 # PCB Layout
 Still to be finalized. Components were placed but still need to be routed and/or have copper pour areas defined.
 ![LumenLab PCB layout](./images/lumenlab-pcb-layout-front.png)
+<p align="center"><i>Figure 2: PCB layout (front)</i></p>
 
 # 3D Preview
 ![PCB Design, front](./images/lumenlab-pcb-3d-view-front.png)
-<p align="center"><i>Figure 2: PCB layout (front)</i></p>
+<p align="center"><i>Figure 3: PCB 3D preview (front)</i></p>
 
 ![PCB Design, back](./images/lumenlab-pcb-3d-view-back.png)
-<p align="center"><i>Figure 3: PCB layout (back)</i></p>
+<p align="center"><i>Figure 4: PCB 3D preview (back)</i></p>
 
 A 3D enclosure will be created to give the final device a clean look.

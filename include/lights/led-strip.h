@@ -6,13 +6,12 @@
 #undef max
 
 #include "engine/system-config.h"
-#include "engine/timeable.h"
 #include "lights/led-buffer.h"
 #include "lights/led-luminance.h"
 
 namespace Lights
 {
-  class LedStrip : public Time::Timeable
+  class LedStrip
   {
   private:
     const Engine::SystemConfig &config;

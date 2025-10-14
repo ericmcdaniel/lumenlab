@@ -4,7 +4,7 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : Time::Timeable{}, currentState(RunState::MAIN_MENU), leds{config}, navigation{currentState, controller}
+  GameEngine::GameEngine() : currentState(RunState::MAIN_MENU), leds{config}, navigation{currentState, controller}
   {
     handleStartup();
   }
@@ -13,7 +13,7 @@ namespace Engine
   {
     while (currentState != RunState::ERROR)
     {
-      if (isReady())
+      if (refreshRateTimer.isReady())
       {
         leds.reset();
 
@@ -29,17 +29,17 @@ namespace Engine
         case RunState::GAME_SANDBOX:
           game->nextEvent();
           break;
-
+        case RunState::NO_CONTROLLER_CONNECTION:
+          standbyControllerConnection();
+          break;
         default:
           // ideally shouldn't encounter this
           currentState = RunState::ERROR;
           break;
         }
-        leds.adjustLuminance();
-        renderLedStrip();
 
-        // Shooting for 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
-        wait(9);
+        renderLedStrip();
+        refreshRateTimer.wait(9); // Shooting for 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
       }
     }
   }
@@ -74,13 +74,26 @@ namespace Engine
 
     if (!controller.isConnected())
     {
-      currentState = Engine::RunState::ERROR;
+      currentState = Engine::RunState::NO_CONTROLLER_CONNECTION;
       log("Failed to connect to controller.");
     }
     else
     {
       currentState = RunState::MAIN_MENU;
       log("Startup process completed.");
+    }
+  }
+
+  void GameEngine::standbyControllerConnection()
+  {
+    while (!controller.isConnected())
+    {
+      for (int i = 0; i <= leds.size(); ++i)
+      {
+        leds.buffer[i].r = 255;
+        leds.buffer[i].g = 0;
+        leds.buffer[i].b = 0;
+      }
     }
   }
 
@@ -98,6 +111,7 @@ namespace Engine
 
   void GameEngine::renderLedStrip()
   {
+    leds.adjustLuminance();
 #ifdef VIRTUALIZATION
     Serial.write(0xAA); // sync bytes
     Serial.write(0x55);

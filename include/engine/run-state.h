@@ -7,6 +7,7 @@ namespace Engine
     MAIN_MENU,
     TRANSITION_SANDBOX,
     GAME_SANDBOX,
+    NO_CONTROLLER_CONNECTION,
     ERROR
   };
 }

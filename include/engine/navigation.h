@@ -1,13 +1,13 @@
 #pragma once
 
-#include "engine/timeable.h"
+#include "engine/timer.h"
 #include "engine/run-state.h"
 #include "player/controller.h"
 
 namespace Engine
 {
 
-  class Navigation : Time::Timeable
+  class Navigation : Engine::Timer
   {
   private:
     Engine::RunState state;

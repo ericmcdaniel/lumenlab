@@ -1,13 +1,13 @@
 #pragma once
 
 #include "player/controller.h"
-#include "engine/timeable.h"
+#include "engine/timer.h"
 #include "engine/system-config.h"
 #include "lights/led-strip.h"
 
 namespace Player
 {
-  class Player : public Time::Timeable
+  class Player
   {
   private:
     const Engine::SystemConfig &config;
@@ -15,8 +15,7 @@ namespace Player
 
   public:
     Player(Engine::SystemConfig &configuration,
-           Lights::LedStrip &leds) : Time::Timeable{},
-                                     config{configuration},
+           Lights::LedStrip &leds) : config{configuration},
                                      leds{leds} {};
   };
 }

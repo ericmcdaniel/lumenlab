@@ -2,7 +2,7 @@
 
 #include "engine/system-config.h"
 #include "engine/run-state.h"
-#include "engine/timeable.h"
+#include "engine/timer.h"
 #include "engine/navigation.h"
 #include "games/testing-sandbox/test-core.h"
 #include "lights/led-strip.h"
@@ -11,11 +11,12 @@
 
 namespace Engine
 {
-  class GameEngine : private Time::Timeable
+  class GameEngine
   {
   private:
     Engine::SystemConfig config;
     Engine::Navigation navigation;
+    Engine::Timer refreshRateTimer;
     Games::TestCore *game = nullptr;
     Player::Controller controller;
     Lights::LedStrip leds;
@@ -30,5 +31,6 @@ namespace Engine
 
     GameEngine();
     void runApplication();
+    void standbyControllerConnection();
   };
 }

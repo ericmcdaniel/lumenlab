@@ -5,7 +5,7 @@ namespace Player
 {
 
   // Player::Player(Engine::SystemConfig &configuration,
-  //                Engine::RunState &state,
+  //                Engine::CoreStateOptions &state,
   //                Lights::LedStrip &leds) : Engine::Timer{},
   //                                          config{configuration},
   //                                          leds{leds}

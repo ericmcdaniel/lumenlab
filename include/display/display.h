@@ -3,6 +3,7 @@
 #include <Adafruit_SSD1306.h>
 
 #include "display/display-images.h"
+#include "player/controller.h"
 
 namespace Display
 {
@@ -14,10 +15,11 @@ namespace Display
     static constexpr int DISPLAY_ADDRESS = 0x3c;
     Adafruit_SSD1306 display;
     ImageInitLogo initLogo;
+    Player::Controller &controller;
     void printLogo();
 
   public:
-    OledDisplay() : display(OLED_RESET)
+    OledDisplay(Player::Controller &c) : display(OLED_RESET), controller{c}
     {
       initialize();
     }

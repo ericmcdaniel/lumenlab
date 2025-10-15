@@ -4,37 +4,37 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : currentState(RunState::MAIN_MENU), leds{config}, navigation{currentState, controller}
+  GameEngine::GameEngine() : leds{config}, display{controller}
   {
-    handleStartup();
+    initializeEngine();
   }
 
   void GameEngine::runApplication()
   {
-    while (currentState != RunState::ERROR)
+    while (state.isRunning())
     {
       if (refreshRateTimer.isReady())
       {
         leds.reset();
 
-        switch (currentState)
+        switch (state.getCurrent())
         {
-        case RunState::MAIN_MENU:
+        case CoreStateOptions::MAIN_MENU:
           // moving directly to the TestingSandbox game for testing
-          currentState = RunState::TRANSITION_SANDBOX;
+          state.setNext(CoreStateOptions::GAME_SANDBOX);
           break;
-        case RunState::TRANSITION_SANDBOX:
+        case CoreStateOptions::TRANSITION_SANDBOX:
           initSandbox();
           break;
-        case RunState::GAME_SANDBOX:
+        case CoreStateOptions::GAME_SANDBOX:
           game->nextEvent();
           break;
-        case RunState::NO_CONTROLLER_CONNECTION:
+        case CoreStateOptions::NO_CONTROLLER_CONNECTION:
           standbyControllerConnection();
           break;
         default:
           // ideally shouldn't encounter this
-          currentState = RunState::ERROR;
+          state.setNext(CoreStateOptions::ERROR);
           break;
         }
 
@@ -44,7 +44,7 @@ namespace Engine
     }
   }
 
-  void GameEngine::handleStartup()
+  void GameEngine::initializeEngine()
   {
     controller.begin(config.macAddress);
 
@@ -61,7 +61,6 @@ namespace Engine
 #endif
 
     log("Attempting to connect to PS3 controller");
-    game = new Games::TestCore{config, leds, controller};
 
     // ten second attempt to connect to PS3 controller
     int reattempt = 0;
@@ -74,27 +73,27 @@ namespace Engine
 
     if (!controller.isConnected())
     {
-      currentState = Engine::RunState::NO_CONTROLLER_CONNECTION;
-      log("Failed to connect to controller.");
+      state.setNext(CoreStateOptions::NO_CONTROLLER_CONNECTION);
+      log("Failed to connect to controller. Entering No Controller Connection sequence");
     }
     else
     {
-      currentState = RunState::MAIN_MENU;
-      log("Startup process completed.");
+      state.setNext(CoreStateOptions::MAIN_MENU);
+      log("Startup process completed. Transitioning to Main Menu");
     }
   }
 
   void GameEngine::standbyControllerConnection()
   {
-    while (!controller.isConnected())
-    {
-      for (int i = 0; i <= leds.size(); ++i)
-      {
-        leds.buffer[i].r = 255;
-        leds.buffer[i].g = 0;
-        leds.buffer[i].b = 0;
-      }
-    }
+    // while (!controller.isConnected())
+    // {
+    //   for (int i = 0; i <= leds.size(); ++i)
+    //   {
+    //     leds.buffer[i].r = 255;
+    //     leds.buffer[i].g = 0;
+    //     leds.buffer[i].b = 0;
+    //   }
+    // }
   }
 
   void GameEngine::initSandbox()
@@ -106,7 +105,7 @@ namespace Engine
       game = nullptr;
     }
     game = new Games::TestCore{config, leds, controller};
-    currentState = RunState::GAME_SANDBOX;
+    state.setNext(CoreStateOptions::GAME_SANDBOX);
   }
 
   void GameEngine::renderLedStrip()

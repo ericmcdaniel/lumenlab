@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Arduino.h>
+
 #ifdef DEBUG
 #define log(msg)                                                                    \
   do                                                                                \

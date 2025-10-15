@@ -11,12 +11,12 @@ activate-virtual-env.*
 __pycache__
 
 *.drl
-*.gbr
 *.gko
+*.gbr
+*.gbrjob
 *.gts
 *.gbl
 *.gbs
-*.gbr
 *.cmp
 *.drd
 *.dxf

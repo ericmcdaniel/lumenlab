@@ -6,7 +6,7 @@
 	(descr "USB TYPE C, USB 2.0, SMT, https://www.jae.com/en/connectors/series/detail/product/id=91780")
 	(tags "USB C Type-C Receptacle SMD USB 2.0")
 	(property "Reference" "REF**"
-		(at 0 -5 0)
+		(at 0 -4.6 0)
 		(layer "F.SilkS")
 		(uuid "0c7d67a2-2d36-4939-8a8b-3adf045277c7")
 		(effects
@@ -75,8 +75,8 @@
 		(uuid "28ceec9c-c242-4a32-a49c-c308126a0fc0")
 	)
 	(fp_line
-		(start -5.47 -4.33)
-		(end -5.47 4.1)
+		(start -5 -3.9)
+		(end -5 3.8)
 		(stroke
 			(width 0.05)
 			(type solid)
@@ -85,8 +85,8 @@
 		(uuid "f5f02ca6-5385-4f0c-bdba-0f6496ed03e8")
 	)
 	(fp_line
-		(start -5.47 -4.33)
-		(end 5.47 -4.33)
+		(start -5 -3.9)
+		(end 5 -3.9)
 		(stroke
 			(width 0.05)
 			(type solid)
@@ -95,8 +95,8 @@
 		(uuid "9320ba63-c8e5-4807-98b8-97c881cb5ef5")
 	)
 	(fp_line
-		(start -5.47 4.1)
-		(end 5.47 4.1)
+		(start -5 3.8)
+		(end 5 3.8)
 		(stroke
 			(width 0.05)
 			(type solid)
@@ -105,8 +105,8 @@
 		(uuid "2758543e-e200-414c-9c48-a9bdacc71318")
 	)
 	(fp_line
-		(start 5.47 -4.33)
-		(end 5.47 4.1)
+		(start 5 -3.9)
+		(end 5 3.8)
 		(stroke
 			(width 0.05)
 			(type solid)

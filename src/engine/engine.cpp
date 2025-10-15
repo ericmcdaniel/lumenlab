@@ -4,7 +4,7 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : leds{config}, display{controller}
+  GameEngine::GameEngine() : leds{config}, display{controller, state}
   {
     initializeEngine();
   }
@@ -16,25 +16,26 @@ namespace Engine
       if (refreshRateTimer.isReady())
       {
         leds.reset();
+        // display.updateDisplay();
 
         switch (state.getCurrent())
         {
-        case CoreStateOptions::MAIN_MENU:
+        case StateOptions::MainMenu:
           // moving directly to the TestingSandbox game for testing
-          state.setNext(CoreStateOptions::GAME_SANDBOX);
+          // state.setNext(CoreStateOptions::GAME_SANDBOX);
           break;
-        case CoreStateOptions::TRANSITION_SANDBOX:
+        case StateOptions::TransitionSandbox:
           initSandbox();
           break;
-        case CoreStateOptions::GAME_SANDBOX:
+        case StateOptions::GameSandbox:
           game->nextEvent();
           break;
-        case CoreStateOptions::NO_CONTROLLER_CONNECTION:
+        case StateOptions::NoControllerConnected:
           standbyControllerConnection();
           break;
         default:
           // ideally shouldn't encounter this
-          state.setNext(CoreStateOptions::ERROR);
+          state.setNext(StateOptions::Error);
           break;
         }
 
@@ -73,12 +74,12 @@ namespace Engine
 
     if (!controller.isConnected())
     {
-      state.setNext(CoreStateOptions::NO_CONTROLLER_CONNECTION);
+      state.setNext(StateOptions::NoControllerConnected);
       log("Failed to connect to controller. Entering No Controller Connection sequence");
     }
     else
     {
-      state.setNext(CoreStateOptions::MAIN_MENU);
+      state.setNext(StateOptions::MainMenu);
       log("Startup process completed. Transitioning to Main Menu");
     }
   }
@@ -105,7 +106,7 @@ namespace Engine
       game = nullptr;
     }
     game = new Games::TestCore{config, leds, controller};
-    state.setNext(CoreStateOptions::GAME_SANDBOX);
+    state.setNext(StateOptions::GameSandbox);
   }
 
   void GameEngine::renderLedStrip()

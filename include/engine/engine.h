@@ -15,7 +15,6 @@ namespace Engine
   private:
     Engine::SystemConfig config;
     Engine::Timer refreshRateTimer;
-    Engine::Timer ledStripTimer;
     Games::TestCore *game = nullptr;
     Player::Controller controller;
     Lights::LedStrip leds;
@@ -26,7 +25,7 @@ namespace Engine
     void renderLedStrip();
 
   public:
-    CoreStateManager state;
+    StateManager state;
 
     GameEngine();
     void runApplication();

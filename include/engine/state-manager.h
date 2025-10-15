@@ -2,28 +2,28 @@
 
 namespace Engine
 {
-  enum class CoreStateOptions
+  enum class StateOptions
   {
-    INITIALIZE,
-    MAIN_MENU,
-    NO_CONTROLLER_CONNECTION,
-    TRANSITION_SANDBOX,
-    GAME_SANDBOX,
-    ERROR
+    Initialize,
+    MainMenu,
+    NoControllerConnected,
+    TransitionSandbox,
+    GameSandbox,
+    Error
   };
 
-  class CoreStateManager
+  class StateManager
   {
   private:
-    CoreStateOptions curr;
+    StateOptions curr;
+    // Display::OledDisplay &display;
 
   public:
-    CoreStateManager() : curr{CoreStateOptions::INITIALIZE} {}
-    CoreStateManager(CoreStateOptions cs) : curr{cs} {}
-    // ~CoreStateManager() = delete;
+    StateManager() : curr{StateOptions::Initialize} {}
+    StateManager(StateOptions cs) : curr{cs} {}
 
-    const CoreStateOptions getCurrent() const { return curr; }
-    void setNext(CoreStateOptions cs);
-    bool isRunning() { return curr != CoreStateOptions::ERROR; }
+    const StateOptions getCurrent() const { return curr; }
+    void setNext(StateOptions cs);
+    bool isRunning() { return curr != StateOptions::Error; }
   };
 }

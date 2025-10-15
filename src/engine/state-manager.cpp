@@ -3,13 +3,13 @@
 
 namespace Engine
 {
-  void CoreStateManager::setNext(CoreStateOptions cs)
+  void StateManager::setNext(StateOptions cs)
   {
     switch (cs)
     {
-    case CoreStateOptions::GAME_SANDBOX:
-      if (curr != CoreStateOptions::TRANSITION_SANDBOX)
-        curr = CoreStateOptions::TRANSITION_SANDBOX;
+    case StateOptions::GameSandbox:
+      if (curr != StateOptions::TransitionSandbox)
+        curr = StateOptions::TransitionSandbox;
       else
         curr = cs;
       break;

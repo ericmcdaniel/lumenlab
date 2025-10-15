@@ -2,29 +2,40 @@
 
 #include <Adafruit_SSD1306.h>
 
+#include "engine/timer.h"
+#include "engine/state-manager.h"
+#include "display/state-manager.h"
 #include "display/display-images.h"
 #include "player/controller.h"
 
 namespace Display
 {
 
-  class OledDisplay
+  class OledDisplay : public Engine::Timer
   {
   private:
     static constexpr int OLED_RESET = 4;
     static constexpr int DISPLAY_ADDRESS = 0x3c;
     Adafruit_SSD1306 display;
+
+    StateManager state;
+    Engine::StateManager &engineState;
     ImageInitLogo initLogo;
     Player::Controller &controller;
-    void printLogo();
+    void drawMainMenu();
+    void drawLogo();
+    void drawHeader(const char *message);
+    void drawBootScreen();
 
   public:
-    OledDisplay(Player::Controller &c) : display(OLED_RESET), controller{c}
+    OledDisplay(Player::Controller &c, Engine::StateManager &es) : Engine::Timer{}, display{OLED_RESET}, controller{c}, engineState{es}
     {
-      initialize();
+      Wire.begin();
+      display.begin(SSD1306_SWITCHCAPVCC, DISPLAY_ADDRESS);
+      drawBootScreen();
     }
-    void initialize();
-    void displayHeader(const char *message);
-    void checkNavMenuChangeRequest();
+
+    void updateDisplay();
+    // void checkNavMenuChangeRequest();
   };
 }

@@ -7,7 +7,9 @@ namespace Lights
                                                             buffer{Engine::SystemConfig::numLeds},
                                                             luminance{configuration}
   {
+#ifdef RELEASE
     FastLED.addLeds<WS2815, 4>(static_cast<CRGB *>(buffer), _size);
+#endif
   }
 
   CRGB *LedStrip::getRawColors()

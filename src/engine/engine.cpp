@@ -112,17 +112,17 @@ namespace Engine
   void GameEngine::renderLedStrip()
   {
     leds.adjustLuminance();
-#ifdef VIRTUALIZATION
-    Serial.write(0xAA); // sync bytes
-    Serial.write(0x55);
-    Serial.write(reinterpret_cast<uint8_t *>(leds.getRawColors()), leds.size() * sizeof(CRGB));
-#endif
 #ifdef RELEASE
     // TODO: Add actual logic to send signal to LEDs. Below is a simulation only
 
     ////// do NOT include this in the final build obviously, this is for testing purposes only /////
     Serial.println("LED strip updated.");
     ////////////////////////////////////////////////////////////////////////////////////////////////
+#endif
+#ifdef VIRTUALIZATION
+    Serial.write(0xAA); // sync bytes
+    Serial.write(0x55);
+    Serial.write(reinterpret_cast<uint8_t *>(leds.getRawColors()), leds.size() * sizeof(CRGB));
 #endif
   }
 }

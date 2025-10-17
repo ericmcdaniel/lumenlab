@@ -4,7 +4,6 @@
 
 #include "engine/timer.h"
 #include "engine/state-manager.h"
-#include "display/state-manager.h"
 #include "display/display-images.h"
 #include "player/controller.h"
 
@@ -18,14 +17,13 @@ namespace Display
     static constexpr int DISPLAY_ADDRESS = 0x3c;
     Adafruit_SSD1306 display;
 
-    StateManager state;
     Engine::StateManager &engineState;
     ImageInitLogo initLogo;
     Player::Controller &controller;
-    void drawMainMenu();
     void drawLogo();
     void drawHeader(const char *message);
     void drawBootScreen();
+    void drawMainMenu();
 
   public:
     OledDisplay(Player::Controller &c, Engine::StateManager &es) : Engine::Timer{}, display{OLED_RESET}, controller{c}, engineState{es}

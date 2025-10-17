@@ -9,18 +9,34 @@ namespace Display
   {
     if (isReady())
     {
-      switch (state.getCurrent())
+      // if (engSt.getCurrent() != prevEngSt.getCurrent())
+      // {
+      //   switch (engSt.getCurrent())
+      //   {
+      //   case Engine::StateOptions::MainMenu:
+      //     logf("Changing to Menu Home");
+      //     state.setNext(StateOptions::MenuHome);
+      //     break;
+      //   default:
+      //     state.setNext(StateOptions::BootScreen);
+      //     break;
+      //   }
+      //   prevEngSt.setNext(engSt.getCurrent());
+      // }
+
+      switch (engineState.getCurrent())
       {
-      case StateOptions::BootScreen:
+      case Engine::StateOptions::Initialize:
         drawBootScreen();
         break;
-      case StateOptions::MenuHome:
+      case Engine::StateOptions::MenuHome:
         drawMainMenu();
         break;
       default:
         drawBootScreen();
         break;
       }
+      wait(500);
     }
   }
 
@@ -48,8 +64,15 @@ namespace Display
     display.clearDisplay();
     display.setTextColor(WHITE);
     display.setTextSize(1);
-    display.setCursor(30, 0);
+    display.setCursor(39, 0);
     display.print("Main Menu");
+
+    display.setCursor(0, 8);
+    display.print("> Games");
+    display.setCursor(0, 16);
+    display.print("  Scenes");
+    display.setCursor(0, 24);
+    display.print("  Ambient");
 
     display.display();
   }

@@ -14,21 +14,25 @@ namespace Engine
   {
   private:
     Engine::SystemConfig config;
-    Engine::Timer refreshRateTimer;
+    Engine::Timer ledRenderTimer;
     Games::TestCore *game = nullptr;
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;
+
+    bool menuReturnRequest = false;
 
     void initializeEngine();
     void initSandbox();
     void renderLedStrip();
 
   public:
-    StateManager state;
-
+    StateManager engine;
     GameEngine();
+
     void runApplication();
     void standbyControllerConnection();
+    void handleMainMenu();
+    void checkChangeRequest();
   };
 }

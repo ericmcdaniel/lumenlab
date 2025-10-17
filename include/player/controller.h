@@ -13,6 +13,27 @@ namespace Player
     int8_t y = 0;
   };
 
+  enum class ControllerButton
+  {
+    Cross,
+    Circle,
+    Triangle,
+    Square,
+    Up,
+    Down,
+    Left,
+    Right,
+    L1,
+    L2,
+    L3,
+    R1,
+    R2,
+    R3,
+    Start,
+    Select,
+    Ps
+  };
+
   class Controller
   {
   public:
@@ -32,8 +53,17 @@ namespace Player
     uint8_t start() { return instance->controller.data.button.start; }
     uint8_t ps() { return instance->controller.data.button.ps; }
 
+    uint8_t psDown() { return instance->controller.event.button_down.ps; }
+    uint8_t psUp() { return instance->controller.event.button_up.ps; }
+
     AnalogStick leftAnalog();
     AnalogStick rightAnalog();
+
+    const bool isButtonDown(ControllerButton button) const;
+    const bool isButtonUp(ControllerButton button) const;
+
+    uint8_t buttonsPressed = 0;
+    const bool wasPressed(ControllerButton button);
 
     const bool isConnected() { return instance->connection; }
 

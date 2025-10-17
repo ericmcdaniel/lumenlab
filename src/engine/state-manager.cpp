@@ -9,9 +9,15 @@ namespace Engine
     {
     case StateOptions::GameSandbox:
       if (curr != StateOptions::TransitionSandbox)
+      {
+        log("Transitioning to Game (Sandbox) (Transition Layer).");
         curr = StateOptions::TransitionSandbox;
+      }
       else
+      {
+        log("Transitioning to Game (Sandbox).");
         curr = cs;
+      }
       break;
     default:
       curr = cs;

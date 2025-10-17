@@ -5,7 +5,9 @@ namespace Engine
   enum class StateOptions
   {
     Initialize,
-    MainMenu,
+    MenuHome,
+    MenuGames,
+    MenuScenes,
     NoControllerConnected,
     TransitionSandbox,
     GameSandbox,
@@ -16,7 +18,6 @@ namespace Engine
   {
   private:
     StateOptions curr;
-    // Display::OledDisplay &display;
 
   public:
     StateManager() : curr{StateOptions::Initialize} {}

@@ -28,11 +28,22 @@ namespace Engine
   void StateManager::selectNextMenu(MenuNavigationDirection direction)
   {
     int count = static_cast<int>(MainMenu_Selection::COUNT);
-    int position = static_cast<int>(userMenuChoice);
+    int position = static_cast<int>(userMainMenuChoice);
     int step = (direction == MenuNavigationDirection::Forward) ? 1 : -1;
 
     position = (position + step + count) % count;
 
-    userMenuChoice = static_cast<MainMenu_Selection>(position);
+    userMainMenuChoice = static_cast<MainMenu_Selection>(position);
+  }
+
+  void StateManager::selectNextGame(MenuNavigationDirection direction)
+  {
+    int count = static_cast<int>(Game_Selection::COUNT);
+    int position = static_cast<int>(userGameChoice);
+    int step = (direction == MenuNavigationDirection::Forward) ? 1 : -1;
+
+    position = (position + step + count) % count;
+
+    userGameChoice = static_cast<Game_Selection>(position);
   }
 }

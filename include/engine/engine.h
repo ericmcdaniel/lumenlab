@@ -29,7 +29,8 @@ namespace Engine
 
     void runApplication();
     void standbyControllerConnection();
-    void handleMainMenu();
+    void navigateMainMenu();
+    void navigateGameMenu();
     void checkChangeRequest();
   };
 }

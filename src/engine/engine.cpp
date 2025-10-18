@@ -22,9 +22,10 @@ namespace Engine
         switch (state.getCurrent())
         {
         case StateOptions::Menu_Home:
-          // moving directly to the TestingSandbox game for testing
-          // state.setNext(CoreStateOptions::GAME_SANDBOX);
-          handleMainMenu();
+          navigateMainMenu();
+          break;
+        case StateOptions::Menu_Games:
+          navigateGameMenu();
           break;
         case StateOptions::Game_SandboxTransition:
           initSandbox();
@@ -105,27 +106,68 @@ namespace Engine
     {
       state.setNext(StateOptions::Menu_Home);
       log("Transitioning to Main Menu.");
+      display.hasUpdates = true;
     }
   }
 
-  void GameEngine::handleMainMenu()
+  void GameEngine::navigateMainMenu()
   {
-
     if (controller.wasPressed(Player::ControllerButton::Down))
     {
       logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
       state.selectNextMenu();
+      display.hasUpdates = true;
     }
 
     if (controller.wasPressed(Player::ControllerButton::Up))
     {
       logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
       state.selectNextMenu(MenuNavigationDirection::Reverse);
+      display.hasUpdates = true;
     }
 
     if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
     {
-      state.setNext(StateOptions::Game_Sandbox);
+      switch (state.getUserMenuChoice())
+      {
+      case MainMenu_Selection::Games:
+        log("Transitioning to Game Submenu.");
+        state.setNext(StateOptions::Menu_Games);
+        break;
+      case MainMenu_Selection::Scenes:
+        break;
+      }
+      display.hasUpdates = true;
+    }
+  }
+
+  void GameEngine::navigateGameMenu()
+  {
+    if (controller.wasPressed(Player::ControllerButton::Down))
+    {
+      logf("Highlighting Games Submenu option %d", state.getUserGameChoice());
+      state.selectNextGame();
+      display.hasUpdates = true;
+    }
+
+    if (controller.wasPressed(Player::ControllerButton::Up))
+    {
+      logf("Highlighting Game Submenu option %d", state.getUserGameChoice());
+      state.selectNextGame(MenuNavigationDirection::Reverse);
+      display.hasUpdates = true;
+    }
+
+    if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
+    {
+      switch (state.getUserGameChoice())
+      {
+      case Game_Selection::Sandbox:
+        state.setNext(StateOptions::Game_Sandbox);
+        break;
+      case Game_Selection::Recall:
+        break;
+      }
+      display.hasUpdates = true;
     }
   }
 
@@ -139,6 +181,7 @@ namespace Engine
     }
     game = new Games::TestCore{config, leds, controller};
     state.setNext(StateOptions::Game_Sandbox);
+    display.hasUpdates = true;
   }
 
   void GameEngine::renderLedStrip()

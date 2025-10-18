@@ -7,7 +7,7 @@ namespace Display
 {
   void OledDisplay::updateDisplay()
   {
-    if (isReady())
+    if (hasUpdates)
     {
       switch (engineState.getCurrent())
       {
@@ -17,11 +17,14 @@ namespace Display
       case Engine::StateOptions::Menu_Home:
         drawMainMenu();
         break;
+      case Engine::StateOptions::Menu_Games:
+        drawGamesMenu();
+        break;
       default:
         drawBootScreen();
         break;
       }
-      wait(250);
+      hasUpdates = false;
     }
   }
 
@@ -53,18 +56,38 @@ namespace Display
     display.print("Main Menu");
 
     uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserMenuChoice());
-    auto selectedOption = [=](uint8_t index)
-    { return index == selectedOptionIndex ? '>' : ' '; };
 
+    display.setTextSize(1);
     display.setCursor(0, 8);
-    display.print(selectedOption(0));
+    display.print(selectedOption(0, selectedOptionIndex));
     display.print("  Games");
     display.setCursor(0, 16);
-    display.print(selectedOption(1));
+    display.print(selectedOption(1, selectedOptionIndex));
     display.print("  Scenes");
+
+    display.display();
+  }
+
+  void OledDisplay::drawGamesMenu()
+  {
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(1);
+    display.setCursor(38, 0);
+    display.print("Games Menu");
+
+    uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserGameChoice());
+
+    display.setTextSize(1);
+    display.setCursor(0, 8);
+    display.print(selectedOption(0, selectedOptionIndex));
+    display.print("  Sandbox (Testing)");
+    display.setCursor(0, 16);
+    display.print(selectedOption(1, selectedOptionIndex));
+    display.print("  Recall");
     display.setCursor(0, 24);
-    display.print(selectedOption(2));
-    display.print("  Ambient");
+    display.print(selectedOption(1, selectedOptionIndex));
+    display.print("  Phase Evasion");
 
     display.display();
   }

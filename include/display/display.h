@@ -10,7 +10,7 @@
 namespace Display
 {
 
-  class OledDisplay : public Engine::Timer
+  class OledDisplay
   {
   private:
     static constexpr int OLED_RESET = 4;
@@ -20,21 +20,24 @@ namespace Display
     const Engine::StateManager &engineState;
     ImageInitLogo initLogo;
     Player::Controller &controller;
-    // bool hasUpdates = false;
+
+    auto selectedOption(uint8_t index, uint8_t selectedOptionIndex) { return index == selectedOptionIndex ? '>' : ' '; };
 
     void drawLogo();
     void drawHeader(const char *message);
     void drawBootScreen();
     void drawMainMenu();
+    void drawGamesMenu();
 
   public:
-    OledDisplay(Player::Controller &c, const Engine::StateManager &es) : Engine::Timer{}, display{OLED_RESET}, controller{c}, engineState{es}
+    OledDisplay(Player::Controller &c, const Engine::StateManager &es) : display{OLED_RESET}, controller{c}, engineState{es}
     {
       Wire.begin();
       display.begin(SSD1306_SWITCHCAPVCC, DISPLAY_ADDRESS);
       drawBootScreen();
     }
 
+    bool hasUpdates = true;
     void updateDisplay();
   };
 }

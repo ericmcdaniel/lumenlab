@@ -5,59 +5,67 @@
 
 namespace Display
 {
-  void OledDisplay::printLogo()
+  void OledDisplay::updateDisplay()
   {
+    if (isReady())
+    {
+      switch (engineState.getCurrent())
+      {
+      case Engine::StateOptions::Initialize:
+        drawBootScreen();
+        break;
+      case Engine::StateOptions::Menu_Home:
+        drawMainMenu();
+        break;
+      default:
+        drawBootScreen();
+        break;
+      }
+      wait(250);
+    }
   }
 
-  void OledDisplay::initialize()
+  void OledDisplay::drawBootScreen()
   {
-    Wire.begin();
-    display.begin(SSD1306_SWITCHCAPVCC, DISPLAY_ADDRESS);
-
     display.clearDisplay();
     display.setTextColor(WHITE);
     display.setTextSize(1);
     display.setCursor(30, 0);
     display.print("LumenLab v1");
-
     display.drawBitmap(initLogo.xPos, initLogo.yPos, initLogo.rawValues, initLogo.width, initLogo.height, WHITE);
+    display.display();
+  }
+
+  void OledDisplay::drawHeader(const char *message)
+  {
+  }
+
+  void OledDisplay::drawLogo()
+  {
+  }
+
+  void OledDisplay::drawMainMenu()
+  {
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(1);
+    display.setCursor(39, 0);
+    display.print("Main Menu");
+
+    uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserMenuChoice());
+    auto selectedOption = [=](uint8_t index)
+    { return index == selectedOptionIndex ? '>' : ' '; };
+
+    display.setCursor(0, 8);
+    display.print(selectedOption(0));
+    display.print("  Games");
+    display.setCursor(0, 16);
+    display.print(selectedOption(1));
+    display.print("  Scenes");
+    display.setCursor(0, 24);
+    display.print(selectedOption(2));
+    display.print("  Ambient");
 
     display.display();
-    delay(1000);
-  }
-
-  void OledDisplay::displayHeader(const char *message)
-  {
-    // display.
-  }
-
-  void OledDisplay::checkNavMenuChangeRequest()
-  {
-    // if (navigationController.navButtonState != NAV_UNPRESSED)
-    // {
-    //   NavControllerDirection direction = navigationController.navButtonState;
-    //   navigationController.navButtonState = NAV_UNPRESSED;
-
-    //   switch (direction)
-    //   {
-    //   case NAV_UP:
-    //     log("Up pressed");
-    //     break;
-    //   case NAV_DOWN:
-    //     log("Down pressed");
-    //     break;
-    //   case NAV_LEFT:
-    //     log("Left pressed");
-    //     break;
-    //   case NAV_RIGHT:
-    //     log("Right pressed");
-    //     break;
-    //   case NAV_PUSH:
-    //     log("Center pressed");
-    //     break;
-    //   default:
-    //     break;
-    //   }
-    // }
   }
 }

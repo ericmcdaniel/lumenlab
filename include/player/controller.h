@@ -13,6 +13,27 @@ namespace Player
     int8_t y = 0;
   };
 
+  enum class ControllerButton : uint8_t
+  {
+    Cross,
+    Circle,
+    Triangle,
+    Square,
+    Up,
+    Down,
+    Left,
+    Right,
+    L1,
+    L2,
+    L3,
+    R1,
+    R2,
+    R3,
+    Start,
+    Select,
+    Ps
+  };
+
   class Controller
   {
   public:
@@ -35,12 +56,21 @@ namespace Player
     AnalogStick leftAnalog();
     AnalogStick rightAnalog();
 
+    const uint8_t buttonState(const ControllerButton button) const;
+
+    uint8_t buttonsPressed = 0;
+    const bool wasPressed(const ControllerButton button);
+
     const bool isConnected() { return instance->connection; }
 
   private:
     Ps3Controller controller;
 
-    static void onConnect();
+    static void onConnect()
+    {
+      if (instance)
+        instance->handleOnConnect();
+    }
     void handleOnConnect();
     int filterDeadZone(int8_t value, int deadZone = 3);
     static Controller *instance;

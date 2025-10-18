@@ -1,18 +1,21 @@
 #pragma once
 
+#ifdef RELEASE
 #define FASTLED_INTERNAL
 #include <FastLED.h>
 #undef min
 #undef max
+#else
+#include "debug-fastled.h"
+#endif
 
 #include "engine/system-config.h"
-#include "engine/timeable.h"
 #include "lights/led-buffer.h"
 #include "lights/led-luminance.h"
 
 namespace Lights
 {
-  class LedStrip : public Time::Timeable
+  class LedStrip
   {
   private:
     const Engine::SystemConfig &config;

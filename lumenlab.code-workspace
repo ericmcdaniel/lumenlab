@@ -35,7 +35,8 @@
 			"tuple": "cpp",
 			"ratio": "cpp",
 			"system_error": "cpp",
-			"cmath": "cpp"
+			"cmath": "cpp",
+			"memory": "cpp"
 		},
 		"terminal.integrated.profiles.windows": {
 			"PowerShell": {

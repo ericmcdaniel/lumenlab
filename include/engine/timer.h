@@ -1,18 +1,18 @@
 #pragma once
 
 #include <Arduino.h>
-#include "engine/run-state.h"
+#include "engine/state-manager.h"
 
-namespace Time
+namespace Engine
 {
-  class Timeable
+  class Timer
   {
   private:
     unsigned long next{millis()};
 
   public:
-    Timeable() = default;
-    virtual ~Timeable() = default;
+    Timer() = default;
+    virtual ~Timer() = default;
 
     void wait(unsigned long futureTime);
     const bool isReady();

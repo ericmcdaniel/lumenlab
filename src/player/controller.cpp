@@ -36,12 +36,67 @@ namespace Player
     return joystick;
   }
 
-  void Controller::onConnect()
+  const uint8_t Controller::buttonState(const ControllerButton button) const
   {
-    if (instance)
+    switch (button)
     {
-      instance->handleOnConnect();
+    case ControllerButton::Cross:
+      return instance->controller.data.analog.button.cross;
+    case ControllerButton::Circle:
+      return instance->controller.data.analog.button.circle;
+    case ControllerButton::Triangle:
+      return instance->controller.data.analog.button.triangle;
+    case ControllerButton::Square:
+      return instance->controller.data.analog.button.square;
+    case ControllerButton::Up:
+      return instance->controller.data.analog.button.up;
+    case ControllerButton::Down:
+      return instance->controller.data.analog.button.down;
+    case ControllerButton::Left:
+      return instance->controller.data.analog.button.left;
+    case ControllerButton::Right:
+      return instance->controller.data.analog.button.right;
+    case ControllerButton::L1:
+      return instance->controller.data.analog.button.l1;
+    case ControllerButton::L2:
+      return instance->controller.data.analog.button.l2;
+    case ControllerButton::L3:
+      return instance->controller.data.button.l3;
+    case ControllerButton::R1:
+      return instance->controller.data.analog.button.r1;
+    case ControllerButton::R2:
+      return instance->controller.data.analog.button.r2;
+    case ControllerButton::R3:
+      return instance->controller.data.button.r3;
+    case ControllerButton::Start:
+      return instance->controller.data.button.start;
+    case ControllerButton::Select:
+      return instance->controller.data.button.select;
+    case ControllerButton::Ps:
+      return instance->controller.data.button.ps;
+    default:
+      return false;
     }
+  }
+
+  const bool Controller::wasPressed(ControllerButton button)
+  {
+    uint32_t mask = 1u << static_cast<uint8_t>(button);
+    bool isDownNow = buttonState(button);
+    bool wasDownBefore = (buttonsPressed & mask);
+
+    if (isDownNow && !wasDownBefore)
+    {
+      buttonsPressed |= mask;
+      return true;
+    }
+
+    if (!isDownNow)
+    {
+      buttonsPressed &= ~mask;
+    }
+
+    return false;
   }
 
   void Controller::handleOnConnect()

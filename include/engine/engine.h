@@ -1,34 +1,35 @@
 #pragma once
 
 #include "engine/system-config.h"
-#include "engine/run-state.h"
-#include "engine/timeable.h"
-#include "engine/navigation.h"
-#include "games/testing-sandbox/test-core.h"
+#include "engine/state-manager.h"
+#include "engine/timer.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
+#include "games/testing-sandbox/test-core.h"
 #include "games/testing-sandbox/test-player.h"
 
 namespace Engine
 {
-  class GameEngine : private Time::Timeable
+  class GameEngine : Timer
   {
   private:
     Engine::SystemConfig config;
-    Engine::Navigation navigation;
+    StateManager state;
     Games::TestCore *game = nullptr;
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;
 
-    void handleStartup();
+    void initializeEngine();
     void initSandbox();
     void renderLedStrip();
 
   public:
-    RunState currentState;
-
     GameEngine();
+
     void runApplication();
+    void standbyControllerConnection();
+    void handleMainMenu();
+    void checkChangeRequest();
   };
 }

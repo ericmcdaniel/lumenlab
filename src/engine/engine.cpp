@@ -4,47 +4,50 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : Time::Timeable{}, currentState(RunState::MAIN_MENU), leds{config}, navigation{currentState, controller}
+  GameEngine::GameEngine() : leds{config}, display{controller, state}
   {
-    handleStartup();
+    initializeEngine();
   }
 
   void GameEngine::runApplication()
   {
-    while (currentState != RunState::ERROR)
+    while (state.isRunning())
     {
       if (isReady())
       {
         leds.reset();
+        checkChangeRequest();
+        display.updateDisplay();
 
-        switch (currentState)
+        switch (state.getCurrent())
         {
-        case RunState::MAIN_MENU:
+        case StateOptions::Menu_Home:
           // moving directly to the TestingSandbox game for testing
-          currentState = RunState::TRANSITION_SANDBOX;
+          // state.setNext(CoreStateOptions::GAME_SANDBOX);
+          handleMainMenu();
           break;
-        case RunState::TRANSITION_SANDBOX:
+        case StateOptions::Game_SandboxTransition:
           initSandbox();
           break;
-        case RunState::GAME_SANDBOX:
+        case StateOptions::Game_Sandbox:
           game->nextEvent();
           break;
-
+        case StateOptions::NoControllerConnected:
+          standbyControllerConnection();
+          break;
         default:
           // ideally shouldn't encounter this
-          currentState = RunState::ERROR;
+          state.setNext(StateOptions::Error);
           break;
         }
-        leds.adjustLuminance();
-        renderLedStrip();
 
-        // Shooting for 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
-        wait(9);
+        renderLedStrip();
+        wait(9); // Targeting a 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
       }
     }
   }
 
-  void GameEngine::handleStartup()
+  void GameEngine::initializeEngine()
   {
     controller.begin(config.macAddress);
 
@@ -61,7 +64,6 @@ namespace Engine
 #endif
 
     log("Attempting to connect to PS3 controller");
-    game = new Games::TestCore{config, leds, controller};
 
     // ten second attempt to connect to PS3 controller
     int reattempt = 0;
@@ -74,13 +76,56 @@ namespace Engine
 
     if (!controller.isConnected())
     {
-      currentState = Engine::RunState::ERROR;
-      log("Failed to connect to controller.");
+      state.setNext(StateOptions::NoControllerConnected);
+      log("Failed to connect to controller. Entering No Controller Connection sequence");
     }
     else
     {
-      currentState = RunState::MAIN_MENU;
-      log("Startup process completed.");
+      state.setNext(StateOptions::Menu_Home);
+      log("Startup process completed. Transitioning to Main Menu");
+    }
+  }
+
+  void GameEngine::standbyControllerConnection()
+  {
+    // while (!controller.isConnected())
+    // {
+    //   for (int i = 0; i <= leds.size(); ++i)
+    //   {
+    //     leds.buffer[i].r = 255;
+    //     leds.buffer[i].g = 0;
+    //     leds.buffer[i].b = 0;
+    //   }
+    // }
+  }
+
+  void GameEngine::checkChangeRequest()
+  {
+    if (controller.wasPressed(Player::ControllerButton::Ps))
+    {
+      state.setNext(StateOptions::Menu_Home);
+      log("Transitioning to Main Menu.");
+    }
+  }
+
+  void GameEngine::handleMainMenu()
+  {
+
+    if (controller.wasPressed(Player::ControllerButton::Down))
+    {
+      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
+      state.selectNextMenu();
+    }
+
+    if (controller.wasPressed(Player::ControllerButton::Up))
+    {
+      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
+      state.selectNextMenu(MenuNavigationDirection::Reverse);
+    }
+
+    if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
+    {
+      state.setNext(StateOptions::Game_Sandbox);
     }
   }
 
@@ -93,22 +138,23 @@ namespace Engine
       game = nullptr;
     }
     game = new Games::TestCore{config, leds, controller};
-    currentState = RunState::GAME_SANDBOX;
+    state.setNext(StateOptions::Game_Sandbox);
   }
 
   void GameEngine::renderLedStrip()
   {
-#ifdef VIRTUALIZATION
-    Serial.write(0xAA); // sync bytes
-    Serial.write(0x55);
-    Serial.write(reinterpret_cast<uint8_t *>(leds.getRawColors()), leds.size() * sizeof(CRGB));
-#endif
+    leds.adjustLuminance();
 #ifdef RELEASE
     // TODO: Add actual logic to send signal to LEDs. Below is a simulation only
 
     ////// do NOT include this in the final build obviously, this is for testing purposes only /////
     Serial.println("LED strip updated.");
     ////////////////////////////////////////////////////////////////////////////////////////////////
+#endif
+#ifdef VIRTUALIZATION
+    Serial.write(0xAA); // sync bytes
+    Serial.write(0x55);
+    Serial.write(reinterpret_cast<uint8_t *>(leds.getRawColors()), leds.size() * sizeof(CRGB));
 #endif
   }
 }

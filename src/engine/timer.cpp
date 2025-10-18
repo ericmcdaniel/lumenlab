@@ -1,8 +1,8 @@
-#include "engine/timeable.h"
+#include "engine/timer.h"
 
-namespace Time
+namespace Engine
 {
-  void Timeable::wait(unsigned long futureTime)
+  void Timer::wait(unsigned long futureTime)
   {
     // if (futureTime <= 0)
     // {
@@ -10,7 +10,7 @@ namespace Time
     next = next + futureTime;
   }
 
-  const bool Timeable::isReady()
+  const bool Timer::isReady()
   {
     return millis() >= next;
   }

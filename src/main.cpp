@@ -13,6 +13,6 @@ void setup()
  */
 void loop()
 {
-  Serial.println("LumenLab has encountered an error state.");
+  Serial.println("LumenLab has encountered an unrecoverable error state.");
   delay(1000);
 }

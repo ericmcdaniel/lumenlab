@@ -1,16 +1,14 @@
 #pragma once
 
-#include "secrets.h"
-
 namespace Engine
 {
   struct SystemConfig
   {
-    static constexpr const unsigned int numLeds{NUM_LEDS};
-    static constexpr const char *macAddress{MAC_ADDRESS};
-    static constexpr const unsigned int serialBaud{SERIAL_BAUD};
+    // REQUIRED: modify this address to match the mac address of your PS3 controller
+    static constexpr const char *macAddress = "00:1b:fb:8e:87:ac";
 
-    // gpio pin settings
-    static constexpr const unsigned short ledDimmerGpio{LED_DIMMER_POT_GPIO};
+    static constexpr const unsigned int numLeds = 300;
+    static constexpr const unsigned int serialBaud = 921600;
+    static constexpr const unsigned short ledDimmerGpio = 34;
   };
 }

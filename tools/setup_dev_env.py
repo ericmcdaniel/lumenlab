@@ -5,20 +5,6 @@ import sys
 from pathlib import Path
 
 
-def create_secrets_header():
-    root_dir = Path(__file__).parent.parent
-    secrets_file = root_dir / "include" / "secrets.h"
-
-    with open(secrets_file, "w") as file:
-        # Setup project credentials
-        file.write("#pragma once\n\n")
-
-        file.write("#define NUM_LEDS 300\n")
-        file.write("#define SERIAL_BAUD 921600\n")
-        file.write("#define MAC_ADDRESS \"00:00:00:00:00:00\"\n")
-        file.write("#define LED_DIMMER_POT_GPIO 34\n")
-
-
 def setup_python_virtual_environment():
     tools_dir = Path("tools")
     venv_dir = tools_dir / ".venv"
@@ -56,13 +42,8 @@ def setup_python_virtual_environment():
 
 
 def main():
-    create_secrets_header()
 
-    print("\nCreated {project_root}/include/secrets.h as a starter template.")
-    print("  • Replace all values within <BRACKETS> with your desired configuraitons and credentials.")
-    print("  • Additionally, change the CLIENT_PORT to a different port if desired.\n\n")
-    print("Make sure that the baud rate (monitor speed) in /include/secrets.h is the same as in /platformio.ini")
-
+    print("Be sure to set your serial monitor's baud rate to the same as in /platformio.ini, which is 921600.")
     setup_python_virtual_environment()
 
 

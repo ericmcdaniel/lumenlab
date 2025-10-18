@@ -9,34 +9,19 @@ namespace Display
   {
     if (isReady())
     {
-      // if (engSt.getCurrent() != prevEngSt.getCurrent())
-      // {
-      //   switch (engSt.getCurrent())
-      //   {
-      //   case Engine::StateOptions::MainMenu:
-      //     logf("Changing to Menu Home");
-      //     state.setNext(StateOptions::MenuHome);
-      //     break;
-      //   default:
-      //     state.setNext(StateOptions::BootScreen);
-      //     break;
-      //   }
-      //   prevEngSt.setNext(engSt.getCurrent());
-      // }
-
       switch (engineState.getCurrent())
       {
       case Engine::StateOptions::Initialize:
         drawBootScreen();
         break;
-      case Engine::StateOptions::MenuHome:
+      case Engine::StateOptions::Menu_Home:
         drawMainMenu();
         break;
       default:
         drawBootScreen();
         break;
       }
-      wait(500);
+      wait(250);
     }
   }
 
@@ -67,43 +52,20 @@ namespace Display
     display.setCursor(39, 0);
     display.print("Main Menu");
 
+    uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserMenuChoice());
+    auto selectedOption = [=](uint8_t index)
+    { return index == selectedOptionIndex ? '>' : ' '; };
+
     display.setCursor(0, 8);
-    display.print("> Games");
+    display.print(selectedOption(0));
+    display.print("  Games");
     display.setCursor(0, 16);
+    display.print(selectedOption(1));
     display.print("  Scenes");
     display.setCursor(0, 24);
+    display.print(selectedOption(2));
     display.print("  Ambient");
 
     display.display();
   }
-
-  // void OledDisplay::checkNavMenuChangeRequest()
-  // {
-  // if (navigationController.navButtonState != NAV_UNPRESSED)
-  // {
-  //   NavControllerDirection direction = navigationController.navButtonState;
-  //   navigationController.navButtonState = NAV_UNPRESSED;
-
-  //   switch (direction)
-  //   {
-  //   case NAV_UP:
-  //     log("Up pressed");
-  //     break;
-  //   case NAV_DOWN:
-  //     log("Down pressed");
-  //     break;
-  //   case NAV_LEFT:
-  //     log("Left pressed");
-  //     break;
-  //   case NAV_RIGHT:
-  //     log("Right pressed");
-  //     break;
-  //   case NAV_PUSH:
-  //     log("Center pressed");
-  //     break;
-  //   default:
-  //     break;
-  //   }
-  // }
-  // }
 }

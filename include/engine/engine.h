@@ -10,24 +10,21 @@
 
 namespace Engine
 {
-  class GameEngine
+  class GameEngine : Timer
   {
   private:
     Engine::SystemConfig config;
-    Engine::Timer ledRenderTimer;
+    StateManager state;
     Games::TestCore *game = nullptr;
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;
-
-    bool menuReturnRequest = false;
 
     void initializeEngine();
     void initSandbox();
     void renderLedStrip();
 
   public:
-    StateManager engine;
     GameEngine();
 
     void runApplication();

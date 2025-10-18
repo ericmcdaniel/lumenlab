@@ -13,7 +13,7 @@ namespace Player
     int8_t y = 0;
   };
 
-  enum class ControllerButton
+  enum class ControllerButton : uint8_t
   {
     Cross,
     Circle,
@@ -53,24 +53,24 @@ namespace Player
     uint8_t start() { return instance->controller.data.button.start; }
     uint8_t ps() { return instance->controller.data.button.ps; }
 
-    uint8_t psDown() { return instance->controller.event.button_down.ps; }
-    uint8_t psUp() { return instance->controller.event.button_up.ps; }
-
     AnalogStick leftAnalog();
     AnalogStick rightAnalog();
 
-    const bool isButtonDown(ControllerButton button) const;
-    const bool isButtonUp(ControllerButton button) const;
+    const uint8_t buttonState(const ControllerButton button) const;
 
     uint8_t buttonsPressed = 0;
-    const bool wasPressed(ControllerButton button);
+    const bool wasPressed(const ControllerButton button);
 
     const bool isConnected() { return instance->connection; }
 
   private:
     Ps3Controller controller;
 
-    static void onConnect();
+    static void onConnect()
+    {
+      if (instance)
+        instance->handleOnConnect();
+    }
     void handleOnConnect();
     int filterDeadZone(int8_t value, int deadZone = 3);
     static Controller *instance;

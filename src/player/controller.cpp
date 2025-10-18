@@ -36,87 +36,44 @@ namespace Player
     return joystick;
   }
 
-  const bool Controller::isButtonDown(ControllerButton button) const
+  const uint8_t Controller::buttonState(const ControllerButton button) const
   {
     switch (button)
     {
     case ControllerButton::Cross:
-      return instance->controller.event.button_down.cross;
+      return instance->controller.data.analog.button.cross;
     case ControllerButton::Circle:
-      return instance->controller.event.button_down.circle;
+      return instance->controller.data.analog.button.circle;
     case ControllerButton::Triangle:
-      return instance->controller.event.button_down.triangle;
+      return instance->controller.data.analog.button.triangle;
     case ControllerButton::Square:
-      return instance->controller.event.button_down.square;
+      return instance->controller.data.analog.button.square;
     case ControllerButton::Up:
-      return instance->controller.event.button_down.up;
+      return instance->controller.data.analog.button.up;
     case ControllerButton::Down:
-      return instance->controller.event.button_down.down;
+      return instance->controller.data.analog.button.down;
     case ControllerButton::Left:
-      return instance->controller.event.button_down.left;
+      return instance->controller.data.analog.button.left;
     case ControllerButton::Right:
-      return instance->controller.event.button_down.right;
+      return instance->controller.data.analog.button.right;
     case ControllerButton::L1:
-      return instance->controller.event.button_down.l1;
+      return instance->controller.data.analog.button.l1;
     case ControllerButton::L2:
-      return instance->controller.event.button_down.l2;
+      return instance->controller.data.analog.button.l2;
     case ControllerButton::L3:
-      return instance->controller.event.button_down.l3;
+      return instance->controller.data.button.l3;
     case ControllerButton::R1:
-      return instance->controller.event.button_down.r1;
+      return instance->controller.data.analog.button.r1;
     case ControllerButton::R2:
-      return instance->controller.event.button_down.r2;
+      return instance->controller.data.analog.button.r2;
     case ControllerButton::R3:
-      return instance->controller.event.button_down.r3;
+      return instance->controller.data.button.r3;
     case ControllerButton::Start:
-      return instance->controller.event.button_down.start;
+      return instance->controller.data.button.start;
     case ControllerButton::Select:
-      return instance->controller.event.button_down.select;
+      return instance->controller.data.button.select;
     case ControllerButton::Ps:
-      return instance->controller.event.button_down.ps;
-    default:
-      return false;
-    }
-  }
-
-  const bool Controller::isButtonUp(ControllerButton button) const
-  {
-    switch (button)
-    {
-    case ControllerButton::Cross:
-      return instance->controller.event.button_down.cross;
-    case ControllerButton::Circle:
-      return instance->controller.event.button_down.circle;
-    case ControllerButton::Triangle:
-      return instance->controller.event.button_down.triangle;
-    case ControllerButton::Square:
-      return instance->controller.event.button_down.square;
-    case ControllerButton::Up:
-      return instance->controller.event.button_down.up;
-    case ControllerButton::Down:
-      return instance->controller.event.button_down.down;
-    case ControllerButton::Left:
-      return instance->controller.event.button_down.left;
-    case ControllerButton::Right:
-      return instance->controller.event.button_down.right;
-    case ControllerButton::L1:
-      return instance->controller.event.button_down.l1;
-    case ControllerButton::L2:
-      return instance->controller.event.button_down.l2;
-    case ControllerButton::L3:
-      return instance->controller.event.button_down.l3;
-    case ControllerButton::R1:
-      return instance->controller.event.button_down.r1;
-    case ControllerButton::R2:
-      return instance->controller.event.button_down.r2;
-    case ControllerButton::R3:
-      return instance->controller.event.button_down.r3;
-    case ControllerButton::Start:
-      return instance->controller.event.button_down.start;
-    case ControllerButton::Select:
-      return instance->controller.event.button_down.select;
-    case ControllerButton::Ps:
-      return instance->controller.event.button_down.ps;
+      return instance->controller.data.button.ps;
     default:
       return false;
     }
@@ -124,26 +81,22 @@ namespace Player
 
   const bool Controller::wasPressed(ControllerButton button)
   {
-    if (isButtonUp(button) && (buttonsPressed & static_cast<uint8_t>(button)))
+    uint32_t mask = 1u << static_cast<uint8_t>(button);
+    bool isDownNow = buttonState(button);
+    bool wasDownBefore = (buttonsPressed & mask);
+
+    if (isDownNow && !wasDownBefore)
     {
-      buttonsPressed &= ~static_cast<uint8_t>(button);
+      buttonsPressed |= mask;
       return true;
     }
 
-    if (isButtonDown(button))
+    if (!isDownNow)
     {
-      buttonsPressed |= static_cast<uint8_t>(button);
+      buttonsPressed &= ~mask;
     }
 
     return false;
-  }
-
-  void Controller::onConnect()
-  {
-    if (instance)
-    {
-      instance->handleOnConnect();
-    }
   }
 
   void Controller::handleOnConnect()

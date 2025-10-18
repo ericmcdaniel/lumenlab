@@ -4,32 +4,32 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : leds{config}, display{controller, engine}
+  GameEngine::GameEngine() : leds{config}, display{controller, state}
   {
     initializeEngine();
   }
 
   void GameEngine::runApplication()
   {
-    while (engine.isRunning())
+    while (state.isRunning())
     {
-      if (ledRenderTimer.isReady())
+      if (isReady())
       {
         leds.reset();
         checkChangeRequest();
         display.updateDisplay();
 
-        switch (engine.getCurrent())
+        switch (state.getCurrent())
         {
-        case StateOptions::MenuHome:
+        case StateOptions::Menu_Home:
           // moving directly to the TestingSandbox game for testing
           // state.setNext(CoreStateOptions::GAME_SANDBOX);
           handleMainMenu();
           break;
-        case StateOptions::TransitionSandbox:
+        case StateOptions::Game_SandboxTransition:
           initSandbox();
           break;
-        case StateOptions::GameSandbox:
+        case StateOptions::Game_Sandbox:
           game->nextEvent();
           break;
         case StateOptions::NoControllerConnected:
@@ -37,12 +37,12 @@ namespace Engine
           break;
         default:
           // ideally shouldn't encounter this
-          engine.setNext(StateOptions::Error);
+          state.setNext(StateOptions::Error);
           break;
         }
 
         renderLedStrip();
-        ledRenderTimer.wait(9); // Targeting a 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
+        wait(9); // Targeting a 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
       }
     }
   }
@@ -76,12 +76,12 @@ namespace Engine
 
     if (!controller.isConnected())
     {
-      engine.setNext(StateOptions::NoControllerConnected);
+      state.setNext(StateOptions::NoControllerConnected);
       log("Failed to connect to controller. Entering No Controller Connection sequence");
     }
     else
     {
-      engine.setNext(StateOptions::MenuHome);
+      state.setNext(StateOptions::Menu_Home);
       log("Startup process completed. Transitioning to Main Menu");
     }
   }
@@ -103,16 +103,29 @@ namespace Engine
   {
     if (controller.wasPressed(Player::ControllerButton::Ps))
     {
-      engine.setNext(StateOptions::MenuHome);
+      state.setNext(StateOptions::Menu_Home);
       log("Transitioning to Main Menu.");
     }
   }
 
   void GameEngine::handleMainMenu()
   {
-    if (controller.wasPressed(Player::ControllerButton::Start))
+
+    if (controller.wasPressed(Player::ControllerButton::Down))
     {
-      engine.setNext(StateOptions::GameSandbox);
+      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
+      state.selectNextMenu();
+    }
+
+    if (controller.wasPressed(Player::ControllerButton::Up))
+    {
+      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
+      state.selectNextMenu(MenuNavigationDirection::Reverse);
+    }
+
+    if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
+    {
+      state.setNext(StateOptions::Game_Sandbox);
     }
   }
 
@@ -125,7 +138,7 @@ namespace Engine
       game = nullptr;
     }
     game = new Games::TestCore{config, leds, controller};
-    engine.setNext(StateOptions::GameSandbox);
+    state.setNext(StateOptions::Game_Sandbox);
   }
 
   void GameEngine::renderLedStrip()

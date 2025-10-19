@@ -1,5 +1,7 @@
 #pragma once
 
+#include "games/testing-sandbox/game-state.h"
+
 namespace Engine
 {
   enum class SystemState
@@ -41,10 +43,10 @@ namespace Engine
     SystemState systemState;
     MainMenu_Selection userMainMenuChoice;
     Game_Selection userGameChoice;
+    Games::SandboxGameState sandboxGameState;
 
   public:
     StateManager() : systemState{SystemState::Initialize}, userMainMenuChoice{MainMenu_Selection::Games}, userGameChoice{Game_Selection::Sandbox} {}
-    StateManager(SystemState state) : systemState{state}, userMainMenuChoice{MainMenu_Selection::Games}, userGameChoice{Game_Selection::Sandbox} {}
     bool isRunning() { return systemState != SystemState::Error; }
     bool displayShouldUpdate = true;
 
@@ -58,6 +60,8 @@ namespace Engine
     const Game_Selection getUserGameChoice() const { return userGameChoice; }
     void setNextUserGameChoice(Game_Selection next) { userGameChoice = next; };
     void selectNextGame(MenuNavigationDirection direction = MenuNavigationDirection::Forward);
+
+    Games::SandboxGameState &getSandboxGameState() { return sandboxGameState; }
 
     bool operator==(const StateManager &other) const
     {

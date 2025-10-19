@@ -30,6 +30,9 @@ namespace Display
       case Engine::SystemState::Menu_Games:
         drawGamesMenu();
         break;
+      case Engine::SystemState::Game_Sandbox:
+        drawSandboxGameHud();
+        break;
       case Engine::SystemState::NoControllerConnected:
         drawUnconnectedControllerScreen();
         break;
@@ -106,6 +109,20 @@ namespace Display
     display.setCursor(0, 24);
     display.print(selectedOption(2, selectedOptionIndex));
     display.print("  Phase Evasion");
+
+    display.display();
+  }
+
+  void OledDisplay::drawSandboxGameHud()
+  {
+    display.clearDisplay();
+    drawHeader("Sandbox (Testing)");
+
+    display.setCursor(0, 16);
+    display.print("Current Score: ");
+    display.print(engineState.getSandboxGameState().currentScore);
+    display.setCursor(0, 24);
+    display.print("High Score: ");
 
     display.display();
   }

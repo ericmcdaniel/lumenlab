@@ -1,4 +1,10 @@
-<p align="center"><img src="assets/lumenlab-logo.png" alt="LumenLab Logo" /></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/lumenlab-logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="assets/lumenlab-logo.png">
+    <img alt="LumenLab Logo" src="assets/lumenlab-logo.png">
+  </picture>
+</p>
 <p align="center">Transforming pixels into a playground</p>
 
 ---
@@ -21,7 +27,7 @@ Because LumenLab is restricted to a single dimension composed of an array of LED
 | **Phase Evasion** | *Phase Evasion* is a game inspired by Google Chrome's [*Dinosaur Game*](https://en.wikipedia.org/wiki/Dinosaur_Game), replacing jumping and ducking obstacles with color-based evasion. You are a solid-colored specter pursued by incoming flares. To survive, you must phase shift to match each flare’s color and blend in to evade capture. As the game progresses, the flares accelerate, testing reflexes and timing.<br><br>*In development.* |
 | **Light Strike** | *Light Strike* combines the spirit of Atari's [*Space Invaders*](https://en.wikipedia.org/wiki/Space_Invaders) with elements of [*Asteroids*](https://en.wikipedia.org/wiki/Asteroids_(video_game)). As a lone agent in deep space, you enounter waves of predators approaching you from directions sides at varying speeds. Moving freely across the x-axis, and your survival requires defending yourself with your laser pistol. Conserve your ammunition however, your weapon can only fire so many rounds a minute!<br><br>*In development.* |
 | **Reflex** | *Reflex* is a fast-moving inspired by the modern arcade game [*Pop the Lock*](https://www.baytekent.com/pop-the-lock/), testing precision and timing under pressure. A moving marker sweeps across the field toward a shifting target. Fire at the perfect moment to score a hit. Each success quickens the pace, reverses the marker's direction, and relocates the target to a new random location. Survive fifty flawless shots to win.<br><br>*In development.* |
-| **Mirror** | *Mirror* tests your perception of color and precision of control. A random RGB color appears on one end of the display, and you must use the analog stick to recreate it as closely as possible. The closer your match, the higher your score.<br><br>*In development* |
+| **Spectrum** | *Spectrum* tests your perception of color and precision of control. A random RGB color appears on one end of the display, and you must use the analog stick to recreate it as closely as possible. The closer your match, the higher your score.<br><br>*In development* |
 | **Pursuit** | *In development.* Details to be provided soon. |
 
 There are more game ideas in the works, and ideas for some *two-player* games are being considered.
@@ -31,11 +37,13 @@ There are more game ideas in the works, and ideas for some *two-player* games ar
 An LED strip entertainment platform would not be complete if it did not include animations and special effects libraries. Inspired by the [WLED project](https://kno.wled.ge/), LumenLab is able to create captivating scenes. Many of them are interactive, for example moving the joystick can change the color, or pressing the directional buttons can change timing.
 | **Title** | **Description** |
 | --- | --- |
-| **Spectrum** | *Spectrum* lets you choose any color across the RGB range, turning the LED strip into a fully personalized ambient light.<br><br>*In development.* |
-| **Tempo** | *Tempo* allows you to choose a tempo and strobe lights and trigger light subroutines (manually) in response to music.<br><br>*In development.* |
+| **Canvas** | *Canvas* lets you choose any color across the RGB range, turning the LED strip into a fully personalized ambient light.<br><br>*In development.* |
+| **Tempo** | *Tempo* allows you to choose a tempo and strobe lights and trigger light subroutines in response to music.<br><br>*In development.* |
 | **Police Siren** | Strobing red and blue lights to look like a law enforcement vehicle.<br><br>*In development.* |
 | **Halloween** | Spooky orange and some purple.<br><br>*In development.* |
 | **Christmas** | Festive red and green.<br><br>*In development.* |
+
+And more to come.
 
 ---
 
@@ -90,4 +98,4 @@ When compiling in debug mode, the ESP32 does not transmit color signals to the L
 <p align="center"><i>Figure 2: Development Virtualizer of two controllable entities, simulating what the LED strip would be rendering</i></p>
 
 ## Building the Repository
-This section was redacted temporarily because of how rapidly the code base is evolving. The instructions I wrote no longer apply as the Virtualizer instead currently sends color data via USB Serial and not an open socket. Stay tuned.
+This section was redacted temporarily because of how rapidly the code base is evolving. The instructions I wrote no longer apply as the Virtualizer was rewritten for speed to send color data via a USB serial connection instead of an open WebSocket connection. Stay tuned.

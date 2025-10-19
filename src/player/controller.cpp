@@ -38,6 +38,9 @@ namespace Player
 
   const uint8_t Controller::buttonState(const ControllerButton button) const
   {
+    if (!instance->connection)
+      return 0;
+
     switch (button)
     {
     case ControllerButton::Cross:
@@ -75,7 +78,7 @@ namespace Player
     case ControllerButton::Ps:
       return instance->controller.data.button.ps;
     default:
-      return false;
+      return 0;
     }
   }
 

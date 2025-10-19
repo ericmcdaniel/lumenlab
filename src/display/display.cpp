@@ -30,6 +30,9 @@ namespace Display
       case Engine::StateOptions::Menu_Games:
         drawGamesMenu();
         break;
+      case Engine::StateOptions::NoControllerConnected:
+        drawUnconnectedControllerScreen();
+        break;
       default:
         drawBootScreen();
         break;
@@ -64,7 +67,7 @@ namespace Display
   void OledDisplay::drawBootScreen()
   {
     display.clearDisplay();
-    drawHeader("LumenLab v1");
+    drawHeader("LumenLab");
 
     display.drawBitmap(initLogo.xPos, initLogo.yPos, initLogo.rawValues, initLogo.width, initLogo.height, WHITE);
     display.display();
@@ -77,7 +80,6 @@ namespace Display
 
     uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserMenuChoice());
 
-    display.setTextSize(1);
     display.setCursor(0, 8);
     display.print(selectedOption(0, selectedOptionIndex));
     display.print("  Games");
@@ -95,7 +97,6 @@ namespace Display
 
     uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserGameChoice());
 
-    display.setTextSize(1);
     display.setCursor(0, 8);
     display.print(selectedOption(0, selectedOptionIndex));
     display.print("  Sandbox (Testing)");
@@ -105,6 +106,21 @@ namespace Display
     display.setCursor(0, 24);
     display.print(selectedOption(2, selectedOptionIndex));
     display.print("  Phase Evasion");
+
+    display.display();
+  }
+
+  void OledDisplay::drawUnconnectedControllerScreen()
+  {
+    display.clearDisplay();
+    drawHeader("LumenLab");
+
+    auto startingX = calculateCenterText("PS3 controller");
+    display.setCursor(startingX, 8);
+    display.print("PS3 controller");
+    startingX = calculateCenterText("not connected");
+    display.setCursor(startingX, 16);
+    display.print("not connected");
 
     display.display();
   }

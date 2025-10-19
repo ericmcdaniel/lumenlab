@@ -31,6 +31,7 @@ namespace Display
     void drawBootScreen();
     void drawMainMenu();
     void drawGamesMenu();
+    void drawUnconnectedControllerScreen();
 
   public:
     OledDisplay(Player::Controller &c, const Engine::StateManager &es);

@@ -5,10 +5,6 @@
 
 namespace Games
 {
-  /**
-   * This is not normally a playable state, but is just an arena where I can experiment with code and
-   * use that to build out the other games.
-   */
   class TestCore
   {
   private:

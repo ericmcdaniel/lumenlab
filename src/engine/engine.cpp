@@ -4,7 +4,7 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : leds{config}, display{controller, state}
+  GameEngine::GameEngine() : leds{config}, display{controller, state}, systemManager{state, controller, display}
   {
     initializeEngine();
   }
@@ -16,29 +16,29 @@ namespace Engine
       if (isReady())
       {
         leds.reset();
-        checkChangeRequest();
+        systemManager.checkChangeRequest();
         display.updateDisplay();
 
         switch (state.getCurrent())
         {
-        case StateOptions::Menu_Home:
-          navigateMainMenu();
+        case SystemState::Menu_Home:
+          systemManager.navigateMainMenu();
           break;
-        case StateOptions::Menu_Games:
-          navigateGameMenu();
+        case SystemState::Menu_Games:
+          systemManager.navigateGameMenu();
           break;
-        case StateOptions::Game_SandboxTransition:
+        case SystemState::Game_SandboxTransition:
           initSandbox();
           break;
-        case StateOptions::Game_Sandbox:
+        case SystemState::Game_Sandbox:
           game->nextEvent();
           break;
-        case StateOptions::NoControllerConnected:
+        case SystemState::NoControllerConnected:
           standbyControllerConnection();
           break;
         default:
           // ideally shouldn't encounter this
-          state.setNext(StateOptions::Error);
+          state.setNext(SystemState::Error);
           break;
         }
 
@@ -77,12 +77,12 @@ namespace Engine
 
     if (!controller.isConnected())
     {
-      state.setNext(StateOptions::NoControllerConnected);
+      state.setNext(SystemState::NoControllerConnected);
       log("Failed to connect to controller. Entering No Controller Connection sequence");
     }
     else
     {
-      state.setNext(StateOptions::Menu_Home);
+      state.setNext(SystemState::Menu_Home);
       log("Startup process completed. Transitioning to Main Menu");
     }
   }
@@ -100,84 +100,6 @@ namespace Engine
     // }
   }
 
-  void GameEngine::checkChangeRequest()
-  {
-    if (controller.wasPressed(Player::ControllerButton::Ps))
-    {
-      state.setNext(StateOptions::Menu_Home);
-      log("Transitioning to Main Menu.");
-      display.hasUpdates = true;
-    }
-  }
-
-  void GameEngine::navigateMainMenu()
-  {
-    if (controller.wasPressed(Player::ControllerButton::Down))
-    {
-      state.selectNextMenu();
-      display.hasUpdates = true;
-      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
-    }
-
-    if (controller.wasPressed(Player::ControllerButton::Up))
-    {
-      state.selectNextMenu(MenuNavigationDirection::Reverse);
-      display.hasUpdates = true;
-      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
-    }
-
-    if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
-    {
-      switch (state.getUserMenuChoice())
-      {
-      case MainMenu_Selection::Games:
-        state.setNext(StateOptions::Menu_Games);
-        log("Transitioning to Game Submenu.");
-        break;
-      case MainMenu_Selection::Scenes:
-        break;
-      }
-      display.hasUpdates = true;
-    }
-  }
-
-  void GameEngine::navigateGameMenu()
-  {
-    if (controller.wasPressed(Player::ControllerButton::Down))
-    {
-      state.selectNextGame();
-      display.hasUpdates = true;
-      logf("Highlighting Games Submenu option %d", state.getUserGameChoice());
-    }
-
-    if (controller.wasPressed(Player::ControllerButton::Up))
-    {
-      state.selectNextGame(MenuNavigationDirection::Reverse);
-      display.hasUpdates = true;
-      logf("Highlighting Game Submenu option %d", state.getUserGameChoice());
-    }
-
-    if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
-    {
-      switch (state.getUserGameChoice())
-      {
-      case Game_Selection::Sandbox:
-        state.setNext(StateOptions::Game_Sandbox);
-        break;
-      case Game_Selection::Recall:
-        break;
-      }
-      display.hasUpdates = true;
-    }
-
-    if (controller.wasPressed(Player::ControllerButton::Circle))
-    {
-      state.setNext(StateOptions::Menu_Home);
-      display.hasUpdates = true;
-      log("Transitioning to Main Menu.");
-    }
-  }
-
   void GameEngine::initSandbox()
   {
     log("Transitioning to Sandbox game.");
@@ -187,8 +109,7 @@ namespace Engine
       game = nullptr;
     }
     game = new Games::TestCore{config, leds, controller};
-    state.setNext(StateOptions::Game_Sandbox);
-    display.hasUpdates = true;
+    state.setNext(SystemState::Game_Sandbox);
   }
 
   void GameEngine::renderLedStrip()

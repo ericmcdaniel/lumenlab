@@ -3,6 +3,7 @@
 #include "engine/system-config.h"
 #include "engine/state-manager.h"
 #include "engine/timer.h"
+#include "core/system-manager.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
 #include "games/testing-sandbox/test-core.h"
@@ -14,6 +15,7 @@ namespace Engine
   {
   private:
     Engine::SystemConfig config;
+    Core::SystemManager systemManager;
     StateManager state;
     Games::TestCore *game = nullptr;
     Player::Controller controller;
@@ -29,8 +31,5 @@ namespace Engine
 
     void runApplication();
     void standbyControllerConnection();
-    void navigateMainMenu();
-    void navigateGameMenu();
-    void checkChangeRequest();
   };
 }

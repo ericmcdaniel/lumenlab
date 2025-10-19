@@ -6,7 +6,7 @@
 namespace Display
 {
 
-  OledDisplay::OledDisplay(Player::Controller &c, const Engine::StateManager &es) : display{OLED_RESET}, controller{c}, engineState{es}
+  OledDisplay::OledDisplay(Player::Controller &c, Engine::StateManager &es) : display{OLED_RESET}, controller{c}, engineState{es}
   {
     Wire.begin();
     display.begin(SSD1306_SWITCHCAPVCC, DISPLAY_ADDRESS);
@@ -17,27 +17,27 @@ namespace Display
 
   void OledDisplay::updateDisplay()
   {
-    if (hasUpdates)
+    if (engineState.displayShouldUpdate)
     {
       switch (engineState.getCurrent())
       {
-      case Engine::StateOptions::Initialize:
+      case Engine::SystemState::Initialize:
         drawBootScreen();
         break;
-      case Engine::StateOptions::Menu_Home:
+      case Engine::SystemState::Menu_Home:
         drawMainMenu();
         break;
-      case Engine::StateOptions::Menu_Games:
+      case Engine::SystemState::Menu_Games:
         drawGamesMenu();
         break;
-      case Engine::StateOptions::NoControllerConnected:
+      case Engine::SystemState::NoControllerConnected:
         drawUnconnectedControllerScreen();
         break;
       default:
         drawBootScreen();
         break;
       }
-      hasUpdates = false;
+      engineState.displayShouldUpdate = false;
     }
   }
 

@@ -2,7 +2,7 @@
 
 namespace Engine
 {
-  enum class StateOptions
+  enum class SystemState
   {
     Initialize,
     Menu_Home,
@@ -38,17 +38,18 @@ namespace Engine
   class StateManager
   {
   private:
-    StateOptions curr;
+    SystemState systemState;
     MainMenu_Selection userMainMenuChoice;
     Game_Selection userGameChoice;
 
   public:
-    StateManager() : curr{StateOptions::Initialize}, userMainMenuChoice{MainMenu_Selection::Games}, userGameChoice{Game_Selection::Sandbox} {}
-    StateManager(StateOptions cs) : curr{cs}, userMainMenuChoice{MainMenu_Selection::Games}, userGameChoice{Game_Selection::Sandbox} {}
-    bool isRunning() { return curr != StateOptions::Error; }
+    StateManager() : systemState{SystemState::Initialize}, userMainMenuChoice{MainMenu_Selection::Games}, userGameChoice{Game_Selection::Sandbox} {}
+    StateManager(SystemState state) : systemState{state}, userMainMenuChoice{MainMenu_Selection::Games}, userGameChoice{Game_Selection::Sandbox} {}
+    bool isRunning() { return systemState != SystemState::Error; }
+    bool displayShouldUpdate = true;
 
-    const StateOptions getCurrent() const { return curr; }
-    void setNext(StateOptions cs);
+    const SystemState getCurrent() const { return systemState; }
+    void setNext(SystemState state);
 
     const MainMenu_Selection getUserMenuChoice() const { return userMainMenuChoice; }
     void setNextUserMenuChoice(MainMenu_Selection next) { userMainMenuChoice = next; };
@@ -60,7 +61,7 @@ namespace Engine
 
     bool operator==(const StateManager &other) const
     {
-      return this->curr == other.curr;
+      return this->systemState == other.systemState;
     }
 
     bool operator!=(const StateManager &other) const

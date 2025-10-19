@@ -19,7 +19,7 @@ namespace Display
     static constexpr int DISPLAY_ADDRESS = 0x3c;
     Adafruit_SSD1306 display;
 
-    const Engine::StateManager &engineState;
+    Engine::StateManager &engineState;
     ImageInitLogo initLogo;
     Player::Controller &controller;
 
@@ -34,9 +34,7 @@ namespace Display
     void drawUnconnectedControllerScreen();
 
   public:
-    OledDisplay(Player::Controller &c, const Engine::StateManager &es);
-
-    bool hasUpdates = true;
+    OledDisplay(Player::Controller &c, Engine::StateManager &es);
     void updateDisplay();
   };
 }

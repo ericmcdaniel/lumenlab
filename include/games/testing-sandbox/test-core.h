@@ -9,21 +9,20 @@ namespace Games
   {
   private:
     Engine::StateManager &engineState;
-    Games::SandboxGameState &gameState;
-    TestPlayer *player = nullptr;
+    TestPlayer *player1 = nullptr;
     TestPlayer *player2 = nullptr;
     Player::Controller controller;
     Lights::LedStrip &leds;
 
   public:
-    TestCore(Engine::SystemConfig &config, Games::SandboxGameState &s, Lights::LedStrip &l, const Player::Controller &c, Engine::StateManager &sm) : gameState{s}, controller(c), leds(l), engineState{sm}
+    TestCore(Engine::SystemConfig &config, Engine::StateManager &sm, Lights::LedStrip &l, const Player::Controller &c) : engineState{sm}, leds{l}, controller{c}
     {
-      player = new Games::TestPlayer{config, gameState, leds};
-      player2 = new Games::TestPlayer{config, gameState, leds};
+      player1 = new Games::TestPlayer{config, engineState.getSandboxGameState(), leds};
+      player2 = new Games::TestPlayer{config, engineState.getSandboxGameState(), leds};
     }
     void nextEvent();
-    uint16_t getCurrentScore() { return gameState.currentScore; }
-    uint16_t getHighScore() { return gameState.highScore; }
+    uint16_t getCurrentScore() { return engineState.getSandboxGameState().currentScore; }
+    uint16_t getHighScore() { return engineState.getSandboxGameState().highScore; }
     void incrementCurrentScore();
     void incrementHighScore();
   };

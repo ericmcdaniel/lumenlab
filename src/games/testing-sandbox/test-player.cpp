@@ -14,7 +14,7 @@ namespace Games
       position += static_cast<int>(leds.size()) - abs(delta);
   }
 
-  void TestPlayer::updateLedBuffer()
+  void TestPlayer::updatePlayer1LedBuffer()
   {
     for (int i = 0; i <= width; ++i)
     {
@@ -25,7 +25,7 @@ namespace Games
     }
   }
 
-  void TestPlayer::updateLedBuffer2()
+  void TestPlayer::updatePlayer2LedBuffer()
   {
     for (int i = 0; i <= width; ++i)
     {

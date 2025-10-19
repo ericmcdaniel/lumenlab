@@ -19,7 +19,7 @@ namespace Games
     TestPlayer(Engine::SystemConfig &c, Games::SandboxGameState &s, Lights::LedStrip &l) : Player::Player{c, leds}, position{0}, leds{l}, state{s} {};
     unsigned long getPosition() { return position; }
     void move(const int distance);
-    void updateLedBuffer();
-    void updateLedBuffer2();
+    void updatePlayer1LedBuffer();
+    void updatePlayer2LedBuffer();
   };
 }

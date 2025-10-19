@@ -12,23 +12,23 @@ namespace Games
       engineState.displayShouldUpdate = true;
       logf("Current score: %d", getCurrentScore());
     }
-    auto input = controller.leftAnalog();
-    auto input2 = controller.rightAnalog();
-    player->move(input.x);
-    player->updateLedBuffer();
-    player2->move(input2.x);
-    player2->updateLedBuffer2();
+    auto leftInput = controller.leftAnalog();
+    auto rightInput = controller.rightAnalog();
+    player1->move(leftInput.x);
+    player1->updatePlayer1LedBuffer();
+    player2->move(rightInput.x);
+    player2->updatePlayer2LedBuffer();
   }
 
   void TestCore::incrementCurrentScore()
   {
-    ++gameState.currentScore;
+    ++engineState.getSandboxGameState().currentScore;
     engineState.displayShouldUpdate = true;
   }
 
   void TestCore::incrementHighScore()
   {
-    ++gameState.highScore;
+    ++engineState.getSandboxGameState().highScore;
     engineState.displayShouldUpdate = true;
   }
 }

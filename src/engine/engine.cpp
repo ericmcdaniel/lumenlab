@@ -108,7 +108,7 @@ namespace Engine
       delete game;
       game = nullptr;
     }
-    game = new Games::TestCore{config, state.getSandboxGameState(), leds, controller, state};
+    game = new Games::TestCore{config, state, leds, controller};
     state.setNext(SystemState::Game_Sandbox);
   }
 

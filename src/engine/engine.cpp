@@ -114,16 +114,16 @@ namespace Engine
   {
     if (controller.wasPressed(Player::ControllerButton::Down))
     {
-      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
       state.selectNextMenu();
       display.hasUpdates = true;
+      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
     }
 
     if (controller.wasPressed(Player::ControllerButton::Up))
     {
-      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
       state.selectNextMenu(MenuNavigationDirection::Reverse);
       display.hasUpdates = true;
+      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
     }
 
     if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
@@ -131,8 +131,8 @@ namespace Engine
       switch (state.getUserMenuChoice())
       {
       case MainMenu_Selection::Games:
-        log("Transitioning to Game Submenu.");
         state.setNext(StateOptions::Menu_Games);
+        log("Transitioning to Game Submenu.");
         break;
       case MainMenu_Selection::Scenes:
         break;
@@ -145,16 +145,16 @@ namespace Engine
   {
     if (controller.wasPressed(Player::ControllerButton::Down))
     {
-      logf("Highlighting Games Submenu option %d", state.getUserGameChoice());
       state.selectNextGame();
       display.hasUpdates = true;
+      logf("Highlighting Games Submenu option %d", state.getUserGameChoice());
     }
 
     if (controller.wasPressed(Player::ControllerButton::Up))
     {
-      logf("Highlighting Game Submenu option %d", state.getUserGameChoice());
       state.selectNextGame(MenuNavigationDirection::Reverse);
       display.hasUpdates = true;
+      logf("Highlighting Game Submenu option %d", state.getUserGameChoice());
     }
 
     if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
@@ -168,6 +168,13 @@ namespace Engine
         break;
       }
       display.hasUpdates = true;
+    }
+
+    if (controller.wasPressed(Player::ControllerButton::Circle))
+    {
+      state.setNext(StateOptions::Menu_Home);
+      display.hasUpdates = true;
+      log("Transitioning to Main Menu.");
     }
   }
 

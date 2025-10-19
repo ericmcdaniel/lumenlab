@@ -8,7 +8,6 @@ namespace Engine
     Menu_Home,
     Menu_Games,
     Menu_Scenes,
-    Menu_Ambient,
     Game_SandboxTransition,
     Game_Sandbox,
     NoControllerConnected,
@@ -26,6 +25,7 @@ namespace Engine
   {
     Sandbox,
     Recall,
+    PhaseEvasion,
     COUNT
   };
 

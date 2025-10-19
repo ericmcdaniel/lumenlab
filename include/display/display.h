@@ -13,6 +13,8 @@ namespace Display
   class OledDisplay
   {
   private:
+    static constexpr int DISPLAY_WIDTH = 128;
+    static constexpr int DISPLAY_HEIGHT = 64;
     static constexpr int OLED_RESET = 4;
     static constexpr int DISPLAY_ADDRESS = 0x3c;
     Adafruit_SSD1306 display;
@@ -21,7 +23,8 @@ namespace Display
     ImageInitLogo initLogo;
     Player::Controller &controller;
 
-    auto selectedOption(uint8_t index, uint8_t selectedOptionIndex) { return index == selectedOptionIndex ? '>' : ' '; };
+    char selectedOption(uint8_t index, uint8_t selectedOptionIndex) { return index == selectedOptionIndex ? '>' : ' '; };
+    int16_t calculateCenterText(const char *text);
 
     void drawLogo();
     void drawHeader(const char *message);
@@ -30,12 +33,7 @@ namespace Display
     void drawGamesMenu();
 
   public:
-    OledDisplay(Player::Controller &c, const Engine::StateManager &es) : display{OLED_RESET}, controller{c}, engineState{es}
-    {
-      Wire.begin();
-      display.begin(SSD1306_SWITCHCAPVCC, DISPLAY_ADDRESS);
-      drawBootScreen();
-    }
+    OledDisplay(Player::Controller &c, const Engine::StateManager &es);
 
     bool hasUpdates = true;
     void updateDisplay();

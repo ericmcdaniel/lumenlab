@@ -5,6 +5,16 @@
 
 namespace Display
 {
+
+  OledDisplay::OledDisplay(Player::Controller &c, const Engine::StateManager &es) : display{OLED_RESET}, controller{c}, engineState{es}
+  {
+    Wire.begin();
+    display.begin(SSD1306_SWITCHCAPVCC, DISPLAY_ADDRESS);
+    display.setTextColor(WHITE);
+    display.setTextSize(1);
+    drawBootScreen();
+  }
+
   void OledDisplay::updateDisplay()
   {
     if (hasUpdates)
@@ -28,32 +38,42 @@ namespace Display
     }
   }
 
-  void OledDisplay::drawBootScreen()
+  int16_t OledDisplay::calculateCenterText(const char *text)
   {
-    display.clearDisplay();
-    display.setTextColor(WHITE);
-    display.setTextSize(1);
-    display.setCursor(30, 0);
-    display.print("LumenLab v1");
-    display.drawBitmap(initLogo.xPos, initLogo.yPos, initLogo.rawValues, initLogo.width, initLogo.height, WHITE);
-    display.display();
+    // unitialized but mutated by the Adafruit library
+    int16_t textStartX, textStartY;
+    uint16_t textWidth, textHeight;
+
+    display.getTextBounds(text, 0, 0, &textStartX, &textStartY, &textWidth, &textHeight);
+
+    int16_t centeredX = (DISPLAY_WIDTH - textWidth) / 2;
+    return centeredX;
   }
 
   void OledDisplay::drawHeader(const char *message)
   {
+    auto startingX = calculateCenterText(message);
+    display.setCursor(startingX, 0);
+    display.print(message);
   }
 
   void OledDisplay::drawLogo()
   {
   }
 
+  void OledDisplay::drawBootScreen()
+  {
+    display.clearDisplay();
+    drawHeader("LumenLab v1");
+
+    display.drawBitmap(initLogo.xPos, initLogo.yPos, initLogo.rawValues, initLogo.width, initLogo.height, WHITE);
+    display.display();
+  }
+
   void OledDisplay::drawMainMenu()
   {
     display.clearDisplay();
-    display.setTextColor(WHITE);
-    display.setTextSize(1);
-    display.setCursor(39, 0);
-    display.print("Main Menu");
+    drawHeader("Main Menu");
 
     uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserMenuChoice());
 
@@ -71,10 +91,7 @@ namespace Display
   void OledDisplay::drawGamesMenu()
   {
     display.clearDisplay();
-    display.setTextColor(WHITE);
-    display.setTextSize(1);
-    display.setCursor(38, 0);
-    display.print("Games Menu");
+    drawHeader("Games Menu");
 
     uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserGameChoice());
 
@@ -86,7 +103,7 @@ namespace Display
     display.print(selectedOption(1, selectedOptionIndex));
     display.print("  Recall");
     display.setCursor(0, 24);
-    display.print(selectedOption(1, selectedOptionIndex));
+    display.print(selectedOption(2, selectedOptionIndex));
     display.print("  Phase Evasion");
 
     display.display();

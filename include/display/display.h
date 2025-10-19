@@ -13,8 +13,8 @@ namespace Display
   class OledDisplay
   {
   private:
-    static constexpr int DISPLAY_WIDTH = 128;
-    static constexpr int DISPLAY_HEIGHT = 64;
+    static constexpr int DISPLAY_WIDTH = 128; // The screen holds up to 21 characters, 6 pixels wide
+    static constexpr int DISPLAY_HEIGHT = 64; // Characters are 7 pixels tall at minimum
     static constexpr int OLED_RESET = 4;
     static constexpr int DISPLAY_ADDRESS = 0x3c;
     Adafruit_SSD1306 display;
@@ -31,6 +31,7 @@ namespace Display
     void drawBootScreen();
     void drawMainMenu();
     void drawGamesMenu();
+    void drawTransitionScreen(const char *name);
     void drawSandboxGameHud();
     void drawUnconnectedControllerScreen();
 

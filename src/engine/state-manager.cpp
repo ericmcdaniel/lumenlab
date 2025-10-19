@@ -49,4 +49,13 @@ namespace Engine
     userGameChoice = static_cast<Game_Selection>(position);
     displayShouldUpdate = true;
   }
+
+  const char *StateManager::printGameName(size_t index)
+  {
+    static constexpr const char gameNames[3][20] = {
+        "Sandbox (Testing)",
+        "Recall",
+        "Phase Evasion"};
+    return gameNames[index];
+  }
 }

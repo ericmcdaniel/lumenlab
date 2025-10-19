@@ -30,6 +30,9 @@ namespace Display
       case Engine::SystemState::Menu_Games:
         drawGamesMenu();
         break;
+      case Engine::SystemState::Game_SandboxTransition:
+        drawTransitionScreen(engineState.printGameName(static_cast<int>(engineState.getUserGameChoice())));
+        break;
       case Engine::SystemState::Game_Sandbox:
         drawSandboxGameHud();
         break;
@@ -99,17 +102,27 @@ namespace Display
     drawHeader("Games Menu");
 
     uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserGameChoice());
+    char nameBuffer[32] = "";
 
     display.setCursor(0, 8);
-    display.print(selectedOption(0, selectedOptionIndex));
-    display.print("  Sandbox (Testing)");
-    display.setCursor(0, 16);
-    display.print(selectedOption(1, selectedOptionIndex));
-    display.print("  Recall");
-    display.setCursor(0, 24);
-    display.print(selectedOption(2, selectedOptionIndex));
-    display.print("  Phase Evasion");
+    sprintf(nameBuffer, "%c  %s", selectedOption(0, selectedOptionIndex), engineState.printGameName(0));
+    display.print(nameBuffer);
 
+    display.setCursor(0, 16);
+    sprintf(nameBuffer, "%c  %s", selectedOption(1, selectedOptionIndex), engineState.printGameName(1));
+    display.print(nameBuffer);
+
+    display.setCursor(0, 24);
+    sprintf(nameBuffer, "%c  %s", selectedOption(2, selectedOptionIndex), engineState.printGameName(2));
+    display.print(nameBuffer);
+
+    display.display();
+  }
+
+  void OledDisplay::drawTransitionScreen(const char *name)
+  {
+    display.clearDisplay();
+    drawHeader(name);
     display.display();
   }
 

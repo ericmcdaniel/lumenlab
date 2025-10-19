@@ -46,13 +46,13 @@ namespace Core
     if (controller.wasPressed(Player::ControllerButton::Down))
     {
       state.selectNextGame();
-      logf("Highlighting Games Submenu option %d", state.getUserGameChoice());
+      logf("Highlighting Games Submenu option %s", state.printGameName(static_cast<int>(state.getUserGameChoice())));
     }
 
     if (controller.wasPressed(Player::ControllerButton::Up))
     {
       state.selectNextGame(Engine::MenuNavigationDirection::Reverse);
-      logf("Highlighting Game Submenu option %d", state.getUserGameChoice());
+      logf("Highlighting Games Submenu option %s", state.printGameName(static_cast<int>(state.getUserGameChoice())));
     }
 
     if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))

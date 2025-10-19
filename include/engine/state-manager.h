@@ -46,7 +46,9 @@ namespace Engine
     Games::SandboxGameState sandboxGameState;
 
   public:
-    StateManager() : systemState{SystemState::Initialize}, userMainMenuChoice{MainMenu_Selection::Games}, userGameChoice{Game_Selection::Sandbox} {}
+    StateManager() : systemState{SystemState::Initialize},
+                     userMainMenuChoice{MainMenu_Selection::Games},
+                     userGameChoice{Game_Selection::Sandbox} {}
     bool isRunning() { return systemState != SystemState::Error; }
     bool displayShouldUpdate = true;
 
@@ -62,6 +64,7 @@ namespace Engine
     void selectNextGame(MenuNavigationDirection direction = MenuNavigationDirection::Forward);
 
     Games::SandboxGameState &getSandboxGameState() { return sandboxGameState; }
+    const char *printGameName(size_t index);
 
     bool operator==(const StateManager &other) const
     {

@@ -1,4 +1,10 @@
-<p align="center"><img src="assets/lumenlab-logo.png" alt="LumenLab Logo" /></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/lumenlab-logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="assets/lumenlab-logo.png">
+    <img alt="LumenLab Logo" src="assets/lumenlab-logo.png">
+  </picture>
+</p>
 <p align="center">Transforming pixels into a playground</p>
 
 ---
@@ -8,7 +14,7 @@ __LumenLab__ is an LED strip gaming and entertainment platform designed to trans
 
 # Features
 
-LumenLab is composed of three modes called realms. The signature realm is its suite of games, but the platform also supports entertaining animations (called scenes), and of course ambient, general purpose lighting. After all it's still an LED strip!
+LumenLab is composed of two modes. The central mode is its suite of games, but the platform also supports animations and ambient lighting, called scenes. After all it's still an LED strip!
 
 ## Games
 Using an LED strip as a gaming platform is a unique concept due to the constraint of only having one dimension to interact with. Since *only* the landscape x-axis is available, this constraint compels players to apply creative interpretation during gameplay. This of course is not a modern, feature rich AAA blockbuster with 4K graphics, immersing you in the vision of a world crafted by others. Instead, LumenLab's restriction subtly encourages players to philosophically revisit what it *really* means to play a game down to the core. In its purest form, a game player follows rules and explores boundaries in pursuit of a goal. Gamers encounter conflict and must experiment and adapt to their environment to overcome obstacles. LumenLab forces players to abstractly experience digital gaming at its rawest, most atomic form: structured uncertainty and strategy until mastery is achieved. This has become the manifesto of the LumenLab. **Every individual playing its games has a unique mental concept of what they're experiencing.**
@@ -17,18 +23,27 @@ Because LumenLab is restricted to a single dimension composed of an array of LED
 
 | **Title** | **Description** |
 | --- | --- |
-| **Recall** |*Recall* is the low-hanging fruit of the games available. It is an adaptation of Hasbro's fifty-year-old game [*Simon*](https://en.wikipedia.org/wiki/Simon_(game)). Because of the ubiquity of the game and the general public's familiarity with it and its rules, it's logical for this to be the first game built, allowing players to adapt to the restrictions of LumenLab within a familiar game format. The rules and gameplay are the identical to the original. The LED strip momentarily displays a color, and you must press the button with the corresponding color on the PS3 controller. As additional colors are sequenced, players must recall the full sequence in correct order on every iteration. The goal is to exceed your previous high score.<br><br>*In development.*|
-| **Phase Evasion** | *Phase Evasion* is a game similar in spirit to Google Chrome's Easter egg game [*Dinosaur Game*](https://en.wikipedia.org/wiki/Dinosaur_Game) (also known as *T-Rex Runner*). In *Dinosaur Game*, you are a dinosaur running in the desert. You must avoid obstacles like cacti and birds by jumping over them or ducking under them respectively. In *Phase Evasion*, you are a solid-colored specter, and you must evade various colored flares approaching you. Limited to the single dimension constraint, you cannot jump up or down, but instead must phase shift and blend into the flare's color to evade capture. The flares progressively move faster, and your goal is to exceed your previous high score.<br><br>*In development.* |
-| **Light Strike** | *Light Strike* is an adaptation of Atari's classic game [*Space Invaders*](https://en.wikipedia.org/wiki/Space_Invaders), but with the twist of blending in their other iconic game [*Asteroids*](https://en.wikipedia.org/wiki/Asteroids_(video_game)). You are an agent in deep space, and are being attacked by predators. These predators approach you from both sides and at varying speeds. You have the freedom of motion across the x-axis, and your survival requires shooting them down with your laser pistol. Be sure to conserve your ammunition however, your weapon can only fire so many rounds a minute!<br><br>*In development.* |
-| **Reflex** | *In development.* Details to be provided soon. |
+| **Recall** |*Recall* is an adaptation of Hasbro's fifty-year-old game [*Simon*](https://en.wikipedia.org/wiki/Simon_(game)), chosen for it's familiarity and simplicity. Players easily recognize the format, making it a natural fit for LumenLab’s constraints. Similar to the original, the LED strip flashes a color, and the player must press the matching button on the PS3 controller. Each round adds another color to the sequence, which must be recalled in full and in order.<br><br>*In development.*|
+| **Phase Evasion** | *Phase Evasion* is a game inspired by Google Chrome's [*Dinosaur Game*](https://en.wikipedia.org/wiki/Dinosaur_Game), replacing jumping and ducking obstacles with color-based evasion. You are a solid-colored specter pursued by incoming flares. To survive, you must phase shift to match each flare’s color and blend in to evade capture. As the game progresses, the flares accelerate, testing reflexes and timing.<br><br>*In development.* |
+| **Light Strike** | *Light Strike* combines the spirit of Atari's [*Space Invaders*](https://en.wikipedia.org/wiki/Space_Invaders) with elements of [*Asteroids*](https://en.wikipedia.org/wiki/Asteroids_(video_game)). As a lone agent in deep space, you enounter waves of predators approaching you from directions sides at varying speeds. Moving freely across the x-axis, and your survival requires defending yourself with your laser pistol. Conserve your ammunition however, your weapon can only fire so many rounds a minute!<br><br>*In development.* |
+| **Reflex** | *Reflex* is a fast-moving inspired by the modern arcade game [*Pop the Lock*](https://www.baytekent.com/pop-the-lock/), testing precision and timing under pressure. A moving marker sweeps across the field toward a shifting target. Fire at the perfect moment to score a hit. Each success quickens the pace, reverses the marker's direction, and relocates the target to a new random location. Survive fifty flawless shots to win.<br><br>*In development.* |
+| **Spectrum** | *Spectrum* tests your perception of color and precision of control. A random RGB color appears on one end of the display, and you must use the analog stick to recreate it as closely as possible. The closer your match, the higher your score.<br><br>*In development* |
 | **Pursuit** | *In development.* Details to be provided soon. |
-| **Spectrum** | *In development.* Details to be provided soon. |
 
-The above games have already completed the design phase, and next steps would be to actually implement them which is non-trivial and time consuming. There are more games in candidancy whose detail still needs work, and ideas for *two-player* games down the pipe as well.
+There are more game ideas in the works, and ideas for some *two-player* games are being considered.
 
 ## Scenes
 
-An LED strip entertainment platform would not be complete if users did not have animations to enjoy. Inspired by the [WLED project](https://kno.wled.ge/), LumenLab is able to create captivating animations, many of which which support adjustments in real-time to suit your needs. Depending on the Scene chosen, moving the joystick can change the color, or pressing the directional buttons can change timing.
+An LED strip entertainment platform would not be complete if it did not include animations and special effects libraries. Inspired by the [WLED project](https://kno.wled.ge/), LumenLab is able to create captivating scenes. Many of them are interactive, for example moving the joystick can change the color, or pressing the directional buttons can change timing.
+| **Title** | **Description** |
+| --- | --- |
+| **Canvas** | *Canvas* lets you choose any color across the RGB range, turning the LED strip into a fully personalized ambient light.<br><br>*In development.* |
+| **Tempo** | *Tempo* allows you to choose a tempo and strobe lights and trigger light subroutines in response to music.<br><br>*In development.* |
+| **Police Siren** | Strobing red and blue lights to look like a law enforcement vehicle.<br><br>*In development.* |
+| **Halloween** | Spooky orange and some purple.<br><br>*In development.* |
+| **Christmas** | Festive red and green.<br><br>*In development.* |
+
+And more to come.
 
 ---
 
@@ -83,4 +98,4 @@ When compiling in debug mode, the ESP32 does not transmit color signals to the L
 <p align="center"><i>Figure 2: Development Virtualizer of two controllable entities, simulating what the LED strip would be rendering</i></p>
 
 ## Building the Repository
-This section was redacted temporarily because of how rapidly the code base is evolving. The instructions I wrote no longer apply as the Virtualizer instead currently sends color data via USB Serial and not an open socket. Stay tuned.
+This section was redacted temporarily because of how rapidly the code base is evolving. The instructions I wrote no longer apply as the Virtualizer was rewritten for speed to send color data via a USB serial connection instead of an open WebSocket connection. Stay tuned.

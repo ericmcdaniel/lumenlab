@@ -6,11 +6,29 @@ namespace Games
 {
   void TestCore::nextEvent()
   {
-    auto input = controller.leftAnalog();
-    auto input2 = controller.rightAnalog();
-    player->move(input.x);
-    player->updateLedBuffer();
-    player2->move(input2.x);
-    player2->updateLedBuffer2();
+    if (controller.wasPressed(Player::ControllerButton::Cross))
+    {
+      incrementCurrentScore();
+      engineState.displayShouldUpdate = true;
+      logf("Current score: %d", getCurrentScore());
+    }
+    auto leftInput = controller.leftAnalog();
+    auto rightInput = controller.rightAnalog();
+    player1->move(leftInput.x);
+    player1->updatePlayer1LedBuffer();
+    player2->move(rightInput.x);
+    player2->updatePlayer2LedBuffer();
+  }
+
+  void TestCore::incrementCurrentScore()
+  {
+    ++engineState.getSandboxGameState().currentScore;
+    engineState.displayShouldUpdate = true;
+  }
+
+  void TestCore::incrementHighScore()
+  {
+    ++engineState.getSandboxGameState().highScore;
+    engineState.displayShouldUpdate = true;
   }
 }

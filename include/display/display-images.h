@@ -2,6 +2,13 @@
 
 #include <Adafruit_SSD1306.h>
 
+#ifdef BLACK
+#undef BLACK
+#endif
+#ifdef WHITE
+#undef WHITE
+#endif
+
 namespace Display
 {
   struct ImageInitLogo

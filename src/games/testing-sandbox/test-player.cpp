@@ -9,27 +9,27 @@ namespace Games
   {
     int delta = distance / 20;
 
-    pos = (pos + delta) % static_cast<int>(leds.size());
-    if (pos < 0)
-      pos += static_cast<int>(leds.size()) - abs(delta);
+    position = (position + delta) % static_cast<int>(leds.size());
+    if (position < 0)
+      position += static_cast<int>(leds.size()) - abs(delta);
   }
 
-  void TestPlayer::updateLedBuffer()
+  void TestPlayer::updatePlayer1LedBuffer()
   {
     for (int i = 0; i <= width; ++i)
     {
-      size_t index = (pos + i) % leds.size();
+      size_t index = (position + i) % leds.size();
       leds.buffer[index].r = static_cast<int>(245.0 * (1.0 - abs(i - 4) / 4.0));
       leds.buffer[index].g = static_cast<int>(215.0 * (1.0 - abs(i - 4) / 4.0));
       leds.buffer[index].b = static_cast<int>(128.0 * (1.0 - abs(i - 4) / 4.0));
     }
   }
 
-  void TestPlayer::updateLedBuffer2()
+  void TestPlayer::updatePlayer2LedBuffer()
   {
     for (int i = 0; i <= width; ++i)
     {
-      size_t index = (pos + i) % leds.size();
+      size_t index = (position + i) % leds.size();
       leds.buffer[index].r = static_cast<int>(103.0 * (1.0 - abs(i - 4) / 4.0));
       leds.buffer[index].g = static_cast<int>(162.0 * (1.0 - abs(i - 4) / 4.0));
       leds.buffer[index].b = static_cast<int>(235.0 * (1.0 - abs(i - 4) / 4.0));

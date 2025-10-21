@@ -1,14 +1,15 @@
 #pragma once
 
+#include "games/testing-sandbox/game-state.h"
+
 namespace Engine
 {
-  enum class StateOptions
+  enum class SystemState
   {
     Initialize,
     Menu_Home,
     Menu_Games,
     Menu_Scenes,
-    Menu_Ambient,
     Game_SandboxTransition,
     Game_Sandbox,
     NoControllerConnected,
@@ -19,14 +20,14 @@ namespace Engine
   {
     Games,
     Scenes,
-    Ambient,
     COUNT
   };
 
-  enum class Games_Selection
+  enum class Game_Selection
   {
     Sandbox,
     Recall,
+    PhaseEvasion,
     COUNT
   };
 
@@ -39,24 +40,40 @@ namespace Engine
   class StateManager
   {
   private:
-    StateOptions curr;
-    MainMenu_Selection userMenuChoice;
-    Games_Selection userGameChoice;
+    SystemState systemState;
+    MainMenu_Selection userMainMenuChoice;
+    Game_Selection userGameChoice;
+    Games::SandboxGameState sandboxGameState;
 
   public:
-    StateManager() : curr{StateOptions::Initialize}, userMenuChoice{MainMenu_Selection::Games}, userGameChoice{Games_Selection::Sandbox} {}
-    StateManager(StateOptions cs) : curr{cs}, userMenuChoice{MainMenu_Selection::Games}, userGameChoice{Games_Selection::Sandbox} {}
-    bool isRunning() { return curr != StateOptions::Error; }
+    StateManager() : systemState{SystemState::Initialize},
+                     userMainMenuChoice{MainMenu_Selection::Games},
+                     userGameChoice{Game_Selection::Sandbox} {}
+    bool isRunning() { return systemState != SystemState::Error; }
+    bool displayShouldUpdate = true;
 
-    const StateOptions getCurrent() const { return curr; }
-    void setNext(StateOptions cs);
+    const SystemState getCurrent() const { return systemState; }
+    void setNext(SystemState state);
 
-    const MainMenu_Selection getUserMenuChoice() const { return userMenuChoice; }
-    void setNextUserMenuChoice(MainMenu_Selection next) { userMenuChoice = next; };
+    const MainMenu_Selection getUserMenuChoice() const { return userMainMenuChoice; }
+    void setNextUserMenuChoice(MainMenu_Selection next) { userMainMenuChoice = next; };
     void selectNextMenu(MenuNavigationDirection direction = MenuNavigationDirection::Forward);
 
-    const Games_Selection getUserGameChoice() const { return userGameChoice; }
-    void setNextUserGameChoice(Games_Selection next) { userGameChoice = next; };
+    const Game_Selection getUserGameChoice() const { return userGameChoice; }
+    void setNextUserGameChoice(Game_Selection next) { userGameChoice = next; };
     void selectNextGame(MenuNavigationDirection direction = MenuNavigationDirection::Forward);
+
+    Games::SandboxGameState &getSandboxGameState() { return sandboxGameState; }
+    const char *printGameName(size_t index);
+
+    bool operator==(const StateManager &other) const
+    {
+      return this->systemState == other.systemState;
+    }
+
+    bool operator!=(const StateManager &other) const
+    {
+      return !(*this == other);
+    }
   };
 }

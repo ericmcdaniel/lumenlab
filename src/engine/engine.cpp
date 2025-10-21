@@ -1,10 +1,11 @@
+#include <cmath>
 #include "engine/engine.h"
 #include "games/testing-sandbox/test-player.h"
 
 namespace Engine
 {
 
-  GameEngine::GameEngine() : leds{config}, display{controller, state}
+  GameEngine::GameEngine() : leds{config}, display{controller, state}, systemManager{state, controller, display}
   {
     initializeEngine();
   }
@@ -16,28 +17,29 @@ namespace Engine
       if (isReady())
       {
         leds.reset();
-        checkChangeRequest();
+        systemManager.checkChangeRequest();
         display.updateDisplay();
 
         switch (state.getCurrent())
         {
-        case StateOptions::Menu_Home:
-          // moving directly to the TestingSandbox game for testing
-          // state.setNext(CoreStateOptions::GAME_SANDBOX);
-          handleMainMenu();
+        case SystemState::Menu_Home:
+          systemManager.navigateMainMenu();
           break;
-        case StateOptions::Game_SandboxTransition:
-          initSandbox();
+        case SystemState::Menu_Games:
+          systemManager.navigateGameMenu();
           break;
-        case StateOptions::Game_Sandbox:
+        case SystemState::Game_SandboxTransition:
+          transitionToSandbox();
+          break;
+        case SystemState::Game_Sandbox:
           game->nextEvent();
           break;
-        case StateOptions::NoControllerConnected:
+        case SystemState::NoControllerConnected:
           standbyControllerConnection();
           break;
         default:
           // ideally shouldn't encounter this
-          state.setNext(StateOptions::Error);
+          state.setNext(SystemState::Error);
           break;
         }
 
@@ -54,6 +56,8 @@ namespace Engine
     // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
     Serial.begin(921600);
+    leds.reset();
+    renderLedStrip();
     log("Connecting to computer using a serial connection for debugging.");
     while (!Serial)
     {
@@ -76,60 +80,39 @@ namespace Engine
 
     if (!controller.isConnected())
     {
-      state.setNext(StateOptions::NoControllerConnected);
-      log("Failed to connect to controller. Entering No Controller Connection sequence");
+      state.setNext(SystemState::NoControllerConnected);
+      log("Failed to connect to controller. Entering No Controller Connection sequence until a connection is established.");
     }
     else
     {
-      state.setNext(StateOptions::Menu_Home);
+      state.setNext(SystemState::Menu_Home);
       log("Startup process completed. Transitioning to Main Menu");
     }
   }
 
   void GameEngine::standbyControllerConnection()
   {
-    // while (!controller.isConnected())
-    // {
-    //   for (int i = 0; i <= leds.size(); ++i)
-    //   {
-    //     leds.buffer[i].r = 255;
-    //     leds.buffer[i].g = 0;
-    //     leds.buffer[i].b = 0;
-    //   }
-    // }
+    if (controller.isConnected())
+    {
+      state.setNext(SystemState::Menu_Home);
+      log("PS3 controller connected. Transitioning to Main Menu");
+      return;
+    }
+
+    for (int i = 0; i <= leds.size(); ++i)
+    {
+      float phase = std::cos((2 * M_PI * i / 300) + (2 * M_PI * systemManager.disconnectedLedPhaseShift / 300)) * 127 + 128;
+      leds.buffer[i].r = std::floor(phase);
+      leds.buffer[i].g = 0;
+      leds.buffer[i].b = 0;
+    }
+    systemManager.disconnectedLedPhaseShift += 0.5;
+
+    if (systemManager.disconnectedLedPhaseShift > 300)
+      systemManager.disconnectedLedPhaseShift = 0;
   }
 
-  void GameEngine::checkChangeRequest()
-  {
-    if (controller.wasPressed(Player::ControllerButton::Ps))
-    {
-      state.setNext(StateOptions::Menu_Home);
-      log("Transitioning to Main Menu.");
-    }
-  }
-
-  void GameEngine::handleMainMenu()
-  {
-
-    if (controller.wasPressed(Player::ControllerButton::Down))
-    {
-      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
-      state.selectNextMenu();
-    }
-
-    if (controller.wasPressed(Player::ControllerButton::Up))
-    {
-      logf("Highlighting Main Menu option %d", state.getUserMenuChoice());
-      state.selectNextMenu(MenuNavigationDirection::Reverse);
-    }
-
-    if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
-    {
-      state.setNext(StateOptions::Game_Sandbox);
-    }
-  }
-
-  void GameEngine::initSandbox()
+  void GameEngine::transitionToSandbox()
   {
     log("Transitioning to Sandbox game.");
     if (game)
@@ -137,8 +120,9 @@ namespace Engine
       delete game;
       game = nullptr;
     }
-    game = new Games::TestCore{config, leds, controller};
-    state.setNext(StateOptions::Game_Sandbox);
+    game = new Games::TestCore{config, state, leds, controller};
+    state.getSandboxGameState().reset();
+    state.setNext(SystemState::Game_Sandbox);
   }
 
   void GameEngine::renderLedStrip()

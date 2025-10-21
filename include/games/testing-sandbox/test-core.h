@@ -5,24 +5,25 @@
 
 namespace Games
 {
-  /**
-   * This is not normally a playable state, but is just an arena where I can experiment with code and
-   * use that to build out the other games.
-   */
   class TestCore
   {
   private:
-    TestPlayer *player = nullptr;
+    Engine::StateManager &engineState;
+    TestPlayer *player1 = nullptr;
     TestPlayer *player2 = nullptr;
     Player::Controller controller;
     Lights::LedStrip &leds;
 
   public:
-    TestCore(Engine::SystemConfig &config, Lights::LedStrip &l, const Player::Controller &gc) : controller(gc), leds(l)
+    TestCore(Engine::SystemConfig &config, Engine::StateManager &sm, Lights::LedStrip &l, const Player::Controller &c) : engineState{sm}, leds{l}, controller{c}
     {
-      player = new Games::TestPlayer{config, leds};
-      player2 = new Games::TestPlayer{config, leds};
+      player1 = new Games::TestPlayer{config, engineState.getSandboxGameState(), leds};
+      player2 = new Games::TestPlayer{config, engineState.getSandboxGameState(), leds};
     }
     void nextEvent();
+    uint16_t getCurrentScore() { return engineState.getSandboxGameState().currentScore; }
+    uint16_t getHighScore() { return engineState.getSandboxGameState().highScore; }
+    void incrementCurrentScore();
+    void incrementHighScore();
   };
 }

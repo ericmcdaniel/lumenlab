@@ -54,9 +54,7 @@ This guide will walk through both options and their practicality.
 
 ## Method A: Professionally Manufactured and Assembled
 
-A custom PCB was designed using KiCad 9 and gives LumenLab a clean aesthetic. All of the schematic files, PCB layout files, BOM, custom symbol libraries, footprints, 3D models, and Gerber files are all found in the `/board` directory. The PCB layout uses the manufacturing capabilities given by [PCBWay](https://www.pcbway.com/). Although you can potentially use any board house of your choosing, the ECAD model was designed with PCBWay's capabilities in mind. Production costs were minimized as much as possible, so the PCB was designed using only two layers and kept under 100 mm. This lowered manufacturing fees from $100 down to $5! If you choose to have this manufactured else where, you must adjust for the capabilities of that board house. Your mileage may vary, and by quite a bit too.
-
-**The final PCB design is still in progress and is not immediately available for manufacture.** Stay tuned.
+A custom PCB was designed using KiCad 9 and gives LumenLab a clean aesthetic. All of the schematic files, PCB layout files, BOM, custom symbol libraries, footprints, 3D models, and Gerber files are all found in the `/board` directory. The PCB layout uses the manufacturing capabilities given by [PCBWay](https://www.pcbway.com/). Although you can potentially use any board house of your choosing, the ECAD model was designed with PCBWay's capabilities in mind. Production costs were minimized as much as safely reasonable, such as keeping it's width under 100mm. However for the amount of current that it can potentially consume, thermal safety was factored in, leading to a four-layer design with extra forgiving trace width and copper pours. My manufacturing costs were roughly $50 for ten boards. If you choose to have this manufactured else where, you must adjust for the capabilities of that board house. Your mileage may vary, and by quite a bit too.
 
 ![PCB Layout](./board/images/lumenlab-pcb-3d-view-front.png)
 <p align="center"><i>Figure 1: Front of PCB layout</i></p>
@@ -65,7 +63,7 @@ You can view the KiCad schematic, PCB layout, BOM, and 3D rendering of the PCB d
 
 ## Method B: Hand-Soldering a Prototype
 
-This is the more accessible and classic route, however this can be tricky depending on your background with electronics. Below is the prototype BOM if you'd like to build LumenLab yourself using pre-built modules and THT components. If you're an advanced electronics enthusiast, you may even be able to omit some of the suggestions, such as skipping the buck converter, directly powering the LED strip, and using the 5V power directly from the Vin pin to level shift the LED strip's data signal). These "barebones" alterations are not discussed in this document.
+This is the more accessible and classic route especially for DIY enthusiasts, however this can be tricky depending on your background with electronics. Below is the prototype BOM if you'd like to build LumenLab yourself using pre-built modules, THT components, and a breadboard or perfboard. If you're an advanced electronics enthusiast, you may even be able to omit some of the suggestions, such as skipping the buck converter, directly powering the LED strip, and using the 5V power directly from the Vin pin to level shift the LED strip's data signal. These "barebones" alterations are not discussed in this document.
 
 Assembly is remarkably similar to the guidance given on the WLED project. Using their [wiring diagram here](https://kno.wled.ge/basics/wiring-guides/) would be an excellent starting point.
 
@@ -90,7 +88,7 @@ Regardless of whether your build of LumenLab was professionally manufactured and
 
 ## LED Strip Virtualization
 
-To streamline the software development cycle, a virtualizer was created so that you can simulate what the LEDs would be displaying, but on a computer screen. This enables new features to be developed in comfort without needing to physically connect to the LED strip. Using the ESP32 is still required for development regardless since it's just an emulator for what the ESP32 is actually doing in real time.
+To streamline the software development cycle, a virtualizer was created so that you can simulate what the LEDs would be displaying, but on your computer screen. This enables new features to be developed in comfort without needing to physically connect to the LED strip. Using the ESP32 is still required for development regardless since it's just an emulator for what the ESP32 is actually doing in real time.
 
 When compiling in debug mode, the ESP32 does not transmit color signals to the LED strip and instead sends its color data via USB serial for virtual rendering. When compiling in release mode, the virtualizer and logs are removed. This virtualizer was created using Python, and uses the [ModernGL](https://moderngl.readthedocs.io/en/5.8.2/) library, an OpenGL binding for Python.
 

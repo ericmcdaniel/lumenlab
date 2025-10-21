@@ -10,7 +10,7 @@ namespace Display
   {
     Wire.begin();
     display.begin(SSD1306_SWITCHCAPVCC, DISPLAY_ADDRESS);
-    display.setTextColor(WHITE);
+    display.setTextColor(SSD1306_WHITE);
     display.setTextSize(1);
     drawBootScreen();
   }
@@ -75,7 +75,7 @@ namespace Display
     display.clearDisplay();
     drawHeader("LumenLab");
 
-    display.drawBitmap(initLogo.xPos, initLogo.yPos, initLogo.rawValues, initLogo.width, initLogo.height, WHITE);
+    display.drawBitmap(initLogo.xPos, initLogo.yPos, initLogo.rawValues, initLogo.width, initLogo.height, SSD1306_WHITE);
     display.display();
   }
 

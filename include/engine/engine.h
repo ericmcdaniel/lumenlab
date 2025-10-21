@@ -23,7 +23,7 @@ namespace Engine
     Display::OledDisplay display;
 
     void initializeEngine();
-    void initSandbox();
+    void transitionToSandbox();
     void renderLedStrip();
 
   public:

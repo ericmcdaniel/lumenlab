@@ -1,3 +1,4 @@
+#include <cmath>
 #include "engine/engine.h"
 #include "games/testing-sandbox/test-player.h"
 
@@ -28,7 +29,7 @@ namespace Engine
           systemManager.navigateGameMenu();
           break;
         case SystemState::Game_SandboxTransition:
-          initSandbox();
+          transitionToSandbox();
           break;
         case SystemState::Game_Sandbox:
           game->nextEvent();
@@ -55,6 +56,8 @@ namespace Engine
     // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
     Serial.begin(921600);
+    leds.reset();
+    renderLedStrip();
     log("Connecting to computer using a serial connection for debugging.");
     while (!Serial)
     {
@@ -78,7 +81,7 @@ namespace Engine
     if (!controller.isConnected())
     {
       state.setNext(SystemState::NoControllerConnected);
-      log("Failed to connect to controller. Entering No Controller Connection sequence");
+      log("Failed to connect to controller. Entering No Controller Connection sequence until a connection is established.");
     }
     else
     {
@@ -89,18 +92,27 @@ namespace Engine
 
   void GameEngine::standbyControllerConnection()
   {
-    // while (!controller.isConnected())
-    // {
-    //   for (int i = 0; i <= leds.size(); ++i)
-    //   {
-    //     leds.buffer[i].r = 255;
-    //     leds.buffer[i].g = 0;
-    //     leds.buffer[i].b = 0;
-    //   }
-    // }
+    if (controller.isConnected())
+    {
+      state.setNext(SystemState::Menu_Home);
+      log("PS3 controller connected. Transitioning to Main Menu");
+      return;
+    }
+
+    for (int i = 0; i <= leds.size(); ++i)
+    {
+      float phase = std::cos((2 * M_PI * i / 300) + (2 * M_PI * systemManager.disconnectedLedPhaseShift / 300)) * 127 + 128;
+      leds.buffer[i].r = std::floor(phase);
+      leds.buffer[i].g = 0;
+      leds.buffer[i].b = 0;
+    }
+    systemManager.disconnectedLedPhaseShift += 0.5;
+
+    if (systemManager.disconnectedLedPhaseShift > 300)
+      systemManager.disconnectedLedPhaseShift = 0;
   }
 
-  void GameEngine::initSandbox()
+  void GameEngine::transitionToSandbox()
   {
     log("Transitioning to Sandbox game.");
     if (game)
@@ -109,6 +121,7 @@ namespace Engine
       game = nullptr;
     }
     game = new Games::TestCore{config, state, leds, controller};
+    state.getSandboxGameState().reset();
     state.setNext(SystemState::Game_Sandbox);
   }
 

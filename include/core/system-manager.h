@@ -16,6 +16,7 @@ namespace Core
   public:
     SystemManager(Engine::StateManager &s, Player::Controller &c, Display::OledDisplay &d);
 
+    float disconnectedLedPhaseShift = 0;
     void navigateMainMenu();
     void navigateGameMenu();
     void checkChangeRequest();

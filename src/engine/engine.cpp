@@ -5,9 +5,17 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : leds{config}, display{controller, state}, systemManager{state, controller, display}
+  GameEngine::GameEngine() : Timer{}, leds{config}, display{controller, state}, systemManager{state, controller, display}
   {
     initializeEngine();
+  }
+
+  GameEngine::~GameEngine()
+  {
+    if (game)
+    {
+      delete game;
+    }
   }
 
   void GameEngine::runApplication()
@@ -112,15 +120,27 @@ namespace Engine
       systemManager.disconnectedLedPhaseShift = 0;
   }
 
+  // void GameEngine::transitionToSandbox()
+  // {
+  //   log("Transitioning to Sandbox game.");
+  //   if (game)
+  //   {
+  //     delete game;
+  //     game = nullptr;
+  //   }
+  //   game = new Games::TestCore{config, state, leds, controller};
+  //   state.getSandboxGameState().reset();
+  //   state.setNext(SystemState::Game_Sandbox);
+  // }
   void GameEngine::transitionToSandbox()
   {
-    log("Transitioning to Sandbox game.");
-    if (game)
+    log("Transitioning to Recall game.");
+    if (application)
     {
-      delete game;
-      game = nullptr;
+      delete application;
+      application = nullptr;
     }
-    game = new Games::TestCore{config, state, leds, controller};
+    application = new Games::TestCore{config, state, leds, controller};
     state.getSandboxGameState().reset();
     state.setNext(SystemState::Game_Sandbox);
   }

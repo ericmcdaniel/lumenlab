@@ -3,6 +3,7 @@
 #include "engine/system-config.h"
 #include "engine/state-manager.h"
 #include "engine/timer.h"
+#include "engine/layer.h"
 #include "core/system-manager.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
@@ -18,6 +19,7 @@ namespace Engine
     Core::SystemManager systemManager;
     StateManager state;
     Games::TestCore *game = nullptr;
+    Engine::Layer *application = nullptr;
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;
@@ -28,6 +30,7 @@ namespace Engine
 
   public:
     GameEngine();
+    ~GameEngine();
 
     void runApplication();
     void standbyControllerConnection();

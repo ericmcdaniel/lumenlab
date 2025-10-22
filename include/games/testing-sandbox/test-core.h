@@ -1,11 +1,12 @@
 #pragma once
 
+#include "engine/layer.h"
 #include "games/testing-sandbox/test-player.h"
 #include "player/controller.h"
 
 namespace Games
 {
-  class TestCore
+  class TestCore : public Engine::Layer
   {
   private:
     Engine::StateManager &engineState;
@@ -15,10 +16,15 @@ namespace Games
     Lights::LedStrip &leds;
 
   public:
-    TestCore(Engine::SystemConfig &config, Engine::StateManager &sm, Lights::LedStrip &l, const Player::Controller &c) : engineState{sm}, leds{l}, controller{c}
+    TestCore(Engine::SystemConfig &config, Engine::StateManager &sm, Lights::LedStrip &l, const Player::Controller &c) : Engine::Layer{}, engineState{sm}, leds{l}, controller{c}
     {
       player1 = new Games::TestPlayer{config, engineState.getSandboxGameState(), leds};
       player2 = new Games::TestPlayer{config, engineState.getSandboxGameState(), leds};
+    }
+    ~TestCore()
+    {
+      delete player1;
+      delete player2;
     }
     void nextEvent();
     uint16_t getCurrentScore() { return engineState.getSandboxGameState().currentScore; }

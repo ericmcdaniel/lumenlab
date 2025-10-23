@@ -1,6 +1,7 @@
 #include <cmath>
 #include "engine/engine.h"
 #include "games/testing-sandbox/test-player.h"
+#include "games/recall/core.h"
 
 namespace Engine
 {
@@ -41,6 +42,12 @@ namespace Engine
           break;
         case SystemState::Game_Sandbox:
           game->nextEvent();
+          break;
+        case SystemState::Game_RecallTransition:
+          transitionToRecall();
+          break;
+        case SystemState::Game_Recall:
+          application->nextEvent();
           break;
         case SystemState::NoControllerConnected:
           standbyControllerConnection();
@@ -120,19 +127,19 @@ namespace Engine
       systemManager.disconnectedLedPhaseShift = 0;
   }
 
-  // void GameEngine::transitionToSandbox()
-  // {
-  //   log("Transitioning to Sandbox game.");
-  //   if (game)
-  //   {
-  //     delete game;
-  //     game = nullptr;
-  //   }
-  //   game = new Games::TestCore{config, state, leds, controller};
-  //   state.getSandboxGameState().reset();
-  //   state.setNext(SystemState::Game_Sandbox);
-  // }
   void GameEngine::transitionToSandbox()
+  {
+    log("Transitioning to Sandbox game.");
+    if (game)
+    {
+      delete game;
+      game = nullptr;
+    }
+    game = new Games::TestCore{config, state, leds, controller};
+    state.getSandboxGameState().reset();
+    state.setNext(SystemState::Game_Sandbox);
+  }
+  void GameEngine::transitionToRecall()
   {
     log("Transitioning to Recall game.");
     if (application)
@@ -140,9 +147,9 @@ namespace Engine
       delete application;
       application = nullptr;
     }
-    application = new Games::TestCore{config, state, leds, controller};
+    application = new Games::RecallCore{};
     state.getSandboxGameState().reset();
-    state.setNext(SystemState::Game_Sandbox);
+    state.setNext(SystemState::Game_Recall);
   }
 
   void GameEngine::renderLedStrip()

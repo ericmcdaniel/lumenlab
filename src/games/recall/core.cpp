@@ -1,16 +1,16 @@
 #include "esp_system.h"
 
-#include "games/recall/controller.h"
+#include "games/recall/core.h"
 #include "logger.h"
 
 namespace Games
 {
-  Recall::Recall()
+  RecallCore::RecallCore()
   {
     setupGameColors();
   }
 
-  void Recall::setupGameColors()
+  void RecallCore::setupGameColors()
   {
     for (size_t i = 0; i < 256; ++i)
     {

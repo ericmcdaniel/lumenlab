@@ -26,6 +26,7 @@ namespace Engine
 
     void initializeEngine();
     void transitionToSandbox();
+    void transitionToRecall();
     void renderLedStrip();
 
   public:

@@ -19,6 +19,18 @@ namespace Engine
         systemState = currentState;
       }
       break;
+    case SystemState::Game_Recall:
+      if (systemState != SystemState::Game_RecallTransition)
+      {
+        log("Transitioning to Game (Recall) (Transition Layer).");
+        systemState = SystemState::Game_RecallTransition;
+      }
+      else
+      {
+        log("Transitioning to Game (Sandbox).");
+        systemState = currentState;
+      }
+      break;
     default:
       systemState = currentState;
       break;

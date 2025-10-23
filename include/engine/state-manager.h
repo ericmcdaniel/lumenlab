@@ -12,6 +12,8 @@ namespace Engine
     Menu_Scenes,
     Game_SandboxTransition,
     Game_Sandbox,
+    Game_RecallTransition,
+    Game_Recall,
     NoControllerConnected,
     Error
   };

@@ -63,6 +63,7 @@ namespace Core
         state.setNext(Engine::SystemState::Game_Sandbox);
         break;
       case Engine::Game_Selection::Recall:
+        state.setNext(Engine::SystemState::Game_Recall);
         break;
       }
     }

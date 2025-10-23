@@ -11,12 +11,19 @@
 
 #include <Ps3Controller.h> // Needed only for the uint8_t definition
 
+#include "engine/layer.h"
+#include "logger.h"
+
 namespace Games
 {
-  class Recall
+  class RecallCore : public Engine::Layer
   {
   public:
-    Recall();
+    RecallCore();
+    void nextEvent() override
+    {
+      logf("RecallCore - next event.");
+    };
 
   private:
     uint8_t round = 0;

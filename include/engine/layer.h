@@ -6,5 +6,6 @@ namespace Engine
   {
   public:
     Layer() {};
+    virtual void nextEvent() = 0;
   };
 }

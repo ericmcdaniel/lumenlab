@@ -31,19 +31,16 @@ namespace Engine
 
       switch (state.getCurrent())
       {
-      case SystemState::Menu_Home:
+      case SystemState::MenuHome:
         systemManager.navigateMainMenu();
         break;
-      case SystemState::Menu_Games:
+      case SystemState::MenuGames:
         systemManager.navigateGameMenu();
         break;
-      // case SystemState::ApplicationTransition:
-      //   systemManager.transition(state.getCurrent());
-      //   break;
-      case SystemState::Game_Sandbox:
+      case SystemState::GameSandbox:
         systemManager.application->nextEvent();
         break;
-      case SystemState::Game_Recall:
+      case SystemState::GameRecall:
         systemManager.application->nextEvent();
         break;
       case SystemState::NoControllerConnected:
@@ -100,7 +97,7 @@ namespace Engine
     }
     else
     {
-      state.setNext(SystemState::Menu_Home);
+      state.setNext(SystemState::MenuHome);
       log("Startup process completed. Transitioning to Main Menu");
     }
   }
@@ -109,7 +106,7 @@ namespace Engine
   {
     if (controller.isConnected())
     {
-      state.setNext(SystemState::Menu_Home);
+      state.setNext(SystemState::MenuHome);
       log("PS3 controller connected. Transitioning to Main Menu");
       return;
     }

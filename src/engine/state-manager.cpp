@@ -5,60 +5,31 @@ namespace Engine
 {
   void StateManager::setNext(SystemState currentState)
   {
-    switch (currentState)
-    {
-    case SystemState::Game_Sandbox:
-      if (systemState != SystemState::ApplicationTransition)
-      {
-        log("Transitioning to Game (Sandbox) (Transition Layer).");
-        systemState = SystemState::ApplicationTransition;
-      }
-      else
-      {
-        log("Transitioning to Game (Sandbox).");
-        systemState = currentState;
-      }
-      break;
-    case SystemState::Game_Recall:
-      if (systemState != SystemState::ApplicationTransition)
-      {
-        log("Transitioning to Game (Recall) (Transition Layer).");
-        systemState = SystemState::ApplicationTransition;
-      }
-      else
-      {
-        log("Transitioning to Game (Sandbox).");
-        systemState = currentState;
-      }
-      break;
-    default:
-      systemState = currentState;
-      break;
-    }
+    systemState = currentState;
     displayShouldUpdate = true;
   };
 
   void StateManager::selectNextMenu(MenuNavigationDirection direction)
   {
-    int count = static_cast<int>(MainMenu_Selection::COUNT);
+    int count = static_cast<int>(MainMenuSelection::COUNT);
     int position = static_cast<int>(userMainMenuChoice);
     int step = (direction == MenuNavigationDirection::Forward) ? 1 : -1;
 
     position = (position + step + count) % count;
 
-    userMainMenuChoice = static_cast<MainMenu_Selection>(position);
+    userMainMenuChoice = static_cast<MainMenuSelection>(position);
     displayShouldUpdate = true;
   }
 
   void StateManager::selectNextGame(MenuNavigationDirection direction)
   {
-    int count = static_cast<int>(Game_Selection::COUNT);
+    int count = static_cast<int>(GameSelection::COUNT);
     int position = static_cast<int>(userGameChoice);
     int step = (direction == MenuNavigationDirection::Forward) ? 1 : -1;
 
     position = (position + step + count) % count;
 
-    userGameChoice = static_cast<Game_Selection>(position);
+    userGameChoice = static_cast<GameSelection>(position);
     displayShouldUpdate = true;
   }
 

@@ -16,7 +16,7 @@ namespace Core
   {
     if (controller.wasPressed(Player::ControllerButton::Ps))
     {
-      state.setNext(Engine::SystemState::Menu_Home);
+      state.setNext(Engine::SystemState::MenuHome);
       log("Transitioning to Main Menu.");
     }
   }
@@ -39,11 +39,11 @@ namespace Core
     {
       switch (state.getUserMenuChoice())
       {
-      case Engine::MainMenu_Selection::Games:
-        state.setNext(Engine::SystemState::Menu_Games);
+      case Engine::MainMenuSelection::Games:
+        state.setNext(Engine::SystemState::MenuGames);
         log("Transitioning to Game Submenu.");
         break;
-      case Engine::MainMenu_Selection::Scenes:
+      case Engine::MainMenuSelection::Scenes:
         break;
       }
     }
@@ -67,25 +67,25 @@ namespace Core
     {
       switch (state.getUserGameChoice())
       {
-      case Engine::Game_Selection::Sandbox:
-        state.setNext(Engine::SystemState::Game_Sandbox);
+      case Engine::GameSelection::Sandbox:
+        state.setNext(Engine::SystemState::GameSandbox);
         break;
-      case Engine::Game_Selection::Recall:
-        state.setNext(Engine::SystemState::Game_Recall);
+      case Engine::GameSelection::Recall:
+        state.setNext(Engine::SystemState::GameRecall);
         break;
       }
+      transitionLayer();
     }
 
     if (controller.wasPressed(Player::ControllerButton::Circle))
     {
-      state.setNext(Engine::SystemState::Menu_Home);
+      state.setNext(Engine::SystemState::MenuHome);
       log("Transitioning to Main Menu.");
     }
   }
 
   void SystemManager::transitionLayer()
   {
-    logf("Transitioning to game %d", state.getCurrent());
     if (application)
     {
       delete application;
@@ -93,15 +93,14 @@ namespace Core
     }
     switch (state.getCurrent())
     {
-    case Engine::SystemState::Game_Sandbox:
+    case Engine::SystemState::GameSandbox:
       application = new Games::TestCore{config, state, leds, controller};
       state.getSandboxGameState().reset();
-      state.setNext(Engine::SystemState::Game_Sandbox);
+      logf("Transitioning to Sandbox (Testing)");
       break;
-    case Engine::SystemState::Game_Recall:
+    case Engine::SystemState::GameRecall:
       application = new Games::RecallCore{};
-      state.getSandboxGameState().reset();
-      state.setNext(Engine::SystemState::Game_Recall);
+      logf("Transitioning to Recall (Game)");
       break;
     }
   }

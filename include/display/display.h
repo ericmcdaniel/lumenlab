@@ -38,7 +38,6 @@ namespace Display
     void drawBootScreen();
     void drawMainMenu();
     void drawGamesMenu();
-    void drawTransitionScreen(const char *name);
     void drawSandboxGameHud();
     void drawUnconnectedControllerScreen();
 

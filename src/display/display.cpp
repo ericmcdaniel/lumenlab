@@ -24,16 +24,13 @@ namespace Display
       case Engine::SystemState::Initialize:
         drawBootScreen();
         break;
-      case Engine::SystemState::Menu_Home:
+      case Engine::SystemState::MenuHome:
         drawMainMenu();
         break;
-      case Engine::SystemState::Menu_Games:
+      case Engine::SystemState::MenuGames:
         drawGamesMenu();
         break;
-      case Engine::SystemState::Game_SandboxTransition:
-        drawTransitionScreen(engineState.printGameName(static_cast<int>(engineState.getUserGameChoice())));
-        break;
-      case Engine::SystemState::Game_Sandbox:
+      case Engine::SystemState::GameSandbox:
         drawSandboxGameHud();
         break;
       case Engine::SystemState::NoControllerConnected:
@@ -116,13 +113,6 @@ namespace Display
     sprintf(nameBuffer, "%c  %s", selectedOption(2, selectedOptionIndex), engineState.printGameName(2));
     display.print(nameBuffer);
 
-    display.display();
-  }
-
-  void OledDisplay::drawTransitionScreen(const char *name)
-  {
-    display.clearDisplay();
-    drawHeader(name);
     display.display();
   }
 

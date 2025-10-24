@@ -13,9 +13,10 @@ namespace Engine
 
   GameEngine::~GameEngine()
   {
-    if (game)
+    if (application)
     {
-      delete game;
+      delete application;
+      application = nullptr;
     }
   }
 
@@ -23,44 +24,49 @@ namespace Engine
   {
     while (state.isRunning())
     {
+      leds.reset();
+
+      systemManager.checkChangeRequest();
+      display.updateDisplay();
+
+      switch (state.getCurrent())
+      {
+      case SystemState::Menu_Home:
+        systemManager.navigateMainMenu();
+        break;
+      case SystemState::Menu_Games:
+        systemManager.navigateGameMenu();
+        break;
+      case SystemState::ApplicationTransition:
+        transition(state.getCurrent());
+        break;
+      // case SystemState::Game_SandboxTransition:
+      //   transitionToSandbox();
+      //   break;
+      case SystemState::Game_Sandbox:
+        application->nextEvent();
+        break;
+      // case SystemState::Game_RecallTransition:
+      //   transitionToRecall();
+      //   break;
+      case SystemState::Game_Recall:
+        application->nextEvent();
+        break;
+      case SystemState::NoControllerConnected:
+        standbyControllerConnection();
+        break;
+      default:
+        // ideally shouldn't encounter this
+        state.setNext(SystemState::Error);
+        break;
+      }
+
       if (isReady())
       {
-        leds.reset();
-        systemManager.checkChangeRequest();
-        display.updateDisplay();
-
-        switch (state.getCurrent())
-        {
-        case SystemState::Menu_Home:
-          systemManager.navigateMainMenu();
-          break;
-        case SystemState::Menu_Games:
-          systemManager.navigateGameMenu();
-          break;
-        case SystemState::Game_SandboxTransition:
-          transitionToSandbox();
-          break;
-        case SystemState::Game_Sandbox:
-          game->nextEvent();
-          break;
-        case SystemState::Game_RecallTransition:
-          transitionToRecall();
-          break;
-        case SystemState::Game_Recall:
-          application->nextEvent();
-          break;
-        case SystemState::NoControllerConnected:
-          standbyControllerConnection();
-          break;
-        default:
-          // ideally shouldn't encounter this
-          state.setNext(SystemState::Error);
-          break;
-        }
-
         renderLedStrip();
         wait(9); // Targeting a 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
       }
+      delay(1);
     }
   }
 
@@ -127,30 +133,54 @@ namespace Engine
       systemManager.disconnectedLedPhaseShift = 0;
   }
 
-  void GameEngine::transitionToSandbox()
+  void GameEngine::transition(const SystemState st)
   {
-    log("Transitioning to Sandbox game.");
-    if (game)
-    {
-      delete game;
-      game = nullptr;
-    }
-    game = new Games::TestCore{config, state, leds, controller};
-    state.getSandboxGameState().reset();
-    state.setNext(SystemState::Game_Sandbox);
-  }
-  void GameEngine::transitionToRecall()
-  {
-    log("Transitioning to Recall game.");
+    logf("Transitioning to game %d", st);
     if (application)
     {
       delete application;
       application = nullptr;
     }
-    application = new Games::RecallCore{};
-    state.getSandboxGameState().reset();
-    state.setNext(SystemState::Game_Recall);
+    switch (st)
+    {
+    case SystemState::Game_Sandbox:
+      application = new Games::TestCore{config, state, leds, controller};
+      state.getSandboxGameState().reset();
+      state.setNext(SystemState::Game_Sandbox);
+      break;
+    case SystemState::Game_Recall:
+      application = new Games::RecallCore{};
+      state.getSandboxGameState().reset();
+      state.setNext(SystemState::Game_Recall);
+      break;
+    }
   }
+
+  // void GameEngine::transitionToSandbox()
+  // {
+  //   log("Transitioning to Sandbox game.");
+  //   if (application)
+  //   {
+  //     delete application;
+  //     application = nullptr;
+  //   }
+  //   application = new Games::TestCore{config, state, leds, controller};
+  //   state.getSandboxGameState().reset();
+  //   state.setNext(SystemState::Game_Sandbox);
+  // }
+
+  // void GameEngine::transitionToRecall()
+  // {
+  //   log("Transitioning to Recall game.");
+  //   if (application)
+  //   {
+  //     delete application;
+  //     application = nullptr;
+  //   }
+  //   application = new Games::RecallCore{};
+  //   state.getSandboxGameState().reset();
+  //   state.setNext(SystemState::Game_Recall);
+  // }
 
   void GameEngine::renderLedStrip()
   {

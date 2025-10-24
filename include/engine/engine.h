@@ -15,18 +15,18 @@ namespace Engine
   class GameEngine : Timer
   {
   private:
-    Engine::SystemConfig config;
+    SystemConfig config;
     Core::SystemManager systemManager;
     StateManager state;
-    Games::TestCore *game = nullptr;
-    Engine::Layer *application = nullptr;
+    Layer *application = nullptr;
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;
 
     void initializeEngine();
-    void transitionToSandbox();
-    void transitionToRecall();
+    void transition(const SystemState state);
+    // void transitionToSandbox();
+    // void transitionToRecall();
     void renderLedStrip();
 
   public:

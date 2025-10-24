@@ -8,10 +8,10 @@ namespace Engine
     switch (currentState)
     {
     case SystemState::Game_Sandbox:
-      if (systemState != SystemState::Game_SandboxTransition)
+      if (systemState != SystemState::ApplicationTransition)
       {
         log("Transitioning to Game (Sandbox) (Transition Layer).");
-        systemState = SystemState::Game_SandboxTransition;
+        systemState = SystemState::ApplicationTransition;
       }
       else
       {
@@ -20,10 +20,10 @@ namespace Engine
       }
       break;
     case SystemState::Game_Recall:
-      if (systemState != SystemState::Game_RecallTransition)
+      if (systemState != SystemState::ApplicationTransition)
       {
         log("Transitioning to Game (Recall) (Transition Layer).");
-        systemState = SystemState::Game_RecallTransition;
+        systemState = SystemState::ApplicationTransition;
       }
       else
       {

@@ -10,6 +10,7 @@ namespace Engine
     Menu_Home,
     Menu_Games,
     Menu_Scenes,
+    ApplicationTransition,
     Game_SandboxTransition,
     Game_Sandbox,
     Game_RecallTransition,

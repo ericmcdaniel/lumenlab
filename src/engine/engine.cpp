@@ -6,17 +6,17 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : Timer{}, leds{config}, display{controller, state}, systemManager{state, controller, display}
+  GameEngine::GameEngine() : Timer{}, leds{config}, display{controller, state}, systemManager{config, state, controller, display, leds}
   {
     initializeEngine();
   }
 
   GameEngine::~GameEngine()
   {
-    if (application)
+    if (systemManager.application)
     {
-      delete application;
-      application = nullptr;
+      delete systemManager.application;
+      systemManager.application = nullptr;
     }
   }
 
@@ -37,20 +37,14 @@ namespace Engine
       case SystemState::Menu_Games:
         systemManager.navigateGameMenu();
         break;
-      case SystemState::ApplicationTransition:
-        transition(state.getCurrent());
-        break;
-      // case SystemState::Game_SandboxTransition:
-      //   transitionToSandbox();
+      // case SystemState::ApplicationTransition:
+      //   systemManager.transition(state.getCurrent());
       //   break;
       case SystemState::Game_Sandbox:
-        application->nextEvent();
+        systemManager.application->nextEvent();
         break;
-      // case SystemState::Game_RecallTransition:
-      //   transitionToRecall();
-      //   break;
       case SystemState::Game_Recall:
-        application->nextEvent();
+        systemManager.application->nextEvent();
         break;
       case SystemState::NoControllerConnected:
         standbyControllerConnection();
@@ -132,55 +126,6 @@ namespace Engine
     if (systemManager.disconnectedLedPhaseShift > 300)
       systemManager.disconnectedLedPhaseShift = 0;
   }
-
-  void GameEngine::transition(const SystemState st)
-  {
-    logf("Transitioning to game %d", st);
-    if (application)
-    {
-      delete application;
-      application = nullptr;
-    }
-    switch (st)
-    {
-    case SystemState::Game_Sandbox:
-      application = new Games::TestCore{config, state, leds, controller};
-      state.getSandboxGameState().reset();
-      state.setNext(SystemState::Game_Sandbox);
-      break;
-    case SystemState::Game_Recall:
-      application = new Games::RecallCore{};
-      state.getSandboxGameState().reset();
-      state.setNext(SystemState::Game_Recall);
-      break;
-    }
-  }
-
-  // void GameEngine::transitionToSandbox()
-  // {
-  //   log("Transitioning to Sandbox game.");
-  //   if (application)
-  //   {
-  //     delete application;
-  //     application = nullptr;
-  //   }
-  //   application = new Games::TestCore{config, state, leds, controller};
-  //   state.getSandboxGameState().reset();
-  //   state.setNext(SystemState::Game_Sandbox);
-  // }
-
-  // void GameEngine::transitionToRecall()
-  // {
-  //   log("Transitioning to Recall game.");
-  //   if (application)
-  //   {
-  //     delete application;
-  //     application = nullptr;
-  //   }
-  //   application = new Games::RecallCore{};
-  //   state.getSandboxGameState().reset();
-  //   state.setNext(SystemState::Game_Recall);
-  // }
 
   void GameEngine::renderLedStrip()
   {

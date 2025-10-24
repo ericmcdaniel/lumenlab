@@ -1,8 +1,16 @@
 #include "core/system-manager.h"
+#include "games/testing-sandbox/test-core.h"
+#include "games/recall/core.h"
+#include "logger.h"
 
 namespace Core
 {
-  SystemManager::SystemManager(Engine::StateManager &s, Player::Controller &c, Display::OledDisplay &d) : state{s}, controller{c}, display{d} {}
+  SystemManager::SystemManager(Engine::SystemConfig &cf,
+                               Engine::StateManager &s,
+                               Player::Controller &c,
+                               Display::OledDisplay &d,
+                               Lights::LedStrip &l)
+      : config{cf}, state{s}, controller{c}, display{d}, leds{l} {}
 
   void SystemManager::checkChangeRequest()
   {
@@ -72,6 +80,29 @@ namespace Core
     {
       state.setNext(Engine::SystemState::Menu_Home);
       log("Transitioning to Main Menu.");
+    }
+  }
+
+  void SystemManager::transitionLayer()
+  {
+    logf("Transitioning to game %d", state.getCurrent());
+    if (application)
+    {
+      delete application;
+      application = nullptr;
+    }
+    switch (state.getCurrent())
+    {
+    case Engine::SystemState::Game_Sandbox:
+      application = new Games::TestCore{config, state, leds, controller};
+      state.getSandboxGameState().reset();
+      state.setNext(Engine::SystemState::Game_Sandbox);
+      break;
+    case Engine::SystemState::Game_Recall:
+      application = new Games::RecallCore{};
+      state.getSandboxGameState().reset();
+      state.setNext(Engine::SystemState::Game_Recall);
+      break;
     }
   }
 

@@ -18,15 +18,11 @@ namespace Engine
     SystemConfig config;
     Core::SystemManager systemManager;
     StateManager state;
-    Layer *application = nullptr;
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;
 
     void initializeEngine();
-    void transition(const SystemState state);
-    // void transitionToSandbox();
-    // void transitionToRecall();
     void renderLedStrip();
 
   public:

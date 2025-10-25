@@ -38,8 +38,6 @@ namespace Engine
         systemManager.navigateGameMenu();
         break;
       case SystemState::GameSandbox:
-        systemManager.application->nextEvent();
-        break;
       case SystemState::GameRecall:
         systemManager.application->nextEvent();
         break;

@@ -5,9 +5,11 @@
 
 namespace Games
 {
-  RecallCore::RecallCore()
+  RecallCore::RecallCore(Engine::StateManager &sm, Lights::LedStrip &l, const Player::Controller &c) : engineState{sm}, leds{l}, controller{c}
   {
     setupGameColors();
+    engineState.getRecallGameState().reset();
+    wait(1000);
   }
 
   void RecallCore::setupGameColors()
@@ -17,7 +19,30 @@ namespace Games
       auto colorIndex = esp_random() % 4;
       gameplayColors[i] = colorPalette[colorIndex];
     }
-    logf("Setup game colors for Recall.");
-    logf("First ten: %d-%d-%d-%d-%d-%d-%d-%d-%d-%d", gameplayColors[0], gameplayColors[1], gameplayColors[2], gameplayColors[3], gameplayColors[4], gameplayColors[5], gameplayColors[6], gameplayColors[7], gameplayColors[8], gameplayColors[9]);
+  }
+
+  void RecallCore::nextEvent()
+  {
+    for (int i = 0; i <= leds.size(); ++i)
+    {
+      leds.buffer[i].r = gameplayColors[playbackRound].r;
+      leds.buffer[i].g = gameplayColors[playbackRound].g;
+      leds.buffer[i].b = gameplayColors[playbackRound].b;
+    }
+    if (isReady())
+    {
+      ++playbackRound;
+      wait(1000);
+    }
+
+    if (!engineState.getRecallGameState().isPlayersTurn)
+    {
+      if (controller.wasPressed(Player::ControllerButton::Cross))
+      {
+        ++engineState.getRecallGameState().round;
+        engineState.displayShouldUpdate = true;
+        logf("Current score: %u", engineState.getRecallGameState().round);
+      }
+    }
   }
 }

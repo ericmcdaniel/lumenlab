@@ -4,12 +4,14 @@
 
 namespace Games
 {
-  class RecallState
+  class RecallGameState
   {
   public:
-    RecallState() {}
-    void reset()
-    {
-    }
+    RecallGameState() : highScore{0}, round{1} {}
+    void reset() { highScore = round = 1; }
+    uint16_t highScore;
+    uint16_t round;
+    bool isPlayersTurn = false;
+    uint16_t note = 0;
   };
 }

@@ -95,11 +95,10 @@ namespace Core
     {
     case Engine::SystemState::GameSandbox:
       application = new Games::TestCore{config, state, leds, controller};
-      state.getSandboxGameState().reset();
       logf("Transitioning to Sandbox (Testing)");
       break;
     case Engine::SystemState::GameRecall:
-      application = new Games::RecallCore{};
+      application = new Games::RecallCore{state, leds, controller};
       logf("Transitioning to Recall (Game)");
       break;
     }

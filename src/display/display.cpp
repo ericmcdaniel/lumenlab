@@ -33,6 +33,9 @@ namespace Display
       case Engine::SystemState::GameSandbox:
         drawSandboxGameHud();
         break;
+      case Engine::SystemState::GameRecall:
+        drawRecallGameHud();
+        break;
       case Engine::SystemState::NoControllerConnected:
         drawUnconnectedControllerScreen();
         break;
@@ -125,7 +128,21 @@ namespace Display
     display.print("Current Score: ");
     display.print(engineState.getSandboxGameState().currentScore);
     display.setCursor(0, 24);
-    display.print("High Score: ");
+    display.print("High Score: -");
+
+    display.display();
+  }
+
+  void OledDisplay::drawRecallGameHud()
+  {
+    display.clearDisplay();
+    drawHeader("Recall");
+
+    display.setCursor(0, 16);
+    display.print("Round: ");
+    display.print(engineState.getRecallGameState().round);
+    display.setCursor(0, 24);
+    display.print("High Score: -");
 
     display.display();
   }

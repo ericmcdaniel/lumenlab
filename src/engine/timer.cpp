@@ -4,9 +4,6 @@ namespace Engine
 {
   void Timer::wait(unsigned long futureTime)
   {
-    // if (futureTime <= 0)
-    // {
-    // }
     next = next + futureTime;
   }
 

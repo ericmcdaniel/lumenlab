@@ -1,6 +1,7 @@
 #pragma once
 
 #include "games/testing-sandbox/game-state.h"
+#include "games/recall/state.h"
 
 namespace Engine
 {
@@ -44,6 +45,7 @@ namespace Engine
     MainMenuSelection userMainMenuChoice;
     GameSelection userGameChoice;
     Games::SandboxGameState sandboxGameState;
+    Games::RecallGameState recallGameState;
 
   public:
     StateManager() : systemState{SystemState::Initialize},
@@ -63,8 +65,9 @@ namespace Engine
     void setNextUserGameChoice(GameSelection next) { userGameChoice = next; };
     void selectNextGame(MenuNavigationDirection direction = MenuNavigationDirection::Forward);
 
-    Games::SandboxGameState &getSandboxGameState() { return sandboxGameState; }
     const char *printGameName(size_t index);
+    Games::SandboxGameState &getSandboxGameState() { return sandboxGameState; }
+    Games::RecallGameState &getRecallGameState() { return recallGameState; }
 
     bool operator==(const StateManager &other) const
     {

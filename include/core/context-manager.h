@@ -9,19 +9,16 @@
 
 namespace Core
 {
-  class SystemManager
+  class ContextManager
   {
-  private:
-    Engine::StateManager &state;
-    Engine::SystemConfig &config;
-
-    Player::Controller &controller;
-    Display::OledDisplay &display;
-    Lights::LedStrip &leds;
-
   public:
-    SystemManager(Engine::SystemConfig &cf, Engine::StateManager &s, Player::Controller &c, Display::OledDisplay &d, Lights::LedStrip &l);
+    ContextManager();
     Engine::Layer *application = nullptr;
+    Engine::StateManager stateManager;
+    Engine::SystemConfig config;
+    Player::Controller controller;
+    Display::OledDisplay display;
+    Lights::LedStrip leds;
 
     float disconnectedLedPhaseShift = 0;
     void navigateMainMenu();

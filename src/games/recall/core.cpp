@@ -14,14 +14,21 @@ namespace Games
 
   void RecallCore::setupGameColors()
   {
+    // temporary for testing purposes
+    static constexpr uint8_t testValues[20] = {0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3};
     for (size_t i = 0; i < 256; ++i)
     {
-      auto colorIndex = esp_random() % 4;
-      gameplayColors[i] = colorPalette[colorIndex];
+      gameplayColors[i] = colorPalette[testValues[i]];
     }
-    logf("1st RGB: (%u - %u - %u)", gameplayColors[0].r, gameplayColors[0].g, gameplayColors[0].b);
-    logf("2nd RGB: (%u - %u - %u)", gameplayColors[1].r, gameplayColors[1].g, gameplayColors[1].b);
-    logf("3rd RGB: (%u - %u - %u)", gameplayColors[2].r, gameplayColors[2].g, gameplayColors[2].b);
+
+    // for (size_t i = 0; i < 256; ++i)
+    // {
+    //   auto colorIndex = esp_random() % 4;
+    //   gameplayColors[i] = colorPalette[colorIndex];
+    // }
+    // logf("1st RGB: (%u - %u - %u)", gameplayColors[0].r, gameplayColors[0].g, gameplayColors[0].b);
+    // logf("2nd RGB: (%u - %u - %u)", gameplayColors[1].r, gameplayColors[1].g, gameplayColors[1].b);
+    // logf("3rd RGB: (%u - %u - %u)", gameplayColors[2].r, gameplayColors[2].g, gameplayColors[2].b);
   }
 
   void RecallCore::nextEvent()

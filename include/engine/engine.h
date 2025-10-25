@@ -4,7 +4,7 @@
 #include "engine/state-manager.h"
 #include "engine/timer.h"
 #include "engine/layer.h"
-#include "core/system-manager.h"
+#include "core/context-manager.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
 #include "games/testing-sandbox/test-core.h"
@@ -15,13 +15,7 @@ namespace Engine
   class GameEngine : Timer
   {
   private:
-    SystemConfig config;
-    Core::SystemManager systemManager;
-    StateManager state;
-    Player::Controller controller;
-    Lights::LedStrip leds;
-    Display::OledDisplay display;
-
+    Core::ContextManager contextManager;
     void initializeEngine();
     void renderLedStrip();
 

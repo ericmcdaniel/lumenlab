@@ -6,47 +6,47 @@
 namespace Engine
 {
 
-  GameEngine::GameEngine() : Timer{}, leds{config}, display{controller, state}, systemManager{config, state, controller, display, leds}
+  GameEngine::GameEngine() : Timer{}
   {
     initializeEngine();
   }
 
   GameEngine::~GameEngine()
   {
-    if (systemManager.application)
+    if (contextManager.application)
     {
-      delete systemManager.application;
-      systemManager.application = nullptr;
+      delete contextManager.application;
+      contextManager.application = nullptr;
     }
   }
 
   void GameEngine::runApplication()
   {
-    while (state.isRunning())
+    while (contextManager.stateManager.isRunning())
     {
-      leds.reset();
+      contextManager.leds.reset();
 
-      systemManager.checkChangeRequest();
-      display.updateDisplay();
+      contextManager.checkChangeRequest();
+      contextManager.display.updateDisplay();
 
-      switch (state.getCurrent())
+      switch (contextManager.stateManager.getCurrent())
       {
       case SystemState::MenuHome:
-        systemManager.navigateMainMenu();
+        contextManager.navigateMainMenu();
         break;
       case SystemState::MenuGames:
-        systemManager.navigateGameMenu();
+        contextManager.navigateGameMenu();
         break;
       case SystemState::GameSandbox:
       case SystemState::GameRecall:
-        systemManager.application->nextEvent();
+        contextManager.application->nextEvent();
         break;
       case SystemState::NoControllerConnected:
         standbyControllerConnection();
         break;
       default:
         // ideally shouldn't encounter this
-        state.setNext(SystemState::Error);
+        contextManager.stateManager.setNext(SystemState::Error);
         break;
       }
 
@@ -61,12 +61,12 @@ namespace Engine
 
   void GameEngine::initializeEngine()
   {
-    controller.begin(config.macAddress);
+    contextManager.controller.begin(contextManager.config.macAddress);
 
     // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
     Serial.begin(921600);
-    leds.reset();
+    contextManager.leds.reset();
     renderLedStrip();
     log("Connecting to computer using a serial connection for debugging.");
     while (!Serial)
@@ -81,50 +81,50 @@ namespace Engine
 
     // ten second attempt to connect to PS3 controller
     int reattempt = 0;
-    while (!controller.isConnected() && reattempt < 80)
+    while (!contextManager.controller.isConnected() && reattempt < 80)
     {
       log("    Searching for PS3 controller...");
       ++reattempt;
       delay(250);
     }
 
-    if (!controller.isConnected())
+    if (!contextManager.controller.isConnected())
     {
-      state.setNext(SystemState::NoControllerConnected);
+      contextManager.stateManager.setNext(SystemState::NoControllerConnected);
       log("Failed to connect to controller. Entering No Controller Connection sequence until a connection is established.");
     }
     else
     {
-      state.setNext(SystemState::MenuHome);
+      contextManager.stateManager.setNext(SystemState::MenuHome);
       log("Startup process completed. Transitioning to Main Menu");
     }
   }
 
   void GameEngine::standbyControllerConnection()
   {
-    if (controller.isConnected())
+    if (contextManager.controller.isConnected())
     {
-      state.setNext(SystemState::MenuHome);
+      contextManager.stateManager.setNext(SystemState::MenuHome);
       log("PS3 controller connected. Transitioning to Main Menu");
       return;
     }
 
-    for (int i = 0; i <= leds.size(); ++i)
+    for (int i = 0; i <= contextManager.leds.size(); ++i)
     {
-      float phase = std::cos((2 * M_PI * i / 300) + (2 * M_PI * systemManager.disconnectedLedPhaseShift / 300)) * 127 + 128;
-      leds.buffer[i].r = std::floor(phase);
-      leds.buffer[i].g = 0;
-      leds.buffer[i].b = 0;
+      float phase = std::cos((2 * M_PI * i / 300) + (2 * M_PI * contextManager.disconnectedLedPhaseShift / 300)) * 127 + 128;
+      contextManager.leds.buffer[i].r = std::floor(phase);
+      contextManager.leds.buffer[i].g = 0;
+      contextManager.leds.buffer[i].b = 0;
     }
-    systemManager.disconnectedLedPhaseShift += 0.5;
+    contextManager.disconnectedLedPhaseShift += 0.5;
 
-    if (systemManager.disconnectedLedPhaseShift > 300)
-      systemManager.disconnectedLedPhaseShift = 0;
+    if (contextManager.disconnectedLedPhaseShift > 300)
+      contextManager.disconnectedLedPhaseShift = 0;
   }
 
   void GameEngine::renderLedStrip()
   {
-    leds.adjustLuminance();
+    contextManager.leds.adjustLuminance();
 #ifdef RELEASE
     // TODO: Add actual logic to send signal to LEDs. Below is a simulation only
 
@@ -135,7 +135,7 @@ namespace Engine
 #ifdef VIRTUALIZATION
     Serial.write(0xAA); // sync bytes
     Serial.write(0x55);
-    Serial.write(reinterpret_cast<uint8_t *>(leds.getRawColors()), leds.size() * sizeof(CRGB));
+    Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), contextManager.leds.size() * sizeof(CRGB));
 #endif
   }
 }

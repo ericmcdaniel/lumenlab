@@ -140,7 +140,7 @@ namespace Display
 
     display.setCursor(0, 16);
     display.print("Round: ");
-    display.print(engineState.getRecallGameState().round);
+    display.print(engineState.getRecallGameState().round + 1);
     display.setCursor(0, 24);
     display.print("High Score: -");
 

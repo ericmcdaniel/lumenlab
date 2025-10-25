@@ -7,8 +7,8 @@ namespace Games
   class RecallGameState
   {
   public:
-    RecallGameState() : highScore{0}, round{1} {}
-    void reset() { highScore = round = 1; }
+    RecallGameState() : highScore{0}, round{0} {}
+    void reset() { highScore = round = 0; }
     uint16_t highScore;
     uint16_t round;
     bool isPlayersTurn = false;

@@ -7,6 +7,11 @@ namespace Engine
     next = next + futureTime;
   }
 
+  void Timer::resettedWait(unsigned long futureTime)
+  {
+    next = millis() + futureTime;
+  }
+
   const bool Timer::isReady()
   {
     return millis() >= next;

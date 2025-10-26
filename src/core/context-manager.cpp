@@ -90,11 +90,11 @@ namespace Core
     switch (stateManager.getCurrent())
     {
     case Engine::SystemState::GameSandbox:
-      application = new Games::TestCore{config, stateManager, leds, controller};
+      application = new Games::TestCore{this};
       logf("Transitioning to Sandbox (Testing)");
       break;
     case Engine::SystemState::GameRecall:
-      application = new Games::RecallCore{stateManager, leds, controller};
+      application = new Games::RecallCore{this};
       logf("Transitioning to Recall (Game)");
       break;
     }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/context-manager.h"
 #include "engine/layer.h"
 #include "games/testing-sandbox/test-player.h"
 #include "player/controller.h"
@@ -9,22 +10,16 @@ namespace Games
   class TestCore : public Engine::Layer
   {
   private:
-    Engine::StateManager &engineState;
+    Core::ContextManager *contextManager;
     TestPlayer *player1 = nullptr;
     TestPlayer *player2 = nullptr;
-    Player::Controller controller;
-    Lights::LedStrip &leds;
 
   public:
-    TestCore(Engine::SystemConfig &config, Engine::StateManager &sm, Lights::LedStrip &l, const Player::Controller &c)
-        : Engine::Layer{},
-          engineState{sm},
-          leds{l},
-          controller{c}
+    TestCore(Core::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}
     {
-      player1 = new Games::TestPlayer{config, engineState.getSandboxGameState(), leds};
-      player2 = new Games::TestPlayer{config, engineState.getSandboxGameState(), leds};
-      engineState.getSandboxGameState().reset();
+      player1 = new Games::TestPlayer{contextManager};
+      player2 = new Games::TestPlayer{contextManager};
+      contextManager->stateManager.getSandboxGameState().reset();
     }
 
     ~TestCore()
@@ -34,8 +29,8 @@ namespace Games
     }
 
     void nextEvent();
-    uint16_t getCurrentScore() { return engineState.getSandboxGameState().currentScore; }
-    uint16_t getHighScore() { return engineState.getSandboxGameState().highScore; }
+    uint16_t getCurrentScore() { return contextManager->stateManager.getSandboxGameState().currentScore; }
+    uint16_t getHighScore() { return contextManager->stateManager.getSandboxGameState().highScore; }
     void incrementCurrentScore();
     void incrementHighScore();
   };

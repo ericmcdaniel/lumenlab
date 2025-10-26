@@ -5,10 +5,10 @@
 
 namespace Games
 {
-  RecallCore::RecallCore(Engine::StateManager &sm, Lights::LedStrip &l, const Player::Controller &c) : engineState{sm}, leds{l}, controller{c}
+  RecallCore::RecallCore(Core::ContextManager *ctx) : contextManager{ctx}
   {
     setupGameColors();
-    engineState.getRecallGameState().reset();
+    contextManager->stateManager.getRecallGameState().reset();
     waitFromNow(playbackDurationTotal);
     colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
   }
@@ -41,13 +41,13 @@ namespace Games
       printComputerPlayback();
       break;
     case ActivePlayer::Player:
-      if (controller.wasPressed(Player::ControllerButton::Cross))
+      if (contextManager->controller.wasPressed(Player::ControllerButton::Cross))
       {
         playbackRound = 0;
-        ++engineState.getRecallGameState().round;
-        engineState.displayShouldUpdate = true;
+        ++contextManager->stateManager.getRecallGameState().round;
+        contextManager->stateManager.displayShouldUpdate = true;
         activePlayer = ActivePlayer::Computer;
-        logf("Round: %u", engineState.getRecallGameState().round + 1);
+        logf("Round: %u", contextManager->stateManager.getRecallGameState().round + 1);
 
         waitFromNow(playbackDurationTotal);
         colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
@@ -58,7 +58,7 @@ namespace Games
 
   void RecallCore::printComputerPlayback()
   {
-    if (playbackRound > engineState.getRecallGameState().round)
+    if (playbackRound > contextManager->stateManager.getRecallGameState().round)
     {
       activePlayer = ActivePlayer::Player;
       return;
@@ -66,12 +66,12 @@ namespace Games
 
     if (!colorPlaybackTimer.isReady())
     {
-      for (uint16_t i = 0; i <= leds.size(); ++i)
+      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
       {
         auto color = colorPalette[gameplayColors[playbackRound]];
-        leds.buffer[i].r = color.r;
-        leds.buffer[i].g = color.g;
-        leds.buffer[i].b = color.b;
+        contextManager->leds.buffer[i].r = color.r;
+        contextManager->leds.buffer[i].g = color.g;
+        contextManager->leds.buffer[i].b = color.b;
       }
     }
 

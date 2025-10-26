@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/context-manager.h"
 #include "games/testing-sandbox/game-state.h"
 #include "player/player.h"
 #include "logger.h"
@@ -9,14 +10,12 @@ namespace Games
   class TestPlayer : public Player::Player
   {
   private:
-    Games::SandboxGameState &state;
-    Lights::LedStrip &leds;
-    int position;
+    Core::ContextManager *contextManager;
+    int position = 0;
     int width = 7;
-    // unsigned int color;
 
   public:
-    TestPlayer(Engine::SystemConfig &c, Games::SandboxGameState &s, Lights::LedStrip &l) : Player::Player{c, leds}, position{0}, leds{l}, state{s} {};
+    TestPlayer(Core::ContextManager *ctx) : contextManager{ctx}, Player::Player{ctx->config, ctx->leds} {};
     unsigned long getPosition() { return position; }
     void move(const int distance);
     void updatePlayer1LedBuffer();

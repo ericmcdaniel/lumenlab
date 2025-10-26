@@ -11,6 +11,7 @@
 
 #include <Ps3Controller.h> // Needed only for the uint8_t definition
 
+#include "core/context-manager.h"
 #include "engine/layer.h"
 #include "engine/timer.h"
 #include "player/controller.h"
@@ -28,13 +29,11 @@ namespace Games
   class RecallCore : public Engine::Layer, public Engine::Timer
   {
   public:
-    RecallCore(Engine::StateManager &sm, Lights::LedStrip &l, const Player::Controller &c);
+    RecallCore(Core::ContextManager *ctx);
     void nextEvent();
 
   private:
-    Engine::StateManager &engineState;
-    Player::Controller controller;
-    Lights::LedStrip &leds;
+    Core::ContextManager *contextManager;
     ActivePlayer activePlayer = ActivePlayer::Computer;
     Engine::Timer colorPlaybackTimer;
 

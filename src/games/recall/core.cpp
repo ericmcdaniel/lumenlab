@@ -9,7 +9,8 @@ namespace Games
   {
     setupGameColors();
     engineState.getRecallGameState().reset();
-    wait(1000);
+    resettedWait(playbackDurationTotal);
+    colorPlaybackTimer.resettedWait(playbackDurationIlluminated);
   }
 
   void RecallCore::setupGameColors()
@@ -33,23 +34,31 @@ namespace Games
 
   void RecallCore::nextEvent()
   {
-    if (!engineState.getRecallGameState().isPlayersTurn && playbackRound <= engineState.getRecallGameState().round)
+    if (!isPlayersTurn && playbackRound <= engineState.getRecallGameState().round)
     {
-      for (int i = 0; i <= leds.size(); ++i)
+      if (!colorPlaybackTimer.isReady())
       {
-        leds.buffer[i].r = gameplayColors[playbackRound].r;
-        leds.buffer[i].g = gameplayColors[playbackRound].g;
-        leds.buffer[i].b = gameplayColors[playbackRound].b;
+        for (int i = 0; i <= leds.size(); ++i)
+        {
+          leds.buffer[i].r = gameplayColors[playbackRound].r;
+          leds.buffer[i].g = gameplayColors[playbackRound].g;
+          leds.buffer[i].b = gameplayColors[playbackRound].b;
+        }
       }
       if (isReady())
       {
         logf("Computer displayed: (%u - %u - %u)", gameplayColors[playbackRound].r, gameplayColors[playbackRound].g, gameplayColors[playbackRound].b);
         ++playbackRound;
-        resettedWait(750);
+        resettedWait(playbackDurationTotal);
+        colorPlaybackTimer.resettedWait(playbackDurationIlluminated);
       }
     }
+    else
+    {
+      isPlayersTurn = !isPlayersTurn;
+    }
 
-    if (!engineState.getRecallGameState().isPlayersTurn)
+    if (isPlayersTurn)
     {
       if (controller.wasPressed(Player::ControllerButton::Cross))
       {
@@ -57,7 +66,8 @@ namespace Games
         ++engineState.getRecallGameState().round;
         engineState.displayShouldUpdate = true;
         logf("Round: %u", engineState.getRecallGameState().round + 1);
-        resettedWait(750);
+        resettedWait(playbackDurationTotal);
+        colorPlaybackTimer.resettedWait(playbackDurationIlluminated);
       }
     }
   }

@@ -11,7 +11,5 @@ namespace Games
     void reset() { highScore = round = 0; }
     uint16_t highScore;
     uint16_t round;
-    bool isPlayersTurn = false;
-    uint16_t note = 0;
   };
 }

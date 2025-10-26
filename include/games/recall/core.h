@@ -29,6 +29,7 @@ namespace Games
     Engine::StateManager &engineState;
     Player::Controller controller;
     Lights::LedStrip &leds;
+    Engine::Timer colorPlaybackTimer;
 
     uint8_t round = 0;
     CRGB colorPalette[4] = {
@@ -37,8 +38,13 @@ namespace Games
         {0, 0, 255},
         {255, 255, 0}};
     CRGB gameplayColors[256];
-
+    bool isPlayersTurn = false;
+    bool shouldDisplayTimedColor = true;
+    uint16_t note = 0;
     uint8_t playbackRound = 0;
+    static constexpr unsigned long playbackDurationTotal = 750;
+    static constexpr unsigned long playbackDurationIlluminated = 600;
+
     void setupGameColors();
   };
 }

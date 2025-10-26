@@ -1,6 +1,6 @@
 #include "esp_system.h"
 
-#include "games/recall/core.h"
+#include "games/recall/recall-core.h"
 #include "logger.h"
 
 namespace Games
@@ -16,20 +16,21 @@ namespace Games
   void RecallCore::setupGameColors()
   {
     // temporary for testing purposes
-    static constexpr uint8_t testValues[20] = {0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3};
-    for (size_t i = 0; i < 256; ++i)
+    for (uint16_t i = 0; i < maxRound; ++i)
     {
-      gameplayColors[i] = colorPalette[testValues[i]];
+      gameplayColors[i] = i % 4;
     }
 
-    // for (size_t i = 0; i < 256; ++i)
+    // for (uint16_t i = 0; i < maxRound; ++i)
     // {
     //   auto colorIndex = esp_random() % 4;
-    //   gameplayColors[i] = colorPalette[colorIndex];
+    //   gameplayColors[i] = colorIndex;
     // }
-    // logf("1st RGB: (%u - %u - %u)", gameplayColors[0].r, gameplayColors[0].g, gameplayColors[0].b);
-    // logf("2nd RGB: (%u - %u - %u)", gameplayColors[1].r, gameplayColors[1].g, gameplayColors[1].b);
-    // logf("3rd RGB: (%u - %u - %u)", gameplayColors[2].r, gameplayColors[2].g, gameplayColors[2].b);
+    log("First 10 RGB values for testing:");
+    for (uint16_t i = 0; i < 10; ++i)
+    {
+      logf("RGB %u: (%u - %u - %u)", i, colorPalette[gameplayColors[i]].r, colorPalette[gameplayColors[i]].g, colorPalette[gameplayColors[i]].b);
+    }
   }
 
   void RecallCore::nextEvent()
@@ -38,16 +39,18 @@ namespace Games
     {
       if (!colorPlaybackTimer.isReady())
       {
-        for (int i = 0; i <= leds.size(); ++i)
+        for (uint16_t i = 0; i <= leds.size(); ++i)
         {
-          leds.buffer[i].r = gameplayColors[playbackRound].r;
-          leds.buffer[i].g = gameplayColors[playbackRound].g;
-          leds.buffer[i].b = gameplayColors[playbackRound].b;
+          auto color = colorPalette[gameplayColors[playbackRound]];
+          leds.buffer[i].r = color.r;
+          leds.buffer[i].g = color.g;
+          leds.buffer[i].b = color.b;
         }
       }
       if (isReady())
       {
-        logf("Computer displayed: (%u - %u - %u)", gameplayColors[playbackRound].r, gameplayColors[playbackRound].g, gameplayColors[playbackRound].b);
+        auto color = colorPalette[playbackRound % 4];
+        logf("Computer displayed: (%u - %u - %u)", color.r, color.g, color.b);
         ++playbackRound;
         resettedWait(playbackDurationTotal);
         colorPlaybackTimer.resettedWait(playbackDurationIlluminated);

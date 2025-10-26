@@ -1,6 +1,6 @@
 #include "core/context-manager.h"
 #include "games/testing-sandbox/test-core.h"
-#include "games/recall/core.h"
+#include "games/recall/recall-core.h"
 #include "logger.h"
 
 namespace Core

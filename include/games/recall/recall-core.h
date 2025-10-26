@@ -19,6 +19,12 @@
 
 namespace Games
 {
+  enum class ActivePlayer
+  {
+    Computer,
+    Player
+  };
+
   class RecallCore : public Engine::Layer, public Engine::Timer
   {
   public:
@@ -29,6 +35,7 @@ namespace Games
     Engine::StateManager &engineState;
     Player::Controller controller;
     Lights::LedStrip &leds;
+    ActivePlayer activePlayer = ActivePlayer::Computer;
     Engine::Timer colorPlaybackTimer;
 
     static constexpr unsigned long playbackDurationTotal = 600;
@@ -43,9 +50,9 @@ namespace Games
         {0, 255, 0},   // △ green
         {255, 0, 0}};  // ◯ red
     uint16_t gameplayColors[maxRound];
-    bool isPlayersTurn = false;
     bool shouldDisplayTimedColor = true;
 
     void setupGameColors();
+    void printComputerPlayback();
   };
 }

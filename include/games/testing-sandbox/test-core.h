@@ -24,7 +24,7 @@ namespace Games
     {
       player1 = new Games::TestPlayer{config, engineState.getSandboxGameState(), leds};
       player2 = new Games::TestPlayer{config, engineState.getSandboxGameState(), leds};
-      engineState.getRecallGameState().reset();
+      engineState.getSandboxGameState().reset();
     }
 
     ~TestCore()

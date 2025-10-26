@@ -7,7 +7,7 @@ namespace Engine
     next = next + futureTime;
   }
 
-  void Timer::resettedWait(unsigned long futureTime)
+  void Timer::waitFromNow(unsigned long futureTime)
   {
     next = millis() + futureTime;
   }

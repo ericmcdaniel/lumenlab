@@ -17,11 +17,6 @@ namespace Lights
 {
   class LedStrip
   {
-  private:
-    const Engine::SystemConfig &config;
-    unsigned int _size;
-    LedLuminance luminance;
-
   public:
     LedBuffer buffer;
     LedStrip(Engine::SystemConfig &configuration);
@@ -30,5 +25,10 @@ namespace Lights
     unsigned int size() const { return _size; }
     void reset();
     void adjustLuminance();
+
+  private:
+    const Engine::SystemConfig &config;
+    unsigned int _size;
+    LedLuminance luminance;
   };
 }

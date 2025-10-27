@@ -3,17 +3,11 @@
 #include "core/context-manager.h"
 #include "engine/layer.h"
 #include "games/testing-sandbox/test-player.h"
-#include "player/controller.h"
 
 namespace Games
 {
   class TestCore : public Engine::Layer
   {
-  private:
-    Core::ContextManager *contextManager;
-    TestPlayer *player1 = nullptr;
-    TestPlayer *player2 = nullptr;
-
   public:
     TestCore(Core::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}
     {
@@ -33,5 +27,10 @@ namespace Games
     uint16_t getHighScore() { return contextManager->stateManager.getSandboxGameState().highScore; }
     void incrementCurrentScore();
     void incrementHighScore();
+
+  private:
+    Core::ContextManager *contextManager;
+    TestPlayer *player1 = nullptr;
+    TestPlayer *player2 = nullptr;
   };
 }

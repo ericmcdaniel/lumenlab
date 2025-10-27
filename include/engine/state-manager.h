@@ -1,7 +1,7 @@
 #pragma once
 
 #include "games/testing-sandbox/game-state.h"
-#include "games/recall/state.h"
+#include "games/recall/recall-state.h"
 
 namespace Engine
 {
@@ -40,13 +40,6 @@ namespace Engine
 
   class StateManager
   {
-  private:
-    SystemState systemState;
-    MainMenuSelection userMainMenuChoice;
-    GameSelection userGameChoice;
-    Games::SandboxGameState sandboxGameState;
-    Games::RecallGameState recallGameState;
-
   public:
     StateManager() : systemState{SystemState::Initialize},
                      userMainMenuChoice{MainMenuSelection::Games},
@@ -78,5 +71,12 @@ namespace Engine
     {
       return !(*this == other);
     }
+
+  private:
+    SystemState systemState;
+    MainMenuSelection userMainMenuChoice;
+    GameSelection userGameChoice;
+    Games::SandboxGameState sandboxGameState;
+    Games::RecallGameState recallGameState;
   };
 }

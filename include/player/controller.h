@@ -2,8 +2,6 @@
 
 #include <Ps3Controller.h>
 
-#include "logger.h"
-
 namespace Player
 {
 

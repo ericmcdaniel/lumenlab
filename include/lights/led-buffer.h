@@ -9,19 +9,15 @@
 #include "debug-fastled.h"
 #endif
 
-#include "engine/system-config.h"
-
 namespace Lights
 {
   class LedBuffer
   {
-  private:
-    unsigned int _size;
-    CRGB *leds;
-
   public:
     LedBuffer(unsigned int numLeds) : _size{numLeds}, leds{new CRGB[numLeds]} {}
     LedBuffer() { delete leds; }
+    LedBuffer(LedBuffer &&other) = delete;
+    LedBuffer &operator=(LedBuffer &&other) = delete;
 
     LedBuffer(const LedBuffer &other) : _size(other._size), leds(new CRGB[other._size])
     {
@@ -48,9 +44,6 @@ namespace Lights
       return *this;
     }
 
-    LedBuffer(LedBuffer &&other) = delete;
-    LedBuffer &operator=(LedBuffer &&other) = delete;
-
     CRGB &operator[](unsigned int index) { return leds[index]; }
     const CRGB &operator[](unsigned int index) const { return leds[index]; }
 
@@ -58,5 +51,9 @@ namespace Lights
     explicit operator const CRGB *() const { return leds; }
 
     unsigned int size() { return _size; }
+
+  private:
+    unsigned int _size;
+    CRGB *leds;
   };
 }

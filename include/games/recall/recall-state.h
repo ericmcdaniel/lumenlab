@@ -4,6 +4,12 @@
 
 namespace Games
 {
+  enum class ActivePlayer
+  {
+    Computer,
+    Player
+  };
+
   class RecallGameState
   {
   public:

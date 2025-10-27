@@ -3,8 +3,8 @@
 namespace Lights
 {
   LedStrip::LedStrip(Engine::SystemConfig &configuration) : config{configuration},
-                                                            _size{Engine::SystemConfig::numLeds},
-                                                            buffer{Engine::SystemConfig::numLeds},
+                                                            _size{config.numLeds},
+                                                            buffer{config.numLeds},
                                                             luminance{configuration}
   {
 #ifdef RELEASE

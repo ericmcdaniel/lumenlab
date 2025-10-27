@@ -1,11 +1,11 @@
 #pragma once
 
+#include "engine/layer.h"
 #include "engine/state-manager.h"
 #include "engine/system-config.h"
-#include "engine/layer.h"
 #include "player/controller.h"
-#include "display/display.h"
 #include "lights/led-strip.h"
+#include "display/display.h"
 
 namespace Core
 {
@@ -13,12 +13,16 @@ namespace Core
   {
   public:
     ContextManager();
+    ~ContextManager();
+    ContextManager(ContextManager &&other) = delete;
+    ContextManager(const ContextManager &other) = delete;
+
     Engine::Layer *application = nullptr;
     Engine::StateManager stateManager;
     Engine::SystemConfig config;
     Player::Controller controller;
-    Display::OledDisplay display;
     Lights::LedStrip leds;
+    Display::OledDisplay display;
 
     float disconnectedLedPhaseShift = 0;
     void navigateMainMenu();

@@ -12,20 +12,11 @@
 #include <Ps3Controller.h> // Needed only for the uint8_t definition
 
 #include "core/context-manager.h"
-#include "engine/layer.h"
 #include "engine/timer.h"
-#include "player/controller.h"
-#include "lights/led-strip.h"
 #include "logger.h"
 
 namespace Games
 {
-  enum class ActivePlayer
-  {
-    Computer,
-    Player
-  };
-
   class RecallCore : public Engine::Layer, public Engine::Timer
   {
   public:

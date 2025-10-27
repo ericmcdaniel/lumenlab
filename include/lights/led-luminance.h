@@ -6,10 +6,6 @@ namespace Lights
 {
   class LedLuminance
   {
-  private:
-    const Engine::SystemConfig &config;
-    int currentLuminance = MAX_ADC_READING;
-
   public:
     LedLuminance(Engine::SystemConfig &configuration) : config{configuration} {}
 
@@ -18,5 +14,9 @@ namespace Lights
 
     int getLuminance() { return currentLuminance; }
     void adjustLuminance();
+
+  private:
+    const Engine::SystemConfig &config;
+    int currentLuminance = MAX_ADC_READING;
   };
 }

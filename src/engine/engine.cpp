@@ -1,5 +1,7 @@
 #include <cmath>
+
 #include "engine/engine.h"
+#include "logger.h"
 
 namespace Engine
 {
@@ -7,15 +9,6 @@ namespace Engine
   GameEngine::GameEngine() : Timer{}
   {
     initializeEngine();
-  }
-
-  GameEngine::~GameEngine()
-  {
-    if (contextManager.application)
-    {
-      delete contextManager.application;
-      contextManager.application = nullptr;
-    }
   }
 
   void GameEngine::runApplication()

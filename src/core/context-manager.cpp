@@ -5,8 +5,16 @@
 
 namespace Core
 {
-  ContextManager::ContextManager() : leds{config},
-                                     display{controller, stateManager} {}
+  ContextManager::ContextManager() : leds{config}, display{this} {}
+
+  ContextManager::~ContextManager()
+  {
+    if (application)
+    {
+      delete application;
+      application = nullptr;
+    }
+  }
 
   void ContextManager::checkChangeRequest()
   {

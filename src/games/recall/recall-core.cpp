@@ -41,26 +41,17 @@ namespace Games
       printComputerPlayback();
       break;
     case ActivePlayer::Player:
-      if (contextManager->controller.wasPressed(Player::ControllerButton::Cross))
-      {
-        playbackRound = 0;
-        ++contextManager->stateManager.getRecallGameState().round;
-        contextManager->stateManager.displayShouldUpdate = true;
-        activePlayer = ActivePlayer::Computer;
-        logf("Round: %u", contextManager->stateManager.getRecallGameState().round + 1);
-
-        waitFromNow(playbackDurationTotal);
-        colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
-      }
+      evaluateUserRecall();
       break;
     }
   }
 
   void RecallCore::printComputerPlayback()
   {
-    if (playbackRound > contextManager->stateManager.getRecallGameState().round)
+    if (playbackRound > round)
     {
       activePlayer = ActivePlayer::Player;
+      playbackRound = 0;
       return;
     }
 
@@ -69,9 +60,7 @@ namespace Games
       for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
       {
         auto color = colorPalette[gameplayColors[playbackRound]];
-        contextManager->leds.buffer[i].r = color.r;
-        contextManager->leds.buffer[i].g = color.g;
-        contextManager->leds.buffer[i].b = color.b;
+        contextManager->leds.buffer[i] = color;
       }
     }
 
@@ -83,5 +72,26 @@ namespace Games
       waitFromNow(playbackDurationTotal);
       colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
     }
+  }
+
+  void RecallCore::evaluateUserRecall()
+  {
+    if (contextManager->controller.wasPressed(Player::ControllerButton::Cross))
+    {
+      playbackRound = 0;
+      incrementRound();
+      contextManager->stateManager.displayShouldUpdate = true;
+      activePlayer = ActivePlayer::Computer;
+      logf("Round: %u", round + 1);
+
+      waitFromNow(playbackDurationTotal);
+      colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
+    }
+  }
+
+  void RecallCore::incrementRound(uint16_t amount)
+  {
+    round += amount;
+    contextManager->stateManager.getRecallGameState().round = round;
   }
 }

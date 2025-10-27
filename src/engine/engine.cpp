@@ -5,10 +5,17 @@
 
 namespace Engine
 {
-
-  GameEngine::GameEngine() : Timer{}
+  GameEngine::GameEngine()
   {
     initializeEngine();
+    xTaskCreatePinnedToCore(
+        GameEngine::displayTask,
+        "OLED Display Task",
+        4096,
+        &contextManager,
+        1,
+        nullptr,
+        0);
   }
 
   void GameEngine::runApplication()
@@ -16,9 +23,7 @@ namespace Engine
     while (contextManager.stateManager.isRunning())
     {
       contextManager.leds.reset();
-
       contextManager.checkChangeRequest();
-      contextManager.display.updateDisplay();
 
       switch (contextManager.stateManager.getCurrent())
       {
@@ -41,12 +46,12 @@ namespace Engine
         break;
       }
 
-      if (isReady())
+      uint32_t now = micros();
+      if (now - lastRender >= 8333) // Targeting a 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
       {
+        lastRender += 8333;
         renderLedStrip();
-        wait(9); // Targeting a 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
       }
-      delay(1);
     }
   }
 
@@ -56,7 +61,7 @@ namespace Engine
 
     // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
-    Serial.begin(921600);
+    Serial.begin(contextManager.config.serialBaud);
     contextManager.leds.reset();
     renderLedStrip();
     log("Connecting to computer using a serial connection for debugging.");
@@ -68,9 +73,9 @@ namespace Engine
     log("Serial connection established.");
 #endif
 
-    log("Attempting to connect to PS3 controller");
+    log("Connecting to PS3 controller");
 
-    // ten second attempt to connect to PS3 controller
+    // twenty second attempt to connect to PS3 controller
     int reattempt = 0;
     while (!contextManager.controller.isConnected() && reattempt < 80)
     {
@@ -87,6 +92,7 @@ namespace Engine
     else
     {
       contextManager.stateManager.setNext(SystemState::MenuHome);
+      lastRender = micros();
       log("Startup process completed. Transitioning to Main Menu");
     }
   }
@@ -96,6 +102,7 @@ namespace Engine
     if (contextManager.controller.isConnected())
     {
       contextManager.stateManager.setNext(SystemState::MenuHome);
+      lastRender = micros();
       log("PS3 controller connected. Transitioning to Main Menu");
       return;
     }
@@ -128,5 +135,18 @@ namespace Engine
     Serial.write(0x55);
     Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), contextManager.leds.size() * sizeof(CRGB));
 #endif
+  }
+
+  void GameEngine::displayTask(void *param)
+  {
+    auto *ctx = static_cast<Core::ContextManager *>(param);
+    while (true)
+    {
+      if (ctx->stateManager.displayShouldUpdate)
+      {
+        ctx->display.updateDisplay();
+      }
+      vTaskDelay(1);
+    }
   }
 }

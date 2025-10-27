@@ -58,19 +58,9 @@ namespace Engine
     void setNextUserGameChoice(GameSelection next) { userGameChoice = next; };
     void selectNextGame(MenuNavigationDirection direction = MenuNavigationDirection::Forward);
 
-    const char *printGameName(size_t index);
+    const char *printGameName(uint8_t index);
     Games::SandboxGameState &getSandboxGameState() { return sandboxGameState; }
     Games::RecallGameState &getRecallGameState() { return recallGameState; }
-
-    bool operator==(const StateManager &other) const
-    {
-      return this->systemState == other.systemState;
-    }
-
-    bool operator!=(const StateManager &other) const
-    {
-      return !(*this == other);
-    }
 
   private:
     SystemState systemState;

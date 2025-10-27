@@ -1,5 +1,4 @@
 #include "engine/state-manager.h"
-#include "logger.h"
 
 namespace Engine
 {
@@ -33,7 +32,7 @@ namespace Engine
     displayShouldUpdate = true;
   }
 
-  const char *StateManager::printGameName(size_t index)
+  const char *StateManager::printGameName(uint8_t index)
   {
     static constexpr const char gameNames[3][20] = {
         "Sandbox (Testing)",

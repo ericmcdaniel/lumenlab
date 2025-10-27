@@ -1,11 +1,10 @@
 #pragma once
 
-#include "engine/timer.h"
 #include "core/context-manager.h"
 
 namespace Engine
 {
-  class GameEngine : Timer
+  class GameEngine
   {
   public:
     GameEngine();
@@ -18,7 +17,9 @@ namespace Engine
 
   private:
     Core::ContextManager contextManager;
+    uint32_t lastRender = 0;
     void initializeEngine();
     void renderLedStrip();
+    static void displayTask(void *param);
   };
 }

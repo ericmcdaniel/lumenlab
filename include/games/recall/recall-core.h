@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 #ifdef RELEASE
 #define FASTLED_INTERNAL
 #include <FastLED.h>
@@ -9,11 +11,8 @@
 #include "debug-fastled.h"
 #endif
 
-#include <Ps3Controller.h> // Needed only for the uint8_t definition
-
 #include "core/context-manager.h"
 #include "engine/timer.h"
-#include "logger.h"
 
 namespace Games
 {
@@ -40,9 +39,10 @@ namespace Games
         {0, 255, 0},   // △ green
         {255, 0, 0}};  // ◯ red
     uint16_t gameplayColors[maxRound];
-    bool shouldDisplayTimedColor = true;
 
     void setupGameColors();
     void printComputerPlayback();
+    void evaluateUserRecall();
+    void incrementRound(uint16_t amount = 1);
   };
 }

@@ -2,7 +2,6 @@
 
 #include "display/display.h"
 #include "core/context-manager.h"
-#include "logger.h"
 
 namespace Display
 {

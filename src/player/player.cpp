@@ -1,5 +1,4 @@
 #include "player/player.h"
-#include "logger.h"
 
 namespace Player
 {

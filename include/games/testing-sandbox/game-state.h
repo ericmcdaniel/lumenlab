@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Ps3Controller.h> // Needed only for the uint16_t definition
+#include <cstdint>
 
 namespace Games
 {

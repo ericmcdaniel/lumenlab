@@ -4,10 +4,12 @@ namespace Engine
 {
   void Timer::wait(unsigned long futureTime)
   {
-    // if (futureTime <= 0)
-    // {
-    // }
     next = next + futureTime;
+  }
+
+  void Timer::waitFromNow(unsigned long futureTime)
+  {
+    next = millis() + futureTime;
   }
 
   const bool Timer::isReady()

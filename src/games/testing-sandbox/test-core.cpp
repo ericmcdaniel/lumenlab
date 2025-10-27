@@ -6,14 +6,14 @@ namespace Games
 {
   void TestCore::nextEvent()
   {
-    if (controller.wasPressed(Player::ControllerButton::Cross))
+    if (contextManager->controller.wasPressed(Player::ControllerButton::Cross))
     {
       incrementCurrentScore();
-      engineState.displayShouldUpdate = true;
+      contextManager->stateManager.displayShouldUpdate = true;
       logf("Current score: %d", getCurrentScore());
     }
-    auto leftInput = controller.leftAnalog();
-    auto rightInput = controller.rightAnalog();
+    auto leftInput = contextManager->controller.leftAnalog();
+    auto rightInput = contextManager->controller.rightAnalog();
     player1->move(leftInput.x);
     player1->updatePlayer1LedBuffer();
     player2->move(rightInput.x);
@@ -22,13 +22,13 @@ namespace Games
 
   void TestCore::incrementCurrentScore()
   {
-    ++engineState.getSandboxGameState().currentScore;
-    engineState.displayShouldUpdate = true;
+    ++contextManager->stateManager.getSandboxGameState().currentScore;
+    contextManager->stateManager.displayShouldUpdate = true;
   }
 
   void TestCore::incrementHighScore()
   {
-    ++engineState.getSandboxGameState().highScore;
-    engineState.displayShouldUpdate = true;
+    ++contextManager->stateManager.getSandboxGameState().highScore;
+    contextManager->stateManager.displayShouldUpdate = true;
   }
 }

@@ -1,35 +1,25 @@
 #pragma once
 
-#include "engine/system-config.h"
-#include "engine/state-manager.h"
-#include "engine/timer.h"
-#include "core/system-manager.h"
-#include "lights/led-strip.h"
-#include "display/display.h"
-#include "games/testing-sandbox/test-core.h"
-#include "games/testing-sandbox/test-player.h"
+#include "core/context-manager.h"
 
 namespace Engine
 {
-  class GameEngine : Timer
+  class GameEngine
   {
-  private:
-    Engine::SystemConfig config;
-    Core::SystemManager systemManager;
-    StateManager state;
-    Games::TestCore *game = nullptr;
-    Player::Controller controller;
-    Lights::LedStrip leds;
-    Display::OledDisplay display;
-
-    void initializeEngine();
-    void transitionToSandbox();
-    void renderLedStrip();
-
   public:
     GameEngine();
+    virtual ~GameEngine() = default;
+    GameEngine(const GameEngine &) = delete;
+    GameEngine &operator=(const GameEngine &) = delete;
 
     void runApplication();
     void standbyControllerConnection();
+
+  private:
+    Core::ContextManager contextManager;
+    uint32_t lastRender = 0;
+    void initializeEngine();
+    void renderLedStrip();
+    static void displayTask(void *param);
   };
 }

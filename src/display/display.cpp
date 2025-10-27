@@ -1,12 +1,11 @@
 #include <Wire.h>
 
 #include "display/display.h"
-#include "logger.h"
+#include "core/context-manager.h"
 
 namespace Display
 {
-
-  OledDisplay::OledDisplay(Player::Controller &c, Engine::StateManager &es) : display{OLED_RESET}, controller{c}, engineState{es}
+  OledDisplay::OledDisplay(Core::ContextManager *ctx) : contextManager{ctx}
   {
     Wire.begin();
     display.begin(SSD1306_SWITCHCAPVCC, DISPLAY_ADDRESS);
@@ -17,24 +16,24 @@ namespace Display
 
   void OledDisplay::updateDisplay()
   {
-    if (engineState.displayShouldUpdate)
+    if (contextManager->stateManager.displayShouldUpdate)
     {
-      switch (engineState.getCurrent())
+      switch (contextManager->stateManager.getCurrent())
       {
       case Engine::SystemState::Initialize:
         drawBootScreen();
         break;
-      case Engine::SystemState::Menu_Home:
+      case Engine::SystemState::MenuHome:
         drawMainMenu();
         break;
-      case Engine::SystemState::Menu_Games:
+      case Engine::SystemState::MenuGames:
         drawGamesMenu();
         break;
-      case Engine::SystemState::Game_SandboxTransition:
-        drawTransitionScreen(engineState.printGameName(static_cast<int>(engineState.getUserGameChoice())));
-        break;
-      case Engine::SystemState::Game_Sandbox:
+      case Engine::SystemState::GameSandbox:
         drawSandboxGameHud();
+        break;
+      case Engine::SystemState::GameRecall:
+        drawRecallGameHud();
         break;
       case Engine::SystemState::NoControllerConnected:
         drawUnconnectedControllerScreen();
@@ -43,7 +42,7 @@ namespace Display
         drawBootScreen();
         break;
       }
-      engineState.displayShouldUpdate = false;
+      contextManager->stateManager.displayShouldUpdate = false;
     }
   }
 
@@ -84,7 +83,7 @@ namespace Display
     display.clearDisplay();
     drawHeader("Main Menu");
 
-    uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserMenuChoice());
+    uint8_t selectedOptionIndex = static_cast<uint8_t>(contextManager->stateManager.getUserMenuChoice());
 
     display.setCursor(0, 8);
     display.print(selectedOption(0, selectedOptionIndex));
@@ -101,28 +100,21 @@ namespace Display
     display.clearDisplay();
     drawHeader("Games Menu");
 
-    uint8_t selectedOptionIndex = static_cast<uint8_t>(engineState.getUserGameChoice());
+    uint8_t selectedOptionIndex = static_cast<uint8_t>(contextManager->stateManager.getUserGameChoice());
     char nameBuffer[32] = "";
 
     display.setCursor(0, 8);
-    sprintf(nameBuffer, "%c  %s", selectedOption(0, selectedOptionIndex), engineState.printGameName(0));
+    sprintf(nameBuffer, "%c  %s", selectedOption(0, selectedOptionIndex), contextManager->stateManager.printGameName(0));
     display.print(nameBuffer);
 
     display.setCursor(0, 16);
-    sprintf(nameBuffer, "%c  %s", selectedOption(1, selectedOptionIndex), engineState.printGameName(1));
+    sprintf(nameBuffer, "%c  %s", selectedOption(1, selectedOptionIndex), contextManager->stateManager.printGameName(1));
     display.print(nameBuffer);
 
     display.setCursor(0, 24);
-    sprintf(nameBuffer, "%c  %s", selectedOption(2, selectedOptionIndex), engineState.printGameName(2));
+    sprintf(nameBuffer, "%c  %s", selectedOption(2, selectedOptionIndex), contextManager->stateManager.printGameName(2));
     display.print(nameBuffer);
 
-    display.display();
-  }
-
-  void OledDisplay::drawTransitionScreen(const char *name)
-  {
-    display.clearDisplay();
-    drawHeader(name);
     display.display();
   }
 
@@ -133,9 +125,23 @@ namespace Display
 
     display.setCursor(0, 16);
     display.print("Current Score: ");
-    display.print(engineState.getSandboxGameState().currentScore);
+    display.print(contextManager->stateManager.getSandboxGameState().currentScore);
     display.setCursor(0, 24);
-    display.print("High Score: ");
+    display.print("High Score: -");
+
+    display.display();
+  }
+
+  void OledDisplay::drawRecallGameHud()
+  {
+    display.clearDisplay();
+    drawHeader("Recall");
+
+    display.setCursor(0, 16);
+    display.print("Round: ");
+    display.print(contextManager->stateManager.getRecallGameState().round + 1);
+    display.setCursor(0, 24);
+    display.print("High Score: -");
 
     display.display();
   }

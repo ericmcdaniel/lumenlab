@@ -2,19 +2,21 @@
 
 #include <Arduino.h>
 
-#ifdef DEBUG
-#define log(msg)                                                            \
-  do                                                                        \
-  {                                                                         \
-    Serial.printf("[%lu] [%s] - %s\n", millis(), __PRETTY_FUNCTION__, msg); \
-  } while (0)
+/*
+  Interesting compiler optimization below, when building with the DEBUG flag
+  on it prints to the serial monitor as normal, but when building in RELEASE
+  mode (optimization is set to Os), then the do-while loop has zero executions,
+  so the entire call to log/logf is removed. Same for the VIRTUALIZATION build,
+  which doesn't need those logs in the terminal
+*/
 
-#define logf(fmt, ...)                                                                     \
-  do                                                                                       \
-  {                                                                                        \
-    Serial.printf("[%lu] [%s] - " fmt "\n", millis(), __PRETTY_FUNCTION__, ##__VA_ARGS__); \
-  } while (0)
+#ifdef DEBUG
+
+#define log(msg) Serial.printf("[%lu] [%s] - %s\n", millis(), __PRETTY_FUNCTION__, msg);
+#define logf(fmt, ...) Serial.printf("[%lu] [%s] - " fmt "\n", millis(), __PRETTY_FUNCTION__, ##__VA_ARGS__);
+
 #else
+
 #define log(msg) \
   do             \
   {              \
@@ -23,4 +25,5 @@
   do                   \
   {                    \
   } while (0)
+
 #endif

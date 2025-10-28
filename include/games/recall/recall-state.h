@@ -7,7 +7,8 @@ namespace Games
   enum class ActivePlayer
   {
     Computer,
-    Player
+    Player,
+    None
   };
 
   class RecallGameState

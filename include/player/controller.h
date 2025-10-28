@@ -57,7 +57,12 @@ namespace Player
     const uint8_t buttonState(const ControllerButton button) const;
 
     uint8_t buttonsPressed = 0;
+    uint8_t buttonsReleased = 0;
+    static constexpr uint8_t pressThreshold = 128;
+    static constexpr uint8_t releaseThreshold = 64;
     const bool wasPressed(const ControllerButton button);
+    const bool wasPressedAndReleased(const ControllerButton button);
+    void reset();
 
     const bool isConnected() { return instance->connection; }
 

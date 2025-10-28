@@ -29,7 +29,7 @@ namespace Games
     log("First 10 round RGB values for testing:");
     for (uint16_t i = 0; i < 10; ++i)
     {
-      logf("Round %u: (%u - %u - %u)", i + 1, colorPalette[gameplayColors[i]].r, colorPalette[gameplayColors[i]].g, colorPalette[gameplayColors[i]].b);
+      logf("Round %u: Color=%u (%u - %u - %u)", i + 1, gameplayColors[i], colorPalette[gameplayColors[i]].r, colorPalette[gameplayColors[i]].g, colorPalette[gameplayColors[i]].b);
     }
   }
 
@@ -43,6 +43,13 @@ namespace Games
     case ActivePlayer::Player:
       evaluateUserRecall();
       break;
+    case ActivePlayer::None:
+      // waitFromNow(1000);
+      // activePlayer = ActivePlayer::Computer;
+      playbackRound = 0;
+      contextManager->stateManager.getRecallGameState().reset();
+      contextManager->stateManager.displayShouldUpdate = true;
+      break;
     }
   }
 
@@ -52,6 +59,7 @@ namespace Games
     {
       activePlayer = ActivePlayer::Player;
       playbackRound = 0;
+      contextManager->controller.reset();
       return;
     }
 
@@ -76,22 +84,138 @@ namespace Games
 
   void RecallCore::evaluateUserRecall()
   {
-    if (contextManager->controller.wasPressed(Player::ControllerButton::Cross))
+    if (contextManager->controller.buttonState(Player::ControllerButton::Cross) > 0)
     {
+      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+      {
+        contextManager->leds.buffer[i] = {0, 0, 255};
+      }
+    }
+    else if (contextManager->controller.buttonState(Player::ControllerButton::Square) > 0)
+    {
+      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+      {
+        contextManager->leds.buffer[i] = {255, 255, 0};
+      }
+    }
+    else if (contextManager->controller.buttonState(Player::ControllerButton::Triangle) > 0)
+    {
+      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+      {
+        contextManager->leds.buffer[i] = {0, 255, 0};
+      }
+    }
+    else if (contextManager->controller.buttonState(Player::ControllerButton::Circle) > 0)
+    {
+      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+      {
+        contextManager->leds.buffer[i] = {255, 0, 0};
+      }
+    }
+
+    if (playbackRound > round)
+    {
+      activePlayer = ActivePlayer::Computer;
       playbackRound = 0;
       incrementRound();
-      contextManager->stateManager.displayShouldUpdate = true;
-      activePlayer = ActivePlayer::Computer;
-      logf("Round: %u", round + 1);
-
       waitFromNow(playbackDurationTotal);
       colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
+      contextManager->stateManager.displayShouldUpdate = true;
+      return;
     }
+
+    switch (gameplayColors[playbackRound])
+    {
+    case 0:
+      if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Cross))
+      {
+        ++playbackRound;
+      }
+      if (incorrectButtonWasPressed(Player::ControllerButton::Cross))
+      {
+        logf("Incorrect answer");
+        activePlayer = ActivePlayer::None;
+      }
+      break;
+    case 1:
+      if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Square))
+      {
+        ++playbackRound;
+      }
+      if (incorrectButtonWasPressed(Player::ControllerButton::Square))
+      {
+        logf("Incorrect answer");
+        activePlayer = ActivePlayer::None;
+      }
+      break;
+    case 2:
+      if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Triangle))
+      {
+        ++playbackRound;
+      }
+      if (incorrectButtonWasPressed(Player::ControllerButton::Triangle))
+      {
+        logf("Incorrect answer");
+        activePlayer = ActivePlayer::None;
+      }
+      break;
+    case 3:
+      if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Circle))
+      {
+        ++playbackRound;
+      }
+      if (incorrectButtonWasPressed(Player::ControllerButton::Circle))
+      {
+        logf("Incorrect answer");
+        activePlayer = ActivePlayer::None;
+      }
+      break;
+    }
+
+    // if (contextManager->controller.wasPressed(Player::ControllerButton::Cross))
+    // {
+    //   playbackRound = 0;
+    //   incrementRound();
+    //   contextManager->stateManager.displayShouldUpdate = true;
+    //   activePlayer = ActivePlayer::Computer;
+    //   logf("Round: %u", round + 1);
+
+    //   waitFromNow(playbackDurationTotal);
+    //   colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
+    // }
   }
 
   void RecallCore::incrementRound(uint16_t amount)
   {
     round += amount;
     contextManager->stateManager.getRecallGameState().round = round;
+  }
+
+  bool RecallCore::incorrectButtonWasPressed(Player::ControllerButton correctButton)
+  {
+    switch (correctButton)
+    {
+    case Player::ControllerButton::Cross:
+      return !contextManager->controller.wasPressed(Player::ControllerButton::Cross) &&
+             (contextManager->controller.wasPressed(Player::ControllerButton::Square) ||
+              contextManager->controller.wasPressed(Player::ControllerButton::Triangle) ||
+              contextManager->controller.wasPressed(Player::ControllerButton::Circle));
+    case Player::ControllerButton::Square:
+      return !contextManager->controller.wasPressed(Player::ControllerButton::Square) &&
+             (contextManager->controller.wasPressed(Player::ControllerButton::Cross) ||
+              contextManager->controller.wasPressed(Player::ControllerButton::Triangle) ||
+              contextManager->controller.wasPressed(Player::ControllerButton::Circle));
+    case Player::ControllerButton::Triangle:
+      return !contextManager->controller.wasPressed(Player::ControllerButton::Triangle) &&
+             (contextManager->controller.wasPressed(Player::ControllerButton::Cross) ||
+              contextManager->controller.wasPressed(Player::ControllerButton::Square) ||
+              contextManager->controller.wasPressed(Player::ControllerButton::Circle));
+    case Player::ControllerButton::Circle:
+      return !contextManager->controller.wasPressed(Player::ControllerButton::Circle) &&
+             (contextManager->controller.wasPressed(Player::ControllerButton::Cross) ||
+              contextManager->controller.wasPressed(Player::ControllerButton::Square) ||
+              contextManager->controller.wasPressed(Player::ControllerButton::Triangle));
+    }
+    return false;
   }
 }

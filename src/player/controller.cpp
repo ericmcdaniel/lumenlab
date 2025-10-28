@@ -102,6 +102,36 @@ namespace Player
     return false;
   }
 
+  const bool Controller::wasPressedAndReleased(ControllerButton button)
+  {
+    uint32_t mask = 1u << static_cast<uint8_t>(button);
+
+    uint8_t val = buttonState(button);
+    bool isDownNow = (val >= pressThreshold);
+    bool wasDownBefore = (buttonsPressed & mask) != 0;
+
+    if (isDownNow && !wasDownBefore)
+    {
+      buttonsPressed |= mask;
+      return false;
+    }
+
+    bool isReleasedNow = (val <= releaseThreshold);
+    if (isReleasedNow && wasDownBefore)
+    {
+      buttonsPressed &= ~mask;
+      return true;
+    }
+
+    return false;
+  }
+
+  void Controller::reset()
+  {
+    buttonsPressed = 0;
+    buttonsReleased = 0;
+  }
+
   void Controller::handleOnConnect()
   {
     log("Game controller connected successfully.");

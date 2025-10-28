@@ -44,5 +44,6 @@ namespace Games
     void printComputerPlayback();
     void evaluateUserRecall();
     void incrementRound(uint16_t amount = 1);
+    bool incorrectButtonWasPressed(Player::ControllerButton correctButton);
   };
 }

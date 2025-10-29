@@ -88,32 +88,32 @@ namespace Games
     {
       for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
       {
-        contextManager->leds.buffer[i] = {0, 0, 255};
+        contextManager->leds.buffer[i] = colorPalette[0];
       }
     }
     else if (contextManager->controller.buttonState(Player::ControllerButton::Square) > 0)
     {
       for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
       {
-        contextManager->leds.buffer[i] = {255, 255, 0};
+        contextManager->leds.buffer[i] = colorPalette[1];
       }
     }
     else if (contextManager->controller.buttonState(Player::ControllerButton::Triangle) > 0)
     {
       for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
       {
-        contextManager->leds.buffer[i] = {0, 255, 0};
+        contextManager->leds.buffer[i] = colorPalette[2];
       }
     }
     else if (contextManager->controller.buttonState(Player::ControllerButton::Circle) > 0)
     {
       for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
       {
-        contextManager->leds.buffer[i] = {255, 0, 0};
+        contextManager->leds.buffer[i] = colorPalette[3];
       }
     }
 
-    if (playbackRound > round)
+    if (playbackRound > round && isReady())
     {
       activePlayer = ActivePlayer::Computer;
       playbackRound = 0;
@@ -130,6 +130,7 @@ namespace Games
       if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Cross))
       {
         ++playbackRound;
+        waitFromNow(1000);
       }
       if (incorrectButtonWasPressed(Player::ControllerButton::Cross))
       {
@@ -141,6 +142,7 @@ namespace Games
       if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Square))
       {
         ++playbackRound;
+        waitFromNow(1000);
       }
       if (incorrectButtonWasPressed(Player::ControllerButton::Square))
       {
@@ -152,6 +154,7 @@ namespace Games
       if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Triangle))
       {
         ++playbackRound;
+        waitFromNow(1000);
       }
       if (incorrectButtonWasPressed(Player::ControllerButton::Triangle))
       {
@@ -163,6 +166,7 @@ namespace Games
       if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Circle))
       {
         ++playbackRound;
+        waitFromNow(1000);
       }
       if (incorrectButtonWasPressed(Player::ControllerButton::Circle))
       {
@@ -171,18 +175,6 @@ namespace Games
       }
       break;
     }
-
-    // if (contextManager->controller.wasPressed(Player::ControllerButton::Cross))
-    // {
-    //   playbackRound = 0;
-    //   incrementRound();
-    //   contextManager->stateManager.displayShouldUpdate = true;
-    //   activePlayer = ActivePlayer::Computer;
-    //   logf("Round: %u", round + 1);
-
-    //   waitFromNow(playbackDurationTotal);
-    //   colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
-    // }
   }
 
   void RecallCore::incrementRound(uint16_t amount)

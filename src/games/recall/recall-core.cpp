@@ -84,34 +84,7 @@ namespace Games
 
   void RecallCore::evaluateUserRecall()
   {
-    if (contextManager->controller.buttonState(Player::ControllerButton::Cross) > 0)
-    {
-      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
-      {
-        contextManager->leds.buffer[i] = colorPalette[0];
-      }
-    }
-    else if (contextManager->controller.buttonState(Player::ControllerButton::Square) > 0)
-    {
-      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
-      {
-        contextManager->leds.buffer[i] = colorPalette[1];
-      }
-    }
-    else if (contextManager->controller.buttonState(Player::ControllerButton::Triangle) > 0)
-    {
-      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
-      {
-        contextManager->leds.buffer[i] = colorPalette[2];
-      }
-    }
-    else if (contextManager->controller.buttonState(Player::ControllerButton::Circle) > 0)
-    {
-      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
-      {
-        contextManager->leds.buffer[i] = colorPalette[3];
-      }
-    }
+    displayButtonKeypress();
 
     if (playbackRound > round && isReady())
     {
@@ -181,6 +154,22 @@ namespace Games
   {
     round += amount;
     contextManager->stateManager.getRecallGameState().round = round;
+  }
+
+  void RecallCore::displayButtonKeypress()
+  {
+    if (contextManager->controller.buttonState(Player::ControllerButton::Cross) > 0)
+      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+        contextManager->leds.buffer[i] = colorPalette[0];
+    else if (contextManager->controller.buttonState(Player::ControllerButton::Square) > 0)
+      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+        contextManager->leds.buffer[i] = colorPalette[1];
+    else if (contextManager->controller.buttonState(Player::ControllerButton::Triangle) > 0)
+      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+        contextManager->leds.buffer[i] = colorPalette[2];
+    else if (contextManager->controller.buttonState(Player::ControllerButton::Circle) > 0)
+      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+        contextManager->leds.buffer[i] = colorPalette[3];
   }
 
   bool RecallCore::incorrectButtonWasPressed(Player::ControllerButton correctButton)

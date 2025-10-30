@@ -45,5 +45,6 @@ namespace Games
     void evaluateUserRecall();
     void incrementRound(uint16_t amount = 1);
     bool incorrectButtonWasPressed(Player::ControllerButton correctButton);
+    void displayButtonKeypress();
   };
 }

@@ -95,7 +95,7 @@ namespace Core
       delete application;
       application = nullptr;
     }
-    switch (stateManager.getCurrent())
+    switch (stateManager.current())
     {
     case Engine::SystemState::GameSandbox:
       application = new Games::TestCore{this};

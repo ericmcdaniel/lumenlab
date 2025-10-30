@@ -47,7 +47,7 @@ namespace Engine
     bool isRunning() { return systemState != SystemState::Error; }
     bool displayShouldUpdate = true;
 
-    const SystemState getCurrent() const { return systemState; }
+    const SystemState current() const { return systemState; }
     void setNext(SystemState state);
 
     const MainMenuSelection getUserMenuChoice() const { return userMainMenuChoice; }

@@ -1,6 +1,7 @@
 #include "esp_system.h"
 
 #include "games/recall/recall-core.h"
+#include "common.h"
 #include "logger.h"
 
 namespace Games
@@ -18,12 +19,12 @@ namespace Games
     // temporary for testing purposes
     for (uint16_t i = 0; i < maxRound; ++i)
     {
-      gameplayColors[i] = static_cast<Player::ControllerButton>(i % 4);
+      gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(availableGameplayButtons));
     }
 
     // for (uint16_t i = 0; i < maxRound; ++i)
     // {
-    //   auto colorIndex = esp_random() % 4;
+    //   auto colorIndex = esp_random() % arraySize(availableGameplayButtons);
     //   gameplayColors[i] = colorIndex;
     // }
     log("First 10 round RGB values for testing:");
@@ -77,7 +78,7 @@ namespace Games
 
     if (isReady())
     {
-      auto color = colorPalette[playbackRound % 4];
+      auto color = colorPalette[playbackRound % arraySize(availableGameplayButtons)];
       logf("Computer displayed: (%u - %u - %u)", color.r, color.g, color.b);
       ++playbackRound;
       waitFromNow(playbackDurationTotal);
@@ -125,7 +126,7 @@ namespace Games
 
   void RecallCore::displayButtonKeypress()
   {
-    for (size_t btnIdx = 0; btnIdx < 4; ++btnIdx)
+    for (size_t btnIdx = 0; btnIdx < arraySize(availableGameplayButtons); ++btnIdx)
     {
       if (contextManager->controller.buttonState(static_cast<Player::ControllerButton>(btnIdx)) > 0)
         for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
@@ -135,15 +136,10 @@ namespace Games
 
   bool RecallCore::incorrectButtonWasPressed(Player::ControllerButton correctButton)
   {
-    static constexpr Player::ControllerButton allButtons[] = {
-        Player::ControllerButton::Cross,
-        Player::ControllerButton::Square,
-        Player::ControllerButton::Triangle,
-        Player::ControllerButton::Circle};
 
     bool correctPressed = contextManager->controller.wasPressed(correctButton);
 
-    for (auto button : allButtons)
+    for (auto button : availableGameplayButtons)
     {
       if (button == correctButton)
         continue;

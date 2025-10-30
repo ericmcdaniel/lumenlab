@@ -25,7 +25,7 @@ namespace Engine
       contextManager.leds.reset();
       contextManager.checkChangeRequest();
 
-      switch (contextManager.stateManager.getCurrent())
+      switch (contextManager.stateManager.current())
       {
       case SystemState::MenuHome:
         contextManager.navigateMainMenu();

@@ -18,7 +18,7 @@ namespace Display
   {
     if (contextManager->stateManager.displayShouldUpdate)
     {
-      switch (contextManager->stateManager.getCurrent())
+      switch (contextManager->stateManager.current())
       {
       case Engine::SystemState::Initialize:
         drawBootScreen();

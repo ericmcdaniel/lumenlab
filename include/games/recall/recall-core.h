@@ -30,6 +30,11 @@ namespace Games
     static constexpr unsigned long playbackDurationTotal = 600;
     static constexpr unsigned long playbackDurationIlluminated = 500;
     static constexpr uint16_t maxRound = 1000;
+    static constexpr Player::ControllerButton availableGameplayButtons[] = {
+        Player::ControllerButton::Cross,
+        Player::ControllerButton::Square,
+        Player::ControllerButton::Triangle,
+        Player::ControllerButton::Circle};
 
     uint16_t round = 0;
     uint16_t playbackRound = 0;

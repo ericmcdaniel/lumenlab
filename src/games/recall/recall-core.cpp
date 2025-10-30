@@ -135,29 +135,22 @@ namespace Games
 
   bool RecallCore::incorrectButtonWasPressed(Player::ControllerButton correctButton)
   {
-    switch (correctButton)
+    static constexpr Player::ControllerButton allButtons[] = {
+        Player::ControllerButton::Cross,
+        Player::ControllerButton::Square,
+        Player::ControllerButton::Triangle,
+        Player::ControllerButton::Circle};
+
+    bool correctPressed = contextManager->controller.wasPressed(correctButton);
+
+    for (auto button : allButtons)
     {
-    case Player::ControllerButton::Cross:
-      return !contextManager->controller.wasPressed(Player::ControllerButton::Cross) &&
-             (contextManager->controller.wasPressed(Player::ControllerButton::Square) ||
-              contextManager->controller.wasPressed(Player::ControllerButton::Triangle) ||
-              contextManager->controller.wasPressed(Player::ControllerButton::Circle));
-    case Player::ControllerButton::Square:
-      return !contextManager->controller.wasPressed(Player::ControllerButton::Square) &&
-             (contextManager->controller.wasPressed(Player::ControllerButton::Cross) ||
-              contextManager->controller.wasPressed(Player::ControllerButton::Triangle) ||
-              contextManager->controller.wasPressed(Player::ControllerButton::Circle));
-    case Player::ControllerButton::Triangle:
-      return !contextManager->controller.wasPressed(Player::ControllerButton::Triangle) &&
-             (contextManager->controller.wasPressed(Player::ControllerButton::Cross) ||
-              contextManager->controller.wasPressed(Player::ControllerButton::Square) ||
-              contextManager->controller.wasPressed(Player::ControllerButton::Circle));
-    case Player::ControllerButton::Circle:
-      return !contextManager->controller.wasPressed(Player::ControllerButton::Circle) &&
-             (contextManager->controller.wasPressed(Player::ControllerButton::Cross) ||
-              contextManager->controller.wasPressed(Player::ControllerButton::Square) ||
-              contextManager->controller.wasPressed(Player::ControllerButton::Triangle));
+      if (button == correctButton)
+        continue;
+      if (contextManager->controller.wasPressed(button) && !correctPressed)
+        return true;
     }
+
     return false;
   }
 }

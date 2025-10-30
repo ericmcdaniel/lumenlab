@@ -34,15 +34,16 @@ namespace Games
     uint16_t round = 0;
     uint16_t playbackRound = 0;
     CRGB colorPalette[4] = {
-        {0, 0, 255},   // ✕ blue
-        {255, 255, 0}, // □ yellow
-        {0, 255, 0},   // △ green
-        {255, 0, 0}};  // ◯ red
-    uint16_t gameplayColors[maxRound];
+        {0, 0, 255},    // ✕ blue
+        {255, 0, 0},    // ◯ red
+        {0, 255, 0},    // △ green
+        {255, 255, 0}}; // □ yellow
+    Player::ControllerButton gameplayColors[maxRound];
 
     void setupGameColors();
     void printComputerPlayback();
     void evaluateUserRecall();
+    void evaluateUserButton(Player::ControllerButton button);
     void incrementRound(uint16_t amount = 1);
     bool incorrectButtonWasPressed(Player::ControllerButton correctButton);
     void displayButtonKeypress();

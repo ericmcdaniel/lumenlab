@@ -18,7 +18,7 @@ namespace Games
     // temporary for testing purposes
     for (uint16_t i = 0; i < maxRound; ++i)
     {
-      gameplayColors[i] = i % 4;
+      gameplayColors[i] = static_cast<Player::ControllerButton>(i % 4);
     }
 
     // for (uint16_t i = 0; i < maxRound; ++i)
@@ -29,7 +29,10 @@ namespace Games
     log("First 10 round RGB values for testing:");
     for (uint16_t i = 0; i < 10; ++i)
     {
-      logf("Round %u: Color=%u (%u - %u - %u)", i + 1, gameplayColors[i], colorPalette[gameplayColors[i]].r, colorPalette[gameplayColors[i]].g, colorPalette[gameplayColors[i]].b);
+      logf("Round %u: Color=%u (%u - %u - %u)", i + 1, gameplayColors[i],
+           colorPalette[static_cast<size_t>(gameplayColors[i])].r,
+           colorPalette[static_cast<size_t>(gameplayColors[i])].g,
+           colorPalette[static_cast<size_t>(gameplayColors[i])].b);
     }
   }
 
@@ -67,7 +70,7 @@ namespace Games
     {
       for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
       {
-        auto color = colorPalette[gameplayColors[playbackRound]];
+        auto color = colorPalette[static_cast<size_t>(gameplayColors[playbackRound])];
         contextManager->leds.buffer[i] = color;
       }
     }
@@ -97,56 +100,20 @@ namespace Games
       return;
     }
 
-    switch (gameplayColors[playbackRound])
+    evaluateUserButton(gameplayColors[playbackRound]);
+  }
+
+  void RecallCore::evaluateUserButton(Player::ControllerButton button)
+  {
+    if (contextManager->controller.wasPressedAndReleased(button))
     {
-    case 0:
-      if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Cross))
-      {
-        ++playbackRound;
-        waitFromNow(1000);
-      }
-      if (incorrectButtonWasPressed(Player::ControllerButton::Cross))
-      {
-        logf("Incorrect answer");
-        activePlayer = ActivePlayer::None;
-      }
-      break;
-    case 1:
-      if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Square))
-      {
-        ++playbackRound;
-        waitFromNow(1000);
-      }
-      if (incorrectButtonWasPressed(Player::ControllerButton::Square))
-      {
-        logf("Incorrect answer");
-        activePlayer = ActivePlayer::None;
-      }
-      break;
-    case 2:
-      if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Triangle))
-      {
-        ++playbackRound;
-        waitFromNow(1000);
-      }
-      if (incorrectButtonWasPressed(Player::ControllerButton::Triangle))
-      {
-        logf("Incorrect answer");
-        activePlayer = ActivePlayer::None;
-      }
-      break;
-    case 3:
-      if (contextManager->controller.wasPressedAndReleased(Player::ControllerButton::Circle))
-      {
-        ++playbackRound;
-        waitFromNow(1000);
-      }
-      if (incorrectButtonWasPressed(Player::ControllerButton::Circle))
-      {
-        logf("Incorrect answer");
-        activePlayer = ActivePlayer::None;
-      }
-      break;
+      ++playbackRound;
+      waitFromNow(1000);
+    }
+    if (incorrectButtonWasPressed(button))
+    {
+      logf("Incorrect answer");
+      activePlayer = ActivePlayer::None;
     }
   }
 
@@ -158,18 +125,12 @@ namespace Games
 
   void RecallCore::displayButtonKeypress()
   {
-    if (contextManager->controller.buttonState(Player::ControllerButton::Cross) > 0)
-      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
-        contextManager->leds.buffer[i] = colorPalette[0];
-    else if (contextManager->controller.buttonState(Player::ControllerButton::Square) > 0)
-      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
-        contextManager->leds.buffer[i] = colorPalette[1];
-    else if (contextManager->controller.buttonState(Player::ControllerButton::Triangle) > 0)
-      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
-        contextManager->leds.buffer[i] = colorPalette[2];
-    else if (contextManager->controller.buttonState(Player::ControllerButton::Circle) > 0)
-      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
-        contextManager->leds.buffer[i] = colorPalette[3];
+    for (size_t btnIdx = 0; btnIdx < 4; ++btnIdx)
+    {
+      if (contextManager->controller.buttonState(static_cast<Player::ControllerButton>(btnIdx)) > 0)
+        for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+          contextManager->leds.buffer[i] = colorPalette[btnIdx];
+    }
   }
 
   bool RecallCore::incorrectButtonWasPressed(Player::ControllerButton correctButton)

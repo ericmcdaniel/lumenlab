@@ -21,5 +21,6 @@ namespace Engine
     void initializeEngine();
     void renderLedStrip();
     static void displayTask(void *param);
+    float disconnectedLedPhaseShift = 0;
   };
 }

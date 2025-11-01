@@ -109,15 +109,15 @@ namespace Engine
 
     for (int i = 0; i <= contextManager.leds.size(); ++i)
     {
-      float phase = std::cos((2 * M_PI * i / 300) + (2 * M_PI * contextManager.disconnectedLedPhaseShift / 300)) * 127 + 128;
+      float phase = std::cos((2 * M_PI * i / 300) + (2 * M_PI * disconnectedLedPhaseShift / 300)) * 127 + 128;
       contextManager.leds.buffer[i].r = std::floor(phase);
       contextManager.leds.buffer[i].g = 0;
       contextManager.leds.buffer[i].b = 0;
     }
-    contextManager.disconnectedLedPhaseShift += 0.5;
+    disconnectedLedPhaseShift += 0.5;
 
-    if (contextManager.disconnectedLedPhaseShift > 300)
-      contextManager.disconnectedLedPhaseShift = 0;
+    if (disconnectedLedPhaseShift > 300)
+      disconnectedLedPhaseShift = 0;
   }
 
   void GameEngine::renderLedStrip()

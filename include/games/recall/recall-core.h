@@ -24,8 +24,7 @@ namespace Games
 
   private:
     Core::ContextManager *contextManager;
-    GameState state = GameState::Startup;
-    Engine::Timer colorPlaybackTimer;
+    RecallGameState &state = contextManager->stateManager.getRecallGameState();
 
     static constexpr unsigned long playbackDurationIlluminated = 600;
     static constexpr unsigned long playbackDurationPaused = 100;
@@ -35,8 +34,6 @@ namespace Games
         Player::ControllerButton::Square,
         Player::ControllerButton::Triangle,
         Player::ControllerButton::Circle};
-
-    uint16_t round = 0;
     uint16_t sequenceIndex = 0;
     CRGB colorPalette[4] = {
         {0, 0, 255},    // ✕ blue
@@ -44,14 +41,15 @@ namespace Games
         {0, 255, 0},    // △ green
         {255, 255, 0}}; // □ yellow
     Player::ControllerButton gameplayColors[maxRound];
+    float gameOverLedPhaseShift = 0;
 
     void setupGameColors();
     void displayComputerPlayback();
     void pauseComputerPlayback();
     void evaluateUserRecall();
     void evaluateUserButton(Player::ControllerButton button);
-    void incrementRound(uint16_t amount = 1);
     bool incorrectButtonWasPressed(Player::ControllerButton correctButton);
     void illuminateOnSelection();
+    void gameOver();
   };
 }

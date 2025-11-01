@@ -87,7 +87,7 @@ class LEDVisualizer(mglw.WindowConfig):
             font_name='Arial',
             font_size=36,
             x=self.window_size[0] // 2,
-            y=self.window_size[1] // 2 + 20,
+            y=self.window_size[1] // 3 * 2,
             anchor_x='center',
             anchor_y='center',
             color=(190, 190, 190, 190),
@@ -98,7 +98,7 @@ class LEDVisualizer(mglw.WindowConfig):
             font_name='Arial',
             font_size=24,
             x=self.window_size[0] // 2,
-            y=self.window_size[1] // 2 - 20,
+            y=self.window_size[1] // 3 * 2 - 40,
             anchor_x='center',
             anchor_y='center',
             color=(160, 160, 160, 160),
@@ -106,33 +106,41 @@ class LEDVisualizer(mglw.WindowConfig):
         )
 
     def compute_led_positions(self):
+        led_radius = 11
+        led_margin = 2
+        step = led_radius + led_margin
+
         positions = []
-        x = 50
-        y = 10
-        LED_RADIUS = 11
-        LED_MARGIN = 2
+        x, y = 50, 10
+
+        segments = [
+            (0, 111, step, 0),
+            (112, 149, 0, step),
+            (150, 261, -step, 0),
+            (262, self.num_leds, 0, -step),
+        ]
+
+        corner_offsets = {
+            0:   (4 * step, 4 * step),
+            112: (4 * step, 4 * step),
+            150: (-4 * step, 4 * step),
+            262: (-4 * step, -4 * step),
+        }
+
         for index in range(self.num_leds):
-            if index > 278:
-                y -= LED_MARGIN + LED_RADIUS
-            elif index == 278:
-                x -= (LED_MARGIN + LED_RADIUS) * 4
-                y -= (LED_MARGIN + LED_RADIUS) * 4
-            elif index > 166:
-                x -= LED_MARGIN + LED_RADIUS
-            elif index == 166:
-                x -= (LED_MARGIN + LED_RADIUS) * 4
-                y += (LED_MARGIN + LED_RADIUS) * 4
-            elif index > 112:
-                y += LED_MARGIN + LED_RADIUS
-            elif index == 112:
-                x += (LED_MARGIN + LED_RADIUS) * 4
-                y += (LED_MARGIN + LED_RADIUS) * 4
-            elif index > 0:
-                x += LED_MARGIN + LED_RADIUS
-            elif index == 0:
-                x += (LED_MARGIN + LED_RADIUS) * 4
-                y += (LED_MARGIN + LED_RADIUS) * 4
+            if index in corner_offsets:
+                dx, dy = corner_offsets[index]
+                x += dx
+                y += dy
+            else:
+                for start, end, dx, dy in segments:
+                    if start < index <= end:
+                        x += dx
+                        y += dy
+                        break
+
             positions.append((x, y))
+
         return positions
 
     def normalize_positions(self, raw_positions):

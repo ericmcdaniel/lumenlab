@@ -32,7 +32,7 @@ def main():
         description="A virtualization of what the physical LEDs are displaying",
         epilog='''
 Usage Example:
-        python start_virtualization.py --num_leds 300 --width 1680 --height 945 --port COM3 --baud_rate 921600
+        python start_virtualization.py --num_leds 300 --width 1650 --height 950 --port COM3 --baud_rate 921600
                 -or-
         python start_virtualization.py -p COM3
 ''',
@@ -44,8 +44,8 @@ Usage Example:
     parser.add_argument("-p", "--port", type=str, default="COM3", help="The USB serial port that the ESP32 is connected to. Defaults to COM3")
     parser.add_argument("-b", "--baud_rate", type=int, default=921600, help="The baud rate for serial streaming what the LEDs are doing. Defaults to 921600")
     window_dimensions = parser.add_argument_group("Window Dimensions", "Configure the visualization's height and width")
-    window_dimensions.add_argument("-W", "--width", type=int, default=1680, help="The width of the window in pixels. Defaults to 1680")
-    window_dimensions.add_argument("-H", "--height", type=int, default=945, help="The height of the window in pixels. Defaults to 945")
+    window_dimensions.add_argument("-W", "--width", type=int, default=1650, help="The width of the window in pixels. Defaults to 1650")
+    window_dimensions.add_argument("-H", "--height", type=int, default=950, help="The height of the window in pixels. Defaults to 950")
     args, _ = parser.parse_known_args()
 
     from led_gui.virtualization import start_led_virtualization

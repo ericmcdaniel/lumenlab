@@ -133,7 +133,7 @@ namespace Games
   {
     for (uint16_t btnIdx = 0; btnIdx < arraySize(availableGameplayButtons); ++btnIdx)
     {
-      if (contextManager->controller.buttonState(static_cast<Player::ControllerButton>(btnIdx)) > 0)
+      if (contextManager->controller.rawButtonState(static_cast<Player::ControllerButton>(btnIdx)) > contextManager->controller.pressThreshold)
         for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
           contextManager->leds.buffer[i] = colorPalette[btnIdx];
     }

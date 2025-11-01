@@ -10,8 +10,8 @@ namespace Games
   {
     setupGameColors();
     contextManager->stateManager.getRecallGameState().reset();
-    waitFromNow(playbackDurationTotal);
-    colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
+    state = GameState::ComputerPlaybackOnDisplay;
+    waitFromNow(playbackDurationIlluminated);
   }
 
   void RecallCore::setupGameColors()
@@ -39,82 +39,88 @@ namespace Games
 
   void RecallCore::nextEvent()
   {
-    switch (activePlayer)
+    switch (state)
     {
-    case ActivePlayer::Computer:
-      printComputerPlayback();
+    case GameState::ComputerPlaybackOnDisplay:
+      displayComputerPlayback();
       break;
-    case ActivePlayer::Player:
+    case GameState::ComputerPlaybackPaused:
+      pauseComputerPlayback();
+      break;
+    case GameState::Player:
       evaluateUserRecall();
       break;
-    case ActivePlayer::None:
-      // waitFromNow(1000);
-      // activePlayer = ActivePlayer::Computer;
-      playbackRound = 0;
+    case GameState::GameOver:
+      sequenceIndex = 0;
       contextManager->stateManager.getRecallGameState().reset();
       contextManager->stateManager.displayShouldUpdate = true;
       break;
     }
   }
 
-  void RecallCore::printComputerPlayback()
+  void RecallCore::displayComputerPlayback()
   {
-    if (playbackRound > round)
+    if (isReady())
     {
-      activePlayer = ActivePlayer::Player;
-      playbackRound = 0;
+      state = GameState::ComputerPlaybackPaused;
+      waitFromNow(playbackDurationPaused);
+      return;
+    }
+
+    for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+    {
+      auto color = colorPalette[static_cast<size_t>(gameplayColors[sequenceIndex])];
+      contextManager->leds.buffer[i] = color;
+    }
+  }
+
+  void RecallCore::pauseComputerPlayback()
+  {
+    if (sequenceIndex >= round)
+    {
+      state = GameState::Player;
+      sequenceIndex = 0;
       contextManager->controller.reset();
       return;
     }
 
-    if (!colorPlaybackTimer.isReady())
-    {
-      for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
-      {
-        auto color = colorPalette[static_cast<size_t>(gameplayColors[playbackRound])];
-        contextManager->leds.buffer[i] = color;
-      }
-    }
-
     if (isReady())
     {
-      auto color = colorPalette[playbackRound % arraySize(availableGameplayButtons)];
-      logf("Computer displayed: (%u - %u - %u)", color.r, color.g, color.b);
-      ++playbackRound;
-      waitFromNow(playbackDurationTotal);
-      colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
+      ++sequenceIndex;
+      state = GameState::ComputerPlaybackOnDisplay;
+      waitFromNow(playbackDurationIlluminated);
     }
   }
 
   void RecallCore::evaluateUserRecall()
   {
-    displayButtonKeypress();
+    illuminateOnSelection();
 
-    if (playbackRound > round && isReady())
+    if (sequenceIndex > round && isReady())
     {
-      activePlayer = ActivePlayer::Computer;
-      playbackRound = 0;
+      state = GameState::ComputerPlaybackOnDisplay;
+      sequenceIndex = 0;
       incrementRound();
-      waitFromNow(playbackDurationTotal);
-      colorPlaybackTimer.waitFromNow(playbackDurationIlluminated);
+      waitFromNow(playbackDurationIlluminated);
+      colorPlaybackTimer.waitFromNow(playbackDurationPaused);
       contextManager->stateManager.displayShouldUpdate = true;
       return;
     }
 
-    evaluateUserButton(gameplayColors[playbackRound]);
+    evaluateUserButton(gameplayColors[sequenceIndex]);
   }
 
   void RecallCore::evaluateUserButton(Player::ControllerButton button)
   {
     if (contextManager->controller.wasPressedAndReleased(button))
     {
-      ++playbackRound;
+      ++sequenceIndex;
       waitFromNow(1000);
     }
     if (incorrectButtonWasPressed(button))
     {
       logf("Incorrect answer");
-      activePlayer = ActivePlayer::None;
+      state = GameState::GameOver;
     }
   }
 
@@ -124,7 +130,7 @@ namespace Games
     contextManager->stateManager.getRecallGameState().round = round;
   }
 
-  void RecallCore::displayButtonKeypress()
+  void RecallCore::illuminateOnSelection()
   {
     for (size_t btnIdx = 0; btnIdx < arraySize(availableGameplayButtons); ++btnIdx)
     {

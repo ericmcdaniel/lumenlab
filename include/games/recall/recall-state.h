@@ -4,11 +4,12 @@
 
 namespace Games
 {
-  enum class ActivePlayer
+  enum class GameState
   {
-    Computer,
+    ComputerPlaybackOnDisplay,
+    ComputerPlaybackPaused,
     Player,
-    None
+    GameOver
   };
 
   class RecallGameState

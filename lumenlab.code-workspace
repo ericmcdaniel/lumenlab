@@ -36,7 +36,8 @@
 			"ratio": "cpp",
 			"system_error": "cpp",
 			"cmath": "cpp",
-			"memory": "cpp"
+			"memory": "cpp",
+			"cstdint": "cpp"
 		},
 		"terminal.integrated.profiles.windows": {
 			"PowerShell": {

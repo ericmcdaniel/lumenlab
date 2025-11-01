@@ -11,8 +11,7 @@ namespace Engine
     virtual ~Timer() = default;
 
     void wait(unsigned long futureTime);
-    void waitFromNow(unsigned long futureTime);
-    const bool isReady();
+    const bool isReady() const;
     unsigned long nextOccurrence() { return next; }
 
   private:

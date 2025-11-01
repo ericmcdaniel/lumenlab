@@ -6,6 +6,7 @@ namespace Games
 {
   enum class GameState
   {
+    Startup,
     ComputerPlaybackOnDisplay,
     ComputerPlaybackPaused,
     Player,

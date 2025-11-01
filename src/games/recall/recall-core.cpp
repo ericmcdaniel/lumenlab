@@ -10,8 +10,8 @@ namespace Games
   {
     setupGameColors();
     contextManager->stateManager.getRecallGameState().reset();
-    state = GameState::ComputerPlaybackOnDisplay;
-    waitFromNow(playbackDurationIlluminated);
+    state = GameState::Startup;
+    wait(playbackDurationIlluminated);
   }
 
   void RecallCore::setupGameColors()
@@ -41,6 +41,13 @@ namespace Games
   {
     switch (state)
     {
+    case GameState::Startup:
+      if (isReady())
+      {
+        state = GameState::ComputerPlaybackOnDisplay;
+        wait(playbackDurationIlluminated);
+      }
+      break;
     case GameState::ComputerPlaybackOnDisplay:
       displayComputerPlayback();
       break;
@@ -63,7 +70,7 @@ namespace Games
     if (isReady())
     {
       state = GameState::ComputerPlaybackPaused;
-      waitFromNow(playbackDurationPaused);
+      wait(playbackDurationPaused);
       return;
     }
 
@@ -88,7 +95,7 @@ namespace Games
     {
       ++sequenceIndex;
       state = GameState::ComputerPlaybackOnDisplay;
-      waitFromNow(playbackDurationIlluminated);
+      wait(playbackDurationIlluminated);
     }
   }
 
@@ -101,9 +108,9 @@ namespace Games
       state = GameState::ComputerPlaybackOnDisplay;
       sequenceIndex = 0;
       incrementRound();
-      waitFromNow(playbackDurationIlluminated);
-      colorPlaybackTimer.waitFromNow(playbackDurationPaused);
+      colorPlaybackTimer.wait(playbackDurationPaused);
       contextManager->stateManager.displayShouldUpdate = true;
+      wait(playbackDurationIlluminated);
       return;
     }
 
@@ -115,7 +122,7 @@ namespace Games
     if (contextManager->controller.wasPressedAndReleased(button))
     {
       ++sequenceIndex;
-      waitFromNow(1000);
+      wait(1000);
     }
     if (incorrectButtonWasPressed(button))
     {

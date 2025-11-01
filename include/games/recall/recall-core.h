@@ -16,7 +16,7 @@
 
 namespace Games
 {
-  class RecallCore : public Engine::Layer, public Engine::Timer
+  class RecallCore : public Engine::Layer, private Engine::Timer
   {
   public:
     RecallCore(Core::ContextManager *ctx);
@@ -24,7 +24,7 @@ namespace Games
 
   private:
     Core::ContextManager *contextManager;
-    GameState state = GameState::ComputerPlaybackPaused;
+    GameState state = GameState::Startup;
     Engine::Timer colorPlaybackTimer;
 
     static constexpr unsigned long playbackDurationIlluminated = 600;

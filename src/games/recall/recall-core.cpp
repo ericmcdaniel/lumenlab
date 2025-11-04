@@ -182,14 +182,14 @@ namespace Games
 
     for (int i = 0; i <= contextManager->leds.size(); ++i)
     {
-      float phase = std::cos((2 * M_PI * i / 300) + (2 * M_PI * gameOverLedPhaseShift / 300)) * 127 + 128;
+      float phase = std::cos((2 * M_PI * i / contextManager->leds.size()) + (2 * M_PI * gameOverLedPhaseShift / contextManager->leds.size())) * 127 + 128;
       contextManager->leds.buffer[i].r = std::floor(phase);
       contextManager->leds.buffer[i].g = 0;
       contextManager->leds.buffer[i].b = 0;
     }
     gameOverLedPhaseShift += 0.5;
 
-    if (gameOverLedPhaseShift > 300)
+    if (gameOverLedPhaseShift > contextManager->leds.size())
       gameOverLedPhaseShift = 0;
   }
 }

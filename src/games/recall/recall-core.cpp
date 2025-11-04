@@ -117,7 +117,7 @@ namespace Games
 
   void RecallCore::evaluateUserButton(Player::ControllerButton button)
   {
-    if (contextManager->controller.wasPressedAndReleased(button))
+    if (contextManager->controller.rawButtonState(button) > contextManager->controller.pressThreshold)
     {
       ++sequenceIndex;
       wait(1000);
@@ -131,11 +131,26 @@ namespace Games
 
   void RecallCore::illuminateOnSelection()
   {
-    for (uint16_t btnIdx = 0; btnIdx < arraySize(availableGameplayButtons); ++btnIdx)
+    static uint32_t lastLightTime = 0;
+    static int pressedButtonIndex = -1;
+    bool buttonPressed = false;
+
+    for (uint16_t i = 0; i < arraySize(availableGameplayButtons); ++i)
     {
-      if (contextManager->controller.rawButtonState(static_cast<Player::ControllerButton>(btnIdx)) > contextManager->controller.pressThreshold)
-        for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
-          contextManager->leds.buffer[i] = colorPalette[btnIdx];
+      if (contextManager->controller.rawButtonState(static_cast<Player::ControllerButton>(i)) > contextManager->controller.pressThreshold)
+      {
+        pressedButtonIndex = i;
+        lastLightTime = millis();
+        buttonPressed = true;
+        break;
+      }
+    }
+
+    bool keepLit = ((millis() - lastLightTime) < 100);
+    if (buttonPressed || keepLit)
+    {
+      for (uint16_t i = 0; i < contextManager->leds.size(); ++i)
+        contextManager->leds.buffer[i] = colorPalette[pressedButtonIndex];
     }
   }
 

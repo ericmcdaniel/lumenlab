@@ -58,8 +58,8 @@ namespace Player
 
     uint8_t buttonsPressed = 0;
     uint8_t buttonsReleased = 0;
-    static constexpr uint8_t pressThreshold = 64;
-    static constexpr uint8_t releaseThreshold = 64;
+    static constexpr uint8_t pressThreshold = 48;
+    static constexpr uint8_t releaseThreshold = 48;
     const bool wasPressed(const ControllerButton button);
     const bool wasPressedAndReleased(const ControllerButton button);
     void reset();

@@ -21,6 +21,8 @@ namespace Core
     if (controller.wasPressed(Player::ControllerButton::Ps))
     {
       stateManager.setNext(Engine::SystemState::MenuHome);
+      stateManager.setNextUserMenuChoice(Engine::MainMenuSelection::Games);
+      stateManager.setNextUserGameChoice(Engine::GameSelection::Sandbox);
       log("Transitioning to Main Menu.");
     }
   }
@@ -39,7 +41,7 @@ namespace Core
       logf("Highlighting Main Menu option %d", stateManager.getUserMenuChoice());
     }
 
-    if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
+    if (controller.wasPressed(Player::ControllerButton::Cross))
     {
       switch (stateManager.getUserMenuChoice())
       {
@@ -67,7 +69,7 @@ namespace Core
       logf("Highlighting Games Submenu option %s", stateManager.printGameName(static_cast<int>(stateManager.getUserGameChoice())));
     }
 
-    if (controller.wasPressed(Player::ControllerButton::Start) || controller.wasPressed(Player::ControllerButton::Cross))
+    if (controller.wasPressed(Player::ControllerButton::Cross))
     {
       switch (stateManager.getUserGameChoice())
       {

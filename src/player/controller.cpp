@@ -85,9 +85,7 @@ namespace Player
   const bool Controller::wasPressed(ControllerButton button)
   {
     uint32_t mask = 1u << static_cast<uint8_t>(button);
-
-    uint8_t val = rawButtonState(button);
-    bool isDownNow = (val >= pressThreshold);
+    bool isDownNow = rawButtonState(button);
     bool wasDownBefore = (buttonsPressed & mask);
 
     if (isDownNow && !wasDownBefore)
@@ -96,7 +94,7 @@ namespace Player
       return true;
     }
 
-    if (val <= releaseThreshold)
+    if (!isDownNow)
     {
       buttonsPressed &= ~mask;
     }

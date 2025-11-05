@@ -72,8 +72,8 @@ namespace Games
       wait(playbackDurationPaused);
       return;
     }
-
-    for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+    auto boundaries = directionBoundaries(gameplayColors[sequenceIndex]);
+    for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
     {
       auto color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex])];
       contextManager->leds.buffer[i] = color;
@@ -149,7 +149,8 @@ namespace Games
     bool keepLit = ((millis() - lastLightTime) < 100);
     if (buttonPressed || keepLit)
     {
-      for (uint16_t i = 0; i < contextManager->leds.size(); ++i)
+      auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
+      for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
         contextManager->leds.buffer[i] = colorPalette[pressedButtonIndex];
     }
   }
@@ -167,6 +168,21 @@ namespace Games
     }
 
     return false;
+  }
+
+  std::pair<uint16_t, uint16_t> RecallCore::directionBoundaries(Player::ControllerButton button)
+  {
+    switch (button)
+    {
+    case Player::ControllerButton::Cross:
+      return std::make_pair(contextManager->config.recallBoundaries[2], contextManager->config.recallBoundaries[3] - 1);
+    case Player::ControllerButton::Square:
+      return std::make_pair(contextManager->config.recallBoundaries[3], contextManager->leds.size() - 1);
+    case Player::ControllerButton::Triangle:
+      return std::make_pair(contextManager->config.recallBoundaries[0], contextManager->config.recallBoundaries[1] - 1);
+    default: // Circle
+      return std::make_pair(contextManager->config.recallBoundaries[1], contextManager->config.recallBoundaries[2] - 1);
+    }
   }
 
   void RecallCore::gameOver()

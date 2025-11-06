@@ -18,16 +18,16 @@ namespace Games
   void RecallCore::setupGameColors()
   {
     // temporary for testing purposes
-    for (uint16_t i = 0; i < maxRound; ++i)
-    {
-      gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(availableGameplayButtons));
-    }
-
     // for (uint16_t i = 0; i < maxRound; ++i)
     // {
-    //   uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(availableGameplayButtons);
-    //   gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
+    //   gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(availableGameplayButtons));
     // }
+
+    for (uint16_t i = 0; i < maxRound; ++i)
+    {
+      uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(availableGameplayButtons);
+      gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
+    }
     log("First 10 round RGB values for testing:");
     for (uint16_t i = 0; i < 10; ++i)
     {
@@ -115,17 +115,28 @@ namespace Games
     illuminateOnSelection();
   }
 
-  void RecallCore::evaluateUserButton(Player::ControllerButton button)
+  void RecallCore::evaluateUserButton(Player::ControllerButton expectedButton)
   {
-    if (contextManager->controller.rawButtonState(button) > contextManager->controller.pressThreshold)
+    bool anyPressed = false;
+    for (auto button : availableGameplayButtons)
     {
-      ++sequenceIndex;
-      wait(1000);
-    }
-    if (incorrectButtonWasPressed(button))
-    {
-      logf("Incorrect answer");
-      state.current = GameState::GameOver;
+      if (contextManager->controller.wasPressed(button))
+      {
+        anyPressed = true;
+
+        if (button == expectedButton)
+        {
+          ++sequenceIndex;
+          wait(1000);
+          return;
+        }
+        else
+        {
+          logf("Incorrect answer");
+          state.current = GameState::GameOver;
+          return;
+        }
+      }
     }
   }
 
@@ -157,16 +168,13 @@ namespace Games
 
   bool RecallCore::incorrectButtonWasPressed(Player::ControllerButton correctButton)
   {
-    bool correctPressed = contextManager->controller.wasPressed(correctButton);
-
     for (auto button : availableGameplayButtons)
     {
       if (button == correctButton)
         continue;
-      if (contextManager->controller.wasPressed(button) && !correctPressed)
+      if (contextManager->controller.wasPressed(button))
         return true;
     }
-
     return false;
   }
 

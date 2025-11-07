@@ -180,16 +180,20 @@ namespace Games
 
   std::pair<uint16_t, uint16_t> RecallCore::directionBoundaries(Player::ControllerButton button)
   {
+    const auto &boundary = contextManager->config.recallBoundaries;
+
     switch (button)
     {
-    case Player::ControllerButton::Cross:
-      return std::make_pair(contextManager->config.recallBoundaries[2], contextManager->config.recallBoundaries[3] - 1);
-    case Player::ControllerButton::Square:
-      return std::make_pair(contextManager->config.recallBoundaries[3], contextManager->leds.size() - 1);
     case Player::ControllerButton::Triangle:
-      return std::make_pair(contextManager->config.recallBoundaries[0], contextManager->config.recallBoundaries[1] - 1);
-    default: // Circle
-      return std::make_pair(contextManager->config.recallBoundaries[1], contextManager->config.recallBoundaries[2] - 1);
+      return {boundary[0], static_cast<uint16_t>(boundary[1] - 1)};
+    case Player::ControllerButton::Circle:
+      return {boundary[1], static_cast<uint16_t>(boundary[2] - 1)};
+    case Player::ControllerButton::Cross:
+      return {boundary[2], static_cast<uint16_t>(boundary[3] - 1)};
+    case Player::ControllerButton::Square:
+      return {boundary[3], static_cast<uint16_t>(contextManager->leds.size() - 1)};
+    default:
+      return {0, 0};
     }
   }
 

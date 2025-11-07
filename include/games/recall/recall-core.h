@@ -16,7 +16,7 @@
 
 namespace Games
 {
-  class RecallCore : public Engine::Layer, public Engine::Timer
+  class RecallCore : public Engine::Layer, private Engine::Timer
   {
   public:
     RecallCore(Core::ContextManager *ctx);
@@ -24,25 +24,33 @@ namespace Games
 
   private:
     Core::ContextManager *contextManager;
-    ActivePlayer activePlayer = ActivePlayer::Computer;
-    Engine::Timer colorPlaybackTimer;
+    RecallGameState &state = contextManager->stateManager.getRecallGameState();
 
-    static constexpr unsigned long playbackDurationTotal = 600;
-    static constexpr unsigned long playbackDurationIlluminated = 500;
+    static constexpr unsigned long playbackDurationIlluminated = 600;
+    static constexpr unsigned long playbackDurationPaused = 100;
     static constexpr uint16_t maxRound = 1000;
-
-    uint16_t round = 0;
-    uint16_t playbackRound = 0;
+    static constexpr Player::ControllerButton availableGameplayButtons[] = {
+        Player::ControllerButton::Cross,
+        Player::ControllerButton::Square,
+        Player::ControllerButton::Triangle,
+        Player::ControllerButton::Circle};
+    uint16_t sequenceIndex = 0;
     CRGB colorPalette[4] = {
-        {0, 0, 255},   // ✕ blue
-        {255, 255, 0}, // □ yellow
-        {0, 255, 0},   // △ green
-        {255, 0, 0}};  // ◯ red
-    uint16_t gameplayColors[maxRound];
+        {0, 0, 255},    // ✕ blue
+        {255, 0, 0},    // ◯ red
+        {0, 255, 0},    // △ green
+        {255, 255, 0}}; // □ yellow
+    Player::ControllerButton gameplayColors[maxRound];
+    float gameOverLedPhaseShift = 0;
 
     void setupGameColors();
-    void printComputerPlayback();
+    void displayComputerPlayback();
+    void pauseComputerPlayback();
     void evaluateUserRecall();
-    void incrementRound(uint16_t amount = 1);
+    void evaluateUserButton(Player::ControllerButton button);
+    bool incorrectButtonWasPressed(Player::ControllerButton correctButton);
+    void illuminateOnSelection();
+    std::pair<uint16_t, uint16_t> directionBoundaries(Player::ControllerButton button);
+    void gameOver();
   };
 }

@@ -24,7 +24,6 @@ namespace Core
     Lights::LedStrip leds;
     Display::OledDisplay display;
 
-    float disconnectedLedPhaseShift = 0;
     void navigateMainMenu();
     void navigateGameMenu();
     void checkChangeRequest();

@@ -36,7 +36,7 @@ namespace Player
     return joystick;
   }
 
-  const uint8_t Controller::buttonState(const ControllerButton button) const
+  const uint8_t Controller::rawButtonState(const ControllerButton button) const
   {
     if (!instance->connection)
       return 0;
@@ -85,7 +85,7 @@ namespace Player
   const bool Controller::wasPressed(ControllerButton button)
   {
     uint32_t mask = 1u << static_cast<uint8_t>(button);
-    bool isDownNow = buttonState(button);
+    bool isDownNow = rawButtonState(button);
     bool wasDownBefore = (buttonsPressed & mask);
 
     if (isDownNow && !wasDownBefore)
@@ -100,6 +100,36 @@ namespace Player
     }
 
     return false;
+  }
+
+  const bool Controller::wasPressedAndReleased(ControllerButton button)
+  {
+    uint32_t mask = 1u << static_cast<uint8_t>(button);
+
+    uint8_t val = rawButtonState(button);
+    bool isDownNow = (val >= pressThreshold);
+    bool wasDownBefore = (buttonsPressed & mask) != 0;
+
+    if (isDownNow && !wasDownBefore)
+    {
+      buttonsPressed |= mask;
+      return false;
+    }
+
+    bool isReleasedNow = (val <= releaseThreshold);
+    if (isReleasedNow && wasDownBefore)
+    {
+      buttonsPressed &= ~mask;
+      return true;
+    }
+
+    return false;
+  }
+
+  void Controller::reset()
+  {
+    buttonsPressed = 0;
+    buttonsReleased = 0;
   }
 
   void Controller::handleOnConnect()

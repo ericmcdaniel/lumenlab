@@ -127,9 +127,17 @@ namespace Engine
     uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
     uint16_t boundaryStart = boundaryWidth * option;
     uint16_t boundaryEnd = boundaryWidth * (option + 1);
+    double mu = (boundaryStart + boundaryEnd) / 2.0;
+    constexpr double sigma = 35.0;
+
     for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
     {
-      contextManager.leds.buffer[i] = {16, 64, 16};
+      double x = static_cast<double>(i);
+      double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
+      contextManager.leds.buffer[i] = {
+          static_cast<uint8_t>(scope * 48 / 100),
+          static_cast<uint8_t>(scope * 128 / 100),
+          static_cast<uint8_t>(scope * 48 / 100)};
     }
   }
 
@@ -140,9 +148,17 @@ namespace Engine
     uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
     uint16_t boundaryStart = boundaryWidth * option;
     uint16_t boundaryEnd = boundaryWidth * (option + 1);
+    double mu = (boundaryStart + boundaryEnd) / 2.0;
+    constexpr double sigma = 25.0;
+
     for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
     {
-      contextManager.leds.buffer[i] = {48, 48, 96};
+      double x = static_cast<double>(i);
+      double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
+      contextManager.leds.buffer[i] = {
+          static_cast<uint8_t>(scope * 64 / 100),
+          static_cast<uint8_t>(scope * 52 / 100),
+          static_cast<uint8_t>(scope * 128 / 100)};
     }
   }
 

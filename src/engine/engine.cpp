@@ -33,6 +33,7 @@ namespace Engine
         break;
       case SystemState::MenuGames:
         contextManager.navigateGameMenu();
+        displayGameSelection();
         break;
       case SystemState::GameSandbox:
       case SystemState::GameRecall:
@@ -129,6 +130,19 @@ namespace Engine
     for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
     {
       contextManager.leds.buffer[i] = {16, 64, 16};
+    }
+  }
+
+  void GameEngine::displayGameSelection()
+  {
+    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(GameSelection::COUNT);
+    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserGameChoice());
+    uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
+    uint16_t boundaryStart = boundaryWidth * option;
+    uint16_t boundaryEnd = boundaryWidth * (option + 1);
+    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
+    {
+      contextManager.leds.buffer[i] = {48, 48, 96};
     }
   }
 

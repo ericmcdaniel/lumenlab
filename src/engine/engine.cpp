@@ -29,6 +29,7 @@ namespace Engine
       {
       case SystemState::MenuHome:
         contextManager.navigateMainMenu();
+        displayMainMenuSelection();
         break;
       case SystemState::MenuGames:
         contextManager.navigateGameMenu();
@@ -110,14 +111,25 @@ namespace Engine
     for (int i = 0; i <= contextManager.leds.size(); ++i)
     {
       float phase = std::cos((2 * M_PI * i / contextManager.leds.size()) + (2 * M_PI * disconnectedLedPhaseShift / contextManager.leds.size())) * 127 + 128;
-      contextManager.leds.buffer[i].r = std::floor(phase);
-      contextManager.leds.buffer[i].g = 0;
-      contextManager.leds.buffer[i].b = 0;
+      contextManager.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
     }
     disconnectedLedPhaseShift += 0.5;
 
     if (disconnectedLedPhaseShift > contextManager.leds.size())
       disconnectedLedPhaseShift = 0;
+  }
+
+  void GameEngine::displayMainMenuSelection()
+  {
+    uint8_t numOfSupportedModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
+    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserMenuChoice());
+    uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
+    uint16_t boundaryStart = boundaryWidth * option;
+    uint16_t boundaryEnd = boundaryWidth * (option + 1);
+    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
+    {
+      contextManager.leds.buffer[i] = {16, 64, 16};
+    }
   }
 
   void GameEngine::renderLedStrip()

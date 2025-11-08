@@ -18,16 +18,16 @@ namespace Games
   void RecallCore::setupGameColors()
   {
     // temporary for testing purposes
-    for (uint16_t i = 0; i < maxRound; ++i)
-    {
-      gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(availableGameplayButtons));
-    }
-
     // for (uint16_t i = 0; i < maxRound; ++i)
     // {
-    //   uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(availableGameplayButtons);
-    //   gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
+    //   gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(availableGameplayButtons));
     // }
+
+    for (uint16_t i = 0; i < maxRound; ++i)
+    {
+      uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(availableGameplayButtons);
+      gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
+    }
     log("First 10 round RGB values for testing:");
     for (uint16_t i = 0; i < 10; ++i)
     {
@@ -75,11 +75,20 @@ namespace Games
       wait(playbackDurationPaused);
       return;
     }
+
     auto boundaries = directionBoundaries(gameplayColors[sequenceIndex]);
+    double mu = (boundaries.first + boundaries.second) / 2.0;
+    double sigma = (gameplayColors[sequenceIndex] == Player::ControllerButton::Circle || gameplayColors[sequenceIndex] == Player::ControllerButton::Square) ? 9.0 : 30.0;
+
     for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
     {
+      double x = static_cast<double>(i);
+      double scope = std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
       auto color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex])];
-      contextManager->leds.buffer[i] = color;
+      contextManager->leds.buffer[i] = {
+          static_cast<uint8_t>(scope * color.r),
+          static_cast<uint8_t>(scope * color.g),
+          static_cast<uint8_t>(scope * color.b)};
     }
   }
 

@@ -28,14 +28,11 @@ namespace Games
       uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(availableGameplayButtons);
       gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
     }
-    log("First 10 round RGB values for testing:");
-    for (uint16_t i = 0; i < 10; ++i)
-    {
-      logf("Round %u: Color=%u (%u - %u - %u)", i + 1, gameplayColors[i],
-           colorPalette[static_cast<uint16_t>(gameplayColors[i])].r,
-           colorPalette[static_cast<uint16_t>(gameplayColors[i])].g,
-           colorPalette[static_cast<uint16_t>(gameplayColors[i])].b);
-    }
+    log("First round's RGB color:");
+    logf("    Color=%u (%u - %u - %u)", gameplayColors[0],
+         colorPalette[static_cast<uint16_t>(gameplayColors[0])].r,
+         colorPalette[static_cast<uint16_t>(gameplayColors[0])].g,
+         colorPalette[static_cast<uint16_t>(gameplayColors[0])].b);
   }
 
   void RecallCore::nextEvent()
@@ -99,6 +96,7 @@ namespace Games
       state.current = GameState::PlayerResponseEvaluation;
       sequenceIndex = 0;
       contextManager->controller.reset();
+      log("Ready for User playback");
       return;
     }
 
@@ -135,11 +133,15 @@ namespace Games
         if (button == expectedButton)
         {
           ++sequenceIndex;
+          logf("User correctly responded with color=%u (%u - %u - %u)", button,
+               colorPalette[static_cast<uint16_t>(button)].r,
+               colorPalette[static_cast<uint16_t>(button)].g,
+               colorPalette[static_cast<uint16_t>(button)].b);
           wait(playbackDurationPaused);
           return;
         }
 
-        logf("Incorrect answer");
+        logf("User provided the incorrect answer. Entering game over sequence.");
         state.current = GameState::GameOver;
       }
     }
@@ -194,6 +196,14 @@ namespace Games
   {
     if (isReady())
     {
+      logf("Round %u color sequence:", sequenceIndex);
+      for (int i = 0; i <= sequenceIndex; ++i)
+      {
+        logf("    Color=%u (%u - %u - %u)", gameplayColors[i],
+             colorPalette[static_cast<uint16_t>(gameplayColors[i])].r,
+             colorPalette[static_cast<uint16_t>(gameplayColors[i])].g,
+             colorPalette[static_cast<uint16_t>(gameplayColors[i])].b);
+      }
       state.current = GameState::ComputerPlaybackOnDisplay;
       sequenceIndex = 0;
       wait(playbackDurationIlluminated);

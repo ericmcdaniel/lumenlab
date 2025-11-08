@@ -18,16 +18,16 @@ namespace Games
   void RecallCore::setupGameColors()
   {
     // temporary for testing purposes
-    // for (uint16_t i = 0; i < maxRound; ++i)
-    // {
-    //   gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(availableGameplayButtons));
-    // }
-
     for (uint16_t i = 0; i < maxRound; ++i)
     {
-      uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(availableGameplayButtons);
-      gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
+      gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(availableGameplayButtons));
     }
+
+    // for (uint16_t i = 0; i < maxRound; ++i)
+    // {
+    //   uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(availableGameplayButtons);
+    //   gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
+    // }
     log("First 10 round RGB values for testing:");
     for (uint16_t i = 0; i < 10; ++i)
     {
@@ -55,8 +55,11 @@ namespace Games
     case GameState::ComputerPlaybackPaused:
       pauseComputerPlayback();
       break;
-    case GameState::Player:
+    case GameState::PlayerResponseEvaluation:
       evaluateUserRecall();
+      break;
+    case GameState::PlayerResponseVerified:
+      prepareComputerPlayback();
       break;
     case GameState::GameOver:
       gameOver();
@@ -84,7 +87,7 @@ namespace Games
   {
     if (sequenceIndex >= state.round)
     {
-      state.current = GameState::Player;
+      state.current = GameState::PlayerResponseEvaluation;
       sequenceIndex = 0;
       contextManager->controller.reset();
       return;
@@ -102,8 +105,7 @@ namespace Games
   {
     if (sequenceIndex > state.round && isReady())
     {
-      state.current = GameState::ComputerPlaybackOnDisplay;
-      sequenceIndex = 0;
+      state.current = GameState::PlayerResponseVerified;
       ++state.round;
       contextManager->stateManager.displayShouldUpdate = true;
       contextManager->controller.reset();
@@ -117,25 +119,19 @@ namespace Games
 
   void RecallCore::evaluateUserButton(Player::ControllerButton expectedButton)
   {
-    bool anyPressed = false;
     for (auto button : availableGameplayButtons)
     {
       if (contextManager->controller.wasPressed(button))
       {
-        anyPressed = true;
-
         if (button == expectedButton)
         {
           ++sequenceIndex;
-          wait(1000);
+          wait(playbackDurationPaused);
           return;
         }
-        else
-        {
-          logf("Incorrect answer");
-          state.current = GameState::GameOver;
-          return;
-        }
+
+        logf("Incorrect answer");
+        state.current = GameState::GameOver;
       }
     }
   }
@@ -148,7 +144,7 @@ namespace Games
 
     for (uint16_t i = 0; i < arraySize(availableGameplayButtons); ++i)
     {
-      if (contextManager->controller.rawButtonState(static_cast<Player::ControllerButton>(i)) > contextManager->controller.pressThreshold)
+      if (contextManager->controller.rawButtonState(static_cast<Player::ControllerButton>(i)) > 0)
       {
         pressedButtonIndex = i;
         lastLightTime = millis();
@@ -157,25 +153,13 @@ namespace Games
       }
     }
 
-    bool keepLit = ((millis() - lastLightTime) < 100);
+    bool keepLit = ((millis() - lastLightTime) < playbackDurationPaused);
     if (buttonPressed || keepLit)
     {
       auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
       for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
         contextManager->leds.buffer[i] = colorPalette[pressedButtonIndex];
     }
-  }
-
-  bool RecallCore::incorrectButtonWasPressed(Player::ControllerButton correctButton)
-  {
-    for (auto button : availableGameplayButtons)
-    {
-      if (button == correctButton)
-        continue;
-      if (contextManager->controller.wasPressed(button))
-        return true;
-    }
-    return false;
   }
 
   std::pair<uint16_t, uint16_t> RecallCore::directionBoundaries(Player::ControllerButton button)
@@ -197,6 +181,17 @@ namespace Games
     }
   }
 
+  void RecallCore::prepareComputerPlayback()
+  {
+    if (isReady())
+    {
+      state.current = GameState::ComputerPlaybackOnDisplay;
+      sequenceIndex = 0;
+      wait(playbackDurationIlluminated);
+      return;
+    }
+  }
+
   void RecallCore::gameOver()
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::Start))
@@ -205,15 +200,14 @@ namespace Games
       sequenceIndex = 0;
       state.reset();
       contextManager->stateManager.getRecallGameState().reset();
+      setupGameColors();
       contextManager->stateManager.displayShouldUpdate = true;
     }
 
     for (int i = 0; i <= contextManager->leds.size(); ++i)
     {
       float phase = std::cos((2 * M_PI * i / contextManager->leds.size()) + (2 * M_PI * gameOverLedPhaseShift / contextManager->leds.size())) * 127 + 128;
-      contextManager->leds.buffer[i].r = std::floor(phase);
-      contextManager->leds.buffer[i].g = 0;
-      contextManager->leds.buffer[i].b = 0;
+      contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
     }
     gameOverLedPhaseShift += 0.5;
 

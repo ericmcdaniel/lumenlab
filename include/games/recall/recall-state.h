@@ -9,7 +9,8 @@ namespace Games
     Startup,
     ComputerPlaybackOnDisplay,
     ComputerPlaybackPaused,
-    Player,
+    PlayerResponseEvaluation,
+    PlayerResponseVerified,
     GameOver
   };
 

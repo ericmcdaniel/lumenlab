@@ -46,9 +46,9 @@ namespace Games
     void setupGameColors();
     void displayComputerPlayback();
     void pauseComputerPlayback();
+    void prepareComputerPlayback();
     void evaluateUserRecall();
     void evaluateUserButton(Player::ControllerButton button);
-    bool incorrectButtonWasPressed(Player::ControllerButton correctButton);
     void illuminateOnSelection();
     std::pair<uint16_t, uint16_t> directionBoundaries(Player::ControllerButton button);
     void gameOver();

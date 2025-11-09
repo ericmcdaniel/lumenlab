@@ -206,9 +206,20 @@ namespace Games
       }
       state.current = GameState::ComputerPlaybackOnDisplay;
       sequenceIndex = 0;
+      successFadeawayAnimation = 1;
       wait(playbackDurationIlluminated);
       return;
     }
+
+    auto boundaries = directionBoundaries(gameplayColors[sequenceIndex - 1]);
+    for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
+    {
+      auto color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex - 1])];
+      contextManager->leds.buffer[i].r = color.r * successFadeawayAnimation;
+      contextManager->leds.buffer[i].g = color.g * successFadeawayAnimation;
+      contextManager->leds.buffer[i].b = color.b * successFadeawayAnimation;
+    }
+    successFadeawayAnimation -= 0.01;
   }
 
   void RecallCore::gameOver()

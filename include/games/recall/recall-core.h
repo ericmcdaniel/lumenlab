@@ -42,6 +42,7 @@ namespace Games
         {255, 255, 0}}; // □ yellow
     Player::ControllerButton gameplayColors[maxRound];
     float gameOverLedPhaseShift = 0;
+    float successFadeawayAnimation = 1;
 
     void setupGameColors();
     void displayComputerPlayback();

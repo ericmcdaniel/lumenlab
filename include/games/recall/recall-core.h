@@ -13,6 +13,7 @@
 
 #include "core/context-manager.h"
 #include "engine/timer.h"
+#include "lights/color.h"
 
 namespace Games
 {
@@ -35,7 +36,7 @@ namespace Games
         Player::ControllerButton::Triangle,
         Player::ControllerButton::Circle};
     uint16_t sequenceIndex = 0;
-    CRGB colorPalette[4] = {
+    Lights::Color colorPalette[4] = {
         {0, 0, 255},    // ✕ blue
         {255, 0, 0},    // ◯ red
         {0, 255, 0},    // △ green

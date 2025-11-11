@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include "engine/engine.h"
+#include "lights/color.h"
 #include "logger.h"
 
 namespace Engine
@@ -175,7 +176,7 @@ namespace Engine
 #ifdef VIRTUALIZATION
     Serial.write(0xAA); // sync bytes
     Serial.write(0x55);
-    Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), contextManager.leds.size() * sizeof(CRGB));
+    Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), contextManager.leds.size() * sizeof(Lights::Color));
 #endif
   }
 

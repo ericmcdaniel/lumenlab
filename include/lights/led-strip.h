@@ -10,6 +10,7 @@
 #endif
 
 #include "engine/system-config.h"
+#include "lights/color.h"
 #include "lights/led-buffer.h"
 #include "lights/led-luminance.h"
 
@@ -20,7 +21,7 @@ namespace Lights
   public:
     LedBuffer buffer;
     LedStrip(Engine::SystemConfig &configuration);
-    CRGB *getRawColors();
+    Color *getRawColors();
 
     unsigned int size() const { return _size; }
     void reset();

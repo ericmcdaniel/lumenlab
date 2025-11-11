@@ -16,12 +16,12 @@ namespace Lights
   class LedBuffer
   {
   public:
-    LedBuffer(uint16_t numLeds) : _size{numLeds}, leds{new CRGB[numLeds]} {}
+    LedBuffer(uint16_t numLeds) : _size{numLeds}, leds{new Color[numLeds]} {}
     LedBuffer() { delete leds; }
     LedBuffer(LedBuffer &&other) = delete;
     LedBuffer &operator=(LedBuffer &&other) = delete;
 
-    LedBuffer(const LedBuffer &other) : _size(other._size), leds(new CRGB[other._size])
+    LedBuffer(const LedBuffer &other) : _size(other._size), leds(new Color[other._size])
     {
       for (uint16_t i = 0; i < _size; ++i)
       {
@@ -33,7 +33,7 @@ namespace Lights
     {
       if (this != &other)
       {
-        CRGB *newLeds = new CRGB[other._size];
+        Color *newLeds = new Color[other._size];
         for (uint16_t i = 0; i < other._size; ++i)
         {
           newLeds[i] = other.leds[i];
@@ -46,16 +46,16 @@ namespace Lights
       return *this;
     }
 
-    CRGB &operator[](uint16_t index) { return leds[index]; }
-    const CRGB &operator[](uint16_t index) const { return leds[index]; }
+    Color &operator[](uint16_t index) { return leds[index]; }
+    const Color &operator[](uint16_t index) const { return leds[index]; }
 
-    explicit operator CRGB *() { return leds; }
-    explicit operator const CRGB *() const { return leds; }
+    explicit operator Color *() { return leds; }
+    explicit operator const Color *() const { return leds; }
 
     uint16_t size() { return _size; }
 
   private:
     uint16_t _size;
-    CRGB *leds;
+    Color *leds;
   };
 }

@@ -30,9 +30,9 @@ namespace Games
     }
     log("First round's RGB color:");
     logf("    Color=%u (%u - %u - %u)", gameplayColors[0],
-         colorPalette[static_cast<uint16_t>(gameplayColors[0])].colors.r,
-         colorPalette[static_cast<uint16_t>(gameplayColors[0])].colors.g,
-         colorPalette[static_cast<uint16_t>(gameplayColors[0])].colors.b);
+         colorPalette[static_cast<uint16_t>(gameplayColors[0])].r(),
+         colorPalette[static_cast<uint16_t>(gameplayColors[0])].g(),
+         colorPalette[static_cast<uint16_t>(gameplayColors[0])].b());
   }
 
   void RecallCore::nextEvent()
@@ -83,9 +83,9 @@ namespace Games
       double scope = std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
       auto color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex])];
       contextManager->leds.buffer[i] = {
-          static_cast<uint8_t>(scope * color.colors.r),
-          static_cast<uint8_t>(scope * color.colors.g),
-          static_cast<uint8_t>(scope * color.colors.b)};
+          static_cast<uint8_t>(scope * color.r()),
+          static_cast<uint8_t>(scope * color.g()),
+          static_cast<uint8_t>(scope * color.b())};
     }
   }
 
@@ -135,9 +135,9 @@ namespace Games
         {
           ++sequenceIndex;
           logf("User correctly responded with color=%u (%u - %u - %u)", button,
-               colorPalette[static_cast<uint16_t>(button)].colors.r,
-               colorPalette[static_cast<uint16_t>(button)].colors.g,
-               colorPalette[static_cast<uint16_t>(button)].colors.b);
+               colorPalette[static_cast<uint16_t>(button)].r(),
+               colorPalette[static_cast<uint16_t>(button)].g(),
+               colorPalette[static_cast<uint16_t>(button)].b());
           wait(playbackDurationPaused);
           return;
         }
@@ -201,9 +201,9 @@ namespace Games
       for (int i = 0; i <= sequenceIndex; ++i)
       {
         logf("    Color=%u (%u - %u - %u)", gameplayColors[i],
-             colorPalette[static_cast<uint16_t>(gameplayColors[i])].colors.r,
-             colorPalette[static_cast<uint16_t>(gameplayColors[i])].colors.g,
-             colorPalette[static_cast<uint16_t>(gameplayColors[i])].colors.b);
+             colorPalette[static_cast<uint16_t>(gameplayColors[i])].r(),
+             colorPalette[static_cast<uint16_t>(gameplayColors[i])].g(),
+             colorPalette[static_cast<uint16_t>(gameplayColors[i])].b());
       }
       state.current = GameState::ComputerPlaybackOnDisplay;
       sequenceIndex = 0;
@@ -215,15 +215,12 @@ namespace Games
     for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
     {
       auto color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex - 1])];
-      contextManager->leds.buffer[i].colors.r = color.colors.r * successFadeawayAnimation;
-      contextManager->leds.buffer[i].colors.g = color.colors.g * successFadeawayAnimation;
-      contextManager->leds.buffer[i].colors.b = color.colors.b * successFadeawayAnimation;
+      contextManager->leds.buffer[i].r() = color.r() * successFadeawayAnimation;
+      contextManager->leds.buffer[i].g() = color.g() * successFadeawayAnimation;
+      contextManager->leds.buffer[i].b() = color.b() * successFadeawayAnimation;
     }
-    successFadeawayAnimation -= 0.02;
+    successFadeawayAnimation = std::abs(successFadeawayAnimation - 0.02);
   }
-
-  /// TODO: Fix successFadeawayAnimation going back to 100% before round ends
-  /// TODO: Add spillout
 
   void RecallCore::gameOver()
   {

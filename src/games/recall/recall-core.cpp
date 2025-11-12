@@ -118,7 +118,7 @@ namespace Games
       ++state.round;
       contextManager->stateManager.displayShouldUpdate = true;
       contextManager->controller.reset();
-      wait(playbackDurationIlluminated);
+      wait(playbackDurationIlluminated * 2);
       return;
     }
 
@@ -215,7 +215,7 @@ namespace Games
       auto &color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex - 1])];
       contextManager->leds.buffer[i] = color * successFadeawayAnimation;
     }
-    successFadeawayAnimation = std::clamp(successFadeawayAnimation - 0.15, 0.0, 1.0);
+    successFadeawayAnimation = std::clamp(successFadeawayAnimation - 0.08, 0.0, 1.0);
   }
 
   void RecallCore::gameOver()

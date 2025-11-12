@@ -1,16 +1,6 @@
 #pragma once
 
 #include <cstdint>
-
-#ifdef RELEASE
-#define FASTLED_INTERNAL
-#include <FastLED.h>
-#undef min
-#undef max
-#else
-#include "debug-fastled.h"
-#endif
-
 #include "core/context-manager.h"
 #include "engine/timer.h"
 #include "lights/color.h"

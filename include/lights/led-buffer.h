@@ -2,15 +2,6 @@
 
 #include <cstdint>
 
-#ifdef RELEASE
-#define FASTLED_INTERNAL
-#include <FastLED.h>
-#undef min
-#undef max
-#else
-#include "debug-fastled.h"
-#endif
-
 namespace Lights
 {
   class LedBuffer

@@ -28,11 +28,10 @@ namespace Games
       uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(availableGameplayButtons);
       gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
     }
+    auto button = gameplayColors[0];
+    auto &color = colorPalette[static_cast<uint16_t>(button)];
     log("First round's RGB color:");
-    logf("    Color=%u (%u - %u - %u)", gameplayColors[0],
-         colorPalette[static_cast<uint16_t>(gameplayColors[0])].r(),
-         colorPalette[static_cast<uint16_t>(gameplayColors[0])].g(),
-         colorPalette[static_cast<uint16_t>(gameplayColors[0])].b());
+    logf("    Color=%u (%u - %u - %u)", button, color.r(), color.g(), color.b());
   }
 
   void RecallCore::nextEvent()
@@ -75,17 +74,19 @@ namespace Games
 
     auto boundaries = directionBoundaries(gameplayColors[sequenceIndex]);
     double mu = (boundaries.first + boundaries.second) / 2.0;
-    double sigma = (gameplayColors[sequenceIndex] == Player::ControllerButton::Circle || gameplayColors[sequenceIndex] == Player::ControllerButton::Square) ? 9.0 : 30.0;
+    double delta = ((gameplayColors[sequenceIndex] ==
+                         Player::ControllerButton::Circle ||
+                     gameplayColors[sequenceIndex] == Player::ControllerButton::Square)
+                        ? contextManager->config.recallBoundaries[2] - contextManager->config.recallBoundaries[1]
+                        : contextManager->config.recallBoundaries[1] - contextManager->config.recallBoundaries[0]) /
+                   5;
 
     for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
     {
       double x = static_cast<double>(i);
-      double scope = std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
+      double scope = std::exp(-0.5 * std::pow((x - mu) / delta, 2.0));
       auto color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex])];
-      contextManager->leds.buffer[i] = {
-          static_cast<uint8_t>(scope * color.r()),
-          static_cast<uint8_t>(scope * color.g()),
-          static_cast<uint8_t>(scope * color.b())};
+      contextManager->leds.buffer[i] = color * scope;
     }
   }
 
@@ -121,8 +122,8 @@ namespace Games
       return;
     }
 
-    evaluateUserButton(gameplayColors[sequenceIndex]);
     illuminateOnSelection();
+    evaluateUserButton(gameplayColors[sequenceIndex]);
   }
 
   void RecallCore::evaluateUserButton(Player::ControllerButton expectedButton)
@@ -134,10 +135,8 @@ namespace Games
         if (button == expectedButton)
         {
           ++sequenceIndex;
-          logf("User correctly responded with color=%u (%u - %u - %u)", button,
-               colorPalette[static_cast<uint16_t>(button)].r(),
-               colorPalette[static_cast<uint16_t>(button)].g(),
-               colorPalette[static_cast<uint16_t>(button)].b());
+          auto &color = colorPalette[static_cast<uint16_t>(button)];
+          logf("User correctly responded with color=%u (%u - %u - %u)", button, color.r(), color.g(), color.b());
           wait(playbackDurationPaused);
           return;
         }
@@ -200,10 +199,9 @@ namespace Games
       logf("Round %u color sequence:", sequenceIndex);
       for (int i = 0; i <= sequenceIndex; ++i)
       {
-        logf("    Color=%u (%u - %u - %u)", gameplayColors[i],
-             colorPalette[static_cast<uint16_t>(gameplayColors[i])].r(),
-             colorPalette[static_cast<uint16_t>(gameplayColors[i])].g(),
-             colorPalette[static_cast<uint16_t>(gameplayColors[i])].b());
+        auto button = gameplayColors[i];
+        auto &color = colorPalette[static_cast<uint16_t>(button)];
+        logf("    Color=%u (%u - %u - %u)", button, color.r(), color.g(), color.b());
       }
       state.current = GameState::ComputerPlaybackOnDisplay;
       sequenceIndex = 0;
@@ -214,12 +212,10 @@ namespace Games
     auto boundaries = directionBoundaries(gameplayColors[sequenceIndex - 1]);
     for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
     {
-      auto color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex - 1])];
-      contextManager->leds.buffer[i].r() = color.r() * successFadeawayAnimation;
-      contextManager->leds.buffer[i].g() = color.g() * successFadeawayAnimation;
-      contextManager->leds.buffer[i].b() = color.b() * successFadeawayAnimation;
+      auto &color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex - 1])];
+      contextManager->leds.buffer[i] = color * successFadeawayAnimation;
     }
-    successFadeawayAnimation = std::abs(successFadeawayAnimation - 0.02);
+    successFadeawayAnimation = std::clamp(successFadeawayAnimation - 0.15, 0.0, 1.0);
   }
 
   void RecallCore::gameOver()
@@ -239,9 +235,6 @@ namespace Games
       float phase = std::cos((2 * M_PI * i / contextManager->leds.size()) + (2 * M_PI * gameOverLedPhaseShift / contextManager->leds.size())) * 127 + 128;
       contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
     }
-    gameOverLedPhaseShift += 0.5;
-
-    if (gameOverLedPhaseShift > contextManager->leds.size())
-      gameOverLedPhaseShift = 0;
+    gameOverLedPhaseShift = std::clamp(gameOverLedPhaseShift + 0.5, 0.0, static_cast<double>(contextManager->leds.size()));
   }
 }

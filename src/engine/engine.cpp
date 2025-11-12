@@ -134,11 +134,8 @@ namespace Engine
     for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
     {
       double x = static_cast<double>(i);
-      double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = {
-          static_cast<uint8_t>(scope * 48 / 100),
-          static_cast<uint8_t>(scope * 128 / 100),
-          static_cast<uint8_t>(scope * 48 / 100)};
+      double scope = std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
+      contextManager.leds.buffer[i] = Lights::Color{77, 255, 77} * scope;
     }
   }
 
@@ -150,16 +147,13 @@ namespace Engine
     uint16_t boundaryStart = boundaryWidth * option;
     uint16_t boundaryEnd = boundaryWidth * (option + 1);
     double mu = (boundaryStart + boundaryEnd) / 2.0;
-    constexpr double sigma = 25.0;
+    constexpr double sigma = 20.0;
 
     for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
     {
       double x = static_cast<double>(i);
       double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = {
-          static_cast<uint8_t>(scope * 64 / 100),
-          static_cast<uint8_t>(scope * 52 / 100),
-          static_cast<uint8_t>(scope * 128 / 100)};
+      contextManager.leds.buffer[i] = Lights::Color{77, 166, 255} * (scope / 100.0);
     }
   }
 

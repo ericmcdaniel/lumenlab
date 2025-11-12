@@ -37,13 +37,13 @@ namespace Games
         Player::ControllerButton::Circle};
     uint16_t sequenceIndex = 0;
     Lights::Color colorPalette[4] = {
-        {0, 0, 255},    // ✕ blue
-        {255, 0, 0},    // ◯ red
-        {0, 255, 0},    // △ green
-        {255, 255, 0}}; // □ yellow
+        {77, 166, 255},  // ✕ blue
+        {255, 77, 77},   // ◯ red
+        {77, 255, 77},   // △ green
+        {255, 210, 77}}; // □ yellow
     Player::ControllerButton gameplayColors[maxRound];
-    float gameOverLedPhaseShift = 0;
-    float successFadeawayAnimation = 1;
+    double gameOverLedPhaseShift = 0.0;
+    double successFadeawayAnimation = 1.0;
 
     void setupGameColors();
     void displayComputerPlayback();

@@ -9,7 +9,7 @@ namespace Games
   {
   public:
     TestPlayer(Core::ContextManager *ctx) : contextManager{ctx}, Player::Player{ctx} {};
-    unsigned long getPosition() { return position; }
+    uint32_t getPosition() { return position; }
     void move(const int distance);
     void updatePlayer1LedBuffer();
     void updatePlayer2LedBuffer();

@@ -17,8 +17,8 @@ namespace Games
     Core::ContextManager *contextManager;
     RecallGameState &state = contextManager->stateManager.getRecallGameState();
 
-    static constexpr unsigned long playbackDurationIlluminated = 600;
-    static constexpr unsigned long playbackDurationPaused = 100;
+    uint16_t gameplaySpeedIlluminated = 600;
+    uint16_t gameplaySpeedPaused = gameplaySpeedIlluminated / 6;
     static constexpr uint16_t maxRound = 1000;
     static constexpr Player::ControllerButton availableGameplayButtons[] = {
         Player::ControllerButton::Cross,
@@ -36,6 +36,7 @@ namespace Games
     double successFadeawayAnimation = 1.0;
 
     void setupGameColors();
+    void handleUserSpeedChange();
     void displayComputerPlayback();
     void pauseComputerPlayback();
     void prepareComputerPlayback();

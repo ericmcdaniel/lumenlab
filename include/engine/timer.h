@@ -10,11 +10,11 @@ namespace Engine
     Timer() = default;
     virtual ~Timer() = default;
 
-    void wait(unsigned long futureTime);
+    void wait(uint32_t futureTime);
     const bool isReady() const;
-    unsigned long nextOccurrence() { return next; }
+    uint32_t nextOccurrence() { return next; }
 
   private:
-    unsigned long next{millis()};
+    uint32_t next{millis()};
   };
 }

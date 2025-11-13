@@ -12,7 +12,7 @@ namespace Games
     state = contextManager->stateManager.getRecallGameState();
     state.reset();
     state.current = GameState::Startup;
-    wait(playbackDurationIlluminated);
+    wait(gameplaySpeedIlluminated);
   }
 
   void RecallCore::setupGameColors()
@@ -36,13 +36,14 @@ namespace Games
 
   void RecallCore::nextEvent()
   {
+    handleUserSpeedChange();
     switch (state.current)
     {
     case GameState::Startup:
       if (isReady())
       {
         state.current = GameState::ComputerPlaybackOnDisplay;
-        wait(playbackDurationIlluminated);
+        wait(gameplaySpeedIlluminated);
       }
       break;
     case GameState::ComputerPlaybackOnDisplay:
@@ -63,12 +64,29 @@ namespace Games
     }
   }
 
+  void RecallCore::handleUserSpeedChange()
+  {
+    logf("Left Analog: %d", contextManager->controller.leftAnalog().y);
+    if ((contextManager->controller.rawButtonState(Player::ControllerButton::Up) > 0) || contextManager->controller.leftAnalog().y < -64)
+    {
+      // allow no faster than 200ms cycles
+      if (gameplaySpeedIlluminated >= 200)
+        gameplaySpeedIlluminated -= 2;
+    }
+    else if ((contextManager->controller.rawButtonState(Player::ControllerButton::Down) > 0) || contextManager->controller.leftAnalog().y > 64)
+    {
+      // similary, allow cycles to be no slower than 1.5 seconds
+      if (gameplaySpeedIlluminated < 1500)
+        gameplaySpeedIlluminated += 2;
+    }
+  }
+
   void RecallCore::displayComputerPlayback()
   {
     if (isReady())
     {
       state.current = GameState::ComputerPlaybackPaused;
-      wait(playbackDurationPaused);
+      wait(gameplaySpeedPaused);
       return;
     }
 
@@ -106,7 +124,7 @@ namespace Games
     {
       ++sequenceIndex;
       state.current = GameState::ComputerPlaybackOnDisplay;
-      wait(playbackDurationIlluminated);
+      wait(gameplaySpeedIlluminated);
     }
   }
 
@@ -118,7 +136,7 @@ namespace Games
       ++state.round;
       contextManager->stateManager.displayShouldUpdate = true;
       contextManager->controller.reset();
-      wait(playbackDurationIlluminated * 2);
+      wait(gameplaySpeedIlluminated * 2);
       return;
     }
 
@@ -137,7 +155,7 @@ namespace Games
           ++sequenceIndex;
           auto &color = colorPalette[static_cast<uint16_t>(button)];
           logf("User correctly responded with color=%u (%u - %u - %u)", button, color.r(), color.g(), color.b());
-          wait(playbackDurationPaused);
+          wait(gameplaySpeedPaused);
           return;
         }
 
@@ -164,7 +182,7 @@ namespace Games
       }
     }
 
-    bool keepLit = ((millis() - lastLightTime) < playbackDurationPaused);
+    bool keepLit = ((millis() - lastLightTime) < gameplaySpeedPaused);
     if (buttonPressed || keepLit)
     {
       auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
@@ -205,7 +223,7 @@ namespace Games
       }
       state.current = GameState::ComputerPlaybackOnDisplay;
       sequenceIndex = 0;
-      wait(playbackDurationIlluminated);
+      wait(gameplaySpeedIlluminated);
       return;
     }
 

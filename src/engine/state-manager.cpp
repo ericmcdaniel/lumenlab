@@ -32,6 +32,18 @@ namespace Engine
     displayShouldUpdate = true;
   }
 
+  void StateManager::selectNextScene(MenuNavigationDirection direction)
+  {
+    int count = static_cast<int>(SceneSelection::COUNT);
+    int position = static_cast<int>(userSceneChoice);
+    int step = (direction == MenuNavigationDirection::Forward) ? 1 : -1;
+
+    position = (position + step + count) % count;
+
+    userSceneChoice = static_cast<SceneSelection>(position);
+    displayShouldUpdate = true;
+  }
+
   const char *StateManager::printGameName(uint8_t index)
   {
     static constexpr const char gameNames[3][20] = {
@@ -39,5 +51,11 @@ namespace Engine
         "Recall",
         "Phase Evasion"};
     return gameNames[index];
+  }
+
+  const char *StateManager::printSceneName(uint8_t index)
+  {
+    static constexpr const char sceneNames[1][20] = {"Canvas"};
+    return sceneNames[index];
   }
 }

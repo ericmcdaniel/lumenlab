@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include "engine/engine.h"
+#include "lights/color.h"
 #include "logger.h"
 
 namespace Engine
@@ -29,9 +30,11 @@ namespace Engine
       {
       case SystemState::MenuHome:
         contextManager.navigateMainMenu();
+        displayMainMenuSelection();
         break;
       case SystemState::MenuGames:
         contextManager.navigateGameMenu();
+        displayGameSelection();
         break;
       case SystemState::GameSandbox:
       case SystemState::GameRecall:
@@ -110,14 +113,48 @@ namespace Engine
     for (int i = 0; i <= contextManager.leds.size(); ++i)
     {
       float phase = std::cos((2 * M_PI * i / contextManager.leds.size()) + (2 * M_PI * disconnectedLedPhaseShift / contextManager.leds.size())) * 127 + 128;
-      contextManager.leds.buffer[i].r = std::floor(phase);
-      contextManager.leds.buffer[i].g = 0;
-      contextManager.leds.buffer[i].b = 0;
+      contextManager.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
     }
     disconnectedLedPhaseShift += 0.5;
 
     if (disconnectedLedPhaseShift > contextManager.leds.size())
       disconnectedLedPhaseShift = 0;
+  }
+
+  void GameEngine::displayMainMenuSelection()
+  {
+    uint8_t numOfSupportedModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
+    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserMenuChoice());
+    uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
+    uint16_t boundaryStart = boundaryWidth * option;
+    uint16_t boundaryEnd = boundaryWidth * (option + 1);
+    double mu = (boundaryStart + boundaryEnd) / 2.0;
+    constexpr double sigma = 35.0;
+
+    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
+    {
+      double x = static_cast<double>(i);
+      double scope = std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
+      contextManager.leds.buffer[i] = Lights::Color{77, 255, 77} * scope;
+    }
+  }
+
+  void GameEngine::displayGameSelection()
+  {
+    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(GameSelection::COUNT);
+    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserGameChoice());
+    uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
+    uint16_t boundaryStart = boundaryWidth * option;
+    uint16_t boundaryEnd = boundaryWidth * (option + 1);
+    double mu = (boundaryStart + boundaryEnd) / 2.0;
+    constexpr double sigma = 20.0;
+
+    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
+    {
+      double x = static_cast<double>(i);
+      double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
+      contextManager.leds.buffer[i] = Lights::Color{77, 166, 255} * (scope / 100.0);
+    }
   }
 
   void GameEngine::renderLedStrip()
@@ -133,7 +170,7 @@ namespace Engine
 #ifdef VIRTUALIZATION
     Serial.write(0xAA); // sync bytes
     Serial.write(0x55);
-    Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), contextManager.leds.size() * sizeof(CRGB));
+    Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), contextManager.leds.size() * sizeof(Lights::Color));
 #endif
   }
 

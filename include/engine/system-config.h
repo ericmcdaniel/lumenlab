@@ -11,6 +11,6 @@ namespace Engine
     static constexpr const uint16_t numLeds = 300;
     static constexpr const uint32_t serialBaud = 921600;
     static constexpr const uint16_t recallBoundaries[4] = {0, 112, 150, 262};
-    static constexpr const unsigned short ledDimmerGpio = 34;
+    static constexpr const uint8_t ledDimmerGpio = 34;
   };
 }

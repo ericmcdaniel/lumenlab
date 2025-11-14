@@ -20,6 +20,8 @@ namespace Engine
     uint32_t lastRender = 0;
     void initializeEngine();
     void renderLedStrip();
+    void displayMainMenuSelection();
+    void displayGameSelection();
     static void displayTask(void *param);
     float disconnectedLedPhaseShift = 0;
   };

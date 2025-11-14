@@ -1,18 +1,9 @@
 #pragma once
 
 #include <cstdint>
-
-#ifdef RELEASE
-#define FASTLED_INTERNAL
-#include <FastLED.h>
-#undef min
-#undef max
-#else
-#include "debug-fastled.h"
-#endif
-
 #include "core/context-manager.h"
 #include "engine/timer.h"
+#include "lights/color.h"
 
 namespace Games
 {
@@ -26,8 +17,8 @@ namespace Games
     Core::ContextManager *contextManager;
     RecallGameState &state = contextManager->stateManager.getRecallGameState();
 
-    static constexpr unsigned long playbackDurationIlluminated = 600;
-    static constexpr unsigned long playbackDurationPaused = 100;
+    uint16_t gameplaySpeedIlluminated = 600;
+    uint16_t gameplaySpeedPaused = gameplaySpeedIlluminated / 6;
     static constexpr uint16_t maxRound = 1000;
     static constexpr Player::ControllerButton availableGameplayButtons[] = {
         Player::ControllerButton::Cross,
@@ -35,20 +26,22 @@ namespace Games
         Player::ControllerButton::Triangle,
         Player::ControllerButton::Circle};
     uint16_t sequenceIndex = 0;
-    CRGB colorPalette[4] = {
-        {0, 0, 255},    // ✕ blue
-        {255, 0, 0},    // ◯ red
-        {0, 255, 0},    // △ green
-        {255, 255, 0}}; // □ yellow
+    Lights::Color colorPalette[4] = {
+        {77, 166, 255},  // ✕ blue
+        {255, 77, 77},   // ◯ red
+        {77, 255, 77},   // △ green
+        {255, 210, 77}}; // □ yellow
     Player::ControllerButton gameplayColors[maxRound];
-    float gameOverLedPhaseShift = 0;
+    double gameOverLedPhaseShift = 0.0;
+    double successFadeawayAnimation = 1.0;
 
     void setupGameColors();
+    void handleUserSpeedChange();
     void displayComputerPlayback();
     void pauseComputerPlayback();
+    void prepareComputerPlayback();
     void evaluateUserRecall();
     void evaluateUserButton(Player::ControllerButton button);
-    bool incorrectButtonWasPressed(Player::ControllerButton correctButton);
     void illuminateOnSelection();
     std::pair<uint16_t, uint16_t> directionBoundaries(Player::ControllerButton button);
     void gameOver();

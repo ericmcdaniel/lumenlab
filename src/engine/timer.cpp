@@ -2,7 +2,7 @@
 
 namespace Engine
 {
-  void Timer::wait(unsigned long futureTime)
+  void Timer::wait(uint32_t futureTime)
   {
     next = millis() + futureTime;
   }

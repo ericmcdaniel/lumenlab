@@ -29,6 +29,9 @@ namespace Display
       case Engine::SystemState::MenuGames:
         drawGamesMenu();
         break;
+      case Engine::SystemState::MenuScenes:
+        drawScenesMenu();
+        break;
       case Engine::SystemState::GameSandbox:
         drawSandboxGameHud();
         break;
@@ -113,6 +116,21 @@ namespace Display
 
     display.setCursor(0, 24);
     sprintf(nameBuffer, "%c  %s", selectedOption(2, selectedOptionIndex), contextManager->stateManager.printGameName(2));
+    display.print(nameBuffer);
+
+    display.display();
+  }
+
+  void OledDisplay::drawScenesMenu()
+  {
+    display.clearDisplay();
+    drawHeader("Scenes Menu");
+
+    uint8_t selectedOptionIndex = static_cast<uint8_t>(contextManager->stateManager.getUserSceneChoice());
+    char nameBuffer[32] = "";
+
+    display.setCursor(0, 8);
+    sprintf(nameBuffer, "%c  %s", selectedOption(0, selectedOptionIndex), contextManager->stateManager.printSceneName(0));
     display.print(nameBuffer);
 
     display.display();

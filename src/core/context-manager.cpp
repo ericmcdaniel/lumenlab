@@ -143,7 +143,7 @@ namespace Core
       logf("Transitioning to Recall (Game)");
       break;
     case Engine::SystemState::SceneCanvas:
-      // application = new Games::RecallCore{this};
+      application = new Games::TestCore{this};
       logf("Transitioning to Canvas (Scene)");
       break;
     }

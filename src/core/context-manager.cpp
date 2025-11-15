@@ -1,6 +1,7 @@
 #include "core/context-manager.h"
 #include "games/testing-sandbox/test-core.h"
 #include "games/recall/recall-core.h"
+#include "scenes/canvas/canvas.h"
 #include "logger.h"
 
 namespace Core
@@ -143,7 +144,7 @@ namespace Core
       logf("Transitioning to Recall (Game)");
       break;
     case Engine::SystemState::SceneCanvas:
-      application = new Games::TestCore{this};
+      application = new Scenes::Canvas{this};
       logf("Transitioning to Canvas (Scene)");
       break;
     }

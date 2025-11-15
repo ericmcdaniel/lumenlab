@@ -2,6 +2,7 @@
 
 #include "games/testing-sandbox/game-state.h"
 #include "games/recall/recall-state.h"
+#include "scenes/canvas/canvas-state.h"
 
 namespace Engine
 {
@@ -73,6 +74,7 @@ namespace Engine
     const char *printSceneName(uint8_t index);
     Games::SandboxGameState &getSandboxGameState() { return sandboxGameState; }
     Games::RecallGameState &getRecallGameState() { return recallGameState; }
+    Scenes::CanvasSceneState &getCanvasSceneState() { return canvasSceneState; }
 
   private:
     SystemState systemState = SystemState::MenuHome;
@@ -81,5 +83,6 @@ namespace Engine
     SceneSelection userSceneChoice = SceneSelection::Canvas;
     Games::SandboxGameState sandboxGameState;
     Games::RecallGameState recallGameState;
+    Scenes::CanvasSceneState canvasSceneState;
   };
 }

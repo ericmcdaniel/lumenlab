@@ -14,5 +14,6 @@ namespace Scenes
   private:
     Core::ContextManager *contextManager;
     CanvasSceneState &state = contextManager->stateManager.getCanvasSceneState();
+    void checkColorChange();
   };
 }

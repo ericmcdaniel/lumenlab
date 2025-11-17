@@ -8,5 +8,15 @@ namespace Scenes
     // {
 
     // }
+    // check
+    for (uint16_t i; i < 300; ++i)
+    {
+      // contextManager->leds.buffer[i] =
+    }
+  }
+
+  void Canvas::checkColorChange()
+  {
+    // contextManager->controller.
   }
 }

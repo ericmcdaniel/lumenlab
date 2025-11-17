@@ -1,33 +1,26 @@
 #pragma once
 
 #include <algorithm>
-
-#ifdef RELEASE
-#define FASTLED_INTERNAL
 #include <FastLED.h>
-#undef min
-#undef max
-#else
-#include "debug-fastled.h"
-#endif
 
 #include <cstdint>
 
 namespace Lights
 {
-  class Color
+  class Color : public CRGB
   {
   public:
-    Color() : colors{CRGB{}} {}
-    Color(uint8_t red, uint8_t green, uint8_t blue) : colors{CRGB{red, green, blue}} {}
+    using CRGB::CRGB;
+    Color() : CRGB() {}
+    Color(uint8_t red, uint8_t green, uint8_t blue) : CRGB(red, green, blue) {}
 
-    uint8_t &r() { return colors.r; }
-    uint8_t &g() { return colors.g; }
-    uint8_t &b() { return colors.b; }
+    uint8_t &r() { return CRGB::r; }
+    uint8_t &g() { return CRGB::g; }
+    uint8_t &b() { return CRGB::b; }
 
-    const uint8_t &r() const { return colors.r; }
-    const uint8_t &g() const { return colors.g; }
-    const uint8_t &b() const { return colors.b; }
+    const uint8_t &r() const { return CRGB::r; }
+    const uint8_t &g() const { return CRGB::g; }
+    const uint8_t &b() const { return CRGB::b; }
 
     Lights::Color operator*(double scale) const
     {
@@ -72,8 +65,5 @@ namespace Lights
       b() = static_cast<uint8_t>(std::clamp(b() * scale, 0.0, 255.0));
       return *this;
     }
-
-  private:
-    CRGB colors;
   };
 }

@@ -5,10 +5,6 @@
 namespace Lights
 {
 
-  ColorHsl::ColorHsl() : hslValues{0, 0, 0} {}
-  ColorHsl::ColorHsl(uint8_t hue, uint8_t saturation, uint8_t lightness)
-      : hslValues{hue, saturation, lightness} {}
-
   uint8_t &ColorHsl::hue() { return hslValues.h; }
   uint8_t &ColorHsl::saturation() { return hslValues.s; }
   uint8_t &ColorHsl::lightness() { return hslValues.v; }
@@ -17,7 +13,17 @@ namespace Lights
   const uint8_t &ColorHsl::saturation() const { return hslValues.s; }
   const uint8_t &ColorHsl::lightness() const { return hslValues.v; }
 
-  ColorHsl ColorHsl::fromRGB(uint8_t r, uint8_t g, uint8_t b)
+  ColorHsl ColorHsl::fromRgb(Color color)
+  {
+    return convertFromRgb(color.r, color.g, color.b);
+  }
+
+  ColorHsl ColorHsl::fromRgb(uint8_t r, uint8_t g, uint8_t b)
+  {
+    return convertFromRgb(r, g, b);
+  }
+
+  ColorHsl ColorHsl::convertFromRgb(uint8_t r, uint8_t g, uint8_t b)
   {
     double red = r / 255.0;
     double green = g / 255.0;

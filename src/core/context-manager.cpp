@@ -56,7 +56,6 @@ namespace Core
         break;
       }
     }
-    logf("Main Menu: %d", stateManager.getUserMenuChoice());
   }
 
   void ContextManager::navigateGameMenu()

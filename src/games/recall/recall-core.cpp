@@ -31,7 +31,7 @@ namespace Games
     auto button = gameplayColors[0];
     auto &color = colorPalette[static_cast<uint16_t>(button)];
     log("First round's RGB color:");
-    logf("    Color=%u (%u - %u - %u)", button, color.r(), color.g(), color.b());
+    logf("    Color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
   }
 
   void RecallCore::nextEvent()
@@ -154,7 +154,7 @@ namespace Games
         {
           ++sequenceIndex;
           auto &color = colorPalette[static_cast<uint16_t>(button)];
-          logf("User correctly responded with color=%u (%u - %u - %u)", button, color.r(), color.g(), color.b());
+          logf("User correctly responded with color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
           wait(gameplaySpeedPaused);
           return;
         }
@@ -219,7 +219,7 @@ namespace Games
       {
         auto button = gameplayColors[i];
         auto &color = colorPalette[static_cast<uint16_t>(button)];
-        logf("    Color=%u (%u - %u - %u)", button, color.r(), color.g(), color.b());
+        logf("    Color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
       }
       state.current = GameState::ComputerPlaybackOnDisplay;
       sequenceIndex = 0;

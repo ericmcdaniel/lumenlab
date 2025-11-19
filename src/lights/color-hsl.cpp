@@ -5,14 +5,6 @@
 namespace Lights
 {
 
-  uint8_t &ColorHsl::hue() { return hslValues.h; }
-  uint8_t &ColorHsl::saturation() { return hslValues.s; }
-  uint8_t &ColorHsl::lightness() { return hslValues.v; }
-
-  const uint8_t &ColorHsl::hue() const { return hslValues.h; }
-  const uint8_t &ColorHsl::saturation() const { return hslValues.s; }
-  const uint8_t &ColorHsl::lightness() const { return hslValues.v; }
-
   ColorHsl ColorHsl::fromRgb(Color color)
   {
     return convertFromRgb(color.r, color.g, color.b);
@@ -65,9 +57,9 @@ namespace Lights
 
   Color ColorHsl::toColor() const
   {
-    double hue = (hslValues.h / 255.0) * 360.0;
-    double saturation = hslValues.s / 255.0;
-    double lightness = hslValues.v / 255.0;
+    double hue = (h / 255.0) * 360.0;
+    double saturation = s / 255.0;
+    double lightness = v / 255.0;
 
     double chroma = (1.0 - std::fabs(2.0 * lightness - 1.0)) * saturation;
     double hueSection = hue / 60.0;

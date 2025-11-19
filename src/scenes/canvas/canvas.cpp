@@ -13,29 +13,62 @@ namespace Scenes
 
   void Canvas::nextEvent()
   {
-    // switch (state.current)
-    // {
-
-    // }
-    // check
+    checkColorChange();
     for (uint16_t i; i < contextManager->leds.size(); ++i)
     {
-      contextManager->leds.buffer[i] = colorHsl.toColor();
+      contextManager->leds.buffer[i] = currentColor;
     }
-    Lights::Color c = colorHsl.toColor();
   }
 
   void Canvas::checkColorChange()
   {
-    // contextManager->controller.
+    bool hasChange = false;
+
+    if (contextManager->controller.leftAnalog().x > 64)
+    {
+      colorHsl.hue = (colorHsl.hue - 1) % 255;
+      hasChange = true;
+    }
+    if (contextManager->controller.leftAnalog().x < -64)
+    {
+      colorHsl.hue = (colorHsl.hue + 1) % 255;
+      hasChange = true;
+    }
+    if (contextManager->controller.leftAnalog().y > 64)
+    {
+      colorHsl.saturation = std::clamp(colorHsl.saturation - 1, 0, 255);
+      hasChange = true;
+    }
+    if (contextManager->controller.leftAnalog().y < -64)
+    {
+      colorHsl.saturation = std::clamp(colorHsl.saturation + 1, 0, 255);
+      hasChange = true;
+    }
+    if (contextManager->controller.rightAnalog().y > 64)
+    {
+      colorHsl.value = std::clamp(colorHsl.value - 1, 0, 255);
+      hasChange = true;
+    }
+    if (contextManager->controller.rightAnalog().y < -64)
+    {
+      colorHsl.value = std::clamp(colorHsl.value + 1, 0, 255);
+      hasChange = true;
+    }
+
+    if (hasChange)
+    {
+      currentColor = colorHsl.toColor();
+      logf("Color changed to Color(r=%u, g=%u, b=%u)", currentColor.r, currentColor.g, currentColor.b);
+    }
   }
 
   void Canvas::reset()
   {
-    colorHsl.hue() = static_cast<uint8_t>(esp_random() % std::numeric_limits<uint8_t>::max());
-    colorHsl.saturation() = static_cast<uint8_t>(esp_random() % std::numeric_limits<uint8_t>::max());
-    colorHsl.lightness() = static_cast<uint8_t>(esp_random() % std::numeric_limits<uint8_t>::max());
-    Lights::Color c = colorHsl.toColor();
-    logf("Color set to Color(r=%u, g=%u, b=%u)", c.r, c.g, c.b);
+    colorHsl.hue = static_cast<uint8_t>(esp_random() % std::numeric_limits<uint8_t>::max());
+    colorHsl.saturation = static_cast<uint8_t>(esp_random() % std::numeric_limits<uint8_t>::max());
+    colorHsl.value = static_cast<uint8_t>(esp_random() % std::numeric_limits<uint8_t>::max());
+    currentColor = colorHsl.toColor();
+    logf("ColorHsl set to ColorHsl(h=%u, s=%u, l=%u)", colorHsl.hue, colorHsl.saturation, colorHsl.value);
+    logf("Color set to Color(r=%u, g=%u, b=%u)", currentColor.r, currentColor.g, currentColor.b);
   }
 }

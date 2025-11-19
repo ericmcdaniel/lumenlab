@@ -131,7 +131,7 @@ namespace Engine
 
   void GameEngine::displayMainMenuSelection()
   {
-    uint8_t numOfSupportedModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
+    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
     uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserMenuChoice());
     uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
     uint16_t boundaryStart = boundaryWidth * option;

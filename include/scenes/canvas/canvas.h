@@ -17,7 +17,8 @@ namespace Scenes
     CanvasSceneState &state = contextManager->stateManager.getCanvasSceneState();
     Lights::ColorHsl colorHsl;
     Lights::Color currentColor;
-    void checkColorChange();
-    void reset();
+    inline void checkColorChange();
+    inline void checkNewColorRequest();
+    inline void reset();
   };
 }

@@ -36,8 +36,13 @@ namespace Engine
         contextManager.navigateGameMenu();
         displayGameSelection();
         break;
+      case SystemState::MenuScenes:
+        contextManager.navigateSceneMenu();
+        displaySceneSelection();
+        break;
       case SystemState::GameSandbox:
       case SystemState::GameRecall:
+      case SystemState::SceneCanvas:
         contextManager.application->nextEvent();
         break;
       case SystemState::NoControllerConnected:
@@ -105,6 +110,9 @@ namespace Engine
     if (contextManager.controller.isConnected())
     {
       contextManager.stateManager.setNext(SystemState::MenuHome);
+      contextManager.stateManager.setNextUserMenuChoice(MainMenuSelection::Games);
+      contextManager.stateManager.setNextUserGameChoice(GameSelection::Sandbox);
+      contextManager.stateManager.setNextUserSceneChoice(SceneSelection::Canvas);
       lastRender = micros();
       log("PS3 controller connected. Transitioning to Main Menu");
       return;
@@ -123,7 +131,7 @@ namespace Engine
 
   void GameEngine::displayMainMenuSelection()
   {
-    uint8_t numOfSupportedModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
+    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
     uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserMenuChoice());
     uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
     uint16_t boundaryStart = boundaryWidth * option;
@@ -143,6 +151,24 @@ namespace Engine
   {
     constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(GameSelection::COUNT);
     uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserGameChoice());
+    uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
+    uint16_t boundaryStart = boundaryWidth * option;
+    uint16_t boundaryEnd = boundaryWidth * (option + 1);
+    double mu = (boundaryStart + boundaryEnd) / 2.0;
+    constexpr double sigma = 20.0;
+
+    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
+    {
+      double x = static_cast<double>(i);
+      double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
+      contextManager.leds.buffer[i] = Lights::Color{77, 166, 255} * (scope / 100.0);
+    }
+  }
+
+  void GameEngine::displaySceneSelection()
+  {
+    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(SceneSelection::COUNT);
+    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserSceneChoice());
     uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
     uint16_t boundaryStart = boundaryWidth * option;
     uint16_t boundaryEnd = boundaryWidth * (option + 1);

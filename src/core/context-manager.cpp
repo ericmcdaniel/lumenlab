@@ -1,6 +1,7 @@
 #include "core/context-manager.h"
 #include "games/testing-sandbox/test-core.h"
 #include "games/recall/recall-core.h"
+#include "scenes/canvas/canvas.h"
 #include "logger.h"
 
 namespace Core
@@ -50,6 +51,8 @@ namespace Core
         log("Transitioning to Game Submenu.");
         break;
       case Engine::MainMenuSelection::Scenes:
+        stateManager.setNext(Engine::SystemState::MenuScenes);
+        log("Transitioning to Scenes Submenu.");
         break;
       }
     }
@@ -90,6 +93,38 @@ namespace Core
     }
   }
 
+  void ContextManager::navigateSceneMenu()
+  {
+    if (controller.wasPressed(Player::ControllerButton::Down))
+    {
+      stateManager.selectNextScene();
+      logf("Highlighting Scene Submenu option %s", stateManager.printSceneName(static_cast<int>(stateManager.getUserSceneChoice())));
+    }
+
+    if (controller.wasPressed(Player::ControllerButton::Up))
+    {
+      stateManager.selectNextScene(Engine::MenuNavigationDirection::Reverse);
+      logf("Highlighting Scene Submenu option %s", stateManager.printSceneName(static_cast<int>(stateManager.getUserSceneChoice())));
+    }
+
+    if (controller.wasPressed(Player::ControllerButton::Cross))
+    {
+      switch (stateManager.getUserSceneChoice())
+      {
+      case Engine::SceneSelection::Canvas:
+        stateManager.setNext(Engine::SystemState::SceneCanvas);
+        break;
+      }
+      transitionLayer();
+    }
+
+    if (controller.wasPressed(Player::ControllerButton::Circle))
+    {
+      stateManager.setNext(Engine::SystemState::MenuHome);
+      log("Transitioning to Main Menu.");
+    }
+  }
+
   void ContextManager::transitionLayer()
   {
     if (application)
@@ -106,6 +141,10 @@ namespace Core
     case Engine::SystemState::GameRecall:
       application = new Games::RecallCore{this};
       logf("Transitioning to Recall (Game)");
+      break;
+    case Engine::SystemState::SceneCanvas:
+      application = new Scenes::Canvas{this};
+      logf("Transitioning to Canvas (Scene)");
       break;
     }
   }

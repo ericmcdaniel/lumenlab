@@ -8,7 +8,7 @@ namespace Lights
   {
   public:
     LedBuffer(uint16_t numLeds) : _size{numLeds}, leds{new Color[numLeds]} {}
-    LedBuffer() { delete leds; }
+    ~LedBuffer() { delete leds; }
     LedBuffer(LedBuffer &&other) = delete;
     LedBuffer &operator=(LedBuffer &&other) = delete;
 

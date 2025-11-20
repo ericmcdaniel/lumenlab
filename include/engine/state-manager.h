@@ -2,6 +2,7 @@
 
 #include "games/testing-sandbox/game-state.h"
 #include "games/recall/recall-state.h"
+#include "scenes/canvas/canvas-state.h"
 
 namespace Engine
 {
@@ -13,6 +14,7 @@ namespace Engine
     MenuScenes,
     GameSandbox,
     GameRecall,
+    SceneCanvas,
     NoControllerConnected,
     Error
   };
@@ -29,6 +31,12 @@ namespace Engine
     Sandbox,
     Recall,
     PhaseEvasion,
+    COUNT
+  };
+
+  enum class SceneSelection
+  {
+    Canvas,
     COUNT
   };
 
@@ -58,15 +66,23 @@ namespace Engine
     void setNextUserGameChoice(GameSelection next) { userGameChoice = next; };
     void selectNextGame(MenuNavigationDirection direction = MenuNavigationDirection::Forward);
 
+    const SceneSelection getUserSceneChoice() const { return userSceneChoice; }
+    void setNextUserSceneChoice(SceneSelection next) { userSceneChoice = next; };
+    void selectNextScene(MenuNavigationDirection direction = MenuNavigationDirection::Forward);
+
     const char *printGameName(uint8_t index);
+    const char *printSceneName(uint8_t index);
     Games::SandboxGameState &getSandboxGameState() { return sandboxGameState; }
     Games::RecallGameState &getRecallGameState() { return recallGameState; }
+    Scenes::CanvasSceneState &getCanvasSceneState() { return canvasSceneState; }
 
   private:
-    SystemState systemState;
-    MainMenuSelection userMainMenuChoice;
-    GameSelection userGameChoice;
+    SystemState systemState = SystemState::MenuHome;
+    MainMenuSelection userMainMenuChoice = MainMenuSelection::Games;
+    GameSelection userGameChoice = GameSelection::Sandbox;
+    SceneSelection userSceneChoice = SceneSelection::Canvas;
     Games::SandboxGameState sandboxGameState;
     Games::RecallGameState recallGameState;
+    Scenes::CanvasSceneState canvasSceneState;
   };
 }

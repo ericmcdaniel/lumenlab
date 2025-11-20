@@ -22,6 +22,7 @@ namespace Engine
     void renderLedStrip();
     void displayMainMenuSelection();
     void displayGameSelection();
+    void displaySceneSelection();
     static void displayTask(void *param);
     float disconnectedLedPhaseShift = 0;
   };

@@ -22,9 +22,9 @@ namespace Lights
   {
     for (int i = 0; i < _size; i++)
     {
-      buffer[i].r() = 0;
-      buffer[i].g() = 0;
-      buffer[i].b() = 0;
+      buffer[i].r = 0;
+      buffer[i].g = 0;
+      buffer[i].b = 0;
     }
   }
 
@@ -34,9 +34,9 @@ namespace Lights
     for (int i = 0; i < _size; ++i)
     {
       float scale = static_cast<float>(luminance.getLuminance()) / LedLuminance::MAX_LED_BRIGHTNESS;
-      buffer[i].r() = static_cast<fl::u8>(buffer[i].r() * scale);
-      buffer[i].g() = static_cast<fl::u8>(buffer[i].g() * scale);
-      buffer[i].b() = static_cast<fl::u8>(buffer[i].b() * scale);
+      buffer[i].r = static_cast<fl::u8>(buffer[i].r * scale);
+      buffer[i].g = static_cast<fl::u8>(buffer[i].g * scale);
+      buffer[i].b = static_cast<fl::u8>(buffer[i].b * scale);
     }
   }
 }

@@ -37,7 +37,7 @@ There are more game ideas in the works, and ideas for some *two-player* games ar
 An LED strip entertainment platform would not be complete if it did not include animations and special effects libraries. Inspired by the [WLED project](https://kno.wled.ge/), LumenLab is able to create captivating scenes. Many of them are interactive, for example moving the joystick can change the color, or pressing the directional buttons can change timing.
 | **Title** | **Description** |
 | --- | --- |
-| **Canvas** | *Canvas* lets you choose any color across the RGB range, turning the LED strip into a fully personalized ambient light.<br><br>*In development.* |
+| **Canvas** | *Canvas* lets you choose any color across the RGB range, turning the LED strip into a fully color-customized ambient light source. Press **L1** to rebalance the saturation, **R1** to rebalance the lightness, and **Triangle** to switch to a new random color. |
 | **Tempo** | *Tempo* allows you to choose a tempo and strobe lights and trigger light subroutines in response to music.<br><br>*In development.* |
 | **Police Siren** | Strobing red and blue lights to look like a law enforcement vehicle.<br><br>*In development.* |
 | **Halloween** | Spooky orange and some purple.<br><br>*In development.* |

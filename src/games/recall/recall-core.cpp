@@ -17,14 +17,11 @@ namespace Games
 
   void RecallCore::setupGameColors()
   {
-    // temporary for testing purposes
-    // for (uint16_t i = 0; i < maxRound; ++i)
-    // {
-    //   gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(availableGameplayButtons));
-    // }
-
     for (uint16_t i = 0; i < maxRound; ++i)
     {
+      // for testing
+      // gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(availableGameplayButtons));
+
       uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(availableGameplayButtons);
       gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
     }
@@ -66,7 +63,6 @@ namespace Games
 
   void RecallCore::handleUserSpeedChange()
   {
-    logf("Left Analog: %d", contextManager->controller.leftAnalog().y);
     if ((contextManager->controller.rawButtonState(Player::ControllerButton::Up) > 0) || contextManager->controller.leftAnalog().y < -64)
     {
       // allow no faster than 200ms cycles

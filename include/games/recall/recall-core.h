@@ -17,7 +17,7 @@ namespace Games
     Core::ContextManager *contextManager;
     RecallGameState &state = contextManager->stateManager.getRecallGameState();
 
-    uint16_t gameplaySpeedIlluminated = 600;
+    uint16_t gameplaySpeedIlluminated = 500;
     uint16_t gameplaySpeedPaused = gameplaySpeedIlluminated / 6;
     static constexpr uint16_t maxRound = 1000;
     static constexpr Player::ControllerButton availableGameplayButtons[] = {

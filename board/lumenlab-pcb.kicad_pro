@@ -529,7 +529,7 @@
       "plot": "production/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "images/lumenlab-pcb.stl",
+      "step": "enclosure/lumenlab-pcb-model.step",
       "svg": "",
       "vrml": ""
     },

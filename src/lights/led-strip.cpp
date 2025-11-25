@@ -9,6 +9,7 @@ namespace Lights
   {
 #ifdef RELEASE
     FastLED.addLeds<WS2815, 4>(static_cast<Color *>(buffer), _size);
+    FastLED.setMaxRefreshRate(0);
     reset();
 #endif
   }

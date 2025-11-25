@@ -94,7 +94,7 @@ namespace Player
       return true;
     }
 
-    if (!isDownNow)
+    if (!isDownNow && wasDownBefore)
     {
       buttonsPressed &= ~mask;
     }

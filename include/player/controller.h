@@ -43,6 +43,11 @@ namespace Player
     uint8_t triangle() { return instance->controller.data.analog.button.triangle; }
     uint8_t square() { return instance->controller.data.analog.button.square; }
 
+    uint8_t l1() { return instance->controller.data.analog.button.l1; }
+    uint8_t l2() { return instance->controller.data.analog.button.l2; }
+    uint8_t r1() { return instance->controller.data.analog.button.r1; }
+    uint8_t r2() { return instance->controller.data.analog.button.r2; }
+
     uint8_t up() { return instance->controller.data.analog.button.up; }
     uint8_t down() { return instance->controller.data.analog.button.down; }
     uint8_t left() { return instance->controller.data.analog.button.left; }

@@ -10,7 +10,7 @@ namespace Scenes
   {
   public:
     Canvas(Core::ContextManager *ctx);
-    void nextEvent();
+    void nextEvent() override;
 
   private:
     Core::ContextManager *contextManager;

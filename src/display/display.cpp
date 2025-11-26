@@ -38,6 +38,9 @@ namespace Display
       case Engine::SystemState::GameRecall:
         drawRecallGameHud();
         break;
+      case Engine::SystemState::SceneCanvas:
+        drawCanvasSceneHud();
+        break;
       case Engine::SystemState::NoControllerConnected:
         drawUnconnectedControllerScreen();
         break;
@@ -160,6 +163,20 @@ namespace Display
     display.print(contextManager->stateManager.getRecallGameState().round + 1);
     display.setCursor(0, 24);
     display.print("High Score: -");
+
+    display.display();
+  }
+
+  void OledDisplay::drawCanvasSceneHud()
+  {
+    display.clearDisplay();
+    drawHeader("Canvas");
+
+    char colorBuffer[32] = "";
+    auto &color = contextManager->stateManager.getCanvasSceneState().currentColor;
+    sprintf(colorBuffer, "RGB: (%u, %u, %u)", color.r, color.g, color.b);
+    display.setCursor(0, 24);
+    display.print(colorBuffer);
 
     display.display();
   }

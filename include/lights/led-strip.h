@@ -14,13 +14,12 @@ namespace Lights
     LedStrip(Engine::SystemConfig &configuration);
     Color *getRawColors();
 
-    constexpr uint16_t size() const { return _size; }
+    static constexpr uint16_t size() { return Engine::SystemConfig::numLeds; }
     void reset();
     void adjustLuminance();
 
   private:
     const Engine::SystemConfig &config;
-    uint16_t _size;
     LedLuminance luminance;
   };
 }

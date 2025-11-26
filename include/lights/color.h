@@ -2,7 +2,7 @@
 
 #include <algorithm>
 #include <FastLED.h>
-
+#include "lights/color-code.h"
 #include <cstdint>
 
 namespace Lights
@@ -13,6 +13,7 @@ namespace Lights
     using CRGB::CRGB;
     Color() : CRGB() {}
     Color(uint8_t red, uint8_t green, uint8_t blue) : CRGB(red, green, blue) {}
+    Color(ColorCode color) : CRGB{static_cast<uint32_t>(color)} {}
 
     Lights::Color operator*(double scale) const
     {

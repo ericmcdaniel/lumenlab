@@ -22,7 +22,7 @@ namespace Games
       delete player2;
     }
 
-    void nextEvent();
+    void nextEvent() override;
     uint16_t getCurrentScore() { return contextManager->stateManager.getSandboxGameState().currentScore; }
     uint16_t getHighScore() { return contextManager->stateManager.getSandboxGameState().highScore; }
     void incrementCurrentScore();

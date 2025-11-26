@@ -3,12 +3,11 @@
 namespace Lights
 {
   LedStrip::LedStrip(Engine::SystemConfig &configuration) : config{configuration},
-                                                            _size{config.numLeds},
-                                                            buffer{config.numLeds},
+                                                            buffer{configuration.numLeds},
                                                             luminance{configuration}
   {
 #ifdef RELEASE
-    FastLED.addLeds<WS2815, 4>(static_cast<Color *>(buffer), _size);
+    FastLED.addLeds<WS2815, 4>(static_cast<Color *>(buffer), size());
     reset();
 #endif
   }
@@ -20,23 +19,19 @@ namespace Lights
 
   void LedStrip::reset()
   {
-    for (int i = 0; i < _size; i++)
+    for (int i = 0; i < size(); i++)
     {
-      buffer[i].r = 0;
-      buffer[i].g = 0;
-      buffer[i].b = 0;
+      buffer[i] = 0;
     }
   }
 
   void LedStrip::adjustLuminance()
   {
     luminance.adjustLuminance();
-    for (int i = 0; i < _size; ++i)
+    for (int i = 0; i < size(); ++i)
     {
       float scale = static_cast<float>(luminance.getLuminance()) / LedLuminance::MAX_LED_BRIGHTNESS;
-      buffer[i].r = static_cast<fl::u8>(buffer[i].r * scale);
-      buffer[i].g = static_cast<fl::u8>(buffer[i].g * scale);
-      buffer[i].b = static_cast<fl::u8>(buffer[i].b * scale);
+      buffer[i] = buffer[i] * scale;
     }
   }
 }

@@ -32,8 +32,8 @@ namespace Display
       case Engine::SystemState::MenuScenes:
         drawScenesMenu();
         break;
-      case Engine::SystemState::GameSandbox:
-        drawSandboxGameHud();
+      case Engine::SystemState::GameDemo:
+        drawDemoGameHud();
         break;
       case Engine::SystemState::GameRecall:
         drawRecallGameHud();
@@ -139,14 +139,14 @@ namespace Display
     display.display();
   }
 
-  void OledDisplay::drawSandboxGameHud()
+  void OledDisplay::drawDemoGameHud()
   {
     display.clearDisplay();
-    drawHeader("Sandbox (Testing)");
+    drawHeader("Demo");
 
     display.setCursor(0, 16);
     display.print("Current Score: ");
-    display.print(contextManager->stateManager.getSandboxGameState().currentScore);
+    display.print(contextManager->stateManager.getDemoGameState().currentScore);
     display.setCursor(0, 24);
     display.print("High Score: -");
 

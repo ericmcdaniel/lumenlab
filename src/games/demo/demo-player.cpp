@@ -1,11 +1,11 @@
 #include <stdlib.h>
 
-#include "games/testing-sandbox/test-player.h"
+#include "games/demo/demo-player.h"
 
 namespace Games
 {
 
-  void TestPlayer::move(const int distance)
+  void DemoPlayer::move(const int distance)
   {
     int delta = distance / 20;
 
@@ -14,7 +14,7 @@ namespace Games
       position += static_cast<int>(contextManager->leds.size()) - abs(delta);
   }
 
-  void TestPlayer::updatePlayer1LedBuffer()
+  void DemoPlayer::updatePlayer1LedBuffer()
   {
     for (int i = 0; i <= width; ++i)
     {
@@ -25,7 +25,7 @@ namespace Games
     }
   }
 
-  void TestPlayer::updatePlayer2LedBuffer()
+  void DemoPlayer::updatePlayer2LedBuffer()
   {
     for (int i = 0; i <= width; ++i)
     {

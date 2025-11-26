@@ -47,9 +47,9 @@ namespace Engine
   const char *StateManager::printGameName(uint8_t index)
   {
     static constexpr const char gameNames[3][20] = {
-        "Sandbox (Testing)",
         "Recall",
-        "Phase Evasion"};
+        "Phase Evasion",
+        "Demo"};
     return gameNames[index];
   }
 

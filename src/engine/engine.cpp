@@ -40,8 +40,9 @@ namespace Engine
         contextManager.navigateSceneMenu();
         displaySceneSelection();
         break;
-      case SystemState::GameSandbox:
       case SystemState::GameRecall:
+      case SystemState::GamePhaseEvasion:
+      case SystemState::GameDemo:
       case SystemState::SceneCanvas:
         contextManager.application->nextEvent();
         break;
@@ -111,7 +112,7 @@ namespace Engine
     {
       contextManager.stateManager.setNext(SystemState::MenuHome);
       contextManager.stateManager.setNextUserMenuChoice(MainMenuSelection::Games);
-      contextManager.stateManager.setNextUserGameChoice(GameSelection::Sandbox);
+      contextManager.stateManager.setNextUserGameChoice(GameSelection::Recall);
       contextManager.stateManager.setNextUserSceneChoice(SceneSelection::Canvas);
       lastRender = micros();
       log("PS3 controller connected. Transitioning to Main Menu");

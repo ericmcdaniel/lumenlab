@@ -5,10 +5,10 @@
 
 namespace Games
 {
-  class TestPlayer : public Player::Player
+  class DemoPlayer : public Player::Player
   {
   public:
-    TestPlayer(Core::ContextManager *ctx) : contextManager{ctx}, Player::Player{ctx} {};
+    DemoPlayer(Core::ContextManager *ctx) : contextManager{ctx}, Player::Player{ctx} {};
     uint32_t getPosition() { return position; }
     void move(const int distance);
     void updatePlayer1LedBuffer();

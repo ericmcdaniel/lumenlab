@@ -1,5 +1,5 @@
 #include "core/context-manager.h"
-#include "games/testing-sandbox/test-core.h"
+#include "games/demo/demo-core.h"
 #include "games/recall/recall-core.h"
 #include "scenes/canvas/canvas.h"
 #include "logger.h"
@@ -23,7 +23,8 @@ namespace Core
     {
       stateManager.setNext(Engine::SystemState::MenuHome);
       stateManager.setNextUserMenuChoice(Engine::MainMenuSelection::Games);
-      stateManager.setNextUserGameChoice(Engine::GameSelection::Sandbox);
+      stateManager.setNextUserGameChoice(Engine::GameSelection::Recall);
+      stateManager.setNextUserSceneChoice(Engine::SceneSelection::Canvas);
       log("Transitioning to Main Menu.");
     }
   }
@@ -76,8 +77,8 @@ namespace Core
     {
       switch (stateManager.getUserGameChoice())
       {
-      case Engine::GameSelection::Sandbox:
-        stateManager.setNext(Engine::SystemState::GameSandbox);
+      case Engine::GameSelection::Demo:
+        stateManager.setNext(Engine::SystemState::GameDemo);
         break;
       case Engine::GameSelection::Recall:
         stateManager.setNext(Engine::SystemState::GameRecall);
@@ -134,9 +135,9 @@ namespace Core
     }
     switch (stateManager.current())
     {
-    case Engine::SystemState::GameSandbox:
-      application = new Games::TestCore{this};
-      logf("Transitioning to Sandbox (Testing)");
+    case Engine::SystemState::GameDemo:
+      application = new Games::DemoCore{this};
+      logf("Transitioning to Demo");
       break;
     case Engine::SystemState::GameRecall:
       application = new Games::RecallCore{this};

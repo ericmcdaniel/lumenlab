@@ -78,11 +78,14 @@ namespace Core
     {
       switch (stateManager.getUserGameChoice())
       {
-      case Engine::GameSelection::Demo:
-        stateManager.setNext(Engine::SystemState::GameDemo);
-        break;
       case Engine::GameSelection::Recall:
         stateManager.setNext(Engine::SystemState::GameRecall);
+        break;
+      case Engine::GameSelection::PhaseEvasion:
+        stateManager.setNext(Engine::SystemState::GamePhaseEvasion);
+        break;
+      case Engine::GameSelection::Demo:
+        stateManager.setNext(Engine::SystemState::GameDemo);
         break;
       }
       transitionLayer();

@@ -18,7 +18,7 @@ namespace Core
     }
   }
 
-  void ContextManager::checkChangeRequest()
+  void ContextManager::checkExitRequest()
   {
     if (controller.wasPressed(Player::ControllerButton::Ps))
     {
@@ -26,7 +26,17 @@ namespace Core
       stateManager.setNextUserMenuChoice(Engine::MainMenuSelection::Games);
       stateManager.setNextUserGameChoice(Engine::GameSelection::Recall);
       stateManager.setNextUserSceneChoice(Engine::SceneSelection::Canvas);
-      log("Transitioning to Main Menu.");
+      log("Exiting to Main Menu.");
+    }
+  }
+
+  void ContextManager::checkDisplayVisibilityChange()
+  {
+    if (controller.wasPressed(Player::ControllerButton::Select))
+    {
+      stateManager.displayIsVisible = !stateManager.displayIsVisible;
+      stateManager.displayShouldUpdate = true;
+      logf("Display turned %s.", stateManager.displayIsVisible ? "on" : "off");
     }
   }
 

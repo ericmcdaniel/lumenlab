@@ -24,7 +24,8 @@ namespace Engine
     while (contextManager.stateManager.isRunning())
     {
       contextManager.leds.reset();
-      contextManager.checkChangeRequest();
+      contextManager.checkExitRequest();
+      contextManager.checkDisplayVisibilityChange();
 
       switch (contextManager.stateManager.current())
       {

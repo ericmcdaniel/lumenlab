@@ -27,7 +27,8 @@ namespace Core
     void navigateMainMenu();
     void navigateGameMenu();
     void navigateSceneMenu();
-    void checkChangeRequest();
+    void checkExitRequest();
+    void checkDisplayVisibilityChange();
     void transitionLayer();
   };
 }

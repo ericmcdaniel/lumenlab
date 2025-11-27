@@ -49,5 +49,6 @@ namespace Display
     void drawDemoGameHud();
     void drawCanvasSceneHud();
     void drawUnconnectedControllerScreen();
+    void clearDisplay();
   };
 }

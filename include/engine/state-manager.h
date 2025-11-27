@@ -56,6 +56,7 @@ namespace Engine
                      userGameChoice{GameSelection::Recall} {}
     bool isRunning() { return systemState != SystemState::Error; }
     bool displayShouldUpdate = true;
+    bool displayIsVisible = true;
 
     const SystemState current() const { return systemState; }
     void setNext(SystemState state);

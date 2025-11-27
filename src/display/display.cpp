@@ -16,6 +16,13 @@ namespace Display
 
   void OledDisplay::updateDisplay()
   {
+    if (!contextManager->stateManager.displayIsVisible && contextManager->stateManager.displayShouldUpdate)
+    {
+      clearDisplay();
+      contextManager->stateManager.displayShouldUpdate = false;
+      return;
+    }
+
     if (contextManager->stateManager.displayShouldUpdate)
     {
       switch (contextManager->stateManager.current())
@@ -84,6 +91,12 @@ namespace Display
     drawHeader("LumenLab");
 
     display.drawBitmap(initLogo.xPos, initLogo.yPos, initLogo.rawValues, initLogo.width, initLogo.height, SSD1306_WHITE);
+    display.display();
+  }
+
+  void OledDisplay::clearDisplay()
+  {
+    display.clearDisplay();
     display.display();
   }
 

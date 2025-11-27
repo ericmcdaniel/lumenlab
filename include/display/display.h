@@ -44,8 +44,9 @@ namespace Display
     void drawMainMenu();
     void drawGamesMenu();
     void drawScenesMenu();
-    void drawDemoGameHud();
     void drawRecallGameHud();
+    void drawPhaseEvasionGameHud();
+    void drawDemoGameHud();
     void drawCanvasSceneHud();
     void drawUnconnectedControllerScreen();
   };

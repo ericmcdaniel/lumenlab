@@ -1,6 +1,7 @@
 #include "core/context-manager.h"
 #include "games/demo/demo-core.h"
 #include "games/recall/recall-core.h"
+#include "games/phase-evasion/phase-evasion-core.h"
 #include "scenes/canvas/canvas.h"
 #include "logger.h"
 
@@ -135,13 +136,17 @@ namespace Core
     }
     switch (stateManager.current())
     {
-    case Engine::SystemState::GameDemo:
-      application = new Games::DemoCore{this};
-      logf("Transitioning to Demo");
-      break;
     case Engine::SystemState::GameRecall:
       application = new Games::RecallCore{this};
       logf("Transitioning to Recall (Game)");
+      break;
+    case Engine::SystemState::GamePhaseEvasion:
+      application = new Games::PhaseEvasionCore{this};
+      logf("Transitioning to Phase Evasion (Game)");
+      break;
+    case Engine::SystemState::GameDemo:
+      application = new Games::DemoCore{this};
+      logf("Transitioning to Demo (Game)");
       break;
     case Engine::SystemState::SceneCanvas:
       application = new Scenes::Canvas{this};

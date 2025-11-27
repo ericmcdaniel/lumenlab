@@ -38,6 +38,9 @@ namespace Display
       case Engine::SystemState::GameRecall:
         drawRecallGameHud();
         break;
+      case Engine::SystemState::GamePhaseEvasion:
+        drawPhaseEvasionGameHud();
+        break;
       case Engine::SystemState::SceneCanvas:
         drawCanvasSceneHud();
         break;
@@ -161,6 +164,20 @@ namespace Display
     display.setCursor(0, 16);
     display.print("Round: ");
     display.print(contextManager->stateManager.getRecallGameState().round + 1);
+    display.setCursor(0, 24);
+    display.print("High Score: -");
+
+    display.display();
+  }
+
+  void OledDisplay::drawPhaseEvasionGameHud()
+  {
+    display.clearDisplay();
+    drawHeader("Phase Evasion");
+
+    display.setCursor(0, 16);
+    display.print("Current Score: ");
+    display.print(contextManager->stateManager.getPhaseEvasionGameState().currentScore);
     display.setCursor(0, 24);
     display.print("High Score: -");
 

@@ -60,13 +60,12 @@ namespace Player
     AnalogStick rightAnalog();
 
     const uint8_t rawButtonState(const ControllerButton button) const;
-
     const bool wasPressed(const ControllerButton button);
     const bool wasPressedAndReleased(const ControllerButton button);
-    void reset();
-
     const bool isConnected() { return instance->connection; }
     void poll();
+    bool isDown(const ControllerButton button) const;
+    void reset();
 
   private:
     Ps3Controller controller;

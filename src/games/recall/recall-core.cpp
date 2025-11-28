@@ -144,7 +144,7 @@ namespace Games
   {
     for (auto button : availableGameplayButtons)
     {
-      if (contextManager->controller.wasPressed(button))
+      if (contextManager->controller.wasPressedAndReleased(button))
       {
         if (button == expectedButton)
         {
@@ -166,10 +166,10 @@ namespace Games
     static uint32_t lastLightTime = 0;
     static int pressedButtonIndex = -1;
     bool buttonPressed = false;
-
     for (uint16_t i = 0; i < arraySize(availableGameplayButtons); ++i)
     {
-      if (contextManager->controller.wasPressed(static_cast<Player::ControllerButton>(i)))
+      auto btn = static_cast<Player::ControllerButton>(i);
+      if (contextManager->controller.isDown(btn))
       {
         pressedButtonIndex = i;
         lastLightTime = millis();
@@ -181,9 +181,12 @@ namespace Games
     bool keepLit = ((millis() - lastLightTime) < gameplaySpeedPaused);
     if (buttonPressed || keepLit)
     {
-      auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
-      for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
-        contextManager->leds.buffer[i] = colorPalette[pressedButtonIndex];
+      if (pressedButtonIndex >= 0 && pressedButtonIndex < static_cast<int>(arraySize(availableGameplayButtons)))
+      {
+        auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
+        for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
+          contextManager->leds.buffer[i] = colorPalette[pressedButtonIndex];
+      }
     }
   }
 

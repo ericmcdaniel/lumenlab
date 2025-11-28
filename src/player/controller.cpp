@@ -95,6 +95,12 @@ namespace Player
     return instance->buttonReleasedEvent[idx];
   }
 
+  bool Controller::isDown(const ControllerButton button) const
+  {
+    uint32_t idx = static_cast<uint32_t>(button);
+    return instance->buttonLastState[idx];
+  }
+
   void Controller::reset()
   {
     for (uint32_t i = 0; i < arraySize(buttonPressedEvent); ++i)

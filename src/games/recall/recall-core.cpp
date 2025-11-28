@@ -63,17 +63,17 @@ namespace Games
 
   void RecallCore::handleUserSpeedChange()
   {
-    if ((contextManager->controller.rawButtonState(Player::ControllerButton::Up) > 0) || contextManager->controller.leftAnalog().y < -64)
+    if (contextManager->controller.wasPressed(Player::ControllerButton::Up) || contextManager->controller.leftAnalog().y < -64)
     {
       // allow no faster than 200ms cycles
       if (gameplaySpeedIlluminated >= 200)
-        gameplaySpeedIlluminated -= 2;
+        gameplaySpeedIlluminated -= 10;
     }
-    else if ((contextManager->controller.rawButtonState(Player::ControllerButton::Down) > 0) || contextManager->controller.leftAnalog().y > 64)
+    else if (contextManager->controller.wasPressed(Player::ControllerButton::Down) || contextManager->controller.leftAnalog().y > 64)
     {
       // similary, allow cycles to be no slower than 1.5 seconds
       if (gameplaySpeedIlluminated < 1500)
-        gameplaySpeedIlluminated += 2;
+        gameplaySpeedIlluminated += 10;
     }
   }
 
@@ -144,7 +144,7 @@ namespace Games
   {
     for (auto button : availableGameplayButtons)
     {
-      if (contextManager->controller.wasPressed(button))
+      if (contextManager->controller.wasPressedAndReleased(button))
       {
         if (button == expectedButton)
         {
@@ -166,10 +166,10 @@ namespace Games
     static uint32_t lastLightTime = 0;
     static int pressedButtonIndex = -1;
     bool buttonPressed = false;
-
     for (uint16_t i = 0; i < arraySize(availableGameplayButtons); ++i)
     {
-      if (contextManager->controller.rawButtonState(static_cast<Player::ControllerButton>(i)) > 0)
+      auto btn = static_cast<Player::ControllerButton>(i);
+      if (contextManager->controller.isDown(btn))
       {
         pressedButtonIndex = i;
         lastLightTime = millis();
@@ -181,9 +181,12 @@ namespace Games
     bool keepLit = ((millis() - lastLightTime) < gameplaySpeedPaused);
     if (buttonPressed || keepLit)
     {
-      auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
-      for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
-        contextManager->leds.buffer[i] = colorPalette[pressedButtonIndex];
+      if (pressedButtonIndex >= 0 && pressedButtonIndex < static_cast<int>(arraySize(availableGameplayButtons)))
+      {
+        auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
+        for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
+          contextManager->leds.buffer[i] = colorPalette[pressedButtonIndex];
+      }
     }
   }
 
@@ -244,7 +247,7 @@ namespace Games
       contextManager->stateManager.displayShouldUpdate = true;
     }
 
-    for (int i = 0; i <= contextManager->leds.size(); ++i)
+    for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
     {
       float phase = std::cos((2 * M_PI * i / contextManager->leds.size()) + (2 * M_PI * gameOverLedPhaseShift / contextManager->leds.size())) * 127 + 128;
       contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};

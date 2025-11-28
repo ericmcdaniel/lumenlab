@@ -16,6 +16,13 @@ namespace Display
 
   void OledDisplay::updateDisplay()
   {
+    if (!contextManager->stateManager.displayIsVisible && contextManager->stateManager.displayShouldUpdate)
+    {
+      clearDisplay();
+      contextManager->stateManager.displayShouldUpdate = false;
+      return;
+    }
+
     if (contextManager->stateManager.displayShouldUpdate)
     {
       switch (contextManager->stateManager.current())
@@ -32,11 +39,14 @@ namespace Display
       case Engine::SystemState::MenuScenes:
         drawScenesMenu();
         break;
-      case Engine::SystemState::GameSandbox:
-        drawSandboxGameHud();
+      case Engine::SystemState::GameDemo:
+        drawDemoGameHud();
         break;
       case Engine::SystemState::GameRecall:
         drawRecallGameHud();
+        break;
+      case Engine::SystemState::GamePhaseEvasion:
+        drawPhaseEvasionGameHud();
         break;
       case Engine::SystemState::SceneCanvas:
         drawCanvasSceneHud();
@@ -81,6 +91,12 @@ namespace Display
     drawHeader("LumenLab");
 
     display.drawBitmap(initLogo.xPos, initLogo.yPos, initLogo.rawValues, initLogo.width, initLogo.height, SSD1306_WHITE);
+    display.display();
+  }
+
+  void OledDisplay::clearDisplay()
+  {
+    display.clearDisplay();
     display.display();
   }
 
@@ -139,14 +155,14 @@ namespace Display
     display.display();
   }
 
-  void OledDisplay::drawSandboxGameHud()
+  void OledDisplay::drawDemoGameHud()
   {
     display.clearDisplay();
-    drawHeader("Sandbox (Testing)");
+    drawHeader("Demo");
 
     display.setCursor(0, 16);
     display.print("Current Score: ");
-    display.print(contextManager->stateManager.getSandboxGameState().currentScore);
+    display.print(contextManager->stateManager.getDemoGameState().currentScore);
     display.setCursor(0, 24);
     display.print("High Score: -");
 
@@ -161,6 +177,20 @@ namespace Display
     display.setCursor(0, 16);
     display.print("Round: ");
     display.print(contextManager->stateManager.getRecallGameState().round + 1);
+    display.setCursor(0, 24);
+    display.print("High Score: -");
+
+    display.display();
+  }
+
+  void OledDisplay::drawPhaseEvasionGameHud()
+  {
+    display.clearDisplay();
+    drawHeader("Phase Evasion");
+
+    display.setCursor(0, 16);
+    display.print("Current Score: ");
+    display.print(contextManager->stateManager.getPhaseEvasionGameState().currentScore);
     display.setCursor(0, 24);
     display.print("High Score: -");
 

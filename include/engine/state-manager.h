@@ -1,7 +1,8 @@
 #pragma once
 
-#include "games/testing-sandbox/game-state.h"
 #include "games/recall/recall-state.h"
+#include "games/phase-evasion/phase-evasion-state.h"
+#include "games/demo/demo-state.h"
 #include "scenes/canvas/canvas-state.h"
 
 namespace Engine
@@ -12,8 +13,9 @@ namespace Engine
     MenuHome,
     MenuGames,
     MenuScenes,
-    GameSandbox,
     GameRecall,
+    GamePhaseEvasion,
+    GameDemo,
     SceneCanvas,
     NoControllerConnected,
     Error
@@ -28,9 +30,9 @@ namespace Engine
 
   enum class GameSelection
   {
-    Sandbox,
     Recall,
     PhaseEvasion,
+    Demo,
     COUNT
   };
 
@@ -51,9 +53,10 @@ namespace Engine
   public:
     StateManager() : systemState{SystemState::Initialize},
                      userMainMenuChoice{MainMenuSelection::Games},
-                     userGameChoice{GameSelection::Sandbox} {}
+                     userGameChoice{GameSelection::Recall} {}
     bool isRunning() { return systemState != SystemState::Error; }
     bool displayShouldUpdate = true;
+    bool displayIsVisible = true;
 
     const SystemState current() const { return systemState; }
     void setNext(SystemState state);
@@ -72,17 +75,24 @@ namespace Engine
 
     const char *printGameName(uint8_t index);
     const char *printSceneName(uint8_t index);
-    Games::SandboxGameState &getSandboxGameState() { return sandboxGameState; }
+
     Games::RecallGameState &getRecallGameState() { return recallGameState; }
+    Games::PhaseEvasionGameState &getPhaseEvasionGameState() { return phaseEvasionGameState; }
+    Games::DemoGameState &getDemoGameState() { return demoGameState; }
+
     Scenes::CanvasSceneState &getCanvasSceneState() { return canvasSceneState; }
 
   private:
     SystemState systemState = SystemState::MenuHome;
+
     MainMenuSelection userMainMenuChoice = MainMenuSelection::Games;
-    GameSelection userGameChoice = GameSelection::Sandbox;
+    GameSelection userGameChoice = GameSelection::Demo;
     SceneSelection userSceneChoice = SceneSelection::Canvas;
-    Games::SandboxGameState sandboxGameState;
+
     Games::RecallGameState recallGameState;
+    Games::PhaseEvasionGameState phaseEvasionGameState;
+    Games::DemoGameState demoGameState;
+
     Scenes::CanvasSceneState canvasSceneState;
   };
 }

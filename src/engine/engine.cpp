@@ -24,7 +24,9 @@ namespace Engine
     while (contextManager.stateManager.isRunning())
     {
       contextManager.leds.reset();
-      contextManager.checkChangeRequest();
+      contextManager.controller.poll();
+      contextManager.checkExitRequest();
+      contextManager.checkDisplayVisibilityChange();
 
       switch (contextManager.stateManager.current())
       {
@@ -40,8 +42,9 @@ namespace Engine
         contextManager.navigateSceneMenu();
         displaySceneSelection();
         break;
-      case SystemState::GameSandbox:
       case SystemState::GameRecall:
+      case SystemState::GamePhaseEvasion:
+      case SystemState::GameDemo:
       case SystemState::SceneCanvas:
         contextManager.application->nextEvent();
         break;
@@ -100,6 +103,9 @@ namespace Engine
     else
     {
       contextManager.stateManager.setNext(SystemState::MenuHome);
+      contextManager.stateManager.displayIsVisible = true;
+      contextManager.controller.reset();
+      contextManager.controller.poll();
       lastRender = micros();
       log("Startup process completed. Transitioning to Main Menu");
     }
@@ -111,14 +117,15 @@ namespace Engine
     {
       contextManager.stateManager.setNext(SystemState::MenuHome);
       contextManager.stateManager.setNextUserMenuChoice(MainMenuSelection::Games);
-      contextManager.stateManager.setNextUserGameChoice(GameSelection::Sandbox);
+      contextManager.stateManager.setNextUserGameChoice(GameSelection::Recall);
       contextManager.stateManager.setNextUserSceneChoice(SceneSelection::Canvas);
       lastRender = micros();
+      contextManager.stateManager.displayIsVisible = true;
       log("PS3 controller connected. Transitioning to Main Menu");
       return;
     }
 
-    for (int i = 0; i <= contextManager.leds.size(); ++i)
+    for (uint16_t i = 0; i <= contextManager.leds.size(); ++i)
     {
       float phase = std::cos((2 * M_PI * i / contextManager.leds.size()) + (2 * M_PI * disconnectedLedPhaseShift / contextManager.leds.size())) * 127 + 128;
       contextManager.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};

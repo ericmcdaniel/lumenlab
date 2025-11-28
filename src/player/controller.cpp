@@ -2,6 +2,7 @@
 #include <Ps3Controller.h>
 #include "player/controller.h"
 #include "logger.h"
+#include "common.h"
 
 namespace Player
 {
@@ -82,60 +83,76 @@ namespace Player
     }
   }
 
-  const bool Controller::wasPressed(ControllerButton button)
+  const bool Controller::wasPressed(const ControllerButton button)
   {
-    uint32_t mask = 1u << static_cast<uint8_t>(button);
-    bool isDownNow = rawButtonState(button);
-    bool wasDownBefore = (buttonsPressed & mask);
-
-    if (isDownNow && !wasDownBefore)
-    {
-      buttonsPressed |= mask;
-      return true;
-    }
-
-    if (!isDownNow && wasDownBefore)
-    {
-      buttonsPressed &= ~mask;
-    }
-
-    return false;
+    uint32_t idx = static_cast<uint32_t>(button);
+    return instance->buttonPressedEvent[idx];
   }
 
-  const bool Controller::wasPressedAndReleased(ControllerButton button)
+  const bool Controller::wasPressedAndReleased(const ControllerButton button)
   {
-    uint32_t mask = 1u << static_cast<uint8_t>(button);
+    uint32_t idx = static_cast<uint32_t>(button);
+    return instance->buttonReleasedEvent[idx];
+  }
 
-    uint8_t val = rawButtonState(button);
-    bool isDownNow = (val >= pressThreshold);
-    bool wasDownBefore = (buttonsPressed & mask) != 0;
-
-    if (isDownNow && !wasDownBefore)
-    {
-      buttonsPressed |= mask;
-      return false;
-    }
-
-    bool isReleasedNow = (val <= releaseThreshold);
-    if (isReleasedNow && wasDownBefore)
-    {
-      buttonsPressed &= ~mask;
-      return true;
-    }
-
-    return false;
+  bool Controller::isDown(const ControllerButton button) const
+  {
+    uint32_t idx = static_cast<uint32_t>(button);
+    return instance->buttonLastState[idx];
   }
 
   void Controller::reset()
   {
-    buttonsPressed = 0;
-    buttonsReleased = 0;
+    for (uint32_t i = 0; i < arraySize(buttonPressedEvent); ++i)
+    {
+      buttonPressedEvent[i] = false;
+      buttonReleasedEvent[i] = false;
+      buttonLastState[i] = rawButtonState(static_cast<ControllerButton>(i));
+      buttonDebouceEvent[i] = 0;
+    }
+  }
+
+  void Controller::poll()
+  {
+    for (uint32_t i = 0; i < arraySize(buttonPressedEvent); ++i)
+    {
+      buttonPressedEvent[i] = false;
+      buttonReleasedEvent[i] = false;
+    }
+
+    for (uint32_t i = 0; i < arraySize(buttonLastState); ++i)
+    {
+      auto btn = static_cast<ControllerButton>(i);
+      bool raw = rawButtonState(btn) != 0;
+
+      uint32_t now = millis();
+      if (raw && !buttonLastState[i])
+      {
+        if (now - buttonDebouceEvent[i] > buttonDebounceThreshold)
+        {
+          buttonPressedEvent[i] = true;
+          buttonLastState[i] = true;
+          buttonDebouceEvent[i] = now;
+        }
+      }
+      else if (!raw && buttonLastState[i])
+      {
+        if (now - buttonDebouceEvent[i] > buttonDebounceThreshold)
+        {
+          buttonReleasedEvent[i] = true;
+          buttonLastState[i] = false;
+          buttonDebouceEvent[i] = now;
+        }
+      }
+    }
   }
 
   void Controller::handleOnConnect()
   {
     log("Game controller connected successfully.");
     instance->connection = true;
+    instance->reset();
+    instance->poll();
   }
 
   int Controller::filterDeadZone(int8_t value, int deadZone)

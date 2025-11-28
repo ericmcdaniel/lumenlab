@@ -1,10 +1,10 @@
-#include "games/testing-sandbox/test-core.h"
+#include "games/demo/demo-core.h"
 #include "player/controller.h"
 #include "logger.h"
 
 namespace Games
 {
-  void TestCore::nextEvent()
+  void DemoCore::nextEvent()
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::Cross))
     {
@@ -20,15 +20,15 @@ namespace Games
     player2->updatePlayer2LedBuffer();
   }
 
-  void TestCore::incrementCurrentScore()
+  void DemoCore::incrementCurrentScore()
   {
-    ++contextManager->stateManager.getSandboxGameState().currentScore;
+    ++contextManager->stateManager.getDemoGameState().currentScore;
     contextManager->stateManager.displayShouldUpdate = true;
   }
 
-  void TestCore::incrementHighScore()
+  void DemoCore::incrementHighScore()
   {
-    ++contextManager->stateManager.getSandboxGameState().highScore;
+    ++contextManager->stateManager.getDemoGameState().highScore;
     contextManager->stateManager.displayShouldUpdate = true;
   }
 }

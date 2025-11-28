@@ -1,6 +1,7 @@
 #include "core/context-manager.h"
-#include "games/testing-sandbox/test-core.h"
+#include "games/demo/demo-core.h"
 #include "games/recall/recall-core.h"
+#include "games/phase-evasion/phase-evasion-core.h"
 #include "scenes/canvas/canvas.h"
 #include "logger.h"
 
@@ -17,14 +18,25 @@ namespace Core
     }
   }
 
-  void ContextManager::checkChangeRequest()
+  void ContextManager::checkExitRequest()
   {
     if (controller.wasPressed(Player::ControllerButton::Ps))
     {
       stateManager.setNext(Engine::SystemState::MenuHome);
       stateManager.setNextUserMenuChoice(Engine::MainMenuSelection::Games);
-      stateManager.setNextUserGameChoice(Engine::GameSelection::Sandbox);
-      log("Transitioning to Main Menu.");
+      stateManager.setNextUserGameChoice(Engine::GameSelection::Recall);
+      stateManager.setNextUserSceneChoice(Engine::SceneSelection::Canvas);
+      log("Exiting to Main Menu.");
+    }
+  }
+
+  void ContextManager::checkDisplayVisibilityChange()
+  {
+    if (controller.wasPressedAndReleased(Player::ControllerButton::Select))
+    {
+      stateManager.displayIsVisible = !stateManager.displayIsVisible;
+      stateManager.displayShouldUpdate = true;
+      logf("Display turned %s.", stateManager.displayIsVisible ? "on" : "off");
     }
   }
 
@@ -76,11 +88,14 @@ namespace Core
     {
       switch (stateManager.getUserGameChoice())
       {
-      case Engine::GameSelection::Sandbox:
-        stateManager.setNext(Engine::SystemState::GameSandbox);
-        break;
       case Engine::GameSelection::Recall:
         stateManager.setNext(Engine::SystemState::GameRecall);
+        break;
+      case Engine::GameSelection::PhaseEvasion:
+        stateManager.setNext(Engine::SystemState::GamePhaseEvasion);
+        break;
+      case Engine::GameSelection::Demo:
+        stateManager.setNext(Engine::SystemState::GameDemo);
         break;
       }
       transitionLayer();
@@ -134,13 +149,17 @@ namespace Core
     }
     switch (stateManager.current())
     {
-    case Engine::SystemState::GameSandbox:
-      application = new Games::TestCore{this};
-      logf("Transitioning to Sandbox (Testing)");
-      break;
     case Engine::SystemState::GameRecall:
       application = new Games::RecallCore{this};
       logf("Transitioning to Recall (Game)");
+      break;
+    case Engine::SystemState::GamePhaseEvasion:
+      application = new Games::PhaseEvasionCore{this};
+      logf("Transitioning to Phase Evasion (Game)");
+      break;
+    case Engine::SystemState::GameDemo:
+      application = new Games::DemoCore{this};
+      logf("Transitioning to Demo (Game)");
       break;
     case Engine::SystemState::SceneCanvas:
       application = new Scenes::Canvas{this};

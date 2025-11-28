@@ -144,8 +144,9 @@ namespace Player
   void Controller::handleOnConnect()
   {
     log("Game controller connected successfully.");
-    instance->reset();
     instance->connection = true;
+    instance->reset();
+    instance->poll();
   }
 
   int Controller::filterDeadZone(int8_t value, int deadZone)

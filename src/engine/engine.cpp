@@ -103,6 +103,9 @@ namespace Engine
     else
     {
       contextManager.stateManager.setNext(SystemState::MenuHome);
+      contextManager.stateManager.displayIsVisible = true;
+      contextManager.controller.reset();
+      contextManager.controller.poll();
       lastRender = micros();
       log("Startup process completed. Transitioning to Main Menu");
     }
@@ -117,6 +120,7 @@ namespace Engine
       contextManager.stateManager.setNextUserGameChoice(GameSelection::Recall);
       contextManager.stateManager.setNextUserSceneChoice(SceneSelection::Canvas);
       lastRender = micros();
+      contextManager.stateManager.displayIsVisible = true;
       log("PS3 controller connected. Transitioning to Main Menu");
       return;
     }

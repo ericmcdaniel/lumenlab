@@ -32,11 +32,10 @@ namespace Core
 
   void ContextManager::checkDisplayVisibilityChange()
   {
-    if (controller.wasPressed(Player::ControllerButton::Select) && millis() - stateManager.displayDebounce > stateManager.debounceThreshold)
+    if (controller.wasPressedAndReleased(Player::ControllerButton::Select))
     {
       stateManager.displayIsVisible = !stateManager.displayIsVisible;
       stateManager.displayShouldUpdate = true;
-      stateManager.displayDebounce = millis();
       logf("Display turned %s.", stateManager.displayIsVisible ? "on" : "off");
     }
   }

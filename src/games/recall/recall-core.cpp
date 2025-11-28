@@ -63,17 +63,17 @@ namespace Games
 
   void RecallCore::handleUserSpeedChange()
   {
-    if ((contextManager->controller.rawButtonState(Player::ControllerButton::Up) > 0) || contextManager->controller.leftAnalog().y < -64)
+    if (contextManager->controller.wasPressed(Player::ControllerButton::Up) || contextManager->controller.leftAnalog().y < -64)
     {
       // allow no faster than 200ms cycles
       if (gameplaySpeedIlluminated >= 200)
-        gameplaySpeedIlluminated -= 2;
+        gameplaySpeedIlluminated -= 10;
     }
-    else if ((contextManager->controller.rawButtonState(Player::ControllerButton::Down) > 0) || contextManager->controller.leftAnalog().y > 64)
+    else if (contextManager->controller.wasPressed(Player::ControllerButton::Down) || contextManager->controller.leftAnalog().y > 64)
     {
       // similary, allow cycles to be no slower than 1.5 seconds
       if (gameplaySpeedIlluminated < 1500)
-        gameplaySpeedIlluminated += 2;
+        gameplaySpeedIlluminated += 10;
     }
   }
 
@@ -169,7 +169,7 @@ namespace Games
 
     for (uint16_t i = 0; i < arraySize(availableGameplayButtons); ++i)
     {
-      if (contextManager->controller.rawButtonState(static_cast<Player::ControllerButton>(i)) > 0)
+      if (contextManager->controller.wasPressed(static_cast<Player::ControllerButton>(i)))
       {
         pressedButtonIndex = i;
         lastLightTime = millis();
@@ -244,7 +244,7 @@ namespace Games
       contextManager->stateManager.displayShouldUpdate = true;
     }
 
-    for (int i = 0; i <= contextManager->leds.size(); ++i)
+    for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
     {
       float phase = std::cos((2 * M_PI * i / contextManager->leds.size()) + (2 * M_PI * gameOverLedPhaseShift / contextManager->leds.size())) * 127 + 128;
       contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};

@@ -61,27 +61,29 @@ namespace Player
 
     const uint8_t rawButtonState(const ControllerButton button) const;
 
-    uint8_t buttonsPressed = 0;
-    uint8_t buttonsReleased = 0;
-    static constexpr uint8_t pressThreshold = 48;
-    static constexpr uint8_t releaseThreshold = 48;
     const bool wasPressed(const ControllerButton button);
     const bool wasPressedAndReleased(const ControllerButton button);
     void reset();
 
     const bool isConnected() { return instance->connection; }
+    void poll();
 
   private:
     Ps3Controller controller;
+    uint32_t buttonDebouceEvent[17];
+    static constexpr uint32_t buttonDebounceThreshold = 30;
+    bool buttonLastState[17] = {0};
+    bool buttonPressedEvent[17] = {0};
+    bool buttonReleasedEvent[17] = {0};
+    static Controller *instance;
+    bool connection = false;
 
+    void handleOnConnect();
+    int filterDeadZone(int8_t value, int deadZone = 3);
     static void onConnect()
     {
       if (instance)
         instance->handleOnConnect();
     }
-    void handleOnConnect();
-    int filterDeadZone(int8_t value, int deadZone = 3);
-    static Controller *instance;
-    bool connection = false;
   };
 }

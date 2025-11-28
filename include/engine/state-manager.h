@@ -57,8 +57,6 @@ namespace Engine
     bool isRunning() { return systemState != SystemState::Error; }
     bool displayShouldUpdate = true;
     bool displayIsVisible = true;
-    uint32_t displayDebounce = millis();
-    uint32_t debounceThreshold = 200;
 
     const SystemState current() const { return systemState; }
     void setNext(SystemState state);

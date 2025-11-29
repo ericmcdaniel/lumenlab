@@ -1,34 +1,36 @@
-# Start from Python (needed for PlatformIO)
-FROM python:3.11-slim
+FROM python:3.11-slim AS builder
 
-# Install dependencies for PlatformIO, ESP-IDF, and USB serial access
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  git \
-  curl \
-  build-essential \
-  libffi-dev \
-  libssl-dev \
-  python3-dev \
-  udev \
+  git curl build-essential libffi-dev libssl-dev python3-dev udev \
   && rm -rf /var/lib/apt/lists/*
 
-# Install PlatformIO CLI
 RUN pip install --no-cache-dir platformio
 
-# Set the working directory
 WORKDIR /app
 
-# Pre-download PlatformIO platforms for faster builds
 RUN pio platform install espressif32 \
-  && pio pkg install --global --library "PS3 Controller Host" --library "FastLED"
+  && pio pkg install --global --library "PS3 Controller Host@^1.1.0" \
+  && pio pkg install --global --library "FastLED@^3.10.2" \
+  && pio pkg install --global --library "Adafruit SSD1306@^2.5.15" \
+  && pio pkg install --global --library "Adafruit GFX Library@^1.12.1"
 
 COPY . .
 
-# Set up udev rules for USB device access
-RUN echo 'SUBSYSTEM=="usb", MODE="0666"' > /etc/udev/rules.d/99-usb.rules
+RUN chmod +x /app/tools/flash-firmware.sh
 
-# Make sure PlatformIO caches in container
-ENV PLATFORMIO_CORE_DIR=/root/.platformio
+RUN echo "Building PlatformIO release firmware..." && pio run --environment release
 
-# Default command: open a shell
-CMD ["/bin/bash"]
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir esptool pyserial
+
+COPY --from=builder /app/tools/flash-firmware.sh ./tools/flash-firmware.sh
+COPY --from=builder /app/.pio/build/release/bootloader.bin ./bootloader.bin
+COPY --from=builder /app/.pio/build/release/partitions.bin ./partitions.bin
+COPY --from=builder /app/.pio/build/release/firmware.bin ./firmware.bin
+
+RUN chmod +x /app/tools/flash-firmware.sh
+
+CMD ["/app/tools/flash-firmware.sh"]

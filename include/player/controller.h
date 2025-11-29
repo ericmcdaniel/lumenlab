@@ -66,6 +66,9 @@ namespace Player
     void poll();
     bool isDown(const ControllerButton button) const;
     void reset();
+    float analogToSpeed(int value, float maxOutput) const;
+    void setResponseExponent(float exp) { responseExponent = exp; }
+    void setResponseBlend(float blend) { responseBlend = blend; }
 
   private:
     Ps3Controller controller;
@@ -74,6 +77,8 @@ namespace Player
     bool buttonLastState[17] = {0};
     bool buttonPressedEvent[17] = {0};
     bool buttonReleasedEvent[17] = {0};
+    float responseExponent = 2.0f;
+    float responseBlend = 0.35f;
     static Controller *instance;
     bool connection = false;
 

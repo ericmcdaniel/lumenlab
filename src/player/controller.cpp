@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <cmath>
 #include <Ps3Controller.h>
 #include "player/controller.h"
 #include "logger.h"
@@ -101,6 +102,21 @@ namespace Player
     return instance->buttonLastState[idx];
   }
 
+  float Controller::analogToSpeed(int value, float maxOutput) const
+  {
+    if (value == 0)
+      return 0.0f;
+
+    float normalizedAnalogValue = static_cast<float>(value) / 127.0f;
+    float sign = (normalizedAnalogValue > 0.0f) ? 1.0f : -1.0f;
+    float absoluteValueNormalized = std::abs(normalizedAnalogValue);
+
+    float nonlinear = std::pow(absoluteValueNormalized, instance->responseExponent);
+    float mixed = (1.0f - instance->responseBlend) * nonlinear + instance->responseBlend * absoluteValueNormalized;
+    float scaled = mixed * maxOutput;
+    return sign * scaled;
+  }
+
   void Controller::reset()
   {
     for (uint32_t i = 0; i < arraySize(buttonPressedEvent); ++i)
@@ -157,13 +173,19 @@ namespace Player
 
   int Controller::filterDeadZone(int8_t value, int deadZone)
   {
-    // This filters out the a dead zone, which is something my PS3 controller
-    // suffers from. When you release any of the analog sticks, it rarely returns
-    // precisely to the coordinate origin 0/0, but is always off by a few. This
-    // changes every time you move the joystick around and return it, making
-    // calibration efforts useless.
-    if (abs(value) < deadZone)
+    if (std::abs(value) <= deadZone)
       return 0;
-    return (value > 0) ? value - deadZone : value + deadZone;
-  };
+
+    constexpr float responseExponent = 1.5f;
+    const int8_t maxRaw = 127;
+
+    float sign = (value > 0) ? 1.0f : -1.0f;
+    float magnitude = static_cast<float>(std::abs(value) - deadZone);
+    float normalizedAnalogValue = magnitude / static_cast<float>(maxRaw - deadZone);
+    normalizedAnalogValue = std::clamp(normalizedAnalogValue, 0.0f, 1.0f);
+
+    float scaled = std::pow(normalizedAnalogValue, responseExponent);
+    int output = static_cast<int>(std::round(scaled * static_cast<float>(maxRaw)));
+    return static_cast<int>(sign * output);
+  }
 }

@@ -9,14 +9,15 @@ namespace Games
   {
   public:
     DemoPlayer(Core::ContextManager *ctx) : contextManager{ctx}, Player::Player{ctx} {};
-    uint32_t getPosition() { return position; }
+    uint16_t getPosition() { return position; }
     void move(const int distance);
     void updatePlayer1LedBuffer();
     void updatePlayer2LedBuffer();
 
   private:
     Core::ContextManager *contextManager;
-    int position = 0;
-    static constexpr int width = 7;
+    uint16_t position = 0;
+    float positionPrecise = 0.0f;
+    static constexpr uint16_t width = 7;
   };
 }

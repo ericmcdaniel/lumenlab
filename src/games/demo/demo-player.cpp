@@ -16,23 +16,34 @@ namespace Games
 
   void DemoPlayer::updatePlayer1LedBuffer()
   {
-    for (int i = 0; i <= width; ++i)
+    float center = (width + 1) / 2.0f;
+    for (uint8_t i = 1; i <= width; ++i)
     {
       size_t index = (position + i) % contextManager->leds.size();
-      contextManager->leds.buffer[index].r = static_cast<int>(245.0 * (1.0 - abs(i - 4) / 4.0));
-      contextManager->leds.buffer[index].g = static_cast<int>(215.0 * (1.0 - abs(i - 4) / 4.0));
-      contextManager->leds.buffer[index].b = static_cast<int>(128.0 * (1.0 - abs(i - 4) / 4.0));
+      float intensity = 1.0f - abs(i - center) / center;
+      if (intensity < 0)
+        intensity = 0;
+
+      contextManager->leds.buffer[index].r = static_cast<uint8_t>(245.0f * intensity);
+      contextManager->leds.buffer[index].g = static_cast<uint8_t>(215.0f * intensity);
+      contextManager->leds.buffer[index].b = static_cast<uint8_t>(128.0f * intensity);
     }
   }
 
   void DemoPlayer::updatePlayer2LedBuffer()
   {
-    for (int i = 0; i <= width; ++i)
+
+    float center = (width + 1) / 2.0f;
+    for (uint8_t i = 1; i <= width; ++i)
     {
       size_t index = (position + i) % contextManager->leds.size();
-      contextManager->leds.buffer[index].r = static_cast<int>(103.0 * (1.0 - abs(i - 4) / 4.0));
-      contextManager->leds.buffer[index].g = static_cast<int>(162.0 * (1.0 - abs(i - 4) / 4.0));
-      contextManager->leds.buffer[index].b = static_cast<int>(235.0 * (1.0 - abs(i - 4) / 4.0));
+      float intensity = 1.0f - abs(i - center) / center;
+      if (intensity < 0)
+        intensity = 0;
+
+      contextManager->leds.buffer[index].r = static_cast<uint8_t>(103.0f * intensity);
+      contextManager->leds.buffer[index].g = static_cast<uint8_t>(162.0f * intensity);
+      contextManager->leds.buffer[index].b = static_cast<uint8_t>(235.0f * intensity);
     }
   }
 }

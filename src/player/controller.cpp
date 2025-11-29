@@ -83,13 +83,13 @@ namespace Player
     }
   }
 
-  const bool Controller::wasPressed(const ControllerButton button)
+  const bool Controller::wasPressed(const ControllerButton button) const
   {
     uint32_t idx = static_cast<uint32_t>(button);
     return instance->buttonPressedEvent[idx];
   }
 
-  const bool Controller::wasPressedAndReleased(const ControllerButton button)
+  const bool Controller::wasPressedAndReleased(const ControllerButton button) const
   {
     uint32_t idx = static_cast<uint32_t>(button);
     return instance->buttonReleasedEvent[idx];

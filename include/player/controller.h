@@ -60,9 +60,9 @@ namespace Player
     AnalogStick rightAnalog();
 
     const uint8_t rawButtonState(const ControllerButton button) const;
-    const bool wasPressed(const ControllerButton button);
-    const bool wasPressedAndReleased(const ControllerButton button);
-    const bool isConnected() { return instance->connection; }
+    const bool wasPressed(const ControllerButton button) const;
+    const bool wasPressedAndReleased(const ControllerButton button) const;
+    const bool isConnected() const { return instance->connection; }
     void poll();
     bool isDown(const ControllerButton button) const;
     void reset();

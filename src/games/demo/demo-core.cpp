@@ -14,9 +14,9 @@ namespace Games
     }
     auto leftInput = contextManager->controller.leftAnalog();
     auto rightInput = contextManager->controller.rightAnalog();
-    player1->move(leftInput.x);
+    player1->move(leftInput.x, speed);
     player1->updatePlayer1LedBuffer();
-    player2->move(rightInput.x);
+    player2->move(rightInput.x, speed);
     player2->updatePlayer2LedBuffer();
   }
 

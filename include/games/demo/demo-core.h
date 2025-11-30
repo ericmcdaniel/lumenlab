@@ -32,5 +32,6 @@ namespace Games
     Core::ContextManager *contextManager;
     DemoPlayer *player1 = nullptr;
     DemoPlayer *player2 = nullptr;
+    static constexpr float speed = 4.0f;
   };
 }

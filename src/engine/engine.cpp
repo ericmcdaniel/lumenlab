@@ -151,7 +151,7 @@ namespace Engine
     {
       double x = static_cast<double>(i);
       double scope = std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::LightGreen} * scope;
+      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightGreen} * scope;
     }
   }
 
@@ -169,7 +169,7 @@ namespace Engine
     {
       double x = static_cast<double>(i);
       double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::LightBlue} * (scope / 100.0);
+      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightBlue} * (scope / 100.0);
     }
   }
 
@@ -187,7 +187,7 @@ namespace Engine
     {
       double x = static_cast<double>(i);
       double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::LightBlue} * (scope / 100.0);
+      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightBlue} * (scope / 100.0);
     }
   }
 

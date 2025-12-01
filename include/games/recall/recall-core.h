@@ -4,6 +4,7 @@
 #include "core/context-manager.h"
 #include "engine/timer.h"
 #include "lights/color.h"
+#include "lights/color-code.h"
 
 namespace Games
 {
@@ -27,10 +28,10 @@ namespace Games
         Player::ControllerButton::Circle};
     uint16_t sequenceIndex = 0;
     Lights::Color colorPalette[4] = {
-        {77, 166, 255},  // ✕ blue
-        {255, 77, 77},   // ◯ red
-        {77, 255, 77},   // △ green
-        {255, 210, 77}}; // □ yellow
+        {Lights::ColorCode::GameBlue},    // ✕ blue
+        {Lights::ColorCode::GameRed},     // ◯ red
+        {Lights::ColorCode::GameGreen},   // △ green
+        {Lights::ColorCode::GameYellow}}; // □ yellow
     Player::ControllerButton gameplayColors[maxRound];
     double gameOverLedPhaseShift = 0.0;
     double successFadeawayAnimation = 1.0;

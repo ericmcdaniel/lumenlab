@@ -6,7 +6,11 @@ namespace Lights
 {
   enum class ColorCode : uint32_t
   {
-    LightBlue = 0x4DA6ff,
-    LightGreen = 0x4DFF4D
+    MenuLightBlue = 0x4DA6ff,
+    MenuLightGreen = 0x4DFF4D,
+    GameBlue = 0x4DA6FF,
+    GameRed = 0xFF4D4D,
+    GameGreen = 0x4DFF4D,
+    GameYellow = 0xFFD24D
   };
 }

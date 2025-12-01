@@ -12,5 +12,6 @@ namespace Games
 
   private:
     Core::ContextManager *contextManager;
+    static constexpr uint16_t width = 7;
   };
 }

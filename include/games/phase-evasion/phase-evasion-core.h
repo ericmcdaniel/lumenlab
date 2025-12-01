@@ -3,6 +3,7 @@
 #include "engine/layer.h"
 #include "engine/timer.h"
 #include "core/context-manager.h"
+#include "games/phase-evasion/phase-evasion-player.h"
 
 namespace Games
 {
@@ -14,5 +15,6 @@ namespace Games
 
   private:
     Core::ContextManager *contextManager;
+    PhaseEvasionPlayer player;
   };
 }

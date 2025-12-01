@@ -7,7 +7,9 @@ namespace Lights
                                                             luminance{configuration}
   {
 #ifdef RELEASE
-    FastLED.addLeds<WS2815, 4>(static_cast<Color *>(buffer), size());
+    FastLED.addLeds<WS2815, 18, GRB>(static_cast<Color *>(buffer), size());
+    // FastLED.setCorrection(0xFFB0F0);
+    // FastLED.setTemperature(0xFFE0A0);
     reset();
 #endif
   }

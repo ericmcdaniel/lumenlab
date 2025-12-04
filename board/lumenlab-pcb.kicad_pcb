@@ -7609,7 +7609,7 @@
 		(descr "Potentiometer, vertical, shaft hole, Piher T-16L Single, http://www.piher-nacesa.com/pdf/22-T16v03.pdf")
 		(tags "Potentiometer vertical hole Piher T-16L Single")
 		(property "Reference" "RV2"
-			(at 4.25 -5 180)
+			(at 4.25 -5 0)
 			(layer "F.SilkS")
 			(uuid "8e307a0d-393d-4833-b2fa-c41802dc5866")
 			(effects
@@ -7860,7 +7860,7 @@
 				(xyz 10 5 3.5)
 			)
 			(scale
-				(xyz 0.9 0.9 0.9)
+				(xyz 1 1 1)
 			)
 			(rotate
 				(xyz -0 -90 90)
@@ -11738,7 +11738,7 @@
 		(descr "Potentiometer, vertical, shaft hole, Piher T-16L Single, http://www.piher-nacesa.com/pdf/22-T16v03.pdf")
 		(tags "Potentiometer vertical hole Piher T-16L Single")
 		(property "Reference" "RV1"
-			(at 4 -5 180)
+			(at 4 -5 0)
 			(layer "F.SilkS")
 			(uuid "b7ab277b-7997-4b0b-9e98-5cfcef593efe")
 			(effects
@@ -11989,7 +11989,7 @@
 				(xyz 10 5 3.5)
 			)
 			(scale
-				(xyz 0.9 0.9 0.9)
+				(xyz 1 1 1)
 			)
 			(rotate
 				(xyz -0 -90 90)

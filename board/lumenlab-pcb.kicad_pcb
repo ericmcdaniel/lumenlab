@@ -18566,7 +18566,7 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}/3d-models/RockerPowerSwitch.step"
 			(offset
-				(xyz 0 0 -21)
+				(xyz 0 0 -17)
 			)
 			(scale
 				(xyz 1 1 1)

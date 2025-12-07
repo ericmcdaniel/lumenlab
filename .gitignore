@@ -56,3 +56,5 @@ board/**/*.htm
 board/**/*.html
 !board/bom/*.html
 board/**/*.txt
+*.FCStd[0-9]
+*.FCBak

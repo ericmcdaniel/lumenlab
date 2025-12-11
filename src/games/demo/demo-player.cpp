@@ -1,38 +1,40 @@
 #include <stdlib.h>
+#include <cmath>
 
 #include "games/demo/demo-player.h"
 
 namespace Games
 {
-
-  void DemoPlayer::move(const int distance)
-  {
-    int delta = distance / 20;
-
-    position = (position + delta) % static_cast<int>(contextManager->leds.size());
-    if (position < 0)
-      position += static_cast<int>(contextManager->leds.size()) - abs(delta);
-  }
-
   void DemoPlayer::updatePlayer1LedBuffer()
   {
-    for (int i = 0; i <= width; ++i)
+    float center = (width + 1) / 2.0f;
+    for (uint16_t i = 1; i <= width; ++i)
     {
-      size_t index = (position + i) % contextManager->leds.size();
-      contextManager->leds.buffer[index].r = static_cast<int>(245.0 * (1.0 - abs(i - 4) / 4.0));
-      contextManager->leds.buffer[index].g = static_cast<int>(215.0 * (1.0 - abs(i - 4) / 4.0));
-      contextManager->leds.buffer[index].b = static_cast<int>(128.0 * (1.0 - abs(i - 4) / 4.0));
+      uint16_t index = (position + i) % contextManager->leds.size();
+      float intensity = 1.0f - std::abs(i - center) / center;
+      if (intensity < 0)
+        intensity = 0;
+
+      contextManager->leds.buffer[index].r = static_cast<uint16_t>(245.0f * intensity);
+      contextManager->leds.buffer[index].g = static_cast<uint16_t>(215.0f * intensity);
+      contextManager->leds.buffer[index].b = static_cast<uint16_t>(128.0f * intensity);
     }
   }
 
   void DemoPlayer::updatePlayer2LedBuffer()
   {
-    for (int i = 0; i <= width; ++i)
+
+    float center = (width + 1) / 2.0f;
+    for (uint16_t i = 1; i <= width; ++i)
     {
-      size_t index = (position + i) % contextManager->leds.size();
-      contextManager->leds.buffer[index].r = static_cast<int>(103.0 * (1.0 - abs(i - 4) / 4.0));
-      contextManager->leds.buffer[index].g = static_cast<int>(162.0 * (1.0 - abs(i - 4) / 4.0));
-      contextManager->leds.buffer[index].b = static_cast<int>(235.0 * (1.0 - abs(i - 4) / 4.0));
+      uint16_t index = (position + i) % contextManager->leds.size();
+      float intensity = 1.0f - std::abs(i - center) / center;
+      if (intensity < 0)
+        intensity = 0;
+
+      contextManager->leds.buffer[index].r = static_cast<uint16_t>(103.0f * intensity);
+      contextManager->leds.buffer[index].g = static_cast<uint16_t>(162.0f * intensity);
+      contextManager->leds.buffer[index].b = static_cast<uint16_t>(235.0f * intensity);
     }
   }
 }

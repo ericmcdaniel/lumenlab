@@ -7,9 +7,9 @@ namespace Games
   class PhaseEvasionGameState
   {
   public:
-    PhaseEvasionGameState() : highScore{0}, currentScore{0} {}
-    void reset() { highScore = currentScore = 0; }
+    PhaseEvasionGameState() : highScore{0}, spectersDodged{0} {}
+    void reset() { highScore = spectersDodged = 0; }
     uint16_t highScore;
-    uint16_t currentScore;
+    uint16_t spectersDodged;
   };
 }

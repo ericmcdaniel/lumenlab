@@ -1,5 +1,6 @@
 #include <cmath>
 
+#include <FastLED.h>
 #include "engine/engine.h"
 #include "lights/color.h"
 #include "logger.h"
@@ -70,7 +71,7 @@ namespace Engine
   {
     contextManager.controller.begin(contextManager.config.macAddress);
 
-    // If debugging, ensure serial connection is stable before setting up components
+// If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
     Serial.begin(contextManager.config.serialBaud);
     contextManager.leds.reset();
@@ -150,7 +151,7 @@ namespace Engine
     {
       double x = static_cast<double>(i);
       double scope = std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::LightGreen} * scope;
+      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightGreen} * scope;
     }
   }
 
@@ -168,7 +169,7 @@ namespace Engine
     {
       double x = static_cast<double>(i);
       double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::LightBlue} * (scope / 100.0);
+      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightBlue} * (scope / 100.0);
     }
   }
 
@@ -186,7 +187,7 @@ namespace Engine
     {
       double x = static_cast<double>(i);
       double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::LightBlue} * (scope / 100.0);
+      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightBlue} * (scope / 100.0);
     }
   }
 
@@ -194,11 +195,7 @@ namespace Engine
   {
     contextManager.leds.adjustLuminance();
 #ifdef RELEASE
-    // TODO: Add actual logic to send signal to LEDs. Below is a simulation only
-
-    ////// do NOT include this in the final build obviously, this is for testing purposes only /////
-    Serial.println("LED strip updated.");
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+    FastLED.show();
 #endif
 #ifdef VIRTUALIZATION
     Serial.write(0xAA); // sync bytes

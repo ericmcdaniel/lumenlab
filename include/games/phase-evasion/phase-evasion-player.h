@@ -5,12 +5,10 @@
 
 namespace Games
 {
-  class DemoPlayer : public Player::Player
+  class PhaseEvasionPlayer : public Player::Player
   {
   public:
-    DemoPlayer(Core::ContextManager *ctx) : contextManager{ctx}, Player::Player{ctx} {};
-    void updatePlayer1LedBuffer();
-    void updatePlayer2LedBuffer();
+    PhaseEvasionPlayer(Core::ContextManager *ctx) : contextManager{ctx}, Player::Player{ctx} {};
 
   private:
     Core::ContextManager *contextManager;

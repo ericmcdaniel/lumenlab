@@ -87,7 +87,7 @@ class LEDVisualizer(mglw.WindowConfig):
             font_name='Arial',
             font_size=36,
             x=self.window_size[0] // 2,
-            y=self.window_size[1] // 3 * 2,
+            y=self.window_size[1] // 2 + 30,
             anchor_x='center',
             anchor_y='center',
             color=(190, 190, 190, 190),
@@ -98,7 +98,7 @@ class LEDVisualizer(mglw.WindowConfig):
             font_name='Arial',
             font_size=24,
             x=self.window_size[0] // 2,
-            y=self.window_size[1] // 3 * 2 - 40,
+            y=self.window_size[1] // 2 - 10,
             anchor_x='center',
             anchor_y='center',
             color=(160, 160, 160, 160),
@@ -114,17 +114,17 @@ class LEDVisualizer(mglw.WindowConfig):
         x, y = 50, 10
 
         segments = [
-            (0, 111, step, 0),
-            (112, 149, 0, step),
-            (150, 261, -step, 0),
-            (262, self.num_leds, 0, -step),
+            (0, 112, step, 0),
+            (113, 167, 0, step),
+            (168, 280, -step, 0),
+            (281, self.num_leds, 0, -step),
         ]
 
         corner_offsets = {
             0:   (4 * step, 4 * step),
-            112: (4 * step, 4 * step),
-            150: (-4 * step, 4 * step),
-            262: (-4 * step, -4 * step),
+            113: (4 * step, 4 * step),
+            168: (-4 * step, 4 * step),
+            281: (-4 * step, -4 * step),
         }
 
         for index in range(self.num_leds):

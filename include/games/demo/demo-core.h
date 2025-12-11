@@ -9,17 +9,9 @@ namespace Games
   class DemoCore : public Engine::Layer
   {
   public:
-    DemoCore(Core::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}
+    DemoCore(Core::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}, player1{DemoPlayer{ctx}}, player2{DemoPlayer{ctx}}
     {
-      player1 = new Games::DemoPlayer{contextManager};
-      player2 = new Games::DemoPlayer{contextManager};
       contextManager->stateManager.getDemoGameState().reset();
-    }
-
-    ~DemoCore()
-    {
-      delete player1;
-      delete player2;
     }
 
     void nextEvent() override;
@@ -30,7 +22,8 @@ namespace Games
 
   private:
     Core::ContextManager *contextManager;
-    DemoPlayer *player1 = nullptr;
-    DemoPlayer *player2 = nullptr;
+    DemoPlayer player1;
+    DemoPlayer player2;
+    static constexpr float speed = 4.0f;
   };
 }

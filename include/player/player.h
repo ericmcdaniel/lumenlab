@@ -8,8 +8,12 @@ namespace Player
   {
   public:
     Player(Core::ContextManager *ctx) : contextManager{ctx} {};
+    void move(const int distance, const float speed);
+    uint16_t getPosition() { return position; }
 
-  private:
+  protected:
     Core::ContextManager *contextManager;
+    uint16_t position = 0;
+    float positionPrecise = 0.0f;
   };
 }

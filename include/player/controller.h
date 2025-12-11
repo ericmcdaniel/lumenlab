@@ -60,12 +60,15 @@ namespace Player
     AnalogStick rightAnalog();
 
     const uint8_t rawButtonState(const ControllerButton button) const;
-    const bool wasPressed(const ControllerButton button);
-    const bool wasPressedAndReleased(const ControllerButton button);
-    const bool isConnected() { return instance->connection; }
+    const bool wasPressed(const ControllerButton button) const;
+    const bool wasPressedAndReleased(const ControllerButton button) const;
+    const bool isConnected() const { return instance->connection; }
     void poll();
     bool isDown(const ControllerButton button) const;
     void reset();
+    float analogToSpeed(int value, float maxOutput) const;
+    void setResponseExponent(float exp) { responseExponent = exp; }
+    void setResponseBlend(float blend) { responseBlend = blend; }
 
   private:
     Ps3Controller controller;
@@ -74,6 +77,8 @@ namespace Player
     bool buttonLastState[17] = {0};
     bool buttonPressedEvent[17] = {0};
     bool buttonReleasedEvent[17] = {0};
+    float responseExponent = 2.0f;
+    float responseBlend = 0.35f;
     static Controller *instance;
     bool connection = false;
 

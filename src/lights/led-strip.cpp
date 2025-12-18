@@ -7,9 +7,9 @@ namespace Lights
                                                             luminance{configuration}
   {
 #ifdef RELEASE
-    FastLED.addLeds<WS2815, 18, GRB>(static_cast<Color *>(buffer), size());
-    // FastLED.setCorrection(0xFFB0F0);
-    // FastLED.setTemperature(0xFFE0A0);
+    FastLED.addLeds<WS2812B, 18, GRB>(static_cast<Color *>(buffer), size());
+    FastLED.setBrightness(255);
+    FastLED.setCorrection(UncorrectedColor);
     reset();
 #endif
   }
@@ -33,7 +33,7 @@ namespace Lights
     for (uint16_t i = 0; i < size(); ++i)
     {
       float scale = static_cast<float>(luminance.getLuminance()) / LedLuminance::MAX_LED_BRIGHTNESS;
-      buffer[i] = buffer[i] * scale;
+      buffer[i] = Color(buffer[i] * scale).saturated();
     }
   }
 }

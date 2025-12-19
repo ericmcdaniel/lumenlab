@@ -91,7 +91,7 @@ class LEDVisualizer(mglw.WindowConfig):
             anchor_x='center',
             anchor_y='center',
             color=(190, 190, 190, 190),
-            width=300
+            width=327
         )
         self.description = pyglet.text.Label(
             "LED Debug Virtualizer",
@@ -102,7 +102,7 @@ class LEDVisualizer(mglw.WindowConfig):
             anchor_x='center',
             anchor_y='center',
             color=(160, 160, 160, 160),
-            width=300
+            width=327
         )
 
     def compute_led_positions(self):
@@ -173,7 +173,7 @@ class LEDVisualizer(mglw.WindowConfig):
         while True:
             try:
                 with serial.Serial(self.port, self.baud_rate, timeout=0) as ser:
-                    logging.info("Serial connected on COM3.")
+                    logging.info("Serial connected on COM4.")
                     while True:
                         chunk = ser.read(1024)
                         if chunk:
@@ -206,5 +206,5 @@ def start_led_virtualization(window_size, num_leds, port, baud_rate):
 
 
 if __name__ == '__main__':
-    logging.info("Starting the LumenLab Virtualizer at 1680x945 with 300 LEDs. Connected through COM3 with a baud rate of 921600.")
-    start_led_virtualization(window_size=(1680, 945), num_leds=300, port="COM3", baud_rate=921600)
+    logging.info("Starting the LumenLab Virtualizer at 1680x945 with 327 LEDs. Connected through COM4 with a baud rate of 921600.")
+    start_led_virtualization(window_size=(1680, 945), num_leds=327, port="COM4", baud_rate=921600)

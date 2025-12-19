@@ -33,7 +33,11 @@ namespace Lights
     for (uint16_t i = 0; i < size(); ++i)
     {
       float scale = static_cast<float>(luminance.getLuminance()) / LedLuminance::MAX_LED_BRIGHTNESS;
+#ifdef VIRTUALIZATION
+      buffer[i] = Color(buffer[i] * scale);
+#else
       buffer[i] = Color(buffer[i] * scale).saturated();
+#endif
     }
   }
 }

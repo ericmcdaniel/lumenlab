@@ -15,6 +15,7 @@ namespace Games
 
   private:
     Core::ContextManager *contextManager;
+    PhaseEvasionGameState &state = contextManager->stateManager.getPhaseEvasionGameState();
     PhaseEvasionPlayer player;
   };
 }

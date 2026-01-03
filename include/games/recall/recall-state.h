@@ -4,7 +4,7 @@
 
 namespace Games
 {
-  enum class GameState
+  enum class RecallStates
   {
     Startup,
     ComputerPlaybackOnDisplay,
@@ -20,7 +20,7 @@ namespace Games
     RecallGameState() : highScore{0}, round{0} {}
     uint16_t highScore;
     uint16_t round;
-    GameState current = GameState::Startup;
+    RecallStates current = RecallStates::Startup;
 
     void reset() { highScore = round = 0; }
   };

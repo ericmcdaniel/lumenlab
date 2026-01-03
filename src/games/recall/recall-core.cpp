@@ -11,7 +11,7 @@ namespace Games
     setupGameColors();
     state = contextManager->stateManager.getRecallGameState();
     state.reset();
-    state.current = GameState::Startup;
+    state.current = RecallStates::Startup;
     wait(gameplaySpeedIlluminated);
   }
 
@@ -36,26 +36,26 @@ namespace Games
     handleUserSpeedChange();
     switch (state.current)
     {
-    case GameState::Startup:
+    case RecallStates::Startup:
       if (isReady())
       {
-        state.current = GameState::ComputerPlaybackOnDisplay;
+        state.current = RecallStates::ComputerPlaybackOnDisplay;
         wait(gameplaySpeedIlluminated);
       }
       break;
-    case GameState::ComputerPlaybackOnDisplay:
+    case RecallStates::ComputerPlaybackOnDisplay:
       displayComputerPlayback();
       break;
-    case GameState::ComputerPlaybackPaused:
+    case RecallStates::ComputerPlaybackPaused:
       pauseComputerPlayback();
       break;
-    case GameState::PlayerResponseEvaluation:
+    case RecallStates::PlayerResponseEvaluation:
       evaluateUserRecall();
       break;
-    case GameState::PlayerResponseVerified:
+    case RecallStates::PlayerResponseVerified:
       prepareComputerPlayback();
       break;
-    case GameState::GameOver:
+    case RecallStates::GameOver:
       gameOver();
       break;
     }
@@ -81,7 +81,7 @@ namespace Games
   {
     if (isReady())
     {
-      state.current = GameState::ComputerPlaybackPaused;
+      state.current = RecallStates::ComputerPlaybackPaused;
       wait(gameplaySpeedPaused);
       return;
     }
@@ -108,7 +108,7 @@ namespace Games
   {
     if (sequenceIndex >= state.round)
     {
-      state.current = GameState::PlayerResponseEvaluation;
+      state.current = RecallStates::PlayerResponseEvaluation;
       sequenceIndex = 0;
       contextManager->controller.reset();
       successFadeawayAnimation = 1;
@@ -119,7 +119,7 @@ namespace Games
     if (isReady())
     {
       ++sequenceIndex;
-      state.current = GameState::ComputerPlaybackOnDisplay;
+      state.current = RecallStates::ComputerPlaybackOnDisplay;
       wait(gameplaySpeedIlluminated);
     }
   }
@@ -128,7 +128,7 @@ namespace Games
   {
     if (sequenceIndex > state.round && isReady())
     {
-      state.current = GameState::PlayerResponseVerified;
+      state.current = RecallStates::PlayerResponseVerified;
       ++state.round;
       contextManager->stateManager.displayShouldUpdate = true;
       contextManager->controller.reset();
@@ -156,7 +156,7 @@ namespace Games
         }
 
         logf("User provided the incorrect answer. Entering game over sequence.");
-        state.current = GameState::GameOver;
+        state.current = RecallStates::GameOver;
       }
     }
   }
@@ -220,7 +220,7 @@ namespace Games
         auto &color = colorPalette[static_cast<uint16_t>(button)];
         logf("    Color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
       }
-      state.current = GameState::ComputerPlaybackOnDisplay;
+      state.current = RecallStates::ComputerPlaybackOnDisplay;
       sequenceIndex = 0;
       wait(gameplaySpeedIlluminated);
       return;
@@ -239,7 +239,7 @@ namespace Games
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::Start))
     {
-      state.current = GameState::Startup;
+      state.current = RecallStates::Startup;
       sequenceIndex = 0;
       state.reset();
       contextManager->stateManager.getRecallGameState().reset();

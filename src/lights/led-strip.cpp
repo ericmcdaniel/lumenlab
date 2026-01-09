@@ -30,10 +30,32 @@ namespace Lights
   void LedStrip::adjustLuminance()
   {
     luminance.adjustLuminance();
+
+    constexpr float redGain = 1.0f;
+    constexpr float greenGain = 0.65f;
+    constexpr float blueGain = 0.45f;
+
+    float brightnessScale = static_cast<float>(luminance.getLuminance()) / LedLuminance::MAX_LED_BRIGHTNESS;
+
     for (uint16_t i = 0; i < size(); ++i)
     {
-      float scale = static_cast<float>(luminance.getLuminance()) / LedLuminance::MAX_LED_BRIGHTNESS;
-      buffer[i] = buffer[i] * scale;
+      Color &c = buffer[i];
+
+      float r = c.r * brightnessScale;
+      float g = c.g * brightnessScale;
+      float b = c.b * brightnessScale;
+
+      r *= redGain;
+      g *= greenGain;
+      b *= blueGain;
+
+      r = std::clamp(r, 0.0f, 255.0f);
+      g = std::clamp(g, 0.0f, 255.0f);
+      b = std::clamp(b, 0.0f, 255.0f);
+
+      c.r = LedLuminance::applyGamma(static_cast<uint8_t>(r));
+      c.g = LedLuminance::applyGamma(static_cast<uint8_t>(g));
+      c.b = LedLuminance::applyGamma(static_cast<uint8_t>(b));
     }
   }
 }

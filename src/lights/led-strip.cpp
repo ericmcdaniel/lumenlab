@@ -32,8 +32,8 @@ namespace Lights
     luminance.adjustLuminance();
 
     constexpr float redGain = 1.0f;
-    constexpr float greenGain = 0.65f;
-    constexpr float blueGain = 0.45f;
+    constexpr float greenGain = 0.70f;
+    constexpr float blueGain = 0.60f;
 
     float brightnessScale = static_cast<float>(luminance.getLuminance()) / LedLuminance::MAX_LED_BRIGHTNESS;
 

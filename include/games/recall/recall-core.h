@@ -33,8 +33,8 @@ namespace Games
         {Lights::ColorCode::GameGreen},   // △ green
         {Lights::ColorCode::GameYellow}}; // □ yellow
     Player::ControllerButton gameplayColors[maxRound];
-    double gameOverLedPhaseShift = 0.0;
-    double successFadeawayAnimation = 1.0;
+    float gameOverLedPhaseShift = 0.0f;
+    float successFadeawayAnimation = 1.0f;
 
     void setupGameColors();
     void handleUserSpeedChange();

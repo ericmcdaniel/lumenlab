@@ -40,7 +40,7 @@ Usage Example:
         allow_abbrev=False
     )
 
-    parser.add_argument("-L", "--num_leds", type=int, default=300, help="The number of LEDs in your LED strip")
+    parser.add_argument("-L", "--num_leds", type=int, default=327, help="The number of LEDs in your LED strip")
     parser.add_argument("-p", "--port", type=str, default="COM3", help="The USB serial port that the ESP32 is connected to. Defaults to COM3")
     parser.add_argument("-b", "--baud_rate", type=int, default=921600, help="The baud rate for serial streaming what the LEDs are doing. Defaults to 921600")
     window_dimensions = parser.add_argument_group("Window Dimensions", "Configure the visualization's height and width")

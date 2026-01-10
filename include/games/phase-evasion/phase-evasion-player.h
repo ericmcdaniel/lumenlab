@@ -9,9 +9,21 @@ namespace Games
   {
   public:
     PhaseEvasionPlayer(Core::ContextManager *ctx) : contextManager{ctx}, Player::Player{ctx} {};
+    void checkColorChangeRequest();
+    Lights::Color getColor() { return currentColor; }
 
   private:
     Core::ContextManager *contextManager;
-    static constexpr uint16_t width = 7;
+    Lights::Color currentColor;
+    static constexpr ::Player::ControllerButton availableGameplayButtons[] = {
+        ::Player::ControllerButton::Cross,
+        ::Player::ControllerButton::Square,
+        ::Player::ControllerButton::Triangle,
+        ::Player::ControllerButton::Circle};
+    Lights::Color colorPalette[4] = {
+        {Lights::ColorCode::GameBlue},    // ✕ blue
+        {Lights::ColorCode::GameRed},     // ◯ red
+        {Lights::ColorCode::GameGreen},   // △ green
+        {Lights::ColorCode::GameYellow}}; // □ yellow
   };
 }

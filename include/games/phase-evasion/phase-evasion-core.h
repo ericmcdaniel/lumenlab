@@ -4,6 +4,7 @@
 #include "engine/timer.h"
 #include "core/context-manager.h"
 #include "games/phase-evasion/phase-evasion-player.h"
+#include "games/phase-evasion/phase-evasion-flare.h"
 
 namespace Games
 {
@@ -17,5 +18,9 @@ namespace Games
     Core::ContextManager *contextManager;
     PhaseEvasionGameState &state = contextManager->stateManager.getPhaseEvasionGameState();
     PhaseEvasionPlayer player;
+    PhaseEvasionFlare flare;
+    void renderUserColor();
+
+    static constexpr uint16_t playerWidth = 7;
   };
 }

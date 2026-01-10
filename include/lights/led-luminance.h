@@ -14,6 +14,7 @@ namespace Lights
 
     int getLuminance() { return currentLuminance; }
     void adjustLuminance();
+    static uint8_t applyGamma(uint8_t value);
 
   private:
     const Engine::SystemConfig &config;

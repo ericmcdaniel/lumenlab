@@ -61,7 +61,9 @@
 			"mutex": "cpp",
 			"stdexcept": "cpp",
 			"cinttypes": "cpp",
-			"typeinfo": "cpp"
+			"typeinfo": "cpp",
+			"any": "cpp",
+			"variant": "cpp"
 		},
 		"terminal.integrated.profiles.windows": {
 			"PowerShell": {

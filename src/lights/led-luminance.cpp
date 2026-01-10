@@ -12,4 +12,11 @@ namespace Lights
 
     currentLuminance = dialReading;
   }
+
+  uint8_t LedLuminance::applyGamma(uint8_t value)
+  {
+    constexpr float gamma = 2.8f;
+    float normalized = value / 255.0f;
+    return static_cast<uint8_t>(powf(normalized, gamma) * 255.0f + 0.5f);
+  }
 }

@@ -11,6 +11,7 @@ namespace Games
     PhaseEvasionPlayer(Core::ContextManager *ctx) : contextManager{ctx}, Player::Player{ctx} {};
     void checkColorChangeRequest();
     Lights::Color getColor() { return currentColor; }
+    static constexpr uint16_t width = 10;
 
   private:
     Core::ContextManager *contextManager;

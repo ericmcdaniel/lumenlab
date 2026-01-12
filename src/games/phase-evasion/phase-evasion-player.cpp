@@ -20,10 +20,10 @@ namespace Games
         return;
       }
     }
-    if (currentColor != Lights::Color::SlateGray)
+    if (currentColor != Lights::Color::DimGray)
     {
       log("User returned color to neutral.");
-      currentColor = Lights::Color::SlateGray;
+      currentColor = Lights::Color::DimGray;
     }
   }
 }

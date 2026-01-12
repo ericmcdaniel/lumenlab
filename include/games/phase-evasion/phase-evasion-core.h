@@ -13,6 +13,7 @@ namespace Games
   public:
     PhaseEvasionCore(Core::ContextManager *ctx);
     void nextEvent() override;
+    static constexpr uint16_t clearance = 15;
 
   private:
     Core::ContextManager *contextManager;
@@ -20,7 +21,7 @@ namespace Games
     PhaseEvasionPlayer player;
     PhaseEvasionFlare flare;
     void renderUserColor();
-
-    static constexpr uint16_t playerWidth = 7;
+    void renderFlare();
+    void checkCollision();
   };
 }

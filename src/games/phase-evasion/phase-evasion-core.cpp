@@ -3,7 +3,9 @@
 
 namespace Games
 {
-  PhaseEvasionCore::PhaseEvasionCore(Core::ContextManager *ctx) : contextManager{ctx}, player{PhaseEvasionPlayer{contextManager}}
+  PhaseEvasionCore::PhaseEvasionCore(Core::ContextManager *ctx) : contextManager{ctx},
+                                                                  player{ctx},
+                                                                  flare{ctx}
   {
     state = contextManager->stateManager.getPhaseEvasionGameState();
     state.reset();
@@ -24,6 +26,9 @@ namespace Games
       break;
     case PhaseEvasionStates::ActiveGame:
       player.checkColorChangeRequest();
+      flare.updatePosition();
+      checkCollision();
+      renderFlare();
       renderUserColor();
       break;
     }
@@ -31,9 +36,22 @@ namespace Games
 
   void PhaseEvasionCore::renderUserColor()
   {
-    for (uint16_t i = 1; i < 8; ++i)
+    for (uint16_t i = clearance; i < clearance + player.width; ++i)
     {
       contextManager->leds.buffer[i] = player.getColor();
     }
+  }
+
+  void PhaseEvasionCore::renderFlare()
+  {
+    for (uint16_t i = flare.getPosition() - flare.width; i < flare.getPosition(); ++i)
+    {
+      contextManager->leds.buffer[i] = Lights::ColorCode::GameRed;
+    }
+  }
+
+  void PhaseEvasionCore::checkCollision()
+  {
+    // if ()
   }
 }

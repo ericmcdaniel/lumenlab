@@ -7,7 +7,8 @@ namespace Games
   enum class PhaseEvasionStates
   {
     Startup,
-    ActiveGame
+    ActiveGame,
+    GameOver
   };
 
   class PhaseEvasionGameState

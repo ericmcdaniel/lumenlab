@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="196mm"
+   height="53mm"
+   viewBox="0 0 195.99999 53"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="lumenlab-logo-inkscape.svg"
+   inkscape:export-filename="lumenlab-logo.png"
+   inkscape:export-xdpi="100"
+   inkscape:export-ydpi="100"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.99999999"
+     inkscape:cx="81.000001"
+     inkscape:cy="21.5"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1"
+     inkscape:export-bgcolor="#ffffff00" />
+  <defs
+     id="defs1">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="34.233841 : 34.707484 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="195.99999 : 26.5 : 1"
+       inkscape:persp3d-origin="97.999995 : 17.666667 : 1"
+       id="perspective5" />
+    <rect
+       x="18.471361"
+       y="-634.953"
+       width="727.30981"
+       height="259.75351"
+       id="rect5" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,2.3030571,0,1 @ F,0,0,1,0,5.5,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect4"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <linearGradient
+       id="swatch2"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#1a1a1a;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="swatch1"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1-4"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,2.4107433,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1-5"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1-5-2"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
+  <g
+     inkscape:label="logo"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#1a1a1a;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:8.6;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1"
+       width="50"
+       height="50"
+       x="1.322916"
+       y="1.5874996"
+       inkscape:label="logo-outline"
+       rx="9"
+       ry="9"
+       inkscape:export-filename="lumenlab-icon.png"
+       inkscape:export-xdpi="100"
+       inkscape:export-ydpi="100"
+       sodipodi:insensitive="true" />
+    <path
+       id="rect2"
+       style="fill:#1a1a1a;fill-opacity:1;stroke:#1a1a1a;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="game-controller-body"
+       d="m 15.547371,29.625582 v 0.0031 c -1.930042,0.02513 -3.75304,1.51844 -4.516003,3.944463 -0.911293,2.897672 -2.6715849,8.039926 -1.2262817,10.841198 0.1420569,0.275334 0.3025437,0.536947 0.4800737,0.780831 0.785838,1.079559 2.780759,2.04945 3.947046,1.919263 0.508484,-0.05676 1.005062,-0.214636 1.471745,-0.464055 0.846205,-0.302708 1.679659,-0.838646 2.420007,-1.604036 l 1.858285,-1.920813 H 32.49104 l 1.869653,1.932699 c 0.543171,0.561542 1.136056,0.999537 1.747697,1.312581 1.21472,0.843306 2.696605,1.031074 4.080371,0.358118 1.860903,-0.904999 3.002922,-3.102796 3.045809,-5.478736 0.025,-1.385036 -0.673371,-3.461405 -1.072802,-4.731494 l -0.926559,-2.947107 c -0.772398,-2.456023 -2.631393,-3.955859 -4.587834,-3.944462 v -0.0015 z"
+       sodipodi:insensitive="true" />
+    <path
+       id="rect3"
+       style="fill:#d9d9d9;fill-opacity:1;stroke-width:0.269804"
+       inkscape:label="game-controller-dpad"
+       d="m 16.920414,34.019629 c -0.1662,0 -0.30024,0.13404 -0.30024,0.30024 v 1.720825 h -1.744079 c -0.1662,0 -0.300241,0.133523 -0.300241,0.299723 v 1.650029 c 0,0.1662 0.134041,0.30024 0.300241,0.30024 h 1.744079 v 1.648478 c 0,0.1662 0.13404,0.30024 0.30024,0.30024 h 1.650029 c 0.1662,0 0.299723,-0.13404 0.299723,-0.30024 v -1.648478 h 1.625224 c 0.1662,0 0.30024,-0.13404 0.30024,-0.30024 v -1.650029 c 0,-0.1662 -0.13404,-0.299723 -0.30024,-0.299723 h -1.625224 v -1.720825 c 0,-0.1662 -0.133523,-0.30024 -0.299723,-0.30024 z"
+       sodipodi:insensitive="true" />
+    <circle
+       style="fill:#d9d9d9;fill-opacity:1;stroke:none;stroke-width:0.264999"
+       id="path3"
+       cx="34.449829"
+       cy="36.933674"
+       inkscape:label="game-controller-button"
+       r="2.4000001"
+       sodipodi:insensitive="true" />
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:29.6333px;line-height:0;font-family:Arial;-inkscape-font-specification:'Arial Bold Condensed';text-align:start;letter-spacing:-1.5875px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;display:inline;fill:#ececec;stroke-width:0.264999"
+     x="54.675709"
+     y="36.959557"
+     id="text3"
+     inkscape:label="full-name"
+     sodipodi:insensitive="true"><tspan
+       sodipodi:role="line"
+       id="tspan3"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:29.6333px;line-height:0;font-family:Arial;-inkscape-font-specification:'Arial Bold';letter-spacing:-1.5875px;word-spacing:0px;fill:#1a1a1a;stroke-width:0.265"
+       x="0"
+       y="0"
+       dx="0"
+       rotate="0 0 0 0 0 0 0 0 0">LumenLab</tspan></text>
+  <g
+     id="g11"
+     inkscape:label="led"
+     sodipodi:insensitive="true">
+    <path
+       id="path10"
+       style="fill:#ffcc00;stroke:#1a1a1a;stroke-width:2;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="m 26.000192,8.635587 a 6.5302182,7.4634546 0 0 0 -6.530572,7.463427 6.5302182,7.4634546 0 0 0 0.01688,0.533957 c -0.01087,0.07295 -0.01688,0.150691 -0.01688,0.231413 v 7.066601 c 0,0.424076 0.161969,0.76537 0.362954,0.76537 h 12.334855 c 0.200986,0 0.362955,-0.341294 0.362955,-0.76537 v -7.066601 c 0,-0.08071 -0.0062,-0.158466 -0.01688,-0.231413 a 6.5302182,7.4634546 0 0 0 0.01688,-0.533957 6.5302182,7.4634546 0 0 0 -6.530192,-7.463427 z"
+       inkscape:label="led-bulb-cap" />
+    <rect
+       style="fill:#1a1a1a;fill-opacity:1;stroke:#1a1a1a;stroke-width:1.46642;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect11"
+       width="14.984"
+       height="0.78358197"
+       x="18.483212"
+       y="24.18121"
+       inkscape:label="led-bulb-base"
+       ry="0.001" />
+    <rect
+       style="fill:#1a1a1a;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect13"
+       width="1.5"
+       height="5.4359999"
+       x="23.002552"
+       y="25"
+       ry="0.0011984882"
+       inkscape:label="led-bulb-anode" />
+    <rect
+       style="fill:#1a1a1a;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect13-2"
+       width="1.5"
+       height="5.4359999"
+       x="27.241285"
+       y="25"
+       ry="0.0011984882"
+       inkscape:label="led-bulb-cathode" />
+    <rect
+       style="fill:#f9f9f9;stroke:#000000;stroke-width:0;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect12"
+       width="2.25"
+       height="5"
+       x="26.003902"
+       y="-4.7932782"
+       rx="1.25"
+       ry="1.25"
+       transform="rotate(34.33371)"
+       inkscape:label="led-bulb-reflection" />
+  </g>
+</svg>

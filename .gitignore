@@ -5,8 +5,6 @@
 .vscode/ipch
 .csode/settings.json
 tools/.venv
-secrets.h
-platformio-override.ini
 activate-virtual-env.*
 __pycache__
 
@@ -58,3 +56,4 @@ board/**/*.html
 board/**/*.txt
 *.FCStd[0-9]
 *.FCBak
+*.FCStd.*

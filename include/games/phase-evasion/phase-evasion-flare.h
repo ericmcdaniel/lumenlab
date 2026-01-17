@@ -16,6 +16,7 @@ namespace Games
     static constexpr uint16_t width = 10;
     void updatePosition();
     uint16_t getPosition() { return position; }
+    Lights::ColorCode getColor() { return color; }
 
   private:
     Core::ContextManager *contextManager;

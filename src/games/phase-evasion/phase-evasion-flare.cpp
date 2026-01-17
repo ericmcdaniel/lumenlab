@@ -7,7 +7,7 @@ namespace Games
     if (isReady())
     {
       --position;
-      wait(20); // TODO: variable speed
+      wait(15); // TODO: variable speed
     }
   }
 }

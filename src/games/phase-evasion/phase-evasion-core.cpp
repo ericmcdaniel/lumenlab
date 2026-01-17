@@ -25,8 +25,7 @@ namespace Games
       }
       break;
     case PhaseEvasionStates::ActiveGame:
-      player.checkColorChangeRequest();
-      flare.updatePosition();
+      getUpdates();
       checkCollision();
       renderFlare();
       renderUserColor();
@@ -34,9 +33,15 @@ namespace Games
     }
   }
 
+  void PhaseEvasionCore::getUpdates()
+  {
+    player.checkColorChangeRequest();
+    flare.updatePosition();
+  }
+
   void PhaseEvasionCore::renderUserColor()
   {
-    for (uint16_t i = clearance; i < clearance + player.width; ++i)
+    for (uint16_t i = playerClearance; i < playerClearance + player.width; ++i)
     {
       contextManager->leds.buffer[i] = player.getColor();
     }
@@ -44,9 +49,12 @@ namespace Games
 
   void PhaseEvasionCore::renderFlare()
   {
-    for (uint16_t i = flare.getPosition() - flare.width; i < flare.getPosition(); ++i)
+    uint16_t start = std::max(flare.getPosition() - flare.width, 0);
+    uint16_t end = std::min(flare.getPosition(), contextManager->config.numLeds);
+
+    for (uint16_t i = start; i < end; ++i)
     {
-      contextManager->leds.buffer[i] = Lights::ColorCode::GameRed;
+      contextManager->leds.buffer[i] = flare.getColor();
     }
   }
 

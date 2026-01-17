@@ -26,9 +26,15 @@ namespace Games
       break;
     case PhaseEvasionStates::ActiveGame:
       getUpdates();
-      checkCollision();
       renderFlare();
+      checkCollision();
       renderUserColor();
+      break;
+    case PhaseEvasionStates::GameOver:
+      for (uint16_t i = 0; i < contextManager->config.numLeds; ++i)
+      {
+        contextManager->leds.buffer[i] = Lights::ColorCode::GameRed;
+      }
       break;
     }
   }
@@ -60,6 +66,12 @@ namespace Games
 
   void PhaseEvasionCore::checkCollision()
   {
-    // if ()
+    uint16_t start = std::max(flare.getPosition() - flare.width, 0);
+    uint16_t end = std::min(flare.getPosition(), contextManager->config.numLeds);
+
+    if (start <= playerClearance + player.width && end >= playerClearance && player.getColor() != flare.getColor())
+    {
+      state.current = PhaseEvasionStates::GameOver;
+    }
   }
 }

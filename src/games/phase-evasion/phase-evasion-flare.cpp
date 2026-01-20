@@ -6,8 +6,8 @@ namespace Games
   {
     if (isReady())
     {
-      --position;
-      wait(15); // TODO: variable speed
+      positionFloat -= speed;
+      wait(1); // TODO: variable speed
     }
   }
 }

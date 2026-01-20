@@ -11,16 +11,17 @@ namespace Games
   public:
     PhaseEvasionFlare(Core::ContextManager *ctx) : contextManager{ctx},
                                                    color{Lights::ColorCode::MenuLightBlue},
-                                                   position{ctx->config.numLeds + width} {}
-
+                                                   positionFloat{ctx->config.numLeds + width},
+                                                   speed{0.75f} {}
     static constexpr uint16_t width = 10;
     void updatePosition();
-    uint16_t getPosition() { return position; }
+    uint16_t getPosition() const { return static_cast<uint16_t>(positionFloat); }
     Lights::Color getColor() { return color; }
 
   private:
-    Core::ContextManager *contextManager;
-    Lights::Color color;
-    uint16_t position;
+    const Core::ContextManager *contextManager;
+    const Lights::Color color;
+    float positionFloat;
+    float speed;
   };
 }

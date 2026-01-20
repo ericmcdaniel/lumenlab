@@ -16,6 +16,6 @@ namespace Player
     if (positionPrecise < 0.0f)
       positionPrecise += ledCountF;
 
-    position = static_cast<uint16_t>(std::floor(positionPrecise)) % static_cast<uint16_t>(contextManager->leds.size());
+    position = static_cast<uint16_t>(std::floor(positionPrecise)) % contextManager->leds.size();
   }
 }

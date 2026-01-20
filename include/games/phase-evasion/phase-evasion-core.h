@@ -5,6 +5,7 @@
 #include "core/context-manager.h"
 #include "games/phase-evasion/phase-evasion-player.h"
 #include "games/phase-evasion/phase-evasion-flare.h"
+#include "games/phase-evasion/phase-evasion-flare-manager.h"
 
 namespace Games
 {
@@ -19,7 +20,8 @@ namespace Games
     Core::ContextManager *contextManager;
     PhaseEvasionGameState &state = contextManager->stateManager.getPhaseEvasionGameState();
     PhaseEvasionPlayer player;
-    PhaseEvasionFlare flare;
+    PhaseEvasionFlareManager flareMgr;
+
     void getUpdates();
     void renderUserColor();
     void renderFlare();

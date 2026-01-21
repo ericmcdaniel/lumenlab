@@ -27,11 +27,6 @@ namespace Games
         Player::ControllerButton::Triangle,
         Player::ControllerButton::Circle};
     uint16_t sequenceIndex = 0;
-    Lights::Color colorPalette[4] = {
-        {Lights::ColorCode::GameBlue},    // ✕ blue
-        {Lights::ColorCode::GameRed},     // ◯ red
-        {Lights::ColorCode::GameGreen},   // △ green
-        {Lights::ColorCode::GameYellow}}; // □ yellow
     Player::ControllerButton gameplayColors[maxRound];
     float gameOverLedPhaseShift = 0.0f;
     float successFadeawayAnimation = 1.0f;

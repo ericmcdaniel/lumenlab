@@ -59,4 +59,10 @@ namespace Lights
       return *this;
     }
   };
+
+  inline const Color colorPalette[4] = {
+      Color(ColorCode::GameBlue),
+      Color(ColorCode::GameRed),
+      Color(ColorCode::GameGreen),
+      Color(ColorCode::GameYellow)};
 }

@@ -21,10 +21,5 @@ namespace Games
         ::Player::ControllerButton::Square,
         ::Player::ControllerButton::Triangle,
         ::Player::ControllerButton::Circle};
-    Lights::Color colorPalette[4] = {
-        {Lights::ColorCode::GameBlue},    // ✕ blue
-        {Lights::ColorCode::GameRed},     // ◯ red
-        {Lights::ColorCode::GameGreen},   // △ green
-        {Lights::ColorCode::GameYellow}}; // □ yellow
   };
 }

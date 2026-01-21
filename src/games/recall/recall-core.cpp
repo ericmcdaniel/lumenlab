@@ -26,7 +26,7 @@ namespace Games
       gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
     }
     auto button = gameplayColors[0];
-    auto &color = colorPalette[static_cast<uint16_t>(button)];
+    auto &color = Lights::colorPalette[static_cast<uint16_t>(button)];
     log("First round's RGB color:");
     logf("    Color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
   }
@@ -99,7 +99,7 @@ namespace Games
     {
       double x = static_cast<double>(i);
       double scope = std::exp(-0.5 * std::pow((x - mu) / delta, 2.0));
-      auto color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex])];
+      auto color = Lights::colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex])];
       contextManager->leds.buffer[i] = color * scope;
     }
   }
@@ -149,7 +149,7 @@ namespace Games
         if (button == expectedButton)
         {
           ++sequenceIndex;
-          auto &color = colorPalette[static_cast<uint16_t>(button)];
+          auto &color = Lights::colorPalette[static_cast<uint16_t>(button)];
           logf("User correctly responded with color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
           wait(gameplaySpeedPaused);
           return;
@@ -185,7 +185,7 @@ namespace Games
       {
         auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
         for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
-          contextManager->leds.buffer[i] = colorPalette[pressedButtonIndex];
+          contextManager->leds.buffer[i] = Lights::colorPalette[pressedButtonIndex];
       }
     }
   }
@@ -217,7 +217,7 @@ namespace Games
       for (int i = 0; i <= sequenceIndex; ++i)
       {
         auto button = gameplayColors[i];
-        auto &color = colorPalette[static_cast<uint16_t>(button)];
+        auto &color = Lights::colorPalette[static_cast<uint16_t>(button)];
         logf("    Color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
       }
       state.current = RecallStates::ComputerPlaybackOnDisplay;
@@ -229,7 +229,7 @@ namespace Games
     auto boundaries = directionBoundaries(gameplayColors[sequenceIndex - 1]);
     for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
     {
-      auto &color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex - 1])];
+      auto &color = Lights::colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex - 1])];
       contextManager->leds.buffer[i] = color * successFadeawayAnimation;
     }
     successFadeawayAnimation = std::clamp(successFadeawayAnimation - 0.08, 0.0, 1.0);

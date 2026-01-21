@@ -20,7 +20,7 @@ namespace Games
       if (isReady())
       {
         state.current = PhaseEvasionStates::ActiveGame;
-        wait(1500);
+        wait(1000);
         log("Starting new game.");
       }
       break;
@@ -87,7 +87,7 @@ namespace Games
     if (isReady())
     {
       flareMgr.dispatch();
-      wait(1500);
+      wait(1000);
     }
   }
 }

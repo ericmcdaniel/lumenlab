@@ -10,13 +10,13 @@ namespace Games
       if (contextManager->controller.isDown(button))
       {
 #ifdef DEBUG
-        if (currentColor != colorPalette[static_cast<uint16_t>(button)])
+        if (currentColor != Lights::colorPalette[static_cast<uint16_t>(button)])
         {
-          auto c = colorPalette[static_cast<uint16_t>(button)];
+          auto c = Lights::colorPalette[static_cast<uint16_t>(button)];
           logf("User pressed color=%u (%u - %u - %u)", button, c.r, c.g, c.b);
         }
 #endif
-        currentColor = colorPalette[static_cast<uint16_t>(button)];
+        currentColor = Lights::colorPalette[static_cast<uint16_t>(button)];
         return;
       }
     }

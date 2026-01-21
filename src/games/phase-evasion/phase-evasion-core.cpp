@@ -4,8 +4,7 @@
 namespace Games
 {
   PhaseEvasionCore::PhaseEvasionCore(Core::ContextManager *ctx) : contextManager{ctx},
-                                                                  player{ctx},
-                                                                  flareMgr{ctx}
+                                                                  player{ctx}
   {
     state = contextManager->stateManager.getPhaseEvasionGameState();
     state.reset();
@@ -21,11 +20,13 @@ namespace Games
       if (isReady())
       {
         state.current = PhaseEvasionStates::ActiveGame;
+        wait(1500);
         log("Starting new game.");
       }
       break;
     case PhaseEvasionStates::ActiveGame:
       getUpdates();
+      checkGrowth();
       checkCollision();
       renderFlare();
       renderUserColor();
@@ -78,6 +79,15 @@ namespace Games
       {
         state.current = PhaseEvasionStates::GameOver;
       }
+    }
+  }
+
+  void PhaseEvasionCore::checkGrowth()
+  {
+    if (isReady())
+    {
+      flareMgr.dispatch();
+      wait(1500);
     }
   }
 }

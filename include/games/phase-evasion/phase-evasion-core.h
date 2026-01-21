@@ -26,5 +26,6 @@ namespace Games
     void renderUserColor();
     void renderFlare();
     void checkCollision();
+    void checkGrowth();
   };
 }

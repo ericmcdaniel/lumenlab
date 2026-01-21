@@ -1,7 +1,5 @@
 #pragma once
 
-#include "engine/timer.h"
-#include "core/context-manager.h"
 #include "games/phase-evasion/phase-evasion-flare.h"
 
 namespace Games
@@ -9,7 +7,7 @@ namespace Games
   class PhaseEvasionFlareManager : public Engine::Timer
   {
   public:
-    PhaseEvasionFlareManager(Core::ContextManager *ctx);
+    PhaseEvasionFlareManager();
 
     PhaseEvasionFlare &operator[](uint16_t index) { return flares[index]; }
     const PhaseEvasionFlare &operator[](uint16_t index) const { return flares[index]; }
@@ -22,9 +20,9 @@ namespace Games
     fl::size size() { return flares.size(); }
 
     void updatePositions();
+    void dispatch();
 
   private:
-    Core::ContextManager *contextManager;
     fl::vector<PhaseEvasionFlare> flares;
   };
 }

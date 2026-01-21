@@ -4,10 +4,6 @@ namespace Games
 {
   void PhaseEvasionFlare::updatePosition()
   {
-    if (isReady())
-    {
-      positionFloat -= speed;
-      wait(1); // TODO: variable speed
-    }
+    positionFloat -= speed;
   }
 }

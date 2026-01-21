@@ -4,9 +4,9 @@
 namespace Games
 {
   PhaseEvasionCore::PhaseEvasionCore(Core::ContextManager *ctx) : contextManager{ctx},
-                                                                  player{ctx}
+                                                                  player{ctx},
+                                                                  flareMgr{ctx}
   {
-    flareMgr.flares.push_back(ctx);
     state = contextManager->stateManager.getPhaseEvasionGameState();
     state.reset();
     state.current = PhaseEvasionStates::Startup;
@@ -42,7 +42,10 @@ namespace Games
   void PhaseEvasionCore::getUpdates()
   {
     player.checkColorChangeRequest();
-    flareMgr[0].updatePosition();
+    for (auto &flare : flareMgr)
+    {
+      flare.updatePosition();
+    }
   }
 
   void PhaseEvasionCore::renderUserColor()
@@ -55,23 +58,29 @@ namespace Games
 
   void PhaseEvasionCore::renderFlare()
   {
-    uint16_t start = std::max(flareMgr[0].getPosition() - flareMgr[0].width, 0);
-    uint16_t end = std::min(flareMgr[0].getPosition(), contextManager->config.numLeds);
-
-    for (uint16_t i = start; i < end; ++i)
+    for (const auto &flare : flareMgr)
     {
-      contextManager->leds.buffer[i] = flareMgr[0].getColor();
+      uint16_t start = std::max(flare.getPosition() - flare.width, 0);
+      uint16_t end = std::min(flare.getPosition(), contextManager->config.numLeds);
+
+      for (uint16_t i = start; i < end; ++i)
+      {
+        contextManager->leds.buffer[i] = flare.getColor();
+      }
     }
   }
 
   void PhaseEvasionCore::checkCollision()
   {
-    uint16_t start = std::max(flareMgr[0].getPosition() - flareMgr[0].width, 0);
-    uint16_t end = std::min(flareMgr[0].getPosition(), contextManager->config.numLeds);
-
-    if (start <= playerClearance + player.width && end >= playerClearance && player.getColor() != flareMgr[0].getColor())
+    for (const auto &flare : flareMgr)
     {
-      state.current = PhaseEvasionStates::GameOver;
+      uint16_t start = std::max(flare.getPosition() - flare.width, 0);
+      uint16_t end = std::min(flare.getPosition(), contextManager->config.numLeds);
+
+      if (start <= playerClearance + player.width && end >= playerClearance && player.getColor() != flare.getColor())
+      {
+        state.current = PhaseEvasionStates::GameOver;
+      }
     }
   }
 }

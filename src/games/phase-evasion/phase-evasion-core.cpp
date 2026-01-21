@@ -42,10 +42,7 @@ namespace Games
   void PhaseEvasionCore::getUpdates()
   {
     player.checkColorChangeRequest();
-    for (auto &flare : flareMgr)
-    {
-      flare.updatePosition();
-    }
+    flareMgr.updatePositions();
   }
 
   void PhaseEvasionCore::renderUserColor()

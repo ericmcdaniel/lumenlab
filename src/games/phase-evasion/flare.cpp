@@ -1,4 +1,4 @@
-#include "games/phase-evasion/phase-evasion-flare.h"
+#include "games/phase-evasion/flare.h"
 
 namespace Games::PhaseEvasion
 {

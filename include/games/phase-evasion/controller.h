@@ -3,16 +3,16 @@
 #include "engine/layer.h"
 #include "engine/timer.h"
 #include "core/context-manager.h"
-#include "games/phase-evasion/phase-evasion-player.h"
-#include "games/phase-evasion/phase-evasion-flare.h"
-#include "games/phase-evasion/phase-evasion-flare-manager.h"
+#include "games/phase-evasion/player.h"
+#include "games/phase-evasion/flare.h"
+#include "games/phase-evasion/flare-manager.h"
 
 namespace Games::PhaseEvasion
 {
-  class Core : public Engine::Layer, private Engine::Timer
+  class Controller : public Engine::Layer, private Engine::Timer
   {
   public:
-    Core(::Core::ContextManager *ctx);
+    Controller(::Core::ContextManager *ctx);
     void nextEvent() override;
     static constexpr uint16_t playerClearance = 20;
 

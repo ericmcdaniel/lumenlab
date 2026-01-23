@@ -1,10 +1,10 @@
-#include "games/phase-evasion/phase-evasion-core.h"
+#include "games/phase-evasion/controller.h"
 #include "logger.h"
 
 namespace Games::PhaseEvasion
 {
-  Core::Core(::Core::ContextManager *ctx) : contextManager{ctx},
-                                            player{ctx}
+  Controller::Controller(::Core::ContextManager *ctx) : contextManager{ctx},
+                                                        player{ctx}
   {
     state = contextManager->stateManager.getPhaseEvasionGameState();
     state.reset();
@@ -12,7 +12,7 @@ namespace Games::PhaseEvasion
     wait(500);
   }
 
-  void Core::nextEvent()
+  void Controller::nextEvent()
   {
     switch (state.current)
     {
@@ -40,13 +40,13 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Core::getUpdates()
+  void Controller::getUpdates()
   {
     player.checkColorChangeRequest();
     flareMgr.updatePositions();
   }
 
-  void Core::renderUserColor()
+  void Controller::renderUserColor()
   {
     for (uint16_t i = playerClearance; i < playerClearance + player.width; ++i)
     {
@@ -54,7 +54,7 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Core::renderFlare()
+  void Controller::renderFlare()
   {
     for (const auto &flare : flareMgr)
     {
@@ -68,7 +68,7 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Core::checkCollision()
+  void Controller::checkCollision()
   {
     for (const auto &flare : flareMgr)
     {
@@ -82,7 +82,7 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Core::checkGrowth()
+  void Controller::checkGrowth()
   {
     if (isReady())
     {

@@ -1,7 +1,7 @@
 #include "core/context-manager.h"
 #include "games/demo/demo-core.h"
 #include "games/recall/recall-core.h"
-#include "games/phase-evasion/phase-evasion-core.h"
+#include "games/phase-evasion/controller.h"
 #include "scenes/canvas/canvas.h"
 #include "logger.h"
 
@@ -154,7 +154,7 @@ namespace Core
       logf("Transitioning to Recall (Game)");
       break;
     case Engine::SystemState::GamePhaseEvasion:
-      application = new Games::PhaseEvasion::Core{this};
+      application = new Games::PhaseEvasion::Controller{this};
       logf("Transitioning to Phase Evasion (Game)");
       break;
     case Engine::SystemState::GameDemo:

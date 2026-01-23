@@ -1,7 +1,7 @@
 #pragma once
 
 #include "games/recall/recall-state.h"
-#include "games/phase-evasion/phase-evasion-state.h"
+#include "games/phase-evasion/state.h"
 #include "games/demo/demo-state.h"
 #include "scenes/canvas/canvas-state.h"
 

@@ -1,4 +1,4 @@
-#include "games/phase-evasion/phase-evasion-flare-manager.h"
+#include "games/phase-evasion/flare-manager.h"
 #include "logger.h"
 
 namespace Games::PhaseEvasion

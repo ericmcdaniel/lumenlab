@@ -1,4 +1,4 @@
-#include "games/phase-evasion/phase-evasion-player.h"
+#include "games/phase-evasion/player.h"
 #include "logger.h"
 
 namespace Games::PhaseEvasion

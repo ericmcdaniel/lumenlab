@@ -5,7 +5,7 @@
 
 namespace Display
 {
-  OledDisplay::OledDisplay(Core::ContextManager *ctx) : contextManager{ctx}
+  OledDisplay::OledDisplay(SystemCore::ContextManager *ctx) : contextManager{ctx}
   {
     Wire.begin();
     display.begin(SSD1306_SWITCHCAPVCC, DISPLAY_ADDRESS);

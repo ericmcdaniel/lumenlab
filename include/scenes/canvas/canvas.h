@@ -9,11 +9,11 @@ namespace Scenes
   class Canvas : public Engine::Layer, private Engine::Timer
   {
   public:
-    Canvas(Core::ContextManager *ctx);
+    Canvas(SystemCore::ContextManager *ctx);
     void nextEvent() override;
 
   private:
-    Core::ContextManager *contextManager;
+    SystemCore::ContextManager *contextManager;
     CanvasSceneState &state = contextManager->stateManager.getCanvasSceneState();
     Lights::ColorHsl colorHsl;
     bool hasChange = false;

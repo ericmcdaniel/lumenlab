@@ -5,7 +5,7 @@
 #include "scenes/canvas/canvas.h"
 #include "logger.h"
 
-namespace Core
+namespace SystemCore
 {
   ContextManager::ContextManager() : leds{config}, display{this} {}
 

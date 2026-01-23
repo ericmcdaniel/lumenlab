@@ -1,6 +1,6 @@
 #pragma once
 
-#include "engine/system-config.h"
+#include "core/configuration.h"
 #include "lights/color.h"
 #include "lights/led-buffer.h"
 #include "lights/led-luminance.h"
@@ -11,15 +11,15 @@ namespace Lights
   {
   public:
     LedBuffer buffer;
-    LedStrip(Engine::SystemConfig &configuration);
+    LedStrip(SystemCore::Configuration &configuration);
     Color *getRawColors();
 
-    static constexpr uint16_t size() { return Engine::SystemConfig::numLeds; }
+    static constexpr uint16_t size() { return SystemCore::Configuration::numLeds; }
     void reset();
     void adjustLuminance();
 
   private:
-    const Engine::SystemConfig &config;
+    const SystemCore::Configuration &config;
     LedLuminance luminance;
   };
 }

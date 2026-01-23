@@ -11,11 +11,11 @@ namespace Games
   class RecallCore : public Engine::Layer, private Engine::Timer
   {
   public:
-    RecallCore(Core::ContextManager *ctx);
+    RecallCore(SystemCore::ContextManager *ctx);
     void nextEvent() override;
 
   private:
-    Core::ContextManager *contextManager;
+    SystemCore::ContextManager *contextManager;
     RecallGameState &state = contextManager->stateManager.getRecallGameState();
 
     uint16_t gameplaySpeedIlluminated = 500;

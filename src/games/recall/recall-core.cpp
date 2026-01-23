@@ -6,7 +6,7 @@
 
 namespace Games
 {
-  RecallCore::RecallCore(Core::ContextManager *ctx) : contextManager{ctx}
+  RecallCore::RecallCore(SystemCore::ContextManager *ctx) : contextManager{ctx}
   {
     setupGameColors();
     state = contextManager->stateManager.getRecallGameState();

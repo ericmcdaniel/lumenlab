@@ -1,13 +1,13 @@
 #pragma once
 
-#include "engine/system-config.h"
+#include "core/configuration.h"
 
 namespace Lights
 {
   class LedLuminance
   {
   public:
-    LedLuminance(Engine::SystemConfig &configuration) : config{configuration} {}
+    LedLuminance(SystemCore::Configuration &configuration) : config{configuration} {}
 
     static constexpr float MAX_LED_BRIGHTNESS = 255.0f;
     static constexpr int MAX_ADC_READING = 4095;
@@ -17,7 +17,7 @@ namespace Lights
     static uint8_t applyGamma(uint8_t value);
 
   private:
-    const Engine::SystemConfig &config;
+    const SystemCore::Configuration &config;
     int currentLuminance = MAX_ADC_READING;
   };
 }

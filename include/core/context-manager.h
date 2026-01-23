@@ -2,12 +2,12 @@
 
 #include "engine/layer.h"
 #include "engine/state-manager.h"
-#include "engine/system-config.h"
+#include "core/configuration.h"
 #include "player/controller.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
 
-namespace Core
+namespace SystemCore
 {
   class ContextManager
   {
@@ -19,7 +19,7 @@ namespace Core
 
     Engine::Layer *application = nullptr;
     Engine::StateManager stateManager;
-    Engine::SystemConfig config;
+    SystemCore::Configuration config;
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;

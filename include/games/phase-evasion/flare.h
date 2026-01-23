@@ -5,7 +5,7 @@
 #include "common.h"
 
 #include "engine/timer.h"
-#include "engine/system-config.h"
+#include "core/configuration.h"
 #include "lights/color.h"
 #include "lights/color-code.h"
 
@@ -16,7 +16,7 @@ namespace Games::PhaseEvasion
   public:
     Flare() = delete;
     Flare(const float s) : color{Lights::colorPalette[static_cast<uint16_t>(esp_random()) % arraySize(Lights::colorPalette)]},
-                           positionFloat{Engine::SystemConfig::numLeds + width},
+                           positionFloat{SystemCore::Configuration::numLeds + width},
                            speed{s} {}
     static constexpr uint16_t width = 10;
     void updatePosition();

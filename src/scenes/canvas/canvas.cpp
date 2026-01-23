@@ -6,7 +6,7 @@
 namespace Scenes
 {
 
-  Canvas::Canvas(Core::ContextManager *ctx) : contextManager{ctx}
+  Canvas::Canvas(SystemCore::ContextManager *ctx) : contextManager{ctx}
   {
     reset();
   }

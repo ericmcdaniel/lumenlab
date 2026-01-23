@@ -9,7 +9,7 @@ namespace Games
   class DemoCore : public Engine::Layer
   {
   public:
-    DemoCore(Core::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}, player1{DemoPlayer{ctx}}, player2{DemoPlayer{ctx}}
+    DemoCore(SystemCore::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}, player1{DemoPlayer{ctx}}, player2{DemoPlayer{ctx}}
     {
       contextManager->stateManager.getDemoGameState().reset();
     }
@@ -21,7 +21,7 @@ namespace Games
     void incrementHighScore();
 
   private:
-    Core::ContextManager *contextManager;
+    SystemCore::ContextManager *contextManager;
     DemoPlayer player1;
     DemoPlayer player2;
     static constexpr float speed = 4.0f;

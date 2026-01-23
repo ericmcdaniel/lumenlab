@@ -12,12 +12,12 @@ namespace Games::PhaseEvasion
   class Controller : public Engine::Layer, private Engine::Timer
   {
   public:
-    Controller(::Core::ContextManager *ctx);
+    Controller(::SystemCore::ContextManager *ctx);
     void nextEvent() override;
     static constexpr uint16_t playerClearance = 20;
 
   private:
-    ::Core::ContextManager *contextManager;
+    ::SystemCore::ContextManager *contextManager;
     GameState &state = contextManager->stateManager.getPhaseEvasionGameState();
     Player player;
     FlareManager flareMgr;

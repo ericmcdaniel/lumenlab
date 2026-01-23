@@ -2,9 +2,9 @@
 
 #include <cstdint>
 
-namespace Engine
+namespace SystemCore
 {
-  struct SystemConfig
+  struct Configuration
   {
     // REQUIRED: modify this address to match the mac address of your PS3 controller
     static constexpr char macAddress[] = "00:1b:fb:8e:87:ac";

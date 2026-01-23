@@ -1,8 +1,8 @@
 #include "games/phase-evasion/phase-evasion-flare.h"
 
-namespace Games
+namespace Games::PhaseEvasion
 {
-  void PhaseEvasionFlare::updatePosition()
+  void Flare::updatePosition()
   {
     positionFloat -= speed;
   }

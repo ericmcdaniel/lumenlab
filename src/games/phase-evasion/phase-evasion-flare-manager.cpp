@@ -1,22 +1,22 @@
 #include "games/phase-evasion/phase-evasion-flare-manager.h"
 #include "logger.h"
 
-namespace Games
+namespace Games::PhaseEvasion
 {
-  PhaseEvasionFlareManager::PhaseEvasionFlareManager()
+  FlareManager::FlareManager()
   {
     flares.emplace_back(0.75f);
   }
 
-  void PhaseEvasionFlareManager::dispatch()
+  void FlareManager::dispatch()
   {
     flares.emplace_back(0.75f);
   }
 
-  void PhaseEvasionFlareManager::updatePositions()
+  void FlareManager::updatePositions()
   {
     bool started = false;
-    fl::vector<PhaseEvasionFlare> survivors;
+    fl::vector<Flare> survivors;
 
     for (auto itr = flares.begin(); itr != flares.end(); ++itr)
     {

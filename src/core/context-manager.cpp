@@ -154,7 +154,7 @@ namespace Core
       logf("Transitioning to Recall (Game)");
       break;
     case Engine::SystemState::GamePhaseEvasion:
-      application = new Games::PhaseEvasionCore{this};
+      application = new Games::PhaseEvasion::Core{this};
       logf("Transitioning to Phase Evasion (Game)");
       break;
     case Engine::SystemState::GameDemo:

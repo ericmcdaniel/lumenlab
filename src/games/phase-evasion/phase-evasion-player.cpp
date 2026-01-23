@@ -1,9 +1,9 @@
 #include "games/phase-evasion/phase-evasion-player.h"
 #include "logger.h"
 
-namespace Games
+namespace Games::PhaseEvasion
 {
-  void PhaseEvasionPlayer::checkColorChangeRequest()
+  void Player::checkColorChangeRequest()
   {
     for (auto button : availableGameplayButtons)
     {

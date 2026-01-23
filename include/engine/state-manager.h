@@ -77,7 +77,7 @@ namespace Engine
     const char *printSceneName(uint8_t index);
 
     Games::RecallGameState &getRecallGameState() { return recallGameState; }
-    Games::PhaseEvasionGameState &getPhaseEvasionGameState() { return phaseEvasionGameState; }
+    Games::PhaseEvasion::GameState &getPhaseEvasionGameState() { return phaseEvasionGameState; }
     Games::DemoGameState &getDemoGameState() { return demoGameState; }
 
     Scenes::CanvasSceneState &getCanvasSceneState() { return canvasSceneState; }
@@ -90,7 +90,7 @@ namespace Engine
     SceneSelection userSceneChoice = SceneSelection::Canvas;
 
     Games::RecallGameState recallGameState;
-    Games::PhaseEvasionGameState phaseEvasionGameState;
+    Games::PhaseEvasion::GameState phaseEvasionGameState;
     Games::DemoGameState demoGameState;
 
     Scenes::CanvasSceneState canvasSceneState;

@@ -1,37 +1,37 @@
 #include "games/phase-evasion/phase-evasion-core.h"
 #include "logger.h"
 
-namespace Games
+namespace Games::PhaseEvasion
 {
-  PhaseEvasionCore::PhaseEvasionCore(Core::ContextManager *ctx) : contextManager{ctx},
-                                                                  player{ctx}
+  Core::Core(::Core::ContextManager *ctx) : contextManager{ctx},
+                                            player{ctx}
   {
     state = contextManager->stateManager.getPhaseEvasionGameState();
     state.reset();
-    state.current = PhaseEvasionStates::Startup;
+    state.current = Actions::Startup;
     wait(500);
   }
 
-  void PhaseEvasionCore::nextEvent()
+  void Core::nextEvent()
   {
     switch (state.current)
     {
-    case PhaseEvasionStates::Startup:
+    case Actions::Startup:
       if (isReady())
       {
-        state.current = PhaseEvasionStates::ActiveGame;
+        state.current = Actions::ActiveGame;
         wait(1000);
         log("Starting new game.");
       }
       break;
-    case PhaseEvasionStates::ActiveGame:
+    case Actions::ActiveGame:
       getUpdates();
       checkGrowth();
       checkCollision();
       renderFlare();
       renderUserColor();
       break;
-    case PhaseEvasionStates::GameOver:
+    case Actions::GameOver:
       for (uint16_t i = 0; i < contextManager->config.numLeds; ++i)
       {
         contextManager->leds.buffer[i] = Lights::ColorCode::GameRed;
@@ -40,13 +40,13 @@ namespace Games
     }
   }
 
-  void PhaseEvasionCore::getUpdates()
+  void Core::getUpdates()
   {
     player.checkColorChangeRequest();
     flareMgr.updatePositions();
   }
 
-  void PhaseEvasionCore::renderUserColor()
+  void Core::renderUserColor()
   {
     for (uint16_t i = playerClearance; i < playerClearance + player.width; ++i)
     {
@@ -54,7 +54,7 @@ namespace Games
     }
   }
 
-  void PhaseEvasionCore::renderFlare()
+  void Core::renderFlare()
   {
     for (const auto &flare : flareMgr)
     {
@@ -68,7 +68,7 @@ namespace Games
     }
   }
 
-  void PhaseEvasionCore::checkCollision()
+  void Core::checkCollision()
   {
     for (const auto &flare : flareMgr)
     {
@@ -77,12 +77,12 @@ namespace Games
 
       if (start <= playerClearance + player.width && end >= playerClearance && player.getColor() != flare.getColor())
       {
-        state.current = PhaseEvasionStates::GameOver;
+        state.current = Actions::GameOver;
       }
     }
   }
 
-  void PhaseEvasionCore::checkGrowth()
+  void Core::checkGrowth()
   {
     if (isReady())
     {

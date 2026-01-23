@@ -2,22 +2,22 @@
 
 #include <cstdint>
 
-namespace Games
+namespace Games::PhaseEvasion
 {
-  enum class PhaseEvasionStates
+  enum class Actions
   {
     Startup,
     ActiveGame,
     GameOver
   };
 
-  class PhaseEvasionGameState
+  class GameState
   {
   public:
-    PhaseEvasionGameState() : highScore{0}, spectersDodged{0} {}
+    GameState() : highScore{0}, spectersDodged{0} {}
     uint16_t highScore;
     uint16_t spectersDodged;
-    PhaseEvasionStates current = PhaseEvasionStates::Startup;
+    Actions current = Actions::Startup;
     void reset() { highScore = spectersDodged = 0; }
   };
 }

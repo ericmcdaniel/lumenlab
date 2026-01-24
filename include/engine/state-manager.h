@@ -3,7 +3,7 @@
 #include "games/recall/state.h"
 #include "games/phase-evasion/state.h"
 #include "games/demo/state.h"
-#include "scenes/canvas/canvas-state.h"
+#include "scenes/canvas/state.h"
 
 namespace Engine
 {
@@ -80,7 +80,7 @@ namespace Engine
     Games::PhaseEvasion::GameState &getPhaseEvasionGameState() { return phaseEvasionGameState; }
     Games::Demo::GameState &getDemoGameState() { return demoGameState; }
 
-    Scenes::CanvasSceneState &getCanvasSceneState() { return canvasSceneState; }
+    Scenes::Canvas::SceneState &getCanvasSceneState() { return canvasSceneState; }
 
   private:
     SystemState systemState = SystemState::MenuHome;
@@ -93,6 +93,6 @@ namespace Engine
     Games::PhaseEvasion::GameState phaseEvasionGameState;
     Games::Demo::GameState demoGameState;
 
-    Scenes::CanvasSceneState canvasSceneState;
+    Scenes::Canvas::SceneState canvasSceneState;
   };
 }

@@ -1,17 +1,17 @@
-#include "scenes/canvas/canvas.h"
+#include "scenes/canvas/controller.h"
 #include "esp_system.h"
 #include "logger.h"
 #include <limits>
 
-namespace Scenes
+namespace Scenes::Canvas
 {
 
-  Canvas::Canvas(SystemCore::ContextManager *ctx) : contextManager{ctx}
+  Controller::Controller(SystemCore::ContextManager *ctx) : contextManager{ctx}
   {
     reset();
   }
 
-  void Canvas::nextEvent()
+  void Controller::nextEvent()
   {
     checkAnalogColorChange();
     checkBalanceColorRequest();
@@ -25,7 +25,7 @@ namespace Scenes
     }
   }
 
-  void Canvas::checkAnalogColorChange()
+  void Controller::checkAnalogColorChange()
   {
     if (contextManager->controller.leftAnalog().x > 64)
     {
@@ -59,7 +59,7 @@ namespace Scenes
     }
   }
 
-  void Canvas::checkNewColorRequest()
+  void Controller::checkNewColorRequest()
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::Triangle))
     {
@@ -68,7 +68,7 @@ namespace Scenes
     }
   }
 
-  void Canvas::checkBalanceColorRequest()
+  void Controller::checkBalanceColorRequest()
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::L1))
     {
@@ -91,7 +91,7 @@ namespace Scenes
     }
   }
 
-  void Canvas::checkChangeOccured()
+  void Controller::checkChangeOccured()
   {
     if (hasChange)
     {
@@ -102,7 +102,7 @@ namespace Scenes
     }
   }
 
-  void Canvas::checkStableControllerForDisplay()
+  void Controller::checkStableControllerForDisplay()
   {
     bool isMoving =
         abs(contextManager->controller.leftAnalog().x) > 64 ||
@@ -122,7 +122,7 @@ namespace Scenes
     }
   }
 
-  void Canvas::reset()
+  void Controller::reset()
   {
     colorHsl.hue = static_cast<uint8_t>(esp_random() % std::numeric_limits<uint8_t>::max());
     colorHsl.saturation = static_cast<uint8_t>((esp_random() % 64u) + 191u);

@@ -2,7 +2,7 @@
 #include "games/demo/controller.h"
 #include "games/recall/controller.h"
 #include "games/phase-evasion/controller.h"
-#include "scenes/canvas/canvas.h"
+#include "scenes/canvas/controller.h"
 #include "logger.h"
 
 namespace SystemCore
@@ -162,7 +162,7 @@ namespace SystemCore
       logf("Transitioning to Demo (Game)");
       break;
     case Engine::SystemState::SceneCanvas:
-      application = new Scenes::Canvas{this};
+      application = new Scenes::Canvas::Controller{this};
       logf("Transitioning to Canvas (Scene)");
       break;
     }

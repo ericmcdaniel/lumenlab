@@ -2,14 +2,14 @@
 
 #include "core/context-manager.h"
 #include "engine/layer.h"
-#include "games/demo/demo-player.h"
+#include "games/demo/player.h"
 
-namespace Games
+namespace Games::Demo
 {
-  class DemoCore : public Engine::Layer
+  class Controller : public Engine::Layer
   {
   public:
-    DemoCore(SystemCore::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}, player1{DemoPlayer{ctx}}, player2{DemoPlayer{ctx}}
+    Controller(SystemCore::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}, player1{Player{ctx}}, player2{Player{ctx}}
     {
       contextManager->stateManager.getDemoGameState().reset();
     }
@@ -22,8 +22,8 @@ namespace Games
 
   private:
     SystemCore::ContextManager *contextManager;
-    DemoPlayer player1;
-    DemoPlayer player2;
+    Player player1;
+    Player player2;
     static constexpr float speed = 4.0f;
   };
 }

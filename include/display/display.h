@@ -11,9 +11,9 @@
 
 #include "display/display-images.h"
 
-// forward declaration because of ContextManager/OledDisplay circular dependency
 namespace SystemCore
 {
+  // forward declaration because of ContextManager/OledDisplay circular dependency
   class ContextManager;
 }
 

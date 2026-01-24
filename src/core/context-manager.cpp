@@ -1,5 +1,5 @@
 #include "core/context-manager.h"
-#include "games/demo/demo-core.h"
+#include "games/demo/controller.h"
 #include "games/recall/recall-core.h"
 #include "games/phase-evasion/controller.h"
 #include "scenes/canvas/canvas.h"
@@ -158,7 +158,7 @@ namespace SystemCore
       logf("Transitioning to Phase Evasion (Game)");
       break;
     case Engine::SystemState::GameDemo:
-      application = new Games::DemoCore{this};
+      application = new Games::Demo::Controller{this};
       logf("Transitioning to Demo (Game)");
       break;
     case Engine::SystemState::SceneCanvas:

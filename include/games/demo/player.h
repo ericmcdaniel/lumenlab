@@ -3,12 +3,12 @@
 #include "core/context-manager.h"
 #include "player/player.h"
 
-namespace Games
+namespace Games::Demo
 {
-  class DemoPlayer : public Player::Player
+  class Player : public ::Player::Player
   {
   public:
-    DemoPlayer(SystemCore::ContextManager *ctx) : contextManager{ctx}, Player::Player{ctx} {};
+    Player(SystemCore::ContextManager *ctx) : contextManager{ctx}, ::Player::Player{ctx} {};
     void updatePlayer1LedBuffer();
     void updatePlayer2LedBuffer();
 

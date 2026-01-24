@@ -27,7 +27,7 @@ namespace Games::PhaseEvasion
     case Actions::ActiveGame:
       getUpdates();
       checkGrowth();
-      checkCollision();
+      // checkCollision();
       renderFlare();
       renderUserColor();
       break;
@@ -58,6 +58,9 @@ namespace Games::PhaseEvasion
   {
     for (const auto &flare : flareMgr)
     {
+      if (!flare.isActive())
+        continue;
+
       uint16_t start = std::max(flare.getPosition() - flare.width, 0);
       uint16_t end = std::min(flare.getPosition(), contextManager->config.numLeds);
 
@@ -72,6 +75,9 @@ namespace Games::PhaseEvasion
   {
     for (const auto &flare : flareMgr)
     {
+      if (!flare.isActive())
+        continue;
+
       uint16_t start = std::max(flare.getPosition() - flare.width, 0);
       uint16_t end = std::min(flare.getPosition(), contextManager->config.numLeds);
 

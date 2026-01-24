@@ -8,21 +8,23 @@ namespace Games::PhaseEvasion
   {
   public:
     FlareManager();
+    FlareManager(const FlareManager &) = delete;
+    FlareManager &operator=(const FlareManager &) = delete;
 
-    Flare &operator[](uint16_t index) { return flares[index]; }
-    const Flare &operator[](uint16_t index) const { return flares[index]; }
+    Flare &operator[](uint16_t index) { return flarePool[index]; }
+    const Flare &operator[](uint16_t index) const { return flarePool[index]; }
 
-    fl::vector<Flare>::iterator begin() { return flares.begin(); }
-    fl::vector<Flare>::iterator end() { return flares.end(); }
-    fl::vector<Flare>::const_iterator begin() const { return flares.begin(); }
-    fl::vector<Flare>::const_iterator end() const { return flares.end(); }
+    auto begin() { return flarePool.begin(); }
+    auto end() { return flarePool.end(); }
+    const auto begin() const { return flarePool.begin(); }
+    const auto end() const { return flarePool.end(); }
 
-    fl::size size() { return flares.size(); }
+    const size_t size() const;
 
     void updatePositions();
     void dispatch();
 
   private:
-    fl::vector<Flare> flares;
+    std::array<Flare, 4> flarePool;
   };
 }

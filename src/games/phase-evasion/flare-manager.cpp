@@ -5,47 +5,39 @@ namespace Games::PhaseEvasion
 {
   FlareManager::FlareManager()
   {
-    flares.emplace_back(0.75f);
+    dispatch();
   }
 
   void FlareManager::dispatch()
   {
-    flares.emplace_back(0.75f);
+    auto flare = flarePool.begin();
+    while (flare != flarePool.end())
+    {
+      if (!flare->isActive())
+      {
+        flare->activate();
+        logf("Flare #%lu dispatched", (unsigned long)size());
+        return;
+      }
+      ++flare;
+    }
+    logf("Flare dispatch: no free flares");
   }
 
   void FlareManager::updatePositions()
   {
-    bool started = false;
-    fl::vector<Flare> survivors;
-
-    for (auto itr = flares.begin(); itr != flares.end(); ++itr)
+    for (auto flare = flarePool.begin(); flare != flarePool.end(); ++flare)
     {
-      itr->updatePosition();
+      if (!flare->isActive())
+        continue;
 
-      if (itr->getPosition() > 0)
-      {
-        if (started)
-        {
-          survivors.push_back(fl::move(*itr));
-        }
-      }
-      else
-      {
-        if (!started)
-        {
-          started = true;
-          survivors.reserve(flares.size());
-          for (auto prev = flares.begin(); prev != itr; ++prev)
-          {
-            survivors.push_back(fl::move(*prev));
-          }
-        }
-      }
+      flare->updatePosition();
     }
+  }
 
-    if (started)
-    {
-      flares.swap(survivors);
-    }
+  const size_t FlareManager::size() const
+  {
+    return std::count_if(flarePool.begin(), flarePool.end(), [](const Flare &flare)
+                         { return flare.isActive(); });
   }
 }

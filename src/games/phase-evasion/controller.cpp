@@ -3,8 +3,8 @@
 
 namespace Games::PhaseEvasion
 {
-  Controller::Controller(::SystemCore::ContextManager *ctx) : contextManager{ctx},
-                                                              player{ctx}
+  Controller::Controller(SystemCore::ContextManager *ctx) : contextManager{ctx},
+                                                            player{ctx}
   {
     state = contextManager->stateManager.getPhaseEvasionGameState();
     state.reset();

@@ -6,17 +6,17 @@
 #include "lights/color.h"
 #include "lights/color-code.h"
 
-namespace Games
+namespace Games::Recall
 {
-  class RecallCore : public Engine::Layer, private Engine::Timer
+  class Controller : public Engine::Layer, private Engine::Timer
   {
   public:
-    RecallCore(SystemCore::ContextManager *ctx);
+    Controller(SystemCore::ContextManager *ctx);
     void nextEvent() override;
 
   private:
     SystemCore::ContextManager *contextManager;
-    RecallGameState &state = contextManager->stateManager.getRecallGameState();
+    GameState &state = contextManager->stateManager.getRecallGameState();
 
     uint16_t gameplaySpeedIlluminated = 500;
     uint16_t gameplaySpeedPaused = gameplaySpeedIlluminated / 6;

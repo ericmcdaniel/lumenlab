@@ -2,9 +2,9 @@
 
 #include <cstdint>
 
-namespace Games
+namespace Games::Recall
 {
-  enum class RecallStates
+  enum class Actions
   {
     Startup,
     ComputerPlaybackOnDisplay,
@@ -14,13 +14,13 @@ namespace Games
     GameOver
   };
 
-  class RecallGameState
+  class GameState
   {
   public:
-    RecallGameState() : highScore{0}, round{0} {}
+    GameState() : highScore{0}, round{0} {}
     uint16_t highScore;
     uint16_t round;
-    RecallStates current = RecallStates::Startup;
+    Actions current = Actions::Startup;
 
     void reset() { highScore = round = 0; }
   };

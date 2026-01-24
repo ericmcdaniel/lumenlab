@@ -1,6 +1,6 @@
 #include "core/context-manager.h"
 #include "games/demo/controller.h"
-#include "games/recall/recall-core.h"
+#include "games/recall/controller.h"
 #include "games/phase-evasion/controller.h"
 #include "scenes/canvas/canvas.h"
 #include "logger.h"
@@ -150,7 +150,7 @@ namespace SystemCore
     switch (stateManager.current())
     {
     case Engine::SystemState::GameRecall:
-      application = new Games::RecallCore{this};
+      application = new Games::Recall::Controller{this};
       logf("Transitioning to Recall (Game)");
       break;
     case Engine::SystemState::GamePhaseEvasion:

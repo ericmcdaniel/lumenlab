@@ -1,6 +1,6 @@
 #pragma once
 
-#include "games/recall/recall-state.h"
+#include "games/recall/state.h"
 #include "games/phase-evasion/state.h"
 #include "games/demo/state.h"
 #include "scenes/canvas/canvas-state.h"
@@ -76,7 +76,7 @@ namespace Engine
     const char *printGameName(uint8_t index);
     const char *printSceneName(uint8_t index);
 
-    Games::RecallGameState &getRecallGameState() { return recallGameState; }
+    Games::Recall::GameState &getRecallGameState() { return recallGameState; }
     Games::PhaseEvasion::GameState &getPhaseEvasionGameState() { return phaseEvasionGameState; }
     Games::Demo::GameState &getDemoGameState() { return demoGameState; }
 
@@ -89,7 +89,7 @@ namespace Engine
     GameSelection userGameChoice = GameSelection::Demo;
     SceneSelection userSceneChoice = SceneSelection::Canvas;
 
-    Games::RecallGameState recallGameState;
+    Games::Recall::GameState recallGameState;
     Games::PhaseEvasion::GameState phaseEvasionGameState;
     Games::Demo::GameState demoGameState;
 

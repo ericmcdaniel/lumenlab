@@ -1,21 +1,21 @@
 #include "esp_system.h"
 
-#include "games/recall/recall-core.h"
+#include "games/recall/controller.h"
 #include "common.h"
 #include "logger.h"
 
-namespace Games
+namespace Games::Recall
 {
-  RecallCore::RecallCore(SystemCore::ContextManager *ctx) : contextManager{ctx}
+  Controller::Controller(SystemCore::ContextManager *ctx) : contextManager{ctx}
   {
     setupGameColors();
     state = contextManager->stateManager.getRecallGameState();
     state.reset();
-    state.current = RecallStates::Startup;
+    state.current = Actions::Startup;
     wait(gameplaySpeedIlluminated);
   }
 
-  void RecallCore::setupGameColors()
+  void Controller::setupGameColors()
   {
     for (uint16_t i = 0; i < maxRound; ++i)
     {
@@ -31,37 +31,37 @@ namespace Games
     logf("    Color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
   }
 
-  void RecallCore::nextEvent()
+  void Controller::nextEvent()
   {
     handleUserSpeedChange();
     switch (state.current)
     {
-    case RecallStates::Startup:
+    case Actions::Startup:
       if (isReady())
       {
-        state.current = RecallStates::ComputerPlaybackOnDisplay;
+        state.current = Actions::ComputerPlaybackOnDisplay;
         wait(gameplaySpeedIlluminated);
       }
       break;
-    case RecallStates::ComputerPlaybackOnDisplay:
+    case Actions::ComputerPlaybackOnDisplay:
       displayComputerPlayback();
       break;
-    case RecallStates::ComputerPlaybackPaused:
+    case Actions::ComputerPlaybackPaused:
       pauseComputerPlayback();
       break;
-    case RecallStates::PlayerResponseEvaluation:
+    case Actions::PlayerResponseEvaluation:
       evaluateUserRecall();
       break;
-    case RecallStates::PlayerResponseVerified:
+    case Actions::PlayerResponseVerified:
       prepareComputerPlayback();
       break;
-    case RecallStates::GameOver:
+    case Actions::GameOver:
       gameOver();
       break;
     }
   }
 
-  void RecallCore::handleUserSpeedChange()
+  void Controller::handleUserSpeedChange()
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::Up) || contextManager->controller.leftAnalog().y < -64)
     {
@@ -77,11 +77,11 @@ namespace Games
     }
   }
 
-  void RecallCore::displayComputerPlayback()
+  void Controller::displayComputerPlayback()
   {
     if (isReady())
     {
-      state.current = RecallStates::ComputerPlaybackPaused;
+      state.current = Actions::ComputerPlaybackPaused;
       wait(gameplaySpeedPaused);
       return;
     }
@@ -104,11 +104,11 @@ namespace Games
     }
   }
 
-  void RecallCore::pauseComputerPlayback()
+  void Controller::pauseComputerPlayback()
   {
     if (sequenceIndex >= state.round)
     {
-      state.current = RecallStates::PlayerResponseEvaluation;
+      state.current = Actions::PlayerResponseEvaluation;
       sequenceIndex = 0;
       contextManager->controller.reset();
       successFadeawayAnimation = 1;
@@ -119,16 +119,16 @@ namespace Games
     if (isReady())
     {
       ++sequenceIndex;
-      state.current = RecallStates::ComputerPlaybackOnDisplay;
+      state.current = Actions::ComputerPlaybackOnDisplay;
       wait(gameplaySpeedIlluminated);
     }
   }
 
-  void RecallCore::evaluateUserRecall()
+  void Controller::evaluateUserRecall()
   {
     if (sequenceIndex > state.round && isReady())
     {
-      state.current = RecallStates::PlayerResponseVerified;
+      state.current = Actions::PlayerResponseVerified;
       ++state.round;
       contextManager->stateManager.displayShouldUpdate = true;
       contextManager->controller.reset();
@@ -140,7 +140,7 @@ namespace Games
     evaluateUserButton(gameplayColors[sequenceIndex]);
   }
 
-  void RecallCore::evaluateUserButton(Player::ControllerButton expectedButton)
+  void Controller::evaluateUserButton(Player::ControllerButton expectedButton)
   {
     for (auto button : availableGameplayButtons)
     {
@@ -156,12 +156,12 @@ namespace Games
         }
 
         logf("User provided the incorrect answer. Entering game over sequence.");
-        state.current = RecallStates::GameOver;
+        state.current = Actions::GameOver;
       }
     }
   }
 
-  void RecallCore::illuminateOnSelection()
+  void Controller::illuminateOnSelection()
   {
     static uint32_t lastLightTime = 0;
     static int pressedButtonIndex = -1;
@@ -190,7 +190,7 @@ namespace Games
     }
   }
 
-  std::pair<uint16_t, uint16_t> RecallCore::directionBoundaries(Player::ControllerButton button)
+  std::pair<uint16_t, uint16_t> Controller::directionBoundaries(Player::ControllerButton button)
   {
     const auto &boundary = contextManager->config.recallBoundaries;
 
@@ -209,7 +209,7 @@ namespace Games
     }
   }
 
-  void RecallCore::prepareComputerPlayback()
+  void Controller::prepareComputerPlayback()
   {
     if (isReady())
     {
@@ -220,7 +220,7 @@ namespace Games
         auto &color = Lights::colorPalette[static_cast<uint16_t>(button)];
         logf("    Color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
       }
-      state.current = RecallStates::ComputerPlaybackOnDisplay;
+      state.current = Actions::ComputerPlaybackOnDisplay;
       sequenceIndex = 0;
       wait(gameplaySpeedIlluminated);
       return;
@@ -235,11 +235,11 @@ namespace Games
     successFadeawayAnimation = std::clamp(successFadeawayAnimation - 0.08, 0.0, 1.0);
   }
 
-  void RecallCore::gameOver()
+  void Controller::gameOver()
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::Start))
     {
-      state.current = RecallStates::Startup;
+      state.current = Actions::Startup;
       sequenceIndex = 0;
       state.reset();
       contextManager->stateManager.getRecallGameState().reset();

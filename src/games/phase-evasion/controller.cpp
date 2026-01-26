@@ -20,8 +20,9 @@ namespace Games::PhaseEvasion
       if (isReady())
       {
         state.current = Actions::ActiveGame;
-        wait(1000);
+        flareManager.dispatch();
         log("Starting new game.");
+        wait(1000);
       }
       break;
     case Actions::ActiveGame:
@@ -43,7 +44,7 @@ namespace Games::PhaseEvasion
   void Controller::getUpdates()
   {
     player.checkColorChangeRequest();
-    flareMgr.updatePositions();
+    flareManager.updatePositions();
   }
 
   void Controller::renderUserColor()
@@ -56,7 +57,7 @@ namespace Games::PhaseEvasion
 
   void Controller::renderFlare()
   {
-    for (const auto &flare : flareMgr)
+    for (const auto &flare : flareManager)
     {
       if (!flare.isActive())
         continue;
@@ -73,7 +74,7 @@ namespace Games::PhaseEvasion
 
   void Controller::checkCollision()
   {
-    for (const auto &flare : flareMgr)
+    for (const auto &flare : flareManager)
     {
       if (!flare.isActive())
         continue;
@@ -92,7 +93,7 @@ namespace Games::PhaseEvasion
   {
     if (isReady())
     {
-      flareMgr.dispatch();
+      flareManager.dispatch();
       wait(1000);
     }
   }

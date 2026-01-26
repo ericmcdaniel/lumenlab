@@ -20,7 +20,7 @@ namespace Games::PhaseEvasion
     SystemCore::ContextManager *contextManager;
     GameState &state = contextManager->stateManager.getPhaseEvasionGameState();
     Player player;
-    FlareManager flareMgr;
+    FlareManager flareManager;
 
     void getUpdates();
     void renderUserColor();

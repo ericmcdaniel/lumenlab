@@ -7,7 +7,7 @@ namespace Games::PhaseEvasion
   class FlareManager : public Engine::Timer
   {
   public:
-    FlareManager();
+    FlareManager() = default;
     FlareManager(const FlareManager &) = delete;
     FlareManager &operator=(const FlareManager &) = delete;
 
@@ -25,6 +25,6 @@ namespace Games::PhaseEvasion
     void dispatch();
 
   private:
-    std::array<Flare, 4> flarePool;
+    std::array<Flare, 5> flarePool;
   };
 }

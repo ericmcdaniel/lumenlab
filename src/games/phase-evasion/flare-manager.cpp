@@ -3,11 +3,6 @@
 
 namespace Games::PhaseEvasion
 {
-  FlareManager::FlareManager()
-  {
-    dispatch();
-  }
-
   void FlareManager::dispatch()
   {
     auto flare = flarePool.begin();
@@ -16,7 +11,6 @@ namespace Games::PhaseEvasion
       if (!flare->isActive())
       {
         flare->activate();
-        logf("Flare #%lu dispatched", (unsigned long)size());
         return;
       }
       ++flare;
@@ -26,12 +20,12 @@ namespace Games::PhaseEvasion
 
   void FlareManager::updatePositions()
   {
-    for (auto flare = flarePool.begin(); flare != flarePool.end(); ++flare)
+    for (auto &flare : flarePool)
     {
-      if (!flare->isActive())
+      if (!flare.isActive())
         continue;
 
-      flare->updatePosition();
+      flare.updatePosition();
     }
   }
 

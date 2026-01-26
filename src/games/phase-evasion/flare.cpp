@@ -4,7 +4,7 @@ namespace Games::PhaseEvasion
 {
   void Flare::updatePosition()
   {
-    if (positionFloat <= 0)
+    if (positionFloat <= 0.0f)
     {
       active = false;
     }

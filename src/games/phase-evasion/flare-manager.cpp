@@ -1,4 +1,5 @@
 #include "games/phase-evasion/flare-manager.h"
+#include "common.h"
 #include "logger.h"
 
 namespace Games::PhaseEvasion
@@ -10,7 +11,8 @@ namespace Games::PhaseEvasion
     {
       if (!flare->isActive())
       {
-        flare->activate();
+        uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(Lights::colorPalette);
+        flare->activate(Lights::colorPalette[colorIndex], 0.75);
         return;
       }
       ++flare;

@@ -7,6 +7,7 @@ namespace Games::PhaseEvasion
     if (positionFloat <= 0.0f)
     {
       active = false;
+      color = Lights::Color::WhiteSmoke;
     }
     else
     {
@@ -14,9 +15,11 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Flare::activate()
+  void Flare::activate(Lights::Color _color, float _speed)
   {
     active = true;
+    color = _color;
+    speed = _speed;
     positionFloat = static_cast<float>(SystemCore::Configuration::numLeds + width);
   }
 

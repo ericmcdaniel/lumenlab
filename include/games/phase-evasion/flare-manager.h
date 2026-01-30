@@ -25,6 +25,6 @@ namespace Games::PhaseEvasion
     void dispatch();
 
   private:
-    std::array<Flare, 5> flarePool;
+    std::array<Flare, 10> flarePool;
   };
 }

@@ -110,6 +110,7 @@ namespace Engine
       lastRender = micros();
       log("Startup process completed. Transitioning to Main Menu");
     }
+    randomSeed(esp_random());
   }
 
   void GameEngine::standbyControllerConnection()

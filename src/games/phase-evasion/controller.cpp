@@ -28,7 +28,7 @@ namespace Games::PhaseEvasion
     case Actions::ActiveGame:
       getUpdates();
       checkGrowth();
-      // checkCollision();
+      checkCollision();
       renderFlare();
       renderUserColor();
       break;

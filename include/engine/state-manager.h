@@ -1,9 +1,9 @@
 #pragma once
 
-#include "games/recall/recall-state.h"
-#include "games/phase-evasion/phase-evasion-state.h"
-#include "games/demo/demo-state.h"
-#include "scenes/canvas/canvas-state.h"
+#include "games/recall/state.h"
+#include "games/phase-evasion/state.h"
+#include "games/demo/state.h"
+#include "scenes/canvas/state.h"
 
 namespace Engine
 {
@@ -76,11 +76,11 @@ namespace Engine
     const char *printGameName(uint8_t index);
     const char *printSceneName(uint8_t index);
 
-    Games::RecallGameState &getRecallGameState() { return recallGameState; }
-    Games::PhaseEvasionGameState &getPhaseEvasionGameState() { return phaseEvasionGameState; }
-    Games::DemoGameState &getDemoGameState() { return demoGameState; }
+    Games::Recall::GameState &getRecallGameState() { return recallGameState; }
+    Games::PhaseEvasion::GameState &getPhaseEvasionGameState() { return phaseEvasionGameState; }
+    Games::Demo::GameState &getDemoGameState() { return demoGameState; }
 
-    Scenes::CanvasSceneState &getCanvasSceneState() { return canvasSceneState; }
+    Scenes::Canvas::SceneState &getCanvasSceneState() { return canvasSceneState; }
 
   private:
     SystemState systemState = SystemState::MenuHome;
@@ -89,10 +89,10 @@ namespace Engine
     GameSelection userGameChoice = GameSelection::Demo;
     SceneSelection userSceneChoice = SceneSelection::Canvas;
 
-    Games::RecallGameState recallGameState;
-    Games::PhaseEvasionGameState phaseEvasionGameState;
-    Games::DemoGameState demoGameState;
+    Games::Recall::GameState recallGameState;
+    Games::PhaseEvasion::GameState phaseEvasionGameState;
+    Games::Demo::GameState demoGameState;
 
-    Scenes::CanvasSceneState canvasSceneState;
+    Scenes::Canvas::SceneState canvasSceneState;
   };
 }

@@ -11,9 +11,9 @@
 
 #include "display/display-images.h"
 
-// forward declaration because of ContextManager/OledDisplay circular dependency
-namespace Core
+namespace SystemCore
 {
+  // forward declaration because of ContextManager/OledDisplay circular dependency
   class ContextManager;
 }
 
@@ -23,7 +23,7 @@ namespace Display
   class OledDisplay
   {
   public:
-    OledDisplay(Core::ContextManager *contextManager);
+    OledDisplay(SystemCore::ContextManager *contextManager);
     void updateDisplay();
 
   private:
@@ -32,7 +32,7 @@ namespace Display
     static constexpr int DISPLAY_ADDRESS = 0x3c;
     Adafruit_SSD1306 display;
 
-    Core::ContextManager *contextManager;
+    SystemCore::ContextManager *contextManager;
     ImageInitLogo initLogo;
 
     char selectedOption(uint8_t index, uint8_t selectedOptionIndex) { return index == selectedOptionIndex ? '>' : ' '; };

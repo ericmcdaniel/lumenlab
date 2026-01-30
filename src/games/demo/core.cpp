@@ -1,12 +1,12 @@
-#include "games/demo/demo-core.h"
+#include "games/demo/controller.h"
 #include "player/controller.h"
 #include "logger.h"
 
-namespace Games
+namespace Games::Demo
 {
-  void DemoCore::nextEvent()
+  void Controller::nextEvent()
   {
-    if (contextManager->controller.wasPressed(Player::ControllerButton::Cross))
+    if (contextManager->controller.wasPressed(::Player::ControllerButton::Cross))
     {
       incrementCurrentScore();
       contextManager->stateManager.displayShouldUpdate = true;
@@ -20,13 +20,13 @@ namespace Games
     player2.updatePlayer2LedBuffer();
   }
 
-  void DemoCore::incrementCurrentScore()
+  void Controller::incrementCurrentScore()
   {
     ++contextManager->stateManager.getDemoGameState().currentScore;
     contextManager->stateManager.displayShouldUpdate = true;
   }
 
-  void DemoCore::incrementHighScore()
+  void Controller::incrementHighScore()
   {
     ++contextManager->stateManager.getDemoGameState().highScore;
     contextManager->stateManager.displayShouldUpdate = true;

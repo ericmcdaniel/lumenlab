@@ -6,17 +6,17 @@
 #include "lights/color.h"
 #include "lights/color-code.h"
 
-namespace Games
+namespace Games::Recall
 {
-  class RecallCore : public Engine::Layer, private Engine::Timer
+  class Controller : public Engine::Layer, private Engine::Timer
   {
   public:
-    RecallCore(Core::ContextManager *ctx);
+    Controller(SystemCore::ContextManager *ctx);
     void nextEvent() override;
 
   private:
-    Core::ContextManager *contextManager;
-    RecallGameState &state = contextManager->stateManager.getRecallGameState();
+    SystemCore::ContextManager *contextManager;
+    GameState &state = contextManager->stateManager.getRecallGameState();
 
     uint16_t gameplaySpeedIlluminated = 500;
     uint16_t gameplaySpeedPaused = gameplaySpeedIlluminated / 6;
@@ -27,11 +27,6 @@ namespace Games
         Player::ControllerButton::Triangle,
         Player::ControllerButton::Circle};
     uint16_t sequenceIndex = 0;
-    Lights::Color colorPalette[4] = {
-        {Lights::ColorCode::GameBlue},    // ✕ blue
-        {Lights::ColorCode::GameRed},     // ◯ red
-        {Lights::ColorCode::GameGreen},   // △ green
-        {Lights::ColorCode::GameYellow}}; // □ yellow
     Player::ControllerButton gameplayColors[maxRound];
     float gameOverLedPhaseShift = 0.0f;
     float successFadeawayAnimation = 1.0f;

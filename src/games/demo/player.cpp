@@ -1,11 +1,11 @@
 #include <stdlib.h>
 #include <cmath>
 
-#include "games/demo/demo-player.h"
+#include "games/demo/player.h"
 
-namespace Games
+namespace Games::Demo
 {
-  void DemoPlayer::updatePlayer1LedBuffer()
+  void Player::updatePlayer1LedBuffer()
   {
     float center = (width + 1) / 2.0f;
     for (uint16_t i = 1; i <= width; ++i)
@@ -21,7 +21,7 @@ namespace Games
     }
   }
 
-  void DemoPlayer::updatePlayer2LedBuffer()
+  void Player::updatePlayer2LedBuffer()
   {
 
     float center = (width + 1) / 2.0f;

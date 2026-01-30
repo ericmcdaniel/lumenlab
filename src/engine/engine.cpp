@@ -110,6 +110,7 @@ namespace Engine
       lastRender = micros();
       log("Startup process completed. Transitioning to Main Menu");
     }
+    randomSeed(esp_random());
   }
 
   void GameEngine::standbyControllerConnection()
@@ -206,7 +207,7 @@ namespace Engine
 
   void GameEngine::displayTask(void *param)
   {
-    auto *ctx = static_cast<Core::ContextManager *>(param);
+    auto *ctx = static_cast<SystemCore::ContextManager *>(param);
     while (true)
     {
       if (ctx->stateManager.displayShouldUpdate)

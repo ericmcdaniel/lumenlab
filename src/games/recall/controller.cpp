@@ -1,21 +1,21 @@
 #include "esp_system.h"
 
-#include "games/recall/recall-core.h"
+#include "games/recall/controller.h"
 #include "common.h"
 #include "logger.h"
 
-namespace Games
+namespace Games::Recall
 {
-  RecallCore::RecallCore(Core::ContextManager *ctx) : contextManager{ctx}
+  Controller::Controller(SystemCore::ContextManager *ctx) : contextManager{ctx}
   {
     setupGameColors();
     state = contextManager->stateManager.getRecallGameState();
     state.reset();
-    state.current = GameState::Startup;
+    state.current = Actions::Startup;
     wait(gameplaySpeedIlluminated);
   }
 
-  void RecallCore::setupGameColors()
+  void Controller::setupGameColors()
   {
     for (uint16_t i = 0; i < maxRound; ++i)
     {
@@ -26,42 +26,42 @@ namespace Games
       gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
     }
     auto button = gameplayColors[0];
-    auto &color = colorPalette[static_cast<uint16_t>(button)];
+    auto &color = Lights::colorPalette[static_cast<uint16_t>(button)];
     log("First round's RGB color:");
     logf("    Color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
   }
 
-  void RecallCore::nextEvent()
+  void Controller::nextEvent()
   {
     handleUserSpeedChange();
     switch (state.current)
     {
-    case GameState::Startup:
+    case Actions::Startup:
       if (isReady())
       {
-        state.current = GameState::ComputerPlaybackOnDisplay;
+        state.current = Actions::ComputerPlaybackOnDisplay;
         wait(gameplaySpeedIlluminated);
       }
       break;
-    case GameState::ComputerPlaybackOnDisplay:
+    case Actions::ComputerPlaybackOnDisplay:
       displayComputerPlayback();
       break;
-    case GameState::ComputerPlaybackPaused:
+    case Actions::ComputerPlaybackPaused:
       pauseComputerPlayback();
       break;
-    case GameState::PlayerResponseEvaluation:
+    case Actions::PlayerResponseEvaluation:
       evaluateUserRecall();
       break;
-    case GameState::PlayerResponseVerified:
+    case Actions::PlayerResponseVerified:
       prepareComputerPlayback();
       break;
-    case GameState::GameOver:
+    case Actions::GameOver:
       gameOver();
       break;
     }
   }
 
-  void RecallCore::handleUserSpeedChange()
+  void Controller::handleUserSpeedChange()
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::Up) || contextManager->controller.leftAnalog().y < -64)
     {
@@ -77,11 +77,11 @@ namespace Games
     }
   }
 
-  void RecallCore::displayComputerPlayback()
+  void Controller::displayComputerPlayback()
   {
     if (isReady())
     {
-      state.current = GameState::ComputerPlaybackPaused;
+      state.current = Actions::ComputerPlaybackPaused;
       wait(gameplaySpeedPaused);
       return;
     }
@@ -99,16 +99,16 @@ namespace Games
     {
       double x = static_cast<double>(i);
       double scope = std::exp(-0.5 * std::pow((x - mu) / delta, 2.0));
-      auto color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex])];
+      auto color = Lights::colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex])];
       contextManager->leds.buffer[i] = color * scope;
     }
   }
 
-  void RecallCore::pauseComputerPlayback()
+  void Controller::pauseComputerPlayback()
   {
     if (sequenceIndex >= state.round)
     {
-      state.current = GameState::PlayerResponseEvaluation;
+      state.current = Actions::PlayerResponseEvaluation;
       sequenceIndex = 0;
       contextManager->controller.reset();
       successFadeawayAnimation = 1;
@@ -119,16 +119,16 @@ namespace Games
     if (isReady())
     {
       ++sequenceIndex;
-      state.current = GameState::ComputerPlaybackOnDisplay;
+      state.current = Actions::ComputerPlaybackOnDisplay;
       wait(gameplaySpeedIlluminated);
     }
   }
 
-  void RecallCore::evaluateUserRecall()
+  void Controller::evaluateUserRecall()
   {
     if (sequenceIndex > state.round && isReady())
     {
-      state.current = GameState::PlayerResponseVerified;
+      state.current = Actions::PlayerResponseVerified;
       ++state.round;
       contextManager->stateManager.displayShouldUpdate = true;
       contextManager->controller.reset();
@@ -140,7 +140,7 @@ namespace Games
     evaluateUserButton(gameplayColors[sequenceIndex]);
   }
 
-  void RecallCore::evaluateUserButton(Player::ControllerButton expectedButton)
+  void Controller::evaluateUserButton(Player::ControllerButton expectedButton)
   {
     for (auto button : availableGameplayButtons)
     {
@@ -149,19 +149,19 @@ namespace Games
         if (button == expectedButton)
         {
           ++sequenceIndex;
-          auto &color = colorPalette[static_cast<uint16_t>(button)];
+          auto &color = Lights::colorPalette[static_cast<uint16_t>(button)];
           logf("User correctly responded with color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
           wait(gameplaySpeedPaused);
           return;
         }
 
         logf("User provided the incorrect answer. Entering game over sequence.");
-        state.current = GameState::GameOver;
+        state.current = Actions::GameOver;
       }
     }
   }
 
-  void RecallCore::illuminateOnSelection()
+  void Controller::illuminateOnSelection()
   {
     static uint32_t lastLightTime = 0;
     static int pressedButtonIndex = -1;
@@ -185,12 +185,12 @@ namespace Games
       {
         auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
         for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
-          contextManager->leds.buffer[i] = colorPalette[pressedButtonIndex];
+          contextManager->leds.buffer[i] = Lights::colorPalette[pressedButtonIndex];
       }
     }
   }
 
-  std::pair<uint16_t, uint16_t> RecallCore::directionBoundaries(Player::ControllerButton button)
+  std::pair<uint16_t, uint16_t> Controller::directionBoundaries(Player::ControllerButton button)
   {
     const auto &boundary = contextManager->config.recallBoundaries;
 
@@ -209,7 +209,7 @@ namespace Games
     }
   }
 
-  void RecallCore::prepareComputerPlayback()
+  void Controller::prepareComputerPlayback()
   {
     if (isReady())
     {
@@ -217,10 +217,10 @@ namespace Games
       for (int i = 0; i <= sequenceIndex; ++i)
       {
         auto button = gameplayColors[i];
-        auto &color = colorPalette[static_cast<uint16_t>(button)];
+        auto &color = Lights::colorPalette[static_cast<uint16_t>(button)];
         logf("    Color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
       }
-      state.current = GameState::ComputerPlaybackOnDisplay;
+      state.current = Actions::ComputerPlaybackOnDisplay;
       sequenceIndex = 0;
       wait(gameplaySpeedIlluminated);
       return;
@@ -229,17 +229,17 @@ namespace Games
     auto boundaries = directionBoundaries(gameplayColors[sequenceIndex - 1]);
     for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
     {
-      auto &color = colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex - 1])];
+      auto &color = Lights::colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex - 1])];
       contextManager->leds.buffer[i] = color * successFadeawayAnimation;
     }
     successFadeawayAnimation = std::clamp(successFadeawayAnimation - 0.08, 0.0, 1.0);
   }
 
-  void RecallCore::gameOver()
+  void Controller::gameOver()
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::Start))
     {
-      state.current = GameState::Startup;
+      state.current = Actions::Startup;
       sequenceIndex = 0;
       state.reset();
       contextManager->stateManager.getRecallGameState().reset();

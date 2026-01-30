@@ -1,11 +1,11 @@
 #include "core/context-manager.h"
-#include "games/demo/demo-core.h"
-#include "games/recall/recall-core.h"
-#include "games/phase-evasion/phase-evasion-core.h"
-#include "scenes/canvas/canvas.h"
+#include "games/demo/controller.h"
+#include "games/recall/controller.h"
+#include "games/phase-evasion/controller.h"
+#include "scenes/canvas/controller.h"
 #include "logger.h"
 
-namespace Core
+namespace SystemCore
 {
   ContextManager::ContextManager() : leds{config}, display{this} {}
 
@@ -150,19 +150,19 @@ namespace Core
     switch (stateManager.current())
     {
     case Engine::SystemState::GameRecall:
-      application = new Games::RecallCore{this};
+      application = new Games::Recall::Controller{this};
       logf("Transitioning to Recall (Game)");
       break;
     case Engine::SystemState::GamePhaseEvasion:
-      application = new Games::PhaseEvasionCore{this};
+      application = new Games::PhaseEvasion::Controller{this};
       logf("Transitioning to Phase Evasion (Game)");
       break;
     case Engine::SystemState::GameDemo:
-      application = new Games::DemoCore{this};
+      application = new Games::Demo::Controller{this};
       logf("Transitioning to Demo (Game)");
       break;
     case Engine::SystemState::SceneCanvas:
-      application = new Scenes::Canvas{this};
+      application = new Scenes::Canvas::Controller{this};
       logf("Transitioning to Canvas (Scene)");
       break;
     }

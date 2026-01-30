@@ -4,12 +4,12 @@
 
 #include "lights/color.h"
 
-namespace Scenes
+namespace Scenes::Canvas
 {
-  class CanvasSceneState
+  class SceneState
   {
   public:
-    CanvasSceneState() : currentColor{} {}
+    SceneState() : currentColor{} {}
     Lights::Color currentColor;
   };
 }

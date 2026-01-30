@@ -16,7 +16,7 @@ namespace Engine
     void standbyControllerConnection();
 
   private:
-    Core::ContextManager contextManager;
+    SystemCore::ContextManager contextManager;
     uint32_t lastRender = 0;
     void initializeEngine();
     void renderLedStrip();

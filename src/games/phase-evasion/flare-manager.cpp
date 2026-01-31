@@ -28,6 +28,13 @@ namespace Games::PhaseEvasion
         continue;
 
       flare.updatePosition();
+
+      if (flare.completedCycle)
+      {
+        contextManager->stateManager.getPhaseEvasionGameState().spectersDodged++;
+        contextManager->stateManager.displayShouldUpdate = true;
+        flare.completedCycle = false;
+      }
     }
   }
 

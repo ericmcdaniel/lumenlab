@@ -13,10 +13,7 @@ namespace Games::PhaseEvasion
   class Flare : public Engine::Timer
   {
   public:
-    Flare() : active{false},
-              color{Lights::Color::WhiteSmoke},
-              speed{0.0f},
-              positionFloat{SystemCore::Configuration::numLeds + width} {};
+    Flare() = default;
 
     static constexpr uint16_t width = 10;
     void updatePosition();
@@ -26,11 +23,12 @@ namespace Games::PhaseEvasion
     bool isActive() const { return active; }
     void activate(Lights::Color color, float speed);
     void deactivate();
+    bool completedCycle = false;
 
   private:
-    bool active;
-    Lights::Color color;
-    float speed;
-    float positionFloat;
+    bool active = false;
+    Lights::Color color = Lights::Color::WhiteSmoke;
+    float speed = 0.0f;
+    float positionFloat = SystemCore::Configuration::numLeds + width;
   };
 }

@@ -4,7 +4,8 @@
 namespace Games::PhaseEvasion
 {
   Controller::Controller(SystemCore::ContextManager *ctx) : contextManager{ctx},
-                                                            player{ctx}
+                                                            player{ctx},
+                                                            flareManager{ctx}
   {
     state = contextManager->stateManager.getPhaseEvasionGameState();
     state.reset();

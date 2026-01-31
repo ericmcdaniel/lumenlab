@@ -21,7 +21,7 @@ namespace Games::PhaseEvasion
       if (isReady())
       {
         state.current = Actions::ActiveGame;
-        flareManager.dispatch();
+        flareManager.dispatch(speed);
         log("Starting new game.");
         wait(1000);
       }
@@ -94,8 +94,9 @@ namespace Games::PhaseEvasion
   {
     if (isReady())
     {
-      flareManager.dispatch();
-      wait(1000);
+      flareManager.dispatch(speed);
+      uint32_t timeDelay = (esp_random() % interval) + gap;
+      wait(timeDelay);
     }
   }
 }

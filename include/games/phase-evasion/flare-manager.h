@@ -23,7 +23,7 @@ namespace Games::PhaseEvasion
     const size_t size() const;
 
     void updatePositions();
-    void dispatch();
+    void dispatch(float speed);
 
   private:
     SystemCore::ContextManager *contextManager;

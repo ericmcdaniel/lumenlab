@@ -4,7 +4,7 @@
 
 namespace Games::PhaseEvasion
 {
-  void FlareManager::dispatch()
+  void FlareManager::dispatch(float speed)
   {
     auto flare = flarePool.begin();
     while (flare != flarePool.end())
@@ -12,7 +12,7 @@ namespace Games::PhaseEvasion
       if (!flare->isActive())
       {
         uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(Lights::colorPalette);
-        flare->activate(Lights::colorPalette[colorIndex], 0.75);
+        flare->activate(Lights::colorPalette[colorIndex], speed);
         return;
       }
       ++flare;

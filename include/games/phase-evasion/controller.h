@@ -21,6 +21,9 @@ namespace Games::PhaseEvasion
     GameState &state = contextManager->stateManager.getPhaseEvasionGameState();
     Player player;
     FlareManager flareManager;
+    uint32_t interval = 2000;
+    uint32_t gap = 2000;
+    float speed = 0.4f;
 
     void getUpdates();
     void renderUserColor();

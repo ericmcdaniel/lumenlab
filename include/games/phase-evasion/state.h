@@ -14,10 +14,10 @@ namespace Games::PhaseEvasion
   class GameState
   {
   public:
-    GameState() : highScore{0}, spectersDodged{0} {}
+    GameState() : highScore{0}, flaresEvaded{0} {}
     uint16_t highScore;
-    uint16_t spectersDodged;
+    uint16_t flaresEvaded;
     Actions current = Actions::Startup;
-    void reset() { highScore = spectersDodged = 0; }
+    void reset() { highScore = flaresEvaded = 0; }
   };
 }

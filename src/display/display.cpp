@@ -189,8 +189,8 @@ namespace Display
     drawHeader("Phase Evasion");
 
     display.setCursor(0, 16);
-    display.print("Specters Dodged: ");
-    display.print(contextManager->stateManager.getPhaseEvasionGameState().spectersDodged);
+    display.print("Flares Evaded: ");
+    display.print(contextManager->stateManager.getPhaseEvasionGameState().flaresEvaded);
     display.setCursor(0, 24);
     display.print("High Score: -");
 

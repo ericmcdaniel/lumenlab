@@ -31,7 +31,7 @@ namespace Games::PhaseEvasion
 
       if (flare.completedCycle)
       {
-        contextManager->stateManager.getPhaseEvasionGameState().spectersDodged++;
+        contextManager->stateManager.getPhaseEvasionGameState().flaresEvaded++;
         contextManager->stateManager.displayShouldUpdate = true;
         flare.completedCycle = false;
       }

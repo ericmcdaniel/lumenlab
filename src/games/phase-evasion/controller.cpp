@@ -21,9 +21,7 @@ namespace Games::PhaseEvasion
       if (isReady())
       {
         state.current = Actions::ActiveGame;
-        flareManager.dispatch(speed);
         log("Starting new game.");
-        wait(1000);
       }
       break;
     case Actions::ActiveGame:

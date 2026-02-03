@@ -11,8 +11,9 @@ namespace Games::PhaseEvasion
     state = contextManager->stateManager.getPhaseEvasionGameState();
     state.reset();
     state.current = Actions::Startup;
+    reset();
     wait(500);
-    intermissionTimer.wait(intermissionDelay);
+    windDownTimer.wait(windDownLength);
   }
 
   void Controller::nextEvent()
@@ -48,7 +49,7 @@ namespace Games::PhaseEvasion
 
   void Controller::renderPlayer()
   {
-    for (uint16_t i = playerClearance; i < playerClearance + player.width; ++i)
+    for (uint16_t i = playerOffset; i < playerOffset + player.width; ++i)
     {
       contextManager->leds.buffer[i] = player.getColor();
     }
@@ -67,7 +68,7 @@ namespace Games::PhaseEvasion
       for (uint16_t i = flareHead; i < flareTail; ++i)
       {
         uint16_t distance = i - flareHead;
-        double attenuation = std::clamp(1.0 - 0.085 * static_cast<double>(distance), 0.0, 1.0);
+        double attenuation = std::clamp(1.0 - 0.08 * static_cast<double>(distance), 0.0, 1.0);
 
         contextManager->leds.buffer[i] = flare.getColor() * attenuation;
       }
@@ -84,8 +85,8 @@ namespace Games::PhaseEvasion
       uint16_t start = std::max(flare.getPosition() - flare.width, 0);
       uint16_t end = std::min(flare.getPosition(), contextManager->config.numLeds);
       bool isUnmatchingColor = player.getColor() != flare.getColor();
-      bool hasEnteredRegion = start <= playerClearance + player.width;
-      bool hasNotExitedRegion = end >= playerClearance;
+      bool hasEnteredRegion = start <= playerOffset + player.width;
+      bool hasNotExitedRegion = end >= playerOffset;
 
       if (isUnmatchingColor && hasEnteredRegion && hasNotExitedRegion)
       {
@@ -98,43 +99,51 @@ namespace Games::PhaseEvasion
   {
     if (isReady())
     {
-      if (intermissionTimer.isReady())
+      if (windDownTimer.isReady())
       {
         state.current = Actions::WindDown;
       }
 
       if (state.current == Actions::ActiveGame)
       {
-
         flareManager.dispatch(speed);
-        uint32_t timeDelay = (esp_random() % interval) + gap;
+        uint32_t timeDelay = static_cast<uint32_t>((esp_random() % static_cast<uint32_t>(interval)) + gap);
         wait(timeDelay);
       }
 
       bool shouldStartNextRound = state.current == Actions::WindDown && flareManager.size() == 1;
       if (shouldStartNextRound)
       {
-        intermissionTimer.wait(intermissionDelay);
+        windDownTimer.wait(windDownLength);
         state.current = Actions::ActiveGame;
+        speed *= 1.06;
+        interval *= 0.9;
+        gap *= 0.90;
       }
     }
   }
 
   void Controller::gameOver()
   {
+    for (uint16_t i = 0; i < contextManager->config.numLeds; ++i)
+    {
+      contextManager->leds.buffer[i] = Lights::ColorCode::GameRed;
+    }
+
     if (contextManager->controller.wasPressed(::Player::ControllerButton::Start))
     {
       state.current = Actions::Startup;
       state.reset();
       contextManager->stateManager.displayShouldUpdate = true;
       flareManager.reset();
-      intermissionTimer.wait(intermissionDelay);
-      return;
+      windDownTimer.wait(windDownLength);
     }
+  }
 
-    for (uint16_t i = 0; i < contextManager->config.numLeds; ++i)
-    {
-      contextManager->leds.buffer[i] = Lights::ColorCode::GameRed;
-    }
+  void Controller::reset()
+  {
+    interval = 2000;
+    gap = 1500;
+    speed = 0.4f;
   }
 }

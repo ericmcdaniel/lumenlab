@@ -14,19 +14,19 @@ namespace Games::PhaseEvasion
   public:
     Controller(SystemCore::ContextManager *ctx);
     void nextEvent() override;
-    static constexpr uint16_t playerClearance = 25;
+    static constexpr uint16_t playerOffset = 25;
     static constexpr uint16_t playerWidth = 5;
-    static constexpr uint32_t intermissionDelay = 10'000;
+    static constexpr uint32_t windDownLength = 30'000;
 
   private:
     SystemCore::ContextManager *contextManager;
-    Engine::Timer intermissionTimer;
+    Engine::Timer windDownTimer;
     GameState &state = contextManager->stateManager.getPhaseEvasionGameState();
     Player player;
     FlareManager flareManager;
-    uint32_t interval = 2000;
-    uint32_t gap = 1500;
-    float speed = 0.4f;
+    float interval;
+    float gap;
+    float speed;
 
     void getUpdates();
     void renderPlayer();
@@ -34,5 +34,6 @@ namespace Games::PhaseEvasion
     void checkCollision();
     void orchestrateCollection();
     void gameOver();
+    void reset();
   };
 }

@@ -8,6 +8,7 @@ namespace Games::PhaseEvasion
   {
     Startup,
     ActiveGame,
+    WindDown,
     GameOver
   };
 

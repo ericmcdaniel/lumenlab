@@ -12,6 +12,7 @@ namespace Games::PhaseEvasion
     state.reset();
     state.current = Actions::Startup;
     wait(500);
+    intermissionTimer.wait(intermissionDelay);
   }
 
   void Controller::nextEvent()
@@ -26,11 +27,12 @@ namespace Games::PhaseEvasion
       }
       break;
     case Actions::ActiveGame:
+    case Actions::WindDown:
       getUpdates();
-      checkGrowth();
+      orchestrateCollection();
       checkCollision();
       renderFlare();
-      renderUserColor();
+      renderPlayer();
       break;
     case Actions::GameOver:
       gameOver();
@@ -44,7 +46,7 @@ namespace Games::PhaseEvasion
     flareManager.updatePositions();
   }
 
-  void Controller::renderUserColor()
+  void Controller::renderPlayer()
   {
     for (uint16_t i = playerClearance; i < playerClearance + player.width; ++i)
     {
@@ -92,13 +94,29 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Controller::checkGrowth()
+  void Controller::orchestrateCollection()
   {
     if (isReady())
     {
-      flareManager.dispatch(speed);
-      uint32_t timeDelay = (esp_random() % interval) + gap;
-      wait(timeDelay);
+      if (intermissionTimer.isReady())
+      {
+        state.current = Actions::WindDown;
+      }
+
+      if (state.current == Actions::ActiveGame)
+      {
+
+        flareManager.dispatch(speed);
+        uint32_t timeDelay = (esp_random() % interval) + gap;
+        wait(timeDelay);
+      }
+
+      bool shouldStartNextRound = state.current == Actions::WindDown && flareManager.size() == 1;
+      if (shouldStartNextRound)
+      {
+        intermissionTimer.wait(intermissionDelay);
+        state.current = Actions::ActiveGame;
+      }
     }
   }
 
@@ -110,6 +128,7 @@ namespace Games::PhaseEvasion
       state.reset();
       contextManager->stateManager.displayShouldUpdate = true;
       flareManager.reset();
+      intermissionTimer.wait(intermissionDelay);
       return;
     }
 

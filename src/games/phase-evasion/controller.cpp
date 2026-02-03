@@ -4,7 +4,7 @@
 namespace Games::PhaseEvasion
 {
   Controller::Controller(SystemCore::ContextManager *ctx) : contextManager{ctx},
-                                                            player{ctx},
+                                                            player{ctx, playerWidth},
                                                             flareManager{ctx}
   {
     state = contextManager->stateManager.getPhaseEvasionGameState();
@@ -61,12 +61,15 @@ namespace Games::PhaseEvasion
       if (!flare.isActive())
         continue;
 
-      uint16_t start = std::max(flare.getPosition() - flare.width, 0);
-      uint16_t end = std::min(flare.getPosition(), contextManager->config.numLeds);
+      uint16_t flareHead = std::max(flare.getPosition() - flare.width, 0);
+      uint16_t flareTail = std::min(flare.getPosition(), contextManager->config.numLeds);
 
-      for (uint16_t i = start; i < end; ++i)
+      for (uint16_t i = flareHead; i < flareTail; ++i)
       {
-        contextManager->leds.buffer[i] = flare.getColor();
+        uint16_t distance = i - flareHead;
+        double attenuation = std::clamp(1.0 - 0.085 * static_cast<double>(distance), 0.0, 1.0);
+
+        contextManager->leds.buffer[i] = flare.getColor() * attenuation;
       }
     }
   }
@@ -80,8 +83,11 @@ namespace Games::PhaseEvasion
 
       uint16_t start = std::max(flare.getPosition() - flare.width, 0);
       uint16_t end = std::min(flare.getPosition(), contextManager->config.numLeds);
+      bool isUnmatchingColor = player.getColor() != flare.getColor();
+      bool hasEnteredRegion = start <= playerClearance + player.width;
+      bool hasNotExitedRegion = end >= playerClearance;
 
-      if (start <= playerClearance + player.width && end >= playerClearance && player.getColor() != flare.getColor())
+      if (isUnmatchingColor && hasEnteredRegion && hasNotExitedRegion)
       {
         state.current = Actions::GameOver;
       }

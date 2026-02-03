@@ -14,7 +14,8 @@ namespace Games::PhaseEvasion
   public:
     Controller(SystemCore::ContextManager *ctx);
     void nextEvent() override;
-    static constexpr uint16_t playerClearance = 20;
+    static constexpr uint16_t playerClearance = 25;
+    static constexpr uint16_t playerWidth = 5;
 
   private:
     SystemCore::ContextManager *contextManager;

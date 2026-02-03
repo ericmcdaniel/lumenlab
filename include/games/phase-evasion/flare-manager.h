@@ -24,6 +24,7 @@ namespace Games::PhaseEvasion
 
     void updatePositions();
     void dispatch(float speed);
+    void reset();
 
   private:
     SystemCore::ContextManager *contextManager;

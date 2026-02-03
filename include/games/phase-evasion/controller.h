@@ -31,5 +31,6 @@ namespace Games::PhaseEvasion
     void renderFlare();
     void checkCollision();
     void checkGrowth();
+    void gameOver();
   };
 }

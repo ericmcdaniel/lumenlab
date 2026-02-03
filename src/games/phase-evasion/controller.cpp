@@ -1,4 +1,5 @@
 #include "games/phase-evasion/controller.h"
+#include "player/controller.h"
 #include "logger.h"
 
 namespace Games::PhaseEvasion
@@ -32,10 +33,7 @@ namespace Games::PhaseEvasion
       renderUserColor();
       break;
     case Actions::GameOver:
-      for (uint16_t i = 0; i < contextManager->config.numLeds; ++i)
-      {
-        contextManager->leds.buffer[i] = Lights::ColorCode::GameRed;
-      }
+      gameOver();
       break;
     }
   }
@@ -101,6 +99,23 @@ namespace Games::PhaseEvasion
       flareManager.dispatch(speed);
       uint32_t timeDelay = (esp_random() % interval) + gap;
       wait(timeDelay);
+    }
+  }
+
+  void Controller::gameOver()
+  {
+    if (contextManager->controller.wasPressed(::Player::ControllerButton::Start))
+    {
+      state.current = Actions::Startup;
+      state.reset();
+      contextManager->stateManager.displayShouldUpdate = true;
+      flareManager.reset();
+      return;
+    }
+
+    for (uint16_t i = 0; i < contextManager->config.numLeds; ++i)
+    {
+      contextManager->leds.buffer[i] = Lights::ColorCode::GameRed;
     }
   }
 }

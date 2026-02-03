@@ -43,4 +43,12 @@ namespace Games::PhaseEvasion
     return std::count_if(flarePool.begin(), flarePool.end(), [](const Flare &flare)
                          { return flare.isActive(); });
   }
+
+  void FlareManager::reset()
+  {
+    for (Flare &flare : flarePool)
+    {
+      flare.reset();
+    }
+  }
 }

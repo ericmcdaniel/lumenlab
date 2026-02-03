@@ -16,10 +16,5 @@ namespace Games::PhaseEvasion
   private:
     SystemCore::ContextManager *contextManager;
     Lights::Color currentColor;
-    static constexpr ::Player::ControllerButton availableGameplayButtons[] = {
-        ::Player::ControllerButton::Cross,
-        ::Player::ControllerButton::Square,
-        ::Player::ControllerButton::Triangle,
-        ::Player::ControllerButton::Circle};
   };
 }

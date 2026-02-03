@@ -20,9 +20,9 @@ namespace Games::Recall
     for (uint16_t i = 0; i < maxRound; ++i)
     {
       // for testing
-      // gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(availableGameplayButtons));
+      // gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(Controller::availableGameplayButtons));
 
-      uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(availableGameplayButtons);
+      uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(Controller::availableGameplayButtons);
       gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
     }
     auto button = gameplayColors[0];
@@ -142,7 +142,7 @@ namespace Games::Recall
 
   void Controller::evaluateUserButton(Player::ControllerButton expectedButton)
   {
-    for (auto button : availableGameplayButtons)
+    for (auto button : Controller::availableGameplayButtons)
     {
       if (contextManager->controller.wasPressedAndReleased(button))
       {
@@ -166,7 +166,7 @@ namespace Games::Recall
     static uint32_t lastLightTime = 0;
     static int pressedButtonIndex = -1;
     bool buttonPressed = false;
-    for (uint16_t i = 0; i < arraySize(availableGameplayButtons); ++i)
+    for (uint16_t i = 0; i < arraySize(Controller::availableGameplayButtons); ++i)
     {
       auto btn = static_cast<Player::ControllerButton>(i);
       if (contextManager->controller.isDown(btn))
@@ -181,7 +181,7 @@ namespace Games::Recall
     bool keepLit = ((millis() - lastLightTime) < gameplaySpeedPaused);
     if (buttonPressed || keepLit)
     {
-      if (pressedButtonIndex >= 0 && pressedButtonIndex < static_cast<int>(arraySize(availableGameplayButtons)))
+      if (pressedButtonIndex >= 0 && pressedButtonIndex < static_cast<int>(arraySize(Controller::availableGameplayButtons)))
       {
         auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
         for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)

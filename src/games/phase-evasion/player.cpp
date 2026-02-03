@@ -5,7 +5,7 @@ namespace Games::PhaseEvasion
 {
   void Player::checkColorChangeRequest()
   {
-    for (auto button : availableGameplayButtons)
+    for (auto button : Player::availableGameplayButtons)
     {
       if (contextManager->controller.isDown(button))
       {

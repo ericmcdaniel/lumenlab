@@ -5,6 +5,7 @@
 #include "engine/timer.h"
 #include "lights/color.h"
 #include "lights/color-code.h"
+#include "player/player.h"
 
 namespace Games::Recall
 {
@@ -21,11 +22,7 @@ namespace Games::Recall
     uint16_t gameplaySpeedIlluminated = 500;
     uint16_t gameplaySpeedPaused = gameplaySpeedIlluminated / 6;
     static constexpr uint16_t maxRound = 1000;
-    static constexpr Player::ControllerButton availableGameplayButtons[] = {
-        Player::ControllerButton::Cross,
-        Player::ControllerButton::Square,
-        Player::ControllerButton::Triangle,
-        Player::ControllerButton::Circle};
+    static constexpr auto &availableGameplayButtons = ::Player::Player::availableGameplayButtons;
     uint16_t sequenceIndex = 0;
     Player::ControllerButton gameplayColors[maxRound];
     float gameOverLedPhaseShift = 0.0f;

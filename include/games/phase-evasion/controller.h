@@ -16,7 +16,7 @@ namespace Games::PhaseEvasion
     void nextEvent() override;
     static constexpr uint16_t playerOffset = 25;
     static constexpr uint16_t playerWidth = 5;
-    static constexpr uint32_t windDownLength = 30'000;
+    static constexpr uint32_t windDownLength = 20'000;
 
   private:
     SystemCore::ContextManager *contextManager;
@@ -33,6 +33,7 @@ namespace Games::PhaseEvasion
     void renderFlare();
     void checkCollision();
     void orchestrateCollection();
+    void muzzleFlash();
     void gameOver();
     void reset();
   };

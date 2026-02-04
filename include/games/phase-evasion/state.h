@@ -9,6 +9,7 @@ namespace Games::PhaseEvasion
     Startup,
     ActiveGame,
     WindDown,
+    MuzzleFlash,
     GameOver
   };
 

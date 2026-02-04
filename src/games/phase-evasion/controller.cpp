@@ -35,7 +35,12 @@ namespace Games::PhaseEvasion
       renderFlare();
       renderPlayer();
       break;
+    case Actions::MuzzleFlash:
+      muzzleFlash();
+      break;
     case Actions::GameOver:
+      renderFlare();
+      renderPlayer();
       gameOver();
       break;
     }
@@ -90,7 +95,8 @@ namespace Games::PhaseEvasion
 
       if (isUnmatchingColor && hasEnteredRegion && hasNotExitedRegion)
       {
-        state.current = Actions::GameOver;
+        state.current = Actions::MuzzleFlash;
+        wait(20);
       }
     }
   }
@@ -111,30 +117,54 @@ namespace Games::PhaseEvasion
         wait(timeDelay);
       }
 
-      bool shouldStartNextRound = state.current == Actions::WindDown && flareManager.size() == 1;
+      bool shouldStartNextRound = state.current == Actions::WindDown && flareManager.size() == 2;
       if (shouldStartNextRound)
       {
         windDownTimer.wait(windDownLength);
         state.current = Actions::ActiveGame;
-        speed *= 1.06;
-        interval *= 0.9;
-        gap *= 0.90;
+        speed *= 1.07;
+        interval *= 0.85;
+        gap *= 0.85;
       }
+    }
+  }
+
+  void Controller::muzzleFlash()
+  {
+    for (uint16_t i = 0; i < contextManager->config.numLeds; ++i)
+    {
+      contextManager->leds.buffer[i] = Lights::Color::White;
+    }
+
+    if (isReady())
+    {
+      state.current = Actions::GameOver;
     }
   }
 
   void Controller::gameOver()
   {
-    for (uint16_t i = 0; i < contextManager->config.numLeds; ++i)
+    static float gameOverPhaseShift = static_cast<float>(contextManager->leds.size() / 3.0);
+
+    for (uint16_t i = playerOffset * 2 + player.width; i <= contextManager->leds.size(); ++i)
     {
-      contextManager->leds.buffer[i] = Lights::ColorCode::GameRed;
+      float offset = std::cos((2.0f * M_PI * i / contextManager->leds.size()) + (2.0f * M_PI * gameOverPhaseShift / contextManager->leds.size()));
+      float phase = offset * 127 + 128;
+      contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)),
+                                        static_cast<uint8_t>(0),
+                                        static_cast<uint8_t>(0)};
     }
+
+    gameOverPhaseShift += 0.5f;
+    if (gameOverPhaseShift > contextManager->leds.size())
+      gameOverPhaseShift = 0.0;
 
     if (contextManager->controller.wasPressed(::Player::ControllerButton::Start))
     {
       state.current = Actions::Startup;
       state.reset();
       contextManager->stateManager.displayShouldUpdate = true;
+      gameOverPhaseShift = static_cast<float>(contextManager->leds.size() / 3.0);
       flareManager.reset();
       windDownTimer.wait(windDownLength);
     }

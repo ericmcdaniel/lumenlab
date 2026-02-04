@@ -255,6 +255,6 @@ namespace Games::Recall
 
     gameOverLedPhaseShift += 0.5f;
     if (gameOverLedPhaseShift > contextManager->leds.size())
-      gameOverLedPhaseShift = 0;
+      gameOverLedPhaseShift = 0.0f;
   }
 }

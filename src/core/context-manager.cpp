@@ -1,8 +1,8 @@
 #include "core/context-manager.h"
-#include "games/demo/controller.h"
-#include "games/recall/controller.h"
-#include "games/phase-evasion/controller.h"
-#include "scenes/canvas/controller.h"
+#include "games/demo/driver.h"
+#include "games/recall/driver.h"
+#include "games/phase-evasion/driver.h"
+#include "scenes/canvas/driver.h"
 #include "logger.h"
 
 namespace SystemCore
@@ -150,19 +150,19 @@ namespace SystemCore
     switch (stateManager.current())
     {
     case Engine::SystemState::GameRecall:
-      application = new Games::Recall::Controller{this};
+      application = new Games::Recall::Driver{this};
       logf("Transitioning to Recall (Game)");
       break;
     case Engine::SystemState::GamePhaseEvasion:
-      application = new Games::PhaseEvasion::Controller{this};
+      application = new Games::PhaseEvasion::Driver{this};
       logf("Transitioning to Phase Evasion (Game)");
       break;
     case Engine::SystemState::GameDemo:
-      application = new Games::Demo::Controller{this};
+      application = new Games::Demo::Driver{this};
       logf("Transitioning to Demo (Game)");
       break;
     case Engine::SystemState::SceneCanvas:
-      application = new Scenes::Canvas::Controller{this};
+      application = new Scenes::Canvas::Driver{this};
       logf("Transitioning to Canvas (Scene)");
       break;
     }

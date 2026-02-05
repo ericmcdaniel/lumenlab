@@ -1,12 +1,12 @@
-#include "games/phase-evasion/controller.h"
+#include "games/phase-evasion/driver.h"
 #include "player/controller.h"
 #include "logger.h"
 
 namespace Games::PhaseEvasion
 {
-  Controller::Controller(SystemCore::ContextManager *ctx) : contextManager{ctx},
-                                                            player{ctx, playerWidth},
-                                                            flareManager{ctx}
+  Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx},
+                                                    player{ctx, playerWidth},
+                                                    flareManager{ctx}
   {
     state = contextManager->stateManager.getPhaseEvasionGameState();
     state.reset();
@@ -16,7 +16,7 @@ namespace Games::PhaseEvasion
     windDownTimer.wait(windDownLength);
   }
 
-  void Controller::nextEvent()
+  void Driver::nextEvent()
   {
     switch (state.current)
     {
@@ -46,7 +46,7 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Controller::getUpdates()
+  void Driver::getUpdates()
   {
     player.checkColorChangeRequest();
     flareManager.updatePositions();
@@ -54,7 +54,7 @@ namespace Games::PhaseEvasion
     player.move(leftInput.x, 1.5, false);
   }
 
-  void Controller::renderPlayer()
+  void Driver::renderPlayer()
   {
     for (uint16_t i = 0; i < player.width; ++i)
     {
@@ -63,7 +63,7 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Controller::renderFlare()
+  void Driver::renderFlare()
   {
     for (const auto &flare : flareManager)
     {
@@ -83,7 +83,7 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Controller::checkCollision()
+  void Driver::checkCollision()
   {
     for (const auto &flare : flareManager)
     {
@@ -105,7 +105,7 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Controller::orchestrateCollection()
+  void Driver::orchestrateCollection()
   {
     if (isReady())
     {
@@ -133,7 +133,7 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Controller::muzzleFlash()
+  void Driver::muzzleFlash()
   {
     for (uint16_t i = 0; i < contextManager->config.numLeds; ++i)
     {
@@ -146,7 +146,7 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Controller::gameOver()
+  void Driver::gameOver()
   {
     static float gameOverPhaseShift = static_cast<float>(player.getPosition());
 
@@ -174,7 +174,7 @@ namespace Games::PhaseEvasion
     }
   }
 
-  void Controller::reset()
+  void Driver::reset()
   {
     interval = 2000;
     gap = 1500;

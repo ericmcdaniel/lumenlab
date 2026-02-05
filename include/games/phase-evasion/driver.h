@@ -9,10 +9,10 @@
 
 namespace Games::PhaseEvasion
 {
-  class Controller : public Engine::Layer, private Engine::Timer
+  class Driver : public Engine::Layer, private Engine::Timer
   {
   public:
-    Controller(SystemCore::ContextManager *ctx);
+    Driver(SystemCore::ContextManager *ctx);
     void nextEvent() override;
     static constexpr uint16_t playerOffset = 25;
     static constexpr uint16_t playerWidth = 5;

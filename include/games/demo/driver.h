@@ -6,10 +6,10 @@
 
 namespace Games::Demo
 {
-  class Controller : public Engine::Layer
+  class Driver : public Engine::Layer
   {
   public:
-    Controller(SystemCore::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}, player1{Player{ctx, width}}, player2{Player{ctx, width}}
+    Driver(SystemCore::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}, player1{Player{ctx, width}}, player2{Player{ctx, width}}
     {
       contextManager->stateManager.getDemoGameState().reset();
     }

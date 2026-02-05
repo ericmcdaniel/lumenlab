@@ -6,10 +6,10 @@
 
 namespace Scenes::Canvas
 {
-  class Controller : public Engine::Layer, private Engine::Timer
+  class Driver : public Engine::Layer, private Engine::Timer
   {
   public:
-    Controller(SystemCore::ContextManager *ctx);
+    Driver(SystemCore::ContextManager *ctx);
     void nextEvent() override;
 
   private:

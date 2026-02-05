@@ -16,10 +16,11 @@ namespace Games::PhaseEvasion
   class GameState
   {
   public:
-    GameState() : highScore{0}, flaresEvaded{0} {}
-    uint16_t highScore;
+    GameState() : highScore{0}, flaresEvaded{0}, gemsCaptured{0} {}
     uint16_t flaresEvaded;
+    uint16_t gemsCaptured;
+    uint16_t highScore;
     Actions current = Actions::Startup;
-    void reset() { highScore = flaresEvaded = 0; }
+    void reset() { highScore = flaresEvaded = gemsCaptured = 0; }
   };
 }

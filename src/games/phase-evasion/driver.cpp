@@ -13,6 +13,7 @@ namespace Games::PhaseEvasion
     state.current = Actions::Startup;
     reset();
     wait(500);
+    gem.wait(5000);
     windDownTimer.wait(windDownLength);
   }
 
@@ -30,11 +31,12 @@ namespace Games::PhaseEvasion
     case Actions::ActiveGame:
     case Actions::WindDown:
       getUpdates();
-      orchestrateCollection();
-      // checkCollision();
+      checkChallenge();
+      checkCollision();
+      checkGemCapture();
       renderFlare();
-      renderPlayer();
       renderGem();
+      renderPlayer();
       break;
     case Actions::MuzzleFlash:
       muzzleFlash();
@@ -42,6 +44,7 @@ namespace Games::PhaseEvasion
     case Actions::GameOver:
       gameOver();
       renderFlare();
+      renderGem();
       renderPlayer();
       break;
     }
@@ -51,8 +54,8 @@ namespace Games::PhaseEvasion
   {
     player.checkColorChangeRequest();
     flareManager.updatePositions();
-    auto leftInput = contextManager->controller.leftAnalog();
-    player.move(leftInput.x, 1.5, false);
+    auto leftAnalog = contextManager->controller.leftAnalog();
+    player.move(leftAnalog.x, 1.25, false);
   }
 
   void Driver::renderPlayer()
@@ -71,6 +74,12 @@ namespace Games::PhaseEvasion
       if (!flare.isActive())
         continue;
 
+      if (state.current == Actions::GameOver)
+      {
+        if (!flare.impacted)
+          continue;
+      }
+
       uint16_t flareHead = std::max(flare.getPosition() - flare.width, 0);
       uint16_t flareTail = std::min(flare.getPosition(), SystemCore::Configuration::numLeds);
 
@@ -86,11 +95,21 @@ namespace Games::PhaseEvasion
 
   void Driver::renderGem()
   {
+    if (!gem.isActive())
+      return;
+
+    uint16_t gemLeft = std::max(gem.getPosition() - gem.width, 0);
+    uint16_t gemRight = std::min(gem.getPosition(), SystemCore::Configuration::numLeds);
+
+    for (uint16_t i = gemLeft; i < gemRight; ++i)
+    {
+      contextManager->leds.buffer[i] = gem.getColor();
+    }
   }
 
   void Driver::checkCollision()
   {
-    for (const auto &flare : flareManager)
+    for (auto &flare : flareManager)
     {
       if (!flare.isActive())
         continue;
@@ -104,13 +123,40 @@ namespace Games::PhaseEvasion
 
       if (isUnmatchingColor && hasEnteredRegion && hasNotExitedRegion)
       {
+        flare.impacted = true;
         state.current = Actions::MuzzleFlash;
         wait(20);
       }
     }
   }
 
-  void Driver::orchestrateCollection()
+  void Driver::checkGemCapture()
+  {
+    if (!gem.isActive() && gem.isReady())
+    {
+      const auto randGemPosition = static_cast<uint16_t>((esp_random() % static_cast<uint32_t>(SystemCore::Configuration::numLeds)) + gem.width);
+      gem.spawn(randGemPosition);
+    }
+
+    if (gem.isActive())
+    {
+      uint16_t gemStart = std::max(gem.getPosition() - gem.width, 0);
+      uint16_t gemEnd = std::min(gem.getPosition(), SystemCore::Configuration::numLeds);
+
+      bool hasEnteredRegion = gemStart <= player.getPosition() + player.width;
+      bool hasNotExitedRegion = gemEnd >= player.getPosition();
+
+      if (hasEnteredRegion && hasNotExitedRegion)
+      {
+        gem.capture();
+        contextManager->stateManager.getPhaseEvasionGameState().gemsCaptured++;
+        contextManager->stateManager.displayShouldUpdate = true;
+        gem.wait(5000);
+      }
+    }
+  }
+
+  void Driver::checkChallenge()
   {
     if (isReady())
     {
@@ -132,8 +178,8 @@ namespace Games::PhaseEvasion
         windDownTimer.wait(windDownLength);
         state.current = Actions::ActiveGame;
         speed *= 1.07;
-        interval *= 0.85;
-        gap *= 0.85;
+        interval *= 0.8;
+        gap *= 0.82;
       }
     }
   }
@@ -153,18 +199,18 @@ namespace Games::PhaseEvasion
 
   void Driver::gameOver()
   {
-    static float gameOverPhaseShift = static_cast<float>(player.getPosition());
+    static float gameOverPhaseShift = static_cast<float>(((SystemCore::Configuration::numLeds / 2) + player.getPosition()) % SystemCore::Configuration::numLeds);
 
     for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds; ++i)
     {
-      float offset = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds) + (2.0f * M_PI * gameOverPhaseShift / SystemCore::Configuration::numLeds));
-      float phase = offset * 127 + 128;
+      float offset = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds) - (2.0f * M_PI * static_cast<uint16_t>(gameOverPhaseShift) / SystemCore::Configuration::numLeds));
+      float phase = offset * 127.5 + 127.5;
       contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)),
-                                        static_cast<uint8_t>(0),
-                                        static_cast<uint8_t>(0)};
+                                        static_cast<uint8_t>(std::floor(phase) * 0.15),
+                                        static_cast<uint8_t>(std::floor(phase) * 0.25)};
     }
 
-    gameOverPhaseShift += 0.5f;
+    gameOverPhaseShift += 0.0f;
     if (gameOverPhaseShift > SystemCore::Configuration::numLeds)
       gameOverPhaseShift = 0.0;
 
@@ -173,17 +219,21 @@ namespace Games::PhaseEvasion
       state.current = Actions::Startup;
       state.reset();
       contextManager->stateManager.displayShouldUpdate = true;
-      gameOverPhaseShift = static_cast<float>(player.getPosition());
-      flareManager.reset();
+      gameOverPhaseShift = static_cast<float>(((SystemCore::Configuration::numLeds / 2) + player.getPosition()) % SystemCore::Configuration::numLeds);
+      reset();
       windDownTimer.wait(windDownLength);
     }
   }
 
   void Driver::reset()
   {
-    interval = 2000;
-    gap = 1500;
+    interval = 2500;
+    gap = 1600;
     speed = 0.4f;
+    gem.capture();
+    gem.wait(5000);
+    flareManager.reset();
+    player.setPosition(static_cast<uint16_t>(0));
     wait(500);
   }
 }

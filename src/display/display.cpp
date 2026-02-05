@@ -185,14 +185,22 @@ namespace Display
 
   void OledDisplay::drawPhaseEvasionGameHud()
   {
+    const auto flaresEvaded = contextManager->stateManager.getPhaseEvasionGameState().flaresEvaded;
+    const auto gemsCaptured = contextManager->stateManager.getPhaseEvasionGameState().gemsCaptured;
+
     display.clearDisplay();
     drawHeader("Phase Evasion");
 
     display.setCursor(0, 16);
-    display.print("Flares Evaded: ");
-    display.print(contextManager->stateManager.getPhaseEvasionGameState().flaresEvaded);
+    display.printf("Flares: %3u", flaresEvaded);
+
+    display.setCursor(DISPLAY_WIDTH / 2 + 8, 16);
+    display.printf("Gems: %3u", gemsCaptured);
+
     display.setCursor(0, 24);
-    display.print("High Score: -");
+    display.printf("  High: %3u", flaresEvaded);
+    display.setCursor(DISPLAY_WIDTH / 2 + 8, 24);
+    display.printf("       %2u", gemsCaptured);
 
     display.display();
   }

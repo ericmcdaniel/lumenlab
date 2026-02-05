@@ -24,6 +24,7 @@ namespace Games::PhaseEvasion
     void activate(Lights::Color color, float speed);
     void deactivate();
     bool completedCycle = false;
+    bool impacted = false;
     void reset();
 
   private:

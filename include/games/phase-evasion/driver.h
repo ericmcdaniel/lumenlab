@@ -25,7 +25,7 @@ namespace Games::PhaseEvasion
     GameState &state = contextManager->stateManager.getPhaseEvasionGameState();
     Player player;
     FlareManager flareManager;
-    Gem bonusGem;
+    Gem gem;
 
     float interval;
     float gap;
@@ -36,7 +36,8 @@ namespace Games::PhaseEvasion
     void renderFlare();
     void renderGem();
     void checkCollision();
-    void orchestrateCollection();
+    void checkGemCapture();
+    void checkChallenge();
     void muzzleFlash();
     void gameOver();
     void reset();

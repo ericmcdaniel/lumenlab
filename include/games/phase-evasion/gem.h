@@ -7,30 +7,33 @@
 namespace Games::PhaseEvasion
 {
 
-  class Gem
+  class Gem : public Engine::Timer
   {
   public:
-    Gem() { reset(0); }
+    Gem() : active{false} { spawn(0); }
 
     static constexpr uint16_t width = 3;
     uint16_t getPosition() { return position; }
+    bool isActive() { return active; }
 
-    void capture() { isCaptured = true; }
-    void reset(const uint16_t pos)
+    Lights::Color getColor() { return Lights::Color::NavajoWhite; }
+
+    void capture() { active = false; }
+    void spawn(const uint16_t pos)
     {
       bool isOutsideLeftRegion = pos < (width - 1);
-      bool isOutsideRightRegion = pos > SystemCore::Configuration::numLeds;
+      bool isOutsideRightRegion = pos > SystemCore::Configuration::numLeds + (width - 1);
       if (isOutsideLeftRegion || isOutsideRightRegion)
       {
         return;
       }
 
       position = pos;
-      isCaptured = false;
+      active = true;
     }
 
   private:
     uint16_t position;
-    bool isCaptured;
+    bool active;
   };
 }

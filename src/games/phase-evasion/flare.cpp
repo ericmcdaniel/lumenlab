@@ -32,6 +32,7 @@ namespace Games::PhaseEvasion
     active = false;
     color = Lights::Color::WhiteSmoke;
     speed = 0.0f;
+    impacted = false;
     positionFloat = static_cast<float>(SystemCore::Configuration::numLeds + width);
   }
 }

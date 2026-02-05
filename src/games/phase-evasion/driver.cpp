@@ -125,6 +125,7 @@ namespace Games::PhaseEvasion
       {
         flare.impacted = true;
         state.current = Actions::MuzzleFlash;
+        gameOverPhaseShift = static_cast<float>(((SystemCore::Configuration::numLeds / 2) + player.getPosition()) % SystemCore::Configuration::numLeds);
         wait(20);
       }
     }
@@ -199,18 +200,19 @@ namespace Games::PhaseEvasion
 
   void Driver::gameOver()
   {
-    static float gameOverPhaseShift = static_cast<float>(((SystemCore::Configuration::numLeds / 2) + player.getPosition()) % SystemCore::Configuration::numLeds);
 
     for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds; ++i)
     {
       float offset = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds) - (2.0f * M_PI * static_cast<uint16_t>(gameOverPhaseShift) / SystemCore::Configuration::numLeds));
       float phase = offset * 127.5 + 127.5;
-      contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)),
+      contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase) * 0.95),
                                         static_cast<uint8_t>(std::floor(phase) * 0.15),
                                         static_cast<uint8_t>(std::floor(phase) * 0.25)};
     }
 
-    gameOverPhaseShift += 0.0f;
+    gameOverPhaseShift += std::cos(gameOverPhaseOffset) / 16.0f;
+    gameOverPhaseOffset += 1.0 / 32.0f;
+
     if (gameOverPhaseShift > SystemCore::Configuration::numLeds)
       gameOverPhaseShift = 0.0;
 
@@ -219,7 +221,6 @@ namespace Games::PhaseEvasion
       state.current = Actions::Startup;
       state.reset();
       contextManager->stateManager.displayShouldUpdate = true;
-      gameOverPhaseShift = static_cast<float>(((SystemCore::Configuration::numLeds / 2) + player.getPosition()) % SystemCore::Configuration::numLeds);
       reset();
       windDownTimer.wait(windDownLength);
     }

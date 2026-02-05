@@ -30,6 +30,8 @@ namespace Games::PhaseEvasion
     float interval;
     float gap;
     float speed;
+    float gameOverPhaseShift = 0.0f;
+    float gameOverPhaseOffset = 0.0f;
 
     void getUpdates();
     void renderPlayer();

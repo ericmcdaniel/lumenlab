@@ -8,9 +8,9 @@ namespace Games::Demo
   void Player::updatePlayer1LedBuffer()
   {
     float center = (width + 1) / 2.0f;
-    for (uint16_t i = 1; i <= width; ++i)
+    for (uint16_t i = 0; i <= width; ++i)
     {
-      uint16_t index = (position + i) % contextManager->leds.size();
+      uint16_t index = (getPosition() + i) % contextManager->leds.size();
       float intensity = 1.0f - std::abs(i - center) / center;
       if (intensity < 0)
         intensity = 0;
@@ -25,9 +25,9 @@ namespace Games::Demo
   {
 
     float center = (width + 1) / 2.0f;
-    for (uint16_t i = 1; i <= width; ++i)
+    for (uint16_t i = 0; i <= width; ++i)
     {
-      uint16_t index = (position + i) % contextManager->leds.size();
+      uint16_t index = (getPosition() + i) % contextManager->leds.size();
       float intensity = 1.0f - std::abs(i - center) / center;
       if (intensity < 0)
         intensity = 0;

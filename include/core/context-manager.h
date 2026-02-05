@@ -19,7 +19,7 @@ namespace SystemCore
 
     Engine::Layer *application = nullptr;
     Engine::StateManager stateManager;
-    SystemCore::Configuration config;
+    Configuration config;
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;

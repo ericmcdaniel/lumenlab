@@ -8,13 +8,11 @@ namespace Games::PhaseEvasion
   class Player : public ::Player::Player
   {
   public:
-    Player(SystemCore::ContextManager *ctx, uint16_t w) : ::Player::Player{ctx}, contextManager{ctx}, width{w} {};
+    Player(SystemCore::ContextManager *ctx, uint16_t width) : ::Player::Player{ctx, width} {};
     void checkColorChangeRequest();
     Lights::Color getColor() { return currentColor; }
-    const uint16_t width;
 
   private:
-    SystemCore::ContextManager *contextManager;
     Lights::Color currentColor;
   };
 }

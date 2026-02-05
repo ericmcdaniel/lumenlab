@@ -8,12 +8,8 @@ namespace Games::Demo
   class Player : public ::Player::Player
   {
   public:
-    Player(SystemCore::ContextManager *ctx) : contextManager{ctx}, ::Player::Player{ctx} {};
+    Player(SystemCore::ContextManager *ctx, const uint16_t width) : ::Player::Player{ctx, width} {};
     void updatePlayer1LedBuffer();
     void updatePlayer2LedBuffer();
-
-  private:
-    SystemCore::ContextManager *contextManager;
-    static constexpr uint16_t width = 7;
   };
 }

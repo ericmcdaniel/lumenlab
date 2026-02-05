@@ -31,7 +31,7 @@ namespace Games::PhaseEvasion
     case Actions::WindDown:
       getUpdates();
       orchestrateCollection();
-      checkCollision();
+      // checkCollision();
       renderFlare();
       renderPlayer();
       break;
@@ -39,9 +39,9 @@ namespace Games::PhaseEvasion
       muzzleFlash();
       break;
     case Actions::GameOver:
+      gameOver();
       renderFlare();
       renderPlayer();
-      gameOver();
       break;
     }
   }
@@ -50,13 +50,16 @@ namespace Games::PhaseEvasion
   {
     player.checkColorChangeRequest();
     flareManager.updatePositions();
+    auto leftInput = contextManager->controller.leftAnalog();
+    player.move(leftInput.x, 1.5, false);
   }
 
   void Controller::renderPlayer()
   {
-    for (uint16_t i = playerOffset; i < playerOffset + player.width; ++i)
+    for (uint16_t i = 0; i < player.width; ++i)
     {
-      contextManager->leds.buffer[i] = player.getColor();
+      uint16_t index = (player.getPosition() + i) % contextManager->leds.size();
+      contextManager->leds.buffer[index] = player.getColor();
     }
   }
 
@@ -87,11 +90,12 @@ namespace Games::PhaseEvasion
       if (!flare.isActive())
         continue;
 
-      uint16_t start = std::max(flare.getPosition() - flare.width, 0);
-      uint16_t end = std::min(flare.getPosition(), contextManager->config.numLeds);
+      uint16_t flareStart = std::max(flare.getPosition() - flare.width, 0);
+      uint16_t flareEnd = std::min(flare.getPosition(), contextManager->config.numLeds);
+
       bool isUnmatchingColor = player.getColor() != flare.getColor();
-      bool hasEnteredRegion = start <= playerOffset + player.width;
-      bool hasNotExitedRegion = end >= playerOffset;
+      bool hasEnteredRegion = flareStart <= player.getPosition() + player.width;
+      bool hasNotExitedRegion = flareEnd >= player.getPosition();
 
       if (isUnmatchingColor && hasEnteredRegion && hasNotExitedRegion)
       {
@@ -144,9 +148,9 @@ namespace Games::PhaseEvasion
 
   void Controller::gameOver()
   {
-    static float gameOverPhaseShift = static_cast<float>(contextManager->leds.size() / 3.0);
+    static float gameOverPhaseShift = static_cast<float>(player.getPosition());
 
-    for (uint16_t i = playerOffset * 2 + player.width; i <= contextManager->leds.size(); ++i)
+    for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
     {
       float offset = std::cos((2.0f * M_PI * i / contextManager->leds.size()) + (2.0f * M_PI * gameOverPhaseShift / contextManager->leds.size()));
       float phase = offset * 127 + 128;
@@ -164,7 +168,7 @@ namespace Games::PhaseEvasion
       state.current = Actions::Startup;
       state.reset();
       contextManager->stateManager.displayShouldUpdate = true;
-      gameOverPhaseShift = static_cast<float>(contextManager->leds.size() / 3.0);
+      gameOverPhaseShift = static_cast<float>(player.getPosition());
       flareManager.reset();
       windDownTimer.wait(windDownLength);
     }
@@ -175,5 +179,6 @@ namespace Games::PhaseEvasion
     interval = 2000;
     gap = 1500;
     speed = 0.4f;
+    wait(500);
   }
 }

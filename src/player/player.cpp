@@ -2,7 +2,7 @@
 
 namespace Player
 {
-  void Player::move(const int distance, const float speed)
+  void Player::move(const int distance, const float speed, const bool shouldWrap)
   {
     if (distance == 0)
       return;
@@ -10,12 +10,26 @@ namespace Player
     float step = contextManager->controller.analogToSpeed(distance, speed);
     positionPrecise += step;
 
-    const float ledCountF = static_cast<float>(contextManager->leds.size());
-    positionPrecise = std::fmod(positionPrecise, ledCountF);
+    const float adjustedLedCount = static_cast<float>(contextManager->leds.size() - width);
+    if (shouldWrap)
+    {
+      positionPrecise = std::fmod(positionPrecise, adjustedLedCount);
 
-    if (positionPrecise < 0.0f)
-      positionPrecise += ledCountF;
-
-    position = static_cast<uint16_t>(std::floor(positionPrecise)) % contextManager->leds.size();
+      if (positionPrecise < 0.0f)
+      {
+        positionPrecise += adjustedLedCount;
+      }
+    }
+    else
+    {
+      if (positionPrecise >= adjustedLedCount)
+      {
+        positionPrecise = adjustedLedCount;
+      }
+      else if (positionPrecise < 0.0f)
+      {
+        positionPrecise = 0.0f;
+      }
+    }
   }
 }

@@ -10,8 +10,8 @@ namespace Lights
   class LedStrip
   {
   public:
+    LedStrip();
     LedBuffer buffer;
-    LedStrip(SystemCore::Configuration &configuration);
     Color *getRawColors();
 
     static constexpr uint16_t size() { return SystemCore::Configuration::numLeds; }
@@ -19,7 +19,6 @@ namespace Lights
     void adjustLuminance();
 
   private:
-    const SystemCore::Configuration &config;
     LedLuminance luminance;
   };
 }

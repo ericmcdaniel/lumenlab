@@ -6,6 +6,7 @@
 #include "games/phase-evasion/player.h"
 #include "games/phase-evasion/flare.h"
 #include "games/phase-evasion/flare-manager.h"
+#include "games/phase-evasion/gem.h"
 
 namespace Games::PhaseEvasion
 {
@@ -24,6 +25,8 @@ namespace Games::PhaseEvasion
     GameState &state = contextManager->stateManager.getPhaseEvasionGameState();
     Player player;
     FlareManager flareManager;
+    Gem bonusGem;
+
     float interval;
     float gap;
     float speed;
@@ -31,6 +34,7 @@ namespace Games::PhaseEvasion
     void getUpdates();
     void renderPlayer();
     void renderFlare();
+    void renderGem();
     void checkCollision();
     void orchestrateCollection();
     void muzzleFlash();

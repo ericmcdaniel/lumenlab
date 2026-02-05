@@ -10,7 +10,7 @@ namespace Games::Demo
     float center = (width + 1) / 2.0f;
     for (uint16_t i = 0; i <= width; ++i)
     {
-      uint16_t index = (getPosition() + i) % contextManager->leds.size();
+      uint16_t index = (getPosition() + i) % SystemCore::Configuration::numLeds;
       float intensity = 1.0f - std::abs(i - center) / center;
       if (intensity < 0)
         intensity = 0;
@@ -27,7 +27,7 @@ namespace Games::Demo
     float center = (width + 1) / 2.0f;
     for (uint16_t i = 0; i <= width; ++i)
     {
-      uint16_t index = (getPosition() + i) % contextManager->leds.size();
+      uint16_t index = (getPosition() + i) % SystemCore::Configuration::numLeds;
       float intensity = 1.0f - std::abs(i - center) / center;
       if (intensity < 0)
         intensity = 0;

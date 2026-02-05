@@ -22,7 +22,7 @@ namespace Games::Recall
     uint16_t gameplaySpeedIlluminated = 500;
     uint16_t gameplaySpeedPaused = gameplaySpeedIlluminated / 6;
     static constexpr uint16_t maxRound = 1000;
-    static constexpr auto &availableGameplayButtons = ::Player::Player::availableGameplayButtons;
+    static constexpr auto &availableGameplayButtons = ::Player::BasePlayer::availableGameplayButtons;
     uint16_t sequenceIndex = 0;
     Player::ControllerButton gameplayColors[maxRound];
     float gameOverLedPhaseShift = 0.0f;

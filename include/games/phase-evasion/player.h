@@ -5,10 +5,10 @@
 
 namespace Games::PhaseEvasion
 {
-  class Player : public ::Player::Player
+  class Player : public ::Player::BasePlayer
   {
   public:
-    Player(SystemCore::ContextManager *ctx, uint16_t width) : ::Player::Player{ctx, width} {};
+    Player(SystemCore::ContextManager *ctx, uint16_t width) : ::Player::BasePlayer{ctx, width} {};
     void checkColorChangeRequest();
     Lights::Color getColor() { return currentColor; }
 

@@ -54,9 +54,11 @@ namespace Engine
     StateManager() : systemState{SystemState::Initialize},
                      userMainMenuChoice{MainMenuSelection::Games},
                      userGameChoice{GameSelection::Recall} {}
-    bool isRunning() { return systemState != SystemState::Error; }
+
     bool displayShouldUpdate = true;
     bool displayIsVisible = true;
+
+    bool isRunning() const { return systemState != SystemState::Error; }
 
     const SystemState current() const { return systemState; }
     void setNext(SystemState state);
@@ -83,11 +85,11 @@ namespace Engine
     Scenes::Canvas::SceneState &getCanvasSceneState() { return canvasSceneState; }
 
   private:
-    SystemState systemState = SystemState::MenuHome;
+    SystemState systemState;
 
-    MainMenuSelection userMainMenuChoice = MainMenuSelection::Games;
-    GameSelection userGameChoice = GameSelection::Demo;
-    SceneSelection userSceneChoice = SceneSelection::Canvas;
+    MainMenuSelection userMainMenuChoice;
+    GameSelection userGameChoice;
+    SceneSelection userSceneChoice;
 
     Games::Recall::GameState recallGameState;
     Games::PhaseEvasion::GameState phaseEvasionGameState;

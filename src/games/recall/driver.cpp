@@ -88,11 +88,12 @@ namespace Games::Recall
 
     auto boundaries = directionBoundaries(gameplayColors[sequenceIndex]);
     double mu = (boundaries.first + boundaries.second) / 2.0;
+    const auto &recallBoundary = SystemCore::Configuration::recallBoundaries;
     double delta = ((gameplayColors[sequenceIndex] ==
                          Player::ControllerButton::Circle ||
                      gameplayColors[sequenceIndex] == Player::ControllerButton::Square)
-                        ? contextManager->config.recallBoundaries[2] - contextManager->config.recallBoundaries[1]
-                        : contextManager->config.recallBoundaries[1] - contextManager->config.recallBoundaries[0]) /
+                        ? recallBoundary[2] - recallBoundary[1]
+                        : recallBoundary[1] - recallBoundary[0]) /
                    5;
 
     for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
@@ -192,7 +193,7 @@ namespace Games::Recall
 
   std::pair<uint16_t, uint16_t> Driver::directionBoundaries(Player::ControllerButton button)
   {
-    const auto &boundary = contextManager->config.recallBoundaries;
+    const auto &boundary = SystemCore::Configuration::recallBoundaries;
 
     switch (button)
     {
@@ -203,7 +204,7 @@ namespace Games::Recall
     case Player::ControllerButton::Cross:
       return {boundary[2], static_cast<uint16_t>(boundary[3] - 1)};
     case Player::ControllerButton::Square:
-      return {boundary[3], static_cast<uint16_t>(contextManager->leds.size() - 1)};
+      return {boundary[3], static_cast<uint16_t>(SystemCore::Configuration::numLeds - 1)};
     default:
       return {0, 0};
     }
@@ -247,14 +248,14 @@ namespace Games::Recall
       contextManager->stateManager.displayShouldUpdate = true;
     }
 
-    for (uint16_t i = 0; i <= contextManager->leds.size(); ++i)
+    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds; ++i)
     {
-      float phase = std::cos((2.0f * M_PI * i / contextManager->leds.size()) + (2.0f * M_PI * gameOverLedPhaseShift / contextManager->leds.size())) * 127 + 128;
+      float phase = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds) + (2.0f * M_PI * gameOverLedPhaseShift / SystemCore::Configuration::numLeds)) * 127 + 128;
       contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
     }
 
     gameOverLedPhaseShift += 0.5f;
-    if (gameOverLedPhaseShift > contextManager->leds.size())
+    if (gameOverLedPhaseShift > SystemCore::Configuration::numLeds)
       gameOverLedPhaseShift = 0.0f;
   }
 }

@@ -7,7 +7,7 @@
 
 namespace SystemCore
 {
-  ContextManager::ContextManager() : leds{config}, display{this} {}
+  ContextManager::ContextManager() : display{this} {}
 
   ContextManager::~ContextManager()
   {

@@ -2,9 +2,7 @@
 
 namespace Lights
 {
-  LedStrip::LedStrip(SystemCore::Configuration &configuration) : config{configuration},
-                                                                 buffer{configuration.numLeds},
-                                                                 luminance{configuration}
+  LedStrip::LedStrip()
   {
 #ifdef RELEASE
     FastLED.addLeds<WS2815, 18, GRB>(static_cast<Color *>(buffer), size());

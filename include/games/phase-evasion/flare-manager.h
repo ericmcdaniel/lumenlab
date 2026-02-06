@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/context-manager.h"
 #include "games/phase-evasion/flare.h"
 
 namespace Games::PhaseEvasion
@@ -7,7 +8,7 @@ namespace Games::PhaseEvasion
   class FlareManager : public Engine::Timer
   {
   public:
-    FlareManager() = default;
+    FlareManager(SystemCore::ContextManager *ctx) : contextManager{ctx} {}
     FlareManager(const FlareManager &) = delete;
     FlareManager &operator=(const FlareManager &) = delete;
 
@@ -22,9 +23,11 @@ namespace Games::PhaseEvasion
     const size_t size() const;
 
     void updatePositions();
-    void dispatch();
+    void dispatch(float speed);
+    void reset();
 
   private:
+    SystemCore::ContextManager *contextManager;
     std::array<Flare, 10> flarePool;
   };
 }

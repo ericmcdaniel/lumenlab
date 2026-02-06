@@ -6,7 +6,7 @@ namespace Lights
 {
   void LedLuminance::adjustLuminance()
   {
-    int dialReading = analogRead(config.ledDimmerGpio);
+    int dialReading = analogRead(SystemCore::Configuration::ledDimmerGpio);
     dialReading = map(dialReading, 0, LedLuminance::MAX_ADC_READING, 0, LedLuminance::MAX_LED_BRIGHTNESS);
     dialReading = constrain(dialReading, 0, LedLuminance::MAX_LED_BRIGHTNESS);
 

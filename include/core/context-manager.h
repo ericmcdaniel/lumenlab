@@ -2,7 +2,6 @@
 
 #include "engine/layer.h"
 #include "engine/state-manager.h"
-#include "core/configuration.h"
 #include "player/controller.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
@@ -19,7 +18,6 @@ namespace SystemCore
 
     Engine::Layer *application = nullptr;
     Engine::StateManager stateManager;
-    SystemCore::Configuration config;
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;

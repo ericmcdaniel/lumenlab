@@ -1,5 +1,4 @@
 #include <cmath>
-#include <algorithm>
 #include "lights/color-hsl.h"
 
 namespace Lights

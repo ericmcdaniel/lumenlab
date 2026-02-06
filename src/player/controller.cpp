@@ -102,21 +102,6 @@ namespace Player
     return instance->buttonLastState[idx];
   }
 
-  float Controller::analogToSpeed(int value, float maxOutput) const
-  {
-    if (value == 0)
-      return 0.0f;
-
-    float normalizedAnalogValue = static_cast<float>(value) / 127.0f;
-    float sign = (normalizedAnalogValue > 0.0f) ? 1.0f : -1.0f;
-    float absoluteValueNormalized = std::abs(normalizedAnalogValue);
-
-    float nonlinear = std::pow(absoluteValueNormalized, instance->responseExponent);
-    float mixed = (1.0f - instance->responseBlend) * nonlinear + instance->responseBlend * absoluteValueNormalized;
-    float scaled = mixed * maxOutput;
-    return sign * scaled;
-  }
-
   void Controller::reset()
   {
     for (uint32_t i = 0; i < arraySize(buttonPressedEvent); ++i)

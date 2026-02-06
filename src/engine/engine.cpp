@@ -69,11 +69,11 @@ namespace Engine
 
   void GameEngine::initializeEngine()
   {
-    contextManager.controller.begin(contextManager.config.macAddress);
+    contextManager.controller.begin(SystemCore::Configuration::macAddress);
 
 // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
-    Serial.begin(contextManager.config.serialBaud);
+    Serial.begin(SystemCore::Configuration::serialBaud);
     contextManager.leds.reset();
     renderLedStrip();
     log("Connecting to computer using a serial connection for debugging.");
@@ -127,14 +127,14 @@ namespace Engine
       return;
     }
 
-    for (uint16_t i = 0; i <= contextManager.leds.size(); ++i)
+    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds; ++i)
     {
-      float phase = std::cos((2 * M_PI * i / contextManager.leds.size()) + (2 * M_PI * disconnectedLedPhaseShift / contextManager.leds.size())) * 127 + 128;
+      float phase = std::cos((2 * M_PI * i / SystemCore::Configuration::numLeds) + (2 * M_PI * disconnectedLedPhaseShift / SystemCore::Configuration::numLeds)) * 127 + 128;
       contextManager.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
     }
     disconnectedLedPhaseShift += 0.5;
 
-    if (disconnectedLedPhaseShift > contextManager.leds.size())
+    if (disconnectedLedPhaseShift > SystemCore::Configuration::numLeds)
       disconnectedLedPhaseShift = 0;
   }
 
@@ -142,7 +142,7 @@ namespace Engine
   {
     constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
     uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserMenuChoice());
-    uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
+    uint16_t boundaryWidth = SystemCore::Configuration::numLeds / numOfSupportedModes;
     uint16_t boundaryStart = boundaryWidth * option;
     uint16_t boundaryEnd = boundaryWidth * (option + 1);
     double mu = (boundaryStart + boundaryEnd) / 2.0;
@@ -160,7 +160,7 @@ namespace Engine
   {
     constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(GameSelection::COUNT);
     uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserGameChoice());
-    uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
+    uint16_t boundaryWidth = SystemCore::Configuration::numLeds / numOfSupportedModes;
     uint16_t boundaryStart = boundaryWidth * option;
     uint16_t boundaryEnd = boundaryWidth * (option + 1);
     double mu = (boundaryStart + boundaryEnd) / 2.0;
@@ -178,7 +178,7 @@ namespace Engine
   {
     constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(SceneSelection::COUNT);
     uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserSceneChoice());
-    uint16_t boundaryWidth = contextManager.leds.size() / numOfSupportedModes;
+    uint16_t boundaryWidth = SystemCore::Configuration::numLeds / numOfSupportedModes;
     uint16_t boundaryStart = boundaryWidth * option;
     uint16_t boundaryEnd = boundaryWidth * (option + 1);
     double mu = (boundaryStart + boundaryEnd) / 2.0;
@@ -201,7 +201,7 @@ namespace Engine
 #ifdef VIRTUALIZATION
     Serial.write(0xAA); // sync bytes
     Serial.write(0x55);
-    Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), contextManager.leds.size() * sizeof(Lights::Color));
+    Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), SystemCore::Configuration::numLeds * sizeof(Lights::Color));
 #endif
   }
 

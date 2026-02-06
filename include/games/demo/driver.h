@@ -6,10 +6,10 @@
 
 namespace Games::Demo
 {
-  class Controller : public Engine::Layer
+  class Driver : public Engine::Layer
   {
   public:
-    Controller(SystemCore::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}, player1{Player{ctx}}, player2{Player{ctx}}
+    Driver(SystemCore::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}, player1{Player{ctx, width}}, player2{Player{ctx, width}}
     {
       contextManager->stateManager.getDemoGameState().reset();
     }
@@ -25,5 +25,6 @@ namespace Games::Demo
     Player player1;
     Player player2;
     static constexpr float speed = 4.0f;
+    static constexpr uint16_t width = 7;
   };
 }

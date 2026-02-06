@@ -21,15 +21,22 @@ namespace Games::PhaseEvasion
 
   private:
     SystemCore::ContextManager *contextManager;
-    Engine::Timer windDownTimer;
     GameState &state = contextManager->stateManager.getPhaseEvasionGameState();
+
     Player player;
     FlareManager flareManager;
     Gem gem;
 
+    Engine::Timer windDownTimer;
+    Engine::Timer gemTimeoutTimer;
+
     float interval;
     float gap;
     float speed;
+
+    uint32_t gemRespawnDelay = 5000;
+    uint32_t gemCaptureDelay = 15000;
+
     float gameOverPhaseShift = 0.0f;
     float gameOverPhaseOffset = 0.0f;
 
@@ -39,7 +46,7 @@ namespace Games::PhaseEvasion
     void renderGem();
     void checkCollision();
     void checkGemCapture();
-    void checkChallenge();
+    void assessDifficulty();
     void muzzleFlash();
     void gameOver();
     void reset();

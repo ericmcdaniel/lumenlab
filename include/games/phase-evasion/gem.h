@@ -24,9 +24,7 @@ namespace Games::PhaseEvasion
       bool isOutsideLeftRegion = pos < (width - 1);
       bool isOutsideRightRegion = pos > SystemCore::Configuration::numLeds + (width - 1);
       if (isOutsideLeftRegion || isOutsideRightRegion)
-      {
         return;
-      }
 
       position = pos;
       active = true;

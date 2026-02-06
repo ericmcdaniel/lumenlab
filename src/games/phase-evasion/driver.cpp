@@ -13,7 +13,7 @@ namespace Games::PhaseEvasion
     state.current = Actions::Startup;
     reset();
     wait(500);
-    gem.wait(5000);
+    gem.wait(gemRespawnDelay);
     windDownTimer.wait(windDownLength);
   }
 
@@ -31,7 +31,7 @@ namespace Games::PhaseEvasion
     case Actions::ActiveGame:
     case Actions::WindDown:
       getUpdates();
-      checkChallenge();
+      assessDifficulty();
       checkCollision();
       checkGemCapture();
       renderFlare();
@@ -95,7 +95,7 @@ namespace Games::PhaseEvasion
 
   void Driver::renderGem()
   {
-    if (!gem.isActive())
+    if (!gem.isActive() || !gem.isReady())
       return;
 
     uint16_t gemLeft = std::max(gem.getPosition() - gem.width, 0);
@@ -137,27 +137,36 @@ namespace Games::PhaseEvasion
     {
       const auto randGemPosition = static_cast<uint16_t>((esp_random() % static_cast<uint32_t>(SystemCore::Configuration::numLeds)) + gem.width);
       gem.spawn(randGemPosition);
+      gemTimeoutTimer.wait(gemCaptureDelay);
     }
 
-    if (gem.isActive())
+    if (gem.isActive() && gem.isReady())
     {
-      uint16_t gemStart = std::max(gem.getPosition() - gem.width, 0);
-      uint16_t gemEnd = std::min(gem.getPosition(), SystemCore::Configuration::numLeds);
+      if (!gemTimeoutTimer.isReady())
+      {
+        uint16_t gemStart = std::max(gem.getPosition() - gem.width, 0);
+        uint16_t gemEnd = std::min(gem.getPosition(), SystemCore::Configuration::numLeds);
 
-      bool hasEnteredRegion = gemStart <= player.getPosition() + player.width;
-      bool hasNotExitedRegion = gemEnd >= player.getPosition();
+        bool hasEnteredRegion = gemStart <= player.getPosition() + player.width;
+        bool hasNotExitedRegion = gemEnd >= player.getPosition();
 
-      if (hasEnteredRegion && hasNotExitedRegion)
+        if (hasEnteredRegion && hasNotExitedRegion) // player captured the gem
+        {
+          gem.capture();
+          contextManager->stateManager.getPhaseEvasionGameState().gemsCaptured++;
+          contextManager->stateManager.displayShouldUpdate = true;
+          gem.wait(gemRespawnDelay);
+        }
+      }
+      else // gem timed out, player took too long
       {
         gem.capture();
-        contextManager->stateManager.getPhaseEvasionGameState().gemsCaptured++;
-        contextManager->stateManager.displayShouldUpdate = true;
-        gem.wait(5000);
+        gem.wait(gemRespawnDelay);
       }
     }
   }
 
-  void Driver::checkChallenge()
+  void Driver::assessDifficulty()
   {
     if (isReady())
     {
@@ -232,7 +241,7 @@ namespace Games::PhaseEvasion
     gap = 1600;
     speed = 0.4f;
     gem.capture();
-    gem.wait(5000);
+    gem.wait(gemRespawnDelay);
     flareManager.reset();
     player.setPosition(static_cast<uint16_t>(0));
     wait(500);

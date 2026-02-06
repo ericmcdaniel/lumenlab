@@ -192,15 +192,14 @@ namespace Display
     drawHeader("Phase Evasion");
 
     display.setCursor(0, 16);
-    display.printf("Flares: %3u", flaresEvaded);
-
-    display.setCursor(DISPLAY_WIDTH / 2 + 8, 16);
-    display.printf("Gems: %3u", gemsCaptured);
+    display.printf("Flares: %u", flaresEvaded);
+    display.setCursor(DISPLAY_WIDTH / 2 + 4, 16);
+    display.printf("Total: %u", (flaresEvaded + (2 * gemsCaptured)));
 
     display.setCursor(0, 24);
-    display.printf("  High: %3u", flaresEvaded);
-    display.setCursor(DISPLAY_WIDTH / 2 + 8, 24);
-    display.printf("       %2u", gemsCaptured);
+    display.printf("  Gems: %u", gemsCaptured);
+    display.setCursor(DISPLAY_WIDTH / 2 + 4, 24);
+    display.printf(" High: %u", (flaresEvaded + (2 * gemsCaptured)));
 
     display.display();
   }

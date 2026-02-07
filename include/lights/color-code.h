@@ -10,6 +10,6 @@ namespace Lights
     ThemeRed = 0xff4d4d,
     ThemeGreen = 0x4dff4d,
     ThemeYellow = 0xffd24d,
-    MenuUnselected = 0x404040,
+    MenuUnselected = 0x5a5a50,
   };
 }

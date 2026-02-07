@@ -144,16 +144,21 @@ namespace Engine
     uint8_t modeSelected = static_cast<uint8_t>(contextManager.stateManager.getUserMenuChoice());
 
     uint16_t displayIndex = SystemCore::Configuration::numLeds - 1;
-    float inactiveSelectionDimmingScale = contextManager.stateManager.current() == SystemState::MenuHome ? 1.0f : 0.4f;
+    float inactiveSelectionDimmingScale = contextManager.stateManager.current() == SystemState::MenuHome ? 1.0f : 0.3f;
+    constexpr float center = (menuTileWidth - 1) / 2.0f;
+    constexpr double sigma = 3.0f;
 
     for (uint8_t modeIdx = 0; modeIdx < numModes; ++modeIdx)
     {
       for (uint16_t i = 0; i < menuTileWidth; ++i)
       {
+        float x = i - center;
+        float blend = std::exp(-(x * x) / (2 * sigma * sigma)); // computed gaussian curve
+
         if (modeIdx == modeSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeGreen} * inactiveSelectionDimmingScale;
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeGreen} * inactiveSelectionDimmingScale * blend;
         else
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale;
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale * blend;
 
         displayIndex--;
       }
@@ -169,19 +174,22 @@ namespace Engine
     uint8_t sceneSelected = static_cast<uint8_t>(contextManager.stateManager.getUserSceneChoice());
 
     displayIndex = 0;
-    inactiveSelectionDimmingScale = (contextManager.stateManager.current() == SystemState::MenuGames || contextManager.stateManager.current() == SystemState::MenuScenes) ? 1.0f : 0.4f;
+    inactiveSelectionDimmingScale = (contextManager.stateManager.current() == SystemState::MenuGames || contextManager.stateManager.current() == SystemState::MenuScenes) ? 1.0f : 0.3f;
     uint8_t gamesOrScenesAvailable = contextManager.stateManager.getUserMenuChoice() == MainMenuSelection::Games ? numGames : numScenes;
 
     for (uint8_t modeIdx = 0; modeIdx < gamesOrScenesAvailable; ++modeIdx)
     {
       for (size_t i = 0; i < menuTileWidth; ++i)
       {
+        float x = i - center;
+        float blend = std::exp(-(x * x) / (2 * sigma * sigma));
+
         if (contextManager.stateManager.current() == SystemState::MenuGames && modeIdx == gameSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeBlue};
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeBlue} * blend;
         else if (contextManager.stateManager.current() == SystemState::MenuScenes && modeIdx == sceneSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeYellow};
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeYellow} * blend;
         else
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale;
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale * blend;
 
         displayIndex++;
       }

@@ -187,7 +187,7 @@ class LEDVisualizer(mglw.WindowConfig):
                 time.sleep(1)
 
     def on_render(self, time, frametime):
-        self.ctx.clear(0.1, 0.1, 0.1)
+        self.ctx.clear(0.05, 0.05, 0.05)
         with self.led_lock:
             self.vbo_positions.write(self.positions.tobytes())
             self.vbo_colors.write(self.led_colors.tobytes())

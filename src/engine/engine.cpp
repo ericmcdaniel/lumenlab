@@ -143,22 +143,17 @@ namespace Engine
     constexpr uint8_t numModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
     uint8_t modeSelected = static_cast<uint8_t>(contextManager.stateManager.getUserMenuChoice());
 
-    constexpr uint8_t numGames = static_cast<uint8_t>(GameSelection::COUNT);
-    uint8_t gameSelected = static_cast<uint8_t>(contextManager.stateManager.getUserGameChoice());
-
-    constexpr uint8_t numScenes = static_cast<uint8_t>(SceneSelection::COUNT);
-    uint8_t sceneSelected = static_cast<uint8_t>(contextManager.stateManager.getUserSceneChoice());
-
     uint16_t displayIndex = SystemCore::Configuration::numLeds - 1;
+    float inactiveSelectionDimmingScale = contextManager.stateManager.current() == SystemState::MenuHome ? 1.0f : 0.4f;
 
     for (uint8_t modeIdx = 0; modeIdx < numModes; ++modeIdx)
     {
       for (uint16_t i = 0; i < menuTileWidth; ++i)
       {
         if (modeIdx == modeSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeGreen};
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeGreen} * inactiveSelectionDimmingScale;
         else
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::Color::DarkSlateGray};
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale;
 
         displayIndex--;
       }
@@ -167,7 +162,14 @@ namespace Engine
         displayIndex -= menuTileWidth;
     }
 
+    constexpr uint8_t numGames = static_cast<uint8_t>(GameSelection::COUNT);
+    uint8_t gameSelected = static_cast<uint8_t>(contextManager.stateManager.getUserGameChoice());
+
+    constexpr uint8_t numScenes = static_cast<uint8_t>(SceneSelection::COUNT);
+    uint8_t sceneSelected = static_cast<uint8_t>(contextManager.stateManager.getUserSceneChoice());
+
     displayIndex = 0;
+    inactiveSelectionDimmingScale = (contextManager.stateManager.current() == SystemState::MenuGames || contextManager.stateManager.current() == SystemState::MenuScenes) ? 1.0f : 0.4f;
 
     uint16_t gamesOrScenesAvailable = contextManager.stateManager.current() == SystemState::MenuHome || contextManager.stateManager.current() == SystemState::MenuGames ? numGames : numScenes;
 
@@ -178,9 +180,9 @@ namespace Engine
         if (contextManager.stateManager.current() == SystemState::MenuGames && modeIdx == gameSelected)
           contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeBlue};
         else if (contextManager.stateManager.current() == SystemState::MenuScenes && modeIdx == sceneSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeRed};
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeYellow};
         else
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::Color::DarkSlateGray};
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale;
 
         displayIndex++;
       }

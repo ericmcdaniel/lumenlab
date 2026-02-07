@@ -20,7 +20,7 @@ namespace SystemCore
 
   void ContextManager::checkExitRequest()
   {
-    if (controller.wasPressed(Player::ControllerButton::Ps))
+    if (controller.wasPressedAndReleased(Player::ControllerButton::Ps))
     {
       stateManager.setNext(Engine::SystemState::MenuHome);
       stateManager.setNextUserMenuChoice(Engine::MainMenuSelection::Games);

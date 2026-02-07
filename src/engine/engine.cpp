@@ -156,7 +156,7 @@ namespace Engine
       for (uint16_t i = 0; i < menuTileWidth; ++i)
       {
         if (modeIdx == modeSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuLightGreen};
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeGreen};
         else
           contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::Color::DarkSlateGray};
 
@@ -176,9 +176,9 @@ namespace Engine
       for (uint16_t i = 0; i < menuTileWidth; ++i)
       {
         if (contextManager.stateManager.current() == SystemState::MenuGames && modeIdx == gameSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuLightBlue};
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeBlue};
         else if (contextManager.stateManager.current() == SystemState::MenuScenes && modeIdx == sceneSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::GameRed};
+          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeRed};
         else
           contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::Color::DarkSlateGray};
 
@@ -204,7 +204,7 @@ namespace Engine
     {
       double x = static_cast<double>(i);
       double scope = std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightGreen} * scope;
+      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::ThemeGreen} * scope;
     }
   }
 
@@ -222,7 +222,7 @@ namespace Engine
     {
       double x = static_cast<double>(i);
       double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightBlue} * (scope / 100.0);
+      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::ThemeBlue} * (scope / 100.0);
     }
   }
 
@@ -240,7 +240,7 @@ namespace Engine
     {
       double x = static_cast<double>(i);
       double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightBlue} * (scope / 100.0);
+      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::ThemeBlue} * (scope / 100.0);
     }
   }
 

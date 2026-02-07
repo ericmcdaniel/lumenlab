@@ -170,12 +170,11 @@ namespace Engine
 
     displayIndex = 0;
     inactiveSelectionDimmingScale = (contextManager.stateManager.current() == SystemState::MenuGames || contextManager.stateManager.current() == SystemState::MenuScenes) ? 1.0f : 0.4f;
-
-    uint16_t gamesOrScenesAvailable = contextManager.stateManager.current() == SystemState::MenuHome || contextManager.stateManager.current() == SystemState::MenuGames ? numGames : numScenes;
+    uint8_t gamesOrScenesAvailable = contextManager.stateManager.getUserMenuChoice() == MainMenuSelection::Games ? numGames : numScenes;
 
     for (uint8_t modeIdx = 0; modeIdx < gamesOrScenesAvailable; ++modeIdx)
     {
-      for (uint16_t i = 0; i < menuTileWidth; ++i)
+      for (size_t i = 0; i < menuTileWidth; ++i)
       {
         if (contextManager.stateManager.current() == SystemState::MenuGames && modeIdx == gameSelected)
           contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeBlue};

@@ -5,6 +5,7 @@
 #include "player/controller.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
+#include "display/menu-navigation.h"
 
 namespace SystemCore
 {
@@ -21,6 +22,7 @@ namespace SystemCore
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;
+    Display::MenuTileNavigation menuNav;
 
     void navigateMainMenu();
     void navigateGameMenu();

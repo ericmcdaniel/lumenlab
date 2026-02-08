@@ -7,7 +7,7 @@
 
 namespace SystemCore
 {
-  ContextManager::ContextManager() : display{this} {}
+  ContextManager::ContextManager() : display{this}, menuNav{this} {}
 
   ContextManager::~ContextManager()
   {
@@ -68,6 +68,7 @@ namespace SystemCore
         break;
       }
     }
+    menuNav.displayMenuNavigation();
   }
 
   void ContextManager::navigateGameMenu()
@@ -106,6 +107,7 @@ namespace SystemCore
       stateManager.setNext(Engine::SystemState::MenuHome);
       log("Transitioning to Main Menu.");
     }
+    menuNav.displayMenuNavigation();
   }
 
   void ContextManager::navigateSceneMenu()
@@ -138,6 +140,7 @@ namespace SystemCore
       stateManager.setNext(Engine::SystemState::MenuHome);
       log("Transitioning to Main Menu.");
     }
+    menuNav.displayMenuNavigation();
   }
 
   void ContextManager::transitionLayer()

@@ -20,10 +20,6 @@ namespace Engine
 
     void initializeEngine();
     void renderLedStrip();
-    void displayMenuNavigation();
-    void displayMainMenuSelection();
-    void displayGameSelection();
-    void displaySceneSelection();
     static void displayTask(void *param);
   };
 }

@@ -3,6 +3,7 @@
 #include <FastLED.h>
 #include "engine/engine.h"
 #include "lights/color.h"
+#include "display/menu-navigation.h"
 #include "logger.h"
 
 namespace Engine
@@ -33,15 +34,12 @@ namespace Engine
       {
       case SystemState::MenuHome:
         contextManager.navigateMainMenu();
-        displayMenuNavigation();
         break;
       case SystemState::MenuGames:
         contextManager.navigateGameMenu();
-        displayMenuNavigation();
         break;
       case SystemState::MenuScenes:
         contextManager.navigateSceneMenu();
-        displayMenuNavigation();
         break;
       case SystemState::GameRecall:
       case SystemState::GamePhaseEvasion:
@@ -136,121 +134,6 @@ namespace Engine
 
     if (disconnectedLedPhaseShift > SystemCore::Configuration::numLeds)
       disconnectedLedPhaseShift = 0;
-  }
-
-  void GameEngine::displayMenuNavigation()
-  {
-    constexpr uint8_t numModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
-    uint8_t modeSelected = static_cast<uint8_t>(contextManager.stateManager.getUserMenuChoice());
-
-    uint16_t displayIndex = SystemCore::Configuration::numLeds - 1;
-    float inactiveSelectionDimmingScale = contextManager.stateManager.current() == SystemState::MenuHome ? 1.0f : 0.3f;
-    constexpr float center = (menuTileWidth - 1) / 2.0f;
-    constexpr double sigma = 3.0f;
-
-    for (uint8_t modeIdx = 0; modeIdx < numModes; ++modeIdx)
-    {
-      for (uint16_t i = 0; i < menuTileWidth; ++i)
-      {
-        float x = i - center;
-        float blend = std::exp(-(x * x) / (2 * sigma * sigma)); // computed gaussian curve
-
-        if (modeIdx == modeSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeGreen} * inactiveSelectionDimmingScale * blend;
-        else
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale * blend;
-
-        displayIndex--;
-      }
-
-      if (modeIdx < numModes - 1)
-        displayIndex -= menuTileWidth;
-    }
-
-    constexpr uint8_t numGames = static_cast<uint8_t>(GameSelection::COUNT);
-    uint8_t gameSelected = static_cast<uint8_t>(contextManager.stateManager.getUserGameChoice());
-
-    constexpr uint8_t numScenes = static_cast<uint8_t>(SceneSelection::COUNT);
-    uint8_t sceneSelected = static_cast<uint8_t>(contextManager.stateManager.getUserSceneChoice());
-
-    displayIndex = 0;
-    inactiveSelectionDimmingScale = (contextManager.stateManager.current() == SystemState::MenuGames || contextManager.stateManager.current() == SystemState::MenuScenes) ? 1.0f : 0.3f;
-    uint8_t gamesOrScenesAvailable = contextManager.stateManager.getUserMenuChoice() == MainMenuSelection::Games ? numGames : numScenes;
-
-    for (uint8_t modeIdx = 0; modeIdx < gamesOrScenesAvailable; ++modeIdx)
-    {
-      for (size_t i = 0; i < menuTileWidth; ++i)
-      {
-        float x = i - center;
-        float blend = std::exp(-(x * x) / (2 * sigma * sigma));
-
-        if (contextManager.stateManager.current() == SystemState::MenuGames && modeIdx == gameSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeBlue} * blend;
-        else if (contextManager.stateManager.current() == SystemState::MenuScenes && modeIdx == sceneSelected)
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeYellow} * blend;
-        else
-          contextManager.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale * blend;
-
-        displayIndex++;
-      }
-
-      if (modeIdx < gamesOrScenesAvailable - 1)
-        displayIndex += menuTileWidth;
-    }
-  }
-
-  void GameEngine::displayMainMenuSelection()
-  {
-    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
-    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserMenuChoice());
-    uint16_t boundaryWidth = SystemCore::Configuration::numLeds / numOfSupportedModes;
-    uint16_t boundaryStart = boundaryWidth * option;
-    uint16_t boundaryEnd = boundaryWidth * (option + 1);
-    double mu = (boundaryStart + boundaryEnd) / 2.0;
-    constexpr double sigma = 35.0;
-
-    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
-    {
-      double x = static_cast<double>(i);
-      double scope = std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::ThemeGreen} * scope;
-    }
-  }
-
-  void GameEngine::displayGameSelection()
-  {
-    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(GameSelection::COUNT);
-    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserGameChoice());
-    uint16_t boundaryWidth = SystemCore::Configuration::numLeds / numOfSupportedModes;
-    uint16_t boundaryStart = boundaryWidth * option;
-    uint16_t boundaryEnd = boundaryWidth * (option + 1);
-    double mu = (boundaryStart + boundaryEnd) / 2.0;
-    constexpr double sigma = 20.0;
-
-    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
-    {
-      double x = static_cast<double>(i);
-      double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::ThemeBlue} * (scope / 100.0);
-    }
-  }
-
-  void GameEngine::displaySceneSelection()
-  {
-    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(SceneSelection::COUNT);
-    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserSceneChoice());
-    uint16_t boundaryWidth = SystemCore::Configuration::numLeds / numOfSupportedModes;
-    uint16_t boundaryStart = boundaryWidth * option;
-    uint16_t boundaryEnd = boundaryWidth * (option + 1);
-    double mu = (boundaryStart + boundaryEnd) / 2.0;
-    constexpr double sigma = 20.0;
-
-    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
-    {
-      double x = static_cast<double>(i);
-      double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::ThemeBlue} * (scope / 100.0);
-    }
   }
 
   void GameEngine::renderLedStrip()

@@ -187,6 +187,8 @@ namespace Display
   {
     const auto flaresEvaded = contextManager->stateManager.getPhaseEvasionGameState().flaresEvaded;
     const auto gemsCaptured = contextManager->stateManager.getPhaseEvasionGameState().gemsCaptured;
+    const auto totalScore = contextManager->stateManager.getPhaseEvasionGameState().calculateTotalScore();
+    const auto highScore = contextManager->stateManager.getPhaseEvasionGameState().highScore;
 
     display.clearDisplay();
     drawHeader("Phase Evasion");
@@ -194,12 +196,12 @@ namespace Display
     display.setCursor(0, 16);
     display.printf("Flares: %u", flaresEvaded);
     display.setCursor(DISPLAY_WIDTH / 2 + 4, 16);
-    display.printf("Total: %u", (flaresEvaded + (2 * gemsCaptured)));
+    display.printf("Total: %u", totalScore);
 
     display.setCursor(0, 24);
     display.printf("  Gems: %u", gemsCaptured);
     display.setCursor(DISPLAY_WIDTH / 2 + 4, 24);
-    display.printf(" High: %u", (flaresEvaded + (2 * gemsCaptured)));
+    display.printf(" High: %u", highScore);
 
     display.display();
   }

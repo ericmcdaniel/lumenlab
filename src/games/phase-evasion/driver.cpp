@@ -1,3 +1,4 @@
+#include <Preferences.h>
 #include "games/phase-evasion/driver.h"
 #include "player/controller.h"
 #include "logger.h"
@@ -34,6 +35,7 @@ namespace Games::PhaseEvasion
       assessDifficulty();
       checkCollision();
       checkGemCapture();
+      checkIfHighScore();
       renderFlare();
       renderGem();
       renderPlayer();
@@ -191,6 +193,21 @@ namespace Games::PhaseEvasion
         interval *= 0.8;
         gap *= 0.82;
       }
+    }
+  }
+
+  void Driver::checkIfHighScore()
+  {
+    const GameState state = contextManager->stateManager.getPhaseEvasionGameState();
+
+    const uint16_t highScore = state.highScore;
+    const uint16_t currentScore = state.calculateTotalScore();
+
+    if (currentScore > highScore)
+    {
+      contextManager->stateManager.getPhaseEvasionGameState().highScore = currentScore;
+      contextManager->stateManager.displayShouldUpdate = true;
+      // contextManager->memory.putUInt("phase-evasion-high-score", contextManager->stateManager.getPhaseEvasionGameState().highScore);
     }
   }
 

@@ -41,6 +41,7 @@ namespace Games::PhaseEvasion
     float gameOverPhaseOffset = 0.0f;
 
     void getUpdates();
+    void checkIfHighScore();
     void renderPlayer();
     void renderFlare();
     void renderGem();

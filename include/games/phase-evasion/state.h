@@ -21,6 +21,12 @@ namespace Games::PhaseEvasion
     uint16_t gemsCaptured;
     uint16_t highScore;
     Actions current = Actions::Startup;
-    void reset() { highScore = flaresEvaded = gemsCaptured = 0; }
+
+    void reset()
+    {
+      highScore = flaresEvaded = gemsCaptured = 0;
+      // highScore = contextManager->memory.getUInt("phase-evasion-high-score");
+    }
+    uint16_t calculateTotalScore() const { return flaresEvaded + (2 * gemsCaptured); }
   };
 }

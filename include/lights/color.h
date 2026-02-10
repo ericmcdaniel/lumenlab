@@ -61,8 +61,8 @@ namespace Lights
   };
 
   inline const Color colorPalette[4] = {
-      Color(ColorCode::GameBlue),
-      Color(ColorCode::GameRed),
-      Color(ColorCode::GameGreen),
-      Color(ColorCode::GameYellow)};
+      Color(ColorCode::ThemeBlue),
+      Color(ColorCode::ThemeRed),
+      Color(ColorCode::ThemeGreen),
+      Color(ColorCode::ThemeYellow)};
 }

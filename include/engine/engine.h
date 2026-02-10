@@ -16,12 +16,10 @@ namespace Engine
     SystemCore::ContextManager contextManager;
     uint32_t lastRender = 0;
     float disconnectedLedPhaseShift = 0;
+    static constexpr uint16_t menuTileWidth = 12;
 
     void initializeEngine();
     void renderLedStrip();
-    void displayMainMenuSelection();
-    void displayGameSelection();
-    void displaySceneSelection();
     static void displayTask(void *param);
   };
 }

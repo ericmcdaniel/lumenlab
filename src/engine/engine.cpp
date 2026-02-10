@@ -3,6 +3,7 @@
 #include <FastLED.h>
 #include "engine/engine.h"
 #include "lights/color.h"
+#include "display/menu-navigation.h"
 #include "logger.h"
 
 namespace Engine
@@ -33,15 +34,12 @@ namespace Engine
       {
       case SystemState::MenuHome:
         contextManager.navigateMainMenu();
-        displayMainMenuSelection();
         break;
       case SystemState::MenuGames:
         contextManager.navigateGameMenu();
-        displayGameSelection();
         break;
       case SystemState::MenuScenes:
         contextManager.navigateSceneMenu();
-        displaySceneSelection();
         break;
       case SystemState::GameRecall:
       case SystemState::GamePhaseEvasion:
@@ -136,60 +134,6 @@ namespace Engine
 
     if (disconnectedLedPhaseShift > SystemCore::Configuration::numLeds)
       disconnectedLedPhaseShift = 0;
-  }
-
-  void GameEngine::displayMainMenuSelection()
-  {
-    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(MainMenuSelection::COUNT);
-    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserMenuChoice());
-    uint16_t boundaryWidth = SystemCore::Configuration::numLeds / numOfSupportedModes;
-    uint16_t boundaryStart = boundaryWidth * option;
-    uint16_t boundaryEnd = boundaryWidth * (option + 1);
-    double mu = (boundaryStart + boundaryEnd) / 2.0;
-    constexpr double sigma = 35.0;
-
-    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
-    {
-      double x = static_cast<double>(i);
-      double scope = std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightGreen} * scope;
-    }
-  }
-
-  void GameEngine::displayGameSelection()
-  {
-    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(GameSelection::COUNT);
-    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserGameChoice());
-    uint16_t boundaryWidth = SystemCore::Configuration::numLeds / numOfSupportedModes;
-    uint16_t boundaryStart = boundaryWidth * option;
-    uint16_t boundaryEnd = boundaryWidth * (option + 1);
-    double mu = (boundaryStart + boundaryEnd) / 2.0;
-    constexpr double sigma = 20.0;
-
-    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
-    {
-      double x = static_cast<double>(i);
-      double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightBlue} * (scope / 100.0);
-    }
-  }
-
-  void GameEngine::displaySceneSelection()
-  {
-    constexpr uint8_t numOfSupportedModes = static_cast<uint8_t>(SceneSelection::COUNT);
-    uint8_t option = static_cast<uint8_t>(contextManager.stateManager.getUserSceneChoice());
-    uint16_t boundaryWidth = SystemCore::Configuration::numLeds / numOfSupportedModes;
-    uint16_t boundaryStart = boundaryWidth * option;
-    uint16_t boundaryEnd = boundaryWidth * (option + 1);
-    double mu = (boundaryStart + boundaryEnd) / 2.0;
-    constexpr double sigma = 20.0;
-
-    for (uint16_t i = boundaryStart; i < boundaryEnd; ++i)
-    {
-      double x = static_cast<double>(i);
-      double scope = 100 * std::exp(-0.5 * std::pow((x - mu) / sigma, 2.0));
-      contextManager.leds.buffer[i] = Lights::Color{Lights::ColorCode::MenuLightBlue} * (scope / 100.0);
-    }
   }
 
   void GameEngine::renderLedStrip()

@@ -7,7 +7,7 @@
 
 namespace SystemCore
 {
-  ContextManager::ContextManager() : display{this} {}
+  ContextManager::ContextManager() : display{this}, menuNav{this} {}
 
   ContextManager::~ContextManager()
   {
@@ -20,7 +20,7 @@ namespace SystemCore
 
   void ContextManager::checkExitRequest()
   {
-    if (controller.wasPressed(Player::ControllerButton::Ps))
+    if (controller.wasPressedAndReleased(Player::ControllerButton::Ps))
     {
       stateManager.setNext(Engine::SystemState::MenuHome);
       stateManager.setNextUserMenuChoice(Engine::MainMenuSelection::Games);
@@ -42,13 +42,13 @@ namespace SystemCore
 
   void ContextManager::navigateMainMenu()
   {
-    if (controller.wasPressed(Player::ControllerButton::Down))
+    if (controller.wasPressed(Player::ControllerButton::Down) || controller.wasPressed(Player::ControllerButton::Right))
     {
       stateManager.selectNextMenu();
       logf("Highlighting Main Menu option %d", stateManager.getUserMenuChoice());
     }
 
-    if (controller.wasPressed(Player::ControllerButton::Up))
+    if (controller.wasPressed(Player::ControllerButton::Up) || controller.wasPressed(Player::ControllerButton::Left))
     {
       stateManager.selectNextMenu(Engine::MenuNavigationDirection::Reverse);
       logf("Highlighting Main Menu option %d", stateManager.getUserMenuChoice());
@@ -68,17 +68,18 @@ namespace SystemCore
         break;
       }
     }
+    menuNav.displayMenuNavigation();
   }
 
   void ContextManager::navigateGameMenu()
   {
-    if (controller.wasPressed(Player::ControllerButton::Down))
+    if (controller.wasPressed(Player::ControllerButton::Down) || controller.wasPressed(Player::ControllerButton::Right))
     {
       stateManager.selectNextGame();
       logf("Highlighting Games Submenu option %s", stateManager.printGameName(static_cast<int>(stateManager.getUserGameChoice())));
     }
 
-    if (controller.wasPressed(Player::ControllerButton::Up))
+    if (controller.wasPressed(Player::ControllerButton::Up) || controller.wasPressed(Player::ControllerButton::Left))
     {
       stateManager.selectNextGame(Engine::MenuNavigationDirection::Reverse);
       logf("Highlighting Games Submenu option %s", stateManager.printGameName(static_cast<int>(stateManager.getUserGameChoice())));
@@ -106,17 +107,18 @@ namespace SystemCore
       stateManager.setNext(Engine::SystemState::MenuHome);
       log("Transitioning to Main Menu.");
     }
+    menuNav.displayMenuNavigation();
   }
 
   void ContextManager::navigateSceneMenu()
   {
-    if (controller.wasPressed(Player::ControllerButton::Down))
+    if (controller.wasPressed(Player::ControllerButton::Down) || controller.wasPressed(Player::ControllerButton::Right))
     {
       stateManager.selectNextScene();
       logf("Highlighting Scene Submenu option %s", stateManager.printSceneName(static_cast<int>(stateManager.getUserSceneChoice())));
     }
 
-    if (controller.wasPressed(Player::ControllerButton::Up))
+    if (controller.wasPressed(Player::ControllerButton::Up) || controller.wasPressed(Player::ControllerButton::Left))
     {
       stateManager.selectNextScene(Engine::MenuNavigationDirection::Reverse);
       logf("Highlighting Scene Submenu option %s", stateManager.printSceneName(static_cast<int>(stateManager.getUserSceneChoice())));
@@ -138,6 +140,7 @@ namespace SystemCore
       stateManager.setNext(Engine::SystemState::MenuHome);
       log("Transitioning to Main Menu.");
     }
+    menuNav.displayMenuNavigation();
   }
 
   void ContextManager::transitionLayer()

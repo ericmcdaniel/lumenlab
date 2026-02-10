@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include <FastLED.h>
+#include <Preferences.h>
 #include "engine/engine.h"
 #include "lights/color.h"
 #include "display/menu-navigation.h"
@@ -108,6 +109,13 @@ namespace Engine
       lastRender = micros();
       log("Startup process completed. Transitioning to Main Menu");
     }
+
+#ifdef RELEASE
+    contextManager.memory.begin("lumenlab", false);
+#else
+    contextManager.memory.begin("lumenlab-development", false);
+#endif
+
     randomSeed(esp_random());
   }
 

@@ -7,7 +7,7 @@
 
 namespace SystemCore
 {
-  ContextManager::ContextManager() : display{this}, menuNav{this} {}
+  ContextManager::ContextManager() : display{this}, stateManager{this}, menuNav{this} {}
 
   ContextManager::~ContextManager()
   {

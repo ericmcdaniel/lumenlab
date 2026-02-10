@@ -113,7 +113,7 @@ namespace Engine
 #ifdef RELEASE
     contextManager.memory.begin("lumenlab", false);
 #else
-    contextManager.memory.begin("lumenlab-development", false);
+    contextManager.memory.begin("lumenlab-dev", false);
 #endif
 
     randomSeed(esp_random());

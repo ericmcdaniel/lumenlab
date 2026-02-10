@@ -205,9 +205,8 @@ namespace Games::PhaseEvasion
 
     if (currentScore > highScore)
     {
-      contextManager->stateManager.getPhaseEvasionGameState().highScore = currentScore;
+      contextManager->stateManager.getPhaseEvasionGameState().updateHighScore(currentScore);
       contextManager->stateManager.displayShouldUpdate = true;
-      // contextManager->memory.putUInt("phase-evasion-high-score", contextManager->stateManager.getPhaseEvasionGameState().highScore);
     }
   }
 

@@ -13,6 +13,7 @@ namespace Games::PhaseEvasion
       {
         uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(Lights::colorPalette);
         flare->activate(Lights::colorPalette[colorIndex], speed);
+        logf("Flare dispatched: %u", colorIndex);
         return;
       }
       ++flare;

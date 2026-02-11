@@ -12,6 +12,7 @@ namespace Games::Recall
     state = contextManager->stateManager.getRecallGameState();
     state.reset();
     state.current = Actions::Startup;
+    contextManager->stateManager.displayShouldUpdate = true;
     wait(gameplaySpeedIlluminated);
   }
 
@@ -41,6 +42,7 @@ namespace Games::Recall
       {
         state.current = Actions::ComputerPlaybackOnDisplay;
         state.reset();
+        contextManager->stateManager.displayShouldUpdate = true;
         wait(gameplaySpeedIlluminated);
       }
       break;

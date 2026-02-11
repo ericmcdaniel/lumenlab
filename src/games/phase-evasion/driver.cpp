@@ -26,6 +26,7 @@ namespace Games::PhaseEvasion
       if (isReady())
       {
         state.current = Actions::ActiveGame;
+        state.reset();
         log("Starting new game.");
       }
       break;
@@ -235,8 +236,6 @@ namespace Games::PhaseEvasion
 
     if (contextManager->controller.wasPressed(::Player::ControllerButton::Start))
     {
-      state.current = Actions::Startup;
-      state.reset();
       contextManager->stateManager.displayShouldUpdate = true;
       reset();
       windDownTimer.wait(windDownLength);
@@ -252,6 +251,9 @@ namespace Games::PhaseEvasion
     gem.wait(gemRespawnDelay);
     flareManager.reset();
     player.setPosition(static_cast<uint16_t>(0));
+    state.current = Actions::Startup;
+    state.reset();
+    contextManager->stateManager.displayShouldUpdate = true;
     wait(500);
   }
 }

@@ -59,6 +59,7 @@ namespace Engine
   public:
     StateManager(SystemCore::ContextManager *ctx) : contextManager{ctx},
                                                     phaseEvasionGameState{ctx},
+                                                    recallGameState{ctx},
                                                     systemState{SystemState::Initialize},
                                                     userMainMenuChoice{MainMenuSelection::Games},
                                                     userGameChoice{GameSelection::Recall}

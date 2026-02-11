@@ -30,6 +30,7 @@ namespace Games::PhaseEvasion
 
     void reset();
     uint16_t calculateTotalScore() const;
+    void checkHighScore();
     void updateHighScore();
 
   private:

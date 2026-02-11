@@ -199,15 +199,7 @@ namespace Games::PhaseEvasion
   void Driver::checkIfHighScore()
   {
     GameState state = contextManager->stateManager.getPhaseEvasionGameState();
-
-    const uint16_t highScore = state.highScore;
-    const uint16_t currentScore = state.calculateTotalScore();
-
-    if (currentScore > highScore)
-    {
-      state.updateHighScore();
-      contextManager->stateManager.displayShouldUpdate = true;
-    }
+    state.checkHighScore();
   }
 
   void Driver::muzzleFlash()

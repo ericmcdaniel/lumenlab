@@ -15,6 +15,15 @@ namespace Games::PhaseEvasion
     return flaresEvaded + (2 * gemsCaptured);
   }
 
+  void GameState::checkHighScore()
+  {
+    if (calculateTotalScore() > highScore)
+    {
+      updateHighScore();
+      contextManager->stateManager.displayShouldUpdate = true;
+    }
+  }
+
   void GameState::updateHighScore()
   {
     highScore = calculateTotalScore();

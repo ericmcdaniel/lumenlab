@@ -40,6 +40,7 @@ namespace Games::Recall
       if (isReady())
       {
         state.current = Actions::ComputerPlaybackOnDisplay;
+        state.reset();
         wait(gameplaySpeedIlluminated);
       }
       break;
@@ -130,12 +131,8 @@ namespace Games::Recall
     if (sequenceIndex > state.round && isReady())
     {
       state.current = Actions::PlayerResponseVerified;
-      ++state.round;
-      if (state.round > state.highScore)
-      {
-        state.updateHighScore();
-      }
-      contextManager->stateManager.displayShouldUpdate = true;
+      state.incrementScore();
+
       contextManager->controller.reset();
       wait(gameplaySpeedIlluminated * 2);
       return;

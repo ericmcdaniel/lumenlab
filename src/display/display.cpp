@@ -171,24 +171,28 @@ namespace Display
 
   void OledDisplay::drawRecallGameHud()
   {
+    const auto recallState = contextManager->stateManager.getRecallGameState();
+    const auto round = recallState.round;
+    const auto highScore = recallState.highScore;
+
     display.clearDisplay();
     drawHeader("Recall");
 
     display.setCursor(0, 16);
-    display.print("Round: ");
-    display.print(contextManager->stateManager.getRecallGameState().round + 1);
+    display.printf("Round: %u", round + 1);
     display.setCursor(0, 24);
-    display.print("High Score: -");
+    display.printf("High Score: %u", highScore + 1);
 
     display.display();
   }
 
   void OledDisplay::drawPhaseEvasionGameHud()
   {
-    const auto flaresEvaded = contextManager->stateManager.getPhaseEvasionGameState().flaresEvaded;
-    const auto gemsCaptured = contextManager->stateManager.getPhaseEvasionGameState().gemsCaptured;
-    const auto totalScore = contextManager->stateManager.getPhaseEvasionGameState().calculateTotalScore();
-    const auto highScore = contextManager->stateManager.getPhaseEvasionGameState().highScore;
+    const auto phaseEvasionState = contextManager->stateManager.getPhaseEvasionGameState();
+    const auto flaresEvaded = phaseEvasionState.flaresEvaded;
+    const auto gemsCaptured = phaseEvasionState.gemsCaptured;
+    const auto totalScore = phaseEvasionState.calculateTotalScore();
+    const auto highScore = phaseEvasionState.highScore;
 
     display.clearDisplay();
     drawHeader("Phase Evasion");

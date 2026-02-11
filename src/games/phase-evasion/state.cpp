@@ -15,9 +15,9 @@ namespace Games::PhaseEvasion
     return flaresEvaded + (2 * gemsCaptured);
   }
 
-  void GameState::updateHighScore(uint16_t score)
+  void GameState::updateHighScore()
   {
-    highScore = score;
+    highScore = calculateTotalScore();
     contextManager->memory.putUInt(memoryKeyName, highScore);
     logf("High score updated: %u", highScore);
   }

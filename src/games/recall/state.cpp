@@ -11,9 +11,9 @@ namespace Games::Recall
     highScore = contextManager->memory.getUInt(memoryKeyName);
   }
 
-  void GameState::updateHighScore(uint16_t score)
+  void GameState::updateHighScore()
   {
-    highScore = score;
+    highScore = round;
     contextManager->memory.putUInt(memoryKeyName, highScore);
     logf("High score updated: %u", highScore);
   }

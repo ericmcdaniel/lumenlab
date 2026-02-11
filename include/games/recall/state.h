@@ -29,7 +29,7 @@ namespace Games::Recall
     static constexpr const char *memoryKeyName = "recall-high";
 
     void reset();
-    void updateHighScore(uint16_t score);
+    void updateHighScore();
 
   private:
     SystemCore::ContextManager *contextManager;

@@ -131,6 +131,10 @@ namespace Games::Recall
     {
       state.current = Actions::PlayerResponseVerified;
       ++state.round;
+      if (state.round > state.highScore)
+      {
+        state.updateHighScore();
+      }
       contextManager->stateManager.displayShouldUpdate = true;
       contextManager->controller.reset();
       wait(gameplaySpeedIlluminated * 2);

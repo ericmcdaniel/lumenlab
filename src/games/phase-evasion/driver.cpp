@@ -198,14 +198,14 @@ namespace Games::PhaseEvasion
 
   void Driver::checkIfHighScore()
   {
-    const GameState state = contextManager->stateManager.getPhaseEvasionGameState();
+    GameState state = contextManager->stateManager.getPhaseEvasionGameState();
 
     const uint16_t highScore = state.highScore;
     const uint16_t currentScore = state.calculateTotalScore();
 
     if (currentScore > highScore)
     {
-      contextManager->stateManager.getPhaseEvasionGameState().updateHighScore(currentScore);
+      state.updateHighScore();
       contextManager->stateManager.displayShouldUpdate = true;
     }
   }

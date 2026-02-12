@@ -13,6 +13,7 @@ namespace Games::Recall
   {
   public:
     Driver(SystemCore::ContextManager *ctx);
+    ~Driver() { state.reset(); }
     void nextEvent() override;
 
   private:

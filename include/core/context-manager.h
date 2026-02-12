@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Preferences.h>
+
 #include "engine/layer.h"
 #include "engine/state-manager.h"
 #include "player/controller.h"
@@ -22,6 +24,7 @@ namespace SystemCore
     Player::Controller controller;
     Lights::LedStrip leds;
     Display::OledDisplay display;
+    Preferences memory;
     Display::MenuTileNavigation menuNav;
 
     void navigateMainMenu();

@@ -14,6 +14,7 @@ namespace Games::PhaseEvasion
   {
   public:
     Driver(SystemCore::ContextManager *ctx);
+    ~Driver() { state.reset(); }
     void nextEvent() override;
     static constexpr uint16_t playerOffset = 25;
     static constexpr uint16_t playerWidth = 5;
@@ -41,6 +42,7 @@ namespace Games::PhaseEvasion
     float gameOverPhaseOffset = 0.0f;
 
     void getUpdates();
+    void checkIfHighScore();
     void renderPlayer();
     void renderFlare();
     void renderGem();

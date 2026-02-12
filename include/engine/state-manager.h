@@ -5,6 +5,12 @@
 #include "games/demo/state.h"
 #include "scenes/canvas/state.h"
 
+namespace SystemCore
+{
+  // forward declaration because of ContextManager/OledDisplay circular dependency
+  class ContextManager;
+}
+
 namespace Engine
 {
   enum class SystemState
@@ -51,9 +57,14 @@ namespace Engine
   class StateManager
   {
   public:
-    StateManager() : systemState{SystemState::Initialize},
-                     userMainMenuChoice{MainMenuSelection::Games},
-                     userGameChoice{GameSelection::Recall} {}
+    StateManager(SystemCore::ContextManager *ctx) : contextManager{ctx},
+                                                    phaseEvasionGameState{ctx},
+                                                    recallGameState{ctx},
+                                                    systemState{SystemState::Initialize},
+                                                    userMainMenuChoice{MainMenuSelection::Games},
+                                                    userGameChoice{GameSelection::Recall}
+    {
+    }
 
     bool displayShouldUpdate = true;
     bool displayIsVisible = true;
@@ -85,6 +96,7 @@ namespace Engine
     Scenes::Canvas::SceneState &getCanvasSceneState() { return canvasSceneState; }
 
   private:
+    SystemCore::ContextManager *contextManager;
     SystemState systemState;
 
     MainMenuSelection userMainMenuChoice;

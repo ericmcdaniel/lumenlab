@@ -1,3 +1,4 @@
+#include <Preferences.h>
 #include "games/phase-evasion/driver.h"
 #include "player/controller.h"
 #include "logger.h"
@@ -25,6 +26,7 @@ namespace Games::PhaseEvasion
       if (isReady())
       {
         state.current = Actions::ActiveGame;
+        state.reset();
         log("Starting new game.");
       }
       break;
@@ -34,6 +36,7 @@ namespace Games::PhaseEvasion
       assessDifficulty();
       checkCollision();
       checkGemCapture();
+      checkIfHighScore();
       renderFlare();
       renderGem();
       renderPlayer();
@@ -194,6 +197,12 @@ namespace Games::PhaseEvasion
     }
   }
 
+  void Driver::checkIfHighScore()
+  {
+    GameState state = contextManager->stateManager.getPhaseEvasionGameState();
+    state.checkHighScore();
+  }
+
   void Driver::muzzleFlash()
   {
     for (uint16_t i = 0; i < SystemCore::Configuration::numLeds; ++i)
@@ -227,8 +236,6 @@ namespace Games::PhaseEvasion
 
     if (contextManager->controller.wasPressed(::Player::ControllerButton::Start))
     {
-      state.current = Actions::Startup;
-      state.reset();
       contextManager->stateManager.displayShouldUpdate = true;
       reset();
       windDownTimer.wait(windDownLength);
@@ -244,6 +251,9 @@ namespace Games::PhaseEvasion
     gem.wait(gemRespawnDelay);
     flareManager.reset();
     player.setPosition(static_cast<uint16_t>(0));
+    state.current = Actions::Startup;
+    state.reset();
+    contextManager->stateManager.displayShouldUpdate = true;
     wait(500);
   }
 }

@@ -2,6 +2,11 @@
 
 #include <cstdint>
 
+namespace SystemCore
+{
+  class ContextManager;
+}
+
 namespace Games::PhaseEvasion
 {
   enum class Actions
@@ -16,11 +21,19 @@ namespace Games::PhaseEvasion
   class GameState
   {
   public:
-    GameState() : highScore{0}, flaresEvaded{0}, gemsCaptured{0} {}
+    GameState(SystemCore::ContextManager *ctx) : contextManager{ctx}, highScore{0}, flaresEvaded{0}, gemsCaptured{0} {}
     uint16_t flaresEvaded;
     uint16_t gemsCaptured;
     uint16_t highScore;
     Actions current = Actions::Startup;
-    void reset() { highScore = flaresEvaded = gemsCaptured = 0; }
+    static constexpr const char *memoryKeyName = "phase-high";
+
+    void reset();
+    uint16_t calculateTotalScore() const;
+    void checkHighScore();
+    void updateHighScore();
+
+  private:
+    SystemCore::ContextManager *contextManager;
   };
 }

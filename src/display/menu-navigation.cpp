@@ -11,7 +11,7 @@ namespace Display
     Engine::SystemState currentState = contextManager->stateManager.current();
 
     uint16_t displayIndex = SystemCore::Configuration::numLeds - 1;
-    float inactiveSelectionDimmingScale = currentState == Engine::SystemState::MenuHome ? 1.0f : 0.3f;
+    float inactiveSelectionDimmingScale = currentState == Engine::SystemState::MenuHome ? 1.0f : 0.6f;
     constexpr float center = (menuTileWidth - 1) / 2.0f;
     constexpr double sigma = 3.0f;
 
@@ -20,7 +20,7 @@ namespace Display
       for (uint16_t i = 0; i < menuTileWidth; ++i)
       {
         float x = i - center;
-        float blend = std::exp(-(x * x) / (2 * sigma * sigma)); // computed gaussian curve
+        float blend = std::exp(-(x * x) / (4 * sigma * sigma)); // computed gaussian curve
 
         if (modeIdx == static_cast<uint8_t>(modeSelected))
           contextManager->leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeGreen} * inactiveSelectionDimmingScale * blend;
@@ -41,7 +41,7 @@ namespace Display
     uint8_t sceneSelected = static_cast<uint8_t>(contextManager->stateManager.getUserSceneChoice());
 
     displayIndex = 0;
-    inactiveSelectionDimmingScale = (currentState == Engine::SystemState::MenuGames || currentState == Engine::SystemState::MenuScenes) ? 1.0f : 0.3f;
+    inactiveSelectionDimmingScale = (currentState == Engine::SystemState::MenuGames || currentState == Engine::SystemState::MenuScenes) ? 1.0f : 0.6f;
     uint8_t gamesOrScenesAvailable = modeSelected == Engine::MainMenuSelection::Games ? numGames : numScenes;
 
     for (uint8_t modeIdx = 0; modeIdx < gamesOrScenesAvailable; ++modeIdx)
@@ -49,7 +49,7 @@ namespace Display
       for (size_t i = 0; i < menuTileWidth; ++i)
       {
         float x = i - center;
-        float blend = std::exp(-(x * x) / (2 * sigma * sigma));
+        float blend = std::exp(-(x * x) / (4 * sigma * sigma));
 
         if (currentState == Engine::SystemState::MenuGames && modeIdx == gameSelected)
           contextManager->leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeBlue} * blend;

@@ -1,79 +1,34 @@
-name: LumenLab CI/CD
+name: Build
 
 on:
   pull_request:
-
+    types: [opened, synchronize, reopened]
   push:
-    branches-ignore:
+    branches:
       - main
-    tags-ignore:
-      - 'v*'
-
-  workflow_dispatch: {}
 
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Cache PlatformIO & pip
-        uses: actions/cache@v4
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.cache/pip
             ~/.platformio/.cache
           key: ${{ runner.os }}-pio
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Inject credentials
         run: python3 ${{ github.workspace }}/tools/setup_dev_env.py
 
-      - name: Install PlatformIO
+      - name: Install platformio core libraries
         run: pip install --upgrade platformio
 
-      - name: Build LumenLab firmware
-        run: pio run --environment release
+      - name: Build LumenLab
+        run: pio run
 
-      - name: Run native tests
+      - name: Run tests
         run: pio test --environment native
-
-  docker_build_push:
-    if: github.ref == 'refs/heads/main'
-    needs: build_and_test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Determine Docker tags
-        id: docker_tags
-        run: |
-          IMAGE=mcdanieles/lumenlab
-          echo "LATEST_TAG=latest" >> $GITHUB_ENV
-          VERSION_TAG=$(git describe --tags --exact-match 2>/dev/null || echo "")
-          echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_ENV
-          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
-          echo "Tags: latest=${LATEST_TAG}, version=${VERSION_TAG}"
-
-      - name: Build Docker image
-        run: |
-          docker build -t $IMAGE:$LATEST_TAG${VERSION_TAG:+ -t $IMAGE:$VERSION_TAG} .
-
-      - name: Push Docker image
-        run: |
-          docker push $IMAGE:$LATEST_TAG
-          if [[ -n "$VERSION_TAG" ]]; then
-            docker push $IMAGE:$VERSION_TAG
-          fi

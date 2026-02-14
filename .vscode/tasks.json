@@ -124,31 +124,6 @@
 				"focus": true
 			}
 		},
-		// {
-		// 	"label": "LumenLab - Upload (Debug)",
-		// 	"type": "shell",
-		// 	"command": "platformio",
-		// 	"args": [
-		// 		"run",
-		// 		"-e",
-		// 		"debug",
-		// 		"--target",
-		// 		"upload"
-		// 	],
-		// 	"problemMatcher": [
-		// 		"$platformio"
-		// 	],
-		// 	"options": {
-		// 		"statusbar": {
-		// 			"hide": true
-		// 		}
-		// 	},
-		// 	"presentation": {
-		// 		"panel": "shared",
-		// 		"clear": false,
-		// 		"reveal": "always"
-		// 	}
-		// },
 		{
 			"label": "LumenLab - Upload (release)",
 			"type": "shell",

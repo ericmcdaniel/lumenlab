@@ -51,8 +51,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get release description notes from PR
-        id: pr_body
-        run: bash .github/scripts/get-pr-body.sh
+        id: pr_details
+        run: bash .github/scripts/get-pr-details.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -60,8 +60,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.semver.outputs.tag }}
-          name: Release ${{ steps.semver.outputs.tag }}
-          body: ${{ steps.pr_body.outputs.result }}
+          name: ${{ steps.pr_details.outputs.title }}
+          body: ${{ steps.pr_details.outputs.body }}
           files: |
             .pio/build/release/firmware.bin
             .pio/build/release/bootloader.bin

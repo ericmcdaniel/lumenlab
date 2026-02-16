@@ -7,6 +7,7 @@ namespace SystemCore
   struct Configuration
   {
     // REQUIRED: modify this address to match the mac address of your PS3 controller
+    static constexpr char version[] = "v0.3.2";
     static constexpr char macAddress[] = "00:1b:fb:8e:87:ac";
     static constexpr uint16_t numLeds = 327;
     static constexpr uint32_t serialBaud = 921600;

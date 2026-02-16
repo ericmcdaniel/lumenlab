@@ -38,7 +38,6 @@ namespace Display
     char selectedOption(uint8_t index, uint8_t selectedOptionIndex) { return index == selectedOptionIndex ? '>' : ' '; };
     int16_t calculateCenterText(const char *text);
 
-    void drawLogo();
     void drawHeader(const char *message);
     void drawBootScreen();
     void drawMainMenu();

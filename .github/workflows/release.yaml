@@ -60,7 +60,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.semver.outputs.tag }}
-          name: ${{ steps.pr_details.outputs.title }}
+          name: ${{ steps.semver.outputs.tag }} - ${{ steps.pr_details.outputs.title }}
           body: ${{ steps.pr_details.outputs.body }}
           files: |
             .pio/build/release/firmware.bin

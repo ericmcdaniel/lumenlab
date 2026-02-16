@@ -7,6 +7,8 @@
 #include "display/menu-navigation.h"
 #include "logger.h"
 
+// extern "C" const char FW_VERSION[] PROGMEM __attribute__((used, section(".fw_version"))) = "LUMENLAB_FW_VERSION:99.99.99\0";
+
 namespace Engine
 {
   GameEngine::GameEngine()

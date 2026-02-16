@@ -26,6 +26,7 @@ __pycache__
 *.log
 *.raw
 *.dat
+*.bin
 
 *.pro.user
 *.kicad_pro.user

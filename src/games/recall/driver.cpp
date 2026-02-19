@@ -91,12 +91,12 @@ namespace Games::Recall
 
     auto boundaries = directionBoundaries(gameplayColors[sequenceIndex]);
     double mu = (boundaries.first + boundaries.second) / 2.0;
-    const auto &recallBoundary = SystemCore::Configuration::recallBoundaries;
+    const auto &boundary = SystemCore::Configuration::recallBoundaries();
     double delta = ((gameplayColors[sequenceIndex] ==
                          Player::ControllerButton::Circle ||
                      gameplayColors[sequenceIndex] == Player::ControllerButton::Square)
-                        ? recallBoundary[2] - recallBoundary[1]
-                        : recallBoundary[1] - recallBoundary[0]) /
+                        ? boundary[2] - boundary[1]
+                        : boundary[1] - boundary[0]) /
                    5;
 
     for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
@@ -196,7 +196,7 @@ namespace Games::Recall
 
   std::pair<uint16_t, uint16_t> Driver::directionBoundaries(Player::ControllerButton button)
   {
-    const auto &boundary = SystemCore::Configuration::recallBoundaries;
+    const auto &boundary = SystemCore::Configuration::recallBoundaries();
 
     switch (button)
     {

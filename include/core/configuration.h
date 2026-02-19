@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Arduino.h>
+#include <Preferences.h>
 #include <cstdint>
 
 namespace SystemCore
@@ -15,7 +16,7 @@ namespace SystemCore
     static const std::array<uint16_t, 4> &recallBoundaries() { return _recallBoundaries; }
     static constexpr uint8_t ledDimmerGpio = 34; // set from PCB design
 
-    static void load(class Preferences &memory);
+    static void load(::Preferences &memory);
 
   private:
     static String _version;

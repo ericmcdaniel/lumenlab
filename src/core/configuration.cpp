@@ -1,14 +1,15 @@
 #include "core/configuration.h"
+#include <Preferences.h>
 
 namespace SystemCore
 {
-  String SystemCore::Configuration::_version;
-  String SystemCore::Configuration::_macAddress;
-  uint16_t SystemCore::Configuration::_numLeds;
-  uint32_t SystemCore::Configuration::_serialBaud;
-  std::array<uint16_t, 4> SystemCore::Configuration::_recallBoundaries;
+  String Configuration::_version;
+  String Configuration::_macAddress;
+  uint16_t Configuration::_numLeds;
+  uint32_t Configuration::_serialBaud;
+  std::array<uint16_t, 4> Configuration::_recallBoundaries;
 
-  void Configuration::load(class Preferences &memory)
+  void Configuration::load(::Preferences &memory)
   {
     _version = memory.getString("version", "v0.0.0");
     _macAddress = memory.getString("macAddress", "00:1b:fb:8e:87:ac");

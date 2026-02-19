@@ -28,6 +28,6 @@ namespace Games::PhaseEvasion
 
   private:
     SystemCore::ContextManager *contextManager;
-    std::array<Flare, 10> flarePool;
+    std::array<Flare, 20> flarePool;
   };
 }

@@ -6,10 +6,10 @@
 namespace Games::PhaseEvasion
 {
   Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx},
+                                                    state{contextManager->stateManager.getPhaseEvasionGameState()},
                                                     player{ctx, playerWidth},
                                                     flareManager{ctx}
   {
-    state = contextManager->stateManager.getPhaseEvasionGameState();
     state.reset();
     state.current = Actions::Startup;
     reset();
@@ -65,7 +65,7 @@ namespace Games::PhaseEvasion
   {
     for (uint16_t i = 0; i < player.width; ++i)
     {
-      uint16_t index = (player.getPosition() + i) % SystemCore::Configuration::numLeds;
+      uint16_t index = (player.getPosition() + i) % SystemCore::Configuration::numLeds();
       contextManager->leds.buffer[index] = player.getColor();
     }
   }
@@ -84,7 +84,7 @@ namespace Games::PhaseEvasion
       }
 
       uint16_t flareHead = std::max(flare.getPosition() - flare.width, 0);
-      uint16_t flareTail = std::min(flare.getPosition(), SystemCore::Configuration::numLeds);
+      uint16_t flareTail = std::min(flare.getPosition(), SystemCore::Configuration::numLeds());
 
       for (uint16_t i = flareHead; i < flareTail; ++i)
       {
@@ -102,7 +102,7 @@ namespace Games::PhaseEvasion
       return;
 
     uint16_t gemLeft = std::max(gem.getPosition() - gem.width, 0);
-    uint16_t gemRight = std::min(gem.getPosition(), SystemCore::Configuration::numLeds);
+    uint16_t gemRight = std::min(gem.getPosition(), SystemCore::Configuration::numLeds());
 
     for (uint16_t i = gemLeft; i < gemRight; ++i)
     {
@@ -118,7 +118,7 @@ namespace Games::PhaseEvasion
         continue;
 
       uint16_t flareStart = std::max(flare.getPosition() - flare.width, 0);
-      uint16_t flareEnd = std::min(flare.getPosition(), SystemCore::Configuration::numLeds);
+      uint16_t flareEnd = std::min(flare.getPosition(), SystemCore::Configuration::numLeds());
 
       bool isUnmatchingColor = player.getColor() != flare.getColor();
       bool hasEnteredRegion = flareStart <= player.getPosition() + player.width;
@@ -128,7 +128,7 @@ namespace Games::PhaseEvasion
       {
         flare.impacted = true;
         state.current = Actions::MuzzleFlash;
-        gameOverPhaseShift = static_cast<float>(((SystemCore::Configuration::numLeds / 2) + player.getPosition()) % SystemCore::Configuration::numLeds);
+        gameOverPhaseShift = static_cast<float>(((SystemCore::Configuration::numLeds() / 2) + player.getPosition()) % SystemCore::Configuration::numLeds());
         wait(20);
       }
     }
@@ -138,7 +138,7 @@ namespace Games::PhaseEvasion
   {
     if (!gem.isActive() && gem.isReady())
     {
-      const auto randGemPosition = static_cast<uint16_t>((esp_random() % static_cast<uint32_t>(SystemCore::Configuration::numLeds)) + gem.width);
+      const auto randGemPosition = static_cast<uint16_t>((esp_random() % static_cast<uint32_t>(SystemCore::Configuration::numLeds())) + gem.width);
       gem.spawn(randGemPosition);
       gemTimeoutTimer.wait(gemCaptureDelay);
     }
@@ -148,7 +148,7 @@ namespace Games::PhaseEvasion
       if (!gemTimeoutTimer.isReady())
       {
         uint16_t gemStart = std::max(gem.getPosition() - gem.width, 0);
-        uint16_t gemEnd = std::min(gem.getPosition(), SystemCore::Configuration::numLeds);
+        uint16_t gemEnd = std::min(gem.getPosition(), SystemCore::Configuration::numLeds());
 
         bool hasEnteredRegion = gemStart <= player.getPosition() + player.width;
         bool hasNotExitedRegion = gemEnd >= player.getPosition();
@@ -205,7 +205,7 @@ namespace Games::PhaseEvasion
 
   void Driver::muzzleFlash()
   {
-    for (uint16_t i = 0; i < SystemCore::Configuration::numLeds; ++i)
+    for (uint16_t i = 0; i < SystemCore::Configuration::numLeds(); ++i)
     {
       contextManager->leds.buffer[i] = Lights::Color::White;
     }
@@ -219,9 +219,9 @@ namespace Games::PhaseEvasion
   void Driver::gameOver()
   {
 
-    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds; ++i)
+    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds(); ++i)
     {
-      float offset = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds) - (2.0f * M_PI * static_cast<uint16_t>(gameOverPhaseShift) / SystemCore::Configuration::numLeds));
+      float offset = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds()) - (2.0f * M_PI * static_cast<uint16_t>(gameOverPhaseShift) / SystemCore::Configuration::numLeds()));
       float phase = offset * 127.5 + 127.5;
       contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase) * 0.95),
                                         static_cast<uint8_t>(std::floor(phase) * 0.15),
@@ -231,7 +231,7 @@ namespace Games::PhaseEvasion
     gameOverPhaseShift += std::cos(gameOverPhaseOffset) / 16.0f;
     gameOverPhaseOffset += 1.0 / 32.0f;
 
-    if (gameOverPhaseShift > SystemCore::Configuration::numLeds)
+    if (gameOverPhaseShift > SystemCore::Configuration::numLeds())
       gameOverPhaseShift = 0.0;
 
     if (contextManager->controller.wasPressed(::Player::ControllerButton::Start))

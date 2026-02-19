@@ -85,9 +85,7 @@ namespace Display
   {
     display.clearDisplay();
 
-    char versionBuffer[32] = "";
-    sprintf(versionBuffer, "LumenLab %s", SystemCore::Configuration::version);
-    drawHeader(versionBuffer);
+    drawHeader("LumenLab");
 
     display.drawBitmap(initLogo.xPos, initLogo.yPos, initLogo.rawValues, initLogo.width, initLogo.height, SSD1306_WHITE);
     display.display();

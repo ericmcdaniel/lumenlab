@@ -29,6 +29,7 @@ namespace Games::PhaseEvasion
     static constexpr const char *memoryKeyName = "phase-high";
 
     void reset();
+    void loadHighScore();
     uint16_t calculateTotalScore() const;
     void checkHighScore();
     void updateHighScore();

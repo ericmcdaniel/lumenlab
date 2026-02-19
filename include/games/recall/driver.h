@@ -18,7 +18,7 @@ namespace Games::Recall
 
   private:
     SystemCore::ContextManager *contextManager;
-    GameState &state = contextManager->stateManager.getRecallGameState();
+    GameState &state;
 
     uint16_t gameplaySpeedIlluminated = 500;
     uint16_t gameplaySpeedPaused = gameplaySpeedIlluminated / 6;

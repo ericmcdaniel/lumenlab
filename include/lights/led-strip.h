@@ -14,7 +14,7 @@ namespace Lights
     LedBuffer buffer;
     Color *getRawColors();
 
-    static constexpr uint16_t size() { return SystemCore::Configuration::numLeds; }
+    static const uint16_t size() { return SystemCore::Configuration::numLeds(); }
     void reset();
     void adjustLuminance();
 

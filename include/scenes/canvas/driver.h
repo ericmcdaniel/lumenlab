@@ -14,7 +14,7 @@ namespace Scenes::Canvas
 
   private:
     SystemCore::ContextManager *contextManager;
-    SceneState &state = contextManager->stateManager.getCanvasSceneState();
+    SceneState &state;
     Lights::ColorHsl colorHsl;
     bool hasChange = false;
     bool controllerWasActive = false;

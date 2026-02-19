@@ -22,13 +22,14 @@ namespace Games::Recall
   class GameState
   {
   public:
-    GameState(SystemCore::ContextManager *ctx);
+    GameState(SystemCore::ContextManager *ctx) : contextManager{ctx} {}
     uint16_t highScore;
     uint16_t round;
     Actions current = Actions::Startup;
     static constexpr const char *memoryKeyName = "recall-high";
 
     void reset();
+    void loadHighScore();
     void incrementScore();
     void updateHighScore();
 

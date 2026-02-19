@@ -7,7 +7,14 @@
 
 namespace SystemCore
 {
-  ContextManager::ContextManager() : display{this}, stateManager{this}, menuNav{this} {}
+  ContextManager::ContextManager() : display{this}, stateManager{this}, menuNav{this}
+  {
+#ifdef RELEASE
+    memory.begin("lumenlab", false);
+#else
+    memory.begin("lumenlab-dev", false);
+#endif
+  }
 
   ContextManager::~ContextManager()
   {

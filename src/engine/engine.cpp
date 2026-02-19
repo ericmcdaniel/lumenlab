@@ -7,8 +7,6 @@
 #include "display/menu-navigation.h"
 #include "logger.h"
 
-// extern "C" const char FW_VERSION[] PROGMEM __attribute__((used, section(".fw_version"))) = "LUMENLAB_FW_VERSION:99.99.99\0";
-
 namespace Engine
 {
   GameEngine::GameEngine()
@@ -70,11 +68,15 @@ namespace Engine
 
   void GameEngine::initializeEngine()
   {
-    contextManager.controller.begin(SystemCore::Configuration::macAddress);
+    SystemCore::Configuration::load(contextManager.memory);
+
+    contextManager.stateManager.getPhaseEvasionGameState().loadHighScore();
+    contextManager.stateManager.getRecallGameState().loadHighScore();
+    contextManager.controller.begin(SystemCore::Configuration::macAddress());
 
 // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
-    Serial.begin(SystemCore::Configuration::serialBaud);
+    Serial.begin(SystemCore::Configuration::serialBaud());
     contextManager.leds.reset();
     renderLedStrip();
     log("Connecting to computer using a serial connection for debugging.");
@@ -112,12 +114,6 @@ namespace Engine
       log("Startup process completed. Transitioning to Main Menu");
     }
 
-#ifdef RELEASE
-    contextManager.memory.begin("lumenlab", false);
-#else
-    contextManager.memory.begin("lumenlab-dev", false);
-#endif
-
     randomSeed(esp_random());
   }
 
@@ -135,14 +131,14 @@ namespace Engine
       return;
     }
 
-    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds; ++i)
+    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds(); ++i)
     {
-      float phase = std::cos((2 * M_PI * i / SystemCore::Configuration::numLeds) + (2 * M_PI * disconnectedLedPhaseShift / SystemCore::Configuration::numLeds)) * 127 + 128;
+      float phase = std::cos((2 * M_PI * i / SystemCore::Configuration::numLeds()) + (2 * M_PI * disconnectedLedPhaseShift / SystemCore::Configuration::numLeds())) * 127 + 128;
       contextManager.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
     }
     disconnectedLedPhaseShift += 0.5;
 
-    if (disconnectedLedPhaseShift > SystemCore::Configuration::numLeds)
+    if (disconnectedLedPhaseShift > SystemCore::Configuration::numLeds())
       disconnectedLedPhaseShift = 0;
   }
 
@@ -155,7 +151,7 @@ namespace Engine
 #ifdef VIRTUALIZATION
     Serial.write(0xAA); // sync bytes
     Serial.write(0x55);
-    Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), SystemCore::Configuration::numLeds * sizeof(Lights::Color));
+    Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), SystemCore::Configuration::numLeds() * sizeof(Lights::Color));
 #endif
   }
 

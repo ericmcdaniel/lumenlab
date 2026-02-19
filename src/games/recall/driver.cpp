@@ -6,10 +6,10 @@
 
 namespace Games::Recall
 {
-  Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx}
+  Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx},
+                                                    state{contextManager->stateManager.getRecallGameState()}
   {
     setupGameColors();
-    state = contextManager->stateManager.getRecallGameState();
     state.reset();
     state.current = Actions::Startup;
     contextManager->stateManager.displayShouldUpdate = true;
@@ -207,7 +207,7 @@ namespace Games::Recall
     case Player::ControllerButton::Cross:
       return {boundary[2], static_cast<uint16_t>(boundary[3] - 1)};
     case Player::ControllerButton::Square:
-      return {boundary[3], static_cast<uint16_t>(SystemCore::Configuration::numLeds - 1)};
+      return {boundary[3], static_cast<uint16_t>(SystemCore::Configuration::numLeds() - 1)};
     default:
       return {0, 0};
     }
@@ -251,14 +251,14 @@ namespace Games::Recall
       contextManager->stateManager.displayShouldUpdate = true;
     }
 
-    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds; ++i)
+    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds(); ++i)
     {
-      float phase = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds) + (2.0f * M_PI * gameOverLedPhaseShift / SystemCore::Configuration::numLeds)) * 127 + 128;
+      float phase = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds()) + (2.0f * M_PI * gameOverLedPhaseShift / SystemCore::Configuration::numLeds())) * 127 + 128;
       contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
     }
 
     gameOverLedPhaseShift += 0.5f;
-    if (gameOverLedPhaseShift > SystemCore::Configuration::numLeds)
+    if (gameOverLedPhaseShift > SystemCore::Configuration::numLeds())
       gameOverLedPhaseShift = 0.0f;
   }
 }

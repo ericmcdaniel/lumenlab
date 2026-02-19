@@ -10,9 +10,9 @@ namespace Player
   // Following Singleton pattern. Only one instance of the game controller can exist
   Controller *Controller::instance = nullptr;
 
-  void Controller::begin(const char *macAddress)
+  void Controller::begin(String macAddress)
   {
-    instance->controller.begin(macAddress);
+    instance->controller.begin(macAddress.c_str());
     instance->controller.attachOnConnect(&Controller::onConnect);
   }
 

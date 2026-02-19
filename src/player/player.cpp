@@ -10,7 +10,7 @@ namespace Player
     float step = analogToSpeed(distance, speed);
     positionPrecise += step;
 
-    const float adjustedLedCount = static_cast<float>(SystemCore::Configuration::numLeds - width);
+    const float adjustedLedCount = static_cast<float>(SystemCore::Configuration::numLeds() - width);
     if (shouldWrap)
     {
       positionPrecise = std::fmod(positionPrecise, adjustedLedCount);

@@ -10,7 +10,7 @@ namespace Display
     Engine::MainMenuSelection modeSelected = contextManager->stateManager.getUserMenuChoice();
     Engine::SystemState currentState = contextManager->stateManager.current();
 
-    uint16_t displayIndex = SystemCore::Configuration::numLeds - 1;
+    uint16_t displayIndex = SystemCore::Configuration::numLeds() - 1;
     float inactiveSelectionDimmingScale = currentState == Engine::SystemState::MenuHome ? 1.0f : 0.6f;
     constexpr float center = (menuTileWidth - 1) / 2.0f;
     constexpr double sigma = 3.0f;

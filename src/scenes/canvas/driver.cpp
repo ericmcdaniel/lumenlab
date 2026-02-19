@@ -6,7 +6,7 @@
 namespace Scenes::Canvas
 {
 
-  Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx}
+  Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx}, state{contextManager->stateManager.getCanvasSceneState()}
   {
     reset();
   }
@@ -19,7 +19,7 @@ namespace Scenes::Canvas
     checkChangeOccured();
     checkStableControllerForDisplay();
 
-    for (uint16_t i; i < SystemCore::Configuration::numLeds; ++i)
+    for (uint16_t i; i < SystemCore::Configuration::numLeds(); ++i)
     {
       contextManager->leds.buffer[i] = contextManager->stateManager.getCanvasSceneState().currentColor;
     }

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Arduino.h>
-#include <Preferences.h>
 #include <cstdint>
 
 namespace SystemCore
@@ -9,27 +8,20 @@ namespace SystemCore
   class Configuration
   {
   public:
-    static const String &version() { return version_; }
-    static const String &macAddress() { return macAddress_; }
-    static uint16_t numLeds() { return numLeds_; }
-    static uint32_t serialBaud() { return serialBaud_; }
+    static const String &version() { return _version; }
+    static const String &macAddress() { return _macAddress; }
+    static uint16_t numLeds() { return _numLeds; }
+    static uint32_t serialBaud() { return _serialBaud; }
+    static const std::array<uint16_t, 4> &recallBoundaries() { return _recallBoundaries; }
+    static constexpr uint8_t ledDimmerGpio = 34; // set from PCB design
 
-    static void load(class Preferences &memory)
-    {
-      version_ = memory.getString("version", "v0.0.0");
-      macAddress_ = memory.getString("macAddress", "00:1b:fb:8e:87:ac");
-      numLeds_ = memory.getUInt("numLeds", 327);
-      serialBaud_ = memory.getUInt("serialBaud", 921600);
-    }
-
-    // (in progress)
-    static constexpr uint16_t recallBoundaries[4] = {0, 113, 168, 281};
-    static constexpr uint8_t ledDimmerGpio = 34;
+    static void load(class Preferences &memory);
 
   private:
-    static String version_;
-    static String macAddress_;
-    static uint16_t numLeds_;
-    static uint32_t serialBaud_;
+    static String _version;
+    static String _macAddress;
+    static uint16_t _numLeds;
+    static uint32_t _serialBaud;
+    static std::array<uint16_t, 4> _recallBoundaries;
   };
 }

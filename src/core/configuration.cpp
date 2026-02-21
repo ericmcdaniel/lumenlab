@@ -12,13 +12,13 @@ namespace SystemCore
   void Configuration::load(::Preferences &memory)
   {
     _version = memory.getString("version", "v0.0.0");
-    _macAddress = memory.getString("macAddress", "00:1b:fb:8e:87:ac");
-    _numLeds = memory.getUInt("numLeds", 327);
-    _serialBaud = memory.getUInt("serialBaud", 921600);
+    _macAddress = memory.getString("macAddress", "00:00:00:00:00:00");
+    _numLeds = static_cast<uint16_t>(memory.getString("numLeds", "300").toInt());
+    _serialBaud = static_cast<uint32_t>(memory.getString("serialBaud", "921600").toInt());
 
-    _recallBoundaries[0] = memory.getUInt("boundary-0", 0);
-    _recallBoundaries[1] = memory.getUInt("boundary-1", 113);
-    _recallBoundaries[2] = memory.getUInt("boundary-2", 168);
-    _recallBoundaries[3] = memory.getUInt("boundary-3", 281);
+    _recallBoundaries[0] = static_cast<uint16_t>(memory.getString("boundary_0", "0").toInt());
+    _recallBoundaries[1] = static_cast<uint16_t>(memory.getString("boundary_1", "75").toInt());
+    _recallBoundaries[2] = static_cast<uint16_t>(memory.getString("boundary_2", "150").toInt());
+    _recallBoundaries[3] = static_cast<uint16_t>(memory.getString("boundary_3", "225").toInt());
   }
 }

@@ -86,6 +86,15 @@ namespace Engine
       delay(100);
     }
     log("Serial connection established.");
+    log("Printing environment variables.");
+    logf("version = %s", SystemCore::Configuration::version());
+    logf("macAddress = %s", SystemCore::Configuration::macAddress().c_str());
+    logf("numLeds = %u", SystemCore::Configuration::numLeds());
+    logf("serialBaud = %u", SystemCore::Configuration::serialBaud());
+    logf("boundary_0 = %u", SystemCore::Configuration::recallBoundaries()[0]);
+    logf("boundary_1 = %u", SystemCore::Configuration::recallBoundaries()[1]);
+    logf("boundary_2 = %u", SystemCore::Configuration::recallBoundaries()[2]);
+    logf("boundary_3 = %u", SystemCore::Configuration::recallBoundaries()[3]);
 #endif
 
     log("Connecting to PS3 controller");

@@ -95,8 +95,8 @@ namespace Games::Recall
     double delta = ((gameplayColors[sequenceIndex] ==
                          Player::ControllerButton::Circle ||
                      gameplayColors[sequenceIndex] == Player::ControllerButton::Square)
-                        ? boundary[2] - boundary[1]
-                        : boundary[1] - boundary[0]) /
+                        ? boundary[1] - boundary[0]
+                        : boundary[0] - 0) /
                    5;
 
     for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
@@ -201,13 +201,13 @@ namespace Games::Recall
     switch (button)
     {
     case Player::ControllerButton::Triangle:
-      return {boundary[0], static_cast<uint16_t>(boundary[1] - 1)};
+      return {0, static_cast<uint16_t>(boundary[0] - 1)};
     case Player::ControllerButton::Circle:
-      return {boundary[1], static_cast<uint16_t>(boundary[2] - 1)};
+      return {boundary[0], static_cast<uint16_t>(boundary[1] - 1)};
     case Player::ControllerButton::Cross:
-      return {boundary[2], static_cast<uint16_t>(boundary[3] - 1)};
+      return {boundary[1], static_cast<uint16_t>(boundary[2] - 1)};
     case Player::ControllerButton::Square:
-      return {boundary[3], static_cast<uint16_t>(SystemCore::Configuration::numLeds() - 1)};
+      return {boundary[2], static_cast<uint16_t>(SystemCore::Configuration::numLeds() - 1)};
     default:
       return {0, 0};
     }

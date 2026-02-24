@@ -1,6 +1,10 @@
 #include "core/configuration.h"
 #include <Preferences.h>
 
+#ifndef LUMENLAB_VERSION
+#define LUMENLAB_VERSION "v999.999.999"
+#endif
+
 namespace SystemCore
 {
   String Configuration::_version;
@@ -11,7 +15,7 @@ namespace SystemCore
 
   void Configuration::load(::Preferences &memory)
   {
-    _version = memory.getString("version", "v0.0.0");
+    _version = LUMENLAB_VERSION;
     _macAddress = memory.getString("macAddress", "00:00:00:00:00:00");
     _numLeds = static_cast<uint16_t>(memory.getString("numLeds", "300").toInt());
     _serialBaud = static_cast<uint32_t>(memory.getString("serialBaud", "921600").toInt());

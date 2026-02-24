@@ -1,16 +1,28 @@
 #pragma once
 
+#include <Arduino.h>
+#include <Preferences.h>
 #include <cstdint>
 
 namespace SystemCore
 {
-  struct Configuration
+  class Configuration
   {
-    // REQUIRED: modify this address to match the mac address of your PS3 controller
-    static constexpr char macAddress[] = "00:1b:fb:8e:87:ac";
-    static constexpr uint16_t numLeds = 327;
-    static constexpr uint32_t serialBaud = 921600;
-    static constexpr uint16_t recallBoundaries[4] = {0, 113, 168, 281};
-    static constexpr uint8_t ledDimmerGpio = 34;
+  public:
+    static const String &version() { return _version; }
+    static const String &macAddress() { return _macAddress; }
+    static uint16_t numLeds() { return _numLeds; }
+    static uint32_t serialBaud() { return _serialBaud; }
+    static const std::array<uint16_t, 3> &recallBoundaries() { return _recallBoundaries; }
+    static constexpr uint8_t ledDimmerGpio = 34; // set from PCB design, should not be configurable
+
+    static void load(::Preferences &memory);
+
+  private:
+    static String _version;
+    static String _macAddress;
+    static uint16_t _numLeds;
+    static uint32_t _serialBaud;
+    static std::array<uint16_t, 3> _recallBoundaries;
   };
 }

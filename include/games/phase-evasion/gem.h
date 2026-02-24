@@ -22,7 +22,7 @@ namespace Games::PhaseEvasion
     void spawn(const uint16_t pos)
     {
       bool isOutsideLeftRegion = pos < (width - 1);
-      bool isOutsideRightRegion = pos > SystemCore::Configuration::numLeds + (width - 1);
+      bool isOutsideRightRegion = pos > SystemCore::Configuration::numLeds() + (width - 1);
       if (isOutsideLeftRegion || isOutsideRightRegion)
         return;
 

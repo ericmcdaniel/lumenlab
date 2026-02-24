@@ -19,7 +19,7 @@ namespace Games::PhaseEvasion
     completedCycle = false;
     color = _color;
     speed = _speed;
-    positionFloat = static_cast<float>(SystemCore::Configuration::numLeds + width);
+    positionFloat = static_cast<float>(SystemCore::Configuration::numLeds() + width);
   }
 
   void Flare::deactivate()
@@ -33,6 +33,6 @@ namespace Games::PhaseEvasion
     color = Lights::Color::WhiteSmoke;
     speed = 0.0f;
     impacted = false;
-    positionFloat = static_cast<float>(SystemCore::Configuration::numLeds + width);
+    positionFloat = static_cast<float>(SystemCore::Configuration::numLeds() + width);
   }
 }

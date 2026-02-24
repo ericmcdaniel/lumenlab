@@ -1,20 +1,19 @@
-#include "games/phase-evasion/state.h"
+#include "games/recall/state.h"
 #include "core/context-manager.h"
 #include "logger.h"
 
 namespace Games::Recall
 {
 
-  GameState::GameState(SystemCore::ContextManager *ctx) : contextManager{ctx}
-  {
-    reset();
-  }
-
   void GameState::reset()
   {
     round = 0;
-    highScore = contextManager->memory.getUInt(memoryKeyName);
     contextManager->stateManager.displayShouldUpdate = true;
+  }
+
+  void GameState::loadHighScore()
+  {
+    highScore = contextManager->memory.getUInt(memoryKeyName, 0);
   }
 
   void GameState::updateHighScore()

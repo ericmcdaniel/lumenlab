@@ -127,14 +127,8 @@
 		{
 			"label": "LumenLab - Upload (release)",
 			"type": "shell",
-			"command": "platformio",
-			"args": [
-				"run",
-				"-e",
-				"release",
-				"--target",
-				"upload"
-			],
+			"command": "export LUMENLAB_VERSION=v999.999.999 && platformio run -e release --target upload",
+			// Alternative command to align with prod releases: "export LUMENLAB_VERSION=$(git describe --tags --abbrev=0) && platformio run -e release --target upload",
 			"problemMatcher": [
 				"$platformio"
 			],

@@ -38,12 +38,6 @@ jobs:
       - name: Install PlatformIO
         run: pip install --upgrade platformio
 
-      - name: Build release
-        run: pio run -e release
-
-      - name: Run tests
-        run: pio test --environment native
-
       - name: Determine next SemVer from PR labels
         id: semver
         run: bash .github/scripts/compute-semver.sh
@@ -56,11 +50,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build release
+        run: pio run -e release
+        env:
+          LUMENLAB_VERSION: ${{ steps.semver.outputs.tag }}
+
+      - name: Run tests
+        run: pio test --environment native
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.semver.outputs.tag }}
-          name: ${{ steps.pr_details.outputs.title }}
+          name: ${{ steps.semver.outputs.tag }} - ${{ steps.pr_details.outputs.title }}
           body: ${{ steps.pr_details.outputs.body }}
           files: |
             .pio/build/release/firmware.bin

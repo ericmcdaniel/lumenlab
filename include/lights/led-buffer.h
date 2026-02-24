@@ -9,7 +9,7 @@ namespace Lights
   class LedBuffer
   {
   public:
-    LedBuffer() : leds{new Color[SystemCore::Configuration::numLeds]} {}
+    LedBuffer() : leds{new Color[SystemCore::Configuration::numLeds()]} {}
     ~LedBuffer() { delete leds; }
     LedBuffer(LedBuffer &&other) = delete;
     LedBuffer &operator=(LedBuffer &&other) = delete;
@@ -22,7 +22,7 @@ namespace Lights
     explicit operator Color *() { return leds; }
     explicit operator const Color *() const { return leds; }
 
-    uint16_t size() { return SystemCore::Configuration::numLeds; }
+    uint16_t size() { return SystemCore::Configuration::numLeds(); }
 
   private:
     Color *leds;

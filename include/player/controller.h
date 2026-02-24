@@ -36,7 +36,7 @@ namespace Player
   {
   public:
     Controller() { instance = this; }
-    void begin(const char *macAddress);
+    void begin(String macAddress);
 
     uint8_t cross() { return instance->controller.data.analog.button.cross; }
     uint8_t circle() { return instance->controller.data.analog.button.circle; }

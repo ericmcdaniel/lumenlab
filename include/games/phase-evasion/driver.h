@@ -22,7 +22,7 @@ namespace Games::PhaseEvasion
 
   private:
     SystemCore::ContextManager *contextManager;
-    GameState &state = contextManager->stateManager.getPhaseEvasionGameState();
+    GameState &state;
 
     Player player;
     FlareManager flareManager;

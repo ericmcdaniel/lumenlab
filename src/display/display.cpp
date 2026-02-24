@@ -81,13 +81,10 @@ namespace Display
     display.print(message);
   }
 
-  void OledDisplay::drawLogo()
-  {
-  }
-
   void OledDisplay::drawBootScreen()
   {
     display.clearDisplay();
+
     drawHeader("LumenLab");
 
     display.drawBitmap(initLogo.xPos, initLogo.yPos, initLogo.rawValues, initLogo.width, initLogo.height, SSD1306_WHITE);

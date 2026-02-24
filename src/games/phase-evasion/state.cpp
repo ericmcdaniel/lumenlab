@@ -7,7 +7,11 @@ namespace Games::PhaseEvasion
   void GameState::reset()
   {
     flaresEvaded = gemsCaptured = 0;
-    highScore = contextManager->memory.getUInt(memoryKeyName);
+  }
+
+  void GameState::loadHighScore()
+  {
+    highScore = contextManager->memory.getUInt(memoryKeyName, 0);
   }
 
   uint16_t GameState::calculateTotalScore() const

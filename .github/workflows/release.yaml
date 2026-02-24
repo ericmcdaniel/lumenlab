@@ -50,13 +50,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Run tests
+        run: pio test --environment native
+
       - name: Build release
         run: pio run -e release
         env:
           LUMENLAB_VERSION: ${{ steps.semver.outputs.tag }}
-
-      - name: Run tests
-        run: pio test --environment native
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

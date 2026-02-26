@@ -70,7 +70,7 @@ namespace Engine
   {
     SystemCore::Configuration::load(contextManager.memory);
 
-    contextManager.stateManager.getPhaseEvasionGameState().loadHighScore();
+    contextManager.stateManager.getPhaseEvasionGameState().loadHighScore(); // extract out
     contextManager.stateManager.getRecallGameState().loadHighScore();
     contextManager.controller.begin(SystemCore::Configuration::macAddress());
 
@@ -96,13 +96,21 @@ namespace Engine
     logf("boundary_3 = %u", SystemCore::Configuration::recallBoundaries()[2]);
 #endif
 
+  #ifdef USE_PS3
     log("Connecting to PS3 controller");
+  #else
+    log("Connecting to PS4 controller");
+  #endif
 
     // twenty second attempt to connect to PS3 controller
     int reattempt = 0;
     while (!contextManager.controller.isConnected() && reattempt < 80)
     {
+    #ifdef USE_PS3
       log("    Searching for PS3 controller...");
+    #else
+      log("    Searching for PS4 controller...");
+    #endif
       ++reattempt;
       delay(250);
     }
@@ -135,7 +143,11 @@ namespace Engine
       contextManager.stateManager.setNextUserSceneChoice(SceneSelection::Canvas);
       lastRender = micros();
       contextManager.stateManager.displayIsVisible = true;
+    #ifdef USE_PS3
       log("PS3 controller connected. Transitioning to Main Menu");
+    #else
+      log("PS4 controller connected. Transitioning to Main Menu");
+    #endif
       return;
     }
 

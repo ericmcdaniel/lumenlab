@@ -88,29 +88,36 @@ namespace Engine
     log("Serial connection established.");
     log("Printing environment variables.");
     logf("version = %s", SystemCore::Configuration::version());
-    logf("macAddress = %s", SystemCore::Configuration::macAddress());
+    logf("macAddress = %s", SystemCore::Configuration::macAddress().c_str());
     logf("numLeds = %u", SystemCore::Configuration::numLeds());
     logf("serialBaud = %u", SystemCore::Configuration::serialBaud());
     logf("boundary_1 = %u", SystemCore::Configuration::recallBoundaries()[0]);
     logf("boundary_2 = %u", SystemCore::Configuration::recallBoundaries()[1]);
     logf("boundary_3 = %u", SystemCore::Configuration::recallBoundaries()[2]);
+    logf("Phase Evasion high score: %u", contextManager.stateManager.getPhaseEvasionGameState().highScore);
+    logf("Recall high score: %u", contextManager.stateManager.getRecallGameState().highScore);
+#endif
+#ifdef RELEASE
+    log("NVS memory namespace: lumenlab");
+#else
+    log("NVS memory namespace: lumenlab-dev");
 #endif
 
-  #ifdef USE_PS3
+#ifdef USE_PS3
     log("Connecting to PS3 controller");
-  #else
+#else
     log("Connecting to PS4 controller");
-  #endif
+#endif
 
     // twenty second attempt to connect to PS3 controller
     int reattempt = 0;
     while (!contextManager.controller.isConnected() && reattempt < 80)
     {
-    #ifdef USE_PS3
+#ifdef USE_PS3
       log("    Searching for PS3 controller...");
-    #else
+#else
       log("    Searching for PS4 controller...");
-    #endif
+#endif
       ++reattempt;
       delay(250);
     }
@@ -143,11 +150,11 @@ namespace Engine
       contextManager.stateManager.setNextUserSceneChoice(SceneSelection::Canvas);
       lastRender = micros();
       contextManager.stateManager.displayIsVisible = true;
-    #ifdef USE_PS3
+#ifdef USE_PS3
       log("PS3 controller connected. Transitioning to Main Menu");
-    #else
+#else
       log("PS4 controller connected. Transitioning to Main Menu");
-    #endif
+#endif
       return;
     }
 

@@ -63,7 +63,13 @@
 			"cinttypes": "cpp",
 			"typeinfo": "cpp",
 			"any": "cpp",
-			"variant": "cpp"
+			"variant": "cpp",
+			"format": "cpp",
+			"forward_list": "cpp",
+			"xhash": "cpp",
+			"xstring": "cpp",
+			"xtree": "cpp",
+			"xutility": "cpp"
 		},
 		"terminal.integrated.profiles.windows": {
 			"PowerShell": {

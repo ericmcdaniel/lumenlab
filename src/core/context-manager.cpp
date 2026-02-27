@@ -16,7 +16,7 @@ namespace SystemCore
 #endif
   }
 
-    ContextManager::~ContextManager()
+  ContextManager::~ContextManager()
   {
     if (application)
     {

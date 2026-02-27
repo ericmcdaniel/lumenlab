@@ -7,7 +7,7 @@
 #ifdef USE_PS3
 #include <Ps3Controller.h>
 #else
-#include <PS4Controller.h>
+#include <Bluepad32.h>
 #endif
 
 namespace Player
@@ -92,39 +92,39 @@ namespace Player
     switch (button)
     {
     case ControllerButton::Cross:
-      return instance->controller.data.button.cross;
+      return 0; // instance->controller.data.button.cross;
     case ControllerButton::Circle:
-      return instance->controller.data.button.circle;
+      return 0; // instance->controller.data.button.circle;
     case ControllerButton::Triangle:
-      return instance->controller.data.button.triangle;
+      return 0; // instance->controller.data.button.triangle;
     case ControllerButton::Square:
-      return instance->controller.data.button.square;
+      return 0; // instance->controller.data.button.square;
     case ControllerButton::Up:
-      return instance->controller.data.button.up;
+      return 0; // instance->controller.data.button.up;
     case ControllerButton::Down:
-      return instance->controller.data.button.down;
+      return 0; // instance->controller.data.button.down;
     case ControllerButton::Left:
-      return instance->controller.data.button.left;
+      return 0; // instance->controller.data.button.left;
     case ControllerButton::Right:
-      return instance->controller.data.button.right;
+      return 0; // instance->controller.data.button.right;
     case ControllerButton::L1:
-      return instance->controller.data.button.l1;
+      return 0; // instance->controller.data.button.l1;
     case ControllerButton::L2:
-      return instance->controller.data.button.l2;
+      return 0; // instance->controller.data.button.l2;
     case ControllerButton::L3:
-      return instance->controller.data.button.l3;
+      return 0; // instance->controller.data.button.l3;
     case ControllerButton::R1:
-      return instance->controller.data.button.r1;
+      return 0; // instance->controller.data.button.r1;
     case ControllerButton::R2:
-      return instance->controller.data.button.r2;
+      return 0; // instance->controller.data.button.r2;
     case ControllerButton::R3:
-      return instance->controller.data.button.r3;
+      return 0; // instance->controller.data.button.r3;
     case ControllerButton::Start:
-      return instance->controller.data.button.options;
+      return 0; // instance->controller.data.button.options;
     case ControllerButton::Select:
-      return instance->controller.data.button.share;
+      return 0; // instance->controller.data.button.share;
     case ControllerButton::Ps:
-      return instance->controller.data.button.ps;
+      return 0; // instance->controller.data.button.ps;
     default:
       return 0;
     }

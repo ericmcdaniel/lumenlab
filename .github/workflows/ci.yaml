@@ -34,7 +34,7 @@ jobs:
         run: pip install --upgrade platformio
 
       - name: Build LumenLab
-        run: pio run
+        run: pio run -e release
 
       - name: Run tests
-        run: pio test --environment native
+        run: pio test -e native

@@ -168,6 +168,18 @@ namespace Player
       buttonReleasedEvent[i] = false;
     }
 
+    if (millis() < ignoreEventsUntil)
+    {
+      for (uint32_t i = 0; i < arraySize(buttonLastState); ++i)
+      {
+        auto btn = static_cast<ControllerButton>(i);
+        bool raw = rawButtonState(btn) != 0;
+        buttonLastState[i] = raw;
+        buttonDebouceEvent[i] = millis();
+      }
+      return;
+    }
+
     for (uint32_t i = 0; i < arraySize(buttonLastState); ++i)
     {
       auto btn = static_cast<ControllerButton>(i);
@@ -199,6 +211,7 @@ namespace Player
   {
     log("Game controller connected successfully.");
     instance->connection = true;
+    instance->ignoreEventsUntil = millis() + 200;
     instance->reset();
     instance->poll();
   }

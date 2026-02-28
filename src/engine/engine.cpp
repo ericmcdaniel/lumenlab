@@ -130,7 +130,6 @@ namespace Engine
       contextManager.stateManager.displayIsVisible = true;
       contextManager.controller.reset();
       contextManager.controller.poll();
-      lastRender = micros();
       log("Startup process completed. Transitioning to Main Menu");
     }
 
@@ -141,21 +140,25 @@ namespace Engine
   {
     if (contextManager.controller.isConnected())
     {
+      contextManager.controller.reset();
+      contextManager.controller.poll();
+
       contextManager.stateManager.setNext(SystemState::MenuHome);
       contextManager.stateManager.setNextUserMenuChoice(MainMenuSelection::Games);
       contextManager.stateManager.setNextUserGameChoice(GameSelection::Recall);
       contextManager.stateManager.setNextUserSceneChoice(SceneSelection::Canvas);
-      lastRender = micros();
+      contextManager.stateManager.displayShouldUpdate = true;
       contextManager.stateManager.displayIsVisible = true;
 #ifdef USE_PS3
       log("PS3 controller connected. Transitioning to Main Menu");
 #else
       log("PS4 controller connected. Transitioning to Main Menu");
 #endif
+      contextManager.controller.reset();
       return;
     }
 
-    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds(); ++i)
+    for (uint16_t i = 0; i < SystemCore::Configuration::numLeds(); ++i)
     {
       float phase = std::cos((2 * M_PI * i / SystemCore::Configuration::numLeds()) + (2 * M_PI * disconnectedLedPhaseShift / SystemCore::Configuration::numLeds())) * 127 + 128;
       contextManager.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};

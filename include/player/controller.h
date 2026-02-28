@@ -101,8 +101,6 @@ namespace Player
 #else
     ::Controller controller;
 #endif
-    // #else
-    // #ifdef USE_PS4
     uint32_t buttonDebouceEvent[17];
     static constexpr uint32_t buttonDebounceThreshold = 30;
     bool buttonLastState[17] = {0};
@@ -111,6 +109,7 @@ namespace Player
 
     static Controller *instance;
     bool connection = false;
+    uint32_t ignoreEventsUntil = 0;
 
     void handleOnConnect();
     int filterDeadZone(int8_t value, int deadZone = 3);

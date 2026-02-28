@@ -40,6 +40,7 @@ namespace SystemCore
       stateManager.setNextUserMenuChoice(Engine::MainMenuSelection::Games);
       stateManager.setNextUserGameChoice(Engine::GameSelection::Recall);
       stateManager.setNextUserSceneChoice(Engine::SceneSelection::Canvas);
+      stateManager.displayShouldUpdate = true;
       log("Exiting to Main Menu.");
     }
   }

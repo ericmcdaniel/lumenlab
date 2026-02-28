@@ -219,7 +219,7 @@ namespace Games::PhaseEvasion
   void Driver::gameOver()
   {
 
-    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds(); ++i)
+    for (uint16_t i = 0; i < SystemCore::Configuration::numLeds(); ++i)
     {
       float offset = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds()) - (2.0f * M_PI * static_cast<uint16_t>(gameOverPhaseShift) / SystemCore::Configuration::numLeds()));
       float phase = offset * 127.5 + 127.5;

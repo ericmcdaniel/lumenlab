@@ -62,7 +62,8 @@ namespace Engine
                                                     recallGameState{ctx},
                                                     systemState{SystemState::Initialize},
                                                     userMainMenuChoice{MainMenuSelection::Games},
-                                                    userGameChoice{GameSelection::Recall}
+                                                    userGameChoice{GameSelection::Recall},
+                                                    userSceneChoice{SceneSelection::Canvas}
     {
     }
 

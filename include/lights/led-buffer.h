@@ -11,7 +11,7 @@ namespace Lights
   {
   public:
     LedBuffer() : leds{new Color[maxLEDs]} {}
-    ~LedBuffer() { delete leds; }
+    ~LedBuffer() { delete[] leds; }
     LedBuffer(LedBuffer &&other) = delete;
     LedBuffer &operator=(LedBuffer &&other) = delete;
     LedBuffer(const LedBuffer &other) = delete;

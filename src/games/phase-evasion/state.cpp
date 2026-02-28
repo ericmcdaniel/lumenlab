@@ -21,17 +21,18 @@ namespace Games::PhaseEvasion
 
   void GameState::checkHighScore()
   {
-    if (calculateTotalScore() > highScore)
+    const auto currentScore = calculateTotalScore();
+    if (currentScore >= highScore)
     {
-      updateHighScore();
+      updateHighScore(currentScore);
+      highScore = currentScore;
       contextManager->stateManager.displayShouldUpdate = true;
     }
   }
 
-  void GameState::updateHighScore()
+  void GameState::updateHighScore(uint16_t newHighScore)
   {
-    highScore = calculateTotalScore();
-    contextManager->memory.putUInt(memoryKeyName, highScore);
-    logf("High score updated: %u", highScore);
+    contextManager->memory.putUInt(memoryKeyName, newHighScore);
+    logf("High score updated: %u", newHighScore);
   }
 }

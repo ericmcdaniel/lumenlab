@@ -24,6 +24,10 @@ namespace Engine
 
   void GameEngine::runApplication()
   {
+    // Targeting a 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
+    constexpr TickType_t frameTicks = pdMS_TO_TICKS(8);
+    TickType_t lastWakeTime = xTaskGetTickCount();
+
     while (contextManager.stateManager.isRunning())
     {
       contextManager.leds.reset();
@@ -57,12 +61,8 @@ namespace Engine
         break;
       }
 
-      uint32_t now = micros();
-      if (now - lastRender >= 8333) // Targeting a 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
-      {
-        lastRender += 8333;
-        renderLedStrip();
-      }
+      renderLedStrip();
+      xTaskDelayUntil(&lastWakeTime, frameTicks);
     }
   }
 

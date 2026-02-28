@@ -32,7 +32,7 @@ namespace Games::PhaseEvasion
     void loadHighScore();
     uint16_t calculateTotalScore() const;
     void checkHighScore();
-    void updateHighScore();
+    void updateHighScore(uint16_t newHighScore);
 
   private:
     SystemCore::ContextManager *contextManager;

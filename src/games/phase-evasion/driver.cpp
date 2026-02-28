@@ -199,7 +199,7 @@ namespace Games::PhaseEvasion
 
   void Driver::checkIfHighScore()
   {
-    GameState state = contextManager->stateManager.getPhaseEvasionGameState();
+    GameState &state = contextManager->stateManager.getPhaseEvasionGameState();
     state.checkHighScore();
   }
 

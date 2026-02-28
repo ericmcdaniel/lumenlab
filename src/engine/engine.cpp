@@ -24,10 +24,6 @@ namespace Engine
 
   void GameEngine::runApplication()
   {
-    // Targeting a 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
-    constexpr TickType_t frameTicks = pdMS_TO_TICKS(8);
-    TickType_t lastWakeTime = xTaskGetTickCount();
-
     while (contextManager.stateManager.isRunning())
     {
       contextManager.leds.reset();
@@ -61,8 +57,12 @@ namespace Engine
         break;
       }
 
-      renderLedStrip();
-      xTaskDelayUntil(&lastWakeTime, frameTicks);
+      uint32_t now = micros();
+      if (now - lastRender >= 8333) // Targeting a 120Hz refresh rate. 1/120Hz * 1000 gives us 8.3333ms per frame
+      {
+        lastRender += 8333;
+        renderLedStrip();
+      }
     }
   }
 
@@ -84,8 +84,8 @@ namespace Engine
     }
     log("Serial connection established.");
     log("Printing environment variables.");
-    logf("version = %s", SystemCore::Configuration::version());
-    logf("macAddress = %s", SystemCore::Configuration::macAddress().c_str());
+    logf("version = %s", SystemCore::Configuration::version);
+    logf("macAddress = %s", SystemCore::Configuration::macAddress);
     logf("numLeds = %u", SystemCore::Configuration::numLeds());
     logf("serialBaud = %u", SystemCore::Configuration::serialBaud());
     logf("boundary_1 = %u", SystemCore::Configuration::recallBoundaries()[0]);
@@ -100,21 +100,13 @@ namespace Engine
     log("NVS memory namespace: lumenlab-dev");
 #endif
 
-#ifdef USE_PS3
-    log("Connecting to PS3 controller");
-#else
-    log("Connecting to PS4 controller");
-#endif
+    logf("Connecting to %s controller", SystemCore::Configuration::psControllerType);
 
-    // twenty second attempt to connect to PS3 controller
+    // twenty second attempt to connect to PS3/PS4 controller
     int reattempt = 0;
     while (!contextManager.controller.isConnected() && reattempt < 80)
     {
-#ifdef USE_PS3
-      log("    Searching for PS3 controller...");
-#else
-      log("    Searching for PS4 controller...");
-#endif
+      logf("    Searching for %s controller...", SystemCore::Configuration::psControllerType);
       ++reattempt;
       delay(250);
     }
@@ -149,11 +141,7 @@ namespace Engine
       contextManager.stateManager.setNextUserSceneChoice(SceneSelection::Canvas);
       contextManager.stateManager.displayShouldUpdate = true;
       contextManager.stateManager.displayIsVisible = true;
-#ifdef USE_PS3
-      log("PS3 controller connected. Transitioning to Main Menu");
-#else
-      log("PS4 controller connected. Transitioning to Main Menu");
-#endif
+      logf("%s controller connected. Transitioning to Main Menu", SystemCore::Configuration::psControllerType);
       contextManager.controller.reset();
       return;
     }

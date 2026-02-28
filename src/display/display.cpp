@@ -226,9 +226,13 @@ namespace Display
     display.clearDisplay();
     drawHeader("LumenLab");
 
-    auto startingX = calculateCenterText("PS3 controller");
+    char controllerTypeBuffer[32] = "";
+    sprintf(controllerTypeBuffer, "%s controller", SystemCore::Configuration::psControllerType);
+
+    auto startingX = calculateCenterText(controllerTypeBuffer);
     display.setCursor(startingX, 8);
-    display.print("PS3 controller");
+    display.print(controllerTypeBuffer);
+
     startingX = calculateCenterText("not connected");
     display.setCursor(startingX, 16);
     display.print("not connected");

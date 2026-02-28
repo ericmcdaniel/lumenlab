@@ -17,12 +17,15 @@ namespace Player
 
   void Controller::begin(String macAddress)
   {
+#ifdef USE_PS3
     instance->controller.begin(macAddress.c_str());
     instance->controller.attachOnConnect(&Controller::onConnect);
+#endif
   }
 
   AnalogStick Controller::leftAnalog()
   {
+#ifdef USE_PS3
     AnalogStick joystick;
     auto &analog = instance->controller.data.analog.stick;
 
@@ -30,10 +33,14 @@ namespace Player
     joystick.y = filterDeadZone(analog.ly);
 
     return joystick;
+#else
+    return {0, 0};
+#endif
   }
 
   AnalogStick Controller::rightAnalog()
   {
+#ifdef USE_PS3
     AnalogStick joystick;
     auto &analog = instance->controller.data.analog.stick;
 
@@ -41,6 +48,9 @@ namespace Player
     joystick.y = filterDeadZone(analog.ry);
 
     return joystick;
+#else
+    return {0, 0};
+#endif
   }
 
   const uint8_t Controller::rawButtonState(const ControllerButton button) const

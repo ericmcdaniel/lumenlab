@@ -14,6 +14,7 @@ namespace Engine
 
   private:
     SystemCore::ContextManager contextManager;
+    uint32_t lastRender = 0;
     float disconnectedLedPhaseShift = 0;
     static constexpr uint16_t menuTileWidth = 12;
 

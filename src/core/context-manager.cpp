@@ -25,6 +25,13 @@ namespace SystemCore
     }
   }
 
+  void ContextManager::initializeSystemMemory()
+  {
+    SystemCore::Configuration::load(memory);
+    stateManager.getPhaseEvasionGameState().loadHighScore();
+    stateManager.getRecallGameState().loadHighScore();
+  }
+
   void ContextManager::checkExitRequest()
   {
     if (controller.wasPressedAndReleased(Player::ControllerButton::Ps))

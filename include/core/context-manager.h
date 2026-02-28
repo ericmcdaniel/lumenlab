@@ -27,6 +27,7 @@ namespace SystemCore
     Preferences memory;
     Display::MenuTileNavigation menuNav;
 
+    void initializeSystemMemory();
     void navigateMainMenu();
     void navigateGameMenu();
     void navigateSceneMenu();

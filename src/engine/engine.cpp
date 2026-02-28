@@ -68,10 +68,7 @@ namespace Engine
 
   void GameEngine::initializeEngine()
   {
-    SystemCore::Configuration::load(contextManager.memory);
-
-    contextManager.stateManager.getPhaseEvasionGameState().loadHighScore(); // extract out
-    contextManager.stateManager.getRecallGameState().loadHighScore();
+    contextManager.initializeSystemMemory();
     contextManager.controller.begin(SystemCore::Configuration::macAddress());
 
 // If debugging, ensure serial connection is stable before setting up components

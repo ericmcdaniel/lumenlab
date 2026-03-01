@@ -1,18 +1,19 @@
-#ifndef USE_PS3
+#if !defined(USE_PS3)
 
 #pragma once
 
 #include <Bluepad32.h>
 
+#include "player/controller.h"
 #include "player/controller-properties.h"
 
 namespace Player
 {
-  class Controller
+  class Ps4Controller : public Controller
   {
   public:
-    Controller() { instance = this; }
-    void begin(String macAddress);
+    Ps4Controller() : controller(nullptr) { instance = this; }
+    void begin(String macAddress) {};
 
     uint8_t cross() { return 5; }    // instance->controller.data.button.cross; }
     uint8_t circle() { return 5; }   // instance->controller.data.button.circle; }
@@ -33,31 +34,24 @@ namespace Player
     uint8_t select() { return 5; } // instance->controller.data.button.share; }
     uint8_t ps() { return 5; }     // instance->controller.data.button.ps; }
 
-    AnalogStick leftAnalog();
-    AnalogStick rightAnalog();
+    AnalogStick leftAnalog() { return {0, 0}; }
+    AnalogStick rightAnalog() { return {0, 0}; }
 
-    const uint8_t rawButtonState(const ControllerButton button) const;
-    const bool wasPressed(const ControllerButton button) const;
-    const bool wasPressedAndReleased(const ControllerButton button) const;
+    const uint8_t rawButtonState(const ControllerButton button) const override { return 0; }
+    const bool wasPressed(const ControllerButton button) const override { return 0; }
+    const bool wasPressedAndReleased(const ControllerButton button) const override { return 0; }
     const bool isConnected() const { return instance->connection; }
-    void poll();
-    bool isDown(const ControllerButton button) const;
-    void reset();
+    void poll() {}
+    bool isDown(const ControllerButton button) const { return false; }
+    void reset() {}
 
   private:
-    // ::Controller controller;
-    uint32_t buttonDebouceEvent[17];
-    static constexpr uint32_t buttonDebounceThreshold = 30;
-    bool buttonLastState[17] = {0};
-    bool buttonPressedEvent[17] = {0};
-    bool buttonReleasedEvent[17] = {0};
+    ::Controller *controller;
 
-    static Controller *instance;
+    static Ps4Controller *instance;
     bool connection = false;
     uint32_t ignoreEventsUntil = 0;
-
-    void handleOnConnect();
-    int filterDeadZone(int8_t value, int deadZone = 3);
+    void handleOnConnect() override {};
     static void onConnect()
     {
       if (instance)

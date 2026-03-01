@@ -69,7 +69,6 @@ namespace Engine
   void GameEngine::initializeEngine()
   {
     contextManager.initializeSystemMemory();
-    contextManager.controller.begin(SystemCore::Configuration::macAddress());
 
 // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
@@ -85,7 +84,7 @@ namespace Engine
     log("Serial connection established.");
     log("Printing environment variables.");
     logf("version = %s", SystemCore::Configuration::version);
-    logf("macAddress = %s", SystemCore::Configuration::macAddress);
+    logf("macAddress = %s", SystemCore::Configuration::macAddress().c_str());
     logf("numLeds = %u", SystemCore::Configuration::numLeds());
     logf("serialBaud = %u", SystemCore::Configuration::serialBaud());
     logf("boundary_1 = %u", SystemCore::Configuration::recallBoundaries()[0]);
@@ -100,6 +99,7 @@ namespace Engine
     log("NVS memory namespace: lumenlab-dev");
 #endif
 
+    contextManager.controller.begin(SystemCore::Configuration::macAddress());
     logf("Connecting to %s controller", SystemCore::Configuration::psControllerType);
 
     // twenty second attempt to connect to PS3/PS4 controller

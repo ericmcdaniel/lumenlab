@@ -1,3 +1,5 @@
+#ifdef USE_PS3
+
 #include <stdlib.h>
 #include <cmath>
 #include "player/ps3-controller.h"
@@ -159,3 +161,4 @@ namespace Player
     instance->poll();
   }
 }
+#endif

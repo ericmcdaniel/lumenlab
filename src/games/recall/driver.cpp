@@ -1,5 +1,5 @@
 #include "esp_system.h"
-
+#include "player/controller-properties.h"
 #include "games/recall/driver.h"
 #include "common.h"
 #include "logger.h"

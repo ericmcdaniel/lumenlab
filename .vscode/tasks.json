@@ -39,7 +39,7 @@
 			}
 		},
 		{
-			"label": "LumenLab - Upload (Virtualization)",
+			"label": "LumenLab - Upload (PS3 Virtualization)",
 			"type": "shell",
 			"command": "platformio",
 			"args": [
@@ -52,6 +52,21 @@
 			"problemMatcher": [
 				"$platformio"
 			],
+			"options": {
+				"statusbar": {
+					"hide": true
+				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "LumenLab - Upload (PS4 Virtualization)",
+			"type": "shell",
+			"command": "echo \"\" > lumenlab.ino && arduino-cli compile --fqbn esp32-bluepad32:esp32:uPesy_wroom --build-property compiler.cpp.extra_flags=\"-Iinclude -Isrc -Os -DVIRTUALIZATION -std=gnu++2a -DLUMENLAB_VERSION=\"${LUMENLAB_VERSION}\"\" --output-dir build",
 			"options": {
 				"statusbar": {
 					"hide": true
@@ -179,6 +194,42 @@
 				"focus": true,
 				"panel": "shared"
 			}
-		}
+		},
+		{
+			"label": "Upload and Start Virtualization (PS3)",
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"LumenLab - Upload (PS3 Virtualization)",
+				"Start Virtualization"
+			],
+			"options": {
+				"statusbar": {
+					"hide": true
+				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Upload and Start Virtualization (PS4)",
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"LumenLab - Upload (PS4 Virtualization)",
+				"Start Virtualization"
+			],
+			"options": {
+				"statusbar": {
+					"hide": true
+				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared"
+			}
+		},
 	]
 }

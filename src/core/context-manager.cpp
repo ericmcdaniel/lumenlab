@@ -1,4 +1,5 @@
 #include "core/context-manager.h"
+#include "player/controller-properties.h"
 #include "games/demo/driver.h"
 #include "games/recall/driver.h"
 #include "games/phase-evasion/driver.h"

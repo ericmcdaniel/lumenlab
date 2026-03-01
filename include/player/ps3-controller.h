@@ -1,3 +1,4 @@
+#ifdef USE_PS3
 #pragma once
 
 #include <Ps3Controller.h>
@@ -52,3 +53,4 @@ namespace Player
     }
   };
 }
+#endif

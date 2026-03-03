@@ -83,7 +83,8 @@ namespace Engine
     }
     log("Serial connection established.");
     log("Printing environment variables.");
-    logf("version = %s", SystemCore::Configuration::version);
+    logf("version = %s", SystemCore::Configuration::version().c_str());
+    logf("controller_type = %s", SystemCore::Configuration::psControllerType().c_str());
     logf("macAddress = %s", SystemCore::Configuration::macAddress().c_str());
     logf("numLeds = %u", SystemCore::Configuration::numLeds());
     logf("serialBaud = %u", SystemCore::Configuration::serialBaud());

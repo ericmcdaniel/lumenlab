@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: release-main
@@ -22,13 +23,51 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Cache pip and PlatformIO
+      - name: Determine PR number
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        run: |
+          PR_NUMBER=$(gh pr list \
+            --state merged \
+            --base main \
+            --json number,mergeCommit \
+            --jq '.[] | select(.mergeCommit.oid=="'"$GITHUB_SHA"'") | .number')
+          if [[ -z "$PR_NUMBER" ]]; then
+            echo "No PR associated with this commit; skipping release."
+            echo "run_release=false" >> $GITHUB_OUTPUT
+          else
+            echo "Found PR #$PR_NUMBER"
+            echo "run_release=true" >> $GITHUB_OUTPUT
+            echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Determine next version id from PR labels
+        id: semver
+        run: |
+          PR_NUMBER=${{ steps.pr.outputs.pr_number }}
+          export PR_NUMBER
+          bash .github/scripts/compute-semver.sh
+          echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get release description notes from PR
+        id: pr_details
+        run: bash .github/scripts/get-pr-details.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.semver.outputs.pr_number }}
+
+      - name: Cache PlatformIO & Arduino CLI
         uses: actions/cache@v4
         with:
           path: |
             ~/.cache/pip
             ~/.platformio/.cache
-          key: ${{ runner.os }}-pio-${{ hashFiles('**/platformio.ini') }}
+            ~/.arduino15
+          key: ${{ runner.os }}-build-tools-${{ hashFiles('**/platformio.ini') }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -38,25 +77,64 @@ jobs:
       - name: Install PlatformIO
         run: pip install --upgrade platformio
 
-      - name: Determine next SemVer from PR labels
-        id: semver
-        run: bash .github/scripts/compute-semver.sh
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Get release description notes from PR
-        id: pr_details
-        run: bash .github/scripts/get-pr-details.sh
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Run tests
         run: pio test --environment native
 
-      - name: Build release
+      - name: Build PS3 Firmware (PlatformIO)
         run: pio run -e release
         env:
           LUMENLAB_VERSION: ${{ steps.semver.outputs.tag }}
+
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Setup Arduino CLI config
+        run: |
+          cat > arduino-cli.yaml <<EOF
+          board_manager:
+            additional_urls:
+              - https://raw.githubusercontent.com/ricardoquesada/esp32-arduino-lib-builder/master/bluepad32_files/package_esp32_bluepad32_index.json
+          EOF
+
+      - name: Update Arduino CLI index
+        run: arduino-cli --config-file arduino-cli.yaml core update-index
+
+      - name: Install Bluepad32 core
+        run: arduino-cli --config-file arduino-cli.yaml core install esp32-bluepad32:esp32
+
+      - name: Install project dependencies
+        run: arduino-cli lib install FastLED@3.10.2 "Adafruit SSD1306@2.5.15"
+
+      - name: Build release for PS4
+        run: |
+          echo "" > lumenlab.ino
+          arduino-cli compile --fqbn esp32-bluepad32:esp32:uPesy_wroom \
+            --build-property compiler.cpp.extra_flags="-Iinclude -Isrc -Os -DRELEASE -std=gnu++2a -DLUMENLAB_VERSION=\"${LUMENLAB_VERSION}\"" \
+            --clean --output-dir build
+        env:
+          LUMENLAB_VERSION: ${{ steps.semver.outputs.tag }}
+
+      - name: Package PS3 Firmware ZIP
+        run: |
+          cp .pio/build/release/firmware.bin ./build/ps3-firmware.bin
+          cp .pio/build/release/bootloader.bin ./build/ps3-bootloader.bin
+          cp .pio/build/release/partitions.bin ./build/ps3-partitions.bin
+          zip -j ./build/ps3-firmware.zip \
+            ./build/ps3-firmware.bin \
+            ./build/ps3-bootloader.bin \
+            ./build/ps3-partitions.bin
+
+
+      - name: Package PS4 Firmware ZIP
+        working-directory: build
+        run: |
+          mv ./lumenlab.ino.bin ./ps4-firmware.bin
+          mv ./lumenlab.ino.bootloader.bin ./ps4-bootloader.bin
+          mv ./lumenlab.ino.partitions.bin ./ps4-partitions.bin
+          zip -j ./ps4-firmware.zip \
+            ./ps4-firmware.bin \
+            ./ps4-bootloader.bin \
+            ./ps4-partitions.bin
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -65,8 +143,7 @@ jobs:
           name: ${{ steps.semver.outputs.tag }} - ${{ steps.pr_details.outputs.title }}
           body: ${{ steps.pr_details.outputs.body }}
           files: |
-            .pio/build/release/firmware.bin
-            .pio/build/release/bootloader.bin
-            .pio/build/release/partitions.bin
+            ./build/ps3-firmware.zip
+            ./build/ps4-firmware.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

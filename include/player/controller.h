@@ -1,89 +1,58 @@
 #pragma once
 
-#include <Ps3Controller.h>
+#include <cstdint>
+#include <Arduino.h>
+
+#include "player/controller-properties.h"
 
 namespace Player
 {
-
-  struct AnalogStick
-  {
-    int8_t x = 0;
-    int8_t y = 0;
-  };
-
-  enum class ControllerButton : uint8_t
-  {
-    Cross,
-    Circle,
-    Triangle,
-    Square,
-    Up,
-    Down,
-    Left,
-    Right,
-    L1,
-    L2,
-    L3,
-    R1,
-    R2,
-    R3,
-    Start,
-    Select,
-    Ps
-  };
-
   class Controller
   {
   public:
-    Controller() { instance = this; }
-    void begin(String macAddress);
+    virtual ~Controller() = default;
+    virtual void begin(String macAddress) = 0;
 
-    uint8_t cross() { return instance->controller.data.analog.button.cross; }
-    uint8_t circle() { return instance->controller.data.analog.button.circle; }
-    uint8_t triangle() { return instance->controller.data.analog.button.triangle; }
-    uint8_t square() { return instance->controller.data.analog.button.square; }
+    virtual uint8_t cross() = 0;
+    virtual uint8_t circle() = 0;
+    virtual uint8_t triangle() = 0;
+    virtual uint8_t square() = 0;
 
-    uint8_t l1() { return instance->controller.data.analog.button.l1; }
-    uint8_t l2() { return instance->controller.data.analog.button.l2; }
-    uint8_t r1() { return instance->controller.data.analog.button.r1; }
-    uint8_t r2() { return instance->controller.data.analog.button.r2; }
+    virtual uint8_t l1() = 0;
+    virtual uint8_t l2() = 0;
+    virtual uint8_t r1() = 0;
+    virtual uint8_t r2() = 0;
 
-    uint8_t up() { return instance->controller.data.analog.button.up; }
-    uint8_t down() { return instance->controller.data.analog.button.down; }
-    uint8_t left() { return instance->controller.data.analog.button.left; }
-    uint8_t right() { return instance->controller.data.analog.button.right; }
+    virtual uint8_t up() = 0;
+    virtual uint8_t down() = 0;
+    virtual uint8_t left() = 0;
+    virtual uint8_t right() = 0;
 
-    uint8_t start() { return instance->controller.data.button.start; }
-    uint8_t ps() { return instance->controller.data.button.ps; }
+    virtual uint8_t start() = 0;
+    virtual uint8_t ps() = 0;
 
-    AnalogStick leftAnalog();
-    AnalogStick rightAnalog();
+    virtual AnalogStick leftAnalog() = 0;
+    virtual AnalogStick rightAnalog() = 0;
 
-    const uint8_t rawButtonState(const ControllerButton button) const;
-    const bool wasPressed(const ControllerButton button) const;
-    const bool wasPressedAndReleased(const ControllerButton button) const;
-    const bool isConnected() const { return instance->connection; }
-    void poll();
-    bool isDown(const ControllerButton button) const;
+    virtual const uint8_t rawButtonState(const ControllerButton button) const = 0;
+    virtual const bool wasPressed(const ControllerButton button) const = 0;
+    virtual const bool wasPressedAndReleased(const ControllerButton button) const = 0;
+    virtual const bool isConnected() const = 0;
+    virtual void poll() = 0;
+    virtual bool isDown(const ControllerButton button) const = 0;
     void reset();
 
-  private:
-    Ps3Controller controller;
+  protected:
     uint32_t buttonDebouceEvent[17];
     static constexpr uint32_t buttonDebounceThreshold = 30;
     bool buttonLastState[17] = {0};
     bool buttonPressedEvent[17] = {0};
     bool buttonReleasedEvent[17] = {0};
 
-    static Controller *instance;
     bool connection = false;
+    uint32_t ignoreEventsUntil = 0;
 
-    void handleOnConnect();
+    virtual void handleOnConnect() = 0;
     int filterDeadZone(int8_t value, int deadZone = 3);
-    static void onConnect()
-    {
-      if (instance)
-        instance->handleOnConnect();
-    }
   };
 }

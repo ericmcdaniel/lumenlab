@@ -3,14 +3,15 @@
 #include <cstdint>
 
 #include "core/configuration.h"
+#include "lights/color.h"
 
 namespace Lights
 {
   class LedBuffer
   {
   public:
-    LedBuffer() : leds{new Color[SystemCore::Configuration::numLeds()]} {}
-    ~LedBuffer() { delete leds; }
+    LedBuffer() : leds{new Color[maxLEDs]} {}
+    ~LedBuffer() { delete[] leds; }
     LedBuffer(LedBuffer &&other) = delete;
     LedBuffer &operator=(LedBuffer &&other) = delete;
     LedBuffer(const LedBuffer &other) = delete;
@@ -26,5 +27,6 @@ namespace Lights
 
   private:
     Color *leds;
+    static constexpr uint16_t maxLEDs = 600;
   };
 }

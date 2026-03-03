@@ -4,7 +4,8 @@
 
 #include "engine/layer.h"
 #include "engine/state-manager.h"
-#include "player/controller.h"
+#include "player/ps3-controller.h"
+#include "player/ps4-controller.h"
 #include "lights/led-strip.h"
 #include "display/display.h"
 #include "display/menu-navigation.h"
@@ -21,12 +22,17 @@ namespace SystemCore
 
     Engine::Layer *application = nullptr;
     Engine::StateManager stateManager;
-    Player::Controller controller;
+#ifdef USE_PS3
+    Player::Ps3Controller controller;
+#else
+    Player::Ps4Controller controller;
+#endif
     Lights::LedStrip leds;
     Display::OledDisplay display;
     Preferences memory;
     Display::MenuTileNavigation menuNav;
 
+    void initializeSystemMemory();
     void navigateMainMenu();
     void navigateGameMenu();
     void navigateSceneMenu();

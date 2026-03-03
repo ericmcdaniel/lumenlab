@@ -1,4 +1,5 @@
 #include "core/context-manager.h"
+#include "player/controller-properties.h"
 #include "games/demo/driver.h"
 #include "games/recall/driver.h"
 #include "games/phase-evasion/driver.h"
@@ -16,13 +17,20 @@ namespace SystemCore
 #endif
   }
 
-    ContextManager::~ContextManager()
+  ContextManager::~ContextManager()
   {
     if (application)
     {
       delete application;
       application = nullptr;
     }
+  }
+
+  void ContextManager::initializeSystemMemory()
+  {
+    SystemCore::Configuration::load(memory);
+    stateManager.getPhaseEvasionGameState().loadHighScore();
+    stateManager.getRecallGameState().loadHighScore();
   }
 
   void ContextManager::checkExitRequest()
@@ -33,6 +41,7 @@ namespace SystemCore
       stateManager.setNextUserMenuChoice(Engine::MainMenuSelection::Games);
       stateManager.setNextUserGameChoice(Engine::GameSelection::Recall);
       stateManager.setNextUserSceneChoice(Engine::SceneSelection::Canvas);
+      stateManager.displayShouldUpdate = true;
       log("Exiting to Main Menu.");
     }
   }

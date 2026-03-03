@@ -68,11 +68,7 @@ namespace Engine
 
   void GameEngine::initializeEngine()
   {
-    SystemCore::Configuration::load(contextManager.memory);
-
-    contextManager.stateManager.getPhaseEvasionGameState().loadHighScore();
-    contextManager.stateManager.getRecallGameState().loadHighScore();
-    contextManager.controller.begin(SystemCore::Configuration::macAddress());
+    contextManager.initializeSystemMemory();
 
 // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
@@ -87,22 +83,31 @@ namespace Engine
     }
     log("Serial connection established.");
     log("Printing environment variables.");
-    logf("version = %s", SystemCore::Configuration::version());
-    logf("macAddress = %s", SystemCore::Configuration::macAddress());
+    logf("version = %s", SystemCore::Configuration::version().c_str());
+    logf("controller_type = %s", SystemCore::Configuration::psControllerType().c_str());
+    logf("macAddress = %s", SystemCore::Configuration::macAddress().c_str());
     logf("numLeds = %u", SystemCore::Configuration::numLeds());
     logf("serialBaud = %u", SystemCore::Configuration::serialBaud());
     logf("boundary_1 = %u", SystemCore::Configuration::recallBoundaries()[0]);
     logf("boundary_2 = %u", SystemCore::Configuration::recallBoundaries()[1]);
     logf("boundary_3 = %u", SystemCore::Configuration::recallBoundaries()[2]);
+    logf("Phase Evasion high score: %u", contextManager.stateManager.getPhaseEvasionGameState().highScore);
+    logf("Recall high score: %u", contextManager.stateManager.getRecallGameState().highScore);
+#endif
+#ifdef RELEASE
+    log("NVS memory namespace: lumenlab");
+#else
+    log("NVS memory namespace: lumenlab-dev");
 #endif
 
-    log("Connecting to PS3 controller");
+    contextManager.controller.begin(SystemCore::Configuration::macAddress());
+    logf("Connecting to %s controller", SystemCore::Configuration::psControllerType);
 
-    // twenty second attempt to connect to PS3 controller
+    // twenty second attempt to connect to PS3/PS4 controller
     int reattempt = 0;
     while (!contextManager.controller.isConnected() && reattempt < 80)
     {
-      log("    Searching for PS3 controller...");
+      logf("    Searching for %s controller...", SystemCore::Configuration::psControllerType);
       ++reattempt;
       delay(250);
     }
@@ -118,7 +123,6 @@ namespace Engine
       contextManager.stateManager.displayIsVisible = true;
       contextManager.controller.reset();
       contextManager.controller.poll();
-      lastRender = micros();
       log("Startup process completed. Transitioning to Main Menu");
     }
 
@@ -129,17 +133,21 @@ namespace Engine
   {
     if (contextManager.controller.isConnected())
     {
+      contextManager.controller.reset();
+      contextManager.controller.poll();
+
       contextManager.stateManager.setNext(SystemState::MenuHome);
       contextManager.stateManager.setNextUserMenuChoice(MainMenuSelection::Games);
       contextManager.stateManager.setNextUserGameChoice(GameSelection::Recall);
       contextManager.stateManager.setNextUserSceneChoice(SceneSelection::Canvas);
-      lastRender = micros();
+      contextManager.stateManager.displayShouldUpdate = true;
       contextManager.stateManager.displayIsVisible = true;
-      log("PS3 controller connected. Transitioning to Main Menu");
+      logf("%s controller connected. Transitioning to Main Menu", SystemCore::Configuration::psControllerType);
+      contextManager.controller.reset();
       return;
     }
 
-    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds(); ++i)
+    for (uint16_t i = 0; i < SystemCore::Configuration::numLeds(); ++i)
     {
       float phase = std::cos((2 * M_PI * i / SystemCore::Configuration::numLeds()) + (2 * M_PI * disconnectedLedPhaseShift / SystemCore::Configuration::numLeds())) * 127 + 128;
       contextManager.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};

@@ -7,6 +7,8 @@
 tools/.venv
 activate-virtual-env.*
 __pycache__
+lumenlab.ino
+build
 
 *.drl
 *.gko

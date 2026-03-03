@@ -1,5 +1,5 @@
 #include "esp_system.h"
-
+#include "player/controller-properties.h"
 #include "games/recall/driver.h"
 #include "common.h"
 #include "logger.h"
@@ -251,7 +251,7 @@ namespace Games::Recall
       contextManager->stateManager.displayShouldUpdate = true;
     }
 
-    for (uint16_t i = 0; i <= SystemCore::Configuration::numLeds(); ++i)
+    for (uint16_t i = 0; i < SystemCore::Configuration::numLeds(); ++i)
     {
       float phase = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds()) + (2.0f * M_PI * gameOverLedPhaseShift / SystemCore::Configuration::numLeds())) * 127 + 128;
       contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};

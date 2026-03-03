@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def setup_python_virtual_environment():
-    tools_dir = Path("tools")
+    tools_dir = Path(".")
     venv_dir = tools_dir / ".venv"
 
     print(f"\n\nCreating a python virtual environment in {venv_dir}...")

@@ -63,7 +63,13 @@
 			"cinttypes": "cpp",
 			"typeinfo": "cpp",
 			"any": "cpp",
-			"variant": "cpp"
+			"variant": "cpp",
+			"format": "cpp",
+			"forward_list": "cpp",
+			"xhash": "cpp",
+			"xstring": "cpp",
+			"xtree": "cpp",
+			"xutility": "cpp"
 		},
 		"terminal.integrated.profiles.windows": {
 			"PowerShell": {
@@ -131,12 +137,12 @@
 			},
 			{
 				"text": "$(debug-alt)",
-				"tooltip": "PlatformIO: Upload (Virtualization)",
+				"tooltip": "PlatformIO: Upload (PS3 Virtualization)",
 				"commands": [
 					{
 						"id": "workbench.action.tasks.runTask",
 						"args": [
-							"Upload and Start Virtualization"
+							"Upload and Start Virtualization (PS3)"
 						]
 					},
 				]
@@ -199,7 +205,19 @@
 						"id": "platformio-ide.serialMonitor"
 					},
 				]
-			}
+			},
+			{
+				"text": "$(debug-alt)",
+				"tooltip": "PlatformIO: Upload (PS4 Virtualization)",
+				"commands": [
+					{
+						"id": "workbench.action.tasks.runTask",
+						"args": [
+							"Upload and Start Virtualization (PS4)"
+						]
+					},
+				]
+			},
 		],
 	}
 }

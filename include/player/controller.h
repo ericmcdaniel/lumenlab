@@ -11,7 +11,6 @@ namespace Player
   {
   public:
     virtual ~Controller() = default;
-    virtual void begin(String macAddress) = 0;
 
     virtual uint8_t cross() = 0;
     virtual uint8_t circle() = 0;
@@ -52,7 +51,6 @@ namespace Player
     bool connection = false;
     uint32_t ignoreEventsUntil = 0;
 
-    virtual void handleOnConnect() = 0;
     int filterDeadZone(int8_t value, int deadZone = 3);
   };
 }

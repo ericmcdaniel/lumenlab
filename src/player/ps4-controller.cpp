@@ -9,7 +9,7 @@ namespace Player
 
   Ps4Controller *Ps4Controller::instance = nullptr;
 
-  void Ps4Controller::begin()
+  void Ps4Controller::begin(String macAddress)
   {
     BP32.setup(&onConnectedController, &onDisconnectedController);
   }
@@ -182,7 +182,7 @@ namespace Player
     if (!active)
       return {0, 0};
 
-    return {active->axisX(), active->axisY()};
+    return {active->axisX() / 4, active->axisY() / 4};
   }
 
   AnalogStick Ps4Controller::rightAnalog()
@@ -190,7 +190,7 @@ namespace Player
     if (!active)
       return {0, 0};
 
-    return {active->axisRX(), active->axisRY()};
+    return {active->axisRX() / 4, active->axisRY() / 4};
   }
 
   uint8_t Ps4Controller::button(uint16_t mask)
@@ -214,7 +214,7 @@ namespace Player
     if (!controllers[0])
       return 0;
 
-    return (controllers[0]->miscSystem() & mask) ? 255 : 0;
+    return (controllers[0]->miscButtons() & mask) ? 255 : 0;
   }
 }
 #endif

@@ -12,7 +12,7 @@ namespace Player
   public:
     Ps4Controller() { instance = this; };
 
-    void begin();
+    void begin(String macAddress);
     void poll() override;
 
     uint8_t cross() override { return button(0x1); }

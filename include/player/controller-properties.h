@@ -6,8 +6,8 @@ namespace Player
 {
   struct AnalogStick
   {
-    int8_t x = 0;
-    int8_t y = 0;
+    int16_t x = 0;
+    int16_t y = 0;
   };
 
   enum class ControllerButton : uint8_t

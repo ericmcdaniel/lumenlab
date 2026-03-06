@@ -100,8 +100,8 @@ namespace Engine
     log("NVS memory namespace: lumenlab-dev");
 #endif
 
-    // contextManager.controller.begin(SystemCore::Configuration::macAddress());
-    contextManager.controller.begin();
+    contextManager.controller.begin(SystemCore::Configuration::macAddress());
+
     logf("Connecting to %s controller", SystemCore::Configuration::psControllerType().c_str());
 
     // twenty second attempt to connect to PS3/PS4 controller

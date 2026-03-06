@@ -101,14 +101,16 @@ namespace Engine
 #endif
 
     contextManager.controller.begin(SystemCore::Configuration::macAddress());
-    logf("Connecting to %s controller", SystemCore::Configuration::psControllerType);
+
+    logf("Connecting to %s controller", SystemCore::Configuration::psControllerType().c_str());
 
     // twenty second attempt to connect to PS3/PS4 controller
     int reattempt = 0;
     while (!contextManager.controller.isConnected() && reattempt < 80)
     {
-      logf("    Searching for %s controller...", SystemCore::Configuration::psControllerType);
+      logf("    Searching for %s controller...", SystemCore::Configuration::psControllerType().c_str());
       ++reattempt;
+      contextManager.controller.poll();
       delay(250);
     }
 
@@ -142,7 +144,7 @@ namespace Engine
       contextManager.stateManager.setNextUserSceneChoice(SceneSelection::Canvas);
       contextManager.stateManager.displayShouldUpdate = true;
       contextManager.stateManager.displayIsVisible = true;
-      logf("%s controller connected. Transitioning to Main Menu", SystemCore::Configuration::psControllerType);
+      logf("%s controller connected. Transitioning to Main Menu", SystemCore::Configuration::psControllerType().c_str());
       contextManager.controller.reset();
       return;
     }

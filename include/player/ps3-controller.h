@@ -12,7 +12,7 @@ namespace Player
   public:
     Ps3Controller() : controller(&Ps3) { instance = this; }
 
-    void begin(String macAddress) override;
+    void begin(String macAddress);
     uint8_t cross() override { return instance->controller->data.analog.button.cross; }
     uint8_t circle() override { return instance->controller->data.analog.button.circle; }
     uint8_t triangle() override { return instance->controller->data.analog.button.triangle; }
@@ -45,7 +45,7 @@ namespace Player
     ::Ps3Controller *controller;
     static Ps3Controller *instance;
 
-    void handleOnConnect() override;
+    void handleOnConnect();
     static void onConnect()
     {
       if (instance)

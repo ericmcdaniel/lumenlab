@@ -60,13 +60,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ steps.semver.outputs.pr_number }}
 
-      - name: Cache PlatformIO & Arduino CLI
+      - name: Cache PlatformIO and Python
         uses: actions/cache@v4
         with:
           path: |
             ~/.cache/pip
             ~/.platformio/.cache
-            ~/.arduino15
           key: ${{ runner.os }}-build-tools-${{ hashFiles('**/platformio.ini') }}
 
       - name: Setup Python
@@ -86,9 +85,11 @@ jobs:
           LUMENLAB_VERSION: ${{ steps.semver.outputs.tag }}
 
       - name: Install Arduino CLI
+        if: false
         uses: arduino/setup-arduino-cli@v1
 
       - name: Setup Arduino CLI config
+        if: false
         run: |
           cat > arduino-cli.yaml <<EOF
           board_manager:
@@ -97,15 +98,19 @@ jobs:
           EOF
 
       - name: Update Arduino CLI index
+        if: false
         run: arduino-cli --config-file arduino-cli.yaml core update-index
 
       - name: Install Bluepad32 core
+        if: false
         run: arduino-cli --config-file arduino-cli.yaml core install esp32-bluepad32:esp32
 
       - name: Install project dependencies
+        if: false
         run: arduino-cli lib install FastLED@3.10.2 "Adafruit SSD1306@2.5.15"
 
       - name: Build release for PS4
+        if: false
         run: |
           echo "" > lumenlab.ino
           arduino-cli compile --fqbn esp32-bluepad32:esp32:uPesy_wroom \
@@ -116,16 +121,17 @@ jobs:
 
       - name: Package PS3 Firmware ZIP
         run: |
-          cp .pio/build/release/firmware.bin ./build/ps3-firmware.bin
-          cp .pio/build/release/bootloader.bin ./build/ps3-bootloader.bin
-          cp .pio/build/release/partitions.bin ./build/ps3-partitions.bin
-          zip -j ./build/ps3-firmware.zip \
-            ./build/ps3-firmware.bin \
-            ./build/ps3-bootloader.bin \
-            ./build/ps3-partitions.bin
+          cp .pio/build/release/firmware.bin ./build/lumenlab-firmware.bin
+          cp .pio/build/release/bootloader.bin ./build/lumenlab-bootloader.bin
+          cp .pio/build/release/partitions.bin ./build/lumenlab-partitions.bin
+          zip -j ./build/lumenlab-firmware.zip \
+            ./build/lumenlab-firmware.bin \
+            ./build/lumenlab-bootloader.bin \
+            ./build/lumenlab-partitions.bin
 
 
       - name: Package PS4 Firmware ZIP
+        if: false
         working-directory: build
         run: |
           mv ./lumenlab.ino.bin ./ps4-firmware.bin
@@ -143,7 +149,6 @@ jobs:
           name: ${{ steps.semver.outputs.tag }} - ${{ steps.pr_details.outputs.title }}
           body: ${{ steps.pr_details.outputs.body }}
           files: |
-            ./build/ps3-firmware.zip
-            ./build/ps4-firmware.zip
+            ./build/lumenlab-firmware.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

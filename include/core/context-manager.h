@@ -4,8 +4,11 @@
 
 #include "engine/layer.h"
 #include "engine/state-manager.h"
+#ifdef USE_PS3
 #include "player/ps3-controller.h"
+#else
 #include "player/ps4-controller.h"
+#endif
 #include "lights/led-strip.h"
 #include "display/display.h"
 #include "display/menu-navigation.h"

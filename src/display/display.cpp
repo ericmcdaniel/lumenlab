@@ -227,7 +227,7 @@ namespace Display
     drawHeader("LumenLab");
 
     char controllerTypeBuffer[32] = "";
-    sprintf(controllerTypeBuffer, "%s controller", SystemCore::Configuration::psControllerType);
+    sprintf(controllerTypeBuffer, "%s controller", SystemCore::Configuration::psControllerType().c_str());
 
     auto startingX = calculateCenterText(controllerTypeBuffer);
     display.setCursor(startingX, 8);

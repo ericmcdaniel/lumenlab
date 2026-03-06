@@ -121,13 +121,11 @@ jobs:
 
       - name: Package PS3 Firmware ZIP
         run: |
-          cp .pio/build/release/firmware.bin ./build/lumenlab-firmware.bin
-          cp .pio/build/release/bootloader.bin ./build/lumenlab-bootloader.bin
-          cp .pio/build/release/partitions.bin ./build/lumenlab-partitions.bin
-          zip -j ./build/lumenlab-firmware.zip \
-            ./build/lumenlab-firmware.bin \
-            ./build/lumenlab-bootloader.bin \
-            ./build/lumenlab-partitions.bin
+          mkdir -p build
+          zip -j build/lumenlab-firmware.zip \
+            .pio/build/release/firmware.bin \
+            .pio/build/release/bootloader.bin \
+            .pio/build/release/partitions.bin
 
 
       - name: Package PS4 Firmware ZIP

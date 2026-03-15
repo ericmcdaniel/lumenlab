@@ -9,10 +9,11 @@ namespace Games::ChainReaction
   class Driver : public Engine::Layer, private Engine::Timer
   {
   public:
-    Driver(SystemCore::ContextManager *ctx) {}
+    Driver(SystemCore::ContextManager *ctx);
+    ~Driver() { state.reset(); }
 
   private:
     SystemCore::ContextManager *contextManager;
-    // GameState &state;
+    GameState &state;
   };
 }

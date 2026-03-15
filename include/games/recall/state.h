@@ -26,7 +26,7 @@ namespace Games::Recall
     uint16_t highScore;
     uint16_t round;
     Actions current = Actions::Startup;
-    static constexpr const char *memoryKeyName = "recall-high";
+    static constexpr const char *memoryKeyName = "high_recall";
 
     void reset();
     void loadHighScore();

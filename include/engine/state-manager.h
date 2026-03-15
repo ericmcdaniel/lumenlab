@@ -2,6 +2,7 @@
 
 #include "games/recall/state.h"
 #include "games/phase-evasion/state.h"
+#include "games/chain-reaction/state.h"
 #include "games/demo/state.h"
 #include "scenes/canvas/state.h"
 
@@ -58,14 +59,13 @@ namespace Engine
   {
   public:
     StateManager(SystemCore::ContextManager *ctx) : contextManager{ctx},
-                                                    phaseEvasionGameState{ctx},
                                                     recallGameState{ctx},
+                                                    phaseEvasionGameState{ctx},
+                                                    chainReactionGameState{ctx},
                                                     systemState{SystemState::Initialize},
                                                     userMainMenuChoice{MainMenuSelection::Games},
                                                     userGameChoice{GameSelection::Recall},
-                                                    userSceneChoice{SceneSelection::Canvas}
-    {
-    }
+                                                    userSceneChoice{SceneSelection::Canvas} {}
 
     bool displayShouldUpdate = true;
     bool displayIsVisible = true;
@@ -92,6 +92,7 @@ namespace Engine
 
     Games::Recall::GameState &getRecallGameState() { return recallGameState; }
     Games::PhaseEvasion::GameState &getPhaseEvasionGameState() { return phaseEvasionGameState; }
+    Games::ChainReaction::GameState &getChainReactionGameState() { return chainReactionGameState; }
     Games::Demo::GameState &getDemoGameState() { return demoGameState; }
 
     Scenes::Canvas::SceneState &getCanvasSceneState() { return canvasSceneState; }
@@ -106,6 +107,7 @@ namespace Engine
 
     Games::Recall::GameState recallGameState;
     Games::PhaseEvasion::GameState phaseEvasionGameState;
+    Games::ChainReaction::GameState chainReactionGameState;
     Games::Demo::GameState demoGameState;
 
     Scenes::Canvas::SceneState canvasSceneState;

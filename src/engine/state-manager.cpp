@@ -47,9 +47,10 @@ namespace Engine
 
   const char *StateManager::printGameName(uint8_t index)
   {
-    static constexpr const char gameNames[3][20] = {
+    static constexpr const char gameNames[static_cast<int>(Engine::GameSelection::COUNT)][20] = {
         "Recall",
         "Phase Evasion",
+        "Chain Reaction",
         "Demo"};
     return gameNames[index];
   }

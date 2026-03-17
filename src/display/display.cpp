@@ -48,6 +48,9 @@ namespace Display
       case Engine::SystemState::GamePhaseEvasion:
         drawPhaseEvasionGameHud();
         break;
+      case Engine::SystemState::GameChainReaction:
+        // drawChainReactionGameHud();
+        break;
       case Engine::SystemState::SceneCanvas:
         drawCanvasSceneHud();
         break;
@@ -116,23 +119,25 @@ namespace Display
 
   void OledDisplay::drawGamesMenu()
   {
-    display.clearDisplay();
-    drawHeader("Games Menu");
-
+    constexpr int itemsPerPage = 3;
+    constexpr int numGames = static_cast<int>(Engine::GameSelection::COUNT);
     uint8_t selectedOptionIndex = static_cast<uint8_t>(contextManager->stateManager.getUserGameChoice());
+    auto currentPage = selectedOptionIndex / itemsPerPage;
     char nameBuffer[32] = "";
 
-    display.setCursor(0, 8);
-    sprintf(nameBuffer, "%c  %s", selectedOption(0, selectedOptionIndex), contextManager->stateManager.printGameName(0));
-    display.print(nameBuffer);
+    display.clearDisplay();
+    sprintf(nameBuffer, "Games Menu (%d/%d)", currentPage + 1, (numGames + itemsPerPage - 1) / itemsPerPage);
+    drawHeader(nameBuffer);
 
-    display.setCursor(0, 16);
-    sprintf(nameBuffer, "%c  %s", selectedOption(1, selectedOptionIndex), contextManager->stateManager.printGameName(1));
-    display.print(nameBuffer);
+    int startIndex = currentPage * itemsPerPage;
+    int endIndex = std::min(startIndex + itemsPerPage, numGames);
 
-    display.setCursor(0, 24);
-    sprintf(nameBuffer, "%c  %s", selectedOption(2, selectedOptionIndex), contextManager->stateManager.printGameName(2));
-    display.print(nameBuffer);
+    for (int i = startIndex; i < endIndex; ++i)
+    {
+      display.setCursor(0, 8 * (i - startIndex + 1));
+      sprintf(nameBuffer, "%c  %s", selectedOption(i, selectedOptionIndex), contextManager->stateManager.printGameName(i));
+      display.print(nameBuffer);
+    }
 
     display.display();
   }
@@ -204,6 +209,13 @@ namespace Display
     display.setCursor(DISPLAY_WIDTH / 2 + 4, 24);
     display.printf(" High: %u", highScore);
 
+    display.display();
+  }
+
+  void OledDisplay::drawChainReactionGameHud()
+  {
+    display.clearDisplay();
+    drawHeader("Chain Reaction");
     display.display();
   }
 

@@ -22,6 +22,7 @@ namespace Engine
     MenuScenes,
     GameRecall,
     GamePhaseEvasion,
+    GameChainReaction,
     GameDemo,
     SceneCanvas,
     NoControllerConnected,
@@ -39,6 +40,7 @@ namespace Engine
   {
     Recall,
     PhaseEvasion,
+    ChainReaction,
     Demo,
     COUNT
   };

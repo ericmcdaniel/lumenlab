@@ -16,16 +16,17 @@ namespace Display
 
   void OledDisplay::updateDisplay()
   {
-    if (!contextManager->stateManager.displayIsVisible && contextManager->stateManager.displayShouldUpdate)
+    Engine::StateManager &state = contextManager->stateManager;
+    if (!state.displayIsVisible && state.displayShouldUpdate)
     {
       clearDisplay();
-      contextManager->stateManager.displayShouldUpdate = false;
+      state.displayShouldUpdate = false;
       return;
     }
 
-    if (contextManager->stateManager.displayShouldUpdate)
+    if (state.displayShouldUpdate)
     {
-      switch (contextManager->stateManager.current())
+      switch (state.current())
       {
       case Engine::SystemState::Initialize:
         drawBootScreen();
@@ -49,7 +50,7 @@ namespace Display
         drawPhaseEvasionGameHud();
         break;
       case Engine::SystemState::GameChainReaction:
-        // drawChainReactionGameHud();
+        drawChainReactionGameHud();
         break;
       case Engine::SystemState::SceneCanvas:
         drawCanvasSceneHud();
@@ -61,7 +62,7 @@ namespace Display
         drawBootScreen();
         break;
       }
-      contextManager->stateManager.displayShouldUpdate = false;
+      state.displayShouldUpdate = false;
     }
   }
 

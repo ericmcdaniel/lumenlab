@@ -1,8 +1,9 @@
 #include "core/context-manager.h"
 #include "player/controller-properties.h"
-#include "games/demo/driver.h"
 #include "games/recall/driver.h"
 #include "games/phase-evasion/driver.h"
+#include "games/chain-reaction/driver.h"
+#include "games/demo/driver.h"
 #include "scenes/canvas/driver.h"
 #include "logger.h"
 
@@ -31,6 +32,7 @@ namespace SystemCore
     SystemCore::Configuration::load(memory);
     stateManager.getPhaseEvasionGameState().loadHighScore();
     stateManager.getRecallGameState().loadHighScore();
+    // TODO: Add loadHighScore for Chain Reaction
   }
 
   void ContextManager::checkExitRequest()
@@ -111,6 +113,9 @@ namespace SystemCore
       case Engine::GameSelection::PhaseEvasion:
         stateManager.setNext(Engine::SystemState::GamePhaseEvasion);
         break;
+      case Engine::GameSelection::ChainReaction:
+        stateManager.setNext(Engine::SystemState::GameChainReaction);
+        break;
       case Engine::GameSelection::Demo:
         stateManager.setNext(Engine::SystemState::GameDemo);
         break;
@@ -175,6 +180,10 @@ namespace SystemCore
     case Engine::SystemState::GamePhaseEvasion:
       application = new Games::PhaseEvasion::Driver{this};
       logf("Transitioning to Phase Evasion (Game)");
+      break;
+    case Engine::SystemState::GameChainReaction:
+      application = new Games::ChainReaction::Driver{this};
+      logf("Transitioning to Chain Reaction (Game)");
       break;
     case Engine::SystemState::GameDemo:
       application = new Games::Demo::Driver{this};

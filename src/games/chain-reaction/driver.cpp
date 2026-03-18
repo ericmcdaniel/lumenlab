@@ -4,4 +4,6 @@ namespace Games::ChainReaction
 {
   Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx},
                                                     state{ctx->stateManager.getChainReactionGameState()} {}
+
+  void Driver::nextEvent() {}
 }

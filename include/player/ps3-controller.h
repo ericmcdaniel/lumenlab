@@ -48,15 +48,20 @@ namespace Player
     ::Ps3Controller *controller;
     static Ps3Controller *instance;
 
-    static void playRumblePattern(RumbleStep *pattern, int steps);
+    static void playRumblePattern(RumblePattern pattern);
     static void rumbleTask(void *pvParameters);
-    void triggerRumble(RumbleStep *pattern);
+    void triggerRumble(const RumblePattern &pattern);
     void handleOnConnect();
     static void onConnect()
     {
       if (instance)
         instance->handleOnConnect();
     }
+    struct RumbleTaskParams
+    {
+      Ps3Controller *instance;
+      const RumblePattern *pattern;
+    };
   };
 }
 #endif

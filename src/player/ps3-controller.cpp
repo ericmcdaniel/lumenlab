@@ -43,13 +43,24 @@ namespace Player
 
   void Ps3Controller::rumble(RumbleOptions option)
   {
+    const RumblePattern *pattern = nullptr;
+
     switch (option)
     {
-    case RumbleOptions::DoublePulse:
+    case RumbleOptions::DoubleQuickPulse:
+      pattern = &doubleQuickRumbleSeq;
+      break;
+    case RumbleOptions::SingleQuickPulse:
+      pattern = &singleQuickRumbleSeq;
+      break;
+    case RumbleOptions::DeathPulse:
+      pattern = &deathRumbleSeq;
       break;
     default:
       break;
     }
+
+    triggerRumble(*pattern);
   }
 
   const uint8_t Ps3Controller::rawButtonState(const ControllerButton button) const
@@ -172,32 +183,40 @@ namespace Player
     instance->poll();
   }
 
-  void Ps3Controller::playRumblePattern(RumbleStep *pattern, int steps)
+  void Ps3Controller::playRumblePattern(RumblePattern pattern)
   {
-    for (int i = 0; i < steps; i++)
+    const RumbleStep *steps = pattern.getSteps();
+    size_t count = pattern.getCount();
+
+    for (size_t i = 0; i < count; i++)
     {
-      Ps3.setRumble(pattern[i].intensity, pattern[i].duration);
-      delay(pattern[i].duration);
+      Ps3.setRumble(steps[i].intensity, steps[i].duration);
+      vTaskDelay(pdMS_TO_TICKS(steps[i].duration));
     }
   }
 
   void Ps3Controller::rumbleTask(void *pvParameters)
   {
-    RumbleStep *pattern = (RumbleStep *)pvParameters;
-    int steps = 4; // example
+    auto *params = (RumbleTaskParams *)pvParameters;
 
-    playRumblePattern(pattern, steps);
+    Ps3Controller *self = params->instance;
+    const RumblePattern *pattern = params->pattern;
 
+    self->playRumblePattern(*pattern);
+
+    delete params;
     vTaskDelete(NULL);
   }
-
-  void Ps3Controller::triggerRumble(RumbleStep *pattern)
+  void Ps3Controller::triggerRumble(const RumblePattern &pattern)
   {
+    auto *params = new RumbleTaskParams{
+        this,
+        &pattern};
     xTaskCreatePinnedToCore(
         Ps3Controller::rumbleTask,
         "RumbleTask",
         2048,
-        (void *)pattern,
+        (void *)params,
         1,
         NULL,
         0);

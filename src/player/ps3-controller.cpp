@@ -41,6 +41,17 @@ namespace Player
     return joystick;
   }
 
+  void Ps3Controller::rumble(RumbleOptions option)
+  {
+    switch (option)
+    {
+    case RumbleOptions::DoublePulse:
+      break;
+    default:
+      break;
+    }
+  }
+
   const uint8_t Ps3Controller::rawButtonState(const ControllerButton button) const
   {
     if (!instance->connection)
@@ -159,6 +170,37 @@ namespace Player
     instance->ignoreEventsUntil = millis() + 200;
     instance->reset();
     instance->poll();
+  }
+
+  void Ps3Controller::playRumblePattern(RumbleStep *pattern, int steps)
+  {
+    for (int i = 0; i < steps; i++)
+    {
+      Ps3.setRumble(pattern[i].intensity, pattern[i].duration);
+      delay(pattern[i].duration);
+    }
+  }
+
+  void Ps3Controller::rumbleTask(void *pvParameters)
+  {
+    RumbleStep *pattern = (RumbleStep *)pvParameters;
+    int steps = 4; // example
+
+    playRumblePattern(pattern, steps);
+
+    vTaskDelete(NULL);
+  }
+
+  void Ps3Controller::triggerRumble(RumbleStep *pattern)
+  {
+    xTaskCreatePinnedToCore(
+        Ps3Controller::rumbleTask,
+        "RumbleTask",
+        2048,
+        (void *)pattern,
+        1,
+        NULL,
+        0);
   }
 }
 #endif

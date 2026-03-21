@@ -36,7 +36,7 @@ namespace Player
   static const RumbleStep singleQuickSteps[] = {
       {200, 100}};
   static const RumbleStep doubleQuickSteps[] = {
-      {200, 100},
+      {255, 100},
       {0, 100},
       {200, 100}};
   static const RumbleStep deathSteps[] = {

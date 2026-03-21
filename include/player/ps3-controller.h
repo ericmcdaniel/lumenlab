@@ -35,7 +35,7 @@ namespace Player
     AnalogStick leftAnalog() override;
     AnalogStick rightAnalog() override;
 
-    void rumble(RumbleOptions option);
+    void rumble(RumbleOptions option) override;
 
     const uint8_t rawButtonState(const ControllerButton button) const;
     const bool wasPressed(const ControllerButton button) const;

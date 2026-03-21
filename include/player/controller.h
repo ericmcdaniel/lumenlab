@@ -4,6 +4,7 @@
 #include <Arduino.h>
 
 #include "player/controller-properties.h"
+#include "player/rumble.h"
 
 namespace Player
 {
@@ -32,6 +33,8 @@ namespace Player
 
     virtual AnalogStick leftAnalog() = 0;
     virtual AnalogStick rightAnalog() = 0;
+
+    virtual void rumble(RumbleOptions option) = 0;
 
     virtual const uint8_t rawButtonState(const ControllerButton button) const = 0;
     virtual const bool wasPressed(const ControllerButton button) const = 0;

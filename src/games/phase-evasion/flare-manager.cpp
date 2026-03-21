@@ -34,6 +34,7 @@ namespace Games::PhaseEvasion
       {
         contextManager->stateManager.getPhaseEvasionGameState().flaresEvaded++;
         contextManager->stateManager.displayShouldUpdate = true;
+        contextManager->controller.rumble(Player::RumbleOptions::SingleQuickPulse);
         flare.completedCycle = false;
       }
     }

@@ -10,6 +10,7 @@ namespace Games::Demo
     {
       incrementCurrentScore();
       contextManager->stateManager.displayShouldUpdate = true;
+      contextManager->controller.rumble(::Player::RumbleOptions::SingleQuickPulse);
       logf("Current score: %d", getCurrentScore());
     }
     auto leftInput = contextManager->controller.leftAnalog();

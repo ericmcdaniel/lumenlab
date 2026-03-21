@@ -129,6 +129,7 @@ namespace Games::PhaseEvasion
         flare.impacted = true;
         state.current = Actions::MuzzleFlash;
         gameOverPhaseShift = static_cast<float>(((SystemCore::Configuration::numLeds() / 2) + player.getPosition()) % SystemCore::Configuration::numLeds());
+        contextManager->controller.rumble(::Player::RumbleOptions::DeathPulse);
         wait(20);
       }
     }
@@ -158,6 +159,7 @@ namespace Games::PhaseEvasion
           gem.capture();
           contextManager->stateManager.getPhaseEvasionGameState().gemsCaptured++;
           contextManager->stateManager.displayShouldUpdate = true;
+          contextManager->controller.rumble(::Player::RumbleOptions::DoubleQuickPulse);
           gem.wait(gemRespawnDelay);
         }
       }

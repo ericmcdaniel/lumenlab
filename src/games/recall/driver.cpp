@@ -115,6 +115,7 @@ namespace Games::Recall
       state.current = Actions::PlayerResponseEvaluation;
       sequenceIndex = 0;
       contextManager->controller.reset();
+      contextManager->controller.rumble(::Player::RumbleOptions::SingleQuickPulse);
       successFadeawayAnimation = 1;
       log("Ready for User playback");
       return;
@@ -136,6 +137,7 @@ namespace Games::Recall
       state.incrementScore();
 
       contextManager->controller.reset();
+      contextManager->controller.rumble(::Player::RumbleOptions::DoubleQuickPulse);
       wait(gameplaySpeedIlluminated * 2);
       return;
     }
@@ -160,6 +162,7 @@ namespace Games::Recall
         }
 
         logf("User provided the incorrect answer. Entering game over sequence.");
+        contextManager->controller.rumble(::Player::RumbleOptions::DeathPulse);
         state.current = Actions::GameOver;
       }
     }

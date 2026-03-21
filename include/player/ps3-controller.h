@@ -3,6 +3,7 @@
 
 #include <Ps3Controller.h>
 #include "player/controller.h"
+#include "player/rumble.h"
 
 namespace Player
 {
@@ -34,6 +35,8 @@ namespace Player
     AnalogStick leftAnalog() override;
     AnalogStick rightAnalog() override;
 
+    void rumble(RumbleOptions option) override;
+
     const uint8_t rawButtonState(const ControllerButton button) const;
     const bool wasPressed(const ControllerButton button) const;
     const bool wasPressedAndReleased(const ControllerButton button) const;
@@ -45,12 +48,20 @@ namespace Player
     ::Ps3Controller *controller;
     static Ps3Controller *instance;
 
+    static void playRumblePattern(RumblePattern pattern);
+    static void rumbleTask(void *pvParameters);
+    void triggerRumble(const RumblePattern &pattern);
     void handleOnConnect();
     static void onConnect()
     {
       if (instance)
         instance->handleOnConnect();
     }
+    struct RumbleTaskParams
+    {
+      Ps3Controller *instance;
+      const RumblePattern *pattern;
+    };
   };
 }
 #endif

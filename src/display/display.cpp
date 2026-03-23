@@ -217,6 +217,15 @@ namespace Display
   {
     display.clearDisplay();
     drawHeader("Chain Reaction");
+
+    const auto chainReactionState = contextManager->stateManager.getChainReactionGameState();
+    const auto reactions = chainReactionState.reactions;
+
+    display.setCursor(0, 16);
+    display.printf("Reactions: %u", reactions);
+    display.setCursor(0, 24);
+    display.printf("Total: %u", reactions);
+
     display.display();
   }
 

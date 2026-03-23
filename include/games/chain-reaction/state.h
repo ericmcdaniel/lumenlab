@@ -20,9 +20,10 @@ namespace Games::ChainReaction
   {
   public:
     GameState(SystemCore::ContextManager *ctx) : contextManager{ctx} {}
-    // uint16_t scores (tbd)
+    uint16_t reactions;
+
     Actions current = Actions::Startup;
-    static constexpr const char *memoryKeyName = "chain-high";
+    static constexpr const char *memoryKeyName = "high_chain";
 
     void reset();
 

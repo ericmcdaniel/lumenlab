@@ -1,13 +1,14 @@
 #pragma once
 
 #include "games/chain-reaction/ion.h"
+#include "core/context-manager.h"
 
 namespace Games::ChainReaction
 {
   class IonCannon
   {
   public:
-    IonCannon() {}
+    IonCannon(SystemCore::ContextManager *ctx) : contextManager{ctx} {}
     IonCannon(const IonCannon &) = delete;
     IonCannon &operator=(const IonCannon &) = delete;
 
@@ -26,7 +27,7 @@ namespace Games::ChainReaction
     void reset();
 
   private:
-    // SystemCore::ContextManager *contextManager;
+    SystemCore::ContextManager *contextManager;
     std::vector<Ion> ions;
   };
 }

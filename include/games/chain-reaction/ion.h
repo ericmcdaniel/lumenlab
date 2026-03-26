@@ -12,15 +12,16 @@ namespace Games::ChainReaction
     Ion(uint8_t cap);
     ~Ion() = default;
 
+    static constexpr uint8_t maxIonElements = 3;
+
     uint16_t getPosition() const { return position; }
     void assignColors();
 
-    static constexpr uint8_t maxIonElements = 3;
-    static constexpr uint8_t elementWidth = 3;
+    std::vector<Lights::Color> elements;
 
   private:
     uint16_t position;
     uint8_t capacity;
-    std::vector<Lights::Color> elements;
+    bool isFalling = true;
   };
 }

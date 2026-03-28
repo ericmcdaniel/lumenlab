@@ -3,6 +3,11 @@
 namespace Games::ChainReaction
 {
 
+  void IonCannon::dispatch()
+  {
+    ionPool.emplace_back(2); // remove hardcode when possible
+  }
+
   void IonCannon::reset()
   {
     ionPool.clear();

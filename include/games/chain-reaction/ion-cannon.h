@@ -24,7 +24,7 @@ namespace Games::ChainReaction
 
     void updatePositions();
     const size_t isReady() const;
-    void dispatch(float speed);
+    void dispatch();
     void reset();
 
   private:

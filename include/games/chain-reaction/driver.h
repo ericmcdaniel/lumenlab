@@ -14,6 +14,8 @@ namespace Games::ChainReaction
     ~Driver() { state.reset(); }
     void nextEvent() override;
     void reset();
+    void renderIons();
+    void advanceActiveIon();
 
   private:
     SystemCore::ContextManager *contextManager;

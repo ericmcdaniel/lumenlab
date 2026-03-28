@@ -1,12 +1,21 @@
 #include "games/chain-reaction/ion.h"
 #include "lights/color.h"
+#include "core/configuration.h"
 #include "common.h"
 
 namespace Games::ChainReaction
 {
-  Ion::Ion(uint8_t cap) : capacity{cap}
+  Ion::Ion(uint8_t cap) : capacity{cap},
+                          positionFloat{static_cast<float>(SystemCore::Configuration::numLeds())},
+                          speed{0.25f}
   {
     elements.reserve(cap);
+  }
+
+  void Ion::updatePosition()
+  {
+    positionFloat -= speed;
+    // return here to add logic to deactivate when stacked
   }
 
   void Ion::assignColors()

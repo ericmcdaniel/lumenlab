@@ -12,7 +12,8 @@ namespace Games::ChainReaction
   enum class Actions
   {
     Startup,
-    ActiveGame,
+    Dispatch,
+    ActiveDrop,
     GameOver
   };
 

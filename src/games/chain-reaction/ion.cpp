@@ -6,7 +6,7 @@ namespace Games::ChainReaction
 {
   Ion::Ion(uint8_t cap) : capacity{cap}
   {
-    elements.reserve(maxIonElements);
+    elements.reserve(cap);
   }
 
   void Ion::assignColors()

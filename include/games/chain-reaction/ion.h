@@ -16,12 +16,13 @@ namespace Games::ChainReaction
 
     uint16_t getPosition() const { return position; }
     void assignColors();
+    const bool isActive() const { return active; }
 
     std::vector<Lights::Color> elements;
 
   private:
     uint16_t position;
     uint8_t capacity;
-    bool isFalling = true;
+    bool active = true;
   };
 }

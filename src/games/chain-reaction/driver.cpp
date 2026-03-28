@@ -4,10 +4,10 @@
 namespace Games::ChainReaction
 {
   Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx},
-                                                    state{ctx->stateManager.getChainReactionGameState()}
+                                                    state{ctx->stateManager.getChainReactionGameState()},
+                                                    cannon{ctx}
   {
-    state.reset();
-    state.current = Actions::Startup;
+    reset();
     wait(500);
   }
 
@@ -18,15 +18,28 @@ namespace Games::ChainReaction
     case Actions::Startup:
       if (isReady())
       {
+        reset();
         state.current = Actions::ActiveGame;
-        state.reset();
         log("Starting new game.");
       }
       break;
     case Actions::ActiveGame:
+      handleDispatch();
       return;
     default:
       return;
     }
+  }
+
+  void Driver::reset()
+  {
+    state.reset();
+    state.current = Actions::Startup;
+    cannon.reset();
+  }
+
+  void Driver::handleDispatch()
+  {
+    // if ()
   }
 }

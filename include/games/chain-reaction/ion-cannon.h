@@ -12,22 +12,23 @@ namespace Games::ChainReaction
     IonCannon(const IonCannon &) = delete;
     IonCannon &operator=(const IonCannon &) = delete;
 
-    Ion &operator[](uint16_t index) { return ions[index]; }
-    const Ion &operator[](uint16_t index) const { return ions[index]; }
+    Ion &operator[](uint16_t index) { return ionPool[index]; }
+    const Ion &operator[](uint16_t index) const { return ionPool[index]; }
 
-    auto begin() { return ions.begin(); }
-    auto end() { return ions.end(); }
-    const auto begin() const { return ions.begin(); }
-    const auto end() const { return ions.end(); }
+    auto begin() { return ionPool.begin(); }
+    auto end() { return ionPool.end(); }
+    const auto begin() const { return ionPool.begin(); }
+    const auto end() const { return ionPool.end(); }
 
-    const size_t size() const { return ions.size(); }
+    const size_t size() const { return ionPool.size(); }
 
     void updatePositions();
+    const size_t isReady() const;
     void dispatch(float speed);
     void reset();
 
   private:
     SystemCore::ContextManager *contextManager;
-    std::vector<Ion> ions;
+    std::vector<Ion> ionPool;
   };
 }

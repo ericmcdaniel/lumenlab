@@ -25,13 +25,13 @@ namespace Games::ChainReaction
       break;
     case Actions::Dispatch:
       handleDispatch();
-      return;
+      break;
     case Actions::ActiveDrop:
       advanceActiveIon();
       renderIons();
-      return;
+      break;
     default:
-      return;
+      break;
     }
   }
 
@@ -50,12 +50,16 @@ namespace Games::ChainReaction
   {
     for (const auto &ion : cannon)
     {
-      uint16_t ionHead = std::max(ion.getPosition() - ion.width, 0);
-      uint16_t ionTail = std::min(ion.getPosition(), SystemCore::Configuration::numLeds());
-
-      for (uint16_t i = ionHead; i < ionTail; ++i)
+      for (uint16_t i = 0; i < ion.getSize(); ++i)
       {
-        contextManager->leds.buffer[i] = Lights::ColorCode::ThemeYellow;
+
+        uint16_t segmentHead = std::max(ion.getPosition() - ((ion.getSize() - i) * cannon.ionWidth), 0);
+        uint16_t segmentTail = std::min(static_cast<uint16_t>(ion.getPosition() - ((ion.getSize() - i - 1) * cannon.ionWidth)), SystemCore::Configuration::numLeds());
+
+        for (uint16_t j = segmentHead; j < segmentTail; ++j)
+        {
+          contextManager->leds.buffer[j] = ion.getColors().at(i);
+        }
       }
     }
   }

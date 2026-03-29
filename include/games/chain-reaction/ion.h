@@ -8,24 +8,27 @@ namespace Games::ChainReaction
   class Ion : public Engine::Timer
   {
   public:
-    Ion() { Ion(maxIonElements); }
-    Ion(uint8_t cap);
+    Ion() { Ion(maxIonColors); }
+    Ion(uint8_t size);
     ~Ion() = default;
 
-    static constexpr uint8_t maxIonElements = 3;
-    static constexpr uint8_t width = 5;
+    static constexpr uint8_t maxIonColors = 3;
+
+    const uint8_t getSize() const { return colors.size(); }
 
     uint16_t getPosition() const { return static_cast<uint16_t>(positionFloat); }
     void updatePosition();
+
+    const std::vector<Lights::Color> &getColors() const { return colors; };
     void assignColors();
+
     const bool isActive() const { return active; }
 
-    std::vector<Lights::Color> elements;
+    std::vector<Lights::Color> colors;
 
   private:
     float positionFloat;
     float speed;
-    uint8_t capacity;
     bool active = true;
   };
 }

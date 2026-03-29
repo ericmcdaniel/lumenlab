@@ -13,7 +13,7 @@ namespace Games::ChainReaction
     ionPool.clear();
   }
 
-  const size_t IonCannon::isReady() const
+  const size_t IonCannon::shouldDispatch() const
   {
     return std::count_if(ionPool.begin(), ionPool.end(), [](const Ion &ion)
                          { return ion.isActive(); });

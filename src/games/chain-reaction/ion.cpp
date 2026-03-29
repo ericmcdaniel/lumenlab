@@ -5,11 +5,10 @@
 
 namespace Games::ChainReaction
 {
-  Ion::Ion(uint8_t cap) : capacity{cap},
-                          positionFloat{static_cast<float>(SystemCore::Configuration::numLeds())},
-                          speed{0.25f}
+  Ion::Ion(uint8_t s) : positionFloat{static_cast<float>(SystemCore::Configuration::numLeds())},
+                        speed{0.25f}
   {
-    elements.reserve(cap);
+    colors.reserve(s);
   }
 
   void Ion::updatePosition()
@@ -20,10 +19,11 @@ namespace Games::ChainReaction
 
   void Ion::assignColors()
   {
-    for (int i = 0; i < capacity; ++i)
+    for (int i = 0; i < colors.size(); ++i)
     {
-      uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(Lights::colorPalette);
-      elements[i] = Lights::colorPalette[colorIndex];
+      // uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(Lights::colorPalette);
+      // colors[i] = Lights::colorPalette[colorIndex];
+      colors[i] = Lights::colorPalette[i];
     }
   }
 }

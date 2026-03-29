@@ -10,6 +10,9 @@ namespace Games::ChainReaction
   public:
     IonCannon(SystemCore::ContextManager *ctx) : contextManager{ctx} {}
     IonCannon(const IonCannon &) = delete;
+
+    static constexpr uint8_t ionWidth = 5;
+
     IonCannon &operator=(const IonCannon &) = delete;
 
     Ion &operator[](uint16_t index) { return ionPool[index]; }
@@ -23,7 +26,7 @@ namespace Games::ChainReaction
     const size_t size() const { return ionPool.size(); }
 
     void updatePositions();
-    const size_t isReady() const;
+    const size_t shouldDispatch() const;
     void dispatch();
     void reset();
 

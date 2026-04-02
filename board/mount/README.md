@@ -11,7 +11,7 @@ I went forward with the [Chemcast Black LED Acrylic Sheets from California-based
 Still experimental, but some tweaks were made on how the LED is placed within each cell.
 
 #### Front
-![Front of LumenLab bracket v2](../images/lumenlab-mounting-bracket-2.png)
+![Front of LumenLab bracket v2](../images/lumenlab-mounting-bracket-3.png)
 
 #### Back
-![Back of LumenLab bracket v2](../images/lumenlab-mounting-bracket-2-back.png)
+![Back of LumenLab bracket v2](../images/lumenlab-mounting-bracket-3-back.png)

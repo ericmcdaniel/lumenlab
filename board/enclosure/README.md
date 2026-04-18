@@ -16,10 +16,10 @@ For my second build, the LumenLab will be installed hanging upside-down to prese
 
 My previous design serves me will for my exact situation, but it isn't an ideal solution for most people. This last version is the same as before, but flipped upside down so that it can become a platform gaming system. Resting it on a shelf or countertop allows you to leave it in place without permanently mounting it on your walls or furniture.
 
-![Left angle of the LumenLab enclosure v3, no controller saddle](../images/lumenlab-platform-enclosure-no-controller-left.png)
+![Front edge angle of the LumenLab enclosure v3, no controller saddle](../images/lumenlab-platform-enclosure-no-controller-front.png)
 
-*Left angle of the LumenLab enclosure v3, no controller saddle*
+*Front edge angle of the LumenLab enclosure v3, no controller saddle*
 
-![Right angle of the LumenLab enclosure v3, no controller saddle](../images/lumenlab-platform-enclosure-no-controller-right.png)
+![Rear edge angle of the LumenLab enclosure v3, no controller saddle](../images/lumenlab-platform-enclosure-no-controller-rear.png)
 
-*Right angle of the LumenLab enclosure v3, no controller saddle*
+*Rear edge angle of the LumenLab enclosure v3, no controller saddle*

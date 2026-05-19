@@ -4,6 +4,16 @@
 
 namespace Lights
 {
+
+  int LedLuminance::getLuminance()
+  {
+#ifdef VIRTUALIZATION
+    return 255;
+#else
+    return currentLuminance;
+#endif
+  }
+
   void LedLuminance::adjustLuminance()
   {
     int dialReading = analogRead(SystemCore::Configuration::ledDimmerGpio);

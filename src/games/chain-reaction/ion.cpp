@@ -9,6 +9,7 @@ namespace Games::ChainReaction
                         speed{0.25f}
   {
     colors.reserve(s);
+    assignColors(s);
   }
 
   void Ion::updatePosition()
@@ -17,13 +18,13 @@ namespace Games::ChainReaction
     // return here to add logic to deactivate when stacked
   }
 
-  void Ion::assignColors()
+  void Ion::assignColors(uint8_t s)
   {
-    for (int i = 0; i < colors.size(); ++i)
+    for (uint8_t i = 0; i < s; ++i)
     {
       // uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(Lights::colorPalette);
       // colors[i] = Lights::colorPalette[colorIndex];
-      colors[i] = Lights::colorPalette[i];
+      colors.push_back(Lights::colorPalette[i]);
     }
   }
 }

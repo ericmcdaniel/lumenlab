@@ -20,7 +20,7 @@ namespace Games::ChainReaction
     void updatePosition();
 
     const std::vector<Lights::Color> &getColors() const { return colors; };
-    void assignColors();
+    void assignColors(uint8_t s);
 
     const bool isActive() const { return active; }
 

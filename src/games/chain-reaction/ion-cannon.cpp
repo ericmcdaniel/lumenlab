@@ -1,4 +1,5 @@
 #include "games/chain-reaction/ion-cannon.h"
+#include "logger.h"
 
 namespace Games::ChainReaction
 {
@@ -6,6 +7,7 @@ namespace Games::ChainReaction
   void IonCannon::dispatch()
   {
     ionPool.emplace_back(2); // remove hardcode when possible
+    logf("New color dispatched");
   }
 
   void IonCannon::reset()

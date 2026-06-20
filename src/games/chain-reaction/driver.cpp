@@ -48,8 +48,11 @@ namespace Games::ChainReaction
 
   void Driver::renderIons()
   {
+    logf("# of Ions: %u", cannon.size());
+    int ct = 1;
     for (const auto &ion : cannon)
     {
+      logf("# of colors per ion: %u", ion.getSize());
       for (uint16_t i = 0; i < ion.getSize(); ++i)
       {
 
@@ -60,7 +63,9 @@ namespace Games::ChainReaction
         {
           contextManager->leds.buffer[j] = ion.getColors().at(i);
         }
+        logf("Ion %u - Color: %u", ct, ion.getColors().at(i));
       }
+      ct++;
     }
   }
 

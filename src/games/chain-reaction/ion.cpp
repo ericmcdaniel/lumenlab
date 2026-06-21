@@ -6,7 +6,7 @@
 namespace Games::ChainReaction
 {
   Ion::Ion(uint8_t s) : positionFloat{static_cast<float>(SystemCore::Configuration::numLeds())},
-                        speed{0.25f}
+                        speed{0.40f}
   {
     colors.reserve(s);
     assignColors(s);
@@ -23,7 +23,7 @@ namespace Games::ChainReaction
     for (uint8_t i = 0; i < s; ++i)
     {
       // uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(Lights::colorPalette);
-      // colors[i] = Lights::colorPalette[colorIndex];
+      // colors.push_back(Lights::colorPalette[colorIndex]);
       colors.push_back(Lights::colorPalette[i]);
     }
   }

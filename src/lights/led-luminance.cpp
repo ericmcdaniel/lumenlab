@@ -8,7 +8,7 @@ namespace Lights
   int LedLuminance::getLuminance()
   {
 #ifdef VIRTUALIZATION
-    return 255;
+    return LedLuminance::MAX_LED_BRIGHTNESS;
 #else
     return currentLuminance;
 #endif

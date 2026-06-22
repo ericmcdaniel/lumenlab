@@ -27,18 +27,9 @@ namespace Lights
 
   void LedStrip::adjustLuminance()
   {
+#ifdef RELEASE
     luminance.adjustLuminance();
     float brightnessScale = static_cast<float>(luminance.getLuminance()) / LedLuminance::MAX_LED_BRIGHTNESS;
-
-#ifdef VIRTUALIZATION
-
-    for (uint16_t i = 0; i < size(); ++i)
-    {
-      buffer[i] *= brightnessScale;
-    }
-
-#else
-
     constexpr float redGain = 0.90f;
     constexpr float greenGain = 0.75f;
     constexpr float blueGain = 0.60f;
@@ -63,7 +54,6 @@ namespace Lights
       c.g = LedLuminance::applyGamma(static_cast<uint8_t>(g));
       c.b = LedLuminance::applyGamma(static_cast<uint8_t>(b));
     }
-
 #endif
   }
 }

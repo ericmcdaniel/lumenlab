@@ -2,7 +2,7 @@
 #include <Preferences.h>
 
 #ifndef LUMENLAB_VERSION
-#define LUMENLAB_VERSION "v999.999.999"
+#define LUMENLAB_VERSION "v99.99.99"
 #endif
 #ifdef USE_PS3
 #define PS_CONTROLLER_TYPE "PS3"

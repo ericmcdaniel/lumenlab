@@ -26,7 +26,7 @@ namespace Games::PhaseEvasion
     uint16_t gemsCaptured;
     uint16_t highScore;
     Actions current = Actions::Startup;
-    static constexpr const char *memoryKeyName = "phase-high";
+    static constexpr const char *memoryKeyName = "high_phase";
 
     void reset();
     void loadHighScore();

@@ -3,6 +3,7 @@
 #include "games/recall/driver.h"
 #include "games/phase-evasion/driver.h"
 #include "games/chain-reaction/driver.h"
+#include "games/reflex/driver.h"
 #include "games/demo/driver.h"
 #include "scenes/canvas/driver.h"
 #include "logger.h"
@@ -116,6 +117,9 @@ namespace SystemCore
       case Engine::GameSelection::ChainReaction:
         stateManager.setNext(Engine::SystemState::GameChainReaction);
         break;
+      case Engine::GameSelection::Reflex:
+        stateManager.setNext(Engine::SystemState::GameReflex);
+        break;
       case Engine::GameSelection::Demo:
         stateManager.setNext(Engine::SystemState::GameDemo);
         break;
@@ -184,6 +188,10 @@ namespace SystemCore
     case Engine::SystemState::GameChainReaction:
       application = new Games::ChainReaction::Driver{this};
       logf("Transitioning to Chain Reaction (Game)");
+      break;
+    case Engine::SystemState::GameReflex:
+      application = new Games::Reflex::Driver{this};
+      logf("Transitioning to Reflex (Game)");
       break;
     case Engine::SystemState::GameDemo:
       application = new Games::Demo::Driver{this};

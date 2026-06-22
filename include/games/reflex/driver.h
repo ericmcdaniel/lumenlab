@@ -12,7 +12,7 @@ namespace Games::Reflex
     Driver(SystemCore::ContextManager *ctx);
     ~Driver() { state.reset(); }
     void nextEvent() override;
-    void reset();
+    void reset() {}
 
   private:
     SystemCore::ContextManager *contextManager;

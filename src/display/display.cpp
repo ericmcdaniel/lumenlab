@@ -229,6 +229,17 @@ namespace Display
     display.display();
   }
 
+  void OledDisplay::drawReflexGameHud()
+  {
+
+    display.clearDisplay();
+    drawHeader("Reflex");
+
+    const auto reflexState = contextManager->stateManager.getReflexGameState();
+
+    display.display();
+  }
+
   void OledDisplay::drawCanvasSceneHud()
   {
     display.clearDisplay();

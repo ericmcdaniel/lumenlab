@@ -23,7 +23,7 @@ namespace Games::Reflex
     Actions current = Actions::Startup;
     static constexpr const char *memoryKeyName = "high_reflex";
 
-    void reset();
+    void reset() {}
 
   private:
     SystemCore::ContextManager *contextManager;

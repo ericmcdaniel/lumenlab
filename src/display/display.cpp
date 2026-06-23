@@ -1,4 +1,5 @@
 #include <Wire.h>
+#include <cstdarg>
 
 #include "display/display.h"
 #include "core/context-manager.h"
@@ -85,6 +86,18 @@ namespace Display
     display.print(message);
   }
 
+  void OledDisplay::debugUpdateDisplay(const char *format, ...)
+  {
+#ifdef VIRTUALIZATION
+    char oledBuffer[256] = "";
+    va_list args;
+    va_start(args, format);
+    vsnprintf(oledBuffer, sizeof(oledBuffer), format, args);
+    va_end(args);
+    Display::sendOledUpdate(oledBuffer);
+#endif
+  }
+
   void OledDisplay::drawBootScreen()
   {
     display.clearDisplay();
@@ -115,6 +128,9 @@ namespace Display
     display.print(selectedOption(1, selectedOptionIndex));
     display.print("  Scenes");
 
+    debugUpdateDisplay("   Main Menu\n%c  Games\n%c  Scenes",
+                       selectedOption(0, selectedOptionIndex), selectedOption(1, selectedOptionIndex));
+
     display.display();
   }
 
@@ -140,6 +156,15 @@ namespace Display
       display.print(nameBuffer);
     }
 
+    char oledBuffer[256] = "";
+    int offset = snprintf(oledBuffer, sizeof(oledBuffer), "Games Menu (%d/%d)", currentPage + 1, (numGames + itemsPerPage - 1) / itemsPerPage);
+    for (int i = startIndex; i < endIndex; ++i)
+    {
+      offset += snprintf(oledBuffer + offset, sizeof(oledBuffer) - offset, "\n%c  %s",
+                         selectedOption(i, selectedOptionIndex), contextManager->stateManager.printGameName(i));
+    }
+    debugUpdateDisplay("%s", oledBuffer);
+
     display.display();
   }
 
@@ -155,6 +180,9 @@ namespace Display
     sprintf(nameBuffer, "%c  %s", selectedOption(0, selectedOptionIndex), contextManager->stateManager.printSceneName(0));
     display.print(nameBuffer);
 
+    debugUpdateDisplay("     Scenes Menu\n%c  %s",
+                       selectedOption(0, selectedOptionIndex), contextManager->stateManager.printSceneName(0));
+
     display.display();
   }
 
@@ -168,6 +196,9 @@ namespace Display
     display.print(contextManager->stateManager.getDemoGameState().currentScore);
     display.setCursor(0, 24);
     display.print("High Score: -");
+
+    debugUpdateDisplay("     Demo\nCurrent Score: %u\nHigh Score: -",
+                       contextManager->stateManager.getDemoGameState().currentScore);
 
     display.display();
   }
@@ -185,6 +216,8 @@ namespace Display
     display.printf("Round: %u", round + 1);
     display.setCursor(0, 24);
     display.printf("High Score: %u", highScore + 1);
+
+    debugUpdateDisplay("     Recall\nRound: %u\nHigh Score: %u", round + 1, highScore + 1);
 
     display.display();
   }
@@ -210,6 +243,9 @@ namespace Display
     display.setCursor(DISPLAY_WIDTH / 2 + 4, 24);
     display.printf(" High: %u", highScore);
 
+    debugUpdateDisplay("     Phase Evasion\nFlares: %u   Total: %u\nGems: %u     High: %u",
+                       flaresEvaded, totalScore, gemsCaptured, highScore);
+
     display.display();
   }
 
@@ -226,16 +262,19 @@ namespace Display
     display.setCursor(0, 24);
     display.printf("Total: %u", reactions);
 
+    debugUpdateDisplay("     Chain Reaction\nReactions: %u\nTotal: %u", reactions, reactions);
+
     display.display();
   }
 
   void OledDisplay::drawReflexGameHud()
   {
-
     display.clearDisplay();
     drawHeader("Reflex");
 
     const auto reflexState = contextManager->stateManager.getReflexGameState();
+
+    debugUpdateDisplay("     Reflex");
 
     display.display();
   }
@@ -250,6 +289,8 @@ namespace Display
     sprintf(colorBuffer, "RGB: (%u, %u, %u)", color.r, color.g, color.b);
     display.setCursor(0, 24);
     display.print(colorBuffer);
+
+    debugUpdateDisplay("     Canvas\nRGB: (%u, %u, %u)", color.r, color.g, color.b);
 
     display.display();
   }
@@ -269,6 +310,8 @@ namespace Display
     startingX = calculateCenterText("not connected");
     display.setCursor(startingX, 16);
     display.print("not connected");
+
+    debugUpdateDisplay("     LumenLab\n%s controller\nnot connected", SystemCore::Configuration::psControllerType().c_str());
 
     display.display();
   }

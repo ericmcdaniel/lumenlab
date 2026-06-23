@@ -10,6 +10,7 @@
 #endif
 
 #include "display/display-images.h"
+#include "display/oled-serialization.h"
 
 namespace SystemCore
 {
@@ -37,6 +38,7 @@ namespace Display
 
     char selectedOption(uint8_t index, uint8_t selectedOptionIndex) { return index == selectedOptionIndex ? '>' : ' '; };
     int16_t calculateCenterText(const char *text);
+    void debugUpdateDisplay(const char *format, ...);
 
     void drawHeader(const char *message);
     void drawBootScreen();

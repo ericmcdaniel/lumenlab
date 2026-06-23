@@ -26,4 +26,9 @@ namespace Games::Reflex
       break;
     }
   }
+
+  void Driver::reset()
+  {
+    contextManager->stateManager.displayShouldUpdate = true;
+  }
 }

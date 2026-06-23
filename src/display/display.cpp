@@ -53,6 +53,9 @@ namespace Display
       case Engine::SystemState::GameChainReaction:
         drawChainReactionGameHud();
         break;
+      case Engine::SystemState::GameReflex:
+        drawReflexGameHud();
+        break;
       case Engine::SystemState::SceneCanvas:
         drawCanvasSceneHud();
         break;

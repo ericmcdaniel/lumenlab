@@ -1,4 +1,5 @@
 #include "games/reflex/driver.h"
+#include "games/reflex/signal.h"
 #include "logger.h"
 
 namespace Games::Reflex
@@ -18,9 +19,11 @@ namespace Games::Reflex
       if (isReady())
       {
         reset();
-        state.current = Actions::GameOver;
+        state.current = Actions::ActiveGame;
         log("Starting new game.");
       }
+      break;
+    case Actions::ActiveGame:
       break;
     default:
       break;

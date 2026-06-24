@@ -3,6 +3,7 @@
 #include "engine/layer.h"
 #include "engine/timer.h"
 #include "core/context-manager.h"
+#include "games/reflex/signal.h"
 
 namespace Games::Reflex
 {
@@ -17,5 +18,7 @@ namespace Games::Reflex
   private:
     SystemCore::ContextManager *contextManager;
     GameState &state;
+
+    Signal signal;
   };
 }

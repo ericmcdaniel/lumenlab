@@ -12,6 +12,7 @@ namespace Games::Reflex
   enum class Actions
   {
     Startup,
+    ActiveGame,
     GameOver
   };
 

@@ -12,7 +12,10 @@ namespace Games::Reflex
   public:
     Driver(SystemCore::ContextManager *ctx);
     ~Driver() { state.reset(); }
+    static constexpr uint16_t signalWidth = 5;
+    static constexpr float signalSpeed = 0.25f;
     void nextEvent() override;
+    void renderSignal();
     void reset();
 
   private:

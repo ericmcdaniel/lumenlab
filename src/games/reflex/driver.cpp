@@ -5,7 +5,8 @@
 namespace Games::Reflex
 {
   Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx},
-                                                    state{ctx->stateManager.getReflexGameState()}
+                                                    state{ctx->stateManager.getReflexGameState()},
+                                                    signal{ctx, signalWidth, signalSpeed}
   {
     reset();
     wait(500);
@@ -24,6 +25,8 @@ namespace Games::Reflex
       }
       break;
     case Actions::ActiveGame:
+      signal.advance();
+      renderSignal();
       break;
     default:
       break;
@@ -33,5 +36,14 @@ namespace Games::Reflex
   void Driver::reset()
   {
     contextManager->stateManager.displayShouldUpdate = true;
+  }
+
+  void Driver::renderSignal()
+  {
+    for (uint16_t i = 0; i < signal.width; ++i)
+    {
+      uint16_t index = (signal.getPosition() + i) % SystemCore::Configuration::numLeds();
+      contextManager->leds.buffer[index] = Lights::ColorCode::MenuUnselected;
+    }
   }
 }

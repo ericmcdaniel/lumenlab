@@ -2,5 +2,6 @@
 
 namespace Games::Reflex
 {
-  Signal::Signal() : position{0.0f} {}
+  Signal::Signal(SystemCore::ContextManager *ctx, uint16_t width, float _speed) : ::Player::BasePlayer{ctx, width},
+                                                                                  speed{_speed} {}
 }

@@ -9,7 +9,6 @@ namespace Games::Reflex
                                                     signal{ctx, signalWidth, signalSpeed}
   {
     reset();
-    wait(500);
   }
 
   void Driver::nextEvent()
@@ -20,9 +19,17 @@ namespace Games::Reflex
       if (isReady())
       {
         reset();
-        state.current = Actions::ActiveGame;
+        state.current = Actions::Ready;
+        wait(1000);
         log("Starting new game.");
       }
+      break;
+    case Actions::Ready:
+      if (isReady())
+      {
+        state.current = Actions::ActiveGame;
+      }
+      renderSignal();
       break;
     case Actions::ActiveGame:
       signal.advance();

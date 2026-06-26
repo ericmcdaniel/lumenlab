@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 #include "lights/led-luminance.h"
 
 namespace Lights

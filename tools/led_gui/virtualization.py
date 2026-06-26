@@ -79,6 +79,8 @@ class LEDVisualizer(mglw.WindowConfig):
             2.0 / self.window_size[1],
         )
         self.led_lock = threading.Lock()
+        self.oled_text = ""
+        self.OLED_SYNC_BYTES = b'\xBB\x66'
         self.serial_thread = threading.Thread(target=self.read_serial, daemon=True)
         self.serial_thread.start()
 
@@ -103,6 +105,18 @@ class LEDVisualizer(mglw.WindowConfig):
             anchor_y='center',
             color=(160, 160, 160, 160),
             width=300
+        )
+        self.oled_label = pyglet.text.Label(
+            "",
+            font_name='Consolas',
+            font_size=16,
+            x=50,
+            y=self.window_size[1] - 100,
+            anchor_x='left',
+            anchor_y='top',
+            color=(255, 255, 255, 255),
+            width=400,
+            multiline=True
         )
 
     def compute_led_positions(self):
@@ -154,20 +168,45 @@ class LEDVisualizer(mglw.WindowConfig):
 
     def read_serial(self):
         def process_buffer():
-            """Extract complete frames from buffer and update LED colors."""
+            """Extract complete OLED and LED frames from buffer."""
             nonlocal buffer
             while True:
-                idx = buffer.find(self.SYNC_BYTES)
-                if idx == -1:
-                    break  # no sync bytes found yet
-                if len(buffer) < idx + 2 + self.FRAME_SIZE:
-                    break  # incomplete frame
-                start = idx + 2
-                frame = buffer[start:start + self.FRAME_SIZE]
-                buffer = buffer[start + self.FRAME_SIZE:]
-                with self.led_lock:
-                    colors = np.frombuffer(frame, dtype=np.uint8).reshape(-1, 3) / 255.0
-                    self.led_colors[:] = colors
+                oled_idx = buffer.find(self.OLED_SYNC_BYTES)
+                led_idx = buffer.find(self.SYNC_BYTES)
+
+                if oled_idx != -1 and (led_idx == -1 or oled_idx < led_idx):
+                    if len(buffer) < oled_idx + 4:
+                        break
+
+                    length = (buffer[oled_idx + 2] << 8) | buffer[oled_idx + 3]
+
+                    if len(buffer) < oled_idx + 4 + length:
+                        break
+
+                    oled_data = buffer[oled_idx + 4:oled_idx + 4 + length]
+                    try:
+                        oled_text = oled_data.decode('utf-8')
+                        with self.led_lock:
+                            self.oled_text = oled_text
+                        logging.info(f"OLED: {repr(oled_text)}")
+                    except UnicodeDecodeError as e:
+                        logging.warning(f"Failed to decode OLED text: {e}")
+
+                    buffer = buffer[oled_idx + 4 + length:]
+
+                elif led_idx != -1:
+                    if len(buffer) < led_idx + 2 + self.FRAME_SIZE:
+                        break  # incomplete frame
+
+                    start = led_idx + 2
+                    frame = buffer[start:start + self.FRAME_SIZE]
+                    buffer = buffer[start + self.FRAME_SIZE:]
+
+                    with self.led_lock:
+                        colors = np.frombuffer(frame, dtype=np.uint8).reshape(-1, 3) / 255.0
+                        self.led_colors[:] = colors
+                else:
+                    break
 
         buffer = bytearray()
         while True:
@@ -191,10 +230,12 @@ class LEDVisualizer(mglw.WindowConfig):
         with self.led_lock:
             self.vbo_positions.write(self.positions.tobytes())
             self.vbo_colors.write(self.led_colors.tobytes())
+            self.oled_label.text = self.oled_text
         self.prog['pixel_size'].value = self.pixel_size
         self.vao.render(instances=self.num_leds)
         self.title.draw()
         self.description.draw()
+        self.oled_label.draw()
 
 
 def start_led_virtualization(window_size, num_leds, port, baud_rate):

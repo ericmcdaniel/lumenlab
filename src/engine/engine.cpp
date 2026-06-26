@@ -45,6 +45,7 @@ namespace Engine
       case SystemState::GameRecall:
       case SystemState::GamePhaseEvasion:
       case SystemState::GameChainReaction:
+      case SystemState::GameReflex:
       case SystemState::GameDemo:
       case SystemState::SceneCanvas:
         contextManager.application->nextEvent();

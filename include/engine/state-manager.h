@@ -3,6 +3,7 @@
 #include "games/recall/state.h"
 #include "games/phase-evasion/state.h"
 #include "games/chain-reaction/state.h"
+#include "games/reflex/state.h"
 #include "games/demo/state.h"
 #include "scenes/canvas/state.h"
 
@@ -23,6 +24,7 @@ namespace Engine
     GameRecall,
     GamePhaseEvasion,
     GameChainReaction,
+    GameReflex,
     GameDemo,
     SceneCanvas,
     NoControllerConnected,
@@ -41,6 +43,7 @@ namespace Engine
     Recall,
     PhaseEvasion,
     ChainReaction,
+    Reflex,
     Demo,
     COUNT
   };
@@ -64,6 +67,7 @@ namespace Engine
                                                     recallGameState{ctx},
                                                     phaseEvasionGameState{ctx},
                                                     chainReactionGameState{ctx},
+                                                    reflexGameState{ctx},
                                                     systemState{SystemState::Initialize},
                                                     userMainMenuChoice{MainMenuSelection::Games},
                                                     userGameChoice{GameSelection::Recall},
@@ -95,6 +99,7 @@ namespace Engine
     Games::Recall::GameState &getRecallGameState() { return recallGameState; }
     Games::PhaseEvasion::GameState &getPhaseEvasionGameState() { return phaseEvasionGameState; }
     Games::ChainReaction::GameState &getChainReactionGameState() { return chainReactionGameState; }
+    Games::Reflex::GameState &getReflexGameState() { return reflexGameState; }
     Games::Demo::GameState &getDemoGameState() { return demoGameState; }
 
     Scenes::Canvas::SceneState &getCanvasSceneState() { return canvasSceneState; }
@@ -110,6 +115,7 @@ namespace Engine
     Games::Recall::GameState recallGameState;
     Games::PhaseEvasion::GameState phaseEvasionGameState;
     Games::ChainReaction::GameState chainReactionGameState;
+    Games::Reflex::GameState reflexGameState;
     Games::Demo::GameState demoGameState;
 
     Scenes::Canvas::SceneState canvasSceneState;

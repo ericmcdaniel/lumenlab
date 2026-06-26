@@ -51,6 +51,7 @@ namespace Engine
         "Recall",
         "Phase Evasion",
         "Chain Reaction",
+        "Reflex",
         "Demo"};
     return gameNames[index];
   }

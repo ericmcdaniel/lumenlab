@@ -1,7 +1,5 @@
 #pragma once
 
-#include <Arduino.h>
-
 /*
   Interesting compiler optimization below, when building with the DEBUG flag
   on it prints to the serial monitor as normal, but when building in RELEASE

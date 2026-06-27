@@ -1,15 +1,15 @@
 #pragma once
 
 #include "core/context-manager.h"
-#include "engine/layer.h"
+#include "engine/application-runtime.h"
 #include "games/demo/player.h"
 
 namespace Games::Demo
 {
-  class Driver : public Engine::Layer
+  class GameMain : public Engine::ApplicationRuntime
   {
   public:
-    Driver(SystemCore::ContextManager *ctx) : Engine::Layer{}, contextManager{ctx}, player1{Player{ctx, width}}, player2{Player{ctx, width}}
+    GameMain(SystemCore::ContextManager *ctx) : Engine::ApplicationRuntime{}, contextManager{ctx}, player1{Player{ctx, width}}, player2{Player{ctx, width}}
     {
       contextManager->stateManager.getDemoGameState().reset();
     }

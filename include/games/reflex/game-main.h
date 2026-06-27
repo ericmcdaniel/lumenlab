@@ -1,17 +1,17 @@
 #pragma once
 
-#include "engine/layer.h"
+#include "engine/application-runtime.h"
 #include "engine/timer.h"
 #include "core/context-manager.h"
 #include "games/reflex/signal.h"
 
 namespace Games::Reflex
 {
-  class Driver : public Engine::Layer, private Engine::Timer
+  class GameMain : public Engine::ApplicationRuntime, private Engine::Timer
   {
   public:
-    Driver(SystemCore::ContextManager *ctx);
-    ~Driver() { state.reset(); }
+    GameMain(SystemCore::ContextManager *ctx);
+    ~GameMain() { state.reset(); }
     static constexpr uint16_t signalWidth = 7;
     static constexpr float signalSpeed = 1.0f;
     void nextEvent() override;

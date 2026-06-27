@@ -1,17 +1,17 @@
 #pragma once
 
-#include "engine/layer.h"
+#include "engine/application-runtime.h"
 #include "engine/timer.h"
 #include "core/context-manager.h"
 #include "games/chain-reaction/ion-cannon.h"
 
 namespace Games::ChainReaction
 {
-  class Driver : public Engine::Layer, private Engine::Timer
+  class GameMain : public Engine::ApplicationRuntime, private Engine::Timer
   {
   public:
-    Driver(SystemCore::ContextManager *ctx);
-    ~Driver() { state.reset(); }
+    GameMain(SystemCore::ContextManager *ctx);
+    ~GameMain() { state.reset(); }
     void nextEvent() override;
     void reset();
     void renderIons();

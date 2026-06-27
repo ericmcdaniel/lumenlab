@@ -1,13 +1,13 @@
 #include "esp_system.h"
 #include "player/controller-properties.h"
-#include "games/recall/driver.h"
+#include "games/recall/game-main.h"
 #include "common.h"
 #include "logger.h"
 
 namespace Games::Recall
 {
-  Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx},
-                                                    state{contextManager->stateManager.getRecallGameState()}
+  GameMain::GameMain(SystemCore::ContextManager *ctx) : contextManager{ctx},
+                                                        state{contextManager->stateManager.getRecallGameState()}
   {
     setupGameColors();
     state.reset();
@@ -16,14 +16,14 @@ namespace Games::Recall
     wait(gameplaySpeedIlluminated);
   }
 
-  void Driver::setupGameColors()
+  void GameMain::setupGameColors()
   {
     for (uint16_t i = 0; i < maxRound; ++i)
     {
       // for testing
       // gameplayColors[i] = static_cast<Player::ControllerButton>(i % arraySize(Driver::availableGameplayButtons));
 
-      uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(Driver::availableGameplayButtons);
+      uint16_t colorIndex = static_cast<uint16_t>(esp_random()) % arraySize(GameMain::availableGameplayButtons);
       gameplayColors[i] = static_cast<Player::ControllerButton>(colorIndex);
     }
     auto button = gameplayColors[0];
@@ -32,7 +32,7 @@ namespace Games::Recall
     logf("    Color=%u (%u - %u - %u)", button, color.r, color.g, color.b);
   }
 
-  void Driver::nextEvent()
+  void GameMain::nextEvent()
   {
     handleUserSpeedChange();
     switch (state.current)
@@ -64,7 +64,7 @@ namespace Games::Recall
     }
   }
 
-  void Driver::handleUserSpeedChange()
+  void GameMain::handleUserSpeedChange()
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::Up) || contextManager->controller.leftAnalog().y < -64)
     {
@@ -80,7 +80,7 @@ namespace Games::Recall
     }
   }
 
-  void Driver::displayComputerPlayback()
+  void GameMain::displayComputerPlayback()
   {
     if (isReady())
     {
@@ -108,7 +108,7 @@ namespace Games::Recall
     }
   }
 
-  void Driver::pauseComputerPlayback()
+  void GameMain::pauseComputerPlayback()
   {
     if (sequenceIndex >= state.round)
     {
@@ -129,7 +129,7 @@ namespace Games::Recall
     }
   }
 
-  void Driver::evaluateUserRecall()
+  void GameMain::evaluateUserRecall()
   {
     if (sequenceIndex > state.round && isReady())
     {
@@ -146,9 +146,9 @@ namespace Games::Recall
     evaluateUserButton(gameplayColors[sequenceIndex]);
   }
 
-  void Driver::evaluateUserButton(Player::ControllerButton expectedButton)
+  void GameMain::evaluateUserButton(Player::ControllerButton expectedButton)
   {
-    for (auto button : Driver::availableGameplayButtons)
+    for (auto button : GameMain::availableGameplayButtons)
     {
       if (contextManager->controller.wasPressedAndReleased(button))
       {
@@ -168,12 +168,12 @@ namespace Games::Recall
     }
   }
 
-  void Driver::illuminateOnSelection()
+  void GameMain::illuminateOnSelection()
   {
     static uint32_t lastLightTime = 0;
     static int pressedButtonIndex = -1;
     bool buttonPressed = false;
-    for (uint16_t i = 0; i < arraySize(Driver::availableGameplayButtons); ++i)
+    for (uint16_t i = 0; i < arraySize(GameMain::availableGameplayButtons); ++i)
     {
       auto btn = static_cast<Player::ControllerButton>(i);
       if (contextManager->controller.isDown(btn))
@@ -188,7 +188,7 @@ namespace Games::Recall
     bool keepLit = ((millis() - lastLightTime) < gameplaySpeedPaused);
     if (buttonPressed || keepLit)
     {
-      if (pressedButtonIndex >= 0 && pressedButtonIndex < static_cast<int>(arraySize(Driver::availableGameplayButtons)))
+      if (pressedButtonIndex >= 0 && pressedButtonIndex < static_cast<int>(arraySize(GameMain::availableGameplayButtons)))
       {
         auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
         for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
@@ -197,7 +197,7 @@ namespace Games::Recall
     }
   }
 
-  std::pair<uint16_t, uint16_t> Driver::directionBoundaries(Player::ControllerButton button)
+  std::pair<uint16_t, uint16_t> GameMain::directionBoundaries(Player::ControllerButton button)
   {
     const auto &boundary = SystemCore::Configuration::recallBoundaries();
 
@@ -216,7 +216,7 @@ namespace Games::Recall
     }
   }
 
-  void Driver::prepareComputerPlayback()
+  void GameMain::prepareComputerPlayback()
   {
     if (isReady())
     {
@@ -242,7 +242,7 @@ namespace Games::Recall
     successFadeawayAnimation = std::clamp(successFadeawayAnimation - 0.08, 0.0, 1.0);
   }
 
-  void Driver::gameOver()
+  void GameMain::gameOver()
   {
     if (contextManager->controller.wasPressed(Player::ControllerButton::Start))
     {

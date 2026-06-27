@@ -9,11 +9,11 @@
 
 namespace Games::Recall
 {
-  class Driver : public Engine::Layer, private Engine::Timer
+  class GameMain : public Engine::ApplicationRuntime, private Engine::Timer
   {
   public:
-    Driver(SystemCore::ContextManager *ctx);
-    ~Driver() { state.reset(); }
+    GameMain(SystemCore::ContextManager *ctx);
+    ~GameMain() { state.reset(); }
     void nextEvent() override;
 
   private:

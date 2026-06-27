@@ -1,6 +1,6 @@
 #pragma once
 
-#include "engine/layer.h"
+#include "engine/application-runtime.h"
 #include "engine/timer.h"
 #include "core/context-manager.h"
 #include "games/phase-evasion/player.h"
@@ -10,11 +10,11 @@
 
 namespace Games::PhaseEvasion
 {
-  class Driver : public Engine::Layer, private Engine::Timer
+  class GameMain : public Engine::ApplicationRuntime, private Engine::Timer
   {
   public:
-    Driver(SystemCore::ContextManager *ctx);
-    ~Driver() { state.reset(); }
+    GameMain(SystemCore::ContextManager *ctx);
+    ~GameMain() { state.reset(); }
     void nextEvent() override;
     static constexpr uint16_t playerOffset = 25;
     static constexpr uint16_t playerWidth = 5;

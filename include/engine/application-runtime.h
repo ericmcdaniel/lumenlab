@@ -2,7 +2,7 @@
 
 namespace Engine
 {
-  class Layer
+  class ApplicationRuntime
   {
   public:
     virtual void nextEvent() = 0;

@@ -1,17 +1,17 @@
-#include "games/chain-reaction/driver.h"
+#include "games/chain-reaction/game-main.h"
 #include "logger.h"
 
 namespace Games::ChainReaction
 {
-  Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx},
-                                                    state{ctx->stateManager.getChainReactionGameState()},
-                                                    cannon{ctx}
+  GameMain::GameMain(SystemCore::ContextManager *ctx) : contextManager{ctx},
+                                                        state{ctx->stateManager.getChainReactionGameState()},
+                                                        cannon{ctx}
   {
     reset();
     wait(500);
   }
 
-  void Driver::nextEvent()
+  void GameMain::nextEvent()
   {
     switch (state.current)
     {
@@ -35,7 +35,7 @@ namespace Games::ChainReaction
     }
   }
 
-  void Driver::advanceActiveIon()
+  void GameMain::advanceActiveIon()
   {
     for (auto &ion : cannon)
     {
@@ -46,7 +46,7 @@ namespace Games::ChainReaction
     }
   }
 
-  void Driver::renderIons()
+  void GameMain::renderIons()
   {
     logf("# of Ions: %u", cannon.size());
     int ct = 1;
@@ -69,14 +69,14 @@ namespace Games::ChainReaction
     }
   }
 
-  void Driver::reset()
+  void GameMain::reset()
   {
     state.reset();
     state.current = Actions::Startup;
     cannon.reset();
   }
 
-  void Driver::handleDispatch()
+  void GameMain::handleDispatch()
   {
     cannon.dispatch();
     state.current = Actions::ActiveDrop;

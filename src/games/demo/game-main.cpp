@@ -1,10 +1,10 @@
-#include "games/demo/driver.h"
+#include "games/demo/game-main.h"
 #include "player/controller.h"
 #include "logger.h"
 
 namespace Games::Demo
 {
-  void Driver::nextEvent()
+  void GameMain::nextEvent()
   {
     if (contextManager->controller.wasPressed(::Player::ControllerButton::Cross))
     {
@@ -21,13 +21,13 @@ namespace Games::Demo
     player2.updatePlayer2LedBuffer();
   }
 
-  void Driver::incrementCurrentScore()
+  void GameMain::incrementCurrentScore()
   {
     ++contextManager->stateManager.getDemoGameState().currentScore;
     contextManager->stateManager.displayShouldUpdate = true;
   }
 
-  void Driver::incrementHighScore()
+  void GameMain::incrementHighScore()
   {
     ++contextManager->stateManager.getDemoGameState().highScore;
     contextManager->stateManager.displayShouldUpdate = true;

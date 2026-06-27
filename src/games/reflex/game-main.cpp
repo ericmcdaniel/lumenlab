@@ -1,17 +1,17 @@
-#include "games/reflex/driver.h"
+#include "games/reflex/game-main.h"
 #include "games/reflex/signal.h"
 #include "logger.h"
 
 namespace Games::Reflex
 {
-  Driver::Driver(SystemCore::ContextManager *ctx) : contextManager{ctx},
-                                                    state{ctx->stateManager.getReflexGameState()},
-                                                    signal{ctx, signalWidth, signalSpeed}
+  GameMain::GameMain(SystemCore::ContextManager *ctx) : contextManager{ctx},
+                                                        state{ctx->stateManager.getReflexGameState()},
+                                                        signal{ctx, signalWidth, signalSpeed}
   {
     reset();
   }
 
-  void Driver::nextEvent()
+  void GameMain::nextEvent()
   {
     switch (state.current)
     {
@@ -40,12 +40,12 @@ namespace Games::Reflex
     }
   }
 
-  void Driver::reset()
+  void GameMain::reset()
   {
     contextManager->stateManager.displayShouldUpdate = true;
   }
 
-  void Driver::renderSignal()
+  void GameMain::renderSignal()
   {
     for (uint16_t i = 0; i < signal.width; ++i)
     {

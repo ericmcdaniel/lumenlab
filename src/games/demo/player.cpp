@@ -15,9 +15,9 @@ namespace Games::Demo
       if (intensity < 0)
         intensity = 0;
 
-      contextManager->leds.buffer[index].r = static_cast<uint16_t>(245.0f * intensity);
-      contextManager->leds.buffer[index].g = static_cast<uint16_t>(215.0f * intensity);
-      contextManager->leds.buffer[index].b = static_cast<uint16_t>(128.0f * intensity);
+      contextManager->renderer.leds.buffer[index].r = static_cast<uint16_t>(245.0f * intensity);
+      contextManager->renderer.leds.buffer[index].g = static_cast<uint16_t>(215.0f * intensity);
+      contextManager->renderer.leds.buffer[index].b = static_cast<uint16_t>(128.0f * intensity);
     }
   }
 
@@ -32,9 +32,9 @@ namespace Games::Demo
       if (intensity < 0)
         intensity = 0;
 
-      contextManager->leds.buffer[index].r = static_cast<uint16_t>(103.0f * intensity);
-      contextManager->leds.buffer[index].g = static_cast<uint16_t>(162.0f * intensity);
-      contextManager->leds.buffer[index].b = static_cast<uint16_t>(235.0f * intensity);
+      contextManager->renderer.leds.buffer[index].r = static_cast<uint16_t>(103.0f * intensity);
+      contextManager->renderer.leds.buffer[index].g = static_cast<uint16_t>(162.0f * intensity);
+      contextManager->renderer.leds.buffer[index].b = static_cast<uint16_t>(235.0f * intensity);
     }
   }
 }

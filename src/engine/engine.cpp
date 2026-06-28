@@ -26,7 +26,7 @@ namespace Engine
   {
     while (contextManager.stateManager.isRunning())
     {
-      contextManager.leds.reset();
+      contextManager.renderer.leds.reset();
       contextManager.controller.poll();
       contextManager.checkExitRequest();
       contextManager.checkDisplayVisibilityChange();
@@ -75,7 +75,7 @@ namespace Engine
 // If debugging, ensure serial connection is stable before setting up components
 #if defined(VIRTUALIZATION) || defined(DEBUG)
     Serial.begin(SystemCore::Configuration::serialBaud());
-    contextManager.leds.reset();
+    contextManager.renderer.leds.reset();
     renderLedStrip();
     log("Connecting to computer using a serial connection for debugging.");
     while (!Serial)
@@ -154,7 +154,7 @@ namespace Engine
     for (uint16_t i = 0; i < SystemCore::Configuration::numLeds(); ++i)
     {
       float phase = std::cos((2 * M_PI * i / SystemCore::Configuration::numLeds()) + (2 * M_PI * disconnectedLedPhaseShift / SystemCore::Configuration::numLeds())) * 127 + 128;
-      contextManager.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
+      contextManager.renderer.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
     }
     disconnectedLedPhaseShift += 0.5;
 
@@ -164,14 +164,14 @@ namespace Engine
 
   void GameEngine::renderLedStrip()
   {
-    contextManager.leds.adjustLuminance();
+    contextManager.renderer.leds.adjustLuminance();
 #ifdef RELEASE
     FastLED.show();
 #endif
 #ifdef VIRTUALIZATION
     Serial.write(0xAA); // sync bytes
     Serial.write(0x55);
-    Serial.write(reinterpret_cast<uint8_t *>(contextManager.leds.getRawColors()), SystemCore::Configuration::numLeds() * sizeof(Lights::Color));
+    Serial.write(reinterpret_cast<uint8_t *>(contextManager.renderer.leds.getRawColors()), SystemCore::Configuration::numLeds() * sizeof(Lights::Color));
 #endif
   }
 

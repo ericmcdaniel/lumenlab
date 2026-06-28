@@ -66,7 +66,7 @@ namespace Games::PhaseEvasion
     for (uint16_t i = 0; i < player.width; ++i)
     {
       uint16_t index = (player.getPosition() + i) % SystemCore::Configuration::numLeds();
-      contextManager->leds.buffer[index] = player.getColor();
+      contextManager->renderer.leds.buffer[index] = player.getColor();
     }
   }
 
@@ -91,7 +91,7 @@ namespace Games::PhaseEvasion
         uint16_t distance = i - flareHead;
         double attenuation = std::clamp(1.0 - 0.08 * static_cast<double>(distance), 0.0, 1.0);
 
-        contextManager->leds.buffer[i] = flare.getColor() * attenuation;
+        contextManager->renderer.leds.buffer[i] = flare.getColor() * attenuation;
       }
     }
   }
@@ -106,7 +106,7 @@ namespace Games::PhaseEvasion
 
     for (uint16_t i = gemLeft; i < gemRight; ++i)
     {
-      contextManager->leds.buffer[i] = gem.getColor();
+      contextManager->renderer.leds.buffer[i] = gem.getColor();
     }
   }
 
@@ -209,7 +209,7 @@ namespace Games::PhaseEvasion
   {
     for (uint16_t i = 0; i < SystemCore::Configuration::numLeds(); ++i)
     {
-      contextManager->leds.buffer[i] = Lights::Color::White;
+      contextManager->renderer.leds.buffer[i] = Lights::Color::White;
     }
 
     if (isReady())
@@ -225,9 +225,9 @@ namespace Games::PhaseEvasion
     {
       float offset = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds()) - (2.0f * M_PI * static_cast<uint16_t>(gameOverPhaseShift) / SystemCore::Configuration::numLeds()));
       float phase = offset * 127.5 + 127.5;
-      contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase) * 0.95),
-                                        static_cast<uint8_t>(std::floor(phase) * 0.15),
-                                        static_cast<uint8_t>(std::floor(phase) * 0.25)};
+      contextManager->renderer.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase) * 0.95),
+                                                 static_cast<uint8_t>(std::floor(phase) * 0.15),
+                                                 static_cast<uint8_t>(std::floor(phase) * 0.25)};
     }
 
     gameOverPhaseShift += std::cos(gameOverPhaseOffset) / 16.0f;

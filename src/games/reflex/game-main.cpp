@@ -50,7 +50,7 @@ namespace Games::Reflex
     for (uint16_t i = 0; i < signal.width; ++i)
     {
       uint16_t index = (signal.getPosition() + i) % SystemCore::Configuration::numLeds();
-      contextManager->leds.buffer[index] = Lights::ColorCode::MenuUnselected;
+      contextManager->renderer.leds.buffer[index] = Lights::ColorCode::MenuUnselected;
     }
   }
 }

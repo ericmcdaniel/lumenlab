@@ -21,7 +21,7 @@ namespace Scenes::Canvas
 
     for (uint16_t i; i < SystemCore::Configuration::numLeds(); ++i)
     {
-      contextManager->leds.buffer[i] = contextManager->stateManager.getCanvasSceneState().currentColor;
+      contextManager->renderer.leds.buffer[i] = contextManager->stateManager.getCanvasSceneState().currentColor;
     }
   }
 

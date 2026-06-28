@@ -104,7 +104,7 @@ namespace Games::Recall
       double x = static_cast<double>(i);
       double scope = std::exp(-0.5 * std::pow((x - mu) / delta, 2.0));
       auto color = Lights::colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex])];
-      contextManager->leds.buffer[i] = color * scope;
+      contextManager->renderer.leds.buffer[i] = color * scope;
     }
   }
 
@@ -192,7 +192,7 @@ namespace Games::Recall
       {
         auto boundaries = directionBoundaries(static_cast<Player::ControllerButton>(pressedButtonIndex));
         for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
-          contextManager->leds.buffer[i] = Lights::colorPalette[pressedButtonIndex];
+          contextManager->renderer.leds.buffer[i] = Lights::colorPalette[pressedButtonIndex];
       }
     }
   }
@@ -237,7 +237,7 @@ namespace Games::Recall
     for (uint16_t i = boundaries.first; i <= boundaries.second; ++i)
     {
       auto &color = Lights::colorPalette[static_cast<uint16_t>(gameplayColors[sequenceIndex - 1])];
-      contextManager->leds.buffer[i] = color * successFadeawayAnimation;
+      contextManager->renderer.leds.buffer[i] = color * successFadeawayAnimation;
     }
     successFadeawayAnimation = std::clamp(successFadeawayAnimation - 0.08, 0.0, 1.0);
   }
@@ -257,7 +257,7 @@ namespace Games::Recall
     for (uint16_t i = 0; i < SystemCore::Configuration::numLeds(); ++i)
     {
       float phase = std::cos((2.0f * M_PI * i / SystemCore::Configuration::numLeds()) + (2.0f * M_PI * gameOverLedPhaseShift / SystemCore::Configuration::numLeds())) * 127 + 128;
-      contextManager->leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
+      contextManager->renderer.leds.buffer[i] = {static_cast<uint8_t>(std::floor(phase)), 0, 0};
     }
 
     gameOverLedPhaseShift += 0.5f;

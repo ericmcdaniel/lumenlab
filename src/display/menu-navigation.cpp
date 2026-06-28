@@ -23,9 +23,9 @@ namespace Display
         float blend = std::exp(-(x * x) / (4 * sigma * sigma)); // computed gaussian curve
 
         if (modeIdx == static_cast<uint8_t>(modeSelected))
-          contextManager->leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeGreen} * inactiveSelectionDimmingScale * blend;
+          contextManager->renderer.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeGreen} * inactiveSelectionDimmingScale * blend;
         else
-          contextManager->leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale * blend;
+          contextManager->renderer.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale * blend;
 
         displayIndex--;
       }
@@ -52,11 +52,11 @@ namespace Display
         float blend = std::exp(-(x * x) / (4 * sigma * sigma));
 
         if (currentState == Engine::SystemState::MenuGames && modeIdx == gameSelected)
-          contextManager->leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeBlue} * blend;
+          contextManager->renderer.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeBlue} * blend;
         else if (currentState == Engine::SystemState::MenuScenes && modeIdx == sceneSelected)
-          contextManager->leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeYellow} * blend;
+          contextManager->renderer.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::ThemeYellow} * blend;
         else
-          contextManager->leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale * blend;
+          contextManager->renderer.leds.buffer[displayIndex] = Lights::Color{Lights::ColorCode::MenuUnselected} * inactiveSelectionDimmingScale * blend;
 
         displayIndex++;
       }

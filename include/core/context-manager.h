@@ -10,7 +10,6 @@
 #else
 #include "player/ps4-controller.h"
 #endif
-#include "lights/led-strip.h"
 #include "display/display.h"
 #include "display/menu-navigation.h"
 
@@ -27,7 +26,6 @@ namespace SystemCore
     Engine::ApplicationRuntime *application = nullptr;
     Engine::StateManager stateManager;
     Engine::Renderer renderer;
-    Lights::LedStrip leds;
 #ifdef USE_PS3
     Player::Ps3Controller controller;
 #else

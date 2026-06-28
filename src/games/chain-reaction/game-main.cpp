@@ -61,7 +61,7 @@ namespace Games::ChainReaction
 
         for (uint16_t j = segmentHead; j < segmentTail; ++j)
         {
-          contextManager->leds.buffer[j] = ion.getColors().at(i);
+          contextManager->renderer.leds.buffer[j] = ion.getColors().at(i);
         }
         logf("Ion %u - Color: %u", ct, ion.getColors().at(i));
       }

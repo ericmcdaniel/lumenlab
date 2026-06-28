@@ -1,6 +1,7 @@
 #pragma once
 
 // #include "core/context-manager.h"
+#include "lights/led-strip.h"
 
 namespace Engine
 {
@@ -9,7 +10,9 @@ namespace Engine
   public:
     Renderer();
 
-    // private:
+    Lights::LedStrip leds;
+
+  private:
     // SystemCore::ContextManager contextManager;
     // uint32_t lastRender = 0;
   };

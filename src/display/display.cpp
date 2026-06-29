@@ -2,7 +2,7 @@
 #include <cstdarg>
 
 #include "display/display.h"
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 
 namespace Display
 {

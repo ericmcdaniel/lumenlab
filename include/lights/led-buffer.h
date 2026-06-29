@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-#include "core/configuration.h"
+#include "platform/configuration.h"
 #include "lights/color.h"
 
 namespace Lights

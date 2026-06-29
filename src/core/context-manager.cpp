@@ -1,4 +1,4 @@
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 #include "player/controller-properties.h"
 #include "games/recall/game-main.h"
 #include "games/phase-evasion/game-main.h"
@@ -34,6 +34,7 @@ namespace SystemCore
     stateManager.getPhaseEvasionGameState().loadHighScore();
     stateManager.getRecallGameState().loadHighScore();
     // TODO: Add loadHighScore for Chain Reaction
+    // additional TODO: refactor this so that this automatically registers on startup.
   }
 
   void ContextManager::checkExitRequest()
@@ -166,6 +167,8 @@ namespace SystemCore
       log("Transitioning to Main Menu.");
     }
     menuNav.displayMenuNavigation();
+
+    /////////////// Move all this business logic to the MenuNav class.
   }
 
   void ContextManager::changeApplication()

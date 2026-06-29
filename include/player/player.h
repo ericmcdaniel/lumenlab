@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 
 namespace Player
 {

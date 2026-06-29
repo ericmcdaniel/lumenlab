@@ -5,7 +5,7 @@
 #include "common.h"
 
 #include "engine/timer.h"
-#include "core/configuration.h"
+#include "platform/configuration.h"
 #include "lights/color.h"
 
 namespace Games::PhaseEvasion

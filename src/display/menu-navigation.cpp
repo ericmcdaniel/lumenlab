@@ -1,6 +1,6 @@
 #include "display/menu-navigation.h"
 #include "engine/state-manager.h"
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 
 namespace Display
 {

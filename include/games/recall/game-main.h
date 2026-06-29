@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 #include "engine/timer.h"
 #include "lights/color.h"
 #include "lights/color-code.h"

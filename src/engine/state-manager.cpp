@@ -1,5 +1,5 @@
 #include "engine/state-manager.h"
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 
 namespace Engine
 {

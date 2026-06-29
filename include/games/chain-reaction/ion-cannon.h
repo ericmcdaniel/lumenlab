@@ -1,7 +1,7 @@
 #pragma once
 
 #include "games/chain-reaction/ion.h"
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 
 namespace Games::ChainReaction
 {

@@ -1,4 +1,4 @@
-#include "core/configuration.h"
+#include "platform/configuration.h"
 #include <Preferences.h>
 
 #ifndef LUMENLAB_VERSION

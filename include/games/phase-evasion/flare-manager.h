@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 #include "games/phase-evasion/flare.h"
 
 namespace Games::PhaseEvasion

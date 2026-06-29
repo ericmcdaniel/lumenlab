@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-#include "core/configuration.h"
+#include "platform/configuration.h"
 
 namespace Games::PhaseEvasion
 {

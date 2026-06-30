@@ -27,9 +27,9 @@ namespace Lights
     Color2 &operator*=(double scale);
   };
 
-  inline const Color2 colorPalette[4] = {
-      Color2{ColorCode::ThemeBlue, Engine::Layer::Background},
-      Color2{ColorCode::ThemeRed, Engine::Layer::Background},
-      Color2{ColorCode::ThemeGreen, Engine::Layer::Background},
-      Color2{ColorCode::ThemeYellow, Engine::Layer::Background}};
+  inline const Color2 colorPalette2[4] = {
+      Color2{ColorCode::ThemeBlue},
+      Color2{ColorCode::ThemeRed},
+      Color2{ColorCode::ThemeGreen},
+      Color2{ColorCode::ThemeYellow}};
 }

@@ -2,7 +2,8 @@
 
 #include <algorithm>
 #include <FastLED.h>
-#include "lights/color-code2.h"
+#include "lights/color-code.h"
+#include "engine/layer.h"
 #include <cstdint>
 
 namespace Lights
@@ -11,11 +12,13 @@ namespace Lights
   {
   public:
     using CRGB::CRGB;
-    Color2() : CRGB() {}
-    Color2(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) : CRGB(red, green, blue), a{alpha} {}
-    Color2(ColorCode2 color) : CRGB{static_cast<uint32_t>(color)} {}
+    Color2() : CRGB(), layer{Engine::Layer::Background} {}
+    Color2(uint8_t r, uint8_t g, uint8_t b, Engine::Layer l) : CRGB(r, g, b), layer{l} {}
+    Color2(uint8_t r, uint8_t g, uint8_t b) : CRGB(r, g, b), layer{Engine::Layer::Background} {}
+    Color2(ColorCode color, Engine::Layer l) : CRGB{static_cast<uint32_t>(color)}, layer{l} {}
+    Color2(ColorCode color) : CRGB{static_cast<uint32_t>(color)}, layer{Engine::Layer::Background} {}
 
-    uint8_t a;
+    Engine::Layer layer;
 
     Color2 operator*(double scale) const;
     Color2 operator*(uint8_t scale) const;
@@ -25,8 +28,8 @@ namespace Lights
   };
 
   inline const Color2 colorPalette[4] = {
-      Color(ColorCode2::ThemeBlue),
-      Color(ColorCode2::ThemeRed),
-      Color(ColorCode2::ThemeGreen),
-      Color(ColorCode2::ThemeYellow)};
+      Color2{ColorCode::ThemeBlue, Engine::Layer::Background},
+      Color2{ColorCode::ThemeRed, Engine::Layer::Background},
+      Color2{ColorCode::ThemeGreen, Engine::Layer::Background},
+      Color2{ColorCode::ThemeYellow, Engine::Layer::Background}};
 }

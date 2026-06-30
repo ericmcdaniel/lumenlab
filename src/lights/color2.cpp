@@ -13,9 +13,9 @@ namespace Lights
   Color2 Color2::operator*(uint8_t scale) const
   {
     return Color2{
-        (r * scale) / 255,
-        (g * scale) / 255,
-        (b * scale) / 255};
+        static_cast<uint8_t>((r * scale) / 255),
+        static_cast<uint8_t>((g * scale) / 255),
+        static_cast<uint8_t>((b * scale) / 255)};
   }
 
   Color2 Color2::operator/(double scale) const
@@ -29,9 +29,9 @@ namespace Lights
   Color2 Color2::operator/(uint8_t scale) const
   {
     return Color2{
-        (r / scale) / 255,
-        (g / scale) / 255,
-        (b / scale) / 255};
+        static_cast<uint8_t>((r / scale) / 255),
+        static_cast<uint8_t>((g / scale) / 255),
+        static_cast<uint8_t>((b / scale) / 255)};
   }
 
   Color2 &Color2::operator*=(double scale)

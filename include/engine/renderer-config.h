@@ -1,14 +1,15 @@
 #pragma once
 
+#include "lights/color2.h"
+
 #include <cstdint>
 
 namespace Engine
 {
   struct RendererConfig
   {
-    uint16_t start;
-    uint16_t end;
-    // color?
-    // alpha?
+    Lights::Color2 color;
+    uint8_t alpha;
+    uint16_t position;
   };
 }

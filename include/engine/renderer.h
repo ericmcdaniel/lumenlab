@@ -18,7 +18,6 @@ namespace Engine
     void drawPixel(const RendererConfig &config);
 
   private:
-    // SystemCore::ContextManager contextManager;
-    // uint32_t lastRender = 0;
+    void blend(const RendererConfig &config);
   };
 }

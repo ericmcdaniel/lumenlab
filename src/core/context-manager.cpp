@@ -34,7 +34,7 @@ namespace SystemCore
     stateManager.getPhaseEvasionGameState().loadHighScore();
     stateManager.getRecallGameState().loadHighScore();
     // TODO: Add loadHighScore for Chain Reaction
-    // additional TODO: refactor this so that this automatically registers on startup.
+    // TODO: additional. refactor this so that this automatically registers on startup.
   }
 
   void ContextManager::checkExitRequest()

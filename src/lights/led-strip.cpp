@@ -22,7 +22,7 @@ namespace Lights
   {
     for (uint16_t i = 0; i < size(); i++)
     {
-      buffer[i] = 0;
+      buffer[i] = Color{};
     }
   }
 

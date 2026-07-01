@@ -16,9 +16,17 @@ namespace Games::Demo
     auto leftInput = contextManager->controller.leftAnalog();
     auto rightInput = contextManager->controller.rightAnalog();
     player1.move(leftInput.x, speed);
-    player1.updatePlayer1LedBuffer();
     player2.move(rightInput.x, speed);
+
+    render();
+    player1.updatePlayer1LedBuffer();
     player2.updatePlayer2LedBuffer();
+  }
+
+  void GameMain::render()
+  {
+    auto &renderer = contextManager->renderer;
+    renderer.renderEntity(player1.getRendering());
   }
 
   void GameMain::incrementCurrentScore()

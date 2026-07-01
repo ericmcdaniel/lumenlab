@@ -14,12 +14,17 @@ namespace Lights
     LedStrip();
 
     LedBuffer buffer;
-    Engine::Layer layer[SystemCore::Configuration::maxLeds];
+
+    Color &operator[](uint16_t index) { return buffer[index]; }
+    const Color &operator[](uint16_t index) const { return buffer[index]; }
 
     Color *getRawColors();
     static const uint16_t size() { return SystemCore::Configuration::numLeds(); }
     void reset();
     void adjustLuminance();
+
+  protected:
+    Engine::Layer layer[SystemCore::Configuration::maxLeds];
 
   private:
     LedLuminance luminance;

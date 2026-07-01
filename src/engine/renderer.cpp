@@ -1,12 +1,9 @@
 #include <algorithm>
 #include "engine/renderer.h"
+#include "logger.h"
 
 namespace Engine
 {
-  Renderer::Renderer()
-  {
-  }
-
   void Renderer::drawPixel(const RendererConfig &config)
   {
     // if (config.color.layer < leds.buffer[config.position].layer)

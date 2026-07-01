@@ -26,5 +26,7 @@ namespace Games::Demo
     Player player2;
     static constexpr float speed = 4.0f;
     static constexpr uint16_t width = 7;
+
+    void render();
   };
 }

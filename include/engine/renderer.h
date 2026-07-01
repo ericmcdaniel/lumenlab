@@ -18,9 +18,13 @@ namespace Engine
     void drawPixel(const RendererConfig &config);
 
     template <uint16_t N>
-    void renderEntity(const Pixels<N> &entity)
+    void renderEntity(const Pixels<N> &entity, uint16_t position, Layer layer)
     {
-      log("Drawing...");
+      for (const Pixel &ent : entity)
+      {
+        logf("Drawing...%x", ent.alpha);
+      }
+      log(" ");
     }
 
   private:

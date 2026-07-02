@@ -2,7 +2,6 @@
 
 #include "platform/context-manager.h"
 #include "player/player.h"
-#include "engine/renderable.h"
 #include "lights/pixels.h"
 #include <span.h>
 

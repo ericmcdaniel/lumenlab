@@ -1,7 +1,6 @@
 #pragma once
 
 #include "lights/led-strip.h"
-// #include "engine/renderable.h"
 #include "lights/pixel.h"
 #include "engine/renderer-config.h"
 #include "logger.h"
@@ -18,14 +17,14 @@ namespace Engine
 
     void drawPixel(const RendererConfig &config);
 
-    void renderEntity(CustomDataStructures::Span<const Lights::Pixel> pixels, float position, Layer l)
+    void renderEntity(CustomDataStructures::Span<const Lights::Pixel> pixels, float positionPrecise, Layer layer)
     {
       for (const Lights::Pixel &pixel : pixels)
       {
-        const uint16_t pos = static_cast<uint16_t>(std::clamp(position, 0.0f, 300.0f));
-        leds[pos] = pixel.color;
-        leds.layer[pos] = pixel.layer;
-        logf("Drawing Pos: %u", position);
+        const uint16_t pos = static_cast<uint16_t>(std::clamp(positionPrecise, 0.0f, 300.0f));
+        leds.buffer[pos] = pixel.color;
+        leds.layer[pos] = layer;
+        logf("Drawing Pos: %f", positionPrecise);
       }
       log(" ");
     }

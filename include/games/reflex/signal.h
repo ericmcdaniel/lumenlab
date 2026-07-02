@@ -12,6 +12,7 @@ namespace Games::Reflex
     ~Signal() = default;
 
     void advance() { setPosition(positionPrecise += speed); }
+    float getPositionPrecise() const override { return ::Player::BasePlayer::positionPrecise; }
 
   private:
     float speed;

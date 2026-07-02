@@ -26,7 +26,8 @@ namespace Games::Demo
   void GameMain::render()
   {
     auto &renderer = contextManager->renderer;
-    renderer.renderEntity(player1.getRendering(), player1.getPositionPrecise(), Engine::Layer::GameLayer_1);
+    renderer.renderEntity(player1);
+    renderer.renderEntity(player2);
   }
 
   void GameMain::incrementCurrentScore()

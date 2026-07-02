@@ -11,6 +11,7 @@ namespace Games::PhaseEvasion
     Player(SystemCore::ContextManager *ctx, uint16_t width) : ::Player::BasePlayer{ctx, width} {};
     void checkColorChangeRequest();
     Lights::Color getColor() { return currentColor; }
+    float getPositionPrecise() const override { return ::Player::BasePlayer::positionPrecise; }
 
   private:
     Lights::Color currentColor;

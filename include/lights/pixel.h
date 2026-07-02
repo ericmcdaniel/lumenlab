@@ -9,6 +9,5 @@ namespace Lights
   {
     Color color;
     uint8_t alpha;
-    Engine::Layer layer = Engine::Layer::Background;
   };
 }

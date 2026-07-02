@@ -18,15 +18,15 @@ namespace Games::Demo
     player1.move(leftInput.x, speed);
     player2.move(rightInput.x, speed);
 
+    // player1.updatePlayer1LedBuffer();
+    // player2.updatePlayer2LedBuffer();
     render();
-    player1.updatePlayer1LedBuffer();
-    player2.updatePlayer2LedBuffer();
   }
 
   void GameMain::render()
   {
     auto &renderer = contextManager->renderer;
-    renderer.renderEntity(player1.getRendering(), player1.getPosition(), Engine::Layer::GameLayer_1);
+    renderer.renderEntity(player1.getRendering(), player1.getPositionPrecise(), Engine::Layer::GameLayer_1);
   }
 
   void GameMain::incrementCurrentScore()

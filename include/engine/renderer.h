@@ -18,11 +18,14 @@ namespace Engine
     void drawPixel(const RendererConfig &config);
 
     template <uint16_t N>
-    void renderEntity(const Pixels<N> &entity, uint16_t position, Layer layer)
+    void renderEntity(const Pixels<N> &pixels, float position, Layer l)
     {
-      for (const Pixel &ent : entity)
+      for (const Pixel &pixel : pixels)
       {
-        logf("Drawing...%x", ent.alpha);
+        const uint16_t pos = static_cast<uint16_t>(std::clamp(position, 0.0f, 300.0f));
+        leds[pos] = pixel.color;
+        leds.layer[pos] = pixel.layer;
+        logf("Drawing Pos: %u", position);
       }
       log(" ");
     }

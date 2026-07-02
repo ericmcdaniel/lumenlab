@@ -14,6 +14,7 @@ namespace Player
     void move(const int distance, const float speed, const bool shouldWrap = true);
 
     uint16_t getPosition() { return static_cast<uint16_t>(positionPrecise); }
+    float getPositionPrecise() { return positionPrecise; } // TODO: seriously reconsider this
     void setPosition(float position) { positionPrecise = position; }
     void setPosition(uint16_t position) { positionPrecise = static_cast<float>(position); }
 

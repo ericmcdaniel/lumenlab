@@ -37,9 +37,4 @@ namespace Games::Demo
       contextManager->renderer.leds.buffer[index].b = static_cast<uint16_t>(235.0f * intensity);
     }
   }
-
-  const Engine::Pixels<5> &Player::getRendering() const
-  {
-    return pixels;
-  }
 }

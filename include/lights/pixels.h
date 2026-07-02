@@ -1,23 +1,15 @@
 #pragma once
 
 #include "lights/color.h"
-#include "engine/layer.h"
+#include "lights/pixel.h"
+#include <span.h>
 
-namespace Engine
+namespace Lights
 {
-  struct Pixel
-  {
-    Lights::Color color;
-    uint8_t alpha;
-    Layer layer = Engine::Layer::Background;
-  };
-
   template <uint16_t N>
   class Pixels
   {
   public:
-    std::array<Pixel, N> pixels;
-
     Pixels() = default;
     Pixels(std::initializer_list<Pixel> list)
     {
@@ -30,6 +22,8 @@ namespace Engine
       }
     }
 
+    CustomDataStructures::Span<const Pixel> getRendering() const { return CustomDataStructures::Span<const Pixel>(pixels.data(), N); }
+
     Pixel &operator[](uint16_t index) { return pixels[index]; }
     const Pixel &operator[](uint16_t index) const { return pixels[index]; }
 
@@ -41,5 +35,8 @@ namespace Engine
 
     auto cbegin() const { return pixels.cbegin(); }
     auto cend() const { return pixels.cend(); }
+
+  private:
+    std::array<Pixel, N> pixels;
   };
 }

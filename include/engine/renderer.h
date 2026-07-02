@@ -2,9 +2,10 @@
 
 #include "lights/led-strip.h"
 // #include "engine/renderable.h"
-#include "engine/pixel.h"
+#include "lights/pixel.h"
 #include "engine/renderer-config.h"
 #include "logger.h"
+#include <span.h>
 
 namespace Engine
 {
@@ -17,10 +18,9 @@ namespace Engine
 
     void drawPixel(const RendererConfig &config);
 
-    template <uint16_t N>
-    void renderEntity(const Pixels<N> &pixels, float position, Layer l)
+    void renderEntity(CustomDataStructures::Span<const Lights::Pixel> pixels, float position, Layer l)
     {
-      for (const Pixel &pixel : pixels)
+      for (const Lights::Pixel &pixel : pixels)
       {
         const uint16_t pos = static_cast<uint16_t>(std::clamp(position, 0.0f, 300.0f));
         leds[pos] = pixel.color;

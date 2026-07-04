@@ -13,6 +13,9 @@ namespace Games::Demo
       contextManager->controller.rumble(::Player::RumbleOptions::SingleQuickPulse);
       logf("Current score: %d", getCurrentScore());
     }
+    // handle controller input (both Cross button, and analog sticks)
+    // update player position
+    // render
     auto leftInput = contextManager->controller.leftAnalog();
     auto rightInput = contextManager->controller.rightAnalog();
     player1.move(leftInput.x, speed);

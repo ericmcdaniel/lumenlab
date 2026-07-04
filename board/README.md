@@ -5,8 +5,8 @@ The LumenLab was built in two phases. The first phase (labeled as "Version 1") w
 The LumenLab PCB was designed using KiCad 9.0.5
 
 # Schematic
-![LumenLab schematic](./images/lumenlab-pcb.svg)
-<p align="center">Figure 1. LumenLab schematic and electronic layout</p>
+![LumenLab schematic](./images/lumenlab-pcb.jpg)
+<p align="center"><i>Figure 1. LumenLab schematic and electronic layout</i></p>
 
 # Bill of Materials
 Still to be finalized, however you can [view the tentative list of components here](./bom/ibom.html).

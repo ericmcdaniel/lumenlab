@@ -22,12 +22,13 @@ namespace Engine
 
   void Renderer::renderEntity(const RenderModel &model)
   {
-    for (const Lights::Pixel &pixel : model.getRendering())
+    // for (const Lights::Pixel &pixel : model.getRendering())
+    for (uint16_t i = 0; i < model.getRendering().size(); ++i)
     {
-      const uint16_t pos = static_cast<uint16_t>(std::clamp(model.getPositionPrecise(), 0.0f, 300.0f));
-      leds.buffer[pos] = pixel.color;
-      leds.layer[pos] = model.getLayer();
-      logf("Drawing Pos: %f", model.getPositionPrecise());
+      const uint16_t pos = std::clamp(static_cast<uint16_t>(model.getPositionPrecise()), static_cast<uint16_t>(0), SystemCore::Configuration::numLeds());
+      leds.buffer[pos + i] = model.getRendering()[i].color;
+      leds.layer[pos + i] = model.getLayer();
+      logf("Drawing position=%f, color=%u", model.getPositionPrecise() + i, model.getRendering()[i].alpha);
     }
     log(" ");
   }

@@ -20,12 +20,13 @@ namespace Games::Demo
     void incrementCurrentScore();
     void incrementHighScore();
 
+    static constexpr uint16_t width = 7;
+
   private:
     SystemCore::ContextManager *contextManager;
     Player player1;
     Player player2;
     static constexpr float speed = 4.0f;
-    static constexpr uint16_t width = 7;
 
     void render();
   };

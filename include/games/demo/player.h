@@ -31,6 +31,6 @@ namespace Games::Demo
     Engine::Layer getLayer() const override { return layer; }
 
   private:
-    Lights::Pixels<5> pixels;
+    Lights::Pixels<7> pixels;
   };
 }

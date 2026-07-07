@@ -9,14 +9,16 @@ namespace Games::Demo
   class GameMain : public Engine::ApplicationRuntime
   {
   public:
-    GameMain(SystemCore::ContextManager *ctx) : Engine::ApplicationRuntime{}, contextManager{ctx}, player1{Player{ctx, width}}, player2{Player{ctx, width}}
+    GameMain(SystemCore::ContextManager *ctx) : Engine::ApplicationRuntime{},
+                                                state{ctx->stateManager.getDemoGameState()},
+                                                contextManager{ctx},
+                                                player1{Player{ctx, width}},
+                                                player2{Player{ctx, width}}
     {
-      contextManager->stateManager.getDemoGameState().reset();
+      state.reset();
     }
 
     void nextEvent() override;
-    uint16_t getCurrentScore() { return contextManager->stateManager.getDemoGameState().currentScore; }
-    uint16_t getHighScore() { return contextManager->stateManager.getDemoGameState().highScore; }
     void incrementCurrentScore();
     void incrementHighScore();
 

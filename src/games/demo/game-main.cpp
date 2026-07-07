@@ -21,9 +21,8 @@ namespace Games::Demo
     if (contextManager->controller.wasPressed(::Player::ControllerButton::Cross))
     {
       incrementCurrentScore();
-      contextManager->stateManager.displayShouldUpdate = true;
       contextManager->controller.rumble(::Player::RumbleOptions::SingleQuickPulse);
-      logf("Current score: %d", getCurrentScore());
+      logf("Current score: %d", state.currentScore);
     }
   }
 
@@ -46,13 +45,13 @@ namespace Games::Demo
 
   void GameMain::incrementCurrentScore()
   {
-    ++contextManager->stateManager.getDemoGameState().currentScore;
+    ++state.currentScore;
     contextManager->stateManager.displayShouldUpdate = true;
   }
 
   void GameMain::incrementHighScore()
   {
-    ++contextManager->stateManager.getDemoGameState().highScore;
+    ++state.highScore;
     contextManager->stateManager.displayShouldUpdate = true;
   }
 }

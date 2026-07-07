@@ -6,6 +6,18 @@ namespace Games::Demo
 {
   void GameMain::nextEvent()
   {
+    switch (state.current)
+    {
+    case Actions::Active:
+      readInput();
+      updatePosition();
+      render();
+      break;
+    }
+  }
+
+  void GameMain::readInput()
+  {
     if (contextManager->controller.wasPressed(::Player::ControllerButton::Cross))
     {
       incrementCurrentScore();
@@ -13,22 +25,21 @@ namespace Games::Demo
       contextManager->controller.rumble(::Player::RumbleOptions::SingleQuickPulse);
       logf("Current score: %d", getCurrentScore());
     }
-    // handle controller input (both Cross button, and analog sticks)
-    // update player position
-    // render
+  }
+
+  void GameMain::updatePosition()
+  {
     auto leftInput = contextManager->controller.leftAnalog();
     auto rightInput = contextManager->controller.rightAnalog();
     player1.move(leftInput.x, speed);
     player2.move(rightInput.x, speed);
-
-    // player1.updatePlayer1LedBuffer();
-    // player2.updatePlayer2LedBuffer();
-    render();
   }
 
   void GameMain::render()
   {
-    auto &renderer = contextManager->renderer;
+    // player1.updatePlayer1LedBuffer();
+    // player2.updatePlayer2LedBuffer();
+    Engine::Renderer &renderer = contextManager->renderer;
     renderer.renderEntity(player1);
     renderer.renderEntity(player2);
   }

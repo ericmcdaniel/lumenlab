@@ -24,10 +24,13 @@ namespace Games::Demo
 
   private:
     SystemCore::ContextManager *contextManager;
+    GameState state;
     Player player1;
     Player player2;
     static constexpr float speed = 4.0f;
 
+    void readInput();
+    void updatePosition();
     void render();
   };
 }

@@ -8,6 +8,6 @@ namespace Lights
   struct Pixel
   {
     Color color;
-    uint8_t alpha;
+    uint8_t alpha = 0xff;
   };
 }

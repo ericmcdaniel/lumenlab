@@ -12,8 +12,8 @@ namespace Games::Demo
     GameMain(SystemCore::ContextManager *ctx) : Engine::ApplicationRuntime{},
                                                 state{ctx->stateManager.getDemoGameState()},
                                                 contextManager{ctx},
-                                                player1{Player{ctx, width}},
-                                                player2{Player{ctx, width}}
+                                                player1{Player{ctx, width, ColorPalette::Red}},
+                                                player2{Player{ctx, width, ColorPalette::Blue}}
     {
       state.reset();
     }

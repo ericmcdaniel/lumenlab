@@ -23,7 +23,6 @@ namespace Lights
     void reset();
     void adjustLuminance();
 
-    // protected:
     Engine::Layer layer[SystemCore::Configuration::maxLeds];
 
   private:

@@ -15,7 +15,7 @@ namespace Engine
 
     Lights::LedStrip leds;
 
-    void drawPixel(const RenderModel &model);
+    void drawPixel(const RenderModel &renderModel, const uint16_t normalizedPosition, const uint16_t offset);
     void renderEntity(const RenderModel &model);
 
   private:

@@ -14,13 +14,13 @@ namespace Games::Demo
     Player(SystemCore::ContextManager *ctx, const uint16_t width) : ::Player::BasePlayer{ctx, width}
     {
       pixels = {
-          {Lights::ColorCode::ThemeRed, 0x44},
-          {Lights::ColorCode::ThemeRed, 0x88},
-          {Lights::ColorCode::ThemeRed, 0xff},
-          {Lights::ColorCode::MenuUnselected, 0xff},
-          {Lights::ColorCode::ThemeRed, 0xff},
-          {Lights::ColorCode::ThemeRed, 0x80},
-          {Lights::ColorCode::ThemeRed, 0x40}};
+          {0xff0000, 0x40},
+          {0xed1c24, 0xa0},
+          {0xff8888, 0xe0},
+          {0xffffff, 0xff},
+          {0xff8888, 0xe0},
+          {0xed1c24, 0xa0},
+          {0xff0000, 0x40}};
     };
     Engine::Layer layer = Engine::Layer::GameLayer_1;
     void updatePlayer1LedBuffer();

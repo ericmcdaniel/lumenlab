@@ -20,7 +20,7 @@ namespace Engine
       return;
     }
 
-    // blend(model);
+    blend(renderModel, normalizedPosition, offset);
   }
 
   void Renderer::renderEntity(const RenderModel &renderModel)
@@ -35,12 +35,15 @@ namespace Engine
     }
   }
 
-  void Renderer::blend(const RenderModel &config)
+  void Renderer::blend(const RenderModel &renderModel, const uint16_t normalizedPosition, uint16_t offset)
   {
-    // Lights::Color led = leds.buffer[config.position];
-    // led.r = std::clamp((led.r * (255 - config.alpha) + (config.color.r * config.alpha)) / 255, 0, 255);
-    // led.g = std::clamp((led.g * (255 - config.alpha) + (config.color.g * config.alpha)) / 255, 0, 255);
-    // led.b = std::clamp((led.b * (255 - config.alpha) + (config.color.b * config.alpha)) / 255, 0, 255);
-    // led.layer = config.color.layer;
+    Lights::Color &led = leds.buffer[normalizedPosition + offset];
+    const Lights::Pixel &pixel = renderModel.getRendering()[offset];
+    const Lights::Color color = pixel.color;
+    const uint16_t alpha = pixel.alpha;
+
+    led.r = std::clamp((led.r * (255 - alpha) + (color.r * alpha)) / 255, 0, 255);
+    led.g = std::clamp((led.g * (255 - alpha) + (color.g * alpha)) / 255, 0, 255);
+    led.b = std::clamp((led.b * (255 - alpha) + (color.b * alpha)) / 255, 0, 255);
   }
 }

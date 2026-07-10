@@ -19,6 +19,6 @@ namespace Engine
     void renderEntity(const RenderModel &model);
 
   private:
-    void blend(const RenderModel &model);
+    void blend(const RenderModel &renderModel, const uint16_t normalizedPosition, uint16_t offset);
   };
 }

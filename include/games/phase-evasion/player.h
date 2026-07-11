@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 #include "player/player.h"
 
 namespace Games::PhaseEvasion
@@ -11,6 +11,7 @@ namespace Games::PhaseEvasion
     Player(SystemCore::ContextManager *ctx, uint16_t width) : ::Player::BasePlayer{ctx, width} {};
     void checkColorChangeRequest();
     Lights::Color getColor() { return currentColor; }
+    float getPositionPrecise() const override { return ::Player::BasePlayer::positionPrecise; }
 
   private:
     Lights::Color currentColor;

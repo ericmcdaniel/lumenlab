@@ -16,6 +16,8 @@ namespace SystemCore
     static const std::array<uint16_t, 3> &recallBoundaries() { return _recallBoundaries; }
 
     static constexpr uint8_t ledDimmerGpio = 34; // set from PCB design, should not be configurable
+    static constexpr uint16_t maxLeds = 600;     // Set limit, large values may
+                                                 // severely impact refresh rate
 
     static void load(::Preferences &memory);
 

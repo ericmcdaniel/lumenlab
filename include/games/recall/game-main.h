@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 #include "engine/timer.h"
 #include "lights/color.h"
 #include "lights/color-code.h"
@@ -9,11 +9,11 @@
 
 namespace Games::Recall
 {
-  class Driver : public Engine::Layer, private Engine::Timer
+  class GameMain : public Engine::ApplicationRuntime, private Engine::Timer
   {
   public:
-    Driver(SystemCore::ContextManager *ctx);
-    ~Driver() { state.reset(); }
+    GameMain(SystemCore::ContextManager *ctx);
+    ~GameMain() { state.reset(); }
     void nextEvent() override;
 
   private:

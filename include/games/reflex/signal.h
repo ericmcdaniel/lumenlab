@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 #include "player/player.h"
 
 namespace Games::Reflex
@@ -12,6 +12,7 @@ namespace Games::Reflex
     ~Signal() = default;
 
     void advance() { setPosition(positionPrecise += speed); }
+    float getPositionPrecise() const override { return ::Player::BasePlayer::positionPrecise; }
 
   private:
     float speed;

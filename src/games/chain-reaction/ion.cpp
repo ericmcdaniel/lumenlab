@@ -1,6 +1,6 @@
 #include "games/chain-reaction/ion.h"
 #include "lights/color.h"
-#include "core/configuration.h"
+#include "platform/configuration.h"
 #include "common.h"
 
 namespace Games::ChainReaction

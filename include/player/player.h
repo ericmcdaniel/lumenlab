@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 
 namespace Player
 {
@@ -14,6 +14,7 @@ namespace Player
     void move(const int distance, const float speed, const bool shouldWrap = true);
 
     uint16_t getPosition() { return static_cast<uint16_t>(positionPrecise); }
+    virtual float getPositionPrecise() const = 0;
     void setPosition(float position) { positionPrecise = position; }
     void setPosition(uint16_t position) { positionPrecise = static_cast<float>(position); }
 

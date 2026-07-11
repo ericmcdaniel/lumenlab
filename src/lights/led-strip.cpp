@@ -6,6 +6,7 @@ namespace Lights
   {
 #ifdef RELEASE
     FastLED.addLeds<WS2815, 18, GRB>(static_cast<Color *>(buffer), size());
+    // TODO: Test if this now works on bare metal with buffer istead of static_casting it to Color *.
     // FastLED.setCorrection(0xFFB0F0);
     // FastLED.setTemperature(0xFFE0A0);
     reset();
@@ -21,7 +22,8 @@ namespace Lights
   {
     for (uint16_t i = 0; i < size(); i++)
     {
-      buffer[i] = 0;
+      buffer[i] = Color{};
+      layer[i] = Engine::Layer::Background;
     }
   }
 

@@ -20,16 +20,16 @@ My previous design served me well for my needs, but it isn't an ideal solution f
 
 ![Front edge angle of the LumenLab enclosure v3, with a controller saddle](../images/lumenlab-platform-enclosure-with-controller-front.png)
 
-*Front edge angle of the LumenLab enclosure v3, with a controller saddle*
+<p align="center"><i>Front edge angle of the LumenLab enclosure v3, with a controller saddle</i></p>
 
 ![Rear edge angle of the LumenLab enclosure v3, with a controller saddle](../images/lumenlab-platform-enclosure-with-controller-rear.png)
 
-*Rear edge angle of the LumenLab enclosure v3, with a controller saddle*
+<p align="center"><i>Rear edge angle of the LumenLab enclosure v3, with a controller saddle</i></p>
 
 ![Front edge angle of the LumenLab enclosure v3, no controller saddle](../images/lumenlab-platform-enclosure-no-controller-front.png)
 
-*Front edge angle of the LumenLab enclosure v3, no controller saddle*
+<p align="center"><i>Front edge angle of the LumenLab enclosure v3, no controller saddle</i></p>
 
 ![Rear edge angle of the LumenLab enclosure v3, no controller saddle](../images/lumenlab-platform-enclosure-no-controller-rear.png)
 
-*Rear edge angle of the LumenLab enclosure v3, no controller saddle*
+<p align="center"><i>Rear edge angle of the LumenLab enclosure v3, no controller saddle</i></p>

@@ -1,10 +1,10 @@
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 #include "player/controller-properties.h"
-#include "games/recall/driver.h"
-#include "games/phase-evasion/driver.h"
-#include "games/chain-reaction/driver.h"
-#include "games/reflex/driver.h"
-#include "games/demo/driver.h"
+#include "games/recall/game-main.h"
+#include "games/phase-evasion/game-main.h"
+#include "games/chain-reaction/game-main.h"
+#include "games/reflex/game-main.h"
+#include "games/demo/game-main.h"
 #include "scenes/canvas/driver.h"
 #include "logger.h"
 
@@ -34,6 +34,7 @@ namespace SystemCore
     stateManager.getPhaseEvasionGameState().loadHighScore();
     stateManager.getRecallGameState().loadHighScore();
     // TODO: Add loadHighScore for Chain Reaction
+    // TODO: additional. refactor this so that this automatically registers on startup.
   }
 
   void ContextManager::checkExitRequest()
@@ -124,7 +125,7 @@ namespace SystemCore
         stateManager.setNext(Engine::SystemState::GameDemo);
         break;
       }
-      transitionLayer();
+      changeApplication();
     }
 
     if (controller.wasPressed(Player::ControllerButton::Circle))
@@ -157,7 +158,7 @@ namespace SystemCore
         stateManager.setNext(Engine::SystemState::SceneCanvas);
         break;
       }
-      transitionLayer();
+      changeApplication();
     }
 
     if (controller.wasPressed(Player::ControllerButton::Circle))
@@ -166,9 +167,11 @@ namespace SystemCore
       log("Transitioning to Main Menu.");
     }
     menuNav.displayMenuNavigation();
+
+    /////////////// Move all this business logic to the MenuNav class.
   }
 
-  void ContextManager::transitionLayer()
+  void ContextManager::changeApplication()
   {
     if (application)
     {
@@ -178,23 +181,23 @@ namespace SystemCore
     switch (stateManager.current())
     {
     case Engine::SystemState::GameRecall:
-      application = new Games::Recall::Driver{this};
+      application = new Games::Recall::GameMain{this};
       logf("Transitioning to Recall (Game)");
       break;
     case Engine::SystemState::GamePhaseEvasion:
-      application = new Games::PhaseEvasion::Driver{this};
+      application = new Games::PhaseEvasion::GameMain{this};
       logf("Transitioning to Phase Evasion (Game)");
       break;
     case Engine::SystemState::GameChainReaction:
-      application = new Games::ChainReaction::Driver{this};
+      application = new Games::ChainReaction::GameMain{this};
       logf("Transitioning to Chain Reaction (Game)");
       break;
     case Engine::SystemState::GameReflex:
-      application = new Games::Reflex::Driver{this};
+      application = new Games::Reflex::GameMain{this};
       logf("Transitioning to Reflex (Game)");
       break;
     case Engine::SystemState::GameDemo:
-      application = new Games::Demo::Driver{this};
+      application = new Games::Demo::GameMain{this};
       logf("Transitioning to Demo (Game)");
       break;
     case Engine::SystemState::SceneCanvas:

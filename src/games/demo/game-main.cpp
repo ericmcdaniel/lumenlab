@@ -1,35 +1,55 @@
-#include "games/demo/driver.h"
+#include "games/demo/game-main.h"
 #include "player/controller.h"
 #include "logger.h"
 
 namespace Games::Demo
 {
-  void Driver::nextEvent()
+  void GameMain::nextEvent()
+  {
+    switch (state.current)
+    {
+    case Actions::Active:
+      readInput();
+      updatePosition();
+      render();
+      break;
+    }
+  }
+
+  void GameMain::readInput()
   {
     if (contextManager->controller.wasPressed(::Player::ControllerButton::Cross))
     {
       incrementCurrentScore();
-      contextManager->stateManager.displayShouldUpdate = true;
       contextManager->controller.rumble(::Player::RumbleOptions::SingleQuickPulse);
-      logf("Current score: %d", getCurrentScore());
+      logf("Current score: %d", state.currentScore);
     }
+  }
+
+  void GameMain::updatePosition()
+  {
     auto leftInput = contextManager->controller.leftAnalog();
     auto rightInput = contextManager->controller.rightAnalog();
     player1.move(leftInput.x, speed);
-    player1.updatePlayer1LedBuffer();
     player2.move(rightInput.x, speed);
-    player2.updatePlayer2LedBuffer();
   }
 
-  void Driver::incrementCurrentScore()
+  void GameMain::render()
   {
-    ++contextManager->stateManager.getDemoGameState().currentScore;
+    Engine::Renderer &renderer = contextManager->renderer;
+    renderer.renderEntity(player1);
+    renderer.renderEntity(player2);
+  }
+
+  void GameMain::incrementCurrentScore()
+  {
+    ++state.currentScore;
     contextManager->stateManager.displayShouldUpdate = true;
   }
 
-  void Driver::incrementHighScore()
+  void GameMain::incrementHighScore()
   {
-    ++contextManager->stateManager.getDemoGameState().highScore;
+    ++state.highScore;
     contextManager->stateManager.displayShouldUpdate = true;
   }
 }

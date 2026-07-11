@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/configuration.h"
+#include "platform/configuration.h"
 
 namespace Lights
 {

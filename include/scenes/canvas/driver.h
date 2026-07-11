@@ -1,12 +1,12 @@
 #pragma once
 
-#include "core/context-manager.h"
+#include "platform/context-manager.h"
 #include "engine/timer.h"
 #include "lights/color-hsl.h"
 
 namespace Scenes::Canvas
 {
-  class Driver : public Engine::Layer, private Engine::Timer
+  class Driver : public Engine::ApplicationRuntime, private Engine::Timer
   {
   public:
     Driver(SystemCore::ContextManager *ctx);

@@ -34,19 +34,19 @@ namespace Player
   };
 
   static const RumbleStep singleQuickSteps[] = {
-      {200, 100}};
+      {255, 75}};
   static const RumbleStep doubleQuickSteps[] = {
-      {255, 100},
-      {0, 100},
-      {200, 100}};
+      {180, 60},
+      {0, 45},
+      {255, 75}};
   static const RumbleStep deathSteps[] = {
+      {255, 75},
+      {0, 75},
       {255, 100},
-      {0, 100},
-      {255, 400},
-      {0, 100},
-      {255, 100},
-      {0, 100},
-      {255, 400}};
+      {0, 75},
+      {255, 85},
+      {0, 75},
+      {255, 100}};
   static const RumblePattern singleQuickRumbleSeq{singleQuickSteps};
   static const RumblePattern doubleQuickRumbleSeq{doubleQuickSteps};
   static const RumblePattern deathRumbleSeq{deathSteps};

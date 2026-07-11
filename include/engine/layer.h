@@ -1,10 +1,15 @@
 #pragma once
+#include <cstdint>
 
 namespace Engine
 {
-  class Layer
+  enum class Layer : uint8_t
   {
-  public:
-    virtual void nextEvent() = 0;
+    Background,
+    GameLayer_1,
+    GameLayer_2,
+    GameLayer_3,
+    GameLayer_4,
+    Effects
   };
 }

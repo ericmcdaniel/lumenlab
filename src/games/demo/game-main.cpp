@@ -36,8 +36,6 @@ namespace Games::Demo
 
   void GameMain::render()
   {
-    // player1.updatePlayer1LedBuffer();
-    // player2.updatePlayer2LedBuffer();
     Engine::Renderer &renderer = contextManager->renderer;
     renderer.renderEntity(player1);
     renderer.renderEntity(player2);

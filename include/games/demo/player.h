@@ -18,7 +18,7 @@ namespace Games::Demo
   class Player : public ::Player::BasePlayer, public Engine::RenderModel
   {
   public:
-    Player(SystemCore::ContextManager *ctx, const uint16_t width, ColorPalette profile) : ::Player::BasePlayer{ctx, width}
+    Player(SystemCore::ContextManager *ctx, ColorPalette profile) : ::Player::BasePlayer{ctx, width}
     {
       setColorPalette(profile);
     };
@@ -27,17 +27,17 @@ namespace Games::Demo
       if (profile == ColorPalette::Red)
       {
         pixels = {
-            {0xff0000, 0x40},
-            {0xff0000, 0x80},
-            {0xff0000, 0xa0},
-            {0xff0000, 0xe8},
+            {0xff4d4d, 0x40},
+            {0xff4d4d, 0x80},
+            {0xff4d4d, 0xa0},
+            {0xff4d4d, 0xe8},
             {0xff8888, 0xe8},
             {0xfff0f0, 0xff},
             {0xff8888, 0xe8},
-            {0xff0000, 0xe8},
-            {0xff0000, 0xa0},
-            {0xff0000, 0x80},
-            {0xff0000, 0x40}};
+            {0xff4d4d, 0xe8},
+            {0xff4d4d, 0xa0},
+            {0xff4d4d, 0x80},
+            {0xff4d4d, 0x40}};
         layer = Engine::Layer::GameLayer_2;
         positionPrecise = 50.0f;
       }
@@ -58,8 +58,6 @@ namespace Games::Demo
         layer = Engine::Layer::GameLayer_1;
       }
     }
-    void updatePlayer1LedBuffer();
-    void updatePlayer2LedBuffer();
 
     Engine::Layer layer;
 
@@ -68,6 +66,7 @@ namespace Games::Demo
     Engine::Layer getLayer() const override { return layer; }
 
   private:
-    Lights::Pixels<11> pixels;
+    static constexpr uint16_t width = 11;
+    Lights::Pixels<width> pixels;
   };
 }

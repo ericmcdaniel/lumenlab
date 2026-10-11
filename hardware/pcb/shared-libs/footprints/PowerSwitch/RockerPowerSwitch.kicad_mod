@@ -140,7 +140,7 @@
 		)
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/3d-models/RockerPowerSwitch.step"
+	(model "${KIPRJMOD}/../shared-libs/3d-models/RockerPowerSwitch.step"
 		(offset
 			(xyz 0 0 -21)
 		)

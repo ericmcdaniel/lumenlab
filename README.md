@@ -54,12 +54,12 @@ This guide will walk through both options and their practicality.
 
 ## Method A: Professionally Manufactured and Assembled
 
-A custom PCB was designed using KiCad 9 and gives LumenLab a clean aesthetic. All of the schematic files, PCB layout files, BOM, custom symbol libraries, footprints, 3D models, and Gerber files are all found in the `/board` directory. The PCB layout uses the manufacturing capabilities given by [PCBWay](https://www.pcbway.com/). Although you can potentially use any board house of your choosing, the ECAD model was designed with PCBWay's capabilities in mind. Production costs were minimized as much as safely reasonable, such as keeping it's width under 100mm. However for the amount of current that it can potentially consume, thermal safety was factored in, leading to a four-layer design with extra forgiving trace width and copper pours. My manufacturing costs were roughly $50 for ten boards. If you choose to have this manufactured else where, you must adjust for the capabilities of that board house. Your mileage may vary, and by quite a bit too.
+A custom PCB was designed using KiCad 9 and gives LumenLab a clean aesthetic. All of the schematic files, PCB layout files, BOM, custom symbol libraries, footprints, 3D models, and Gerber files are all found in the [/hardware](./hardware/) directory. The PCB layout uses the manufacturing capabilities given by [PCBWay](https://www.pcbway.com/). Although you can potentially use any board house of your choosing, the ECAD model was designed with PCBWay's capabilities in mind. Production costs were minimized as much as safely reasonable, such as keeping it's width under 100mm. However for the amount of current that it can potentially consume, thermal safety was factored in, leading to a four-layer design with extra forgiving trace width and copper pours. My manufacturing costs were roughly $50 for ten boards. If you choose to have this manufactured else where, you must adjust for the capabilities of that board house. Your mileage may vary, and by quite a bit too.
 
-![PCB Layout](./board/images/lumenlab-pcb-3d-view-front.png)
+![PCB Layout](./hardware/images/lumenlab-pcb-3d-view-front.png)
 <p align="center"><i>Figure 1: Front of PCB layout</i></p>
 
-You can view the KiCad schematic, PCB layout, BOM, and 3D rendering of the PCB design [in the *board* directory.](./board/)
+You can view the KiCad schematic, PCB layout, BOM, and 3D rendering of the PCB design [in the *board* directory.](./hardware/)
 
 ## Method B: Hand-Soldering a Prototype
 

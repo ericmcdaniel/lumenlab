@@ -31,7 +31,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install PlatformIO
-        run: pip install --upgrade platformio
+        run: pip install platformio==6.1.19
 
       - name: Build LumenLab
         run: pio run -e release

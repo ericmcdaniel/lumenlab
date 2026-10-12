@@ -695,6 +695,12 @@
           "label": "DK_Detail_Page",
           "name": "DK_Detail_Page",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "SNAPEDA_PACKAGE_ID",
+          "name": "SNAPEDA_PACKAGE_ID",
+          "show": false
         }
       ],
       "filter_string": "",

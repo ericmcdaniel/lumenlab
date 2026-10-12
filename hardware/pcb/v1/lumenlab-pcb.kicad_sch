@@ -7,7 +7,7 @@
 	(title_block
 		(title "LumenLab")
 		(date "2025-08-31")
-		(rev "v2")
+		(rev "v1")
 		(comment 2 "             for retro gaming and visual animations.")
 		(comment 3 "Description: An interactive LED strip entertainment platform")
 		(comment 4 "Author: Eric McDaniel")

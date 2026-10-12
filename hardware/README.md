@@ -9,7 +9,7 @@ The LumenLab PCB was designed using KiCad 9.0.5
 <p align="center"><i>Figure 1. LumenLab schematic and electronic layout</i></p>
 
 # Bill of Materials
-Still to be finalized, however you can [view the tentative list of components here](./bom/ibom.html).
+Still to be finalized, however you can [view the tentative list of components here](./v1/bom/ibom.html).
 
 # PCB Layout
 ![LumenLab PCB layout](./images/lumenlab-pcb-layout.png)

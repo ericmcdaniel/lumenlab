@@ -825,7 +825,7 @@
         "uuid": "2d045da9-3430-412d-9b59-c1acb2d29754"
       }
     ],
-    "used_designators": "#GND22,#PWR41,C16,C25,J2,J7-8",
+    "used_designators": "#GND22-23,#PWR22,#PWR41-43,C16,C25,J2,J7-8,R22-23",
     "variants": []
   },
   "sheets": [

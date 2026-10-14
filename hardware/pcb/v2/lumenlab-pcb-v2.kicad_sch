@@ -1389,6 +1389,227 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "1_Custom_Oled_Display:19IpsTftLcdDisplay"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 1.524 2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "ST7789"
+				(at 2.54 -0.254 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "19IpsTftLcdDisplay_0_1"
+				(rectangle
+					(start -6.35 11.176)
+					(end 6.35 -10.922)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type color)
+						(color 255 255 194 1)
+					)
+				)
+			)
+			(symbol "19IpsTftLcdDisplay_1_1"
+				(pin power_in line
+					(at -8.89 -8.89 0)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -8.89 8.89 0)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -8.89 6.35 0)
+					(length 2.54)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -8.89 3.81 0)
+					(length 2.54)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -8.89 1.27 0)
+					(length 2.54)
+					(name "RES"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -8.89 -1.27 0)
+					(length 2.54)
+					(name "DC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -8.89 -3.81 0)
+					(length 2.54)
+					(name "CS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -8.89 -6.35 0)
+					(length 2.54)
+					(name "BLK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "1_Custom_Speaker:Speaker"
 			(pin_names
 				(offset 0)
@@ -7876,6 +8097,18 @@
 		)
 		(uuid "f8f845a9-71a4-433b-b4ee-bca9784ece28")
 	)
+	(text "1.9\" LCD display"
+		(exclude_from_sim no)
+		(at 442.722 27.178 0)
+		(effects
+			(font
+				(size 2.286 2.286)
+				(thickness 0.4572)
+				(bold yes)
+			)
+		)
+		(uuid "fcbe824a-c9c0-4947-b31d-23beb59a49b7")
+	)
 	(junction
 		(at 166.37 55.88)
 		(diameter 0)
@@ -9018,6 +9251,16 @@
 	)
 	(wire
 		(pts
+			(xy 434.34 55.88) (xy 434.34 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41ed2af3-ca69-483b-8e9e-e4406a924839")
+	)
+	(wire
+		(pts
 			(xy 57.15 163.83) (xy 73.66 163.83)
 		)
 		(stroke
@@ -9126,6 +9369,16 @@
 			(type default)
 		)
 		(uuid "483a32cc-a535-423d-8f6f-bf1f47de3f00")
+	)
+	(wire
+		(pts
+			(xy 434.34 38.1) (xy 436.88 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49dfaee3-3e4e-4622-bf68-4fdb32181747")
 	)
 	(polyline
 		(pts
@@ -9498,6 +9751,16 @@
 			(type default)
 		)
 		(uuid "67678a7c-3b30-4fd4-951e-9f9ecd78ea14")
+	)
+	(wire
+		(pts
+			(xy 436.88 55.88) (xy 434.34 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68e37518-7ad4-4cec-9dc2-88413b686687")
 	)
 	(wire
 		(pts
@@ -10241,6 +10504,16 @@
 			(type default)
 		)
 		(uuid "b04d938d-38f2-4abd-af50-7aa6bfba1f0a")
+	)
+	(wire
+		(pts
+			(xy 434.34 35.56) (xy 434.34 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b1868691-2a46-4800-9f9a-84c085741f15")
 	)
 	(wire
 		(pts
@@ -16980,6 +17253,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+12V")
+		(at 434.34 35.56 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6c6ce555-c9e3-4fde-b902-9806b0e12124")
+		(property "Reference" "#PWR041"
+			(at 434.34 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 433.832 31.496 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 434.34 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 434.34 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 434.34 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "76b10946-c6de-4575-abee-ffa25d05c1ad")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#PWR041")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 74.93 101.6 90)
 		(unit 1)
@@ -17749,6 +18100,85 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "R16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:Earth")
+		(at 434.34 58.42 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "75ee3384-d37a-440b-9e35-8e8ae8a65584")
+		(property "Reference" "#PWR043"
+			(at 434.34 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 434.34 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 434.34 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 434.34 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
+			(at 434.34 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a031044b-d9cd-4912-8aa7-1dbebf1e76c4")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -23750,6 +24180,105 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "1_Custom_Oled_Display:19IpsTftLcdDisplay")
+		(at 445.77 46.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ebff8998-15c1-4ea7-8477-9b3b455faed7")
+		(property "Reference" "U8"
+			(at 446.786 44.958 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ST7789"
+			(at 444.5 47.752 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 445.77 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 445.77 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 445.77 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "7"
+			(uuid "d7fb126d-be23-4e76-a6ec-416084555055")
+		)
+		(pin "2"
+			(uuid "f6c9845b-ced5-450b-9444-8a2902c4eeeb")
+		)
+		(pin "4"
+			(uuid "404eddfd-c7a8-4016-96ac-dd9936c5a887")
+		)
+		(pin "5"
+			(uuid "c34680c5-9de8-418f-bf00-a624142811bc")
+		)
+		(pin "6"
+			(uuid "78ed8731-2765-42c1-bbbd-780a05f621d4")
+		)
+		(pin "8"
+			(uuid "84a171b1-d9b7-4251-b07e-fbbafc0b5125")
+		)
+		(pin "3"
+			(uuid "8dbdd15f-c71c-480c-af52-f543cfcf92c4")
+		)
+		(pin "1"
+			(uuid "ed91dcfe-c061-4383-9406-7744cdabd40a")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "U8")
 					(unit 1)
 				)
 			)

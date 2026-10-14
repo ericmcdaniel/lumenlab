@@ -723,6 +723,24 @@
           "label": "SNAPEDA_PACKAGE_ID",
           "name": "SNAPEDA_PACKAGE_ID",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Type",
+          "name": "Sim.Type",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -781,7 +799,7 @@
         "uuid": "2d045da9-3430-412d-9b59-c1acb2d29754"
       }
     ],
-    "used_designators": "C25",
+    "used_designators": "C16,C25,J7",
     "variants": []
   },
   "sheets": [

@@ -1396,7 +1396,7 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "U"
-				(at 1.524 2.032 0)
+				(at 2.286 2.032 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1406,7 +1406,7 @@
 				)
 			)
 			(property "Value" "ST7789"
-				(at 2.54 -0.254 0)
+				(at 3.048 -0.254 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1450,8 +1450,8 @@
 			)
 			(symbol "19IpsTftLcdDisplay_0_1"
 				(rectangle
-					(start -6.35 11.176)
-					(end 6.35 -10.922)
+					(start -7.62 11.176)
+					(end 6.858 -10.922)
 					(stroke
 						(width 0)
 						(type default)
@@ -1464,7 +1464,7 @@
 			)
 			(symbol "19IpsTftLcdDisplay_1_1"
 				(pin power_in line
-					(at -8.89 -8.89 0)
+					(at -10.16 -8.89 0)
 					(length 2.54)
 					(name "GND"
 						(effects
@@ -1482,7 +1482,7 @@
 					)
 				)
 				(pin power_in line
-					(at -8.89 8.89 0)
+					(at -10.16 8.89 0)
 					(length 2.54)
 					(name "VCC"
 						(effects
@@ -1500,7 +1500,7 @@
 					)
 				)
 				(pin input line
-					(at -8.89 6.35 0)
+					(at -10.16 6.35 0)
 					(length 2.54)
 					(name "SCL"
 						(effects
@@ -1518,7 +1518,7 @@
 					)
 				)
 				(pin input line
-					(at -8.89 3.81 0)
+					(at -10.16 3.81 0)
 					(length 2.54)
 					(name "SDA"
 						(effects
@@ -1536,7 +1536,7 @@
 					)
 				)
 				(pin input line
-					(at -8.89 1.27 0)
+					(at -10.16 1.27 0)
 					(length 2.54)
 					(name "RES"
 						(effects
@@ -1554,7 +1554,7 @@
 					)
 				)
 				(pin input line
-					(at -8.89 -1.27 0)
+					(at -10.16 -1.27 0)
 					(length 2.54)
 					(name "DC"
 						(effects
@@ -1572,7 +1572,7 @@
 					)
 				)
 				(pin input line
-					(at -8.89 -3.81 0)
+					(at -10.16 -3.81 0)
 					(length 2.54)
 					(name "CS"
 						(effects
@@ -1590,7 +1590,7 @@
 					)
 				)
 				(pin input line
-					(at -8.89 -6.35 0)
+					(at -10.16 -6.35 0)
 					(length 2.54)
 					(name "BLK"
 						(effects
@@ -3771,17 +3771,6 @@
 				)
 			)
 			(symbol "SN74AHC1G125DBVR_0_0"
-				(rectangle
-					(start -12.7 10.16)
-					(end 12.7 -7.62)
-					(stroke
-						(width 0.41)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
 				(pin input line
 					(at -17.78 5.08 0)
 					(length 5.08)
@@ -3870,6 +3859,19 @@
 								(size 1.016 1.016)
 							)
 						)
+					)
+				)
+			)
+			(symbol "SN74AHC1G125DBVR_1_1"
+				(rectangle
+					(start -12.7 10.16)
+					(end 12.7 -7.62)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type background)
 					)
 				)
 			)
@@ -7922,7 +7924,7 @@
 	)
 	(text "Configure for\nINPUT, not\nINPUT_PULLUP.\nNo internal\nresistors."
 		(exclude_from_sim no)
-		(at 12.7 117.856 0)
+		(at 1.778 109.728 0)
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -8418,10 +8420,6 @@
 		(uuid "093b9ec1-7ac5-49b7-a858-08791ea57e22")
 	)
 	(no_connect
-		(at 57.15 135.89)
-		(uuid "0d5e71f9-f381-4848-b891-58d0a85e100b")
-	)
-	(no_connect
 		(at 107.95 152.4)
 		(uuid "11889e51-15fc-4ad0-ad92-f92294d27ba8")
 	)
@@ -8454,10 +8452,6 @@
 		(uuid "418a44f5-4bae-477d-a866-bd1e957bf4be")
 	)
 	(no_connect
-		(at 26.67 115.57)
-		(uuid "52bec33d-a060-423a-989a-48921fa278f8")
-	)
-	(no_connect
 		(at 161.29 149.86)
 		(uuid "686d7980-1877-409f-b56e-cdb30d6e7795")
 	)
@@ -8476,10 +8470,6 @@
 	(no_connect
 		(at 161.29 154.94)
 		(uuid "88844caf-3a88-4d8a-8790-4103f495eea3")
-	)
-	(no_connect
-		(at 57.15 148.59)
-		(uuid "92a20138-b666-430a-b1df-3ffb3771bb0b")
 	)
 	(no_connect
 		(at 161.29 175.26)
@@ -8524,10 +8514,6 @@
 	(no_connect
 		(at 400.05 102.87)
 		(uuid "fd91dc93-dca7-4d44-a6c3-34ce5b07daf4")
-	)
-	(no_connect
-		(at 57.15 153.67)
-		(uuid "ffaaf722-42cb-42ec-816d-18328fdc1acc")
 	)
 	(wire
 		(pts
@@ -8721,6 +8707,16 @@
 	)
 	(wire
 		(pts
+			(xy 416.56 50.8) (xy 436.88 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "127b922b-3794-4001-bfdf-9813bbacb630")
+	)
+	(wire
+		(pts
 			(xy 349.25 106.68) (xy 360.68 106.68)
 		)
 		(stroke
@@ -8878,6 +8874,26 @@
 			(type default)
 		)
 		(uuid "1b8b55e5-7ed2-4a27-9612-3f6fcda67674")
+	)
+	(wire
+		(pts
+			(xy 416.56 40.64) (xy 436.88 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1be7b100-8d2b-4d73-9a27-bad5556919fe")
+	)
+	(wire
+		(pts
+			(xy 57.15 148.59) (xy 73.66 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d97b00d-39ba-4f82-be8a-596bf56d3b06")
 	)
 	(wire
 		(pts
@@ -9128,6 +9144,16 @@
 			(type default)
 		)
 		(uuid "30ba1db5-dc27-4145-9607-8a23d5f74dc0")
+	)
+	(wire
+		(pts
+			(xy 416.56 45.72) (xy 436.88 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32287e2b-cbeb-47ef-98fc-4e3f384ea2d1")
 	)
 	(wire
 		(pts
@@ -9814,6 +9840,16 @@
 	)
 	(wire
 		(pts
+			(xy 12.7 115.57) (xy 26.67 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f44e4f3-be17-4473-9d36-8590d4091d00")
+	)
+	(wire
+		(pts
 			(xy 166.37 63.5) (xy 166.37 66.04)
 		)
 		(stroke
@@ -10004,6 +10040,16 @@
 	)
 	(wire
 		(pts
+			(xy 57.15 135.89) (xy 73.66 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c6c90df-da1e-49b2-a779-ae00783ba004")
+	)
+	(wire
+		(pts
 			(xy 175.26 104.14) (xy 182.88 104.14)
 		)
 		(stroke
@@ -10121,6 +10167,16 @@
 			(type default)
 		)
 		(uuid "8566a1be-973d-4e34-97ed-e6f7bf955885")
+	)
+	(wire
+		(pts
+			(xy 416.56 53.34) (xy 436.88 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "870689e4-ce8f-4ceb-a4e6-db504b587745")
 	)
 	(wire
 		(pts
@@ -10396,6 +10452,16 @@
 	)
 	(wire
 		(pts
+			(xy 416.56 43.18) (xy 436.88 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5eb964f-5a48-41a8-84a6-b3a9f732e7e6")
+	)
+	(wire
+		(pts
 			(xy 394.97 115.57) (xy 394.97 119.38)
 		)
 		(stroke
@@ -10504,6 +10570,16 @@
 			(type default)
 		)
 		(uuid "b04d938d-38f2-4abd-af50-7aa6bfba1f0a")
+	)
+	(wire
+		(pts
+			(xy 416.56 48.26) (xy 436.88 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b07fb1da-bc5b-4f32-8110-1b00b3290fae")
 	)
 	(wire
 		(pts
@@ -11303,6 +11379,16 @@
 	)
 	(wire
 		(pts
+			(xy 57.15 153.67) (xy 73.66 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f2a6ce36-0a01-4249-9fd8-f9943f682786")
+	)
+	(wire
+		(pts
 			(xy 238.76 143.51) (xy 238.76 146.05)
 		)
 		(stroke
@@ -11471,6 +11557,16 @@
 		)
 		(uuid "1232ee7c-d97d-4ea2-a552-9a3246810e89")
 	)
+	(label "ESP32_GPIO22"
+		(at 416.56 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "12f9f1d5-bc2b-450b-9bd0-b6bec0873cc8")
+	)
 	(label "ESP32_GPIO32"
 		(at 246.38 130.81 0)
 		(effects
@@ -11481,6 +11577,16 @@
 		)
 		(uuid "18e01ebd-769f-47de-aa2c-eafb856604f4")
 	)
+	(label "ESP32_GPIO18"
+		(at 416.56 40.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "20bbfd57-1322-4063-a88e-3fe002dfb9e2")
+	)
 	(label "LED_DIN"
 		(at 105.41 100.33 0)
 		(effects
@@ -11490,6 +11596,16 @@
 			(justify left bottom)
 		)
 		(uuid "233f0caf-e765-4540-8437-df8af874147f")
+	)
+	(label "ESP32_GPIO23"
+		(at 73.66 148.59 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2b9d2cb7-0e9c-49a8-8751-8d2a88271e72")
 	)
 	(label "ESP32_TX"
 		(at 181.61 134.62 180)
@@ -11641,7 +11757,7 @@
 		)
 		(uuid "5e83ca8c-ac7a-402e-b97f-44984b58daf9")
 	)
-	(label "ESP32_GPIO25"
+	(label "ESP32_GPIO36"
 		(at 360.68 100.33 180)
 		(effects
 			(font
@@ -11711,6 +11827,16 @@
 		)
 		(uuid "7ad2a102-6235-4e93-b4e2-e4d52d4e0412")
 	)
+	(label "ESP32_GPIO26"
+		(at 73.66 153.67 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7d053f0d-1e89-431c-b1fd-5fb7e1ad9903")
+	)
 	(label "ESP32_GPIO18"
 		(at 73.66 138.43 180)
 		(effects
@@ -11720,6 +11846,16 @@
 			(justify right bottom)
 		)
 		(uuid "7d49d281-da8d-4c6f-b638-027eca46de37")
+	)
+	(label "ESP32_GPIO23"
+		(at 416.56 43.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8008c965-22b2-4d20-bb78-3702b8dd2cca")
 	)
 	(label "ESP32_GPIO15"
 		(at 210.82 99.06 180)
@@ -11841,6 +11977,16 @@
 		)
 		(uuid "9b761cc9-3fb1-49e7-badd-6e78622f666b")
 	)
+	(label "ESP32_GPIO39"
+		(at 12.7 115.57 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9cc7fe31-8683-4523-bcaa-2d49268b38c9")
+	)
 	(label "ESP32_GPIO33"
 		(at 73.66 161.29 180)
 		(effects
@@ -11861,7 +12007,7 @@
 		)
 		(uuid "a493fd9e-f86f-4085-a2c0-98b95f50d1bd")
 	)
-	(label "ESP32_GPIO18"
+	(label "ESP32_GPIO26"
 		(at 73.66 73.66 0)
 		(effects
 			(font
@@ -11881,7 +12027,7 @@
 		)
 		(uuid "a78db202-7521-4c43-ae07-5f2700f75d47")
 	)
-	(label "ESP32_GPIO36"
+	(label "ESP32_GPIO39"
 		(at 246.38 146.05 0)
 		(effects
 			(font
@@ -11890,6 +12036,16 @@
 			(justify left bottom)
 		)
 		(uuid "b565ee18-f3bc-44e6-a16f-9a20ff7f4732")
+	)
+	(label "ESP32_GPIO21"
+		(at 416.56 48.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b8c76bbe-022a-47a9-8515-8e41574ee1ac")
 	)
 	(label "DATA+"
 		(at 125.73 157.48 0)
@@ -11961,6 +12117,16 @@
 		)
 		(uuid "c952de8b-2497-4843-9ac9-7d5554999a94")
 	)
+	(label "ESP32_GPIO17"
+		(at 73.66 135.89 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d2cee7d0-372f-4cfa-8aa5-92a6f65b20dc")
+	)
 	(label "ESP32_GPIO12"
 		(at 210.82 101.6 180)
 		(effects
@@ -11970,6 +12136,16 @@
 			(justify right bottom)
 		)
 		(uuid "d319162f-5890-4309-86c0-faeb1142d777")
+	)
+	(label "ESP32_GPIO17"
+		(at 416.56 45.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d786e876-e7fd-4fd0-92ad-9d26392af5c4")
 	)
 	(label "ESP32_TX"
 		(at 72.39 110.49 180)
@@ -24187,7 +24363,7 @@
 	)
 	(symbol
 		(lib_id "1_Custom_Oled_Display:19IpsTftLcdDisplay")
-		(at 445.77 46.99 0)
+		(at 447.04 46.99 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -24197,7 +24373,7 @@
 		(dnp no)
 		(uuid "ebff8998-15c1-4ea7-8477-9b3b455faed7")
 		(property "Reference" "U8"
-			(at 446.786 44.958 0)
+			(at 448.056 44.958 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -24208,7 +24384,7 @@
 			)
 		)
 		(property "Value" "ST7789"
-			(at 444.5 47.752 0)
+			(at 445.77 47.752 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -24219,7 +24395,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 445.77 46.99 0)
+			(at 447.04 46.99 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24230,7 +24406,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 445.77 46.99 0)
+			(at 447.04 46.99 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24241,7 +24417,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 445.77 46.99 0)
+			(at 447.04 46.99 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

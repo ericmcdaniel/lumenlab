@@ -9,7 +9,7 @@
 		(in_pos_files yes)
 		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "U"
-			(at 1.524 2.032 0)
+			(at 2.286 2.032 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19,7 +19,7 @@
 			)
 		)
 		(property "Value" "ST7789"
-			(at 2.54 -0.254 0)
+			(at 3.048 -0.254 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -63,8 +63,8 @@
 		)
 		(symbol "19IpsTftLcdDisplay_0_1"
 			(rectangle
-				(start -6.35 11.176)
-				(end 6.35 -10.922)
+				(start -7.62 11.176)
+				(end 6.858 -10.922)
 				(stroke
 					(width 0)
 					(type default)
@@ -77,7 +77,7 @@
 		)
 		(symbol "19IpsTftLcdDisplay_1_1"
 			(pin power_in line
-				(at -8.89 -8.89 0)
+				(at -10.16 -8.89 0)
 				(length 2.54)
 				(name "GND"
 					(effects
@@ -95,7 +95,7 @@
 				)
 			)
 			(pin power_in line
-				(at -8.89 8.89 0)
+				(at -10.16 8.89 0)
 				(length 2.54)
 				(name "VCC"
 					(effects
@@ -113,7 +113,7 @@
 				)
 			)
 			(pin input line
-				(at -8.89 6.35 0)
+				(at -10.16 6.35 0)
 				(length 2.54)
 				(name "SCL"
 					(effects
@@ -131,7 +131,7 @@
 				)
 			)
 			(pin input line
-				(at -8.89 3.81 0)
+				(at -10.16 3.81 0)
 				(length 2.54)
 				(name "SDA"
 					(effects
@@ -149,7 +149,7 @@
 				)
 			)
 			(pin input line
-				(at -8.89 1.27 0)
+				(at -10.16 1.27 0)
 				(length 2.54)
 				(name "RES"
 					(effects
@@ -167,7 +167,7 @@
 				)
 			)
 			(pin input line
-				(at -8.89 -1.27 0)
+				(at -10.16 -1.27 0)
 				(length 2.54)
 				(name "DC"
 					(effects
@@ -185,7 +185,7 @@
 				)
 			)
 			(pin input line
-				(at -8.89 -3.81 0)
+				(at -10.16 -3.81 0)
 				(length 2.54)
 				(name "CS"
 					(effects
@@ -203,7 +203,7 @@
 				)
 			)
 			(pin input line
-				(at -8.89 -6.35 0)
+				(at -10.16 -6.35 0)
 				(length 2.54)
 				(name "BLK"
 					(effects

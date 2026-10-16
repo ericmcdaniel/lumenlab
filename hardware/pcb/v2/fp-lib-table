@@ -20,4 +20,5 @@
 	(lib (name "2_Custom_SilkscreenTrimmed") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/SilkscreenTrimmed/JST_VH_1x06_P3.96_SilkscreenTrimmed.pretty") (options "") (descr ""))
 	(lib (name "2_Vendor_ESP32_WROOM_32E") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/ESP32") (options "") (descr ""))
 	(lib (name "2_Vendor_MicroSD_Card_Reader") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/microsd-card") (options "") (descr ""))
+	(lib (name "2_Vendor_Power_Mux") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/TPS2113APWR") (options "") (descr ""))
 )

@@ -12,7 +12,7 @@
 		(in_pos_files yes)
 		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "U"
-			(at -1.27 2.032 0)
+			(at -1.27 9.398 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -23,7 +23,7 @@
 			)
 		)
 		(property "Value" "TPS2113APWR"
-			(at -12.7 -16.7 0)
+			(at -6.35 6.858 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -69,7 +69,7 @@
 		)
 		(symbol "TPS2113APWR_0_0"
 			(pin input line
-				(at -12.7 3.81 0)
+				(at -11.43 3.81 0)
 				(length 5.08)
 				(name "~{EN}"
 					(effects
@@ -87,7 +87,7 @@
 				)
 			)
 			(pin input line
-				(at -12.7 1.27 0)
+				(at -11.43 1.27 0)
 				(length 5.08)
 				(name "ILIM"
 					(effects
@@ -105,7 +105,7 @@
 				)
 			)
 			(pin power_in line
-				(at 12.7 -5.08 180)
+				(at 11.43 -3.81 180)
 				(length 5.08)
 				(name "GND"
 					(effects
@@ -123,7 +123,7 @@
 				)
 			)
 			(pin input line
-				(at -12.7 -3.81 0)
+				(at -11.43 -3.81 0)
 				(length 5.08)
 				(name "IN2"
 					(effects
@@ -141,7 +141,7 @@
 				)
 			)
 			(pin input line
-				(at -12.7 -1.27 0)
+				(at -11.43 -1.27 0)
 				(length 5.08)
 				(name "IN1"
 					(effects
@@ -161,7 +161,7 @@
 		)
 		(symbol "TPS2113APWR_1_0"
 			(pin open_collector line
-				(at 12.7 -1.27 180)
+				(at 11.43 -1.27 180)
 				(length 5.08)
 				(name "STAT"
 					(effects
@@ -179,7 +179,7 @@
 				)
 			)
 			(pin input line
-				(at 12.7 5.08 180)
+				(at 11.43 3.81 180)
 				(length 5.08)
 				(name "VSNS"
 					(effects
@@ -197,7 +197,7 @@
 				)
 			)
 			(pin power_out line
-				(at 12.7 1.27 180)
+				(at 11.43 1.27 180)
 				(length 5.08)
 				(name "OUT"
 					(effects
@@ -217,8 +217,8 @@
 		)
 		(symbol "TPS2113APWR_1_1"
 			(rectangle
-				(start -7.62 7.366)
-				(end 7.62 -7.62)
+				(start -6.35 5.588)
+				(end 6.35 -5.588)
 				(stroke
 					(width 0.254)
 					(type solid)

@@ -22,4 +22,5 @@
 	(lib (name "2_Vendor_MicroSD_Card_Reader") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/microsd-card") (options "") (descr ""))
 	(lib (name "2_Vendor_Power_Mux") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/TPS2113APWR") (options "") (descr ""))
 	(lib (name "2_Vendor_ESPProtection") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/USBLC6") (options "") (descr ""))
+	(lib (name "2_Vendor_MAX98357A") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/MAX98357A") (options "") (descr ""))
 )

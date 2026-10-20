@@ -16,4 +16,5 @@
 	(lib (name "1_Custom_Oled_Display") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/oled-display.kicad_sym") (options "") (descr ""))
 	(lib (name "1_Vendor_Power_Mux") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/TPS2113APWR/TPS2113APWR.kicad_sym") (options "") (descr ""))
 	(lib (name "1_Vendor_ESDProtection") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/USBLC6/USBLC6-2SC6.kicad_sym") (options "") (descr ""))
+	(lib (name "1_Vendor_MAX98357A") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/MAX98357A/MAX98357AETE_T.kicad_sym") (options "") (descr ""))
 )

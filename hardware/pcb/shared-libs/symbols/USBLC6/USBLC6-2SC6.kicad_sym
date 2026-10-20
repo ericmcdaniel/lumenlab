@@ -142,8 +142,8 @@
 		)
 		(symbol "USBLC6-2SC6_0_0"
 			(rectangle
-				(start -6.35 6.35)
-				(end 6.35 -6.35)
+				(start -6.35 5.08)
+				(end 6.35 -5.08)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -154,7 +154,7 @@
 			)
 			(polyline
 				(pts
-					(xy -6.35 5.08) (xy 6.35 5.08)
+					(xy -6.35 3.81) (xy 6.35 3.81)
 				)
 				(stroke
 					(width 0.1524)
@@ -178,7 +178,7 @@
 			)
 			(polyline
 				(pts
-					(xy -6.35 -5.08) (xy 6.35 -5.08)
+					(xy -6.35 -3.81) (xy 6.35 -3.81)
 				)
 				(stroke
 					(width 0.1524)
@@ -190,7 +190,7 @@
 			)
 			(polyline
 				(pts
-					(xy -5.08 2.54) (xy -5.08 -2.54)
+					(xy -5.08 2.032) (xy -5.08 -1.778)
 				)
 				(stroke
 					(width 0.1524)
@@ -202,7 +202,7 @@
 			)
 			(polyline
 				(pts
-					(xy -5.08 2.54) (xy 5.08 2.54)
+					(xy -5.08 2.032) (xy 5.08 2.032)
 				)
 				(stroke
 					(width 0.1524)
@@ -225,7 +225,7 @@
 			)
 			(polyline
 				(pts
-					(xy -5.08 -2.54) (xy 5.08 -2.54)
+					(xy -5.08 -1.778) (xy 5.08 -1.778)
 				)
 				(stroke
 					(width 0.1524)
@@ -237,7 +237,7 @@
 			)
 			(polyline
 				(pts
-					(xy -3.302 3.556) (xy -3.302 1.524) (xy -1.778 2.54) (xy -3.302 3.556)
+					(xy -3.302 3.048) (xy -3.302 1.016) (xy -1.778 2.032) (xy -3.302 3.048)
 				)
 				(stroke
 					(width 0.254)
@@ -249,7 +249,7 @@
 			)
 			(polyline
 				(pts
-					(xy -3.302 -1.524) (xy -3.302 -3.556) (xy -1.778 -2.54) (xy -3.302 -1.524)
+					(xy -3.302 -0.762) (xy -3.302 -2.794) (xy -1.778 -1.778) (xy -3.302 -0.762)
 				)
 				(stroke
 					(width 0.254)
@@ -261,7 +261,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 3.556) (xy -1.778 1.524)
+					(xy -1.778 3.048) (xy -1.778 1.016)
 				)
 				(stroke
 					(width 0.254)
@@ -273,7 +273,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 -1.524) (xy -1.778 -3.556)
+					(xy -1.778 -0.762) (xy -1.778 -2.794)
 				)
 				(stroke
 					(width 0.254)
@@ -296,7 +296,7 @@
 				)
 			)
 			(circle
-				(center -0.0048 5.0626)
+				(center 0 3.81)
 				(radius 0.254)
 				(stroke
 					(width 0.381)
@@ -307,30 +307,7 @@
 				)
 			)
 			(circle
-				(center 0 2.54)
-				(radius 0.254)
-				(stroke
-					(width 0.381)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 5.08)
-				)
-				(stroke
-					(width 0.1524)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(circle
-				(center 0 -2.54)
+				(center 0 2.032)
 				(radius 0.254)
 				(stroke
 					(width 0.381)
@@ -342,7 +319,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0 -5.08) (xy 0 0)
+					(xy 0 0) (xy 0 3.81)
 				)
 				(stroke
 					(width 0.1524)
@@ -353,7 +330,30 @@
 				)
 			)
 			(circle
-				(center 0 -5.08)
+				(center 0 -1.778)
+				(radius 0.254)
+				(stroke
+					(width 0.381)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 -3.81) (xy 0 0)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 0 -3.81)
 				(radius 0.254)
 				(stroke
 					(width 0.381)
@@ -377,7 +377,7 @@
 			)
 			(polyline
 				(pts
-					(xy 1.778 3.556) (xy 1.778 1.524) (xy 3.302 2.54) (xy 1.778 3.556)
+					(xy 1.778 3.048) (xy 1.778 1.016) (xy 3.302 2.032) (xy 1.778 3.048)
 				)
 				(stroke
 					(width 0.254)
@@ -389,7 +389,7 @@
 			)
 			(polyline
 				(pts
-					(xy 1.778 -1.524) (xy 1.778 -3.556) (xy 3.302 -2.54) (xy 1.778 -1.524)
+					(xy 1.778 -0.762) (xy 1.778 -2.794) (xy 3.302 -1.778) (xy 1.778 -0.762)
 				)
 				(stroke
 					(width 0.254)
@@ -401,7 +401,7 @@
 			)
 			(polyline
 				(pts
-					(xy 3.302 3.556) (xy 3.302 1.524)
+					(xy 3.302 3.048) (xy 3.302 1.016)
 				)
 				(stroke
 					(width 0.254)
@@ -413,7 +413,7 @@
 			)
 			(polyline
 				(pts
-					(xy 3.302 -1.524) (xy 3.302 -3.556)
+					(xy 3.302 -0.762) (xy 3.302 -2.794)
 				)
 				(stroke
 					(width 0.254)
@@ -425,7 +425,7 @@
 			)
 			(polyline
 				(pts
-					(xy 5.08 2.54) (xy 5.08 -2.54)
+					(xy 5.08 2.032) (xy 5.08 -1.778)
 				)
 				(stroke
 					(width 0.1524)
@@ -447,7 +447,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at -11.43 5.08 0)
+				(at -11.43 3.81 0)
 				(length 5.08)
 				(name ""
 					(effects
@@ -483,7 +483,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at -11.43 -5.08 0)
+				(at -11.43 -3.81 0)
 				(length 5.08)
 				(name ""
 					(effects
@@ -501,7 +501,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 11.43 -5.08 180)
+				(at 11.43 -3.81 180)
 				(length 5.08)
 				(name ""
 					(effects
@@ -537,7 +537,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 11.43 5.08 180)
+				(at 11.43 3.81 180)
 				(length 5.08)
 				(name ""
 					(effects

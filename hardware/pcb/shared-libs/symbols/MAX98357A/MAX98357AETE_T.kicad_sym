@@ -12,7 +12,7 @@
 		(in_pos_files yes)
 		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "U"
-			(at -12.7 16.24 0)
+			(at -2.54 16.51 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -23,7 +23,7 @@
 			)
 		)
 		(property "Value" "MAX98357AETE_T"
-			(at -12.7 -26.86 0)
+			(at -9.398 -10.16 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -34,7 +34,7 @@
 			)
 		)
 		(property "Footprint" "MAX98357AETE_T:QFN50P300X300X80-17N"
-			(at 0 0 0)
+			(at 0 1.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(hide yes)
@@ -57,7 +57,7 @@
 			)
 		)
 		(property "Description" "Audio Amp Speaker 1-CH Mono Class-D 16-Pin TQFN EP T/R"
-			(at 0 0 0)
+			(at 0 1.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(hide yes)
@@ -130,7 +130,7 @@
 		)
 		(symbol "MAX98357AETE_T_0_0"
 			(pin input line
-				(at -17.78 5.08 0)
+				(at -13.97 6.35 0)
 				(length 5.08)
 				(name "DIN"
 					(effects
@@ -148,7 +148,7 @@
 				)
 			)
 			(pin input line
-				(at -17.78 2.54 0)
+				(at -13.97 3.81 0)
 				(length 5.08)
 				(name "GAIN_SLOT"
 					(effects
@@ -166,7 +166,7 @@
 				)
 			)
 			(pin power_in line
-				(at 17.78 -15.24 180)
+				(at 11.43 0 180)
 				(length 5.08)
 				(name "GND"
 					(effects
@@ -184,7 +184,7 @@
 				)
 			)
 			(pin input line
-				(at -17.78 -2.54 0)
+				(at -13.97 -1.27 0)
 				(length 5.08)
 				(name "SD_MODE"
 					(effects
@@ -202,7 +202,7 @@
 				)
 			)
 			(pin power_in line
-				(at 17.78 12.7 180)
+				(at 11.43 12.7 180)
 				(length 5.08)
 				(name "VDD"
 					(effects
@@ -220,7 +220,7 @@
 				)
 			)
 			(pin power_in line
-				(at 17.78 10.16 180)
+				(at 11.43 10.16 180)
 				(length 5.08)
 				(name "VDD__1"
 					(effects
@@ -238,7 +238,7 @@
 				)
 			)
 			(pin output line
-				(at 17.78 2.54 180)
+				(at 11.43 5.08 180)
 				(length 5.08)
 				(name "OUTP"
 					(effects
@@ -256,7 +256,7 @@
 				)
 			)
 			(pin output line
-				(at 17.78 5.08 180)
+				(at 11.43 7.62 180)
 				(length 5.08)
 				(name "OUTN"
 					(effects
@@ -274,7 +274,7 @@
 				)
 			)
 			(pin power_in line
-				(at 17.78 -17.78 180)
+				(at 11.43 -2.54 180)
 				(length 5.08)
 				(name "GND__1"
 					(effects
@@ -292,7 +292,7 @@
 				)
 			)
 			(pin input clock
-				(at -17.78 0 0)
+				(at -13.97 1.27 0)
 				(length 5.08)
 				(name "LRCLK"
 					(effects
@@ -310,7 +310,7 @@
 				)
 			)
 			(pin power_in line
-				(at 17.78 -20.32 180)
+				(at 11.43 -5.08 180)
 				(length 5.08)
 				(name "GND__2"
 					(effects
@@ -328,7 +328,7 @@
 				)
 			)
 			(pin input clock
-				(at -17.78 7.62 0)
+				(at -13.97 8.89 0)
 				(length 5.08)
 				(name "BCLK"
 					(effects
@@ -346,7 +346,7 @@
 				)
 			)
 			(pin power_in line
-				(at 17.78 -12.7 180)
+				(at 11.43 2.54 180)
 				(length 5.08)
 				(name "EP"
 					(effects
@@ -366,8 +366,8 @@
 		)
 		(symbol "MAX98357AETE_T_1_1"
 			(rectangle
-				(start -12.7 15.24)
-				(end 12.7 -22.86)
+				(start -8.89 14.732)
+				(end 6.35 -7.366)
 				(stroke
 					(width 0.254)
 					(type solid)

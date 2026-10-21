@@ -130,7 +130,7 @@
 					)
 				)
 				(pin power_in line
-					(at 0 -22.86 90)
+					(at 12.7 -17.78 180)
 					(length 2.54)
 					(name "GND"
 						(effects
@@ -7198,6 +7198,238 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Switch:SW_MEC_5E"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 0.635 5.715 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "SW_MEC_5E"
+				(at 0 -3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.apem.com/medias/download/MEC_switches_serie_MULTIMEC5E.pdf"
+				(at 0 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "MEC 5E single pole normally-open tactile switch"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "switch normally-open pushbutton push-button"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SW*MEC*5G*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SW_MEC_5E_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -2.54 2.54) (xy -2.286 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.286 3.81) (xy 2.286 3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -1.778 2.54)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 3.81) (xy 0 5.588)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.778 2.54)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 2.54 2.54) (xy 2.286 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Switch:SW_SPST"
 			(pin_names
 				(offset 0)
@@ -8710,6 +8942,12 @@
 		(uuid "0104d13e-8fcd-4429-ac32-69e293160c4e")
 	)
 	(junction
+		(at 146.05 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0a1ab54f-2aa9-4962-b1cf-d5d6dfc325f6")
+	)
+	(junction
 		(at 226.06 85.09)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8752,6 +8990,12 @@
 		(uuid "24d7a63f-1d98-4135-9b6c-4a2477823f99")
 	)
 	(junction
+		(at 154.94 116.84)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "251e0338-fc0c-4060-a5d6-5a12a465fb79")
+	)
+	(junction
 		(at 15.24 132.08)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8770,6 +9014,12 @@
 		(uuid "2e324a6b-176c-4e0a-b85a-899701b1ed20")
 	)
 	(junction
+		(at 167.64 190.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "308890db-ce27-42ac-982b-339d10ea162c")
+	)
+	(junction
 		(at 274.32 156.21)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8780,6 +9030,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "30ec0c75-ee57-4d45-ab11-3dca8e417402")
+	)
+	(junction
+		(at 148.59 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3288dc24-68d3-464f-9ed0-39a6bd4e0245")
 	)
 	(junction
 		(at 167.64 116.84)
@@ -8810,6 +9066,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4ad9f50e-b538-448b-897e-7234c9ae7c6e")
+	)
+	(junction
+		(at 167.64 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4c0b706b-bc9e-4cb0-a9a0-fab9a4c295e0")
 	)
 	(junction
 		(at 83.82 190.5)
@@ -8918,6 +9180,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "84ebd1b4-39d9-4c08-8faf-8aecda586b90")
+	)
+	(junction
+		(at 170.18 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8c23cb5e-a6cc-4bea-98be-e7db44377e2b")
 	)
 	(junction
 		(at 267.97 59.69)
@@ -9040,6 +9308,12 @@
 		(uuid "e81993e5-2ffe-4916-a05f-b872448b787d")
 	)
 	(junction
+		(at 146.05 190.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f5a7d703-e7f9-47f8-bb3a-fc159e94e6f1")
+	)
+	(junction
 		(at 252.73 113.03)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9147,6 +9421,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 180.34) (xy 163.83 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "022931a1-519e-40cb-92ee-6c79bb4413e7")
+	)
+	(wire
+		(pts
 			(xy 101.6 187.96) (xy 119.38 187.96)
 		)
 		(stroke
@@ -9174,6 +9458,16 @@
 			(type default)
 		)
 		(uuid "07623c05-38f2-4b59-8bd0-9ee9252e02ec")
+	)
+	(wire
+		(pts
+			(xy 170.18 177.8) (xy 170.18 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07988744-2c8e-47f0-9319-51a4e078247a")
 	)
 	(wire
 		(pts
@@ -9387,6 +9681,16 @@
 	)
 	(wire
 		(pts
+			(xy 142.24 190.5) (xy 148.59 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1898950e-f9b3-4b4f-96b5-a6b5ef9b0247")
+	)
+	(wire
+		(pts
 			(xy 281.94 132.08) (xy 281.94 129.54)
 		)
 		(stroke
@@ -9484,6 +9788,16 @@
 			(type default)
 		)
 		(uuid "1d97b00d-39ba-4f82-be8a-596bf56d3b06")
+	)
+	(wire
+		(pts
+			(xy 167.64 193.04) (xy 167.64 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1da8f023-cc2f-435b-928b-fba4ce74d31a")
 	)
 	(wire
 		(pts
@@ -9589,6 +9903,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 190.5) (xy 170.18 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24769e4c-08d0-4796-a0b0-292529f3a448")
+	)
+	(wire
+		(pts
 			(xy 15.24 129.54) (xy 15.24 137.16)
 		)
 		(stroke
@@ -9679,7 +10003,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 181.61) (xy 128.27 182.88)
+			(xy 124.46 181.61) (xy 124.46 182.88)
 		)
 		(stroke
 			(width 0)
@@ -9696,6 +10020,16 @@
 			(type default)
 		)
 		(uuid "3043e209-f986-4a81-8c9a-50a8b8fed738")
+	)
+	(wire
+		(pts
+			(xy 135.89 177.8) (xy 148.59 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "305d3840-7c59-4efc-97ab-9c808c3bcc12")
 	)
 	(wire
 		(pts
@@ -9729,7 +10063,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 190.5) (xy 128.27 195.58)
+			(xy 124.46 190.5) (xy 124.46 195.58)
 		)
 		(stroke
 			(width 0)
@@ -9889,6 +10223,16 @@
 	)
 	(wire
 		(pts
+			(xy 148.59 180.34) (xy 146.05 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41e1a0df-a0e7-4dc0-9678-00ded5600522")
+	)
+	(wire
+		(pts
 			(xy 180.34 99.06) (xy 180.34 101.6)
 		)
 		(stroke
@@ -9936,6 +10280,16 @@
 			(type default)
 		)
 		(uuid "4482a93c-6f4c-446e-98bd-ce1628e47859")
+	)
+	(wire
+		(pts
+			(xy 161.29 177.8) (xy 170.18 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44ac0790-78fe-4634-aecd-8346d4be8bff")
 	)
 	(wire
 		(pts
@@ -10040,6 +10394,16 @@
 	)
 	(wire
 		(pts
+			(xy 146.05 193.04) (xy 146.05 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b6f9dd7-d75f-4486-bd4f-286125df8a54")
+	)
+	(wire
+		(pts
 			(xy 281.94 153.67) (xy 281.94 158.75)
 		)
 		(stroke
@@ -10131,7 +10495,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 195.58) (xy 142.24 195.58)
+			(xy 124.46 195.58) (xy 138.43 195.58)
 		)
 		(stroke
 			(width 0)
@@ -10814,7 +11178,7 @@
 	)
 	(polyline
 		(pts
-			(xy 124.46 171.45) (xy 124.46 197.485)
+			(xy 121.285 171.45) (xy 121.285 197.485)
 		)
 		(stroke
 			(width 0)
@@ -10925,6 +11289,16 @@
 	)
 	(wire
 		(pts
+			(xy 167.64 180.34) (xy 163.83 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84928209-5e66-42b2-89a4-10edba6a92bd")
+	)
+	(wire
+		(pts
 			(xy 210.82 124.46) (xy 224.79 124.46)
 		)
 		(stroke
@@ -11022,6 +11396,16 @@
 			(type default)
 		)
 		(uuid "926ee096-f904-4883-860b-172d313101ce")
+	)
+	(wire
+		(pts
+			(xy 142.24 180.34) (xy 142.24 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92af8bea-b528-48d7-bf71-19d635eaca31")
 	)
 	(wire
 		(pts
@@ -11196,6 +11580,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 168.91) (xy 170.18 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a06ffb47-b1de-437f-9a5b-8e72e6aeb2fa")
+	)
+	(wire
+		(pts
 			(xy 57.15 161.29) (xy 73.66 161.29)
 		)
 		(stroke
@@ -11338,6 +11732,16 @@
 	)
 	(wire
 		(pts
+			(xy 148.59 177.8) (xy 148.59 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa1e977b-8238-4dac-a426-cd7faab10e38")
+	)
+	(wire
+		(pts
 			(xy 161.29 59.69) (xy 161.29 62.23)
 		)
 		(stroke
@@ -11428,6 +11832,16 @@
 	)
 	(wire
 		(pts
+			(xy 170.18 180.34) (xy 167.64 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "afe9dd03-9e46-49a3-b576-eeb97e333296")
+	)
+	(wire
+		(pts
 			(xy 57.15 120.65) (xy 73.66 120.65)
 		)
 		(stroke
@@ -11435,6 +11849,16 @@
 			(type default)
 		)
 		(uuid "b04d938d-38f2-4abd-af50-7aa6bfba1f0a")
+	)
+	(wire
+		(pts
+			(xy 154.94 116.84) (xy 167.64 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b04e50ed-bfa7-4e6e-a603-acf1297857a5")
 	)
 	(wire
 		(pts
@@ -11578,7 +12002,7 @@
 	)
 	(wire
 		(pts
-			(xy 152.4 116.84) (xy 167.64 116.84)
+			(xy 152.4 116.84) (xy 154.94 116.84)
 		)
 		(stroke
 			(width 0)
@@ -11595,6 +12019,16 @@
 			(type default)
 		)
 		(uuid "b97a1fb2-43cf-4f0e-a345-0e2a4380c5b9")
+	)
+	(wire
+		(pts
+			(xy 163.83 187.96) (xy 163.83 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9ea9dab-d3e6-4c75-a967-27a0e24161ca")
 	)
 	(wire
 		(pts
@@ -11760,7 +12194,7 @@
 	)
 	(polyline
 		(pts
-			(xy 78.74 171.45) (xy 124.46 171.45)
+			(xy 78.74 171.45) (xy 121.285 171.45)
 		)
 		(stroke
 			(width 0)
@@ -11888,6 +12322,16 @@
 			(type default)
 		)
 		(uuid "cf779c85-08e0-463a-b287-640682f7e1ce")
+	)
+	(wire
+		(pts
+			(xy 142.24 187.96) (xy 142.24 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d0238665-0b17-4a1c-840a-f72038bc42a9")
 	)
 	(wire
 		(pts
@@ -12152,6 +12596,16 @@
 	)
 	(wire
 		(pts
+			(xy 146.05 180.34) (xy 142.24 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e8c03031-d037-424f-b85c-b2bb21f0bed1")
+	)
+	(wire
+		(pts
 			(xy 57.15 125.73) (xy 73.66 125.73)
 		)
 		(stroke
@@ -12192,7 +12646,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 176.53) (xy 128.27 175.26)
+			(xy 124.46 176.53) (xy 124.46 175.26)
 		)
 		(stroke
 			(width 0)
@@ -12371,6 +12825,16 @@
 			(type default)
 		)
 		(uuid "ffef1893-d391-4e20-b085-96827a404198")
+	)
+	(label "ESP32_GPIO0"
+		(at 135.89 177.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0294525a-55bd-4704-a97f-ade41de5b569")
 	)
 	(label "ESP32_RX"
 		(at 184.15 128.27 180)
@@ -12723,7 +13187,7 @@
 		(uuid "5e83ca8c-ac7a-402e-b97f-44984b58daf9")
 	)
 	(label "ESP32_GPIO2"
-		(at 142.24 195.58 180)
+		(at 138.43 195.58 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -13122,6 +13586,16 @@
 		)
 		(uuid "c952de8b-2497-4843-9ac9-7d5554999a94")
 	)
+	(label "ESP32_EN"
+		(at 161.29 177.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cf11bcba-bd14-4f9d-8e03-4a9db3f30362")
+	)
 	(label "ESP32_GPIO17"
 		(at 73.66 130.81 180)
 		(effects
@@ -13244,7 +13718,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 128.27 175.26 0)
+		(at 124.46 175.26 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -13255,7 +13729,7 @@
 		(dnp no)
 		(uuid "01938bf2-f621-44d1-9703-ed35bbe7164b")
 		(property "Reference" "#PWR032"
-			(at 128.27 179.07 0)
+			(at 124.46 179.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13266,7 +13740,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 128.524 171.196 0)
+			(at 124.714 171.196 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13276,7 +13750,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 128.27 175.26 0)
+			(at 124.46 175.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13287,7 +13761,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.27 175.26 0)
+			(at 124.46 175.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13298,7 +13772,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 128.27 175.26 0)
+			(at 124.46 175.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13799,6 +14273,171 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_MEC_5E")
+		(at 167.64 185.42 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "08fc49f7-2ecc-49a0-b08c-1d4785cb91a9")
+		(property "Reference" "SW4"
+			(at 174.498 184.15 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_MEC_5E"
+			(at 175.26 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "2_Vendor_Tactile_Push_Button:SW_TS18-5-15-SL-160-SMT-TR"
+			(at 175.26 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.apem.com/medias/download/MEC_switches_serie_MULTIMEC5E.pdf"
+			(at 175.26 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "MEC 5E single pole normally-open tactile switch"
+			(at 167.64 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "b3f63d52-9441-44aa-8f2b-efe0d3506eb8")
+		)
+		(pin "2"
+			(uuid "7dd7b528-a357-437f-8f85-bd21801ddabb")
+		)
+		(pin "1"
+			(uuid "2a184832-ec66-438a-9c12-7fbcc4afd095")
+		)
+		(pin "4"
+			(uuid "c351d44c-bf5d-4b25-b7f9-bfa43c48eab2")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "SW4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:Earth")
+		(at 167.64 193.04 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0a8823c7-7502-4081-9a9d-58893e1be514")
+		(property "Reference" "#PWR048"
+			(at 167.64 199.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 167.64 198.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 167.64 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 167.64 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
+			(at 167.64 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d5458b1b-54fa-4a24-b5ff-249ef4901052")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#PWR048")
 					(unit 1)
 				)
 			)
@@ -16062,6 +16701,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C_Small")
+		(at 142.24 185.42 0)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3db9146f-329e-4810-8b6c-2aaedf3da03f")
+		(property "Reference" "C23"
+			(at 135.636 184.658 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 134.62 186.436 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
+			(at 142.24 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 142.24 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 142.24 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e0368662-e36f-4408-b947-0a047df84821")
+		)
+		(pin "2"
+			(uuid "24514df7-f035-4e2b-b460-f0ab6ea83888")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "C23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+12V")
 		(at 144.78 49.53 0)
 		(unit 1)
@@ -16451,6 +17172,85 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "#PWR025")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 154.94 116.84 0)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4169a613-f9c9-4905-a94b-94fe4294892e")
+		(property "Reference" "#FLG04"
+			(at 154.94 118.745 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 154.94 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 154.94 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "08fba08b-5e21-4136-935a-4a6dd2164575")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#FLG04")
 					(unit 1)
 				)
 			)
@@ -17006,6 +17806,88 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "#GND01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 163.83 185.42 0)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "52524206-a683-40d6-827c-e40195ce6f63")
+		(property "Reference" "C28"
+			(at 157.226 184.658 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 156.21 186.436 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
+			(at 163.83 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 163.83 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "67780d19-a990-43cd-a3fa-07cc301ae43d")
+		)
+		(pin "2"
+			(uuid "5a08f90e-e3e3-4c07-8565-4b314c347b0b")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "C28")
 					(unit 1)
 				)
 			)
@@ -17774,6 +18656,92 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "#PWR022")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_MEC_5E")
+		(at 146.05 185.42 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5c92a118-99e1-44f7-8c29-1dc05736f0e5")
+		(property "Reference" "SW2"
+			(at 152.908 184.15 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_MEC_5E"
+			(at 153.67 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "2_Vendor_Tactile_Push_Button:SW_TS18-5-15-SL-160-SMT-TR"
+			(at 153.67 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.apem.com/medias/download/MEC_switches_serie_MULTIMEC5E.pdf"
+			(at 153.67 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "MEC 5E single pole normally-open tactile switch"
+			(at 146.05 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "12d32b34-92b6-472c-b425-b80dfc27933b")
+		)
+		(pin "2"
+			(uuid "222fae3c-118a-4a1e-b168-bc731001985e")
+		)
+		(pin "1"
+			(uuid "e428e2a0-c0b0-42b8-89b4-9a5e5fc598fc")
+		)
+		(pin "4"
+			(uuid "bbbc093d-231d-4969-867b-95368c1a6a9a")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "SW2")
 					(unit 1)
 				)
 			)
@@ -19241,7 +20209,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 128.27 179.07 0)
+		(at 124.46 179.07 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -19252,7 +20220,7 @@
 		(dnp no)
 		(uuid "72353ae1-47cd-470b-a632-360e7756f66b")
 		(property "Reference" "R28"
-			(at 133.604 178.562 0)
+			(at 129.794 178.562 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19263,7 +20231,7 @@
 			)
 		)
 		(property "Value" "330"
-			(at 133.604 180.34 0)
+			(at 129.794 180.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19274,7 +20242,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
-			(at 128.27 179.07 0)
+			(at 124.46 179.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19285,7 +20253,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.27 179.07 0)
+			(at 124.46 179.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19296,7 +20264,7 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
-			(at 128.27 179.07 0)
+			(at 124.46 179.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20204,6 +21172,85 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:Earth")
+		(at 146.05 193.04 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7daef9b3-89f4-4a70-834a-12687285efad")
+		(property "Reference" "#PWR047"
+			(at 146.05 199.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 146.05 198.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 146.05 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
+			(at 146.05 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "481a1b22-b7f8-4b9b-a9a3-b882f4e838cb")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#PWR047")
 					(unit 1)
 				)
 			)
@@ -26023,7 +27070,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 128.27 186.69 90)
+		(at 124.46 186.69 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -26033,7 +27080,7 @@
 		(dnp no)
 		(uuid "e518a5eb-5d66-43d7-9c1a-9d580ce83bf5")
 		(property "Reference" "D4"
-			(at 130.556 186.944 90)
+			(at 126.746 186.944 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -26044,7 +27091,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 122.936 187.452 0)
+			(at 119.126 187.452 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26056,7 +27103,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 128.27 186.69 0)
+			(at 124.46 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26067,7 +27114,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.27 186.69 0)
+			(at 124.46 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26078,7 +27125,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 128.27 186.69 0)
+			(at 124.46 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26089,7 +27136,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 128.27 186.69 0)
+			(at 124.46 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27388,7 +28435,7 @@
 	)
 	(symbol
 		(lib_id "power:Earth")
-		(at 151.13 173.99 0)
+		(at 170.18 168.91 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -27399,7 +28446,7 @@
 		(fields_autoplaced yes)
 		(uuid "fa2a8e00-74a3-4e3f-9197-217b37908a82")
 		(property "Reference" "#PWR037"
-			(at 151.13 180.34 0)
+			(at 170.18 175.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27410,7 +28457,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 151.13 179.07 0)
+			(at 170.18 173.99 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27421,7 +28468,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 151.13 173.99 0)
+			(at 170.18 168.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27432,7 +28479,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 151.13 173.99 0)
+			(at 170.18 168.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27443,7 +28490,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"Earth\""
-			(at 151.13 173.99 0)
+			(at 170.18 168.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

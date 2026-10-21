@@ -119,7 +119,7 @@
 				)
 			)
 			(pin power_in line
-				(at 0 -22.86 90)
+				(at 12.7 -17.78 180)
 				(length 2.54)
 				(name "GND"
 					(effects
@@ -535,7 +535,7 @@
 				)
 			)
 			(pin passive line
-				(at 0 -22.86 90)
+				(at 12.7 -17.78 180)
 				(length 2.54)
 				(hide yes)
 				(name "GND"

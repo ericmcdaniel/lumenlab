@@ -173,7 +173,7 @@
 				)
 			)
 			(pin power_in line
-				(at 1.27 27.94 270)
+				(at -1.27 27.94 270)
 				(length 2.54)
 				(name "VIO"
 					(effects
@@ -191,7 +191,7 @@
 				)
 			)
 			(pin power_in line
-				(at -1.27 27.94 270)
+				(at 1.27 27.94 270)
 				(length 2.54)
 				(name "VDD"
 					(effects

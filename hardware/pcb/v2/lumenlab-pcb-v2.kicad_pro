@@ -825,7 +825,7 @@
         "uuid": "2d045da9-3430-412d-9b59-c1acb2d29754"
       }
     ],
-    "used_designators": "#FLG4,#GND22-31,#PWR9,#PWR17,#PWR22-24,#PWR27-28,#PWR31,#PWR36,#PWR40-46,C16,C20-21,C24-27,D3,J2,J7-9,Q1-2,R9,R14,R18-27,TP7-8,U4,U8-10",
+    "used_designators": "#FLG4,#GND19,#GND22-31,#PWR9,#PWR17,#PWR22-24,#PWR26-29,#PWR31-33,#PWR36,#PWR40-46,C16,C19-22,C24-27,D3,J2,J7-9,Q1-2,R9,R14,R18-27,TP7-8,U4,U8-10",
     "variants": []
   },
   "sheets": [

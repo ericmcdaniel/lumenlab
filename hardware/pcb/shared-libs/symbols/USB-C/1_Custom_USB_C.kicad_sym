@@ -200,7 +200,7 @@
 		)
 		(symbol "1_Custom_USB_C_0_1"
 			(rectangle
-				(start -10.16 20.955)
+				(start -8.128 17.78)
 				(end 10.16 -17.78)
 				(stroke
 					(width 0.254)
@@ -212,7 +212,7 @@
 			)
 			(polyline
 				(pts
-					(xy -8.89 -3.81) (xy -8.89 3.81)
+					(xy -4.445 -3.175) (xy 3.175 -3.175)
 				)
 				(stroke
 					(width 0.508)
@@ -223,8 +223,8 @@
 				)
 			)
 			(rectangle
-				(start -7.62 -3.81)
-				(end -6.35 3.81)
+				(start -4.445 -4.445)
+				(end 3.175 -5.715)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -234,9 +234,9 @@
 				)
 			)
 			(arc
-				(start -7.62 3.81)
-				(mid -6.985 4.4423)
-				(end -6.35 3.81)
+				(start -4.445 -5.715)
+				(mid -5.0773 -5.08)
+				(end -4.445 -4.445)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -246,57 +246,9 @@
 				)
 			)
 			(arc
-				(start -7.62 3.81)
-				(mid -6.985 4.4423)
-				(end -6.35 3.81)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type outline)
-				)
-			)
-			(arc
-				(start -8.89 3.81)
-				(mid -6.985 5.7067)
-				(end -5.08 3.81)
-				(stroke
-					(width 0.508)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(arc
-				(start -5.08 -3.81)
-				(mid -6.985 -5.7067)
-				(end -8.89 -3.81)
-				(stroke
-					(width 0.508)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(arc
-				(start -6.35 -3.81)
-				(mid -6.985 -4.4423)
-				(end -7.62 -3.81)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(arc
-				(start -6.35 -3.81)
-				(mid -6.985 -4.4423)
-				(end -7.62 -3.81)
+				(start -4.445 -5.715)
+				(mid -5.0773 -5.08)
+				(end -4.445 -4.445)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -305,10 +257,10 @@
 					(type outline)
 				)
 			)
-			(polyline
-				(pts
-					(xy -5.08 3.81) (xy -5.08 -3.81)
-				)
+			(arc
+				(start -4.445 -6.985)
+				(mid -6.3417 -5.08)
+				(end -4.445 -3.175)
 				(stroke
 					(width 0.508)
 					(type default)
@@ -318,7 +270,7 @@
 				)
 			)
 			(circle
-				(center -2.54 1.143)
+				(center -3.048 8.001)
 				(radius 0.635)
 				(stroke
 					(width 0.254)
@@ -330,7 +282,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 4.318) (xy 0 6.858) (xy 1.27 4.318) (xy -1.27 4.318)
+					(xy -1.778 11.176) (xy -0.508 13.716) (xy 0.762 11.176) (xy -1.778 11.176)
 				)
 				(stroke
 					(width 0.254)
@@ -342,7 +294,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0 -2.032) (xy 2.54 0.508) (xy 2.54 1.778)
+					(xy -0.508 4.826) (xy 2.032 7.366) (xy 2.032 8.636)
 				)
 				(stroke
 					(width 0.508)
@@ -354,19 +306,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0 -3.302) (xy -2.54 -0.762) (xy -2.54 0.508)
-				)
-				(stroke
-					(width 0.508)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 -5.842) (xy 0 4.318)
+					(xy -0.508 3.556) (xy -3.048 6.096) (xy -3.048 7.366)
 				)
 				(stroke
 					(width 0.508)
@@ -377,7 +317,7 @@
 				)
 			)
 			(circle
-				(center 0 -5.842)
+				(center -0.508 1.016)
 				(radius 1.27)
 				(stroke
 					(width 0)
@@ -387,15 +327,75 @@
 					(type outline)
 				)
 			)
+			(polyline
+				(pts
+					(xy -0.508 1.016) (xy -0.508 11.176)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
 			(rectangle
-				(start 1.905 1.778)
-				(end 3.175 3.048)
+				(start 1.397 8.636)
+				(end 2.667 9.906)
 				(stroke
 					(width 0.254)
 					(type default)
 				)
 				(fill
 					(type outline)
+				)
+			)
+			(arc
+				(start 3.175 -3.175)
+				(mid 5.0717 -5.08)
+				(end 3.175 -6.985)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 3.175 -4.445)
+				(mid 3.8073 -5.08)
+				(end 3.175 -5.715)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 3.175 -4.445)
+				(mid 3.8073 -5.08)
+				(end 3.175 -5.715)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.175 -6.985) (xy -4.445 -6.985)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
 				)
 			)
 		)
@@ -695,7 +695,7 @@
 				)
 			)
 			(pin passive line
-				(at -7.62 -22.86 90)
+				(at -2.54 -22.86 90)
 				(length 5.08)
 				(name "SHIELD"
 					(effects

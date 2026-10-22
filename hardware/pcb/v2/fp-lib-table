@@ -24,4 +24,5 @@
 	(lib (name "2_Vendor_ESPProtection") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/USBLC6") (options "") (descr ""))
 	(lib (name "2_Vendor_MAX98357A") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/MAX98357A") (options "") (descr ""))
 	(lib (name "2_Vendor_Tactile_Push_Button") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/Tactile_Push_Button") (options "") (descr ""))
+	(lib (name "2_Vendor_SS8050-G") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/SS8050-G") (options "") (descr ""))
 )

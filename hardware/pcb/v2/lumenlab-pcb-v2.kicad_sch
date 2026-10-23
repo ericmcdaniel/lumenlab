@@ -1882,7 +1882,7 @@
 				)
 			)
 			(property "Value" "1_Custom_BarrelJack"
-				(at -7.62 -5.08 0)
+				(at -7.62 -3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -2014,7 +2014,7 @@
 				)
 				(polyline
 					(pts
-						(xy -6.35 -1.27) (xy -6.985 -2.54)
+						(xy -6.35 0) (xy -6.985 -1.27)
 					)
 					(stroke
 						(width 0.1524)
@@ -2026,7 +2026,7 @@
 				)
 				(polyline
 					(pts
-						(xy -5.715 -2.54) (xy -6.35 -1.27)
+						(xy -5.715 -1.27) (xy -6.35 0)
 					)
 					(stroke
 						(width 0.1524)
@@ -2034,30 +2034,6 @@
 					)
 					(fill
 						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 0) (xy -3.81 -2.54)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 -2.54) (xy -4.318 -1.27) (xy -3.302 -1.27) (xy -3.81 -2.54)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type outline)
 					)
 				)
 				(polyline
@@ -2146,19 +2122,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy -3.81 0)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -2.54) (xy -5.715 -2.54)
+						(xy 0 -1.27) (xy -5.715 -1.27)
 					)
 					(stroke
 						(width 0.1524)
@@ -2189,7 +2153,7 @@
 					)
 				)
 				(pin power_out line
-					(at 5.08 -2.54 180)
+					(at 5.08 -1.27 180)
 					(length 5.08)
 					(name ""
 						(effects
@@ -2199,24 +2163,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 0 180)
-					(length 5.08)
-					(name ""
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "3"
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -9179,7 +9125,7 @@
 		)
 		(uuid "1e35217b-0a62-4333-920f-bef0a9206e8f")
 	)
-	(text "JTAG Debugging"
+	(text "JTAG debugging"
 		(exclude_from_sim no)
 		(at 99.314 175.006 0)
 		(effects
@@ -9689,12 +9635,6 @@
 		(uuid "bec35e4a-1ab3-46f2-8d2c-0b295a0452fb")
 	)
 	(junction
-		(at 39.37 29.21)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c1709ad6-140c-4919-b2d0-cc088a9122ee")
-	)
-	(junction
 		(at 255.27 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10176,7 +10116,7 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 26.67) (xy 39.37 26.67)
+			(xy 34.29 27.94) (xy 39.37 27.94)
 		)
 		(stroke
 			(width 0)
@@ -11311,16 +11251,6 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 29.21) (xy 39.37 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6b0474e7-f69e-44c6-bfe4-967a7c1f4e35")
-	)
-	(wire
-		(pts
 			(xy 208.28 120.65) (xy 210.82 120.65)
 		)
 		(stroke
@@ -11471,7 +11401,7 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 29.21) (xy 39.37 30.48)
+			(xy 39.37 27.94) (xy 39.37 30.48)
 		)
 		(stroke
 			(width 0)
@@ -13188,16 +13118,6 @@
 			(type default)
 		)
 		(uuid "e9099575-8eee-4cdc-a1be-5da3ca5b666b")
-	)
-	(wire
-		(pts
-			(xy 39.37 26.67) (xy 39.37 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e9eb1640-bc33-4ca4-8dc2-2e0c361f5c97")
 	)
 	(wire
 		(pts
@@ -20346,10 +20266,10 @@
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "6fdfa68a-378a-4970-ae1f-33942b003e67")
 		(property "Reference" "J1"
@@ -20372,7 +20292,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2_Vendor_BarrelJack:TENSILITY_54-00129"
+		(property "Footprint" ""
 			(at 29.21 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -20471,9 +20391,6 @@
 		)
 		(pin "1"
 			(uuid "67dc76d4-982d-40b5-815b-c905dc1c543b")
-		)
-		(pin "3"
-			(uuid "891f9cb1-a9e9-4432-8c26-be7a5925120b")
 		)
 		(instances
 			(project "lumenlab-pcb-v2"
@@ -24669,8 +24586,8 @@
 				)
 			)
 		)
-		(property "Value" "Primary"
-			(at 118.618 80.01 0)
+		(property "Value" "To WS2815"
+			(at 117.602 80.01 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -27673,7 +27590,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
 			(at 198.12 152.4 0)
 			(hide yes)
 			(show_name no)
@@ -27953,7 +27870,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
 			(at 198.12 120.65 0)
 			(hide yes)
 			(show_name no)
@@ -28417,7 +28334,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B8B-XH-A_1x08_P2.50mm_Vertical"
 			(at 208.28 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -28515,7 +28432,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+		(property "Footprint" "2_Ventor_MolexPowerConnector:CONN_SD-5569-002_02_MOL"
 			(at 49.53 24.13 0)
 			(hide yes)
 			(show_name no)
@@ -29484,7 +29401,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
 			(at 275.59 153.67 0)
 			(hide yes)
 			(show_name no)

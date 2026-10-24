@@ -9493,6 +9493,12 @@
 		(uuid "93ec5586-89fb-4e54-8971-80905219e5ac")
 	)
 	(junction
+		(at 254 20.32)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "97d63b74-ece7-40b1-8b7c-67631ae9d49b")
+	)
+	(junction
 		(at 175.26 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9999,16 +10005,6 @@
 			(type default)
 		)
 		(uuid "175c89b3-fe5a-43a1-aa4f-13ebe01aba20")
-	)
-	(wire
-		(pts
-			(xy 281.94 132.08) (xy 281.94 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "18c57f8e-982b-4680-8a4d-df5210d88757")
 	)
 	(wire
 		(pts
@@ -10644,16 +10640,6 @@
 	)
 	(wire
 		(pts
-			(xy 248.92 162.56) (xy 247.65 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "42348807-76e1-4d90-a46b-3e50dbd0e069")
-	)
-	(wire
-		(pts
 			(xy 57.15 152.4) (xy 73.66 152.4)
 		)
 		(stroke
@@ -10846,7 +10832,7 @@
 	)
 	(wire
 		(pts
-			(xy 281.94 132.08) (xy 274.32 132.08)
+			(xy 283.21 132.08) (xy 274.32 132.08)
 		)
 		(stroke
 			(width 0)
@@ -11017,7 +11003,7 @@
 	)
 	(wire
 		(pts
-			(xy 242.57 162.56) (xy 238.76 162.56)
+			(xy 243.84 162.56) (xy 233.68 162.56)
 		)
 		(stroke
 			(width 0)
@@ -11027,7 +11013,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 20.32) (xy 262.89 20.32)
+			(xy 245.11 20.32) (xy 254 20.32)
 		)
 		(stroke
 			(width 0)
@@ -11767,6 +11753,16 @@
 			(type default)
 		)
 		(uuid "926ee096-f904-4883-860b-172d313101ce")
+	)
+	(wire
+		(pts
+			(xy 254 20.32) (xy 262.89 20.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "93457758-ccde-4000-808b-25a5e82a824f")
 	)
 	(wire
 		(pts
@@ -13637,6 +13633,16 @@
 		)
 		(uuid "5a5fca1c-96fe-498c-9584-18d1eab1cb4c")
 	)
+	(label "BUCK_5V"
+		(at 233.68 162.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5b1de2e9-9ef3-43e3-b8dd-61ccda586417")
+	)
 	(label "BUCK_SW"
 		(at 147.32 30.48 0)
 		(effects
@@ -14146,6 +14152,16 @@
 			(justify right bottom)
 		)
 		(uuid "e622646a-f5f0-4408-8b98-38732a6541e7")
+	)
+	(label "BUCK_5V"
+		(at 283.21 132.08 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e818758e-2c30-4ede-86ba-1d1c26a4c39c")
 	)
 	(label "ESP32_EN"
 		(at 26.67 138.43 180)
@@ -16816,7 +16832,7 @@
 				)
 			)
 		)
-		(property "Value" "AP7361C-33E"
+		(property "Value" "MCP1826ST-3302E/DB"
 			(at 48.26 46.99 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16838,7 +16854,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP7361C.pdf"
+		(property "Datasheet" "https://ww1.microchip.com/downloads/en/DeviceDoc/22057B.pdf"
 			(at 48.26 52.07 0)
 			(hide yes)
 			(show_name no)
@@ -17660,83 +17676,6 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "C4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 238.76 162.56 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "48b575b1-648e-4a91-aca7-b2ad5b49c69a")
-		(property "Reference" "#PWR037"
-			(at 238.76 166.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 238.76 158.75 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 238.76 162.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 238.76 162.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 238.76 162.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "3170fde1-a3d5-4875-8816-25ee439a1d3b")
-		)
-		(instances
-			(project "lumenlab-pcb-v2"
-				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -19069,6 +19008,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 254 20.32 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "63558de5-92cd-48ec-a23d-d11513dccb21")
+		(property "Reference" "#FLG05"
+			(at 254 18.415 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 254 16.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 254 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 254 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 254 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "70228926-1148-42d3-883a-6af6300f6df8")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#FLG05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "1_Custom_USB_C:1_Custom_USB_C")
 		(at 88.9 130.81 0)
 		(unit 1)
@@ -20236,10 +20253,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "6fdfa68a-378a-4970-ae1f-33942b003e67")
 		(property "Reference" "J1"
-			(at 23.1803 19.05 0)
+			(at 23.876 19.304 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20248,8 +20264,8 @@
 				)
 			)
 		)
-		(property "Value" "2.1mm Barrel Jack"
-			(at 23.1803 21.59 0)
+		(property "Value" "Via 2.1mm Barrel Jack"
+			(at 23.876 21.59 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20270,7 +20286,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" "https://tensility.s3.us-west-2.amazonaws.com/uploads/pdffiles/54-00166.pdf"
+		(property "Datasheet" "https://www.molex.com/en-us/products/part-detail/39295023?display=pdf"
 			(at 27.94 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -27287,83 +27303,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+12V")
-		(at 281.94 129.54 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "df188ea1-58d9-4e27-9263-f0b80c81dc3a")
-		(property "Reference" "#PWR026"
-			(at 281.94 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 278.13 128.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 281.94 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 281.94 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 281.94 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "cc821b87-6afe-4a47-8b08-a2360c5412d5")
-		)
-		(instances
-			(project "lumenlab-pcb-v2"
-				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#PWR026")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_Small_US")
 		(at 118.11 52.07 90)
 		(unit 1)
@@ -28369,7 +28308,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 245.11 162.56 90)
+		(at 246.38 162.56 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -28379,7 +28318,7 @@
 		(dnp no)
 		(uuid "f51771f5-78f8-47aa-b12e-9309492dc537")
 		(property "Reference" "R24"
-			(at 246.888 158.75 90)
+			(at 248.158 158.75 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -28390,7 +28329,7 @@
 			)
 		)
 		(property "Value" "100K"
-			(at 247.396 160.528 90)
+			(at 248.666 160.528 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -28401,7 +28340,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
-			(at 245.11 162.56 0)
+			(at 246.38 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28412,7 +28351,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 245.11 162.56 0)
+			(at 246.38 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28423,7 +28362,7 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
-			(at 245.11 162.56 0)
+			(at 246.38 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

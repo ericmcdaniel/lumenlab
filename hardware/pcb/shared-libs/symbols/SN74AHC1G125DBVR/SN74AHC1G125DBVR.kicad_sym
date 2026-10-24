@@ -69,7 +69,7 @@
 		)
 		(symbol "SN74AHC1G125DBVR_0_0"
 			(pin input line
-				(at -17.78 5.08 0)
+				(at -15.24 2.54 0)
 				(length 5.08)
 				(name "~{OE}"
 					(effects
@@ -87,7 +87,7 @@
 				)
 			)
 			(pin input line
-				(at -17.78 0 0)
+				(at -15.24 -2.54 0)
 				(length 5.08)
 				(name "A"
 					(effects
@@ -105,7 +105,7 @@
 				)
 			)
 			(pin power_in line
-				(at 17.78 -5.08 180)
+				(at 15.24 -5.08 180)
 				(length 5.08)
 				(name "GND"
 					(effects
@@ -123,7 +123,7 @@
 				)
 			)
 			(pin output line
-				(at 17.78 1.27 180)
+				(at 15.24 0 180)
 				(length 5.08)
 				(name "Y"
 					(effects
@@ -141,7 +141,7 @@
 				)
 			)
 			(pin power_in line
-				(at 17.78 7.62 180)
+				(at 15.24 5.08 180)
 				(length 5.08)
 				(name "VCC"
 					(effects
@@ -161,8 +161,8 @@
 		)
 		(symbol "SN74AHC1G125DBVR_1_1"
 			(rectangle
-				(start -12.7 10.16)
-				(end 12.7 -7.62)
+				(start -10.16 6.35)
+				(end 10.16 -6.35)
 				(stroke
 					(width 0.254)
 					(type solid)

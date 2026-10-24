@@ -69,7 +69,7 @@
 		)
 		(symbol "SN74AHC1G125DBVR_0_0"
 			(pin input line
-				(at -15.24 2.54 0)
+				(at -15.24 1.27 0)
 				(length 5.08)
 				(name "~{OE}"
 					(effects

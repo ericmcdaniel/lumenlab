@@ -7,7 +7,6 @@
 	(lib (name "2_Vendor_SN74HC14N") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/SN74HC14DR") (options "") (descr ""))
 	(lib (name "2_Vendor_SMAJ12CA") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/SMAJ12CA-tvs-diode") (options "") (descr ""))
 	(lib (name "2_Vendor_16SEPF") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/16SEPF-cap") (options "") (descr ""))
-	(lib (name "2_Vendor_1264EY") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/1264EY_6R8M-inductor") (options "") (descr ""))
 	(lib (name "2_Vendor_10TZV220M6") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/10TZV220M6-speaker-cap") (options "") (descr ""))
 	(lib (name "2_Vendor_NavSwitch") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/NavigationSwitch") (options "") (descr ""))
 	(lib (name "2_Custom_SSD1306") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/SSD1306") (options "") (descr ""))
@@ -26,4 +25,5 @@
 	(lib (name "2_Vendor_Tactile_Push_Button") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/Tactile_Push_Button") (options "") (descr ""))
 	(lib (name "2_Vendor_SS8050-G") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/SS8050-G") (options "") (descr ""))
 	(lib (name "2_Ventor_MolexPowerConnector") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/MolexPowerConnector") (options "") (descr ""))
+	(lib (name "2_Vendor_MGAH06036R8M_Inductor") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/MGAH06036R8M-10") (options "") (descr ""))
 )

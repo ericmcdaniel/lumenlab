@@ -9185,7 +9185,7 @@
 		)
 		(uuid "dd00c392-8dda-4d38-a030-af35ef8b03f0")
 	)
-	(text "IO39 via a voltage divider to sense if\nthe 5V rail is powered by the buck converter,\nenabling the level-shifted LED data stream."
+	(text "IO39 via a voltage divider to detect if\nthe 5V rail is powered by the buck converter,\nenabling the level-shifted LED data stream."
 		(exclude_from_sim no)
 		(at 284.48 16.002 0)
 		(effects
@@ -16823,7 +16823,7 @@
 		(dnp no)
 		(uuid "36c4acc9-4266-4ba6-b617-cfac779fb704")
 		(property "Reference" "L1"
-			(at 193.802 45.466 90)
+			(at 193.294 44.704 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16833,7 +16833,7 @@
 			)
 		)
 		(property "Value" "6.8uH"
-			(at 193.802 47.498 90)
+			(at 193.294 46.736 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16842,7 +16842,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2_Vendor_1264EY:IND_1264EY-6R8M=P3"
+		(property "Footprint" "2_Vendor_MGAH06036R8M_Inductor:IND_MGAH06036R8M-10"
 			(at 193.04 43.18 0)
 			(hide yes)
 			(show_name no)

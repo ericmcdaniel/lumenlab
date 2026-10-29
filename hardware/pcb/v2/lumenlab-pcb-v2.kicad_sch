@@ -9071,7 +9071,7 @@
 	)
 	(text "USB-C programming"
 		(exclude_from_sim no)
-		(at 134.874 106.426 0)
+		(at 134.874 105.664 0)
 		(effects
 			(font
 				(size 2.286 2.286)
@@ -9117,9 +9117,9 @@
 		)
 		(uuid "925b5f67-6a45-4509-a4dd-0165df5a569d")
 	)
-	(text "Power is supplied to the PCB\nthrough a panel-mounted barrel jack connected\nin series with a power switch. The positive\nand ground connections are routed to the PCB\nvia a 4.2mm Molex Mini-Fit Jr. connector."
+	(text "Power is supplied through a panel-mounted\nbarrel jack connected in series with a power switch.\nThese connections enter the board toward the fuse\nvia a 4.2mm Molex Mini-Fit Jr. connector."
 		(exclude_from_sim no)
-		(at 68.834 21.59 0)
+		(at 69.088 21.844 0)
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -10681,7 +10681,7 @@
 	)
 	(wire
 		(pts
-			(xy 90.17 165.1) (xy 90.17 163.83)
+			(xy 95.25 165.1) (xy 95.25 163.83)
 		)
 		(stroke
 			(width 0)
@@ -11043,16 +11043,6 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 163.83) (xy 132.08 163.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "60a3bd8b-184c-409d-a436-efe77ab5b7a2")
-	)
-	(wire
-		(pts
 			(xy 134.62 83.82) (xy 146.05 83.82)
 		)
 		(stroke
@@ -11230,6 +11220,16 @@
 			(type default)
 		)
 		(uuid "705b8e27-f410-4d09-b69f-81a8de0a6b3f")
+	)
+	(wire
+		(pts
+			(xy 128.27 163.83) (xy 137.16 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70f06977-babd-4567-a61a-0c62f695dc9d")
 	)
 	(wire
 		(pts
@@ -11656,6 +11656,16 @@
 	)
 	(wire
 		(pts
+			(xy 128.27 160.02) (xy 137.16 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8a78fdef-8a79-44f6-a0ff-4c967b0433c5")
+	)
+	(wire
+		(pts
 			(xy 158.75 189.23) (xy 162.56 189.23)
 		)
 		(stroke
@@ -11773,6 +11783,16 @@
 			(type default)
 		)
 		(uuid "945356d8-c184-4197-8e49-7df1e8aafb35")
+	)
+	(wire
+		(pts
+			(xy 128.27 167.64) (xy 137.16 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "947292dd-d64d-4e21-8369-94a3461f400b")
 	)
 	(wire
 		(pts
@@ -11927,7 +11947,7 @@
 	)
 	(wire
 		(pts
-			(xy 90.17 163.83) (xy 100.33 163.83)
+			(xy 95.25 163.83) (xy 105.41 163.83)
 		)
 		(stroke
 			(width 0)
@@ -12189,7 +12209,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 167.64) (xy 100.33 167.64)
+			(xy 99.06 167.64) (xy 105.41 167.64)
 		)
 		(stroke
 			(width 0)
@@ -12226,26 +12246,6 @@
 			(type default)
 		)
 		(uuid "b07fb1da-bc5b-4f32-8110-1b00b3290fae")
-	)
-	(wire
-		(pts
-			(xy 123.19 160.02) (xy 132.08 160.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b0c8d817-9fd4-4c50-8392-490c7b669ba5")
-	)
-	(wire
-		(pts
-			(xy 123.19 167.64) (xy 132.08 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b243d3a9-98fe-4265-8bc0-143f98e8e160")
 	)
 	(wire
 		(pts
@@ -12872,7 +12872,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 160.02) (xy 100.33 160.02)
+			(xy 99.06 160.02) (xy 105.41 160.02)
 		)
 		(stroke
 			(width 0)
@@ -13414,12 +13414,12 @@
 		(uuid "0c273c19-187c-493f-8242-931e31ad1ef8")
 	)
 	(label "DATA-"
-		(at 132.08 167.64 180)
+		(at 99.06 160.02 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "0d474e17-f42b-4281-a82f-53a7344f7b88")
 	)
@@ -13494,7 +13494,7 @@
 		(uuid "233f0caf-e765-4540-8437-df8af874147f")
 	)
 	(label "USB_VBUS"
-		(at 132.08 163.83 180)
+		(at 137.16 163.83 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -13544,22 +13544,22 @@
 		(uuid "2f1032df-1f05-4950-8eff-576e6927f75b")
 	)
 	(label "USB_D+"
-		(at 93.98 160.02 0)
+		(at 137.16 167.64 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "34e22c95-f9f1-4729-a218-f04e8a793677")
 	)
 	(label "USB_D-"
-		(at 93.98 167.64 0)
+		(at 137.16 160.02 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "3d02840a-f259-42df-a9db-86b0fd29aa1b")
 	)
@@ -14114,12 +14114,12 @@
 		(uuid "c2560c63-7e4f-47e9-912e-03c6afa1461d")
 	)
 	(label "DATA+"
-		(at 132.08 160.02 180)
+		(at 99.06 167.64 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "c2a662e6-9c57-437f-8726-15d24a46b668")
 	)
@@ -22391,7 +22391,7 @@
 	)
 	(symbol
 		(lib_id "1_Vendor_ESDProtection:USBLC6-2SC6")
-		(at 111.76 163.83 0)
+		(at 116.84 163.83 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -22401,7 +22401,7 @@
 		(dnp no)
 		(uuid "890f83e4-b112-4203-96a4-cfc6fd3b8d30")
 		(property "Reference" "U9"
-			(at 111.76 155.448 0)
+			(at 116.84 155.448 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -22411,7 +22411,7 @@
 			)
 		)
 		(property "Value" "USBLC6-2SC6"
-			(at 111.76 157.48 0)
+			(at 116.84 157.48 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -22421,7 +22421,7 @@
 			)
 		)
 		(property "Footprint" "2_Vendor_ESPProtection:SOT95P280X145-6N"
-			(at 111.76 163.83 0)
+			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22433,7 +22433,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 111.76 163.83 0)
+			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22444,7 +22444,7 @@
 			)
 		)
 		(property "Description" "17V Clamp 5A (8/20µs) Ipp Tvs Diode Surface Mount SOT-23-6"
-			(at 111.76 163.83 0)
+			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22456,7 +22456,7 @@
 			)
 		)
 		(property "MF" "STMicroelectronics"
-			(at 111.76 163.83 0)
+			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22468,7 +22468,7 @@
 			)
 		)
 		(property "PURCHASE-URL" "https://pricing.snapeda.com/search/part/USBLC6-2SC6/?ref=eda"
-			(at 111.76 163.83 0)
+			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22480,7 +22480,7 @@
 			)
 		)
 		(property "PACKAGE" "SOT-23-6 STMicroelectronics"
-			(at 111.76 163.83 0)
+			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22492,7 +22492,7 @@
 			)
 		)
 		(property "PRICE" "None"
-			(at 111.76 163.83 0)
+			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22504,7 +22504,7 @@
 			)
 		)
 		(property "MP" "USBLC6-2SC6"
-			(at 111.76 163.83 0)
+			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22516,7 +22516,7 @@
 			)
 		)
 		(property "AVAILABILITY" "In Stock"
-			(at 111.76 163.83 0)
+			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26979,7 +26979,7 @@
 	)
 	(symbol
 		(lib_id "power:Earth")
-		(at 90.17 165.1 0)
+		(at 95.25 165.1 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -26990,7 +26990,7 @@
 		(fields_autoplaced yes)
 		(uuid "d5011790-9389-4e2e-9387-dcd9d71e989c")
 		(property "Reference" "#PWR038"
-			(at 90.17 171.45 0)
+			(at 95.25 171.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27001,7 +27001,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 90.17 170.18 0)
+			(at 95.25 170.18 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27012,7 +27012,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 90.17 165.1 0)
+			(at 95.25 165.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27023,7 +27023,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 90.17 165.1 0)
+			(at 95.25 165.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27034,7 +27034,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"Earth\""
-			(at 90.17 165.1 0)
+			(at 95.25 165.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

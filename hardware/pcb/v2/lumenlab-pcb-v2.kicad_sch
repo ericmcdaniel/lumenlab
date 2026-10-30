@@ -7797,6 +7797,156 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Switch:SW_SPST"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 0 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SW_SPST"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Single Pole Single Throw (SPST) switch"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "switch lever"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SW_SPST_0_0"
+				(circle
+					(center -2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.524 0.254) (xy 1.524 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SW_SPST_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "dk_Rectangular-Connectors-Headers-Male-Pins:3220-10-0100-00"
 			(pin_names
 				(offset 1.016)
@@ -8951,30 +9101,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(circle
-		(center 53.975 29.21)
-		(radius 0.635)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(uuid "80940598-6693-46d8-b9fb-ad0c7721a1d7")
-	)
-	(circle
-		(center 50.165 29.21)
-		(radius 0.635)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(fill
-			(type none)
-		)
-		(uuid "9c69602c-1770-4514-9d14-59cd0719c6ea")
-	)
 	(text "LED brightness control"
 		(exclude_from_sim no)
 		(at 206.502 105.664 0)
@@ -9117,16 +9243,6 @@
 		)
 		(uuid "925b5f67-6a45-4509-a4dd-0165df5a569d")
 	)
-	(text "Power is supplied through a panel-mounted\nbarrel jack connected in series with a power switch.\nThese connections enter the board toward the fuse\nvia a 4.2mm Molex Mini-Fit Jr. connector."
-		(exclude_from_sim no)
-		(at 69.088 21.844 0)
-		(effects
-			(font
-				(size 1.016 1.016)
-			)
-		)
-		(uuid "9276245b-44ed-4881-bdf5-58f36e97c297")
-	)
 	(text "5V Logic level shifter"
 		(exclude_from_sim no)
 		(at 103.378 38.354 0)
@@ -9162,16 +9278,6 @@
 			)
 		)
 		(uuid "b1b37696-9368-43c2-b630-28b7f4b614c9")
-	)
-	(text "SW1"
-		(exclude_from_sim no)
-		(at 52.07 31.369 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "c73081e2-be36-400d-bc0b-607b8f4c42bb")
 	)
 	(text "3.3V Power regulation"
 		(exclude_from_sim no)
@@ -9413,7 +9519,7 @@
 		(uuid "64e074e8-1d9f-4179-880a-042400a18568")
 	)
 	(junction
-		(at 39.37 25.4)
+		(at 36.83 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6c4918e4-7a1d-4e72-b79c-b00c5304e8f3")
@@ -10008,16 +10114,6 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 29.21) (xy 39.37 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1af570f4-a622-435f-84f5-d5f35d8c9086")
-	)
-	(wire
-		(pts
 			(xy 233.68 60.96) (xy 242.57 60.96)
 		)
 		(stroke
@@ -10518,16 +10614,6 @@
 		)
 		(uuid "3b1a4ba3-bfea-43f1-aa00-b1864945c65c")
 	)
-	(polyline
-		(pts
-			(xy 46.99 29.21) (xy 49.53 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3d14956b-6c20-4877-9f44-f51d0cf54df7")
-	)
 	(wire
 		(pts
 			(xy 171.45 55.88) (xy 171.45 58.42)
@@ -10597,16 +10683,6 @@
 			(type default)
 		)
 		(uuid "436b0ca6-1fb8-49a6-9a1f-322bb4b0fcd5")
-	)
-	(wire
-		(pts
-			(xy 36.83 25.4) (xy 45.72 25.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4370022c-c879-42c6-81b4-9ff4b42f6c8e")
 	)
 	(wire
 		(pts
@@ -10973,16 +11049,6 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 29.21) (xy 87.63 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5b432777-17b0-4f28-b78f-904e52f118be")
-	)
-	(wire
-		(pts
 			(xy 196.85 27.94) (xy 212.09 27.94)
 		)
 		(stroke
@@ -11010,16 +11076,6 @@
 			(type default)
 		)
 		(uuid "5c0b371f-8471-4607-ae00-765c54656fab")
-	)
-	(polyline
-		(pts
-			(xy 50.8 29.21) (xy 50.8 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5c599a4b-587d-4f74-9e01-7d1e3fbd8b48")
 	)
 	(wire
 		(pts
@@ -11303,7 +11359,7 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 29.21) (xy 39.37 30.48)
+			(xy 36.83 29.21) (xy 36.83 30.48)
 		)
 		(stroke
 			(width 0)
@@ -11596,6 +11652,16 @@
 	)
 	(wire
 		(pts
+			(xy 40.64 30.48) (xy 41.91 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "867e35e1-7d6c-4a54-ab8c-ea4e58d41091")
+	)
+	(wire
+		(pts
 			(xy 173.99 189.23) (xy 173.99 190.5)
 		)
 		(stroke
@@ -11623,16 +11689,6 @@
 			(type default)
 		)
 		(uuid "883bb063-3b76-4b72-a91a-8d95bf19a15b")
-	)
-	(polyline
-		(pts
-			(xy 53.34 27.305) (xy 50.8 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "88f8ea43-fbae-40a6-a0b1-cd36a55a8249")
 	)
 	(wire
 		(pts
@@ -11676,7 +11732,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 29.21) (xy 95.25 29.21)
+			(xy 100.33 30.48) (xy 49.53 30.48)
 		)
 		(stroke
 			(width 0)
@@ -12612,7 +12668,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 29.21) (xy 45.72 25.4)
+			(xy 40.64 30.48) (xy 40.64 25.4)
 		)
 		(stroke
 			(width 0)
@@ -12809,6 +12865,16 @@
 			(type default)
 		)
 		(uuid "d2c6f508-9124-4806-bf04-076dacecb7e8")
+	)
+	(wire
+		(pts
+			(xy 36.83 25.4) (xy 40.64 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3473a14-4e08-4e71-a2e0-9f2e97b67eed")
 	)
 	(wire
 		(pts
@@ -13201,6 +13267,16 @@
 		)
 		(uuid "ef631805-90c5-4236-8823-6d8356cb59ad")
 	)
+	(wire
+		(pts
+			(xy 100.33 30.48) (xy 100.33 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef7f9a98-5fef-44a7-b4dc-43f7fab4d8fd")
+	)
 	(polyline
 		(pts
 			(xy 12.065 67.945) (xy 138.43 67.945)
@@ -13323,16 +13399,6 @@
 		)
 		(uuid "fb2d5d4c-381d-4a1c-a72d-2d3f8903cbb2")
 	)
-	(polyline
-		(pts
-			(xy 54.61 29.21) (xy 57.15 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fc9e0298-6b05-42bb-9abc-cce37c7e51b8")
-	)
 	(wire
 		(pts
 			(xy 95.25 92.71) (xy 95.25 96.52)
@@ -13424,12 +13490,12 @@
 		(uuid "0d474e17-f42b-4281-a82f-53a7344f7b88")
 	)
 	(label "12V_INPUT"
-		(at 73.66 29.21 180)
+		(at 40.64 25.4 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "0fa0a846-5784-4093-afe0-5039e8bfd5b4")
 	)
@@ -17683,7 +17749,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 39.37 25.4 0)
+		(at 36.83 25.4 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17693,7 +17759,7 @@
 		(dnp no)
 		(uuid "45a3e097-4853-4303-98e3-41d4e9539b97")
 		(property "Reference" "#FLG02"
-			(at 39.37 23.495 0)
+			(at 36.83 23.495 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17704,7 +17770,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 39.37 21.59 0)
+			(at 36.83 21.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17715,7 +17781,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 39.37 25.4 0)
+			(at 36.83 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17726,7 +17792,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 39.37 25.4 0)
+			(at 36.83 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17737,7 +17803,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 39.37 25.4 0)
+			(at 36.83 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18081,7 +18147,7 @@
 	)
 	(symbol
 		(lib_id "power:Earth")
-		(at 39.37 30.48 0)
+		(at 36.83 30.48 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18092,7 +18158,7 @@
 		(fields_autoplaced yes)
 		(uuid "4e261d6c-cd5f-44bd-ba24-a099463b04c4")
 		(property "Reference" "#GND01"
-			(at 39.37 36.83 0)
+			(at 36.83 36.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18103,7 +18169,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 39.37 35.56 0)
+			(at 36.83 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18114,7 +18180,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 39.37 30.48 0)
+			(at 36.83 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18125,7 +18191,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 39.37 30.48 0)
+			(at 36.83 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18136,7 +18202,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"Earth\""
-			(at 39.37 30.48 0)
+			(at 36.83 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23428,7 +23494,7 @@
 	)
 	(symbol
 		(lib_id "Device:Polyfuse")
-		(at 91.44 29.21 90)
+		(at 45.72 30.48 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -23438,7 +23504,7 @@
 		(dnp no)
 		(uuid "9cb08f58-cd8b-447c-8196-b5e4cb2e5d98")
 		(property "Reference" "F1"
-			(at 91.694 26.416 90)
+			(at 45.974 27.686 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -23448,7 +23514,7 @@
 			)
 		)
 		(property "Value" "AGRF1000-2 Polyfuse"
-			(at 87.122 32.004 90)
+			(at 53.594 33.274 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -23458,7 +23524,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuse_Bourns_MF-RG1000"
-			(at 96.52 27.94 0)
+			(at 50.8 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23470,7 +23536,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.44 29.21 0)
+			(at 45.72 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23481,7 +23547,7 @@
 			)
 		)
 		(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
-			(at 91.44 29.21 0)
+			(at 45.72 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25099,6 +25165,86 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "#PWR035")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_SPST")
+		(at 72.39 25.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b2390b48-78bb-4d3b-8c73-ec913d0b389e")
+		(property "Reference" "SW3"
+			(at 72.39 19.05 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_SPST"
+			(at 72.39 21.59 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 72.39 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 72.39 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Single Pole Single Throw (SPST) switch"
+			(at 72.39 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "97d81564-cfcd-4a1f-9586-cce156035576")
+		)
+		(pin "2"
+			(uuid "7e8a1988-9398-4eae-90d1-dc989c9fe9a4")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "SW3")
 					(unit 1)
 				)
 			)

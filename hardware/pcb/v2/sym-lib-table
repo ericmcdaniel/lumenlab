@@ -1,7 +1,6 @@
 (sym_lib_table
 	(version 7)
 	(lib (name "1_Vendor_MP2338") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/MP2338/1_Custom_MP2338.kicad_sym") (options "") (descr ""))
-	(lib (name "1_Vendor_BarrelJack") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/BarrelJack/1_Custom_BarrelJack.kicad_sym") (options "") (descr ""))
 	(lib (name "1_Vendor_SN74AHC1G125DBVR") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/SN74AHC1G125DBVR/SN74AHC1G125DBVR.kicad_sym") (options "") (descr ""))
 	(lib (name "sn74hc14dr") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/SN74HC14DR/sn74hc14dr.kicad_sym") (options "") (descr ""))
 	(lib (name "1_Custom_SSD1306") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/SSD1306/1_Custom_SSD1306.kicad_sym") (options "") (descr ""))
@@ -17,4 +16,6 @@
 	(lib (name "1_Vendor_ESDProtection") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/USBLC6/USBLC6-2SC6.kicad_sym") (options "") (descr ""))
 	(lib (name "1_Vendor_MAX98357A") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/MAX98357A/MAX98357AETE_T.kicad_sym") (options "") (descr ""))
 	(lib (name "1_Vendor_SS8050-G") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/SS8050-G.kicad_sym") (options "") (descr ""))
+	(lib (name "1_Vendor_SUD50P06") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/SUD50P06-p-ch-mosfet/SUD50P06-p-ch-mosfet.kicad_sym") (options "") (descr ""))
+	(lib (name "1_Vendor_BarrelJackPowerSupply") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/symbols/BarrelJack/1_Custom_BarrelJack.kicad_sym") (options "") (descr ""))
 )

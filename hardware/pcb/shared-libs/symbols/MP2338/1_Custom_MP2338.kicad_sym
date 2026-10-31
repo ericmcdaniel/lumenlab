@@ -31,7 +31,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SOT583_MP2338_MNP"
+		(property "Footprint" "2_Vendor_MP2338:MP2338_MNP-M"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

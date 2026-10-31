@@ -1861,7 +1861,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "1_Vendor_BarrelJack:1_Custom_BarrelJack"
+		(symbol "1_Vendor_BarrelJackPowerSupply:1_Custom_BarrelJack"
 			(pin_names
 				(offset 1.016)
 			)
@@ -3289,7 +3289,7 @@
 					)
 				)
 			)
-			(property "Footprint" "SOT583_MP2338_MNP"
+			(property "Footprint" "2_Vendor_MP2338:MP2338_MNP-M"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4450,6 +4450,410 @@
 						(effects
 							(font
 								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "1_Vendor_SUD50P06:SUD50P06-15L-E3"
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 11.43 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Value" "SUD50P06-15L-E3"
+				(at 11.43 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Footprint" "PMOSGDS_D-PAKTO-252AA_VIS"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.vishay.com/doc?72250"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "SUD50P06-15L-E3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "PMOSGDS_D-PAKTO-252AA_VIS PMOSGDS_D-PAKTO-252AA_VIS-M PMOSGDS_D-PAKTO-252AA_VIS-L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SUD50P06-15L-E3_0_1"
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 4.445 0)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.445 -2.54) (xy 4.445 2.54)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 1.905) (xy 6.985 1.905)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 1.27) (xy 5.08 2.54)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 0) (xy 5.715 0)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -0.635) (xy 5.08 0.635)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -1.905) (xy 7.112 -1.905)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -2.54) (xy 5.08 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.715 0.635) (xy 6.985 0) (xy 5.715 -0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 6.35 0)
+					(radius 3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.985 2.54) (xy 8.255 2.54)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.985 1.905) (xy 6.985 2.54)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 6.985 -1.905)
+					(radius 0.127)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.985 -2.54) (xy 6.985 0)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.985 -2.54) (xy 8.255 -2.54)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 7.62 2.54)
+					(radius 0.127)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 7.62 -2.54)
+					(radius 0.127)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 8.255 0.635) (xy 8.255 2.54)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 8.255 -2.54) (xy 8.255 -0.635)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 8.89 0.635) (xy 7.62 0.635) (xy 8.255 -0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 8.89 -0.635) (xy 7.62 -0.635)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SUD50P06-15L-E3_1_1"
+				(pin input line
+					(at 0 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
 							)
 						)
 					)
@@ -7260,311 +7664,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "SS8050-G_1"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "Q"
-				(at -10.16 7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Value" "SS8050-G"
-				(at -10.16 -7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Footprint" "SS8050-G:TRANS_SS8050-G"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "PARTREV" "A"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-				)
-			)
-			(property "STANDARD" "Manufacturer Recommendations"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-				)
-			)
-			(property "MAXIMUM_PACKAGE_HEIGHT" "1.05 mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-				)
-			)
-			(property "MANUFACTURER" "Comchip"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-				)
-			)
-			(symbol "SS8050-G_1_0_0"
-				(rectangle
-					(start 0 2.54)
-					(end 0.254 -2.54)
-					(radius 0.127)
-					(stroke
-						(width 0.1)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -2.54) (xy 1.778 -1.524)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.524 -2.413) (xy 2.286 -2.413)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.54 -2.04) (xy 0.254 -1.524)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.5874 -2.286) (xy 1.9684 -2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.778 -1.524) (xy 2.54 -2.54)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.778 -1.778) (xy 1.524 -2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.905 -2.286) (xy 1.778 -2.032)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.286 -2.413) (xy 1.778 -1.778)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 0.254 1.27)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -2.54) (xy 1.27 -2.54)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-			)
-			(symbol "SS8050-G_1_1_0"
-				(pin input line
-					(at -2.54 0 0)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Switch:SW_MEC_5E"
 			(pin_names
 				(offset 1.016)
@@ -9148,9 +9247,9 @@
 		)
 		(uuid "1e920678-0838-49f1-91af-fa08d5051c4d")
 	)
-	(text "Power supply"
+	(text "Power supply & protection"
 		(exclude_from_sim no)
-		(at 43.18 -26.67 0)
+		(at 60.96 16.002 0)
 		(effects
 			(font
 				(size 2.286 2.286)
@@ -9230,18 +9329,6 @@
 			)
 		)
 		(uuid "8454885d-2779-4fbe-83b9-d2210fd60951")
-	)
-	(text "Power protection"
-		(exclude_from_sim no)
-		(at 107.442 -26.416 0)
-		(effects
-			(font
-				(size 2.286 2.286)
-				(thickness 0.4572)
-				(bold yes)
-			)
-		)
-		(uuid "925b5f67-6a45-4509-a4dd-0165df5a569d")
 	)
 	(text "5V Logic level shifter"
 		(exclude_from_sim no)
@@ -9447,6 +9534,24 @@
 		(uuid "405b9937-aa52-4fa9-894e-b7b681a1b873")
 	)
 	(junction
+		(at 119.38 29.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4abfe356-27fb-4371-a6a2-6df115f7d1c4")
+	)
+	(junction
+		(at 115.57 29.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4d95ceda-0331-420a-9994-9d245c35d493")
+	)
+	(junction
+		(at 69.85 29.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "503bac25-283a-4166-a977-e06c874272cd")
+	)
+	(junction
 		(at 87.63 190.5)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9457,6 +9562,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "537d0e30-47d8-4269-b386-48b8f227ab28")
+	)
+	(junction
+		(at 69.85 25.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5629a82b-1add-45d2-aaba-7a75068b01cf")
 	)
 	(junction
 		(at 256.54 106.68)
@@ -9481,12 +9592,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "59deea4f-beb2-4e1a-abfe-dbff0d76a1a0")
-	)
-	(junction
-		(at 116.84 -13.97)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5a5214d1-950e-4bca-8583-8df593e38b2f")
 	)
 	(junction
 		(at 146.05 83.82)
@@ -9567,10 +9672,16 @@
 		(uuid "800fe261-6a1e-4eee-8678-38d0dd78e10d")
 	)
 	(junction
-		(at 100.33 -10.16)
+		(at 88.9 29.21)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "810dd15d-97e1-4b3b-8b80-23ef07339b03")
+		(uuid "802982f5-4447-4506-a535-a7fa51e2a8c6")
+	)
+	(junction
+		(at 83.82 29.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8410f1c2-021c-4046-bdab-ac710b75fbac")
 	)
 	(junction
 		(at 60.96 53.34)
@@ -9595,12 +9706,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8902ea6b-dbe4-4f17-84af-14d6a44144cc")
-	)
-	(junction
-		(at 107.95 -13.97)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8958a720-2c48-4137-9ad8-e096a9e52909")
 	)
 	(junction
 		(at 41.91 86.36)
@@ -9687,12 +9792,6 @@
 		(uuid "cdcba258-b21e-40d4-a5ae-7beec26a29f0")
 	)
 	(junction
-		(at 36.83 -13.97)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "cf731229-df86-4683-a741-b54a7c7aef73")
-	)
-	(junction
 		(at 274.32 132.08)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9745,6 +9844,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ef52827f-c017-4863-84a9-24afac9eaca3")
+	)
+	(junction
+		(at 44.45 25.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f202610a-d185-4c4c-be50-7e7258941b72")
 	)
 	(junction
 		(at 256.54 111.76)
@@ -9874,6 +9979,16 @@
 	)
 	(wire
 		(pts
+			(xy 104.14 29.21) (xy 119.38 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "035e5c67-c3d1-4ec0-a108-f7aab6ee73e3")
+	)
+	(wire
+		(pts
 			(xy 143.51 27.94) (xy 143.51 45.72)
 		)
 		(stroke
@@ -9901,6 +10016,16 @@
 			(type default)
 		)
 		(uuid "07623c05-38f2-4b59-8bd0-9ee9252e02ec")
+	)
+	(wire
+		(pts
+			(xy 69.85 29.21) (xy 69.85 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0879bd77-aab2-4e3c-919c-24890aa83ade")
 	)
 	(wire
 		(pts
@@ -9981,16 +10106,6 @@
 			(type default)
 		)
 		(uuid "0f3f7b90-2d29-4b62-8b29-fc6af000f677")
-	)
-	(wire
-		(pts
-			(xy 125.73 -15.24) (xy 125.73 -13.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0f88cf58-f864-4ecd-a224-54fba291871c")
 	)
 	(wire
 		(pts
@@ -10081,16 +10196,6 @@
 			(type default)
 		)
 		(uuid "17190922-33b5-49de-a255-18cf4d12f187")
-	)
-	(wire
-		(pts
-			(xy 105.41 -10.16) (xy 100.33 -10.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "175c89b3-fe5a-43a1-aa4f-13ebe01aba20")
 	)
 	(wire
 		(pts
@@ -10356,6 +10461,16 @@
 	)
 	(wire
 		(pts
+			(xy 83.82 25.4) (xy 82.55 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29530829-cdb5-4bc8-ad0e-b927e95c8e24")
+	)
+	(wire
+		(pts
 			(xy 157.48 83.82) (xy 151.13 83.82)
 		)
 		(stroke
@@ -10396,13 +10511,13 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 -10.16) (xy 100.33 -13.97)
+			(xy 104.14 29.21) (xy 104.14 24.13)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "2f08b83a-9f18-48cf-a16f-87b7e35b7911")
+		(uuid "2f72f30f-e2fe-4554-a543-6ebb51d5408a")
 	)
 	(wire
 		(pts
@@ -10473,6 +10588,26 @@
 			(type default)
 		)
 		(uuid "30ba1db5-dc27-4145-9607-8a23d5f74dc0")
+	)
+	(wire
+		(pts
+			(xy 123.19 26.67) (xy 123.19 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "30f7e143-c372-42b3-8dbd-fdc3a28fdde3")
+	)
+	(wire
+		(pts
+			(xy 60.96 25.4) (xy 74.93 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31282f7a-c923-490c-b90a-a82df94d02a4")
 	)
 	(wire
 		(pts
@@ -10948,6 +11083,16 @@
 	)
 	(wire
 		(pts
+			(xy 88.9 22.86) (xy 88.9 20.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57b2c083-2030-4eae-83b3-509cfb93cc3a")
+	)
+	(wire
+		(pts
 			(xy 242.57 83.82) (xy 242.57 91.44)
 		)
 		(stroke
@@ -11096,16 +11241,6 @@
 			(type default)
 		)
 		(uuid "60c8ed88-7e2e-4d84-b423-f4bd9a258c91")
-	)
-	(wire
-		(pts
-			(xy 125.73 -8.89) (xy 125.73 -10.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "617bbc2a-cc66-4857-8d85-7fd68a53ea1b")
 	)
 	(wire
 		(pts
@@ -11279,6 +11414,16 @@
 	)
 	(wire
 		(pts
+			(xy 88.9 29.21) (xy 91.44 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72437600-c6a8-4bb8-9ac5-152e1805f0bc")
+	)
+	(wire
+		(pts
 			(xy 57.15 96.52) (xy 73.66 96.52)
 		)
 		(stroke
@@ -11286,16 +11431,6 @@
 			(type default)
 		)
 		(uuid "724c9d4c-951c-4f51-82b2-6a56bcfa55b5")
-	)
-	(wire
-		(pts
-			(xy 36.83 -13.97) (xy 38.1 -13.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "730b61b3-0e59-42a6-b6ef-5451eb4b1d4a")
 	)
 	(wire
 		(pts
@@ -11359,7 +11494,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 -10.16) (xy 36.83 -7.62)
+			(xy 41.91 29.21) (xy 41.91 31.75)
 		)
 		(stroke
 			(width 0)
@@ -11652,6 +11787,16 @@
 	)
 	(wire
 		(pts
+			(xy 44.45 25.4) (xy 53.34 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "86784960-80c5-4678-9582-96bdafea6654")
+	)
+	(wire
+		(pts
 			(xy 173.99 189.23) (xy 173.99 190.5)
 		)
 		(stroke
@@ -11679,6 +11824,16 @@
 			(type default)
 		)
 		(uuid "883bb063-3b76-4b72-a91a-8d95bf19a15b")
+	)
+	(wire
+		(pts
+			(xy 104.14 24.13) (xy 99.06 24.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "886aa416-4055-4414-a3a9-1d4ee9b29e7c")
 	)
 	(wire
 		(pts
@@ -11762,6 +11917,16 @@
 	)
 	(wire
 		(pts
+			(xy 41.91 25.4) (xy 44.45 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "91f59e64-066e-4513-b7e8-bfee2f2964ac")
+	)
+	(wire
+		(pts
 			(xy 55.88 53.34) (xy 60.96 53.34)
 		)
 		(stroke
@@ -11769,6 +11934,16 @@
 			(type default)
 		)
 		(uuid "922040b0-333f-4b52-9692-b46190ca1d71")
+	)
+	(wire
+		(pts
+			(xy 88.9 27.94) (xy 88.9 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9243d21b-4f32-405a-a6b7-f88e18333996")
 	)
 	(wire
 		(pts
@@ -11882,6 +12057,16 @@
 	)
 	(wire
 		(pts
+			(xy 109.22 20.32) (xy 101.6 20.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9881b4fb-d630-4f35-80b8-1d5e79a8fb2c")
+	)
+	(wire
+		(pts
 			(xy 274.32 153.67) (xy 274.32 156.21)
 		)
 		(stroke
@@ -11919,6 +12104,16 @@
 			(type default)
 		)
 		(uuid "99ab4828-a08f-4c84-a395-3f2a50369d38")
+	)
+	(wire
+		(pts
+			(xy 119.38 29.21) (xy 123.19 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9afe24f5-0cf5-4e1b-9958-926112fd0492")
 	)
 	(wire
 		(pts
@@ -11990,16 +12185,6 @@
 			(type default)
 		)
 		(uuid "9dca5acf-4fdd-4f41-8862-5f70a79dd222")
-	)
-	(wire
-		(pts
-			(xy 107.95 -13.97) (xy 116.84 -13.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9efd1570-b3aa-4ce9-82f8-05ab4c1a162c")
 	)
 	(wire
 		(pts
@@ -12225,6 +12410,16 @@
 	)
 	(wire
 		(pts
+			(xy 69.85 34.29) (xy 99.06 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad739785-bcf9-445f-b883-bb94ee70a139")
+	)
+	(wire
+		(pts
 			(xy 57.15 99.06) (xy 73.66 99.06)
 		)
 		(stroke
@@ -12302,6 +12497,16 @@
 			(type default)
 		)
 		(uuid "b2772c77-93c6-4568-8449-e3cb06f33587")
+	)
+	(wire
+		(pts
+			(xy 83.82 25.4) (xy 83.82 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b321b717-b504-43e6-8ef1-f130044d46a1")
 	)
 	(wire
 		(pts
@@ -12708,6 +12913,16 @@
 	)
 	(wire
 		(pts
+			(xy 88.9 20.32) (xy 91.44 20.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cc29c3d9-eed5-4a6a-bfe6-21cc2b8eacbe")
+	)
+	(wire
+		(pts
 			(xy 130.81 125.73) (xy 137.16 125.73)
 		)
 		(stroke
@@ -12848,16 +13063,6 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 -13.97) (xy 107.95 -13.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d468684d-da34-4aad-aa6f-83069c60338b")
-	)
-	(wire
-		(pts
 			(xy 245.11 86.36) (xy 261.62 86.36)
 		)
 		(stroke
@@ -12976,16 +13181,6 @@
 			(type default)
 		)
 		(uuid "dea5e473-db85-441b-a7b8-6f991ca46eb7")
-	)
-	(wire
-		(pts
-			(xy 125.73 -10.16) (xy 113.03 -10.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dfcae339-c592-4724-8cae-2d095f7e3e18")
 	)
 	(wire
 		(pts
@@ -13119,7 +13314,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 -13.97) (xy 45.72 -8.89)
+			(xy 69.85 29.21) (xy 69.85 34.29)
 		)
 		(stroke
 			(width 0)
@@ -13156,16 +13351,6 @@
 			(type default)
 		)
 		(uuid "e8878663-58cf-4719-8196-7889074c5dbf")
-	)
-	(wire
-		(pts
-			(xy 45.72 -8.89) (xy 100.33 -8.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e8d040a4-6733-4c10-827e-36bab805642f")
 	)
 	(wire
 		(pts
@@ -13247,16 +13432,6 @@
 		)
 		(uuid "ef631805-90c5-4236-8823-6d8356cb59ad")
 	)
-	(wire
-		(pts
-			(xy 100.33 -8.89) (xy 100.33 -10.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ef7f9a98-5fef-44a7-b4dc-43f7fab4d8fd")
-	)
 	(polyline
 		(pts
 			(xy 12.065 67.945) (xy 138.43 67.945)
@@ -13331,13 +13506,23 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 -13.97) (xy 125.73 -13.97)
+			(xy 69.85 29.21) (xy 76.2 29.21)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f89d5fd3-375a-46f1-89db-7a3ac1896a36")
+		(uuid "f4b79508-e80b-4ff0-9f92-cb9c4ff0c96f")
+	)
+	(wire
+		(pts
+			(xy 109.22 22.86) (xy 109.22 20.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f82480f0-3699-4f03-9b98-e1f12cdc1088")
 	)
 	(wire
 		(pts
@@ -13378,6 +13563,16 @@
 			(type default)
 		)
 		(uuid "fb2d5d4c-381d-4a1c-a72d-2d3f8903cbb2")
+	)
+	(wire
+		(pts
+			(xy 81.28 29.21) (xy 88.9 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb4e9636-3394-49f5-9d6b-d9abf076b40c")
 	)
 	(wire
 		(pts
@@ -13468,16 +13663,6 @@
 			(justify left bottom)
 		)
 		(uuid "0d474e17-f42b-4281-a82f-53a7344f7b88")
-	)
-	(label "12V_INPUT"
-		(at 107.95 -45.72 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0fa0a846-5784-4093-afe0-5039e8bfd5b4")
 	)
 	(label "ESP32_GPIO27"
 		(at 245.11 99.06 0)
@@ -14581,7 +14766,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "052e67c8-8aca-4a22-9130-0d34de1ec86c")
-		(property "Reference" "R14"
+		(property "Reference" "R16"
 			(at 68.072 84.074 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14645,7 +14830,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R14")
+					(reference "R16")
 					(unit 1)
 				)
 			)
@@ -14744,7 +14929,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "08c955f8-4749-4890-946b-1b06f89573b9")
-		(property "Reference" "R4"
+		(property "Reference" "R6"
 			(at 256.032 32.766 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14808,7 +14993,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R4")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -14825,7 +15010,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "0c3f3a0b-8864-4714-a9d2-1ab0f0de35d4")
-		(property "Reference" "R15"
+		(property "Reference" "R17"
 			(at 247.904 92.964 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14889,7 +15074,86 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R15")
+					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small_US")
+		(at 78.74 29.21 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0ddad230-6b07-4dc9-a9ed-c4df0c0576ca")
+		(property "Reference" "R4"
+			(at 78.486 31.496 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100K"
+			(at 78.486 33.274 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 78.74 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 78.74 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor, small US symbol"
+			(at 78.74 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2042ffae-eaeb-452c-8ec7-57b962adb261")
+		)
+		(pin "2"
+			(uuid "5d9bd87b-0e85-42fd-842b-fce1c9ea3c91")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -15164,7 +15428,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2_Vendor_MAX98357A:QFN50P300X300X80-17N"
+		(property "Footprint" "MAX98357AETE_T:QFN50P300X300X80-17N"
 			(at 262.89 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -15566,7 +15830,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1a8c39b5-0e4e-48fe-81d2-887cc9302b8e")
-		(property "Reference" "#GND08"
+		(property "Reference" "#GND05"
 			(at 278.13 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -15627,7 +15891,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#GND08")
+					(reference "#GND05")
 					(unit 1)
 				)
 			)
@@ -15882,7 +16146,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1d9b5f6a-ba00-49dd-a311-dfbe1d5f11ba")
-		(property "Reference" "#GND010"
+		(property "Reference" "#GND04"
 			(at 227.33 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -15943,7 +16207,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#GND010")
+					(reference "#GND04")
 					(unit 1)
 				)
 			)
@@ -15960,7 +16224,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "1f2a02a6-bf73-4604-8ab0-a334b0c17335")
-		(property "Reference" "R18"
+		(property "Reference" "R20"
 			(at 207.518 115.824 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16024,7 +16288,93 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R18")
+					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "1_Vendor_SUD50P06:SUD50P06-15L-E3")
+		(at 91.44 29.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1fefe0a0-a1fe-4ed2-a0d6-303b0243838b")
+		(property "Reference" "Q1"
+			(at 99.314 33.782 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SUD50P06"
+			(at 91.694 35.814 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "2_Vendor_SUD50P06-p-ch-mosfet:PMOSGDS_D-PAKTO-252AA_VIS-L"
+			(at 91.44 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/doc?72250"
+			(at 91.44 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 91.44 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "c5b46afc-58f7-4d1c-a64a-91adabd1fafe")
+		)
+		(pin "2"
+			(uuid "6661f35f-e334-4399-97a0-d62cfcd25412")
+		)
+		(pin "1"
+			(uuid "0bf1ca21-b808-4b32-9534-70e800d4c996")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "Q1")
 					(unit 1)
 				)
 			)
@@ -16121,7 +16471,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "27928828-08fc-4e1c-8f92-89dd65c42590")
-		(property "Reference" "#GND04"
+		(property "Reference" "#GND06"
 			(at 29.21 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -16182,7 +16532,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#GND04")
+					(reference "#GND06")
 					(unit 1)
 				)
 			)
@@ -16199,7 +16549,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "294e66fc-15ca-4e07-aad1-6a574eca5ff0")
-		(property "Reference" "R5"
+		(property "Reference" "R7"
 			(at 278.638 33.02 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16263,7 +16613,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R5")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -16463,7 +16813,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "2ae06bb2-c4d7-43fb-bc7a-2bafc1d7596c")
-		(property "Reference" "SW2"
+		(property "Reference" "SW3"
 			(at 167.386 179.324 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16532,7 +16882,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "SW2")
+					(reference "SW3")
 					(unit 1)
 				)
 			)
@@ -16710,7 +17060,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "323844a3-edc6-470e-8c3d-70e3bee119ff")
-		(property "Reference" "R11"
+		(property "Reference" "R15"
 			(at 27.94 60.198 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16774,7 +17124,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R11")
+					(reference "R15")
 					(unit 1)
 				)
 			)
@@ -17182,7 +17532,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3e22c311-0f57-42ba-ad99-22f92c723587")
-		(property "Reference" "#GND06"
+		(property "Reference" "#GND08"
 			(at 48.26 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -17243,7 +17593,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#GND06")
+					(reference "#GND08")
 					(unit 1)
 				)
 			)
@@ -17260,7 +17610,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "3eacdd01-b1fb-4c16-8917-f7648d831f95")
-		(property "Reference" "R10"
+		(property "Reference" "R12"
 			(at 229.108 50.546 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17324,7 +17674,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R10")
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -17729,7 +18079,8 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 36.83 -13.97 0)
+		(at 44.45 25.4 0)
+		(mirror x)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17739,7 +18090,7 @@
 		(dnp no)
 		(uuid "45a3e097-4853-4303-98e3-41d4e9539b97")
 		(property "Reference" "#FLG02"
-			(at 36.83 -15.875 0)
+			(at 44.45 27.305 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17750,7 +18101,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 36.83 -17.78 0)
+			(at 44.45 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17761,7 +18112,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 36.83 -13.97 0)
+			(at 44.45 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17772,7 +18123,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 36.83 -13.97 0)
+			(at 44.45 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17783,7 +18134,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 36.83 -13.97 0)
+			(at 44.45 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17976,7 +18327,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "4bf8313d-961a-4492-8eec-55828b120205")
-		(property "Reference" "R24"
+		(property "Reference" "R26"
 			(at 207.518 147.574 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18040,7 +18391,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R24")
+					(reference "R26")
 					(unit 1)
 				)
 			)
@@ -18058,7 +18409,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4cabceae-b8bb-4510-9faa-0d109ae2f505")
-		(property "Reference" "#GND05"
+		(property "Reference" "#GND07"
 			(at 38.1 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -18119,7 +18470,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#GND05")
+					(reference "#GND07")
 					(unit 1)
 				)
 			)
@@ -18127,7 +18478,7 @@
 	)
 	(symbol
 		(lib_id "power:Earth")
-		(at 36.83 -7.62 0)
+		(at 41.91 31.75 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18137,8 +18488,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4e261d6c-cd5f-44bd-ba24-a099463b04c4")
-		(property "Reference" "#GND01"
-			(at 36.83 -1.27 0)
+		(property "Reference" "#GND02"
+			(at 41.91 38.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18149,7 +18500,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 36.83 -2.54 0)
+			(at 41.91 36.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18160,7 +18511,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 36.83 -7.62 0)
+			(at 41.91 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18171,7 +18522,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 36.83 -7.62 0)
+			(at 41.91 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18182,7 +18533,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"Earth\""
-			(at 36.83 -7.62 0)
+			(at 41.91 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18198,7 +18549,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#GND01")
+					(reference "#GND02")
 					(unit 1)
 				)
 			)
@@ -19051,85 +19402,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:Earth")
-		(at 125.73 -8.89 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5d326da6-04f7-46cc-ad5e-133e80d0af4f")
-		(property "Reference" "#GND02"
-			(at 125.73 -2.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 125.73 -3.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 125.73 -8.89 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 125.73 -8.89 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"Earth\""
-			(at 125.73 -8.89 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "8c117103-4a7b-431d-975c-2221dc97f974")
-		)
-		(instances
-			(project "lumenlab-pcb-v2"
-				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#GND02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C_Small")
 		(at 233.68 87.63 180)
 		(unit 1)
@@ -19742,7 +20014,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "68ac24d5-6c8b-42f1-a34f-3c7c9ec6f4ad")
-		(property "Reference" "R25"
+		(property "Reference" "R27"
 			(at 231.14 158.242 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19806,7 +20078,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R25")
+					(reference "R27")
 					(unit 1)
 				)
 			)
@@ -19823,7 +20095,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "6a1f053b-8297-4d68-a53d-4715ac897cc0")
-		(property "Reference" "R6"
+		(property "Reference" "R8"
 			(at 184.15 45.466 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19885,7 +20157,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R6")
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -20081,7 +20353,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "2_Vendor_MicroSD_Card_Reader:CUI_MSD-1-A"
+		(property "Footprint" "MSD-1-A:CUI_MSD-1-A"
 			(at 273.05 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -20379,7 +20651,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "6e0723da-7e3c-4284-9ea4-07a9b31201ea")
-		(property "Reference" "R2"
+		(property "Reference" "R3"
 			(at 240.03 25.908 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20441,7 +20713,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R2")
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -20527,8 +20799,8 @@
 		)
 	)
 	(symbol
-		(lib_id "1_Vendor_BarrelJack:1_Custom_BarrelJack")
-		(at 31.75 -11.43 0)
+		(lib_id "1_Vendor_BarrelJackPowerSupply:1_Custom_BarrelJack")
+		(at 36.83 27.94 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -20538,7 +20810,7 @@
 		(dnp no)
 		(uuid "6fdfa68a-378a-4970-ae1f-33942b003e67")
 		(property "Reference" "J1"
-			(at 26.67 -20.32 0)
+			(at 25.146 28.956 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20547,8 +20819,8 @@
 				)
 			)
 		)
-		(property "Value" "Via 2.1mm Barrel Jack"
-			(at 26.67 -18.034 0)
+		(property "Value" "2.1mm Barrel Jack"
+			(at 30.48 31.496 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20558,7 +20830,7 @@
 			)
 		)
 		(property "Footprint" "2_Ventor_MolexPowerConnector:CONN_SD-5569-002_02_MOL"
-			(at 31.75 -11.43 0)
+			(at 36.83 27.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20570,7 +20842,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.molex.com/en-us/products/part-detail/39295023?display=pdf"
-			(at 31.75 -11.43 0)
+			(at 36.83 27.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20581,7 +20853,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 31.75 -11.43 0)
+			(at 36.83 27.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20592,7 +20864,7 @@
 			)
 		)
 		(property "PARTREV" "A"
-			(at 31.75 -11.43 0)
+			(at 36.83 27.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20604,7 +20876,7 @@
 			)
 		)
 		(property "STANDARD" "IPC-7351B"
-			(at 31.75 -11.43 0)
+			(at 36.83 27.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20616,7 +20888,7 @@
 			)
 		)
 		(property "SNAPEDA_PN" "54-00129"
-			(at 31.75 -11.43 0)
+			(at 36.83 27.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20628,7 +20900,7 @@
 			)
 		)
 		(property "MAXIMUM_PACKAGE_HEIGHT" "10.8mm"
-			(at 31.75 -11.43 0)
+			(at 36.83 27.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20640,7 +20912,7 @@
 			)
 		)
 		(property "MANUFACTURER" "TENSILITY"
-			(at 31.75 -11.43 0)
+			(at 36.83 27.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20756,7 +21028,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "72353ae1-47cd-470b-a632-360e7756f66b")
-		(property "Reference" "R28"
+		(property "Reference" "R30"
 			(at 129.794 179.832 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20820,7 +21092,86 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R28")
+					(reference "R30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:Earth")
+		(at 109.22 22.86 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "740f2385-b2d4-4b66-844e-261d2090df54")
+		(property "Reference" "#GND01"
+			(at 109.22 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 109.22 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 109.22 22.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 109.22 22.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
+			(at 109.22 22.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "39ef9cef-e953-405e-bd51-f04408859575")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#GND01")
 					(unit 1)
 				)
 			)
@@ -20915,7 +21266,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "75dc6225-094c-438f-9d2a-3fba602818ad")
-		(property "Reference" "R19"
+		(property "Reference" "R21"
 			(at 111.252 118.11 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20979,7 +21330,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R19")
+					(reference "R21")
 					(unit 1)
 				)
 			)
@@ -21323,6 +21674,87 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Small_US")
+		(at 88.9 25.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7929bc57-aa75-4562-bcdb-1a6036aee054")
+		(property "Reference" "R2"
+			(at 90.17 24.638 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1K"
+			(at 90.17 26.416 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 88.9 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 88.9 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor, small US symbol"
+			(at 88.9 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "47625f1f-4caf-47a1-87d8-4a101cbc5da5")
+		)
+		(pin "1"
+			(uuid "f9e5f1ae-91db-4406-b7ed-7274a346dad8")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+12V")
 		(at 198.12 147.32 0)
 		(mirror y)
@@ -21659,7 +22091,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2_Vendor_SN74AHCT1G125:SOT95P280X145-5N"
+		(property "Footprint" "SN74AHC1G125DBVR:SOT95P280X145-5N"
 			(at 100.33 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -21798,7 +22230,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 125.73 -15.24 0)
+		(at 123.19 26.67 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -21808,7 +22240,7 @@
 		(dnp no)
 		(uuid "7d89439b-d75e-4714-bea5-74469943fe29")
 		(property "Reference" "#PWR02"
-			(at 125.73 -11.43 0)
+			(at 123.19 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21819,7 +22251,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 121.666 -17.272 0)
+			(at 122.682 21.844 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -21829,7 +22261,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 125.73 -15.24 0)
+			(at 123.19 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21840,7 +22272,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 125.73 -15.24 0)
+			(at 123.19 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21851,7 +22283,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 125.73 -15.24 0)
+			(at 123.19 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22046,7 +22478,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "81af8470-d815-4c62-99e7-0624804777eb")
-		(property "Reference" "#GND09"
+		(property "Reference" "#GND010"
 			(at 115.57 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -22107,7 +22539,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#GND09")
+					(reference "#GND010")
 					(unit 1)
 				)
 			)
@@ -22124,7 +22556,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "826b1aec-7203-42cc-b1c7-4398095f5bb2")
-		(property "Reference" "R27"
+		(property "Reference" "R29"
 			(at 63.246 178.816 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22188,7 +22620,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R27")
+					(reference "R29")
 					(unit 1)
 				)
 			)
@@ -22466,7 +22898,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2_Vendor_ESPProtection:SOT95P280X145-6N"
+		(property "Footprint" "USBLC6-2SC6:SOT95P280X145-6N"
 			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
@@ -23474,7 +23906,7 @@
 	)
 	(symbol
 		(lib_id "Device:Polyfuse")
-		(at 41.91 -13.97 90)
+		(at 57.15 25.4 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -23484,7 +23916,7 @@
 		(dnp no)
 		(uuid "9cb08f58-cd8b-447c-8196-b5e4cb2e5d98")
 		(property "Reference" "F1"
-			(at 41.402 -20.32 90)
+			(at 56.896 28.956 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -23494,7 +23926,7 @@
 			)
 		)
 		(property "Value" "AGRF1000-2 Polyfuse"
-			(at 50.038 -18.034 90)
+			(at 57.15 30.988 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -23504,7 +23936,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuse_Bourns_MF-RG1000"
-			(at 46.99 -15.24 0)
+			(at 62.23 24.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23516,7 +23948,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 41.91 -13.97 0)
+			(at 57.15 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23527,7 +23959,7 @@
 			)
 		)
 		(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
-			(at 41.91 -13.97 0)
+			(at 57.15 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23564,7 +23996,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "9d23490f-813a-4008-af07-7741516f8569")
-		(property "Reference" "R12"
+		(property "Reference" "R13"
 			(at 83.566 58.674 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23628,7 +24060,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R12")
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -23645,7 +24077,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "a174842f-bbc5-4ddf-9a10-ddaa549cdfd2")
-		(property "Reference" "R20"
+		(property "Reference" "R22"
 			(at 110.998 126.492 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23709,7 +24141,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R20")
+					(reference "R22")
 					(unit 1)
 				)
 			)
@@ -23728,7 +24160,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a1e4013e-c718-451d-9899-d8bd8b6333da")
-		(property "Reference" "#GND07"
+		(property "Reference" "#GND09"
 			(at 60.96 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -23789,7 +24221,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "#GND07")
+					(reference "#GND09")
 					(unit 1)
 				)
 			)
@@ -24279,7 +24711,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "a7db7425-d1c4-4d34-a48a-7aad805c77fe")
-		(property "Reference" "R16"
+		(property "Reference" "R18"
 			(at 124.968 119.888 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24343,7 +24775,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R16")
+					(reference "R18")
 					(unit 1)
 				)
 			)
@@ -24439,7 +24871,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "a880d8ba-43c0-41c0-afbd-e06fc2010b05")
-		(property "Reference" "R8"
+		(property "Reference" "R10"
 			(at 152.908 49.784 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24503,7 +24935,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R8")
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -24673,7 +25105,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 116.84 -13.97 0)
+		(at 119.38 29.21 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -24683,7 +25115,7 @@
 		(dnp no)
 		(uuid "ad44195d-3e0c-4c29-92d5-e72c394b0ead")
 		(property "Reference" "#FLG03"
-			(at 116.84 -15.875 0)
+			(at 119.38 27.305 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24694,7 +25126,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 116.84 -17.78 0)
+			(at 119.38 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24705,7 +25137,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 116.84 -13.97 0)
+			(at 119.38 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24716,7 +25148,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 -13.97 0)
+			(at 119.38 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24727,7 +25159,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 116.84 -13.97 0)
+			(at 119.38 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25152,7 +25584,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_SPST")
-		(at 72.39 -13.97 0)
+		(at 96.52 20.32 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -25160,10 +25592,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "b2390b48-78bb-4d3b-8c73-ec913d0b389e")
-		(property "Reference" "SW3"
-			(at 72.39 -20.32 0)
+		(property "Reference" "SW1"
+			(at 103.886 17.526 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25173,7 +25604,8 @@
 			)
 		)
 		(property "Value" "SW_SPST"
-			(at 72.39 -17.78 0)
+			(at 96.52 16.51 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25183,7 +25615,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 72.39 -13.97 0)
+			(at 96.52 20.32 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25194,7 +25626,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 72.39 -13.97 0)
+			(at 96.52 20.32 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25205,7 +25637,7 @@
 			)
 		)
 		(property "Description" "Single Pole Single Throw (SPST) switch"
-			(at 72.39 -13.97 0)
+			(at 96.52 20.32 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25224,7 +25656,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "SW3")
+					(reference "SW1")
 					(unit 1)
 				)
 			)
@@ -25307,89 +25739,6 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "C15")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "1_Vendor_SMAJ12CA-tvs-diode:SMAJ12CA")
-		(at 115.57 -10.16 180)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b4865e1c-bcf5-4eee-893f-255b01f81064")
-		(property "Reference" "D1"
-			(at 104.394 -11.684 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "SMAJ12CA TVS diode"
-			(at 102.87 -7.366 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "2_Vendor_SMAJ12CA:SMASeries_LTF"
-			(at 115.57 -10.16 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-			)
-		)
-		(property "Datasheet" "SMAJ12CA"
-			(at 115.57 -10.16 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 115.57 -10.16 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "6d51ed7a-f206-4411-a547-c467a7ebe6f6")
-		)
-		(pin "2"
-			(uuid "df6a2789-4dde-4131-93ab-9789a5a0fb0c")
-		)
-		(instances
-			(project "lumenlab-pcb-v2"
-				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "D1")
 					(unit 1)
 				)
 			)
@@ -25486,7 +25835,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "b6414cd2-2e57-4ec5-b9dd-71dd6f82560d")
-		(property "Reference" "R22"
+		(property "Reference" "R24"
 			(at 16.764 127.254 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25550,7 +25899,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R22")
+					(reference "R24")
 					(unit 1)
 				)
 			)
@@ -25727,7 +26076,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ba85ba28-6259-4568-91ab-971d9b62702d")
-		(property "Reference" "R7"
+		(property "Reference" "R9"
 			(at 75.692 46.99 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25791,7 +26140,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R7")
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -25809,7 +26158,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "bde71320-1648-4498-a159-a8d753d5fdc3")
-		(property "Reference" "R17"
+		(property "Reference" "R19"
 			(at 135.382 119.888 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25873,7 +26222,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R17")
+					(reference "R19")
 					(unit 1)
 				)
 			)
@@ -26149,7 +26498,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2_Vendor_Power_Mux:SOP65P640X120-8N"
+		(property "Footprint" "TPS2113APWR:SOP65P640X120-8N"
 			(at 254 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -26625,7 +26974,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "cf1e4588-1196-44ea-be93-dd20c99e6083")
-		(property "Reference" "R29"
+		(property "Reference" "R31"
 			(at 63.246 191.262 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26689,7 +27038,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R29")
+					(reference "R31")
 					(unit 1)
 				)
 			)
@@ -26936,7 +27285,6 @@
 		)
 	)
 	(symbol
-		(lib_name "SS8050-G_1")
 		(lib_id "1_Vendor_SS8050-G:SS8050-G")
 		(at 68.58 176.53 0)
 		(unit 1)
@@ -26948,7 +27296,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d3f24413-0467-42bc-a49b-9c02ef66a27f")
-		(property "Reference" "Q1"
+		(property "Reference" "Q2"
 			(at 72.39 175.2599 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26970,7 +27318,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "2_Vendor_SS8050-G:TRANS_SS8050-G"
+		(property "Footprint" "SS8050-G:TRANS_SS8050-G"
 			(at 68.58 176.53 0)
 			(hide yes)
 			(show_name no)
@@ -27097,7 +27445,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "Q1")
+					(reference "Q2")
 					(unit 1)
 				)
 			)
@@ -27184,7 +27532,8 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 107.95 -13.97 0)
+		(at 115.57 29.21 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -27194,7 +27543,7 @@
 		(dnp no)
 		(uuid "d5a91241-3cd8-489b-9b8b-84ab769b0a28")
 		(property "Reference" "TP1"
-			(at 106.172 -19.558 0)
+			(at 117.348 23.622 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -27205,7 +27554,7 @@
 			)
 		)
 		(property "Value" "12V"
-			(at 110.49 -16.0021 0)
+			(at 113.03 27.1779 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27217,7 +27566,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
-			(at 113.03 -13.97 0)
+			(at 110.49 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27228,7 +27577,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 113.03 -13.97 0)
+			(at 110.49 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27239,7 +27588,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 107.95 -13.97 0)
+			(at 115.57 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27590,7 +27939,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "daad476b-6e1a-4e91-8fcd-8ec4c8e5d987")
-		(property "Reference" "R3"
+		(property "Reference" "R5"
 			(at 232.156 32.512 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27654,7 +28003,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R3")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -27833,7 +28182,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e17db24c-c222-4d54-a878-af2a3a5ca6c8")
-		(property "Reference" "R9"
+		(property "Reference" "R11"
 			(at 119.634 56.642 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27897,7 +28246,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R9")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -28113,7 +28462,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e1de1804-9332-49b7-a5db-13db0ef66a7a")
-		(property "Reference" "R21"
+		(property "Reference" "R23"
 			(at 174.752 129.286 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28177,7 +28526,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R21")
+					(reference "R23")
 					(unit 1)
 				)
 			)
@@ -28485,7 +28834,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ea4db164-1921-4fe0-a517-f49bc9cc5d88")
-		(property "Reference" "R23"
+		(property "Reference" "R25"
 			(at 129.032 129.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28549,7 +28898,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R23")
+					(reference "R25")
 					(unit 1)
 				)
 			)
@@ -28827,6 +29176,89 @@
 		)
 	)
 	(symbol
+		(lib_id "1_Vendor_SMAJ12CA-tvs-diode:SMAJ12CA")
+		(at 85.09 25.4 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ee0719c1-23e4-44fa-a07d-01976b66cf6e")
+		(property "Reference" "D1"
+			(at 77.47 20.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "SMAJ12CA TVS diode"
+			(at 64.516 22.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "SMASeries_LTF"
+			(at 85.09 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Datasheet" "SMAJ12CA"
+			(at 85.09 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 85.09 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "02cbdc00-c07b-4973-af82-0fb341bfd8bc")
+		)
+		(pin "2"
+			(uuid "80cf916d-f048-4dbb-9aac-8b33cc597f8a")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_Small_US")
 		(at 246.38 162.56 90)
 		(unit 1)
@@ -28837,7 +29269,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f51771f5-78f8-47aa-b12e-9309492dc537")
-		(property "Reference" "R26"
+		(property "Reference" "R28"
 			(at 248.158 158.75 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28901,7 +29333,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R26")
+					(reference "R28")
 					(unit 1)
 				)
 			)
@@ -28918,7 +29350,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f5558ca0-76f1-4280-8e8c-ca5f779823e7")
-		(property "Reference" "R13"
+		(property "Reference" "R14"
 			(at 152.908 58.674 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28982,7 +29414,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "R13")
+					(reference "R14")
 					(unit 1)
 				)
 			)
@@ -29079,7 +29511,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f7f07fd6-eceb-4f50-bb58-195492f880f6")
-		(property "Reference" "Q2"
+		(property "Reference" "Q3"
 			(at 73.406 188.214 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29101,7 +29533,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "2_Vendor_SS8050-G:TRANS_SS8050-G"
+		(property "Footprint" "SS8050-G:TRANS_SS8050-G"
 			(at 68.58 189.23 0)
 			(hide yes)
 			(show_name no)
@@ -29228,7 +29660,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "Q2")
+					(reference "Q3")
 					(unit 1)
 				)
 			)
@@ -29589,7 +30021,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+		(property "Footprint" "digikey-footprints:PinHeader_1x2_P2.5mm_Drill1.1mm"
 			(at 275.59 153.67 0)
 			(hide yes)
 			(show_name no)
@@ -29837,7 +30269,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ff88c88c-4651-47ff-8232-e2971efe829f")
-		(property "Reference" "SW1"
+		(property "Reference" "SW2"
 			(at 148.336 179.324 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29906,7 +30338,7 @@
 		(instances
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
-					(reference "SW1")
+					(reference "SW2")
 					(unit 1)
 				)
 			)

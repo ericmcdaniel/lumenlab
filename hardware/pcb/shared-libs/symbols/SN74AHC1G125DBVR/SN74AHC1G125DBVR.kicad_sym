@@ -33,7 +33,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "SN74AHC1G125DBVR:SOT95P280X145-5N"
+		(property "Footprint" "2_Vendor_SN74AHCT1G125:SOT95P280X145-5N"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

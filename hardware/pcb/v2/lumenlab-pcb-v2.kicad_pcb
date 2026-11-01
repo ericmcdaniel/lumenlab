@@ -748,7 +748,7 @@
 			(at -2.286 5.2832)
 			(size 0.889 2.1844)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(Q1-G)")
+			(net "Net-(D2-A)")
 			(pinfunction "G_1")
 			(pintype "input")
 			(uuid "b518d862-5d50-49e8-bf0f-a80062d942fc")
@@ -766,7 +766,7 @@
 			(at 2.286 5.2832)
 			(size 0.889 2.1844)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(Q1-S)")
+			(net "Net-(D2-K)")
 			(pinfunction "S_3")
 			(pintype "passive")
 			(uuid "9334c063-e1f7-4fee-8a95-c098d2109336")
@@ -1333,7 +1333,7 @@
 		(at 117.105 122.605)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "resistor handsolder")
-		(property "Reference" "R2"
+		(property "Reference" "R1"
 			(at 0 -1.43 0)
 			(layer "F.SilkS")
 			(uuid "96560b21-ff6c-4d37-91f9-6c9a5ec91e0c")
@@ -1447,7 +1447,7 @@
 			(size 0.975 0.95)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "Net-(SW1-A)")
+			(net "Net-(SW1-B)")
 			(pintype "passive")
 			(uuid "12ab65a3-ed08-487d-9484-d6393a570423")
 		)
@@ -1456,7 +1456,7 @@
 			(size 0.975 0.95)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "Net-(Q1-G)")
+			(net "Net-(D2-A)")
 			(pintype "passive")
 			(uuid "11773e8b-6960-4757-822e-3be69650d22a")
 		)
@@ -3633,7 +3633,7 @@
 				)
 			)
 		)
-		(property "Value" "SMAJ12CA TVS diode"
+		(property "Value" "SMAJ15CA TVS diode"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3645,7 +3645,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "SMAJ15CA"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3933,7 +3933,7 @@
 			(at -1.6129 0 90)
 			(size 1.651 2.5654)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(Q1-G)")
+			(net "GND")
 			(pintype "passive")
 			(uuid "cadad95c-8977-468e-a1d7-006ea6cea628")
 		)
@@ -3941,7 +3941,7 @@
 			(at 1.6129 0 90)
 			(size 1.651 2.5654)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(Q1-S)")
+			(net "Net-(D2-K)")
 			(pintype "passive")
 			(uuid "6b1135de-e402-44a7-a2d9-0042add12726")
 		)
@@ -3976,7 +3976,7 @@
 			)
 		)
 		(embedded_fonts no)
-		(model "C:/Users/McDan/development/lumenlab/hardware/pcb/shared-libs/3d-models/SMAJ12CA-tvs-diode.step"
+		(model "C:/Users/McDan/development/lumenlab/hardware/pcb/shared-libs/3d-models/SMAJ15CA-tvs-diode.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4701,7 +4701,7 @@
 			(size 1.425 1.75)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.175439)
-			(net "Net-(Q1-S)")
+			(net "Net-(D2-K)")
 			(pintype "passive")
 			(uuid "9cc019ac-2fe3-44dd-a3f9-2a9bc6bc5be6")
 		)
@@ -4847,12 +4847,6 @@
 		(path "/890f83e4-b112-4203-96a4-cfc6fd3b8d30")
 		(sheetname "/")
 		(sheetfile "lumenlab-pcb-v2.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2" "3" "6" "5" "4")
-			)
-		)
 		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5038,6 +5032,17 @@
 			(uuid "e0bd750d-a3a1-46d4-bd39-5d65a88761a1")
 		)
 		(embedded_fonts no)
+		(model "C:/Users/McDan/development/lumenlab/hardware/pcb/shared-libs/3d-models/USBLC6-2SC6.step"
+			(offset
+				(xyz 0 0 1)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -0)
+			)
+		)
 	)
 	(footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
 		(layer "F.Cu")
@@ -5616,12 +5621,6 @@
 		(path "/c39cd004-c5d0-4eed-aba0-6fca9c01c692")
 		(sheetname "/")
 		(sheetfile "lumenlab-pcb-v2.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "2" "4" "8" "6" "3" "7" "1" "5")
-			)
-		)
 		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -7577,7 +7576,7 @@
 			(size 0.975 0.95)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "Net-(Q1-S)")
+			(net "Net-(D2-K)")
 			(pintype "passive")
 			(uuid "4cf5704d-3acd-4abc-bdab-f0a2032880b6")
 		)
@@ -7586,7 +7585,7 @@
 			(size 0.975 0.95)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "Net-(Q1-G)")
+			(net "Net-(D2-A)")
 			(pintype "passive")
 			(uuid "1bfb8e52-ed90-4dcc-9a67-7f8eaa2cc3d0")
 		)
@@ -7891,12 +7890,6 @@
 		(path "/d3f24413-0467-42bc-a49b-9c02ef66a27f")
 		(sheetname "/")
 		(sheetfile "lumenlab-pcb-v2.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "3" "2")
-			)
-		)
 		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -8069,6 +8062,17 @@
 			(uuid "ce928c12-124b-4667-bb99-9e6ba309eb15")
 		)
 		(embedded_fonts no)
+		(model "C:/Users/McDan/development/lumenlab/hardware/pcb/shared-libs/3d-models/SS8050-G.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -0)
+			)
+		)
 	)
 	(footprint "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
 		(layer "F.Cu")
@@ -9364,7 +9368,7 @@
 		(at 156.4125 82.9875 180)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "resistor handsolder")
-		(property "Reference" "R1"
+		(property "Reference" "R2"
 			(at 0.0125 -1.4 0)
 			(layer "F.SilkS")
 			(uuid "b61bee9e-88b7-4617-9ec7-573388e35f53")
@@ -13012,14 +13016,6 @@
 		(path "/16daff54-6bb9-48a2-93b8-4e700a0533fb")
 		(sheetname "/")
 		(sheetfile "lumenlab-pcb-v2.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "16" "1" "2" "14" "4" "5" "6" "12" "13" "7" "8" "10" "9" "17" "3"
-					"11" "15"
-				)
-			)
-		)
 		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -13403,7 +13399,7 @@
 			(uuid "0230fc9e-1f93-4ea7-bfcb-5f0dd9ad6793")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/McDan/development/lumenlab/hardware/pcb/shared-libs/3d-models/CP2102N-A02-GQFN24R.step"
+		(model "C:/Users/McDan/development/lumenlab/hardware/pcb/shared-libs/3d-models/MAX98357AETE_T.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -14553,12 +14549,6 @@
 		(path "/6ae55778-ac60-468f-8712-1c528808c0d7")
 		(sheetname "/")
 		(sheetfile "lumenlab-pcb-v2.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "4" "5" "3" "7" "8" "1" "2" "CD" "6" "G1" "G2" "G3" "G4")
-			)
-		)
 		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -15004,6 +14994,17 @@
 			(uuid "6d5aa4b8-98a4-4e9c-92e7-25238319ca2a")
 		)
 		(embedded_fonts no)
+		(model "C:/Users/McDan/development/lumenlab/hardware/pcb/shared-libs/3d-models/MSD-1-A.step"
+			(offset
+				(xyz -7.5 -7.5 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 		(layer "F.Cu")
@@ -17866,13 +17867,7 @@
 		(path "/7d20d949-eb8d-4088-8a9a-ba999ed070bd")
 		(sheetname "/")
 		(sheetfile "lumenlab-pcb-v2.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2" "5" "4" "3")
-			)
-		)
-		(attr smd dnp)
+		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.33 -1.45)
@@ -18062,6 +18057,333 @@
 			(uuid "456ad16a-6e2a-4536-8b2c-4a6792c1960b")
 		)
 		(embedded_fonts no)
+		(model "C:/Users/McDan/development/lumenlab/hardware/pcb/shared-libs/3d-models/SN74AHCT1G125DBVR.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -0)
+			)
+		)
+	)
+	(footprint "Diode_SMD:D_SOD-123"
+		(layer "F.Cu")
+		(uuid "b060834e-8b7f-4c4c-852f-9138d77a3b2f")
+		(at 102.72 119.375)
+		(descr "SOD-123")
+		(tags "SOD-123")
+		(property "Reference" "D2"
+			(at 0 -2 0)
+			(layer "F.SilkS")
+			(uuid "500d3987-38a4-4156-9645-7898eba3e47c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MMSZ15T1G"
+			(at 0 2.1 0)
+			(layer "F.Fab")
+			(uuid "2e1f5378-71c6-4fde-9ec5-95f9c71aa69b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "06101d56-fe34-4328-9d2e-631b6b502b4e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Diode, small symbol, filled shape"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e56510ba-80b8-4332-bca5-aaa43eda38a2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f09c8c9b-5fc1-4819-a729-1770b9e874ad")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bc566cb6-3831-4fdd-98c4-b43612b4bbb5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "TO-???* *_Diode_* *SingleDiode* D_*")
+		(path "/6b95977e-75bc-4f15-806d-14a98a0f1f11")
+		(sheetname "/")
+		(sheetfile "lumenlab-pcb-v2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -2.36 -1)
+			(end -2.36 1)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "de330ab2-d775-4b28-9d85-5ee0ab06c6af")
+		)
+		(fp_line
+			(start -2.36 -1)
+			(end 1.65 -1)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "c62db19d-2812-4971-ab53-9d236b0194fd")
+		)
+		(fp_line
+			(start -2.36 1)
+			(end 1.65 1)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "b3654072-7e92-4cee-aac4-3f6ad7941691")
+		)
+		(fp_line
+			(start -2.35 -1.15)
+			(end -2.35 1.15)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "39c2af0b-7517-411a-a30f-06020e2a6e15")
+		)
+		(fp_line
+			(start -2.35 -1.15)
+			(end 2.35 -1.15)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "81072195-0dcb-456b-bb6e-d84c7cc9f4cb")
+		)
+		(fp_line
+			(start 2.35 -1.15)
+			(end 2.35 1.15)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "62932565-c73f-40d6-a158-e4808d4107fd")
+		)
+		(fp_line
+			(start 2.35 1.15)
+			(end -2.35 1.15)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "6d69fb2b-5bfc-4027-a432-a474a66c6804")
+		)
+		(fp_line
+			(start -1.4 -0.9)
+			(end 1.4 -0.9)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "d438f8e2-e800-4ee7-8e71-addc4a92ccdb")
+		)
+		(fp_line
+			(start -1.4 0.9)
+			(end -1.4 -0.9)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "7a51a044-845e-4766-8746-149dc9e20e17")
+		)
+		(fp_line
+			(start -0.75 0)
+			(end -0.35 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "9bcfefad-bb7a-4518-a80b-aac10b31d056")
+		)
+		(fp_line
+			(start -0.35 0)
+			(end -0.35 -0.55)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "8dc366d8-68fb-4426-adb6-25a3b9536a34")
+		)
+		(fp_line
+			(start -0.35 0)
+			(end -0.35 0.55)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "734c3f25-4b7f-410d-8839-994edfa96539")
+		)
+		(fp_line
+			(start -0.35 0)
+			(end 0.25 -0.4)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "2021a923-8b84-4b7f-a3ab-3d549164b119")
+		)
+		(fp_line
+			(start 0.25 -0.4)
+			(end 0.25 0.4)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "f4705768-3674-489d-9fcf-c841dc082152")
+		)
+		(fp_line
+			(start 0.25 0)
+			(end 0.75 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "a552e5f2-d3fb-4a30-8417-e26c1976a721")
+		)
+		(fp_line
+			(start 0.25 0.4)
+			(end -0.35 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "c51e2ac8-8378-471b-9088-be4c70cb94a3")
+		)
+		(fp_line
+			(start 1.4 -0.9)
+			(end 1.4 0.9)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "2dee3dfd-d5ab-4118-b844-3f305c84a40f")
+		)
+		(fp_line
+			(start 1.4 0.9)
+			(end -1.4 0.9)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "c2a65de9-f1ba-4451-887d-36e722946d8a")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "b1ec2e73-f33c-4bf4-bee2-abb02cb7d81f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" smd roundrect
+			(at -1.65 0)
+			(size 0.9 1.2)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(roundrect_rratio 0.25)
+			(net "Net-(D2-K)")
+			(pinfunction "K_1")
+			(pintype "passive")
+			(uuid "e794d118-1034-4949-abae-f96af8d008fd")
+		)
+		(pad "2" smd roundrect
+			(at 1.65 0)
+			(size 0.9 1.2)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(roundrect_rratio 0.25)
+			(net "Net-(D2-A)")
+			(pinfunction "A_2")
+			(pintype "passive")
+			(uuid "a1d24917-a9d2-4066-a603-10368f2b7dc3")
+		)
+		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
 		(layer "F.Cu")
@@ -18695,12 +19017,6 @@
 		(path "/f7f07fd6-eceb-4f50-bb58-195492f880f6")
 		(sheetname "/")
 		(sheetfile "lumenlab-pcb-v2.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "3" "2")
-			)
-		)
 		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -18873,6 +19189,17 @@
 			(uuid "212ab033-b368-493c-9a0a-024c1d212893")
 		)
 		(embedded_fonts no)
+		(model "C:/Users/McDan/development/lumenlab/hardware/pcb/shared-libs/3d-models/SS8050-G.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 		(layer "F.Cu")
@@ -22857,7 +23184,7 @@
 		(at 249.595 -32.42)
 		(descr "LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing)")
 		(tags "LED handsolder")
-		(property "Reference" "D2"
+		(property "Reference" "D3"
 			(at 0 -1.65 0)
 			(layer "F.SilkS")
 			(uuid "6c028005-632b-4a0b-be87-f279b8bf2728")
@@ -22890,7 +23217,7 @@
 				)
 			)
 		)
-		(property "Description" "Light emitting diode"
+		(property "Description" "Light emitting diode, filled shape"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23033,7 +23360,7 @@
 			(size 1.15 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
-			(net "Net-(D2-K)")
+			(net "Net-(D3-K)")
 			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "bdda9011-a74f-476a-b82f-2427b9a613b9")
@@ -23336,7 +23663,7 @@
 			(size 0.975 0.95)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "Net-(D3-A)")
+			(net "Net-(D4-A)")
 			(pintype "passive")
 			(uuid "10febbe4-3f63-4a50-95ed-8a1e9d120b0f")
 		)
@@ -23584,7 +23911,7 @@
 			(size 0.975 0.95)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "Net-(D2-K)")
+			(net "Net-(D3-K)")
 			(pintype "passive")
 			(uuid "6559c5f2-4f67-4982-b89a-9488ab58d08b")
 		)
@@ -24165,7 +24492,7 @@
 		(at 5.8875 244)
 		(descr "LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing)")
 		(tags "LED handsolder")
-		(property "Reference" "D3"
+		(property "Reference" "D4"
 			(at 0 -1.65 0)
 			(layer "F.SilkS")
 			(uuid "f0a2ade4-9982-42ec-80eb-f853c10e99f6")
@@ -24198,7 +24525,7 @@
 				)
 			)
 		)
-		(property "Description" "Light emitting diode"
+		(property "Description" "Light emitting diode, filled shape"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -24351,7 +24678,7 @@
 			(size 1.15 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
-			(net "Net-(D3-A)")
+			(net "Net-(D4-A)")
 			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "f006a440-4c7f-4138-91e4-5266da6544ee")

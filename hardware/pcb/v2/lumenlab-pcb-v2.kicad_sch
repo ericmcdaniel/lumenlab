@@ -3775,7 +3775,7 @@
 					)
 				)
 			)
-			(property "Footprint" "2_Vendor_SMAJ12CA:SMASeries_LTF-M"
+			(property "Footprint" "2_Vendor_SMAJ15CA:SMASeries_LTF-M"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3961,7 +3961,7 @@
 					(justify left bottom)
 				)
 			)
-			(property "Footprint" "SN74AHC1G125DBVR:SOT95P280X145-5N"
+			(property "Footprint" "2_Vendor_SN74AHCT1G125:SOT95P280X145-5N"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -15610,7 +15610,7 @@
 				)
 			)
 		)
-		(property "Footprint" "MAX98357AETE_T:QFN50P300X300X80-17N"
+		(property "Footprint" "2_Vendor_MAX98357A:QFN50P300X300X80-17N"
 			(at 262.89 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -20614,7 +20614,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MSD-1-A:CUI_MSD-1-A"
+		(property "Footprint" "2_Vendor_MicroSD_Card_Reader:CUI_MSD-1-A"
 			(at 273.05 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -21192,7 +21192,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2_Ventor_MolexPowerConnector:CONN_SD-5569-002_02_MOL"
+		(property "Footprint" "2_Vendor_MolexPowerConnector:CONN_SD-172448-0000_02_MOL"
 			(at 30.48 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -22454,7 +22454,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SN74AHC1G125DBVR:SOT95P280X145-5N"
+		(property "Footprint" "2_Vendor_SN74AHCT1G125:SOT95P280X145-5N"
 			(at 100.33 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -23261,7 +23261,7 @@
 				)
 			)
 		)
-		(property "Footprint" "USBLC6-2SC6:SOT95P280X145-6N"
+		(property "Footprint" "2_Vendor_ESPProtection:SOT95P280X145-6N"
 			(at 116.84 163.83 0)
 			(hide yes)
 			(show_name no)
@@ -24219,7 +24219,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+		(property "Footprint" "2_Vendor_MolexPowerConnector:CONN_SD-172448-0000_02_MOL"
 			(at 129.54 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -25574,7 +25574,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "2_Vendor_MolexPowerConnector:CONN_SD-172448-0000_04_MOL"
 			(at 120.65 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -26781,7 +26781,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TPS2113APWR:SOP65P640X120-8N"
+		(property "Footprint" "2_Vendor_Power_Mux:SOP65P640X120-8N"
 			(at 254 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -27656,10 +27656,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "d3f24413-0467-42bc-a49b-9c02ef66a27f")
 		(property "Reference" "Q2"
-			(at 72.39 175.2599 0)
+			(at 72.39 175.5141 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -27670,7 +27669,7 @@
 			)
 		)
 		(property "Value" "NPN"
-			(at 72.39 177.7999 0)
+			(at 71.882 177.546 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -27680,7 +27679,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "SS8050-G:TRANS_SS8050-G"
+		(property "Footprint" "2_Vendor_SS8050-G:TRANS_SS8050-G"
 			(at 68.58 176.53 0)
 			(hide yes)
 			(show_name no)
@@ -29874,7 +29873,7 @@
 		(dnp no)
 		(uuid "f7f07fd6-eceb-4f50-bb58-195492f880f6")
 		(property "Reference" "Q3"
-			(at 73.406 188.214 0)
+			(at 72.644 188.214 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -29885,7 +29884,7 @@
 			)
 		)
 		(property "Value" "NPN"
-			(at 72.898 190.2459 0)
+			(at 72.136 190.246 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -29895,7 +29894,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "SS8050-G:TRANS_SS8050-G"
+		(property "Footprint" "2_Vendor_SS8050-G:TRANS_SS8050-G"
 			(at 68.58 189.23 0)
 			(hide yes)
 			(show_name no)

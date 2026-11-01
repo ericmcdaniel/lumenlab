@@ -26,4 +26,5 @@
 	(lib (name "2_Vendor_MolexPowerConnector") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/MolexPowerConnector") (options "") (descr ""))
 	(lib (name "2_Vendor_MGAH06036R8M_Inductor") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/MGAH06036R8M-10") (options "") (descr ""))
 	(lib (name "2_Vendor_SUD50P06-p-ch-mosfet") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/SUD50P06-p-ch-mosfet") (options "") (descr ""))
+	(lib (name "2_Vendor_DPST_Power_switch") (type "KiCad") (uri "${KIPRJMOD}/../shared-libs/footprints/PB400EEQR1BLK_latching_push_btn") (options "") (descr ""))
 )

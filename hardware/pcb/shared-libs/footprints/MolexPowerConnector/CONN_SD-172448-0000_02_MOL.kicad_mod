@@ -6,7 +6,7 @@
 	(property "Reference" "REF**"
 		(at 0.1016 -2.7432 0)
 		(layer "F.SilkS")
-		(uuid "00a854d6-8e1d-4c4f-a4c3-0759b7fcc74e")
+		(uuid "8ec9f636-09b3-4c8d-b5cc-e62b439cd10f")
 		(effects
 			(font
 				(size 1 1)
@@ -17,7 +17,7 @@
 	(property "Value" "CONN_SD-172448-0000_02_MOL"
 		(at 14.986 -2.7432 0)
 		(layer "F.Fab")
-		(uuid "234ad8a8-09f6-45c3-82db-50b88d8063f2")
+		(uuid "627e2f07-4f9e-4b4a-958a-32a764283906")
 		(effects
 			(font
 				(size 1 1)
@@ -29,7 +29,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "d9793a52-840c-4b92-9228-09c9e7187e4d")
+		(uuid "f5f032a0-a29d-4e78-90c9-a7250d89347c")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -40,7 +40,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "b588b9dc-40f5-4442-b4fb-028e08eb10ec")
+		(uuid "06593892-c343-4f22-ba21-363fc2cc9a8c")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -49,6 +49,50 @@
 	)
 	(attr through_hole)
 	(duplicate_pad_numbers_are_jumpers no)
+	(fp_arc
+		(start 3.7338 0)
+		(mid 4.1148 -0.381)
+		(end 4.4958 0)
+		(stroke
+			(width 0.508)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d70142d6-cdf7-429a-8e0e-321c812bebbf")
+	)
+	(fp_arc
+		(start 4.4958 0)
+		(mid 4.1148 0.381)
+		(end 3.7338 0)
+		(stroke
+			(width 0.508)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8f3eec71-9e9a-48b3-886b-29bc80001121")
+	)
+	(fp_arc
+		(start 3.7338 0)
+		(mid 4.1148 -0.381)
+		(end 4.4958 0)
+		(stroke
+			(width 0.508)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "bd05f3b8-354f-45fc-9981-d1677aca5c69")
+	)
+	(fp_arc
+		(start 4.4958 0)
+		(mid 4.1148 0.381)
+		(end 3.7338 0)
+		(stroke
+			(width 0.508)
+			(type solid)
+		)
+		(layer "B.SilkS")
+		(uuid "b181fcbd-d240-4bbf-ac58-5c1ed109f500")
+	)
 	(fp_line
 		(start -2.8194 0.9652)
 		(end -2.8194 14.0208)
@@ -56,8 +100,8 @@
 			(width 0.1524)
 			(type solid)
 		)
-		(layer "F.SilkS")
-		(uuid "f9be118f-8015-4835-b644-994749d7c771")
+		(layer "F.Fab")
+		(uuid "79a6db99-0a48-463d-bcd9-f703c8e5bcf2")
 	)
 	(fp_line
 		(start -2.8194 14.0208)
@@ -66,82 +110,8 @@
 			(width 0.1524)
 			(type solid)
 		)
-		(layer "F.SilkS")
-		(uuid "daf6622f-9366-4a7a-a901-dcd0a10e4264")
-	)
-	(fp_line
-		(start -1.1684 0.9652)
-		(end -2.8194 0.9652)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "fb6828d5-b052-4c03-a7fa-6f4d40eddb17")
-	)
-	(fp_line
-		(start 3.2258 0.9652)
-		(end 1.1684 0.9652)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "fabef314-ad03-4f8b-82a5-bbdfb86cbcc0")
-	)
-	(fp_line
-		(start 3.2258 14.0208)
-		(end 3.2258 0.9652)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "4789b9d3-ad02-41be-9b1d-f012d396e4d9")
-	)
-	(fp_arc
-		(start 3.7338 0)
-		(mid 4.1148 -0.381)
-		(end 4.4958 0)
-		(stroke
-			(width 0.508)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "a262743f-8904-4900-8e06-c98a5036e437")
-	)
-	(fp_arc
-		(start 4.4958 0)
-		(mid 4.1148 0.381)
-		(end 3.7338 0)
-		(stroke
-			(width 0.508)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "d8503e5b-f3a5-4203-a934-51b7b25a3142")
-	)
-	(fp_arc
-		(start 3.7338 0)
-		(mid 4.1148 -0.381)
-		(end 4.4958 0)
-		(stroke
-			(width 0.508)
-			(type solid)
-		)
-		(layer "B.SilkS")
-		(uuid "b8e1dd07-6ea1-43a5-86af-1fc03c54ad82")
-	)
-	(fp_arc
-		(start 4.4958 0)
-		(mid 4.1148 0.381)
-		(end 3.7338 0)
-		(stroke
-			(width 0.508)
-			(type solid)
-		)
-		(layer "B.SilkS")
-		(uuid "1e37f6af-275a-4693-8c77-61bdb213bc43")
+		(layer "F.Fab")
+		(uuid "1f16c1b2-7132-48ab-a063-ee50c2f12df0")
 	)
 	(fp_line
 		(start -2.6924 1.0922)
@@ -151,7 +121,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "97a7a12f-b063-43cb-b0fc-edaf363f174f")
+		(uuid "f3903715-d2fb-4f4f-9ef8-0c75e5fc3fbc")
 	)
 	(fp_line
 		(start -2.6924 13.8938)
@@ -161,7 +131,17 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "0745342c-e29c-4e2c-8ae5-4d2e45f04553")
+		(uuid "910a140b-5cbc-4e8c-8e5b-a5e43b651675")
+	)
+	(fp_line
+		(start -1.1684 0.9652)
+		(end -2.8194 0.9652)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6429e105-e21a-4c73-a64d-519b70b94f3b")
 	)
 	(fp_line
 		(start 3.0988 1.0922)
@@ -171,7 +151,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "be424e74-43b4-4e76-9d34-a5f26a1e39a8")
+		(uuid "411a7847-56bc-404e-b9c2-3cf5031a8e9d")
 	)
 	(fp_line
 		(start 3.0988 13.8938)
@@ -181,7 +161,27 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "402e9186-748d-4fb6-a6a0-43f388f3eaa0")
+		(uuid "b420269c-cc27-48ce-9496-18fcfe9b2a00")
+	)
+	(fp_line
+		(start 3.2258 0.9652)
+		(end 1.1684 0.9652)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "551e2cf3-61a9-4b6e-bc31-0da54c0d75be")
+	)
+	(fp_line
+		(start 3.2258 14.0208)
+		(end 3.2258 0.9652)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b2e95cd7-4796-4c38-bd68-4c8300ae7862")
 	)
 	(fp_arc
 		(start -0.381 0)
@@ -192,7 +192,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "e049bebe-f0d0-45a6-9ac8-d8f8d7d341bf")
+		(uuid "1a1952e9-351e-44a3-8ee7-39601904827c")
 	)
 	(fp_arc
 		(start 0.381 0)
@@ -203,14 +203,14 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "9cfef53e-364c-434a-844e-94977283c0c7")
+		(uuid "997d3ed0-5204-49a3-ad68-c51006816a0a")
 	)
 	(pad "" np_thru_hole circle
 		(at 0 7.2898)
 		(size 3.048 3.048)
 		(drill 3.048)
 		(layers "*.Cu" "*.Mask")
-		(uuid "dcbb588c-a133-4c6c-8b81-84be08224c78")
+		(uuid "c31c0449-9e65-4148-bf92-94ca8049fbc5")
 	)
 	(pad "1" thru_hole circle
 		(at 0 0)
@@ -219,7 +219,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(solder_mask_margin 0.102)
-		(uuid "57ed2f87-6736-4e73-8f69-e95884fa56f2")
+		(uuid "40087c22-9519-4694-aa1a-595d1a8b7ccb")
 	)
 	(pad "2" thru_hole circle
 		(at 0 -5.5118)
@@ -228,7 +228,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(solder_mask_margin 0.102)
-		(uuid "750f5057-e53f-4182-894e-4a98c0b5b8c0")
+		(uuid "8c80d97c-87ad-49f0-b354-9aca2e76a037")
 	)
 	(embedded_fonts no)
 	(model "C:/Users/McDan/development/lumenlab/hardware/pcb/shared-libs/3d-models/MolexConnector-2pin.step"

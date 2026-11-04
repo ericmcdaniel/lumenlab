@@ -11213,7 +11213,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 165.1) (xy 95.25 163.83)
+			(xy 95.25 163.83) (xy 95.25 162.56)
 		)
 		(stroke
 			(width 0)
@@ -11775,7 +11775,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 163.83) (xy 137.16 163.83)
+			(xy 128.27 162.56) (xy 137.16 162.56)
 		)
 		(stroke
 			(width 0)
@@ -12228,7 +12228,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 160.02) (xy 137.16 160.02)
+			(xy 128.27 158.75) (xy 137.16 158.75)
 		)
 		(stroke
 			(width 0)
@@ -12358,7 +12358,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 167.64) (xy 137.16 167.64)
+			(xy 128.27 166.37) (xy 137.16 166.37)
 		)
 		(stroke
 			(width 0)
@@ -12529,7 +12529,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 163.83) (xy 105.41 163.83)
+			(xy 95.25 162.56) (xy 105.41 162.56)
 		)
 		(stroke
 			(width 0)
@@ -12821,7 +12821,7 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 167.64) (xy 105.41 167.64)
+			(xy 99.06 166.37) (xy 105.41 166.37)
 		)
 		(stroke
 			(width 0)
@@ -13564,7 +13564,7 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 160.02) (xy 105.41 160.02)
+			(xy 99.06 158.75) (xy 105.41 158.75)
 		)
 		(stroke
 			(width 0)
@@ -14206,7 +14206,7 @@
 		(uuid "0c273c19-187c-493f-8242-931e31ad1ef8")
 	)
 	(label "DATA-"
-		(at 99.06 160.02 0)
+		(at 99.06 158.75 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14286,7 +14286,7 @@
 		(uuid "233f0caf-e765-4540-8437-df8af874147f")
 	)
 	(label "USB_VBUS"
-		(at 137.16 163.83 180)
+		(at 137.16 162.56 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14336,7 +14336,7 @@
 		(uuid "2f1032df-1f05-4950-8eff-576e6927f75b")
 	)
 	(label "USB_D+"
-		(at 137.16 167.64 180)
+		(at 137.16 166.37 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14346,7 +14346,7 @@
 		(uuid "34e22c95-f9f1-4729-a218-f04e8a793677")
 	)
 	(label "USB_D-"
-		(at 137.16 160.02 180)
+		(at 137.16 158.75 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14916,7 +14916,7 @@
 		(uuid "c2560c63-7e4f-47e9-912e-03c6afa1461d")
 	)
 	(label "DATA+"
-		(at 99.06 167.64 0)
+		(at 99.06 166.37 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15151,6 +15151,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 161.29 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ca7db1a1-3884-4b37-ae8c-9906ff6f35c4")
 		)
@@ -15221,6 +15232,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 167.64 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 167.64 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -15314,6 +15336,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 17.78 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a002550e-a89e-4823-86ac-e8d3d93a08e4")
 		)
@@ -15382,6 +15415,17 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 73.66 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 73.66 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -15474,6 +15518,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 165.1 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "19051e28-a16c-4fe3-ba26-497ce253daee")
 		)
@@ -15546,6 +15601,17 @@
 		)
 		(property "Description" "Resistor, small US symbol"
 			(at 257.81 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 257.81 30.48 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15636,6 +15702,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 224.79 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "d9a59a3e-57d2-4679-b5c2-628399f57ee4")
 		)
@@ -15706,6 +15783,17 @@
 		)
 		(property "Description" "Resistor, small US symbol"
 			(at 80.01 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 80.01 29.21 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15953,6 +16041,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 31.75 86.36 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8cee6c5d-cb23-4056-989a-cfc209856532")
 		)
@@ -16092,6 +16191,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 262.89 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "3"
@@ -16614,6 +16724,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 16.51 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "210bbd5c-d5b5-4b5f-81f4-fbe84496d5e5")
 		)
@@ -16682,6 +16803,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 38.1 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 38.1 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -16931,6 +17063,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 205.74 120.65 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "6c6bbb78-0808-40d1-a915-fc6faea6c906")
 		)
@@ -17004,6 +17147,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 100.33 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 100.33 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -17166,6 +17320,17 @@
 		)
 		(property "Description" "Fuse"
 			(at 43.18 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 43.18 25.4 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17414,6 +17579,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 276.86 30.48 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "100d304c-8275-4726-8639-47b70e3fa31e")
 		)
@@ -17485,6 +17661,17 @@
 			)
 		)
 		(property "Description" "RF Module, ESP32-D0WD-V3 SoC, without PSRAM, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, onboard antenna, SMD"
+			(at 41.91 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 41.91 127 0)
 			(hide yes)
 			(show_name no)
@@ -17677,6 +17864,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 165.1 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "6807e7fb-9aa7-412e-a464-dd8332552f0c")
 		)
@@ -17764,6 +17962,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 171.45 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "8feca263-69c7-48f7-846f-6406cdc10798")
 		)
@@ -17836,6 +18045,17 @@
 		)
 		(property "Description" "Resistor, small US symbol"
 			(at 82.55 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 82.55 21.59 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18006,6 +18226,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 29.21 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "93276f63-2b1f-4ed4-a857-495b3db6d280")
 		)
@@ -18162,6 +18393,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 193.04 43.18 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "d69a0e6b-138f-4d84-ba8b-d9c671d2620a")
 		)
@@ -18231,6 +18473,17 @@
 			)
 		)
 		(property "Description" "1000mA, Low-Voltage, Low Quiescent Current LDO Regulator, SOT-223, TO-220, TO-263"
+			(at 48.26 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 48.26 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -18326,6 +18579,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 31.75 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7959037d-b053-4f5c-964a-fc20cc2022e4")
 		)
@@ -18395,6 +18659,17 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
+			(at 26.67 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 26.67 184.15 0)
 			(hide yes)
 			(show_name no)
@@ -18562,6 +18837,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 231.14 55.88 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "378b8262-9a11-4df1-aa70-832a65b8e03c")
 		)
@@ -18631,6 +18917,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 212.09 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 212.09 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -18880,6 +19177,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 265.43 22.86 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d14fce03-7724-448f-9f0a-14fbeb77da0b")
 		)
@@ -19030,6 +19338,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 132.08 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 132.08 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -19191,6 +19510,17 @@
 		)
 		(property "Description" "Resistor, small US symbol"
 			(at 205.74 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 205.74 152.4 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19753,6 +20083,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 195.58 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e4941393-1f56-4f2d-bbf8-5643191be939")
 		)
@@ -20102,6 +20443,17 @@
 				(justify left)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 96.52 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "7"
 			(uuid "9c8212e0-4120-4710-ac61-e7f2f5ab0ae0")
 		)
@@ -20285,6 +20637,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 219.71 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "78abf850-21f8-4cc5-980f-37b3bda606f2")
 		)
@@ -20355,6 +20718,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 172.72 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 172.72 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -20513,6 +20887,17 @@
 			)
 		)
 		(property "Description" "USB 2.0-only 16P Type-C Receptacle connector"
+			(at 88.9 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 88.9 130.81 0)
 			(hide yes)
 			(show_name no)
@@ -20807,6 +21192,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 229.87 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0168b5d9-610f-4d79-8c54-162bcf041b25")
 		)
@@ -20877,6 +21273,17 @@
 			)
 		)
 		(property "Description" "Single Pole Single Throw (SPST) switch with LED, generic"
+			(at 92.71 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 92.71 21.59 0)
 			(hide yes)
 			(show_name no)
@@ -20963,6 +21370,17 @@
 		)
 		(property "Description" "Resistor, small US symbol"
 			(at 184.15 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 184.15 43.18 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21259,6 +21677,17 @@
 				(justify bottom)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 273.05 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "4"
 			(uuid "e95fcccf-7c03-4d82-b58d-5c4181941c03")
 		)
@@ -21385,6 +21814,17 @@
 		)
 		(property "Sim.Pins" "1=K 2=A"
 			(at 88.9 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 88.9 33.02 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21554,6 +21994,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 73.66 91.44 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f2584d21-73d2-4b82-aaaa-00ba820a0a44")
 		)
@@ -21620,6 +22071,17 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 236.22 26.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 236.22 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -21700,6 +22162,17 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 200.66 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 200.66 48.26 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21847,6 +22320,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 30.48 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -21999,6 +22483,17 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 124.46 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 124.46 181.61 0)
 			(hide yes)
 			(show_name no)
@@ -22247,6 +22742,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 109.22 121.92 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c80c3c9c-2817-4883-9a40-7bc7cb2cf3d7")
 		)
@@ -22486,6 +22992,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 156.21 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "5bd20f47-6190-4907-979e-8f972d28bab2")
 		)
@@ -22587,6 +23104,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 125.73 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6907bf3a-8ab0-405e-897c-367c57f1d618")
 		)
@@ -22656,6 +23184,17 @@
 		)
 		(property "Description" "Resistor, small US symbol"
 			(at 77.47 19.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 77.47 19.05 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22814,6 +23353,17 @@
 			)
 		)
 		(property "Description" "USB to UART master bridge, QFN-24"
+			(at 153.67 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 153.67 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -23041,6 +23591,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 100.33 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 100.33 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -23297,6 +23858,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 252.73 132.08 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "924be29c-736e-4483-a370-646995f4cebc")
 		)
@@ -23448,6 +24020,17 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 234.95 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 234.95 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -23618,6 +24201,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 59.69 175.26 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "cbac3fb7-df53-4494-b1f4-c68bcc85c341")
 		)
@@ -23778,6 +24372,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 15.24 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "fabb4646-03cd-4f2f-b6f1-e3d99c01ce5d")
 		)
@@ -23859,6 +24464,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 60.96 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3b9b4b39-ad04-4f4f-bc36-7ff05b4d9201")
 		)
@@ -23876,7 +24492,7 @@
 	)
 	(symbol
 		(lib_id "1_Vendor_ESDProtection:USBLC6-2SC6")
-		(at 116.84 163.83 0)
+		(at 116.84 162.56 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -23886,7 +24502,7 @@
 		(dnp no)
 		(uuid "890f83e4-b112-4203-96a4-cfc6fd3b8d30")
 		(property "Reference" "U9"
-			(at 116.84 155.448 0)
+			(at 116.84 154.178 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -23896,7 +24512,7 @@
 			)
 		)
 		(property "Value" "USBLC6-2SC6"
-			(at 116.84 157.48 0)
+			(at 116.84 156.21 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -23906,7 +24522,7 @@
 			)
 		)
 		(property "Footprint" "2_Vendor_ESPProtection:SOT95P280X145-6N"
-			(at 116.84 163.83 0)
+			(at 116.84 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23918,7 +24534,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.st.com/resource/en/datasheet/cd00050750.pdf"
-			(at 116.84 163.83 0)
+			(at 116.84 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23929,7 +24545,7 @@
 			)
 		)
 		(property "Description" "17V Clamp 5A (8/20µs) Ipp Tvs Diode Surface Mount SOT-23-6"
-			(at 116.84 163.83 0)
+			(at 116.84 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23941,7 +24557,7 @@
 			)
 		)
 		(property "MF" "STMicroelectronics"
-			(at 116.84 163.83 0)
+			(at 116.84 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23953,7 +24569,7 @@
 			)
 		)
 		(property "PURCHASE-URL" "https://pricing.snapeda.com/search/part/USBLC6-2SC6/?ref=eda"
-			(at 116.84 163.83 0)
+			(at 116.84 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23965,7 +24581,7 @@
 			)
 		)
 		(property "PACKAGE" "SOT-23-6 STMicroelectronics"
-			(at 116.84 163.83 0)
+			(at 116.84 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23977,7 +24593,7 @@
 			)
 		)
 		(property "PRICE" "None"
-			(at 116.84 163.83 0)
+			(at 116.84 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23989,7 +24605,7 @@
 			)
 		)
 		(property "MP" "USBLC6-2SC6"
-			(at 116.84 163.83 0)
+			(at 116.84 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24001,7 +24617,7 @@
 			)
 		)
 		(property "AVAILABILITY" "In Stock"
-			(at 116.84 163.83 0)
+			(at 116.84 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24010,6 +24626,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 116.84 162.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "5"
@@ -24254,6 +24881,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 210.82 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 210.82 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -24737,6 +25375,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 245.11 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "d110daae-08fc-417e-9a78-a58ef1d3057d")
 		)
@@ -24811,6 +25460,17 @@
 		)
 		(property "Description" "test point"
 			(at 15.24 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 15.24 133.35 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24977,6 +25637,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 124.46 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "84b1a1db-b70b-4b21-9910-edf2193a304a")
 		)
@@ -25059,6 +25730,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 85.09 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "6f81b934-e0ad-4d1b-ba21-54856cff91f6")
 		)
@@ -25131,6 +25813,17 @@
 		)
 		(property "Description" "Resistor, small US symbol"
 			(at 109.22 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 109.22 124.46 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25299,6 +25992,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 119.38 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "382fab67-c825-43dd-ad72-adab98374a85")
 		)
@@ -25451,6 +26155,17 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 146.05 189.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 146.05 189.23 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25698,6 +26413,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 21.59 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1a58c7ab-00c5-489e-b518-1a33b45c87bf")
 		)
@@ -25766,6 +26492,17 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 130.81 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 130.81 120.65 0)
 			(hide yes)
 			(show_name no)
@@ -25936,6 +26673,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 151.13 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "a176caac-97ef-4644-b55c-63f4a940d170")
 		)
@@ -26005,6 +26753,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 124.46 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 124.46 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -26165,6 +26924,17 @@
 			)
 		)
 		(property "Description" "Polarized capacitor, small US symbol"
+			(at 90.17 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 90.17 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -26401,6 +27171,17 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 118.11 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 118.11 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -26815,6 +27596,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 215.9 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "1963c18c-cf2c-48ab-a45b-1585eca47caa")
 		)
@@ -26966,6 +27758,17 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 15.24 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 15.24 128.27 0)
 			(hide yes)
 			(show_name no)
@@ -27135,6 +27938,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 95.25 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "128ed747-4d9e-4893-8a7a-6d0a79a70a20")
 		)
@@ -27207,6 +28021,17 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 71.12 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 71.12 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -27299,6 +28124,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 140.97 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e1758060-c1e7-44ff-8376-04a187c7fff1")
 		)
@@ -27370,6 +28206,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 170.18 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 170.18 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -27461,6 +28308,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 229.87 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "9ba0be55-6c0d-485e-912f-05b298a884eb")
 		)
@@ -27530,6 +28388,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 252.73 26.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 252.73 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -27689,6 +28558,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 254 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 254 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -27959,6 +28839,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 140.97 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "f43795bb-bc63-4313-a1da-63a9912a9a71")
 		)
@@ -28198,6 +29089,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 59.69 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1d1e5e5d-182b-441f-8e2c-1177df92f74f")
 		)
@@ -28269,6 +29171,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 207.01 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 207.01 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -28441,6 +29354,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 24.13 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6397898a-f724-449b-9bd8-39c586388cbe")
 		)
@@ -28601,6 +29525,17 @@
 				(justify bottom)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 67.31 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "fb64e356-dc40-4b73-9841-c66e9681e60a")
 		)
@@ -28621,7 +29556,7 @@
 	)
 	(symbol
 		(lib_id "power:Earth")
-		(at 95.25 165.1 0)
+		(at 95.25 163.83 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -28632,17 +29567,6 @@
 		(fields_autoplaced yes)
 		(uuid "d5011790-9389-4e2e-9387-dcd9d71e989c")
 		(property "Reference" "#PWR037"
-			(at 95.25 171.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
 			(at 95.25 170.18 0)
 			(hide yes)
 			(show_name no)
@@ -28653,8 +29577,19 @@
 				)
 			)
 		)
+		(property "Value" "GND"
+			(at 95.25 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Footprint" ""
-			(at 95.25 165.1 0)
+			(at 95.25 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28665,7 +29600,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 95.25 165.1 0)
+			(at 95.25 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28676,7 +29611,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"Earth\""
-			(at 95.25 165.1 0)
+			(at 95.25 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28766,6 +29701,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 120.65 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "aeaba97c-9337-423c-b9c3-11393db1cf4e")
 		)
@@ -28836,6 +29782,17 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 27.94 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 27.94 82.55 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29004,6 +29961,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 146.05 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "af9683d9-efac-471f-8b5c-af00b5cc27bc")
 		)
@@ -29076,6 +30044,17 @@
 		)
 		(property "Description" "Resistor, small US symbol"
 			(at 231.14 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 231.14 30.48 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29158,6 +30137,17 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 165.1 189.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 165.1 189.23 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29328,6 +30318,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 240.03 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "78388efb-eb8a-4c23-9aa9-6a23e88547f4")
 		)
@@ -29400,6 +30401,17 @@
 		)
 		(property "Description" "Resistor, small US symbol"
 			(at 118.11 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 118.11 54.61 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29524,6 +30536,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 198.12 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "aa9aac05-801c-4a74-af99-2024f2d58a23")
 		)
@@ -29608,6 +30631,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 250.19 135.89 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "212bc6c0-8afe-48a6-bb0e-d2f4c6b04874")
 		)
@@ -29680,6 +30714,17 @@
 		)
 		(property "Description" "Resistor, small US symbol"
 			(at 172.72 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 172.72 127 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29804,6 +30849,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 198.12 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ae0ad3a7-b25e-4657-92b5-d365f6e258a4")
 		)
@@ -29889,6 +30945,17 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
+			(at 129.54 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 129.54 186.69 0)
 			(hide yes)
 			(show_name no)
@@ -30060,6 +31127,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 130.81 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "76860edf-0871-4afb-9c80-6185c9ad63ac")
 		)
@@ -30152,6 +31230,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 20.32 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ada0499f-eeb0-4026-af41-4934a9f23ffc")
 		)
@@ -30223,6 +31312,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 203.2 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 203.2 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -30413,6 +31513,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 60.96 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "02cbdc00-c07b-4973-af82-0fb341bfd8bc")
 		)
@@ -30494,6 +31605,17 @@
 				)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 246.38 162.56 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "39d94ce2-5b27-4694-972b-606ee97c5e95")
 		)
@@ -30565,6 +31687,17 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 151.13 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 151.13 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -30818,6 +31951,17 @@
 				(justify bottom)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 67.31 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "b98166fc-0b72-4645-9ba5-b167ac9e95fb")
 		)
@@ -31052,6 +32196,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 210.82 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 210.82 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -31334,6 +32489,17 @@
 				(justify left)
 			)
 		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 280.67 148.59 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "c97a5407-d70f-4733-8014-deb7666af828")
 		)
@@ -31483,6 +32649,17 @@
 			)
 		)
 		(property "Description" "MEC 5E single pole normally-open tactile switch"
+			(at 146.05 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
 			(at 146.05 185.42 0)
 			(hide yes)
 			(show_name no)

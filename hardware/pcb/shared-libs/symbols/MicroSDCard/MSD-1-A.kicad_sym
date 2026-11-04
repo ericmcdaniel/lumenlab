@@ -289,7 +289,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin passive line
 				(at -11.43 -6.35 0)
 				(length 5.08)
 				(name "COVER_GND"
@@ -307,7 +307,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin passive line
 				(at -11.43 -8.89 0)
 				(length 5.08)
 				(name "COVER_GND__1"
@@ -325,7 +325,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin passive line
 				(at -11.43 -11.43 0)
 				(length 5.08)
 				(name "COVER_GND__2"
@@ -343,7 +343,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin passive line
 				(at -11.43 -13.97 0)
 				(length 5.08)
 				(name "COVER_GND__3"

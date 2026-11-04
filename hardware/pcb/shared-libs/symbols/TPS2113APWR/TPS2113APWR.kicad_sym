@@ -122,42 +122,6 @@
 					)
 				)
 			)
-			(pin input line
-				(at -11.43 -3.81 0)
-				(length 5.08)
-				(name "IN2"
-					(effects
-						(font
-							(size 1.016 1.016)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.016 1.016)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at -11.43 -1.27 0)
-				(length 5.08)
-				(name "IN1"
-					(effects
-						(font
-							(size 1.016 1.016)
-						)
-					)
-				)
-				(number "8"
-					(effects
-						(font
-							(size 1.016 1.016)
-						)
-					)
-				)
-			)
 		)
 		(symbol "TPS2113APWR_1_0"
 			(pin open_collector line
@@ -196,6 +160,24 @@
 					)
 				)
 			)
+			(pin power_in line
+				(at -11.43 -3.81 0)
+				(length 5.08)
+				(name "IN2"
+					(effects
+						(font
+							(size 1.016 1.016)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.016 1.016)
+						)
+					)
+				)
+			)
 			(pin power_out line
 				(at 11.43 1.27 180)
 				(length 5.08)
@@ -207,6 +189,24 @@
 					)
 				)
 				(number "7"
+					(effects
+						(font
+							(size 1.016 1.016)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -11.43 -1.27 0)
+				(length 5.08)
+				(name "IN1"
+					(effects
+						(font
+							(size 1.016 1.016)
+						)
+					)
+				)
+				(number "8"
 					(effects
 						(font
 							(size 1.016 1.016)

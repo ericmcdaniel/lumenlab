@@ -99,24 +99,6 @@
 			)
 		)
 		(symbol "MP2338GTL-Z_0_1"
-			(pin output line
-				(at 0 0 0)
-				(length 7.62)
-				(name "PG"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
 			(pin power_in line
 				(at 0 -2.54 0)
 				(length 7.62)
@@ -201,6 +183,24 @@
 				(fill
 					(type color)
 					(color 255 255 194 1)
+				)
+			)
+			(pin open_collector line
+				(at 0 0 0)
+				(length 7.62)
+				(name "PG"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
 				)
 			)
 			(pin power_out line

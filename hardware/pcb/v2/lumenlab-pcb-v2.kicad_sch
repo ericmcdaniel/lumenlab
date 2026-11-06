@@ -9508,7 +9508,7 @@
 	)
 	(text "JTAG debugging"
 		(exclude_from_sim no)
-		(at 99.314 175.006 0)
+		(at 100.076 171.704 0)
 		(effects
 			(font
 				(size 2.286 2.286)
@@ -9835,6 +9835,12 @@
 		(uuid "3d7cee99-4e4b-4c29-a385-762dfe8216cb")
 	)
 	(junction
+		(at 105.41 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3df3cd23-4ca0-491d-a1b1-7d148a9876d6")
+	)
+	(junction
 		(at 146.05 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9853,7 +9859,7 @@
 		(uuid "46342ff8-8d2f-4c89-95b8-d07a1c37e3a2")
 	)
 	(junction
-		(at 87.63 190.5)
+		(at 87.63 187.96)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "532ee8ba-b585-42c9-937f-17f6f91502c9")
@@ -9985,7 +9991,7 @@
 		(uuid "85cb3f47-ec19-4944-9fe3-3e526d1e29d0")
 	)
 	(junction
-		(at 87.63 185.42)
+		(at 87.63 182.88)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "862be957-6a12-4516-900c-fd3e54712c06")
@@ -10075,7 +10081,7 @@
 		(uuid "bcf2400c-2776-43c7-868b-88b7fc3d589d")
 	)
 	(junction
-		(at 87.63 187.96)
+		(at 87.63 185.42)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bec35e4a-1ab3-46f2-8d2c-0b295a0452fb")
@@ -10225,7 +10231,7 @@
 		(uuid "a4b3eb73-c550-4014-a159-cef85093875f")
 	)
 	(no_connect
-		(at 101.6 193.04)
+		(at 101.6 190.5)
 		(uuid "cbe2915b-bb4a-4ba2-987a-4c724ff52526")
 	)
 	(no_connect
@@ -10276,7 +10282,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 185.42) (xy 83.82 190.5)
+			(xy 83.82 182.88) (xy 83.82 187.96)
 		)
 		(stroke
 			(width 0)
@@ -10296,7 +10302,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 187.96) (xy 119.38 187.96)
+			(xy 101.6 185.42) (xy 119.38 185.42)
 		)
 		(stroke
 			(width 0)
@@ -10396,7 +10402,7 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 193.04) (xy 87.63 190.5)
+			(xy 87.63 190.5) (xy 87.63 187.96)
 		)
 		(stroke
 			(width 0)
@@ -10526,7 +10532,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 185.42) (xy 119.38 185.42)
+			(xy 101.6 182.88) (xy 119.38 182.88)
 		)
 		(stroke
 			(width 0)
@@ -10566,7 +10572,7 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 193.04) (xy 91.44 193.04)
+			(xy 87.63 190.5) (xy 91.44 190.5)
 		)
 		(stroke
 			(width 0)
@@ -10828,7 +10834,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 185.42) (xy 87.63 185.42)
+			(xy 83.82 182.88) (xy 87.63 182.88)
 		)
 		(stroke
 			(width 0)
@@ -10948,7 +10954,7 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 185.42) (xy 91.44 185.42)
+			(xy 87.63 182.88) (xy 91.44 182.88)
 		)
 		(stroke
 			(width 0)
@@ -10975,6 +10981,16 @@
 			(type default)
 		)
 		(uuid "3494a3e9-be7f-4694-87d4-ccf0f6ab44a5")
+	)
+	(wire
+		(pts
+			(xy 105.41 187.96) (xy 119.38 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "351f4b57-4d24-4eec-9dea-60c27e3effe1")
 	)
 	(wire
 		(pts
@@ -11038,7 +11054,7 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 187.96) (xy 87.63 185.42)
+			(xy 87.63 185.42) (xy 87.63 182.88)
 		)
 		(stroke
 			(width 0)
@@ -11199,7 +11215,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 163.83) (xy 95.25 162.56)
+			(xy 95.25 162.56) (xy 95.25 161.29)
 		)
 		(stroke
 			(width 0)
@@ -11240,7 +11256,7 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 190.5) (xy 91.44 190.5)
+			(xy 87.63 187.96) (xy 91.44 187.96)
 		)
 		(stroke
 			(width 0)
@@ -11751,7 +11767,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 162.56) (xy 137.16 162.56)
+			(xy 128.27 161.29) (xy 137.16 161.29)
 		)
 		(stroke
 			(width 0)
@@ -11851,7 +11867,7 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 190.5) (xy 87.63 187.96)
+			(xy 87.63 187.96) (xy 87.63 185.42)
 		)
 		(stroke
 			(width 0)
@@ -11922,6 +11938,16 @@
 	)
 	(wire
 		(pts
+			(xy 115.57 190.5) (xy 119.38 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b6b59f6-5d03-494f-996c-b42113722e32")
+	)
+	(wire
+		(pts
 			(xy 219.71 83.82) (xy 219.71 85.09)
 		)
 		(stroke
@@ -11983,13 +12009,23 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 190.5) (xy 119.38 190.5)
+			(xy 101.6 187.96) (xy 105.41 187.96)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "7df7efff-6bb1-42e1-a640-97074c4a6847")
+	)
+	(wire
+		(pts
+			(xy 105.41 190.5) (xy 105.41 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e7316f1-124c-4c74-a7db-082772ed3181")
 	)
 	(wire
 		(pts
@@ -12003,7 +12039,7 @@
 	)
 	(polyline
 		(pts
-			(xy 121.285 171.45) (xy 121.285 197.485)
+			(xy 121.285 168.275) (xy 121.285 197.485)
 		)
 		(stroke
 			(width 0)
@@ -12204,7 +12240,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 158.75) (xy 137.16 158.75)
+			(xy 128.27 157.48) (xy 137.16 157.48)
 		)
 		(stroke
 			(width 0)
@@ -12324,6 +12360,16 @@
 	)
 	(wire
 		(pts
+			(xy 119.38 190.5) (xy 119.38 191.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "93ee615b-4537-46d1-b1a4-c4701cc60edb")
+	)
+	(wire
+		(pts
 			(xy 57.15 139.7) (xy 73.66 139.7)
 		)
 		(stroke
@@ -12334,7 +12380,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 166.37) (xy 137.16 166.37)
+			(xy 128.27 165.1) (xy 137.16 165.1)
 		)
 		(stroke
 			(width 0)
@@ -12475,7 +12521,7 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 187.96) (xy 91.44 187.96)
+			(xy 87.63 185.42) (xy 91.44 185.42)
 		)
 		(stroke
 			(width 0)
@@ -12505,7 +12551,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 162.56) (xy 105.41 162.56)
+			(xy 95.25 161.29) (xy 105.41 161.29)
 		)
 		(stroke
 			(width 0)
@@ -12797,7 +12843,7 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 166.37) (xy 105.41 166.37)
+			(xy 99.06 165.1) (xy 105.41 165.1)
 		)
 		(stroke
 			(width 0)
@@ -13149,7 +13195,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 182.88) (xy 119.38 182.88)
+			(xy 101.6 180.34) (xy 119.38 180.34)
 		)
 		(stroke
 			(width 0)
@@ -13219,7 +13265,7 @@
 	)
 	(polyline
 		(pts
-			(xy 78.74 171.45) (xy 121.285 171.45)
+			(xy 78.74 168.275) (xy 121.285 168.275)
 		)
 		(stroke
 			(width 0)
@@ -13520,7 +13566,7 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 158.75) (xy 105.41 158.75)
+			(xy 99.06 157.48) (xy 105.41 157.48)
 		)
 		(stroke
 			(width 0)
@@ -13721,6 +13767,16 @@
 	)
 	(wire
 		(pts
+			(xy 110.49 190.5) (xy 105.41 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e30e9d1d-da57-41ff-a298-df512e121b8e")
+	)
+	(wire
+		(pts
 			(xy 38.1 57.15) (xy 38.1 53.34)
 		)
 		(stroke
@@ -13871,7 +13927,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 182.88) (xy 91.44 182.88)
+			(xy 83.82 180.34) (xy 91.44 180.34)
 		)
 		(stroke
 			(width 0)
@@ -14162,7 +14218,7 @@
 		(uuid "0c273c19-187c-493f-8242-931e31ad1ef8")
 	)
 	(label "DATA-"
-		(at 99.06 158.75 0)
+		(at 99.06 157.48 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14242,7 +14298,7 @@
 		(uuid "233f0caf-e765-4540-8437-df8af874147f")
 	)
 	(label "USB_VBUS"
-		(at 137.16 162.56 180)
+		(at 137.16 161.29 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14292,7 +14348,7 @@
 		(uuid "2f1032df-1f05-4950-8eff-576e6927f75b")
 	)
 	(label "USB_D+"
-		(at 137.16 166.37 180)
+		(at 137.16 165.1 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14302,7 +14358,7 @@
 		(uuid "34e22c95-f9f1-4729-a218-f04e8a793677")
 	)
 	(label "USB_D-"
-		(at 137.16 158.75 180)
+		(at 137.16 157.48 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14582,7 +14638,7 @@
 		(uuid "8008c965-22b2-4d20-bb78-3702b8dd2cca")
 	)
 	(label "ESP32_GPIO15"
-		(at 119.38 187.96 180)
+		(at 119.38 185.42 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14732,7 +14788,7 @@
 		(uuid "a431b930-2e4e-4628-9153-3f516762df43")
 	)
 	(label "ESP32_GPIO13"
-		(at 119.38 185.42 180)
+		(at 119.38 182.88 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14872,7 +14928,7 @@
 		(uuid "c2560c63-7e4f-47e9-912e-03c6afa1461d")
 	)
 	(label "DATA+"
-		(at 99.06 166.37 0)
+		(at 99.06 165.1 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14912,7 +14968,7 @@
 		(uuid "d2cee7d0-372f-4cfa-8aa5-92a6f65b20dc")
 	)
 	(label "ESP32_GPIO12"
-		(at 119.38 190.5 180)
+		(at 119.38 187.96 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15012,7 +15068,7 @@
 		(uuid "e8498184-286d-4d73-802f-6078cab786d7")
 	)
 	(label "ESP32_GPIO14"
-		(at 119.38 182.88 180)
+		(at 119.38 180.34 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15926,6 +15982,85 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "#GND018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:Earth")
+		(at 119.38 191.77 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "12cfbaa6-ea96-4177-83ec-21d39f03c4bc")
+		(property "Reference" "#PWR044"
+			(at 119.38 198.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 119.38 196.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 119.38 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 119.38 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
+			(at 119.38 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3a1136ac-964a-4858-9d8f-04c5eeb6caec")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -18911,7 +19046,7 @@
 	)
 	(symbol
 		(lib_id "power:Earth")
-		(at 83.82 190.5 0)
+		(at 83.82 187.96 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18922,7 +19057,7 @@
 		(fields_autoplaced yes)
 		(uuid "413e076c-e9e8-4b77-a376-1df0c3fb1f2a")
 		(property "Reference" "#PWR040"
-			(at 83.82 196.85 0)
+			(at 83.82 194.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18933,7 +19068,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 83.82 195.58 0)
+			(at 83.82 193.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18944,7 +19079,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 83.82 190.5 0)
+			(at 83.82 187.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18955,7 +19090,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 83.82 190.5 0)
+			(at 83.82 187.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18966,7 +19101,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"Earth\""
-			(at 83.82 190.5 0)
+			(at 83.82 187.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19233,6 +19368,99 @@
 			(project "lumenlab-pcb-v2"
 				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
 					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small_US")
+		(at 113.03 190.5 90)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "46048a3a-d235-4871-999b-034ddabacc60")
+		(property "Reference" "R37"
+			(at 115.062 192.786 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10K"
+			(at 115.062 194.818 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 113.03 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 113.03 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor, small US symbol"
+			(at 113.03 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PACKAGE_ID" ""
+			(at 113.03 190.5 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d8a049fe-a405-4485-b89f-c7b73761d77e")
+		)
+		(pin "2"
+			(uuid "bd5bb688-3649-4bd7-9dd5-3c96388cd672")
+		)
+		(instances
+			(project "lumenlab-pcb-v2"
+				(path "/2d045da9-3430-412d-9b59-c1acb2d29754"
+					(reference "R37")
 					(unit 1)
 				)
 			)
@@ -20226,7 +20454,7 @@
 	)
 	(symbol
 		(lib_id "dk_Rectangular-Connectors-Headers-Male-Pins:3220-10-0100-00")
-		(at 96.52 187.96 0)
+		(at 96.52 185.42 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -20236,7 +20464,7 @@
 		(dnp no)
 		(uuid "5b19d00e-f860-45e6-b95e-cc5b08c94585")
 		(property "Reference" "J7"
-			(at 96.52 195.834 0)
+			(at 96.52 193.294 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20246,7 +20474,7 @@
 			)
 		)
 		(property "Value" "JTAG"
-			(at 102.108 195.834 0)
+			(at 102.108 193.294 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20257,7 +20485,7 @@
 			)
 		)
 		(property "Footprint" "digikey-footprints:PinHeader_2x5_P1.27mm_Drill.7mm"
-			(at 101.6 182.88 0)
+			(at 101.6 180.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20269,7 +20497,7 @@
 			)
 		)
 		(property "Datasheet" "http://cnctech.us/pdfs/3220-XX-0100-00.pdf"
-			(at 101.6 180.34 90)
+			(at 101.6 177.8 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20281,7 +20509,7 @@
 			)
 		)
 		(property "Description" "CONN HEADER VERT 10POS 1.27MM"
-			(at 96.52 187.96 0)
+			(at 96.52 185.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20292,18 +20520,6 @@
 			)
 		)
 		(property "Digi-Key_PN" "1175-1627-ND"
-			(at 101.6 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left)
-			)
-		)
-		(property "MPN" "3220-10-0100-00"
 			(at 101.6 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -20315,7 +20531,7 @@
 				(justify left)
 			)
 		)
-		(property "Category" "Connectors, Interconnects"
+		(property "MPN" "3220-10-0100-00"
 			(at 101.6 172.72 0)
 			(hide yes)
 			(show_name no)
@@ -20327,7 +20543,7 @@
 				(justify left)
 			)
 		)
-		(property "Family" "Rectangular Connectors - Headers, Male Pins"
+		(property "Category" "Connectors, Interconnects"
 			(at 101.6 170.18 0)
 			(hide yes)
 			(show_name no)
@@ -20339,7 +20555,7 @@
 				(justify left)
 			)
 		)
-		(property "DK_Datasheet_Link" "http://cnctech.us/pdfs/3220-XX-0100-00.pdf"
+		(property "Family" "Rectangular Connectors - Headers, Male Pins"
 			(at 101.6 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -20351,7 +20567,7 @@
 				(justify left)
 			)
 		)
-		(property "DK_Detail_Page" "/product-detail/en/cnc-tech/3220-10-0100-00/1175-1627-ND/3883661"
+		(property "DK_Datasheet_Link" "http://cnctech.us/pdfs/3220-XX-0100-00.pdf"
 			(at 101.6 165.1 0)
 			(hide yes)
 			(show_name no)
@@ -20363,7 +20579,7 @@
 				(justify left)
 			)
 		)
-		(property "Description_1" "CONN HEADER VERT 10POS 1.27MM"
+		(property "DK_Detail_Page" "/product-detail/en/cnc-tech/3220-10-0100-00/1175-1627-ND/3883661"
 			(at 101.6 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -20375,7 +20591,7 @@
 				(justify left)
 			)
 		)
-		(property "Manufacturer" "CNC Tech"
+		(property "Description_1" "CONN HEADER VERT 10POS 1.27MM"
 			(at 101.6 160.02 0)
 			(hide yes)
 			(show_name no)
@@ -20387,7 +20603,7 @@
 				(justify left)
 			)
 		)
-		(property "Status" "Active"
+		(property "Manufacturer" "CNC Tech"
 			(at 101.6 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -20399,8 +20615,20 @@
 				(justify left)
 			)
 		)
+		(property "Status" "Active"
+			(at 101.6 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+			)
+		)
 		(property "SNAPEDA_PACKAGE_ID" ""
-			(at 96.52 187.96 0)
+			(at 96.52 185.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20451,7 +20679,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 83.82 182.88 0)
+		(at 83.82 180.34 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -20462,7 +20690,7 @@
 		(dnp no)
 		(uuid "5c437570-2fd6-46a4-a259-53d6c877b747")
 		(property "Reference" "#PWR039"
-			(at 83.82 186.69 0)
+			(at 83.82 184.15 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20473,7 +20701,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 83.312 178.816 0)
+			(at 83.312 176.276 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20483,7 +20711,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 83.82 182.88 0)
+			(at 83.82 180.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20494,7 +20722,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 83.82 182.88 0)
+			(at 83.82 180.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20505,7 +20733,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 83.82 182.88 0)
+			(at 83.82 180.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24448,7 +24676,7 @@
 	)
 	(symbol
 		(lib_id "1_Vendor_ESDProtection:USBLC6-2SC6")
-		(at 116.84 162.56 0)
+		(at 116.84 161.29 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -24458,7 +24686,7 @@
 		(dnp no)
 		(uuid "890f83e4-b112-4203-96a4-cfc6fd3b8d30")
 		(property "Reference" "U9"
-			(at 116.84 154.178 0)
+			(at 116.84 152.908 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -24468,7 +24696,7 @@
 			)
 		)
 		(property "Value" "USBLC6-2SC6"
-			(at 116.84 156.21 0)
+			(at 116.84 154.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -24478,7 +24706,7 @@
 			)
 		)
 		(property "Footprint" "2_Vendor_ESPProtection:SOT95P280X145-6N"
-			(at 116.84 162.56 0)
+			(at 116.84 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24490,7 +24718,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.st.com/resource/en/datasheet/cd00050750.pdf"
-			(at 116.84 162.56 0)
+			(at 116.84 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24501,7 +24729,7 @@
 			)
 		)
 		(property "Description" "17V Clamp 5A (8/20µs) Ipp Tvs Diode Surface Mount SOT-23-6"
-			(at 116.84 162.56 0)
+			(at 116.84 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24513,7 +24741,7 @@
 			)
 		)
 		(property "MF" "STMicroelectronics"
-			(at 116.84 162.56 0)
+			(at 116.84 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24525,7 +24753,7 @@
 			)
 		)
 		(property "PURCHASE-URL" "https://pricing.snapeda.com/search/part/USBLC6-2SC6/?ref=eda"
-			(at 116.84 162.56 0)
+			(at 116.84 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24537,7 +24765,7 @@
 			)
 		)
 		(property "PACKAGE" "SOT-23-6 STMicroelectronics"
-			(at 116.84 162.56 0)
+			(at 116.84 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24549,7 +24777,7 @@
 			)
 		)
 		(property "PRICE" "None"
-			(at 116.84 162.56 0)
+			(at 116.84 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24561,7 +24789,7 @@
 			)
 		)
 		(property "MP" "USBLC6-2SC6"
-			(at 116.84 162.56 0)
+			(at 116.84 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24573,7 +24801,7 @@
 			)
 		)
 		(property "AVAILABILITY" "In Stock"
-			(at 116.84 162.56 0)
+			(at 116.84 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24585,7 +24813,7 @@
 			)
 		)
 		(property "SNAPEDA_PACKAGE_ID" ""
-			(at 116.84 162.56 0)
+			(at 116.84 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25550,14 +25778,15 @@
 				)
 			)
 		)
-		(property "Value" "Aux Power Inj"
-			(at 129.286 80.264 0)
+		(property "Value" "Addl LED strip power inj"
+			(at 123.698 80.264 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "2_Vendor_MolexPowerConnector:CONN_SD-172448-0000_02_MOL"
@@ -27094,14 +27323,15 @@
 				)
 			)
 		)
-		(property "Value" "To WS2815"
-			(at 115.062 80.01 0)
+		(property "Value" "To WS2815 RGB LED strip"
+			(at 120.142 80.01 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "2_Vendor_MolexPowerConnector:CONN_SD-172448-0000_04_MOL"
@@ -29512,7 +29742,7 @@
 	)
 	(symbol
 		(lib_id "power:Earth")
-		(at 95.25 163.83 0)
+		(at 95.25 162.56 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -29523,17 +29753,6 @@
 		(fields_autoplaced yes)
 		(uuid "d5011790-9389-4e2e-9387-dcd9d71e989c")
 		(property "Reference" "#PWR037"
-			(at 95.25 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
 			(at 95.25 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -29544,8 +29763,19 @@
 				)
 			)
 		)
+		(property "Value" "GND"
+			(at 95.25 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Footprint" ""
-			(at 95.25 163.83 0)
+			(at 95.25 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29556,7 +29786,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 95.25 163.83 0)
+			(at 95.25 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29567,7 +29797,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"Earth\""
-			(at 95.25 163.83 0)
+			(at 95.25 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -31234,15 +31464,15 @@
 				(justify left)
 			)
 		)
-		(property "Value" "ST7789"
-			(at 199.136 74.93 0)
+		(property "Value" "ST7789 Module - GODIYMODULES"
+			(at 210.566 74.93 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Connector_JST:JST_XH_B8B-XH-A_1x08_P2.50mm_Vertical"

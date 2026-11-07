@@ -9542,7 +9542,7 @@
 		)
 		(uuid "22707f48-6eec-440d-8be9-49ebe019d563")
 	)
-	(text "R27 (GAIN_SLOT) configuration:\n  100K Ω = 15dB gain\n  0Ω      = 12dB gain\n  Floating = default"
+	(text "R32 (GAIN_SLOT) configuration:\n  100K Ω = 15dB gain\n  0Ω      = 12dB gain\n  Floating = 9dB (default)"
 		(exclude_from_sim no)
 		(at 250.444 171.196 0)
 		(effects
@@ -28163,7 +28163,7 @@
 		(dnp no)
 		(uuid "ba85ba28-6259-4568-91ab-971d9b62702d")
 		(property "Reference" "R10"
-			(at 75.946 46.99 0)
+			(at 76.454 46.99 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
